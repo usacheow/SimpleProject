@@ -1,0 +1,67 @@
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+captures/
+
+# Local configuration file (sdk path, etc)
+local.properties
+/gradle.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+_mac/
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+*.iml
+.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle
+build/
+/vcs.xml
+/captures/
+/output.json
+/*/out
+/*/*/build
+/*/*/production
+*.iws
+*.ipr
+*~
+*.swp
+*.hprof
+
+*.patch
+
+.idea/instapk.xml
+instapk.log*
+
+#NDK
+.externalNativeBuild
+app/fabric.properties
+app/libs/
+/_mac/
+/ignore.xml
+/projectView.xml
+/androidStudioFirstRun.xml
+/ide.general.xml
+/filetypes.xml
+/debugger.xml
+/markdown_navigator.shared.xml
+/.navigation
+/debugger.renderers.xml

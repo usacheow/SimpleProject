@@ -1,0 +1,66 @@
+ext {
+    APP_VERSION_PROPERTIES = "AppVersionName"
+    CODE_VERSION_PROPERTIES = "CodeVersionNumber"
+    PATH_PROPERTIES = "../build_script/version.properties"
+}
+
+def getVersionProps() {
+    def versionPropsFile = file(PATH_PROPERTIES)
+    if (!versionPropsFile.exists()) {
+        versionPropsFile.createNewFile()
+    }
+    def versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    return versionProps
+}
+
+private void save(versionName, versionCode) {
+    def versionProps = getVersionProps()
+    versionProps[APP_VERSION_PROPERTIES] = versionName
+    versionProps[CODE_VERSION_PROPERTIES] = versionCode
+    versionProps.store(file(PATH_PROPERTIES).newWriter(), null)
+}
+
+private void save(major, minor, patch, versionCode) {
+    save("${major}.${minor}.${patch}".toString(), versionCode.toString())
+}
+
+ext {
+    configVersionName = { getVersionProps()[APP_VERSION_PROPERTIES] }
+    configVersionCode = { getVersionProps()[CODE_VERSION_PROPERTIES].toInteger() }
+}
+def getVersionNamePatch = { (configVersionName() =~ /\d+/)[2].toInteger() }
+
+def getVersionNameMinor = { (configVersionName() =~ /\d+/)[1].toInteger() }
+
+def getVersionNameMajor = { (configVersionName() =~ /\d+/)[0].toInteger() }
+
+task initIncrement() {
+    group = 'increment'
+    doLast {
+        def versionName = project.hasProperty(APP_VERSION_PROPERTIES) ? AppVersionName : '1.0.0'
+        def versionCode = project.hasProperty(CODE_VERSION_PROPERTIES) ? CodeVersionNumber : '1'
+        save(versionName, versionCode)
+    }
+}
+
+task incrementVersionMajor() {
+    group = 'increment'
+    doLast {
+        save(getVersionNameMajor() + 1, 0, 0, configVersionCode() + 1)
+    }
+}
+
+task incrementVersionMinor() {
+    group = 'increment'
+    doLast {
+        save(getVersionNameMajor(), getVersionNameMinor() + 1, 0, configVersionCode() + 1)
+    }
+}
+
+task incrementVersionPatch() {
+    group = 'increment'
+    doLast {
+        save(getVersionNameMajor(), getVersionNameMinor(), getVersionNamePatch() + 1, configVersionCode() + 1)
+    }
+}

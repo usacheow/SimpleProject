@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="font_size_10sp">10.0sp</dimen>
+    <dimen name="font_size_12sp">12.0sp</dimen>
+    <dimen name="font_size_14sp">14.0sp</dimen>
+    <dimen name="font_size_16sp">16.0sp</dimen>
+    <dimen name="font_size_18sp">18.0sp</dimen>
+    <dimen name="font_size_20sp">20.0sp</dimen>
+    <dimen name="font_size_22sp">22.0sp</dimen>
+    <dimen name="font_size_24sp">24.0sp</dimen>
+    <dimen name="font_size_28sp">28.0sp</dimen>
+    <dimen name="font_size_30sp">30.0sp</dimen>
+
+    <dimen name="default_height_status_bar">25dp</dimen>
+    <dimen name="default_height_navigation_bar">42dp</dimen>
+
+    <dimen name="left_right_margin">16dp</dimen>
+
+</resources>

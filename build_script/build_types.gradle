@@ -1,0 +1,10 @@
+ext {
+    ConfigStoreFile = file("${rootDir}/release.keystore")
+    ConfigStorePassword = ""
+    ConfigKeyAlias = ""
+    ConfigKeyPassword = ""
+
+    ReleaseSuffix = "-release"
+    DebugSuffix = "-debug"
+    DebugApplicationIdSuffix = ".debug"
+}

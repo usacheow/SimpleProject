@@ -1,0 +1,50 @@
+repositories {
+    maven { url "http://mvn/artifactory/public" }
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint 'com.github.shyiko:ktlint:0.29.0'
+}
+
+task kotlinCheckStyle() {
+    group = "code quality"
+}
+
+task ktlint(type: Exec) {
+    commandLine 'java', '-cp', configurations.ktlint.join(System.getProperty('path.separator')),
+            'com.github.shyiko.ktlint.Main', '--reporter=checkstyle', "$project.rootDir/**/src/**/*.kt"
+
+    File file = new File("$buildDir/reports/checkstyle/", "kt-checkstyle-report.xml")
+
+    if (file.exists()) {
+        file.delete()
+    } else {
+        file.getParentFile().mkdirs()
+    }
+
+    file.createNewFile()
+
+    standardOutput = new FileOutputStream(file)
+    ignoreExitValue = true
+    doLast {
+        standardOutput.close()
+        if (execResult.exitValue != 0) {
+            def reportPath = buildDir.absolutePath + "/reports/checkstyle/kt-checkstyle-report.xml"
+            ant.fail("Checkstyle rule violations were found. See the report at: $reportPath")
+        }
+    }
+}
+
+task kotlinFormatStyle(type: JavaExec) {
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "$project.rootDir/**/src/main/**/*.kt"
+}
+
+kotlinCheckStyle.dependsOn kotlinFormatStyle
+kotlinCheckStyle.dependsOn ktlint
+ktlint.mustRunAfter kotlinFormatStyle

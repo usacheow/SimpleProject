@@ -1,0 +1,1 @@
+include ':app', ':core', ':core_ui', ':feature_hello', ':feature_world', ':domain', ':data', ':network', ':view_models'

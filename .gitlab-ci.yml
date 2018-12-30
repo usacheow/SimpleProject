@@ -1,0 +1,172 @@
+image: jangrewe/gitlab-ci-android
+
+stages:
+- lint
+- build
+- test
+- increment_version
+#- deploy
+- clean
+
+####################################################################################################
+# INIT
+#
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .m2/
+  - .gradle/
+
+variables:
+  ANDROID_COMPILE_SDK: "28"
+  ANDROID_BUILD_TOOLS: "28.0.3"
+  ANDROID_SDK_TOOLS:   "4333796"
+
+before_script:
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- chmod +x ./gradlew
+- apt-get update -y && apt-get install wget -y
+
+- git remote set-url origin https://${CI_USER_NAME}:${CI_USER_TOKEN}@gitlab.com/usacheow402/food-reserver.git
+- git config --global user.email "${GITLAB_USER_EMAIL}"
+- git config --global user.name "${GITLAB_USER_NAME}"
+- git checkout ${CI_COMMIT_REF_NAME}
+
+.build_template: &build
+  stage: build
+  except:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version/
+    - $CI_COMMIT_MESSAGE =~ /Merge branch/
+  artifacts:
+    expire_in: 4 days
+    paths:
+    - app/build/outputs/
+
+.test_template: &test
+  stage: test
+  only:
+  - master
+  - develop
+  except:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version/
+    - $CI_COMMIT_MESSAGE =~ /Merge branch/
+
+####################################################################################################
+# LINT
+# todo: change lint on ktlint
+#
+
+lint:
+  stage: lint
+  script:
+  - ./gradlew lint
+  artifacts:
+    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
+    when: on_failure
+    expire_in: 4 days
+    paths:
+    - app/build/reports/
+
+####################################################################################################
+# BUILD
+#
+
+build_feature:
+  <<: *build
+  script:
+  - ./gradlew clean assembleDevelopmentDebug
+  only:
+  - /^feature\/*/
+
+build_develop:
+  <<: *build
+  script:
+  - ./gradlew clean assembleDevelopmentDebug assemblePlayDebug
+  only:
+  - develop
+
+build_master:
+  <<: *build
+  script:
+  - ./gradlew clean assemblePlayDebug assemblePlayRelease
+  only:
+  - master
+
+####################################################################################################
+# TESTS
+#
+
+test_unit:
+  <<: *test
+  script:
+  - ./gradlew test
+  artifacts:
+    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
+    when: on_failure
+    expire_in: 4 days
+    paths:
+    - app/build/reports/tests/
+
+####################################################################################################
+# INCREMENT VERSIONS
+#
+
+increment_version:patch:
+  stage: increment_version
+  script:
+  - ./gradlew incrementVersionPatch
+  - git add --all
+  - git commit -m "Increment version >> Patch"
+  - git push -u origin ${CI_COMMIT_REF_NAME}
+  only:
+  - /^feature\/*/
+  except:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version >> Patch/
+    - $CI_COMMIT_MESSAGE =~ /Merge branch 'develop' into/
+
+increment_version:minor:
+  stage: increment_version
+  script:
+  - ./gradlew incrementVersionMinor
+  - git add --all
+  - git commit -m "Increment version >> Minor"
+  - git push -u origin ${CI_COMMIT_REF_NAME}
+  only:
+  - develop
+  except:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version >> Minor/
+    - $CI_COMMIT_MESSAGE =~ /Merge branch 'master' into/
+
+increment_version:major:
+  stage: increment_version
+  script:
+  - ./gradlew incrementVersionMajor
+  - git add --all
+  - git commit -m "Increment version >> Major"
+  - git push -u origin ${CI_COMMIT_REF_NAME}
+  only:
+  - master
+  except:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version >> Major/
+
+####################################################################################################
+# DEPLOY
+#
+
+####################################################################################################
+# CLEAN
+#
+
+finish:
+  stage: clean
+  script:
+  - ./gradlew clean
+  only:
+    variables:
+    - $CI_COMMIT_MESSAGE =~ /Increment version/
