@@ -1,7 +1,7 @@
 package com.kapmayn.featuredagger.di
 
 import com.kapmayn.core.di.CoreProvider
-import com.kapmayn.core.di.scope.ApplicationScope
+import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.featuredagger.BaseApp
 import dagger.Component
 

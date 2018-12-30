@@ -16,19 +16,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependency
-
-    implementation project(':core')
-    api project(':di')
-    implementation project(':network')
-    api project(':data')
-
-    implementation networkDependencies.values()
-    implementation rxDependencies.values()
 
     implementation daggerDependency
     kapt kaptDaggerDependency
-
-    testImplementation unitTestDependencies.values()
-    androidTestImplementation uiTestDependencies.values()
 }

@@ -1,8 +1,8 @@
 package com.kapmayn.domain.di
 
 import com.kapmayn.core.di.CoreProvider
-import com.kapmayn.core.di.scope.ApplicationScope
 import com.kapmayn.data.di.DataModule
+import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.network.di.NetworkComponent
 import com.kapmayn.network.di.NetworkProvider
 import dagger.Component

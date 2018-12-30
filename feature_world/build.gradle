@@ -21,8 +21,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':domain')
     implementation project(':core_ui')
+    implementation project(':view_models')
 
     implementation androidxDependencies.values()
     implementation uiDependencies.values()

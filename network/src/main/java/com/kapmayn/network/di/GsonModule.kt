@@ -2,7 +2,7 @@ package com.kapmayn.network.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.kapmayn.core.di.scope.ApplicationScope
+import com.kapmayn.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides
 import retrofit2.converter.gson.GsonConverterFactory

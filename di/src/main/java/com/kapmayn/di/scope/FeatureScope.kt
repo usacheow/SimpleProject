@@ -1,4 +1,4 @@
-package com.kapmayn.core.di.scope
+package com.kapmayn.di.scope
 
 import javax.inject.Scope
 

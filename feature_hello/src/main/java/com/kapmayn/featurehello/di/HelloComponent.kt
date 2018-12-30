@@ -1,7 +1,7 @@
 package com.kapmayn.featurehello.di
 
 import com.kapmayn.core.di.CoreProvider
-import com.kapmayn.core.di.scope.FeatureScope
+import com.kapmayn.di.scope.FeatureScope
 import com.kapmayn.domain.di.DomainComponent
 import com.kapmayn.domain.di.DomainProvider
 import com.kapmayn.featurehello.activity.HelloActivity

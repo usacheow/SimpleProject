@@ -105,8 +105,7 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core_ui')
-    implementation project(':domain')
-    implementation project(':data')
+    implementation project(':di')
     implementation project(':feature_hello')
     implementation project(':feature_world')
 

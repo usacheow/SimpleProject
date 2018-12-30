@@ -1,7 +1,7 @@
 package com.kapmayn.featurehello.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.kapmayn.core.di.scope.FeatureScope
+import com.kapmayn.di.scope.FeatureScope
 import com.kapmayn.featurehello.router.HelloRouter
 import com.kapmayn.featurehello.router.HelloRouterImpl
 import com.kapmayn.viewmodels.factory.ViewModelFactory

@@ -1,6 +1,6 @@
 package com.kapmayn.network.di
 
-import com.kapmayn.core.di.scope.ApplicationScope
+import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.network.BuildConfig
 import com.kapmayn.network.interceptors.AuthenticationInterceptor
 import dagger.Module
