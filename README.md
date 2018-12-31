@@ -1,3 +1,3 @@
 # FeatureDagger
 
-![feature dagger diagram](https://i.imgur.com/sGAwJpl.png)
+![feature dagger diagram](https://i.imgur.com/31kSv5E.png)

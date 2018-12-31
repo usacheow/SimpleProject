@@ -1,6 +1,6 @@
 package com.kapmayn.featurehello.di
 
-import com.kapmayn.core.di.CoreProvider
+import com.kapmayn.di.BaseProvider
 import com.kapmayn.di.scope.FeatureScope
 import com.kapmayn.domain.di.DomainComponent
 import com.kapmayn.domain.di.DomainProvider
@@ -17,8 +17,8 @@ interface HelloComponent {
 
     companion object {
 
-        fun init(coreProvider: CoreProvider): HelloComponent {
-            val domainProvider = DomainComponent.init(coreProvider)
+        fun init(baseProvider: BaseProvider): HelloComponent {
+            val domainProvider = DomainComponent.init(baseProvider)
 
             return DaggerHelloComponent
                 .builder()

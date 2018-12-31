@@ -1,17 +1,17 @@
 package com.kapmayn.featuredagger
 
 import android.app.Application
-import com.kapmayn.core.base.App
-import com.kapmayn.core.di.CoreProvider
+import com.kapmayn.di.BaseProvider
+import com.kapmayn.di.DaggerApp
 import com.kapmayn.featuredagger.di.AppComponent
 
-class BaseApp : Application(), App {
+class BaseApp : Application(), DaggerApp {
 
-    override val coreProvider: CoreProvider by lazy { AppComponent.init(this) }
+    override val baseProvider: BaseProvider by lazy { AppComponent.init(this) }
 
     override fun onCreate() {
         super.onCreate()
 
-        (coreProvider as AppComponent).inject(this)
+        (baseProvider as AppComponent).inject(this)
     }
 }

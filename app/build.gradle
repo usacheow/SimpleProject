@@ -104,7 +104,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core_ui')
     implementation project(':di')
     implementation project(':feature_hello')
     implementation project(':feature_world')

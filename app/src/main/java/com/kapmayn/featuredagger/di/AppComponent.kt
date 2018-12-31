@@ -1,6 +1,6 @@
 package com.kapmayn.featuredagger.di
 
-import com.kapmayn.core.di.CoreProvider
+import com.kapmayn.di.BaseProvider
 import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.featuredagger.BaseApp
 import dagger.Component
@@ -9,7 +9,7 @@ import dagger.Component
 @Component(
     modules = [AppModule::class]
 )
-interface AppComponent : CoreProvider {
+interface AppComponent : BaseProvider {
 
     companion object {
 

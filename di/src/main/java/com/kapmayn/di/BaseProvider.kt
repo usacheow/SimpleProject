@@ -1,10 +1,10 @@
-package com.kapmayn.core.di
+package com.kapmayn.di
 
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
 
-interface CoreProvider {
+interface BaseProvider {
 
     fun provideApplication(): Application
 

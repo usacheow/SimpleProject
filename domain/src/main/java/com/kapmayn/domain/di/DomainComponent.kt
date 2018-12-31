@@ -1,7 +1,7 @@
 package com.kapmayn.domain.di
 
-import com.kapmayn.core.di.CoreProvider
 import com.kapmayn.data.di.DataModule
+import com.kapmayn.di.BaseProvider
 import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.network.di.NetworkComponent
 import com.kapmayn.network.di.NetworkProvider
@@ -10,7 +10,7 @@ import dagger.Component
 @ApplicationScope
 @Component(
     dependencies = [
-        CoreProvider::class,
+        BaseProvider::class,
         NetworkProvider::class
     ],
     modules = [
@@ -22,12 +22,12 @@ interface DomainComponent : DomainProvider {
 
     companion object {
 
-        fun init(coreProvider: CoreProvider): DomainProvider {
+        fun init(baseProvider: BaseProvider): DomainProvider {
             val networkProvider = NetworkComponent.init()
 
             return DaggerDomainComponent
                 .builder()
-                .coreProvider(coreProvider)
+                .baseProvider(baseProvider)
                 .networkProvider(networkProvider)
                 .build()
         }

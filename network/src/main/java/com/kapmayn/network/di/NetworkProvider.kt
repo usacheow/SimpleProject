@@ -7,5 +7,7 @@ interface NetworkProvider {
 
     fun provideCompositeDisposable(): CompositeDisposable
 
+    fun provideCompositeSubscription(): CompositeSubscription
+
     fun provideRetrofit(): Retrofit
 }
