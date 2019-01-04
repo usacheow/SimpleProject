@@ -11,4 +11,4 @@ Starter project for new projects with feature modules.
 ![module dependencies diagram](https://i.imgur.com/31kSv5E.png)
 
 ### dagger dependencies
-![dagger dependencies diagram](blob:https://imgur.com/18e4410a-1b30-4067-a2f8-b6a0a731983d)
+![dagger dependencies diagram](https://imgur.com/f67h2FZ.png)
