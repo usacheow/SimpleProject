@@ -18,6 +18,9 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    api project(':di')
+    implementation project(':core_feature')
+
     implementation androidxDependencies.values()
 
     implementation rxDependencies.values()

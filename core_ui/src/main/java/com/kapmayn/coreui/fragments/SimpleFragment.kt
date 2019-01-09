@@ -8,8 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.kapmayn.di.BaseProvider
-import com.kapmayn.di.DaggerApp
+import com.kapmayn.core.CoreApp
+import com.kapmayn.core.di.CoreProvider
 
 abstract class SimpleFragment : Fragment() {
 
@@ -20,7 +20,7 @@ abstract class SimpleFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inject((activity?.application as DaggerApp).baseProvider)
+        inject((activity?.application as CoreApp).coreProvider)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,7 +38,7 @@ abstract class SimpleFragment : Fragment() {
         messageDialog?.cancel()
     }
 
-    protected abstract fun inject(applicationProvider: BaseProvider)
+    protected abstract fun inject(applicationProvider: CoreProvider)
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 

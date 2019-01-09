@@ -1,7 +1,7 @@
 package com.kapmayn.domain.mappers
 
+import com.kapmayn.coremodels.StubModel
 import com.kapmayn.data.models.Stub
-import com.kapmayn.domain.models.StubModel
 import javax.inject.Inject
 
 class StubMapper

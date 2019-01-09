@@ -1,27 +1,31 @@
 package com.kapmayn.featuredagger.di
 
-import com.kapmayn.di.BaseProvider
+import com.kapmayn.core.di.CoreProvider
+import com.kapmayn.di.BaseModule
 import com.kapmayn.di.scope.ApplicationScope
-import com.kapmayn.featuredagger.BaseApp
+import com.kapmayn.featuredagger.FeatureDaggerApp
 import dagger.Component
 
 @ApplicationScope
 @Component(
-    modules = [AppModule::class]
+    modules = [
+        BaseModule::class,
+        FeatureApiModule::class
+    ]
 )
-interface AppComponent : BaseProvider {
+interface AppComponent : CoreProvider {
 
     companion object {
 
-        fun init(app: BaseApp): AppComponent {
-            val appModule = AppModule(app)
+        fun init(app: FeatureDaggerApp): AppComponent {
+            val baseModule = BaseModule(app)
 
             return DaggerAppComponent
                 .builder()
-                .appModule(appModule)
+                .baseModule(baseModule)
                 .build()
         }
     }
 
-    fun inject(app: BaseApp)
+    fun inject(app: FeatureDaggerApp)
 }

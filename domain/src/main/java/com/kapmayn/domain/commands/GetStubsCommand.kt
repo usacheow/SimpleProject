@@ -1,11 +1,11 @@
 package com.kapmayn.domain.commands
 
 import com.kapmayn.core.domain.CacheReactiveCommand
+import com.kapmayn.coremodels.StubModel
 import com.kapmayn.data.api.StubApi
 import com.kapmayn.domain.cache.CacheDuration
 import com.kapmayn.domain.cache.CacheManagerImpl
 import com.kapmayn.domain.mappers.StubMapper
-import com.kapmayn.domain.models.StubModel
 import io.reactivex.Single
 import javax.inject.Inject
 

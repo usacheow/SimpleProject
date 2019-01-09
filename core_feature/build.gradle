@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$project.rootDir/build_script/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    implementation project(':core_models')
+
+    implementation androidxDependencies.values()
+}

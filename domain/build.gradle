@@ -18,9 +18,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    api project(':di')
     api project(':data')
     api project(':network')
+    api project(':core_models')
     implementation project(':core')
 
     implementation networkDependencies.values()

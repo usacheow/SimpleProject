@@ -22,6 +22,7 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core_ui')
+    implementation project(':core_feature')
     implementation project(':view_models')
 
     implementation androidxDependencies.values()

@@ -1,4 +1,4 @@
-package com.kapmayn.featuredagger.di
+package com.kapmayn.di
 
 import android.app.Application
 import android.content.Context
@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule(
+class BaseModule(
     private val application: Application
 ) {
 

@@ -3,8 +3,8 @@ package com.kapmayn.coreui.activity
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
-import com.kapmayn.di.BaseProvider
-import com.kapmayn.di.DaggerApp
+import com.kapmayn.core.CoreApp
+import com.kapmayn.core.di.CoreProvider
 
 abstract class SimpleActivity : AppCompatActivity() {
 
@@ -13,12 +13,12 @@ abstract class SimpleActivity : AppCompatActivity() {
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inject((application as DaggerApp).baseProvider)
+        inject((application as CoreApp).coreProvider)
         setContentView(layoutId)
         setupViews(savedInstanceState)
     }
 
-    abstract fun inject(coreProvider: BaseProvider)
+    abstract fun inject(coreProvider: CoreProvider)
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 }

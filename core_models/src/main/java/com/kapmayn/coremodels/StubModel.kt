@@ -1,4 +1,4 @@
-package com.kapmayn.domain.models
+package com.kapmayn.coremodels
 
 data class StubModel(
     val id: Long,
