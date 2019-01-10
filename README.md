@@ -8,4 +8,4 @@ Starter project for new projects with feature modules.
 
 
 ### module dependencies
-![module dependencies diagram](https://i.imgur.com/ZOwbLLD.png)
+![module dependencies diagram](https://i.imgur.com/62an7mM.png)
