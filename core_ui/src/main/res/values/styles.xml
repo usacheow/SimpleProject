@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LightAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <item name="ColorBottomBar">@color/colorPrimary</item>
+        <item name="ColorIconBottomBar">@color/colorAccent</item>
+        <item name="ColorIconDisableBottomBar">@color/colorDisable</item>
+
+        <item name="ColorIconPrimary">@color/colorIconPrimary</item>
+        <item name="ColorIconSecondary">@color/colorIconSecondary</item>
+        <item name="ColorDisable">@color/colorDisable</item>
+        <item name="ColorDivider">@color/colorDivider</item>
+
+        <item name="TextHeader">@style/TextHeaderDark</item>
+
+        <item name="TextTitle">@style/TextTitleDark</item>
+        <item name="TextTitleReverse">@style/TextTitleLight</item>
+
+        <item name="TextPrimary">@style/TextPrimaryDark</item>
+        <item name="TextPrimaryReverse">@style/TextPrimaryLight</item>
+
+        <item name="TextSecondary">@style/TextSecondaryDark</item>
+        <item name="TextSecondaryReverse">@style/TextSecondaryLight</item>
+
+        <item name="TextSecondary60">@style/TextSecondaryDark_60</item>
+        <item name="TextSecondary60Reverse">@style/TextSecondaryLight_60</item>
+
+        <item name="TextDescription">@style/TextDescriptionDark</item>
+        <item name="TextDescriptionReverse">@style/TextDescriptionLight</item>
+
+        <item name="TextDescription60">@style/TextDescriptionDark_60</item>
+        <item name="TextDescription60Reverse">@style/TextDescriptionLight_60</item>
+
+        <item name="TextEmpty">@style/TextEmptyDark</item>
+        <item name="TextDivider">@style/TextDividerDark</item>
+    </style>
+
+    <style name="NightAppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentNight</item>
+        <item name="android:windowBackground">@color/colorPrimaryNight</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <item name="ColorBottomBar">@color/colorPrimaryDarkNight</item>
+        <item name="ColorIconBottomBar">@color/colorAccentNight</item>
+        <item name="ColorIconDisableBottomBar">@color/colorDisableNight</item>
+
+        <item name="ColorIconPrimary">@color/colorIconPrimaryNight</item>
+        <item name="ColorIconSecondary">@color/colorIconSecondaryNight</item>
+        <item name="ColorDisable">@color/colorDisableNight</item>
+        <item name="ColorDivider">@color/colorDividerNight</item>
+
+        <item name="TextHeader">@style/TextHeaderLight</item>
+
+        <item name="TextTitle">@style/TextTitleLight</item>
+        <item name="TextTitleReverse">@style/TextTitleLight</item>
+
+        <item name="TextPrimary">@style/TextPrimaryLight</item>
+        <item name="TextPrimaryReverse">@style/TextPrimaryLight</item>
+
+        <item name="TextSecondary">@style/TextSecondaryLight</item>
+        <item name="TextSecondaryReverse">@style/TextSecondaryLight</item>
+
+        <item name="TextSecondary60">@style/TextSecondaryLight_60</item>
+        <item name="TextSecondary60Reverse">@style/TextSecondaryLight_60</item>
+
+        <item name="TextDescription">@style/TextDescriptionLight</item>
+        <item name="TextDescriptionReverse">@style/TextDescriptionLight</item>
+
+        <item name="TextDescription60">@style/TextDescriptionLight_60</item>
+        <item name="TextDescription60Reverse">@style/TextDescriptionLight_60</item>
+
+        <item name="TextEmpty">@style/TextEmptyLight</item>
+
+        <item name="TextDivider">@style/TextDividerLight</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <declare-styleable name="CustomAttrs">
+
+        <attr name="ColorBottomBar" format="color" />
+        <attr name="ColorIconBottomBar" format="color" />
+        <attr name="ColorIconDisableBottomBar" format="color" />
+
+        <attr name="ColorIconPrimary" format="color" />
+        <attr name="ColorIconSecondary" format="color" />
+        <attr name="ColorDisable" format="color" />
+        <attr name="ColorDivider" format="color" />
+
+        <attr name="TextHeader" format="reference" />
+
+        <attr name="TextTitle" format="reference" />
+        <attr name="TextTitleReverse" format="reference" />
+
+        <attr name="TextPrimary" format="reference" />
+        <attr name="TextPrimaryReverse" format="reference" />
+
+        <attr name="TextSecondary" format="reference" />
+        <attr name="TextSecondaryReverse" format="reference" />
+
+        <attr name="TextSecondary60" format="reference" />
+        <attr name="TextSecondary60Reverse" format="reference" />
+
+        <attr name="TextDescription" format="reference" />
+        <attr name="TextDescriptionReverse" format="reference" />
+
+        <attr name="TextDescription60" format="reference" />
+        <attr name="TextDescription60Reverse" format="reference" />
+
+        <attr name="TextEmpty" format="reference" />
+        <attr name="TextDivider" format="reference" />
+
+    </declare-styleable>
+
+</resources>
