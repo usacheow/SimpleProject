@@ -1,4 +1,4 @@
-package com.kapmayn.basecourier.core.tools
+package com.kapmayn.core.utils
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
