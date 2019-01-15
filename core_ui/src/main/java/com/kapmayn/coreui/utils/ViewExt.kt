@@ -15,6 +15,13 @@ fun View.makeGone() {
     visibility = View.GONE
 }
 
+fun View.setVisible(isVisible: Boolean) {
+    when {
+        isVisible -> makeVisible()
+        else -> makeGone()
+    }
+}
+
 fun View.isVisible() = visibility == View.VISIBLE
 
 fun View.setTopPadding(paddingValue: Int) {
