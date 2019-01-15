@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapmayn.core.base.IClickable
 import com.kapmayn.core.base.IPopulatable
-import com.kapmayn.coreui.R
 import com.kapmayn.coreui.views.HiddenMessageModel
 import com.kapmayn.coreui.views.MessageModel
+import com.kapmayn.coreui.views.MessageView
 
 private const val SIMPLE_ITEM_TYPE = 10
 private const val MESSAGE_ITEM_TYPE = 11
@@ -25,19 +25,17 @@ open class PaginationAdapter<MODEL>(
 
     override fun getItemViewType(position: Int): Int {
         return when (itemCount - position) {
-            0 -> MESSAGE_ITEM_TYPE
+            1 -> MESSAGE_ITEM_TYPE
             else -> SIMPLE_ITEM_TYPE
         }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PopulateViewHolder<MODEL> {
-        val viewId = when (viewType) {
-            SIMPLE_ITEM_TYPE -> layoutResId
-            MESSAGE_ITEM_TYPE -> R.layout.view_message
+        val view = when (viewType) {
+            SIMPLE_ITEM_TYPE -> LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false)
+            MESSAGE_ITEM_TYPE -> MessageView(viewGroup.context)
             else -> throw IllegalArgumentException()
         }
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(viewId, viewGroup, false)
         return PopulateViewHolder(view)
     }
 
