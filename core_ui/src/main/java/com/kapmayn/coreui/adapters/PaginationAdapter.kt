@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kapmayn.core.base.IClickable
 import com.kapmayn.core.base.IPopulatable
 import com.kapmayn.coreui.R
 import com.kapmayn.coreui.views.HiddenMessageModel
@@ -46,10 +47,7 @@ open class PaginationAdapter<MODEL>(
         when (viewType) {
             SIMPLE_ITEM_TYPE -> {
                 val data = models[position]
-                viewHolder.apply {
-                    populate(data)
-                    view.setOnClickListener { clickListener(data) }
-                }
+                viewHolder.populate(data, clickListener)
             }
             MESSAGE_ITEM_TYPE -> {
                 viewHolder.populate(message)
@@ -74,9 +72,14 @@ open class PaginationAdapter<MODEL>(
 
     class PopulateViewHolder<MODEL>(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun populate(model: MODEL) {
+        fun populate(model: MODEL, clickListener: (MODEL) -> Unit) {
             val populateView = view as IPopulatable<MODEL>
             populateView.populate(model)
+
+            if (view is IClickable) {
+                val clickableView = view as IClickable
+                clickableView.setListener { clickListener(model) }
+            }
         }
 
         fun populate(model: MessageModel) {

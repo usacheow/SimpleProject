@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kapmayn.core.base.IClickable
 import com.kapmayn.core.base.IPopulatable
 
 open class PopulateAdapter<MODEL>(
     private val layoutResId: Int,
     private val models: MutableList<MODEL> = mutableListOf(),
-    var clickListener: ((MODEL) -> Unit)? = null
+    var clickListener: (MODEL) -> Unit = {}
 ) : RecyclerView.Adapter<PopulateAdapter.PopulateViewHolder<MODEL>>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PopulateViewHolder<MODEL> {
@@ -20,11 +21,7 @@ open class PopulateAdapter<MODEL>(
 
     override fun onBindViewHolder(viewHolder: PopulateViewHolder<MODEL>, position: Int) {
         val data = models[position]
-
-        viewHolder.apply {
-            populate(data)
-            view.setOnClickListener { clickListener?.invoke(data) }
-        }
+        viewHolder.populate(data, clickListener)
     }
 
     override fun getItemCount() = models.size
@@ -44,9 +41,14 @@ open class PopulateAdapter<MODEL>(
 
     class PopulateViewHolder<MODEL>(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun populate(model: MODEL) {
+        fun populate(model: MODEL, clickListener: (MODEL) -> Unit) {
             val populateView = view as IPopulatable<MODEL>
             populateView.populate(model)
+
+            if (view is IClickable) {
+                val clickableView = view as IClickable
+                clickableView.setListener { clickListener(model) }
+            }
         }
     }
 }
