@@ -9,8 +9,7 @@ abstract class RxViewModel : ViewModel() {
 
     @Inject
     lateinit var disposables: CompositeDisposable
-    @Inject
-    lateinit var subscriptions: MutableList<Subscription>
+    val subscriptions = mutableListOf<Subscription>()
 
     override fun onCleared() {
         super.onCleared()
