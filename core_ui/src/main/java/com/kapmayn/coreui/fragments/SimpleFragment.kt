@@ -29,6 +29,7 @@ abstract class SimpleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let { processArguments(it) }
         setupViews(savedInstanceState)
     }
 
@@ -39,6 +40,8 @@ abstract class SimpleFragment : Fragment() {
     }
 
     protected abstract fun inject(applicationProvider: CoreProvider)
+
+    protected open fun processArguments(bundle: Bundle) {}
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 

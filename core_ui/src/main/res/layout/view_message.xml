@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="76dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:layout_marginTop="50dp">
+    android:layout_height="76dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/errorLayout"
+        android:id="@+id/messageLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -16,7 +15,7 @@
         android:visibility="visible">
 
         <TextView
-            android:id="@+id/errorMessage"
+            android:id="@+id/messageTextView"
             style="?TextEmpty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,25 +26,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/errorButton"
+            app:layout_constraintRight_toLeftOf="@id/messageButton"
             tools:text="Message" />
 
         <ImageView
-            android:id="@+id/errorButton"
-            android:background="@drawable/bg_ripple_circle"
+            android:id="@+id/messageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/left_right_margin"
             android:padding="4dp"
+            android:background="@drawable/bg_ripple_circle"
             app:srcCompat="@drawable/ic_update"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/errorMessage"
+            app:layout_constraintLeft_toRightOf="@id/messageTextView"
             app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/errorLoader"
+        android:id="@+id/messageLoader"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_centerInParent="true" />

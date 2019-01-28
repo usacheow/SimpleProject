@@ -7,6 +7,13 @@ import android.widget.FrameLayout
 import androidx.annotation.StringRes
 import com.kapmayn.core.base.IPopulatable
 import com.kapmayn.coreui.R
+import com.kapmayn.coreui.utils.makeGone
+import com.kapmayn.coreui.utils.makeVisible
+import com.kapmayn.coreui.utils.setVisible
+import kotlinx.android.synthetic.main.view_message.view.messageButton
+import kotlinx.android.synthetic.main.view_message.view.messageLayout
+import kotlinx.android.synthetic.main.view_message.view.messageLoader
+import kotlinx.android.synthetic.main.view_message.view.messageTextView
 
 class MessageView
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
@@ -18,7 +25,7 @@ class MessageView
 
     override fun populate(model: MessageModel) {
         with(model) {
-            setVisible(isLoaded && isLoading)
+            setVisible(isLoaded || isLoading)
             messageLayout.setVisible(isLoaded)
             messageLoader.setVisible(isLoading)
 
