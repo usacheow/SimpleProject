@@ -3,9 +3,7 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#673ab7</color>
-    <color name="colorTextBold">#b3000000</color>
     <color name="colorText">#000000</color>
-    <color name="colorText_60">#66000000</color>
     <color name="colorIconPrimary">#b3000000</color>
     <color name="colorIconSecondary">#8f8f8f</color>
     <color name="colorDivider">#0f0b1f35</color>
@@ -15,9 +13,7 @@
     <color name="colorPrimaryNight">#ff303030</color>
     <color name="colorPrimaryDarkNight">#212121</color>
     <color name="colorAccentNight">#ffffff</color>
-    <color name="colorTextBoldNight">#ffffff</color>
     <color name="colorTextNight">#e6ffffff</color>
-    <color name="colorTextNight_60">#99ffffff</color>
     <color name="colorIconPrimaryNight">#ffffff</color>
     <color name="colorIconSecondaryNight">#66ffffff</color>
     <color name="colorDividerNight">#0fffffff</color>
