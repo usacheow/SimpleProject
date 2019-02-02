@@ -48,6 +48,8 @@ open class PopulateAdapter<MODEL>(
             if (view is IClickable) {
                 val clickableView = view as IClickable
                 clickableView.setListener { clickListener(model) }
+            } else {
+                view.setOnClickListener { clickListener(model) }
             }
         }
     }
