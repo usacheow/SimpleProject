@@ -1,5 +1,6 @@
 package com.kapmayn.coreui.adapters
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +50,9 @@ open class PaginationAdapter<MODEL>(
             }
             MESSAGE_ITEM_TYPE -> {
                 viewHolder.populate(message)
-                paginationCallback()
+                Handler().post {
+                    paginationCallback()
+                }
             }
             else -> throw IllegalArgumentException()
         }
