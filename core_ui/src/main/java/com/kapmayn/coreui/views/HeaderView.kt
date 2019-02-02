@@ -9,7 +9,7 @@ import com.kapmayn.coreui.R
 import com.kapmayn.coreui.utils.getStatusBarHeight
 import com.kapmayn.coreui.utils.makeVisible
 import com.kapmayn.coreui.utils.populate
-import com.kapmayn.coreui.utils.setTopPadding
+import com.kapmayn.coreui.utils.topPadding
 import kotlinx.android.synthetic.main.view_header.view.headerActionButton
 import kotlinx.android.synthetic.main.view_header.view.headerMenuFirstButton
 import kotlinx.android.synthetic.main.view_header.view.headerMenuSecondButton
@@ -27,8 +27,8 @@ class HeaderView
     private fun applyAttrs(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.HeaderView)
         try {
+            topPadding = getStatusBarHeight()
             headerText.populate(typedArray.getText(R.styleable.HeaderView_header).toString())
-            setTopPadding(getStatusBarHeight())
         } catch (e: NullPointerException) {
         } finally {
             typedArray.recycle()
@@ -58,6 +58,6 @@ class HeaderView
     }
 
     fun setHeaderOfCard() {
-        setTopPadding(0)
+        topPadding = 0
     }
 }
