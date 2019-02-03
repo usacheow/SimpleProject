@@ -4,7 +4,7 @@
     package="com.kapmayn.featureworld">
 
     <application>
-        <activity android:name=".activity.WorldActivity" />
+        <activity android:name="com.kapmayn.featureworld.presentation.activity.WorldActivity" />
     </application>
 
 </manifest>

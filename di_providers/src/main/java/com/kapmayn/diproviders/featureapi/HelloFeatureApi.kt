@@ -1,0 +1,3 @@
+package com.kapmayn.diproviders.featureapi
+
+interface HelloFeatureApi

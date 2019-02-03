@@ -3,7 +3,7 @@
           package="com.kapmayn.featurehello">
 
     <application>
-        <activity android:name="com.kapmayn.featurehello.activity.HelloActivity" />
+        <activity android:name="com.kapmayn.featurehello.presentation.activity.HelloActivity" />
     </application>
 
 </manifest>

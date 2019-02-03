@@ -1,28 +1,31 @@
 package com.kapmayn.featuredagger.di
 
-import com.kapmayn.core.di.CoreProvider
-import com.kapmayn.di.BaseModule
+import com.kapmayn.database.di.DataBaseModule
+import com.kapmayn.datanetwork.di.NetworkModule
 import com.kapmayn.di.scope.ApplicationScope
+import com.kapmayn.diproviders.DiProvider
 import com.kapmayn.featuredagger.FeatureDaggerApp
 import dagger.Component
 
 @ApplicationScope
 @Component(
     modules = [
-        BaseModule::class,
-        FeatureApiModule::class
+        CoreModule::class,
+        FeatureApiModule::class,
+        NetworkModule::class,
+        DataBaseModule::class
     ]
 )
-interface AppComponent : CoreProvider {
+interface AppComponent : DiProvider {
 
     companion object {
 
         fun init(app: FeatureDaggerApp): AppComponent {
-            val baseModule = BaseModule(app)
+            val coreModule = CoreModule(app)
 
             return DaggerAppComponent
                 .builder()
-                .baseModule(baseModule)
+                .coreModule(coreModule)
                 .build()
         }
     }

@@ -21,18 +21,18 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core_ui')
-    implementation project(':core_feature')
-    implementation project(':view_models')
+    implementation project(':core')
+    implementation project(':core_uikit')
+    implementation project(':di_providers')
+    implementation project(':models')
 
     implementation androidxDependencies.values()
     implementation uiDependencies.values()
 
+    implementation networkDependencies.values()
     implementation rxDependencies.values()
 
     implementation daggerDependency
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     kapt kaptDaggerDependency
 
     testImplementation unitTestDependencies.values()

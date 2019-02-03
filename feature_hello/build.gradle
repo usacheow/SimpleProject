@@ -21,13 +21,15 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core_ui')
-    implementation project(':core_feature')
-    implementation project(':view_models')
+    implementation project(':core')
+    implementation project(':core_uikit')
+    implementation project(':di_providers')
+    implementation project(':models')
 
     implementation androidxDependencies.values()
     implementation uiDependencies.values()
 
+    implementation networkDependencies.values()
     implementation rxDependencies.values()
 
     implementation lifecycleDependency
