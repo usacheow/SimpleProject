@@ -28,8 +28,8 @@
         app:layout_goneMarginLeft="@dimen/left_right_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/headerMenuFirstButton"
+        app:layout_constraintLeft_toRightOf="parent"
         tools:text="Header" />
 
     <ImageView

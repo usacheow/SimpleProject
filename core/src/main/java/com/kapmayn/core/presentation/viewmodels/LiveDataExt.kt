@@ -1,4 +1,4 @@
-package com.kapmayn.coreuikit.utils
+package com.kapmayn.core.presentation.viewmodels
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.kapmayn.coreuikit.utils
+package com.kapmayn.core.presentation.viewmodels
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
