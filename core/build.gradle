@@ -18,13 +18,17 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation project(':di_providers')
+    api project(':di_providers')
 
     api androidxDependencies.values()
+    implementation uiDependencies.values()
 
     implementation firebaseDependencies.values()
 
     implementation rxDependencies.values()
+
+    implementation lifecycleDependency
+    kapt kaptLifecycleDependency
 
     implementation daggerDependency
     kapt kaptDaggerDependency

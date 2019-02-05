@@ -1,4 +1,4 @@
-package com.kapmayn.coreuikit.utils
+package com.kapmayn.core.utils
 
 import android.content.Context
 import android.content.Intent

@@ -3,7 +3,7 @@ package com.kapmayn.featurehello.presentation.activity
 import android.content.res.Resources
 import android.os.Bundle
 import com.kapmayn.core.presentation.activity.MvvmActivity
-import com.kapmayn.coreuikit.utils.injectViewModel
+import com.kapmayn.core.utils.injectViewModel
 import com.kapmayn.diproviders.DiProvider
 import com.kapmayn.featurehello.R
 import com.kapmayn.featurehello.di.HelloComponent
