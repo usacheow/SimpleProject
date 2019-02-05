@@ -26,8 +26,7 @@ dependencies {
     implementation project(':di_providers')
     implementation project(':models')
 
-    implementation androidxDependencies.values()
-    implementation uiDependencies.values()
+    implementation firebaseDependencies.values()
 
     implementation networkDependencies.values()
     implementation rxDependencies.values()

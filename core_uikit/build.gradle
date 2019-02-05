@@ -22,7 +22,7 @@ dependencies {
     implementation kotlinDependency
 
     implementation androidxDependencies.values()
-    implementation uiDependencies.values()
+    api uiDependencies.values()
 
     implementation lifecycleDependency
     kapt kaptLifecycleDependency

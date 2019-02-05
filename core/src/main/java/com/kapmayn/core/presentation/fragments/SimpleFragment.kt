@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.diproviders.DiApp
 import com.kapmayn.diproviders.DiProvider
 
@@ -33,10 +34,16 @@ abstract class SimpleFragment : Fragment() {
         setupViews(savedInstanceState)
     }
 
+    override fun onStart() {
+        super.onStart()
+        AnalyticsTrackerHolder.getInstance().logEvent("onStart = ${this::class.java.simpleName}", null)
+    }
+
     override fun onStop() {
-        super.onStop()
+        AnalyticsTrackerHolder.getInstance().logEvent("onStop = ${this::class.java.simpleName}", null)
         bottomDialog?.cancel()
         messageDialog?.cancel()
+        super.onStop()
     }
 
     protected abstract fun inject(applicationProvider: DiProvider)

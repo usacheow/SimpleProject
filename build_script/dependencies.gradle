@@ -16,8 +16,8 @@ ext {
     qrScannerVersion = '2.0.1'
     pleaseAnimateVersion = '1.0.2'
 
-    firebaseCoreVersion = '16.0.4'
-    crashlyticsVersion = '2.9.5'
+    firebaseCoreVersion = '16.0.7'
+    crashlyticsVersion = '2.9.8'
 
     glideVersion = '4.8.0'
     picassoVersion = '2.71828'
@@ -72,8 +72,8 @@ ext {
     ]
 
     firebaseDependencies = [
-            firebaseCore: "com.google.firebase:firebase-core:$firebaseCoreVersion",
-            crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+            firebaseCore: "com.google.firebase:firebase-core:$firebaseCoreVersion"/*,
+            crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"*/
     ]
 
     utilsDependencies = [
