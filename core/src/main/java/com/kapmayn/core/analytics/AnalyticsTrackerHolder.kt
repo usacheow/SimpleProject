@@ -1,28 +1,17 @@
 package com.kapmayn.core.analytics
 
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.kapmayn.core.utils.bundleOf
-
 object AnalyticsTrackerHolder {
 
-    private var tracker: FirebaseAnalytics? = null
+    private var tracker: ITracker? = null
 
-    fun init(tracker: FirebaseAnalytics) {
-        this.tracker = tracker
+    fun init(tracker: ITracker) {
+        this.tracker = tracker.init()
     }
 
-    fun getInstance(): FirebaseAnalytics {
+    fun getInstance(): ITracker {
         if (tracker == null) {
             throw IllegalStateException("Don't init tracker")
         }
-        return tracker as FirebaseAnalytics
+        return tracker as ITracker
     }
-}
-
-fun FirebaseAnalytics.trackEvent(screen: IScreen, message: String) {
-    val bundle = bundleOf {
-        putString("class_name", screen.getClassName())
-        putString("screen_name", screen.getScreenName())
-    }
-    logEvent(message, bundle)
 }
