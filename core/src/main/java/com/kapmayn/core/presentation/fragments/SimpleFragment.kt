@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
+import com.kapmayn.core.analytics.Events
 import com.kapmayn.diproviders.DiApp
 import com.kapmayn.diproviders.DiProvider
 
@@ -36,11 +37,11 @@ abstract class SimpleFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance().logEvent("onStart = ${this::class.java.simpleName}", null)
+        AnalyticsTrackerHolder.getInstance().trackEvent("onStart = ${this::class.java.simpleName}", Events.APP)
     }
 
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance().logEvent("onStop = ${this::class.java.simpleName}", null)
+        AnalyticsTrackerHolder.getInstance().trackEvent("onStop = ${this::class.java.simpleName}", Events.APP)
         bottomDialog?.cancel()
         messageDialog?.cancel()
         super.onStop()

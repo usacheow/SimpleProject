@@ -13,6 +13,10 @@ class AnalyticsTracker(
 
     }
 
+    override fun trackEvent(message: String, event: Events) {
+
+    }
+
     override fun trackEvent(screen: IScreen, message: String, event: Events) {
 
     }

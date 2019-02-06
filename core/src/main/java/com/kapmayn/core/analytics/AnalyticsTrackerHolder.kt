@@ -5,7 +5,7 @@ object AnalyticsTrackerHolder {
     private var tracker: ITracker? = null
 
     fun init(tracker: ITracker) {
-        this.tracker = tracker.init()
+        this.tracker = tracker
     }
 
     fun getInstance(): ITracker {

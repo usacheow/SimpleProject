@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
+import com.kapmayn.core.analytics.Events
 import com.kapmayn.diproviders.DiApp
 import com.kapmayn.diproviders.DiProvider
 
@@ -21,11 +22,11 @@ abstract class SimpleActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance().logEvent("onStart = ${this::class.java.simpleName}", null)
+        AnalyticsTrackerHolder.getInstance().trackEvent("onStart = ${this::class.java.simpleName}", Events.APP)
     }
 
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance().logEvent("onStop = ${this::class.java.simpleName}", null)
+        AnalyticsTrackerHolder.getInstance().trackEvent("onStop = ${this::class.java.simpleName}", Events.APP)
         super.onStop()
     }
 
