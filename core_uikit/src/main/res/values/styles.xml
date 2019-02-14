@@ -12,6 +12,8 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
+        <item name="ColorBackground">@color/colorBackground</item>
+
         <item name="ColorBottomBar">@color/colorPrimary</item>
         <item name="ColorIconBottomBar">@color/colorAccent</item>
         <item name="ColorIconDisableBottomBar">@color/colorDisable</item>
@@ -56,6 +58,8 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
+        <item name="ColorBackground">@color/colorBackgroundNight</item>
+
         <item name="ColorBottomBar">@color/colorPrimaryDarkNight</item>
         <item name="ColorIconBottomBar">@color/colorAccentNight</item>
         <item name="ColorIconDisableBottomBar">@color/colorDisableNight</item>
@@ -96,6 +100,8 @@
     </style>
 
     <declare-styleable name="CustomAttrs">
+
+        <attr name="ColorBackground" format="color" />
 
         <attr name="ColorBottomBar" format="color" />
         <attr name="ColorIconBottomBar" format="color" />

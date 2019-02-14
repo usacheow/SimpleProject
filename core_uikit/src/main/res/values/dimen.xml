@@ -16,6 +16,7 @@
     <dimen name="default_height_navigation_bar">42dp</dimen>
 
     <dimen name="left_right_margin">16dp</dimen>
+    <dimen name="left_right_padding">12dp</dimen>
     <dimen name="radius">5dp</dimen>
 
 </resources>

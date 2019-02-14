@@ -3,6 +3,7 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#673ab7</color>
+    <color name="colorBackground">#f7f7f7</color>
     <color name="colorText">#000000</color>
     <color name="colorIconPrimary">#b3000000</color>
     <color name="colorIconSecondary">#8f8f8f</color>
@@ -13,6 +14,7 @@
     <color name="colorPrimaryNight">#ff303030</color>
     <color name="colorPrimaryDarkNight">#212121</color>
     <color name="colorAccentNight">#ffffff</color>
+    <color name="colorBackgroundNight">#313131</color>
     <color name="colorTextNight">#e6ffffff</color>
     <color name="colorIconPrimaryNight">#ffffff</color>
     <color name="colorIconSecondaryNight">#66ffffff</color>
@@ -20,6 +22,8 @@
     <color name="colorBlurNight">#80ffffff</color>
     <color name="colorDisableNight">#66ffffff</color>
 
+    <color name="colorSearch">#f5f5f5</color>
+    <color name="colorSearchHint">#99000000</color>
     <color name="colorRippler">#d8d8d8</color>
     <color name="colorPlaceholder">#F6F6F6</color>
 

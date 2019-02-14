@@ -35,6 +35,7 @@ ext {
     rxKotlinVersion = '2.2.0'
     rxAndroidVersion = '2.0.2'
 
+    canaryVersion = '1.6.3'
     junitVersion = '4.12'
     espressoVersion = '3.1.0'
     mockitoVersion = '2.7.22'
@@ -107,6 +108,15 @@ ext {
             okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson:          "com.google.code.gson:gson:$gsonVersion"
+    ]
+
+    debugCanaryDependencies = [
+            canary: "com.squareup.leakcanary:leakcanary-android:$canaryVersion",
+            canaryFragment: "com.squareup.leakcanary:leakcanary-support-fragment:$canaryVersion"
+    ]
+
+    releaseCanaryDependencies = [
+            canaryRelease: "com.squareup.leakcanary:leakcanary-android-no-op:$canaryVersion"
     ]
 
     unitTestDependencies = [
