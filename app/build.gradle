@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 apply from: "$project.rootDir/build_script/version.gradle"
 apply from: "$project.rootDir/build_script/build_types.gradle"
 apply from: "$project.rootDir/build_script/dependencies.gradle"
-//apply from: "$project.rootDir/build_script/ktlint.gradle"
+apply from: "$project.rootDir/build_script/ktlint.gradle"
 
 android {
 
