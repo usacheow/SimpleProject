@@ -67,9 +67,7 @@
     <!--Light styles-->
     <style name="TextHeaderLight">
         <item name="android:fontFamily">@style/RobotoLogo</item>
-        <item name="android:textSize">@dimen/font_size_16sp</item>
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingBottom">20dp</item>
+        <item name="android:textSize">@dimen/font_size_28sp</item>
         <item name="android:textColor">@color/colorTextNight</item>
         <item name="android:textStyle">bold</item>
     </style>

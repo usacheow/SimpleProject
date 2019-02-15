@@ -6,16 +6,31 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/font_size_14sp</item>
         <item name="android:hint">@string/search_hint</item>
-        <item name="android:textColorHint">@color/colorSearchHint</item>
         <item name="android:background">@drawable/ripple_search</item>
-        <item name="android:textCursorDrawable">@drawable/bg_search_cursor</item>
         <item name="android:layout_marginLeft">@dimen/left_right_margin</item>
         <item name="android:layout_marginRight">@dimen/left_right_margin</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingLeft">@dimen/left_right_padding</item>
         <item name="android:paddingRight">@dimen/left_right_padding</item>
+    </style>
+
+    <style name="CardViewLight" parent="CardView.Light">
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
+        <item name="cardElevation">@dimen/elevation</item>
+        <item name="cardCornerRadius">@dimen/radius</item>
+        <item name="strokeColor">?ColorBorder</item>
+        <item name="strokeWidth">@dimen/border_width</item>
+    </style>
+
+    <style name="CardViewNight" parent="CardView.Dark">
+        <item name="cardBackgroundColor">@color/colorPrimaryNight</item>
+        <item name="cardElevation">@dimen/elevation</item>
+        <item name="cardCornerRadius">@dimen/radius</item>
+        <item name="strokeColor">?ColorBorder</item>
+        <item name="strokeWidth">@dimen/border_width</item>
     </style>
 
 </resources>

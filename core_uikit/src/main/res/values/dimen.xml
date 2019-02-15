@@ -15,8 +15,12 @@
     <dimen name="default_height_status_bar">25dp</dimen>
     <dimen name="default_height_navigation_bar">42dp</dimen>
 
-    <dimen name="left_right_margin">16dp</dimen>
+    <dimen name="left_right_margin">20dp</dimen>
     <dimen name="left_right_padding">12dp</dimen>
+    <dimen name="border_width">1dp</dimen>
+    <dimen name="divider_height_small">1dp</dimen>
+    <dimen name="divider_height_big">16dp</dimen>
+    <dimen name="elevation">6dp</dimen>
     <dimen name="radius">5dp</dimen>
 
 </resources>
