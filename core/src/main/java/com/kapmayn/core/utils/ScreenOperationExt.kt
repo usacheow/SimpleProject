@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.kapmayn.coreuikit.utils.supportsLollipop
 
 inline fun <reified ACTIVITY> Context.intentOf(noinline block: (Intent.() -> Unit)? = null): Intent {
     return Intent(this, ACTIVITY::class.java).apply {
@@ -34,10 +36,16 @@ inline fun FragmentManager.inTransaction(action: FragmentTransaction.() -> Fragm
     beginTransaction().action().commit()
 }
 
-fun FragmentManager.createTransactionIn(
+fun FragmentManager.removeFragment(toRemoveFragment: Fragment) {
+    inTransaction {
+        remove(toRemoveFragment)
+    }
+}
+
+fun FragmentManager.createReplaceTransactionIn(
     @IdRes containerId: Int,
     fragment: Fragment,
-    needAddToBackStack: Boolean = true
+    needAddToBackStack: Boolean = false
 ): FragmentTransaction {
     val transaction = beginTransaction().replace(containerId, fragment, fragment::class.java.simpleName)
     if (needAddToBackStack) {
@@ -46,10 +54,17 @@ fun FragmentManager.createTransactionIn(
     return transaction
 }
 
-fun FragmentManager.showFragmentIn(
+fun FragmentManager.replaceFragmentIn(
     @IdRes containerId: Int,
     toShowFragment: Fragment,
-    needAddToBackStack: Boolean = true
+    needAddToBackStack: Boolean = false
 ) {
-    createTransactionIn(containerId, toShowFragment, needAddToBackStack).commit()
+    createReplaceTransactionIn(containerId, toShowFragment, needAddToBackStack).commit()
+}
+
+fun FragmentTransaction.addSharedElements(vararg transitionViews: View): FragmentTransaction {
+    supportsLollipop {
+        transitionViews.forEach { addSharedElement(it, it.transitionName) }
+    }
+    return this
 }

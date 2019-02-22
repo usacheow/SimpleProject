@@ -10,8 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.core.analytics.Events
-import com.kapmayn.diproviders.DiApp
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.core.presentation.base.IContainer
 
 abstract class SimpleFragment : Fragment() {
 
@@ -20,36 +19,29 @@ abstract class SimpleFragment : Fragment() {
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        inject((activity?.application as DiApp).diProvider)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let { processArguments(it) }
+        processArguments(arguments)
         setupViews(savedInstanceState)
     }
 
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance().trackEvent("onStart = ${this::class.java.simpleName}", Events.APP)
+        AnalyticsTrackerHolder.getInstance().trackEvent("start ${this::class.java.simpleName}", Events.APP)
     }
 
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance().trackEvent("onStop = ${this::class.java.simpleName}", Events.APP)
+        AnalyticsTrackerHolder.getInstance().trackEvent("stop ${this::class.java.simpleName}", Events.APP)
         bottomDialog?.cancel()
         messageDialog?.cancel()
         super.onStop()
     }
 
-    protected abstract fun inject(applicationProvider: DiProvider)
-
-    protected open fun processArguments(bundle: Bundle) {}
+    protected open fun processArguments(bundle: Bundle?) {}
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 
@@ -57,7 +49,19 @@ abstract class SimpleFragment : Fragment() {
         activity?.let { it.action(it) }
     }
 
+    fun getContainer(action: IContainer.(IContainer) -> Unit) {
+        val container = when {
+            parentFragment is IContainer -> parentFragment as IContainer
+            activity is IContainer -> activity as IContainer
+            else -> null
+        }
+
+        container?.let { it.action(it) }
+    }
+
     open fun onBackPressed(): Boolean {
         return false
     }
+
+    open fun getSharedViews() = emptyList<View>()
 }
