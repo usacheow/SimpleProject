@@ -4,6 +4,7 @@ import com.kapmayn.database.di.DataBaseModule
 import com.kapmayn.datanetwork.di.NetworkModule
 import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.featuredagger.AppActivity
 import com.kapmayn.featuredagger.FeatureDaggerApp
 import dagger.Component
 
@@ -31,4 +32,6 @@ interface AppComponent : DiProvider {
     }
 
     fun inject(app: FeatureDaggerApp)
+
+    fun inject(app: AppActivity)
 }
