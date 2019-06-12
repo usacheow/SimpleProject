@@ -5,8 +5,8 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.core.analytics.Events
-import com.kapmayn.diproviders.DiApp
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.diproviders.provider.DiApp
+import com.kapmayn.diproviders.provider.DiProvider
 
 abstract class SimpleActivity : AppCompatActivity() {
 

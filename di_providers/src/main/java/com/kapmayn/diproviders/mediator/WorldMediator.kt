@@ -1,8 +1,8 @@
-package com.kapmayn.diproviders.featureapi
+package com.kapmayn.diproviders.mediator
 
 import android.content.Context
 
-interface WorldFeatureApi {
+interface WorldMediator {
 
     fun openWorldScreen(context: Context)
 }

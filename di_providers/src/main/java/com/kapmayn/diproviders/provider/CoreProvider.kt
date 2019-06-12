@@ -1,4 +1,4 @@
-package com.kapmayn.diproviders
+package com.kapmayn.diproviders.provider
 
 import android.app.Application
 import android.content.Context

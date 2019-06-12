@@ -1,12 +1,12 @@
 package com.kapmayn.featureworld.di
 
 import android.content.Context
-import com.kapmayn.diproviders.featureapi.WorldFeatureApi
+import com.kapmayn.diproviders.mediator.WorldMediator
 import com.kapmayn.featureworld.presentation.activity.WorldActivity
 import javax.inject.Inject
 
-class WorldFeatureApiImpl
-@Inject constructor() : WorldFeatureApi {
+class WorldMediatorImpl
+@Inject constructor() : WorldMediator {
 
     override fun openWorldScreen(context: Context) {
         WorldActivity.start(context)

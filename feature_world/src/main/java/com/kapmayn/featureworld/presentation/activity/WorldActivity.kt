@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.kapmayn.core.presentation.activity.MvvmActivity
 import com.kapmayn.core.utils.injectViewModel
 import com.kapmayn.core.utils.start
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featureworld.R
 import com.kapmayn.featureworld.di.WorldComponent
 import com.kapmayn.featureworld.presentation.router.WorldFeatureRouter

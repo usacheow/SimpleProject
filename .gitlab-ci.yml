@@ -8,10 +8,6 @@ stages:
 #- deploy
 - clean
 
-####################################################################################################
-# INIT
-#
-
 cache:
   key: ${CI_PROJECT_ID}
   paths:
@@ -54,11 +50,6 @@ before_script:
     - $CI_COMMIT_MESSAGE =~ /Increment version/
     - $CI_COMMIT_MESSAGE =~ /Merge branch/
 
-####################################################################################################
-# LINT
-# todo: change lint on ktlint
-#
-
 lint:
   stage: lint
   script:
@@ -69,10 +60,6 @@ lint:
     expire_in: 4 days
     paths:
     - app/build/reports/
-
-####################################################################################################
-# BUILD
-#
 
 build_feature:
   <<: *build
@@ -95,10 +82,6 @@ build_master:
   only:
   - master
 
-####################################################################################################
-# TESTS
-#
-
 test_unit:
   <<: *test
   script:
@@ -109,10 +92,6 @@ test_unit:
     expire_in: 4 days
     paths:
     - app/build/reports/tests/
-
-####################################################################################################
-# INCREMENT VERSIONS
-#
 
 increment_version:patch:
   stage: increment_version
@@ -154,14 +133,6 @@ increment_version:major:
   except:
     variables:
     - $CI_COMMIT_MESSAGE =~ /Increment version >> Major/
-
-####################################################################################################
-# DEPLOY
-#
-
-####################################################################################################
-# CLEAN
-#
 
 finish:
   stage: clean

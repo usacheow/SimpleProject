@@ -21,8 +21,8 @@ constructor(
             .onErrorResumeNext { return@onErrorResumeNext run() }
         return singleResult
             .doAfterSuccess { newResult ->
-                cacheManager.saveData(newResult as Any, getCacheKey())
                 cleanCache(cacheManager)
+                cacheManager.saveData(newResult as Any, getCacheKey())
             }
             .subscribeOn(Schedulers.io())
     }

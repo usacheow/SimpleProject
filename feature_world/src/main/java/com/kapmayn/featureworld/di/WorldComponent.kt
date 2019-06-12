@@ -1,7 +1,7 @@
 package com.kapmayn.featureworld.di
 
 import com.kapmayn.di.scope.FeatureScope
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featureworld.presentation.activity.WorldActivity
 import dagger.Component
 

@@ -98,10 +98,11 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core')
-    implementation project(':di_providers')
-
     implementation project(':feature_hello')
     implementation project(':feature_world')
+
+    implementation androidxDependencies.values()
+    implementation uiDependencies.values()
 
     implementation firebaseDependencies.values()
 

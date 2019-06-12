@@ -1,4 +1,4 @@
-package com.kapmayn.diproviders
+package com.kapmayn.diproviders.provider
 
 interface DiApp {
 

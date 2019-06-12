@@ -1,7 +1,7 @@
 package com.kapmayn.featurehello.di
 
 import com.kapmayn.di.scope.FeatureScope
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featurehello.presentation.activity.HelloActivity
 import dagger.Component
 

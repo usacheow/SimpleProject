@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.os.Bundle
 import com.kapmayn.core.presentation.activity.MvvmActivity
 import com.kapmayn.core.utils.injectViewModel
-import com.kapmayn.diproviders.DiProvider
+import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featurehello.R
 import com.kapmayn.featurehello.di.HelloComponent
 import com.kapmayn.featurehello.presentation.router.HelloFeatureRouter
