@@ -97,7 +97,7 @@ class BottomBarHistoryManager(
         }
     }
 
-    private fun Fragment.tag() = this.javaClass.name
+    private fun Fragment.tag() = "${this.hashCode()}"
 
     data class State(
         val sections: List<String>,
