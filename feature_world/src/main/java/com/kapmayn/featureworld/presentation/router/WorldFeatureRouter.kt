@@ -1,5 +1,5 @@
 package com.kapmayn.featureworld.presentation.router
 
-import com.kapmayn.core.presentation.base.Router
+import com.kapmayn.core.presentation.router.Router
 
 interface WorldFeatureRouter : Router

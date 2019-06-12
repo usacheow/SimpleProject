@@ -2,7 +2,7 @@ package com.kapmayn.core.presentation.activity
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.kapmayn.core.presentation.base.Router
+import com.kapmayn.core.presentation.router.Router
 import javax.inject.Inject
 
 abstract class MvvmActivity<ROUTER : Router> : SimpleActivity() {

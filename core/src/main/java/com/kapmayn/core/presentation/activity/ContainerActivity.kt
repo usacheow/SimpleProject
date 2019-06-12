@@ -1,25 +1,21 @@
-package com.kapmayn.core.presentation.fragments
+package com.kapmayn.core.presentation.activity
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kapmayn.core.R
 import com.kapmayn.core.presentation.base.IContainer
+import com.kapmayn.core.presentation.fragments.SimpleFragment
 import com.kapmayn.core.utils.inTransaction
 import com.kapmayn.core.utils.replaceFragmentIn
 
-abstract class ContainerFragment : Fragment(), IContainer {
+abstract class ContainerActivity : SimpleActivity(), IContainer {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frg_container, container, false)
-    }
+    override val layoutId = R.layout.frg_container
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (childFragmentManager.backStackEntryCount == 0) {
-            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getFirstFragment(), true)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getStartFragment())
         }
     }
 
@@ -33,7 +29,7 @@ abstract class ContainerFragment : Fragment(), IContainer {
 //        }
 //        transaction.commit()
 
-        childFragmentManager.inTransaction {
+        supportFragmentManager.inTransaction {
             setCustomAnimations(
                 R.anim.anim_enter_from_right,
                 R.anim.anim_exit_to_left,
@@ -46,25 +42,25 @@ abstract class ContainerFragment : Fragment(), IContainer {
         }
     }
 
-    protected abstract fun getFirstFragment(): Fragment
+    protected abstract fun getStartFragment(): Fragment
 
     override fun reset() {
-        while (childFragmentManager.backStackEntryCount > 1) {
-            childFragmentManager.popBackStackImmediate()
+        while (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStackImmediate()
         }
     }
 
-    override fun onBackClicked(): Boolean {
-        val activeFragment = childFragmentManager.findFragmentById(R.id.fragmentContainer)
-        val backStackEntryCount = childFragmentManager.backStackEntryCount
+    override fun onBackPressed() {
+        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+        val backStackEntryCount = supportFragmentManager.backStackEntryCount
 
-        return if (activeFragment is SimpleFragment && activeFragment.onBackPressed()) {
-            true
+        if (activeFragment is SimpleFragment && activeFragment.onBackPressed()) {
         } else if (activeFragment != null && backStackEntryCount > 1) {
-            childFragmentManager.popBackStackImmediate()
-            true
+            supportFragmentManager.popBackStackImmediate()
         } else {
-            false
+            super.onBackPressed()
         }
     }
+
+    override fun onBackClicked() = false
 }

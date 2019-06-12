@@ -1,4 +1,4 @@
-package com.kapmayn.core.presentation.base
+package com.kapmayn.core.presentation.router
 
 import androidx.fragment.app.FragmentActivity
 

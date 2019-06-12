@@ -8,5 +8,5 @@ interface IContainer {
 
     fun reset()
 
-    fun backClicked(): Boolean
+    fun onBackClicked(): Boolean
 }

@@ -57,7 +57,7 @@ class BottomBarHistoryManager(
         val activeFragmentTag = sections[activeSectionNumber]
         val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
         val isBackProcesses = if (activeFragment is IContainer) {
-            activeFragment.backClicked()
+            activeFragment.onBackClicked()
         } else {
             false
         }

@@ -3,7 +3,7 @@ package com.kapmayn.core.presentation.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.kapmayn.core.presentation.base.Router
+import com.kapmayn.core.presentation.router.Router
 import javax.inject.Inject
 
 abstract class MvvmFragment<ROUTER : Router> : SimpleFragment() {
