@@ -9,4 +9,17 @@
         <attr name="title" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="TwoLineButtonView">
+        <attr name="tlbv_title" format="string" />
+        <attr name="tlbv_subtitle" format="string" />
+        <attr name="tlbv_icon" format="reference" />
+        <attr name="tlbv_is_clickable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="TwoLineInfoView">
+        <attr name="tliv_title" format="string" />
+        <attr name="tliv_description" format="string" />
+        <attr name="tliv_text_in_center" format="boolean" />
+    </declare-styleable>
+
 </resources>
