@@ -27,7 +27,7 @@ ext {
 
     calligraphyVersion = '2.3.0'
 
-    roomVersion = '2.0.0'
+    roomVersion = '2.1.0'
     retrofitVersion = '2.4.0'
     okHttpVersion = '3.10.0'
     gsonVersion = '2.8.4'
