@@ -15,7 +15,7 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (supportFragmentManager.backStackEntryCount == 0) {
-            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getStartFragment())
+            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getStartFragment(), true)
         }
     }
 
