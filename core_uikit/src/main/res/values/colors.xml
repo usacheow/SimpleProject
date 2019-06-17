@@ -21,6 +21,7 @@
     <color name="colorBorderNight">#4DFFFFFF</color>
 
     <color name="colorSearch">#4DE2E2E2</color>
+    <color name="colorSearchCursor">#454545</color>
     <color name="colorRippler">#d8d8d8</color>
     <color name="colorPlaceholder">#F6F6F6</color>
     <color name="colorBlur">#80000000</color>
@@ -28,6 +29,5 @@
     <color name="white">#ffffff</color>
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_60">#99ffffff</color>
-    <color name="grey">#454545</color>
     <color name="black">#000000</color>
 </resources>
