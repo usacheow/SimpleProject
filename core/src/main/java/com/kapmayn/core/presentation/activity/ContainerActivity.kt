@@ -58,7 +58,7 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
         } else if (activeFragment != null && backStackEntryCount > 1) {
             supportFragmentManager.popBackStackImmediate()
         } else {
-            super.onBackPressed()
+            finish()
         }
     }
 
