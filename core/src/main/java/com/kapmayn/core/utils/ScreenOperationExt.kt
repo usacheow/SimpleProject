@@ -32,6 +32,8 @@ fun <MODEL : Parcelable> Fragment.getParcelable(key: String): MODEL? {
     return arguments?.getParcelable(key)
 }
 
+fun Fragment.hashTag() = "${this.hashCode()}"
+
 inline fun FragmentManager.inTransaction(action: FragmentTransaction.() -> FragmentTransaction) {
     beginTransaction().action().commit()
 }
@@ -45,9 +47,10 @@ fun FragmentManager.removeFragment(toRemoveFragment: Fragment) {
 fun FragmentManager.createReplaceTransactionIn(
     @IdRes containerId: Int,
     fragment: Fragment,
-    needAddToBackStack: Boolean = false
+    needAddToBackStack: Boolean = false,
+    tag: String = fragment.hashTag()
 ): FragmentTransaction {
-    val transaction = beginTransaction().replace(containerId, fragment, fragment::class.java.simpleName)
+    val transaction = beginTransaction().replace(containerId, fragment, tag)
     if (needAddToBackStack) {
         transaction.addToBackStack(null)
     }
@@ -57,9 +60,10 @@ fun FragmentManager.createReplaceTransactionIn(
 fun FragmentManager.replaceFragmentIn(
     @IdRes containerId: Int,
     toShowFragment: Fragment,
-    needAddToBackStack: Boolean = false
+    needAddToBackStack: Boolean = false,
+    tag: String = toShowFragment.hashTag()
 ) {
-    createReplaceTransactionIn(containerId, toShowFragment, needAddToBackStack).commit()
+    createReplaceTransactionIn(containerId, toShowFragment, needAddToBackStack, tag).commit()
 }
 
 fun FragmentTransaction.addSharedElements(vararg transitionViews: View): FragmentTransaction {

@@ -3,6 +3,7 @@ package com.kapmayn.core.presentation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.kapmayn.core.presentation.base.IContainer
+import com.kapmayn.core.utils.hashTag
 import com.kapmayn.core.utils.inTransaction
 import java.io.Serializable
 
@@ -34,7 +35,7 @@ class BottomBarHistoryManager(
         if (sections[sectionNumber].isEmpty()) {
             val nextFragment = initFragmentsAction[sectionNumber].invoke()
             fragmentManager.addFragment(nextFragment)
-            sections[sectionNumber] = nextFragment.tag()
+            sections[sectionNumber] = nextFragment.hashTag()
         } else {
             val nextFragmentTag = sections[sectionNumber]
             fragmentManager.showFragment(nextFragmentTag)
@@ -80,7 +81,7 @@ class BottomBarHistoryManager(
 
         inTransaction {
             activeFragment?.let { hide(it) }
-            add(transactionContainerId, nextFragment, nextFragment.tag())
+            add(transactionContainerId, nextFragment, nextFragment.hashTag())
             this
         }
     }
@@ -96,8 +97,6 @@ class BottomBarHistoryManager(
             this
         }
     }
-
-    private fun Fragment.tag() = "${this.hashCode()}"
 
     data class State(
         val sections: List<String>,

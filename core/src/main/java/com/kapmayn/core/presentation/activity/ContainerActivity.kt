@@ -12,10 +12,13 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
 
     override val layoutId = R.layout.frg_container
 
+    abstract val INIT_FRAGMENT_TAG_KEY: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getStartFragment(), true)
+
+        if (supportFragmentManager.findFragmentByTag(INIT_FRAGMENT_TAG_KEY) == null) {
+            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, INIT_FRAGMENT_TAG_KEY)
         }
     }
 
@@ -42,7 +45,7 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
         }
     }
 
-    protected abstract fun getStartFragment(): Fragment
+    protected abstract fun getInitFragment(): Fragment
 
     override fun reset() {
         while (supportFragmentManager.backStackEntryCount > 1) {

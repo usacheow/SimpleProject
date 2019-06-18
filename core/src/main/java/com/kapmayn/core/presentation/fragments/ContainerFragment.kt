@@ -12,14 +12,17 @@ import com.kapmayn.core.utils.replaceFragmentIn
 
 abstract class ContainerFragment : Fragment(), IContainer {
 
+    abstract val INIT_FRAGMENT_TAG_KEY: String
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frg_container, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (childFragmentManager.backStackEntryCount == 0) {
-            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getFirstFragment(), true)
+
+        if (childFragmentManager.findFragmentByTag(INIT_FRAGMENT_TAG_KEY) == null) {
+            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, INIT_FRAGMENT_TAG_KEY)
         }
     }
 
@@ -46,7 +49,7 @@ abstract class ContainerFragment : Fragment(), IContainer {
         }
     }
 
-    protected abstract fun getFirstFragment(): Fragment
+    protected abstract fun getInitFragment(): Fragment
 
     override fun reset() {
         while (childFragmentManager.backStackEntryCount > 1) {
