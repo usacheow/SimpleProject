@@ -2,9 +2,10 @@
 <ripple
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/colorRippler">
-    <item>
+    <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorBlur" />
+            <solid android:color="@color/white" />
+            <corners android:radius="@dimen/radius" />
         </shape>
     </item>
 </ripple>
