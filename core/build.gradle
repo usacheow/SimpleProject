@@ -27,6 +27,7 @@ dependencies {
     implementation firebaseDependencies.values()
 
     implementation rxDependencies.values()
+    implementation gsonDependencies.values()
 
     implementation lifecycleDependency
     kapt kaptLifecycleDependency

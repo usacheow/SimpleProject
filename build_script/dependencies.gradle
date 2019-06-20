@@ -102,13 +102,18 @@ ext {
             rxRetrofit: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     ]
 
+    gsonDependencies = [
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            gson:          "com.google.code.gson:gson:$gsonVersion"
+    ]
+
     networkDependencies = [
             retrofit:      "com.squareup.retrofit2:retrofit:$retrofitVersion",
             okHttp:        "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson:          "com.google.code.gson:gson:$gsonVersion"
-    ]
+    ] << gsonDependencies
 
     debugCanaryDependencies = [
             canary: "com.squareup.leakcanary:leakcanary-android:$canaryVersion",
