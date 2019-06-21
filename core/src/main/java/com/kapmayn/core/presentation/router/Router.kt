@@ -7,4 +7,8 @@ interface Router {
     fun moveToBack(activity: FragmentActivity) {
         activity.onBackPressed()
     }
+
+    fun close(activity: FragmentActivity) {
+        activity.finish()
+    }
 }
