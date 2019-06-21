@@ -11,6 +11,7 @@ ext {
     navigationVersion = '1.0.0-alpha06'
 
     materialVersion = '1.0.0'
+    browserVersion = '1.0.0'
     constraintVersion = '2.0.0-alpha2'
     roundedImageVersion = '2.3.0'
     qrScannerVersion = '2.0.1'
@@ -67,6 +68,7 @@ ext {
     uiDependencies = [
             material:     "com.google.android.material:material:$materialVersion",
             constraint:   "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            browser:      "androidx.browser:browser:$browserVersion",
             roundedImage: "com.makeramen:roundedimageview:$roundedImageVersion",
             animations:   "com.github.florent37:kotlinpleaseanimate:$pleaseAnimateVersion",
             qrScanner:    "com.budiyev.android:code-scanner:$qrScannerVersion"
