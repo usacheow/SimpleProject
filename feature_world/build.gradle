@@ -24,7 +24,6 @@ dependencies {
     implementation project(':core')
     implementation project(':core_uikit')
     implementation project(':di_providers')
-    implementation project(':models')
 
     implementation firebaseDependencies.values()
 

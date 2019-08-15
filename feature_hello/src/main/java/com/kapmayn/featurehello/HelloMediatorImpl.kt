@@ -1,4 +1,4 @@
-package com.kapmayn.featurehello.di
+package com.kapmayn.featurehello
 
 import com.kapmayn.diproviders.mediator.HelloMediator
 import javax.inject.Inject

@@ -17,8 +17,10 @@ ext {
     qrScannerVersion = '2.0.1'
     pleaseAnimateVersion = '1.0.2'
 
-    firebaseCoreVersion = '16.0.7'
+    firebaseCoreVersion = '17.0.0'
+    firebaseAdsVersion = '18.0.0'
     crashlyticsVersion = '2.9.8'
+    billingVersion = '1.2'
 
     glideVersion = '4.8.0'
     picassoVersion = '2.71828'
@@ -75,8 +77,13 @@ ext {
     ]
 
     firebaseDependencies = [
-            firebaseCore: "com.google.firebase:firebase-core:$firebaseCoreVersion"/*,
+            firebaseCore: "com.google.firebase:firebase-core:$firebaseCoreVersion",
+            firebaseAds:  "com.google.firebase:firebase-ads:$firebaseAdsVersion"/*,
             crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"*/
+    ]
+
+    billingDependencies = [
+            billing: "com.android.billingclient:billing:$billingVersion"
     ]
 
     utilsDependencies = [

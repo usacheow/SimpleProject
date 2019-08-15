@@ -25,6 +25,7 @@ dependencies {
     implementation uiDependencies.values()
 
     implementation firebaseDependencies.values()
+    implementation billingDependencies.values()
 
     implementation rxDependencies.values()
     implementation gsonDependencies.values()

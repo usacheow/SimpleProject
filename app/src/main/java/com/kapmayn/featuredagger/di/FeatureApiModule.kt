@@ -3,8 +3,8 @@ package com.kapmayn.featuredagger.di
 import com.kapmayn.di.scope.ApplicationScope
 import com.kapmayn.diproviders.mediator.HelloMediator
 import com.kapmayn.diproviders.mediator.WorldMediator
-import com.kapmayn.featurehello.di.HelloMediatorImpl
-import com.kapmayn.featureworld.di.WorldMediatorImpl
+import com.kapmayn.featurehello.HelloMediatorImpl
+import com.kapmayn.featureworld.WorldMediatorImpl
 import dagger.Binds
 import dagger.Module
 

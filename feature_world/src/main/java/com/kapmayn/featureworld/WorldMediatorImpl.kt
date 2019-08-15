@@ -1,4 +1,4 @@
-package com.kapmayn.featureworld.di
+package com.kapmayn.featureworld
 
 import android.content.Context
 import com.kapmayn.diproviders.mediator.WorldMediator
