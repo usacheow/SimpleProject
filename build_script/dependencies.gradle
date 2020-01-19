@@ -9,6 +9,7 @@ ext {
     androidxVersion = '1.0.0'
     androidxLifecycleVersion = '2.0.0'
     navigationVersion = '1.0.0-alpha06'
+    dexterVersion = '6.0.1'
 
     materialVersion = '1.0.0'
     browserVersion = '1.0.0'
@@ -17,8 +18,8 @@ ext {
     qrScannerVersion = '2.0.1'
     pleaseAnimateVersion = '1.0.2'
 
-    firebaseCoreVersion = '17.0.0'
-    firebaseAdsVersion = '18.0.0'
+    analyticsVersion = '17.2.1'
+    messagingVersion = '20.1.0'
     crashlyticsVersion = '2.9.8'
     billingVersion = '1.2'
 
@@ -44,27 +45,13 @@ ext {
     mockitoVersion = '2.7.22'
     truthVersion = '0.34'
 
-//    supportDependencies = [
-//            appCompatV7: "com.android.support:appcompat-v7:$androidSupportLibraryVersion",
-//            support13     : "com.android.support:support-v13:$androidSupportLibraryVersion",
-//            preferencesV14: "com.android.support:preference-v14:$androidSupportLibraryVersion",
-//            multidex      : "com.android.support:multidex:$multidexVersion"
-//    ]
-//
-//    uiSupportDependencies = [
-//            recyclerView: "com.android.support:recyclerview-v7:$androidSupportLibraryVersion",
-//            constraint: "com.android.support.constraint:constraint-layout:constraintSupportVersion",
-//            cardView: "com.android.support:cardview-v7:$androidSupportLibraryVersion",
-//            design: "com.android.support:design:$androidSupportLibraryVersion"
-//    ]
-
     kotlinDependency = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     androidxDependencies = [
             appCompat:     "androidx.appcompat:appcompat:$androidxVersion",
-            core:          "androidx.core:core-ktx:$androidxVersion",
+            core:          "androidx.core:core-ktx:$androidxVersion"/*,
             navigation:    "android.arch.navigation:navigation-fragment-ktx:$navigationVersion",
-            navigationUi:  "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
+            navigationUi:  "android.arch.navigation:navigation-ui-ktx:$navigationVersion"*/
     ]
 
     uiDependencies = [
@@ -77,9 +64,9 @@ ext {
     ]
 
     firebaseDependencies = [
-            firebaseCore: "com.google.firebase:firebase-core:$firebaseCoreVersion",
-            firebaseAds:  "com.google.firebase:firebase-ads:$firebaseAdsVersion"/*,
-            crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"*/
+            analytics:    "com.google.firebase:firebase-analytics:$analyticsVersion",
+            messaging:    "com.google.firebase:firebase-messaging:$messagingVersion",
+            crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
     ]
 
     billingDependencies = [

@@ -1,9 +1,16 @@
 package com.kapmayn.coreuikit.utils
 
+import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
+
+fun View.hideKeyboard() {
+    val inputMethodManger = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+    inputMethodManger!!.hideSoftInputFromWindow(windowToken, 0)
+}
 
 fun View.makeVisible() {
     visibility = View.VISIBLE
@@ -22,28 +29,6 @@ fun View.setVisible(isVisible: Boolean) {
         isVisible -> makeVisible()
         else -> makeGone()
     }
-}
-
-fun View.isVisible() = visibility == View.VISIBLE
-
-var View.topPadding: Int
-    get() = paddingTop
-    set(value) {
-        setPadding(paddingLeft, value, paddingRight, paddingBottom)
-    }
-
-var View.bottomPadding: Int
-    get() = paddingBottom
-    set(value) {
-        setPadding(paddingLeft, paddingTop, paddingRight, value)
-    }
-
-fun View.setHorizontalPadding(paddingValue: Int) {
-    setPadding(paddingValue, paddingTop, paddingValue, paddingBottom)
-}
-
-fun View.setVerticalPadding(paddingValue: Int) {
-    setPadding(paddingLeft, paddingValue, paddingRight, paddingValue)
 }
 
 var View.topMargin: Int

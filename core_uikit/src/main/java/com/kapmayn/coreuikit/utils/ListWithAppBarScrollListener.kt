@@ -10,7 +10,7 @@ class ListWithAppBarScrollListener(
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-        supportsLollipop {
+        ifSupportLollipop {
             val isFirstItemVisible = manager.findFirstCompletelyVisibleItemPosition() == 0
             val isAppBarDown = appBarLayout.elevation == 0f
 

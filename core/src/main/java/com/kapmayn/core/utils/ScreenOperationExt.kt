@@ -9,7 +9,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.kapmayn.coreuikit.utils.supportsLollipop
+import com.kapmayn.coreuikit.utils.ifSupportLollipop
 
 inline fun <reified ACTIVITY> Context.intentOf(noinline block: (Intent.() -> Unit)? = null): Intent {
     return Intent(this, ACTIVITY::class.java).apply {
@@ -67,7 +67,7 @@ fun FragmentManager.replaceFragmentIn(
 }
 
 fun FragmentTransaction.addSharedElements(vararg transitionViews: View): FragmentTransaction {
-    supportsLollipop {
+    ifSupportLollipop {
         transitionViews.forEach { addSharedElement(it, it.transitionName) }
     }
     return this

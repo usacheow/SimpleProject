@@ -24,6 +24,9 @@ dependencies {
     implementation androidxDependencies.values()
     api uiDependencies.values()
 
+    implementation glideDependency
+    kapt kaprGlideDependency
+
     implementation lifecycleDependency
     kapt kaptLifecycleDependency
 }

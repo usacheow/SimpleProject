@@ -10,8 +10,8 @@
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
-        <!--        <item name="android:windowTranslucentStatus">true</item>-->
-        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <item name="android:navigationBarColor">#80000000</item>
+        <item name="android:statusBarColor">#80000000</item>
 
         <item name="ColorBackground">@color/colorBackground</item>
 
@@ -57,8 +57,8 @@
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
-        <!--        <item name="android:windowTranslucentStatus">true</item>-->
-        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <item name="android:navigationBarColor">#80000000</item>
+        <item name="android:statusBarColor">#80000000</item>
 
         <item name="ColorBackground">@color/colorBackgroundNight</item>
 
@@ -94,47 +94,4 @@
         <item name="TextEmpty">@style/TextEmptyLight</item>
         <item name="TextDivider">@style/TextDividerLight</item>
     </style>
-
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@anim/fade_in</item>
-        <item name="android:windowExitAnimation">@anim/fade_out</item>
-    </style>
-
-    <declare-styleable name="CustomAttrs">
-
-        <attr name="ColorBackground" format="color" />
-
-        <attr name="ColorBottomBar" format="color" />
-        <attr name="ColorIconBottomBar" format="color" />
-        <attr name="ColorIconDisableBottomBar" format="color" />
-        <attr name="ColorIconPrimary" format="color" />
-        <attr name="ColorIconSecondary" format="color" />
-
-        <attr name="ColorBorder" format="color" />
-        <attr name="ColorDivider" format="color" />
-
-        <attr name="TextHeader" format="reference" />
-
-        <attr name="TextTitle" format="reference" />
-        <attr name="TextTitleReverse" format="reference" />
-
-        <attr name="TextPrimary" format="reference" />
-        <attr name="TextPrimaryReverse" format="reference" />
-
-        <attr name="TextSecondary" format="reference" />
-        <attr name="TextSecondaryReverse" format="reference" />
-
-        <attr name="TextSecondary60" format="reference" />
-        <attr name="TextSecondary60Reverse" format="reference" />
-
-        <attr name="TextDescription" format="reference" />
-        <attr name="TextDescriptionReverse" format="reference" />
-
-        <attr name="TextDescription60" format="reference" />
-        <attr name="TextDescription60Reverse" format="reference" />
-
-        <attr name="TextEmpty" format="reference" />
-        <attr name="TextDivider" format="reference" />
-    </declare-styleable>
-
 </resources>

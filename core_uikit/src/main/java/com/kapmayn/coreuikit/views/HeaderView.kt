@@ -6,10 +6,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
 import com.kapmayn.coreuikit.R
-import com.kapmayn.coreuikit.utils.getStatusBarHeight
 import com.kapmayn.coreuikit.utils.makeVisible
 import com.kapmayn.coreuikit.utils.populate
-import com.kapmayn.coreuikit.utils.topPadding
 import kotlinx.android.synthetic.main.view_header.view.headerActionButton
 import kotlinx.android.synthetic.main.view_header.view.headerMenuFirstButton
 import kotlinx.android.synthetic.main.view_header.view.headerMenuSecondButton
@@ -27,7 +25,6 @@ class HeaderView
     private fun applyAttrs(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.HeaderView)
         try {
-            topPadding = getStatusBarHeight()
             headerText.populate(typedArray.getText(R.styleable.HeaderView_header).toString())
         } catch (e: NullPointerException) {
         } finally {
@@ -55,9 +52,5 @@ class HeaderView
         headerMenuSecondButton.makeVisible()
         headerMenuSecondButton.setImageResource(menuIcon)
         headerMenuSecondButton.setOnClickListener { action() }
-    }
-
-    fun setHeaderOfCard() {
-        topPadding = 0
     }
 }

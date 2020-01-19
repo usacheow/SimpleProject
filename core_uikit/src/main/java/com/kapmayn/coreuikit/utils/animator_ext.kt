@@ -2,6 +2,7 @@ package com.kapmayn.coreuikit.utils
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.view.ViewGroup
 
 fun Animator.withEndAction(action: () -> Unit): Animator {
     addListener(object : AnimatorListenerAdapter() {
@@ -19,4 +20,13 @@ fun Animator.withStartAction(action: () -> Unit): Animator {
         }
     })
     return this
+}
+
+fun ViewGroup.doWithAutoTransition(
+    duration: Long = 100L,
+    block: () -> Unit
+) {
+    doWithAutoTransition(duration) {
+        block()
+    }
 }
