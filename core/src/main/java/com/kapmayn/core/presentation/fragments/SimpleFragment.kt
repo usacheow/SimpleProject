@@ -11,16 +11,31 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.core.analytics.Events
 import com.kapmayn.core.presentation.base.IContainer
+import com.kapmayn.diproviders.provider.DiApp
+import com.kapmayn.diproviders.provider.DiProvider
 
 abstract class SimpleFragment : Fragment() {
 
     protected abstract val layoutId: Int
+    protected open var needTransparentBars = false
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        inject((activity?.application as DiApp).diProvider)
+    }
+
+    abstract fun inject(diProvider: DiProvider)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, container, false)
+        val rootView = inflater.inflate(layoutId, container, false)
+        if (needTransparentBars) {
+            rootView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        }
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
