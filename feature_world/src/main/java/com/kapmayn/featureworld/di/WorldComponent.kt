@@ -1,5 +1,6 @@
 package com.kapmayn.featureworld.di
 
+import com.kapmayn.coreuikit.viewmodels.ViewModelModule
 import com.kapmayn.di.scope.FeatureScope
 import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featureworld.presentation.activity.WorldActivity
@@ -8,7 +9,7 @@ import dagger.Component
 @FeatureScope
 @Component(
     dependencies = [DiProvider::class],
-    modules = [PresentationModule::class, DataModule::class]
+    modules = [PresentationModule::class, DataModule::class, ViewModelModule::class]
 )
 interface WorldComponent {
 

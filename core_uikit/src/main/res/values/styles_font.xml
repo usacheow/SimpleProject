@@ -9,7 +9,7 @@
         <item name="android:fontFamily">@font/regular</item>
     </style>
 
-    <style name="RobotoSemiBold" parent="android:TextAppearance">
+    <style name="RobotoMedium" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/medium</item>
     </style>
 
@@ -17,7 +17,7 @@
         <item name="android:fontFamily">@font/bold</item>
     </style>
 
-    <style name="RobotoLogo" parent="android:TextAppearance">
+    <style name="Logo" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/logo</item>
     </style>
 

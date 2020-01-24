@@ -2,18 +2,22 @@ package com.kapmayn.featureworld.presentation.activity
 
 import android.content.Context
 import android.os.Bundle
-import com.kapmayn.core.presentation.activity.MvvmActivity
-import com.kapmayn.core.utils.injectViewModel
-import com.kapmayn.core.utils.start
+import com.kapmayn.coreuikit.activity.SimpleActivity
+import com.kapmayn.coreuikit.utils.injectViewModel
+import com.kapmayn.coreuikit.utils.start
+import com.kapmayn.coreuikit.viewmodels.ViewModelFactory
 import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featureworld.R
 import com.kapmayn.featureworld.di.WorldComponent
 import com.kapmayn.featureworld.presentation.router.WorldFeatureRouter
 import com.kapmayn.featureworld.presentation.viewmodels.WorldViewModel
 import kotlinx.android.synthetic.main.activity_world.worldButton
+import javax.inject.Inject
 
-class WorldActivity : MvvmActivity<WorldFeatureRouter>() {
+class WorldActivity : SimpleActivity() {
 
+    @Inject lateinit var router: WorldFeatureRouter
+    @Inject lateinit var viewModelFactory: ViewModelFactory
     val viewModel by lazy { injectViewModel<WorldViewModel>(viewModelFactory) }
 
     override val layoutId = R.layout.activity_world

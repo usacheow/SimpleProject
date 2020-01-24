@@ -12,15 +12,26 @@
     <dimen name="font_size_28sp">28.0sp</dimen>
     <dimen name="font_size_30sp">30.0sp</dimen>
 
-    <dimen name="default_height_status_bar">25dp</dimen>
-    <dimen name="default_height_navigation_bar">42dp</dimen>
+    <dimen name="progress_size">36dp</dimen>
 
-    <dimen name="left_right_margin">20dp</dimen>
+    <dimen name="left_right_margin">16dp</dimen>
     <dimen name="left_right_padding">12dp</dimen>
+
     <dimen name="border_width">1dp</dimen>
+
     <dimen name="divider_height_small">1dp</dimen>
     <dimen name="divider_height_big">16dp</dimen>
-    <dimen name="elevation">6dp</dimen>
-    <dimen name="radius">5dp</dimen>
+
+    <dimen name="radius_0">0dp</dimen>
+    <dimen name="radius_2">2dp</dimen>
+    <dimen name="radius_4">4dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_16">16dp</dimen>
+    <dimen name="elevation_8">8dp</dimen>
+    <dimen name="elevation_4">4dp</dimen>
+    <dimen name="elevation_1">1dp</dimen>
+    <dimen name="elevation_2">2dp</dimen>
+    <dimen name="elevation_0">0dp</dimen>
+    <dimen name="stroke_card">1dp</dimen>
 
 </resources>

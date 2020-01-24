@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#4e6de7</color>
-    <color name="colorBackground">#f7f7f7</color>
-    <color name="colorText">#000000</color>
-    <color name="colorIconPrimary">#000000</color>
-    <color name="colorIconSecondary">#250B1F35</color>
-    <color name="colorDivider">#0f0b1f35</color>
-    <color name="colorBorder">#260b1f35</color>
 
-    <color name="colorPrimaryNight">#ff303030</color>
-    <color name="colorPrimaryDarkNight">#ff303030</color>
-    <color name="colorAccentNight">#ffffff</color>
-    <color name="colorBackgroundNight">#313131</color>
-    <color name="colorTextNight">#e6ffffff</color>
-    <color name="colorIconPrimaryNight">#e6ffffff</color>
-    <color name="colorIconSecondaryNight">#4DFFFFFF</color>
-    <color name="colorDividerNight">#0fffffff</color>
-    <color name="colorBorderNight">#4DFFFFFF</color>
+    <color name="colorPrimary">#FFFFFF</color>a
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#2979FF</color>
 
-    <color name="colorSearch">#4DE2E2E2</color>
-    <color name="colorSearchCursor">#454545</color>
-    <color name="colorRippler">#d8d8d8</color>
-    <color name="colorPlaceholder">#F6F6F6</color>
+    <color name="colorBackground">#FFFFFF</color>
+
+    <color name="colorCard">#FFFFFF</color>
+    <color name="colorGreyCard">#F2F3F4</color>
+    <color name="cardStroke">#E3E7EB</color>
+
+    <color name="colorText">#505d6f</color>
+    <color name="colorTextNight">#ffffff</color>
+
+    <color name="colorIconPrimary">#505d6f</color>
+    <color name="colorIconSecondary">#9097A2</color>
+
+    <color name="colorDivider">#f7f7f7</color>
     <color name="colorBlur">#80000000</color>
+
+    <color name="colorRipple">#33000000</color>
+    <color name="colorRippleNight">#99ffffff</color>
 
     <color name="white">#ffffff</color>
     <color name="white_90">#E6FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
     <color name="white_60">#99ffffff</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="black_30">#4D000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_80">#CC000000</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

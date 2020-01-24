@@ -19,7 +19,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     api project(':di_providers')
-    implementation project(':core_uikit')
 
     api androidxDependencies.values()
     implementation uiDependencies.values()

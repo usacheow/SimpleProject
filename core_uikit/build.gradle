@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 apply from: "$project.rootDir/build_script/dependencies.gradle"
 
@@ -21,12 +21,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
+    implementation project(':core')
+
     implementation androidxDependencies.values()
     api uiDependencies.values()
+
+    implementation rxDependencies.values()
 
     implementation glideDependency
     kapt kaprGlideDependency
 
     implementation lifecycleDependency
     kapt kaptLifecycleDependency
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
 }

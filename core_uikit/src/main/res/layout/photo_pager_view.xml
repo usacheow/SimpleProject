@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.technokratos.unistroy.coreui.presentation.widgets.photo.PhotoPagerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/photoViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <com.kapmayn.coreuikit.views.ViewPagerIndicator
+        android:id="@+id/photoViewPagerIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/left_right_margin"
+        android:layout_marginEnd="@dimen/left_right_margin"
+        android:layout_marginBottom="@dimen/left_right_margin"
+        app:item_color="@color/black_30"
+        app:item_height="2dp"
+        app:item_margin="4dp"
+        app:item_selected_color="@color/black" />
+</com.technokratos.unistroy.coreui.presentation.widgets.photo.PhotoPagerView>

@@ -23,5 +23,5 @@ fun TextView.populate(s: String?) {
 }
 
 fun TextView.populate(@StringRes textId: Int) {
-    populate(resources.getString(textId))
+    populate(string(textId))
 }

@@ -32,8 +32,9 @@ open class StringSpinnerAdapter(
 
     protected open fun processView(index: Int, originalView: View?, viewGroup: ViewGroup): View {
         val item = models[index]
-        return originalView ?: LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false).apply {
-            findViewById<TextView>(R.id.spinnerTitle).text = models[index]
-        }
+        return originalView
+            ?: LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false).apply {
+                findViewById<TextView>(R.id.spinnerTitle).text = models[index]
+            }
     }
 }

@@ -2,7 +2,7 @@ ext {
     androidBuildToolsVersion = '28.0.3'
 
     androidCompileSdkVersion = 28
-    androidMinSdkVersion = 19
+    androidMinSdkVersion = 21
     androidTargetSdkVersion = 28
     applicationPackage = "com.kapmayn.featuredagger"
 
@@ -49,9 +49,13 @@ ext {
 
     androidxDependencies = [
             appCompat:     "androidx.appcompat:appcompat:$androidxVersion",
-            core:          "androidx.core:core-ktx:$androidxVersion"/*,
-            navigation:    "android.arch.navigation:navigation-fragment-ktx:$navigationVersion",
-            navigationUi:  "android.arch.navigation:navigation-ui-ktx:$navigationVersion"*/
+            core:          "androidx.core:core-ktx:$androidxVersion"
+//            compose:       "androidx.compose:compose-compiler:0.1.0-dev03",
+//            tooling:       "androidx.ui:ui-tooling:0.1.0-dev02",
+//            layout:        "androidx.ui:ui-layout:0.1.0-dev02",
+//            material:      "androidx.ui:ui-material:0.1.0-dev02",
+//            navigation:    "android.arch.navigation:navigation-fragment-ktx:$navigationVersion",
+//            navigationUi:  "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
     ]
 
     uiDependencies = [

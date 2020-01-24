@@ -1,5 +1,7 @@
 package com.kapmayn.featureworld.presentation.router
 
-import com.kapmayn.core.presentation.router.Router
+import com.kapmayn.coreuikit.base.Router
+import javax.inject.Inject
 
-interface WorldFeatureRouter : Router
+class WorldFeatureRouter
+@Inject constructor() : Router

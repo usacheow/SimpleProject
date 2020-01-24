@@ -1,9 +1,16 @@
 package com.kapmayn.featurehello.presentation.router
 
 import android.content.Context
-import com.kapmayn.core.presentation.router.Router
+import com.kapmayn.coreuikit.base.Router
+import com.kapmayn.diproviders.mediator.WorldMediator
+import javax.inject.Inject
 
-interface HelloFeatureRouter : Router {
+class HelloFeatureRouter
+@Inject constructor(
+    private val worldApi: WorldMediator
+) : Router {
 
-    fun openWorldScreen(context: Context)
+    fun openWorldScreen(context: Context) {
+        worldApi.openWorldScreen(context)
+    }
 }

@@ -14,29 +14,11 @@ data class PaddingValue(
 
 fun View.getInitialPadding() = PaddingValue(paddingLeft, paddingTop, paddingRight, paddingBottom)
 
-fun View.doOnApplyWindowInsets(block: View.(insets: WindowInsets, padding: PaddingValue) -> Unit) {
+fun View.doOnApplyWindowInsets(block: (insets: WindowInsets, padding: PaddingValue) -> Unit) {
     ifSupportLollipop {
         val initialPadding = getInitialPadding()
         setOnApplyWindowInsetsListener { view, insets ->
-            view.block(insets, initialPadding)
-            insets
-        }
-        requestApplyInsetsWhenAttached()
-    }
-}
-
-fun View.doOnApplyWindowInsets(block: View.(endedPadding: PaddingValue) -> Unit) {
-    ifSupportLollipop {
-        val initialPadding = getInitialPadding()
-        setOnApplyWindowInsetsListener { view, insets ->
-            view.block(
-                PaddingValue(
-                    insets.systemWindowInsetLeft + initialPadding.left,
-                    insets.systemWindowInsetTop + initialPadding.top,
-                    insets.systemWindowInsetRight + initialPadding.right,
-                    insets.systemWindowInsetBottom + initialPadding.bottom
-                )
-            )
+            block(insets, initialPadding)
             insets
         }
         requestApplyInsetsWhenAttached()

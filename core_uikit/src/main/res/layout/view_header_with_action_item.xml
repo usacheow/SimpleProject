@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kapmayn.coreuikit.widgets.HeaderWithActionView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="16dp"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <TextView
+        android:id="@+id/headerView"
+        style="@style/TextPrimaryDark"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:padding="8dp"
+        tools:text="Header" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:cardElevation="@dimen/elevation_0"
+        app:cardCornerRadius="@dimen/radius_4">
+
+        <TextView
+            android:id="@+id/actionButton"
+            style="@style/TextCaptionDark_60"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/ripple_rectangle"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            tools:text="Action" />
+    </com.google.android.material.card.MaterialCardView>
+</com.kapmayn.coreuikit.widgets.HeaderWithActionView>

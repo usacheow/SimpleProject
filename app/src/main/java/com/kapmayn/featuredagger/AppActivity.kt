@@ -1,8 +1,8 @@
 package com.kapmayn.featuredagger
 
 import android.os.Bundle
-import com.kapmayn.core.presentation.BottomBarHistoryManager
-import com.kapmayn.core.presentation.activity.SimpleActivity
+import com.kapmayn.coreuikit.activity.SimpleActivity
+import com.kapmayn.coreuikit.utils.BottomBarHistoryManager
 import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featuredagger.di.AppComponent
 

@@ -1,9 +1,9 @@
 package com.kapmayn.featurehello.presentation.activity
 
-import android.content.res.Resources
 import android.os.Bundle
-import com.kapmayn.core.presentation.activity.MvvmActivity
-import com.kapmayn.core.utils.injectViewModel
+import com.kapmayn.coreuikit.activity.SimpleActivity
+import com.kapmayn.coreuikit.utils.injectViewModel
+import com.kapmayn.coreuikit.viewmodels.ViewModelFactory
 import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featurehello.R
 import com.kapmayn.featurehello.di.HelloComponent
@@ -12,9 +12,10 @@ import com.kapmayn.featurehello.presentation.viewmodels.HelloViewModel
 import kotlinx.android.synthetic.main.activity_hello.helloButton
 import javax.inject.Inject
 
-class HelloActivity : MvvmActivity<HelloFeatureRouter>() {
+class HelloActivity : SimpleActivity() {
 
-    @Inject lateinit var res: Resources
+    @Inject lateinit var router: HelloFeatureRouter
+    @Inject lateinit var viewModelFactory: ViewModelFactory
     val viewModel by lazy { injectViewModel<HelloViewModel>(viewModelFactory) }
 
     override val layoutId = R.layout.activity_hello

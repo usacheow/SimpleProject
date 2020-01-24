@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 
 apply from: "$project.rootDir/build_script/version.gradle"
 apply from: "$project.rootDir/build_script/build_types.gradle"
@@ -99,6 +99,7 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core')
+    implementation project(':core_uikit')
     implementation project(':feature_hello')
     implementation project(':feature_world')
 

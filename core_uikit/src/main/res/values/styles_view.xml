@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SearchBar" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+    <style name="SimpleCollapsingToolbar" parent="Widget.Design.CollapsingToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:hint">@string/search_hint</item>
-        <item name="android:background">@drawable/ripple_search</item>
-        <item name="android:layout_marginLeft">@dimen/left_right_margin</item>
-        <item name="android:layout_marginRight">@dimen/left_right_margin</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingLeft">@dimen/left_right_padding</item>
-        <item name="android:paddingRight">@dimen/left_right_padding</item>
+        <item name="collapsedTitleGravity">start</item>
+        <item name="expandedTitleGravity">bottom</item>
+        <item name="collapsedTitleTextAppearance">@style/TextLogoSmallDark</item>
+        <item name="expandedTitleTextAppearance">@style/TextLogoBigDark</item>
+        <item name="expandedTitleMarginStart">20dp</item>
+        <item name="expandedTitleMarginBottom">20dp</item>
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="contentScrim">@color/white</item>
+        <item name="scrimAnimationDuration">250</item>
+        <item name="statusBarScrim">@color/transparent</item>
     </style>
 
-    <style name="CardViewLight" parent="CardView.Light">
-        <item name="cardBackgroundColor">@color/colorPrimary</item>
-        <item name="cardElevation">@dimen/elevation</item>
-        <item name="cardCornerRadius">@dimen/radius</item>
-        <item name="strokeColor">?ColorBorder</item>
-        <item name="strokeWidth">@dimen/border_width</item>
+    <style name="SimpleCollapsingToolbarContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="background">@color/white</item>
+        <item name="layout_collapseMode">pin</item>
     </style>
 
-    <style name="CardViewNight" parent="CardView.Dark">
-        <item name="cardBackgroundColor">@color/colorPrimaryNight</item>
-        <item name="cardElevation">@dimen/elevation</item>
-        <item name="cardCornerRadius">@dimen/radius</item>
-        <item name="strokeColor">?ColorBorder</item>
-        <item name="strokeWidth">@dimen/border_width</item>
+    <style name="SimpleToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="layout_collapseMode">pin</item>
+    </style>
+
+    <style name="SimpleAppBarLayout" parent="Widget.Design.AppBarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>

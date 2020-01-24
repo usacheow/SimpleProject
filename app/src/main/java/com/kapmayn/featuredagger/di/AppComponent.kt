@@ -12,7 +12,7 @@ import dagger.Component
 @Component(
     modules = [
         CoreModule::class,
-        FeatureApiModule::class,
+        MediatorModule::class,
         NetworkModule::class,
         DataBaseModule::class
     ]

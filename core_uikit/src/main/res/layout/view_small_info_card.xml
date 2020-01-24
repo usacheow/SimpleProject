@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kapmayn.coreuikit.widgets.SmallInfoCardItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/workoutGeneralInfoItemRootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="@dimen/radius_8"
+    app:cardElevation="@dimen/elevation_0"
+    app:cardBackgroundColor="@color/colorGreyCard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/left_right_padding">
+
+        <TextView
+            android:id="@+id/smallInfoHeaderView"
+            style="@style/TextSecondaryDark_60"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:ellipsize="end"
+            tools:text="header" />
+
+        <TextView
+            android:id="@+id/smallInfoValueView"
+            style="@style/TextPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:ellipsize="end"
+            tools:text="value" />
+    </LinearLayout>
+</com.kapmayn.coreuikit.widgets.SmallInfoCardItemView>

@@ -1,7 +1,7 @@
 package com.kapmayn.featureworld.presentation.viewmodels
 
 import android.content.res.Resources
-import com.kapmayn.core.presentation.viewmodels.SimpleRxViewModel
+import com.kapmayn.coreuikit.viewmodels.SimpleRxViewModel
 import javax.inject.Inject
 
 class WorldViewModel
