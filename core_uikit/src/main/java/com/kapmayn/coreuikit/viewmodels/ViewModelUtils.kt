@@ -1,4 +1,4 @@
-package com.kapmayn.coreuikit.utils
+package com.kapmayn.coreuikit.viewmodels
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -1,34 +1,33 @@
 package com.kapmayn.coreuikit.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kapmayn.coreuikit.viewmodels.livedata.ActionLiveData
-import com.kapmayn.coreuikit.viewmodels.livedata.NotNullLiveData
+import com.kapmayn.coreuikit.viewmodels.livedata.EventData
 import io.reactivex.disposables.CompositeDisposable
-import org.reactivestreams.Subscription
 
-abstract class RxViewModel<STATE, ACTION> : ViewModel() {
+open class MviViewModel<STATE, ACTION> : ViewModel() {
 
-    val state = NotNullLiveData<STATE>()
-    val action = ActionLiveData<ACTION>()
+    protected val disposables = CompositeDisposable()
 
-    protected var disposables = CompositeDisposable()
-    protected var subscriptions = mutableListOf<Subscription>()
+    protected val _state = MutableLiveData<STATE>()
+    val state: LiveData<STATE> = _state
+
+    protected val _action = MutableLiveData<EventData<ACTION>>()
+    val action: LiveData<EventData<ACTION>> = _action
 
     override fun onCleared() {
+        disposables.clear()
         super.onCleared()
-        disposables.dispose()
-        subscriptions.forEach { it.cancel() }
     }
 }
 
 abstract class SimpleRxViewModel : ViewModel() {
 
     protected var disposables = CompositeDisposable()
-    protected var subscriptions = mutableListOf<Subscription>()
 
     override fun onCleared() {
-        super.onCleared()
         disposables.dispose()
-        subscriptions.forEach { it.cancel() }
+        super.onCleared()
     }
 }

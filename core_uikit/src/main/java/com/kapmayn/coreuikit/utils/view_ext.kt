@@ -46,3 +46,10 @@ var View.bottomMargin: Int
             bottomMargin = value
         }
     }
+
+fun View.resize(widthDp: Int, heightDp: Int) {
+    layoutParams?.let {
+        it.width = widthDp.toPx
+        it.height = heightDp.toPx
+    }
+}

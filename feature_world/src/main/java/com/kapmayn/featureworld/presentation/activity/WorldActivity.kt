@@ -3,9 +3,9 @@ package com.kapmayn.featureworld.presentation.activity
 import android.content.Context
 import android.os.Bundle
 import com.kapmayn.coreuikit.activity.SimpleActivity
-import com.kapmayn.coreuikit.utils.injectViewModel
 import com.kapmayn.coreuikit.utils.start
 import com.kapmayn.coreuikit.viewmodels.ViewModelFactory
+import com.kapmayn.coreuikit.viewmodels.injectViewModel
 import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featureworld.R
 import com.kapmayn.featureworld.di.WorldComponent
