@@ -5,11 +5,8 @@ import com.kapmayn.coreuikit.base.Router
 import javax.inject.Inject
 
 class HelloFeatureRouter
-@Inject constructor(
-    private val worldApi: WorldMediator
-) : Router {
+@Inject constructor() : Router {
 
     fun openWorldScreen(context: Context) {
-        worldApi.openWorldScreen(context)
     }
 }

@@ -1,7 +1,7 @@
 package com.kapmayn.featuredagger.di
 
-import com.kapmayn.di.scope.ApplicationScope
-import com.kapmayn.diproviders.mediator.HelloMediator
+import com.kapmayn.core.mediator.HelloMediator
+import com.kapmayn.di.ApplicationScope
 import com.kapmayn.featurehello.presentation.router.HelloMediatorImpl
 import dagger.Binds
 import dagger.Module

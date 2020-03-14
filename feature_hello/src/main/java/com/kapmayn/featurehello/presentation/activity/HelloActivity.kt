@@ -1,10 +1,10 @@
 package com.kapmayn.featurehello.presentation.activity
 
 import android.os.Bundle
+import com.kapmayn.core.provider.DiProvider
 import com.kapmayn.coreuikit.activity.SimpleActivity
 import com.kapmayn.coreuikit.viewmodels.ViewModelFactory
 import com.kapmayn.coreuikit.viewmodels.injectViewModel
-import com.kapmayn.diproviders.provider.DiProvider
 import com.kapmayn.featurehello.R
 import com.kapmayn.featurehello.di.HelloComponent
 import com.kapmayn.featurehello.presentation.router.HelloFeatureRouter

@@ -99,6 +99,7 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core')
+    implementation project(':core_data')
     implementation project(':core_uikit')
     implementation project(':feature_hello')
 

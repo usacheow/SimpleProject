@@ -9,11 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.kapmayn.core.DiApp
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.core.analytics.Events
+import com.kapmayn.core.provider.DiProvider
 import com.kapmayn.coreuikit.base.IContainer
-import com.kapmayn.diproviders.provider.DiApp
-import com.kapmayn.diproviders.provider.DiProvider
 
 abstract class SimpleFragment : Fragment() {
 

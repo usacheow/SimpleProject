@@ -1,9 +1,9 @@
 package com.kapmayn.featuredagger
 
 import android.app.Application
+import com.kapmayn.core.DiApp
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
-import com.kapmayn.diproviders.provider.DiApp
-import com.kapmayn.diproviders.provider.DiProvider
+import com.kapmayn.core.provider.DiProvider
 import com.kapmayn.featuredagger.di.AppComponent
 
 class FeatureDaggerApp : Application(), DiApp {

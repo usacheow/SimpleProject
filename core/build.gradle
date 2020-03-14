@@ -17,8 +17,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
 
-    api project(':di_providers')
+    api project(':di')
+    implementation project(':core_data')
 
     api androidxDependencies.values()
     implementation uiDependencies.values()

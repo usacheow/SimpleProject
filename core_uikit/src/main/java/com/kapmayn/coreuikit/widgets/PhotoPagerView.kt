@@ -7,7 +7,6 @@ import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.adapters.ViewTypePagerAdapter
 import com.kapmayn.coreuikit.base.Populatable
 import com.kapmayn.coreuikit.base.ViewType
-import com.kapmayn.coreuikit.fragments.PhotoViewerObject
 import kotlinx.android.synthetic.main.photo_pager_view.view.photoViewPager
 import kotlinx.android.synthetic.main.photo_pager_view.view.photoViewPagerIndicator
 
@@ -19,8 +18,7 @@ class PhotoPagerView
     override fun populate(model: PhotoPagerViewObject) {
         val adapter = ViewTypePagerAdapter(model.photoUrlList.map {
             PhotoItem(it) {
-                val data = PhotoViewerObject(model.photoUrlList, photoViewPager.currentItem)
-                model.onClickAction(data)
+                model.onClickAction(model.photoUrlList, photoViewPager.currentItem)
             }
         })
 
@@ -31,5 +29,5 @@ class PhotoPagerView
 
 data class PhotoPagerViewObject(
     val photoUrlList: List<String>,
-    val onClickAction: (PhotoViewerObject) -> Unit
+    val onClickAction: (List<String>, Int) -> Unit
 ) : ViewType(R.layout.photo_pager_view)

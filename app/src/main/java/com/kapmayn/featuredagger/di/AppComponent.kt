@@ -1,9 +1,8 @@
 package com.kapmayn.featuredagger.di
 
-import com.kapmayn.database.di.DataBaseModule
-import com.kapmayn.datanetwork.di.NetworkModule
-import com.kapmayn.di.scope.ApplicationScope
-import com.kapmayn.diproviders.provider.DiProvider
+import com.kapmayn.core.provider.DiProvider
+import com.kapmayn.coredata.di.CoreDataModule
+import com.kapmayn.di.ApplicationScope
 import com.kapmayn.featuredagger.AppActivity
 import com.kapmayn.featuredagger.FeatureDaggerApp
 import dagger.Component
@@ -13,8 +12,7 @@ import dagger.Component
     modules = [
         CoreModule::class,
         MediatorModule::class,
-        NetworkModule::class,
-        DataBaseModule::class
+        CoreDataModule::class
     ]
 )
 interface AppComponent : DiProvider {

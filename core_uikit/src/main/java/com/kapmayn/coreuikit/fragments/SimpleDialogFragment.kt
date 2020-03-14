@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
+import com.kapmayn.core.DiApp
 import com.kapmayn.core.analytics.AnalyticsTrackerHolder
 import com.kapmayn.core.analytics.Events
-import com.kapmayn.diproviders.provider.DiApp
-import com.kapmayn.diproviders.provider.DiProvider
+import com.kapmayn.core.provider.DiProvider
 
 abstract class SimpleDialogFragment : DialogFragment() {
 
