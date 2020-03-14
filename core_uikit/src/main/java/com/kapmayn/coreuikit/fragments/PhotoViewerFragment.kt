@@ -5,7 +5,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.adapters.ViewTypePagerAdapter
-import com.kapmayn.coreuikit.utils.openShareDialog
+import com.kapmayn.coreuikit.utils.ext.openShareDialog
 import com.kapmayn.coreuikit.widgets.PhotoItem
 import com.kapmayn.diproviders.provider.DiProvider
 import kotlinx.android.synthetic.main.fragment_photo_viewer.photoViewPager

@@ -1,5 +1,6 @@
 package com.kapmayn.datanetwork.di
 
+import com.kapmayn.coreuikit.utils.Storage
 import com.kapmayn.datanetwork.BuildConfig
 import com.kapmayn.datanetwork.interceptors.AuthenticationInterceptor
 import com.kapmayn.di.scope.ApplicationScope
@@ -24,7 +25,9 @@ class OkHttpModule {
 
     @Provides
     @ApplicationScope
-    fun provideAuthenticationInterceptor() = AuthenticationInterceptor()
+    fun provideAuthenticationInterceptor(
+        storage: com.kapmayn.coreuikit.utils.Storage
+    ) = AuthenticationInterceptor(storage)
 
     @Provides
     @ApplicationScope

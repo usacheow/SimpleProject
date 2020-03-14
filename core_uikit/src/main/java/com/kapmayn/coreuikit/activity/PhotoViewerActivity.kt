@@ -3,7 +3,7 @@ package com.kapmayn.coreuikit.activity
 import android.content.Context
 import com.kapmayn.coreuikit.fragments.PhotoViewerFragment
 import com.kapmayn.coreuikit.fragments.PhotoViewerObject
-import com.kapmayn.coreuikit.utils.start
+import com.kapmayn.coreuikit.utils.ext.start
 import com.kapmayn.diproviders.provider.DiProvider
 
 private const val DATA_EXTRA = "DATA_EXTRA"

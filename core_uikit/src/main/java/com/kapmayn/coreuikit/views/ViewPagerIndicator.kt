@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.viewpager.widget.ViewPager
 import com.kapmayn.coreuikit.R
-import com.kapmayn.coreuikit.utils.onPageSelected
+import com.kapmayn.coreuikit.utils.ext.onPageSelected
 
 private const val DEFAULT_DELIMITER_SIZE = 10
 private const val DEFAULT_ITEM_HEIGHT = 10

@@ -3,6 +3,8 @@ package com.kapmayn.coreuikit.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.kapmayn.coreuikit.base.IContainer
+import com.kapmayn.coreuikit.utils.ext.hashTag
+import com.kapmayn.coreuikit.utils.ext.inTransaction
 import java.io.Serializable
 
 private const val FIRST_STACK_NUMBER = 0

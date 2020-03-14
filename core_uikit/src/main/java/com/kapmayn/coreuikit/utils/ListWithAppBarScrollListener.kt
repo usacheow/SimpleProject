@@ -3,6 +3,7 @@ package com.kapmayn.coreuikit.utils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
+import com.kapmayn.coreuikit.utils.ext.animateElevation
 
 class ListWithAppBarScrollListener(
     private val manager: LinearLayoutManager,

@@ -1,6 +1,7 @@
 package com.kapmayn.coreuikit.utils
 
 import androidx.recyclerview.widget.RecyclerView
+import com.kapmayn.coreuikit.utils.ext.hideKeyboard
 
 class ListWithKeyboardScrollListener : RecyclerView.OnScrollListener() {
 

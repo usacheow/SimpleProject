@@ -101,7 +101,6 @@ dependencies {
     implementation project(':core')
     implementation project(':core_uikit')
     implementation project(':feature_hello')
-    implementation project(':feature_world')
 
     implementation androidxDependencies.values()
     implementation uiDependencies.values()

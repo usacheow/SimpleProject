@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.material.chip.Chip
 import com.kapmayn.coreuikit.R
-import com.kapmayn.coreuikit.utils.setVisible
+import com.kapmayn.coreuikit.utils.ext.setVisible
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsButton
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsGroup
 

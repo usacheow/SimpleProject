@@ -1,1 +1,1 @@
-include ':app', ':core', ':feature_hello', ':feature_world', ':data_base', ':data_network', ':di', ':core_uikit', ':di_providers'
+include ':app', ':core', ':feature_hello', ':data_base', ':data_network', ':di', ':core_uikit', ':di_providers'

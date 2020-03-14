@@ -7,9 +7,9 @@ import androidx.annotation.StringRes
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.base.Populatable
 import com.kapmayn.coreuikit.base.ViewType
-import com.kapmayn.coreuikit.utils.makeGone
-import com.kapmayn.coreuikit.utils.makeVisible
-import com.kapmayn.coreuikit.utils.setVisible
+import com.kapmayn.coreuikit.utils.ext.makeGone
+import com.kapmayn.coreuikit.utils.ext.makeVisible
+import com.kapmayn.coreuikit.utils.ext.setVisible
 import kotlinx.android.synthetic.main.view_message.view.messageButton
 import kotlinx.android.synthetic.main.view_message.view.messageLayout
 import kotlinx.android.synthetic.main.view_message.view.messageLoader

@@ -27,6 +27,8 @@ dependencies {
     api uiDependencies.values()
 
     implementation rxDependencies.values()
+    implementation gsonDependencies.values()
+    implementation billingDependencies.values()
 
     implementation glideDependency
     kapt kaprGlideDependency

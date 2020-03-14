@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.base.IContainer
 import com.kapmayn.coreuikit.fragments.SimpleFragment
-import com.kapmayn.coreuikit.utils.inTransaction
-import com.kapmayn.coreuikit.utils.replaceFragmentIn
+import com.kapmayn.coreuikit.utils.ext.inTransaction
+import com.kapmayn.coreuikit.utils.ext.replaceFragmentIn
 
 abstract class ContainerActivity : SimpleActivity(), IContainer {
 

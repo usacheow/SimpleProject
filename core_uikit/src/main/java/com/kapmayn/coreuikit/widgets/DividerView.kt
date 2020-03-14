@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.base.Populatable
 import com.kapmayn.coreuikit.base.ViewType
-import com.kapmayn.coreuikit.utils.populate
+import com.kapmayn.coreuikit.utils.ext.populate
 import kotlinx.android.synthetic.main.view_divider.view.dividerTitle
 
 class DividerView

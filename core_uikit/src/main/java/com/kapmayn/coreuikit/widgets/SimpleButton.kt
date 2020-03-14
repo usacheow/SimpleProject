@@ -9,7 +9,7 @@ import com.google.android.material.button.MaterialButton
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.base.Populatable
 import com.kapmayn.coreuikit.base.ViewType
-import com.kapmayn.coreuikit.utils.toPx
+import com.kapmayn.coreuikit.utils.ext.toPx
 
 class SimpleButton
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)

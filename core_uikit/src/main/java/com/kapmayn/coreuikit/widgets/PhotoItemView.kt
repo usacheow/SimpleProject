@@ -6,7 +6,7 @@ import com.google.android.material.card.MaterialCardView
 import com.kapmayn.coreuikit.R
 import com.kapmayn.coreuikit.base.Populatable
 import com.kapmayn.coreuikit.base.ViewType
-import com.kapmayn.coreuikit.utils.load
+import com.kapmayn.coreuikit.utils.ext.load
 import kotlinx.android.synthetic.main.view_photo_item.view.imageView
 
 class PhotoItemView
