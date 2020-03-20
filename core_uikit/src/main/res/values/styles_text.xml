@@ -1,150 +1,164 @@
 <resources>
 
-    <style name="BaseTextDark" parent="android:Widget.TextView">
+    <style name="TextToolbarBigDark" parent="@style/TextToolbarBig">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextToolbarSmallDark" parent="@style/TextToolbarSmall">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextH1Dark" parent="@style/TextH1">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="BaseTextDark60" parent="@style/BaseTextDark">
+    <style name="TextH2Dark" parent="@style/TextH2">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextH3Dark" parent="@style/TextH3">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextH4Dark" parent="@style/TextH4">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextH5Dark" parent="@style/TextH5">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextH6Dark" parent="@style/TextH6">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextSubtitle1Dark" parent="@style/TextSubtitle1">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextSubtitle2Dark" parent="@style/TextSubtitle2">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextBody1Dark" parent="@style/TextBody1">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextBody1Dark_60" parent="@style/TextBody1Dark">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextLogoBigDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_28sp</item>
-        <item name="android:textAppearance">@style/Logo</item>
-        <item name="android:textColor">@color/black</item>
+    <style name="TextBody2Dark" parent="@style/TextBody2">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextLogoSmallDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_22sp</item>
-        <item name="android:textAppearance">@style/Logo</item>
-        <item name="android:textColor">@color/black</item>
+    <style name="TextBody2Dark_60" parent="@style/TextBody2Dark">
+        <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextHeaderDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_24sp</item>
-        <item name="android:textAppearance">@style/RobotoMedium</item>
+    <style name="TextButtonDark" parent="@style/TextButton">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextTitleDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_20sp</item>
-        <item name="android:textAppearance">@style/RobotoMedium</item>
-        <item name="android:textColor">@color/black</item>
+    <style name="TextCaptionDark" parent="@style/TextCaption">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextPrimaryDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_16sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextCaptionDark_60" parent="@style/TextCaptionDark">
+        <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextPrimaryDark_60" parent="@style/BaseTextDark60">
-        <item name="android:textSize">@dimen/font_size_16sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextOverlineDark" parent="@style/TextOverline">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextSecondaryDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextOverlineDark_60" parent="@style/TextOverlineDark">
+        <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextSecondaryDark_60" parent="@style/BaseTextDark60">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextDigitalDark" parent="@style/TextDigital">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextButtonDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-    <style name="TextCaptionDark" parent="@style/BaseTextDark">
-        <item name="android:textSize">@dimen/font_size_12sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-    </style>
-
-    <style name="TextCaptionDark_60" parent="@style/BaseTextDark60">
-        <item name="android:textSize">@dimen/font_size_12sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-    </style>
-
-    <style name="TextOverlineDark" parent="@style/BaseTextDark60">
-        <item name="android:textSize">@dimen/font_size_10sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-        <item name="android:textAllCaps">true</item>
+    <style name="TextNumPadDark" parent="@style/TextNumPad">
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
 
-    <style name="BaseTextLight" parent="android:Widget.TextView">
+    <style name="TextToolbarBigLight" parent="@style/TextToolbarBig">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextToolbarSmallLight" parent="@style/TextToolbarSmall">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextH1Light" parent="@style/TextH1">
         <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="BaseTextLight60" parent="@style/BaseTextLight">
+    <style name="TextH2Light" parent="@style/TextH2">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextH3Light" parent="@style/TextH3">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextH4Light" parent="@style/TextH4">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextH5Light" parent="@style/TextH5">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextH6Light" parent="@style/TextH6">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextSubtitle1Light" parent="@style/TextSubtitle1">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextSubtitle2Light" parent="@style/TextSubtitle2">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextBody1Light" parent="@style/TextBody1">
+        <item name="android:textColor">@color/colorTextNight</item>
+    </style>
+
+    <style name="TextBody1Light_60" parent="@style/TextBody1Light">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextLogoBigLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_28sp</item>
-        <item name="android:textAppearance">@style/Logo</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="TextBody2Light" parent="@style/TextBody2">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="TextLogoSmallLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_22sp</item>
-        <item name="android:textAppearance">@style/Logo</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="TextBody2Light_60" parent="@style/TextBody2Light">
+        <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextHeaderLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_24sp</item>
-        <item name="android:textAppearance">@style/RobotoMedium</item>
+    <style name="TextButtonLight" parent="@style/TextButton">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="TextTitleLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_20sp</item>
-        <item name="android:textAppearance">@style/RobotoMedium</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="TextCaptionLight" parent="@style/TextCaption">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="TextPrimaryLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_16sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextOverlineLight" parent="@style/TextOverline">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="TextPrimaryLight_60" parent="@style/BaseTextLight60">
-        <item name="android:textSize">@dimen/font_size_16sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
+    <style name="TextDigitalLight" parent="@style/TextDigital">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
-    <style name="TextSecondaryLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
-    </style>
-
-    <style name="TextSecondaryLight_60" parent="@style/BaseTextLight60">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
-    </style>
-
-    <style name="TextButtonLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_14sp</item>
-        <item name="android:textAppearance">@style/RobotoRegular</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-    <style name="TextCaptionLight" parent="@style/BaseTextLight">
-        <item name="android:textSize">@dimen/font_size_12sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-    </style>
-
-    <style name="TextCaptionLight_60" parent="@style/BaseTextLight60">
-        <item name="android:textSize">@dimen/font_size_12sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-    </style>
-
-    <style name="TextOverlineLight" parent="@style/BaseTextLight60">
-        <item name="android:textSize">@dimen/font_size_10sp</item>
-        <item name="android:textAppearance">@style/RobotoLight</item>
-        <item name="android:textAllCaps">true</item>
+    <style name="TextNumPadLight" parent="@style/TextNumPad">
+        <item name="android:textColor">@color/colorTextNight</item>
     </style>
 
 </resources>

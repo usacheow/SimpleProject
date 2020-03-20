@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-apply from: "$project.rootDir/build_script/dependencies.gradle"
+apply from: "$project.rootDir/dependencies.gradle"
 
 android {
 
@@ -22,13 +22,17 @@ dependencies {
     implementation kotlinDependency
 
     implementation project(':core')
+    implementation project(':core_data')
+    implementation project(':di_provider')
 
     implementation androidxDependencies.values()
     api uiDependencies.values()
 
+    implementation firebaseDependencies.values()
+    implementation billingDependencies.values()
+
     implementation rxDependencies.values()
     implementation gsonDependencies.values()
-    implementation billingDependencies.values()
 
     implementation glideDependency
     kapt kaprGlideDependency

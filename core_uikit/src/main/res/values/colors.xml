@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#FFFFFF</color>a
-    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorPrimary">#2979FF</color>a
+    <color name="colorPrimaryDark">#2979FF</color>
     <color name="colorAccent">#2979FF</color>
+    <color name="colorToolbar">#FFFFFF</color>
 
     <color name="colorBackground">#FFFFFF</color>
 
@@ -11,25 +12,31 @@
     <color name="colorGreyCard">#F2F3F4</color>
     <color name="cardStroke">#E3E7EB</color>
 
-    <color name="colorText">#505d6f</color>
-    <color name="colorTextNight">#ffffff</color>
+    <color name="colorText">#212121</color>
+    <color name="colorTextSecondary">#99212121</color>
+    <color name="colorTextNight">#FFFFFF</color>
 
-    <color name="colorIconPrimary">#505d6f</color>
-    <color name="colorIconSecondary">#9097A2</color>
+    <color name="colorIconPrimary">#212121</color>
+    <color name="colorIconSecondary">#DBDEE6</color>
 
-    <color name="colorDivider">#f7f7f7</color>
+    <color name="colorDivider">#E6E9EC</color>
     <color name="colorBlur">#80000000</color>
 
     <color name="colorRipple">#33000000</color>
-    <color name="colorRippleNight">#99ffffff</color>
+    <color name="colorRippleNight">#99FFFFFF</color>
 
-    <color name="white">#ffffff</color>
+    <color name="error">#F44336</color>
+    <color name="success">#4CAF50</color>
+    <color name="disabled">#B3B3B3</color>
+
+    <color name="white">#FFFFFF</color>
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_80">#CCFFFFFF</color>
     <color name="white_60">#99ffffff</color>
     <color name="white_50">#80FFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="black_10">#1A000000</color>
     <color name="black_30">#4D000000</color>
     <color name="black_50">#80000000</color>
     <color name="black_80">#CC000000</color>

@@ -6,11 +6,10 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.kapmayn.coreuikit.views.EndFadeEdgeHorizontalScrollView
+    <HorizontalScrollView
         android:id="@+id/chipsContainerLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/left_right_margin"
         android:clipToPadding="false"
         android:scrollbars="none"
         android:requiresFadingEdge="horizontal"
@@ -24,8 +23,9 @@
             android:id="@+id/chipsGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </com.kapmayn.coreuikit.views.EndFadeEdgeHorizontalScrollView>
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/left_right_margin" />
+    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/chipsButton"

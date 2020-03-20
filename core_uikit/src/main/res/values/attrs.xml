@@ -9,4 +9,14 @@
         <attr name="style_item" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="BalanceTextView">
+        <attr name="primary_color" format="color" />
+        <attr name="secondary_color" format="color" />
+        <attr name="separator" format="enum">
+            <enum name="dot" value="0" />
+            <enum name="comma" value="1" />
+            <enum name="undefined" value="2" />
+        </attr>
+    </declare-styleable>
+
 </resources>

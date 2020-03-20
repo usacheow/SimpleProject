@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreuikit.widgets.ActionItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/actionRootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/left_right_margin"
+    android:orientation="horizontal"
+    android:gravity="top"
+    android:background="?attr/selectableItemBackground">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/actionIconShapeView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/left_right_margin"
+        app:cardElevation="@dimen/elevation_0"
+        app:cardCornerRadius="@dimen/radius_8"
+        tools:cardBackgroundColor="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/actionIconView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/actionTitleView"
+                style="@style/TextBody1Dark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                tools:text="Title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/actionDragFlagView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_drag"
+                tools:visibility="visible" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/actionSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:visibility="gone"
+                tools:checked="true"
+                tools:visibility="visible" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/actionCheckBox"
+                android:layout_width="32dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:visibility="gone"
+                tools:checked="true" />
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/actionSubtitleView"
+            style="@style/TextBody2Dark_60"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="Subtitle" />
+    </LinearLayout>
+</com.usacheow.coreuikit.widgets.ActionItemView>

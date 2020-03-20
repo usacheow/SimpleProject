@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.kapmayn.featurehello">
+    package="com.usacheow.featurehello">
 
     <application>
-        <activity android:name="com.kapmayn.featurehello.presentation.activity.HelloActivity" />
+        <activity android:name="com.usacheow.featurehello.presentation.activity.HelloActivity" />
     </application>
 
 </manifest>

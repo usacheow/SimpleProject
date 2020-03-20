@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">network</string>
+
+    <string name="connection_error_message">Отсутствует подключение к сети, проверьте сетевое соединение</string>
+    <string name="invalid_token_error_message">Ваша сессия истекла. Необходимо авторизоваться заново</string>
+    <string name="server_error_message">Сервис временно недоступен. Попробуйте повторить позднее</string>
+    <string name="unknown_error_message">Произошла ошибка. Попробуйте повторить позднее</string>
+
 </resources>

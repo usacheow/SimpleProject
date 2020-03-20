@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp" />
 
-    <com.kapmayn.coreuikit.views.ViewPagerIndicator
+    <com.usacheow.coreuikit.views.ViewPagerIndicator
         android:id="@+id/photoViewPagerIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

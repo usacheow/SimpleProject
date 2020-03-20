@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fontsListView"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextH1Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGreyCard"
+            android:text="Text H1 Dark" />
+
+        <TextView
+            style="@style/TextH2Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text H2 Dark" />
+
+        <TextView
+            style="@style/TextH3Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text H3 Dark" />
+
+        <TextView
+            style="@style/TextH4Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text H4 Dark" />
+
+        <TextView
+            style="@style/TextH5Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text H5 Dark" />
+
+        <TextView
+            style="@style/TextH6Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text H6 Dark" />
+
+        <TextView
+            style="@style/TextSubtitle1Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Subtitle1 Dark" />
+
+        <TextView
+            style="@style/TextSubtitle2Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Subtitle2 Dark" />
+
+        <TextView
+            style="@style/TextBody1Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Body1 Dark" />
+
+        <TextView
+            style="@style/TextBody2Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Body2 Dark" />
+
+        <TextView
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Button Dark" />
+
+        <TextView
+            style="@style/TextCaptionDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Caption Dark" />
+
+        <TextView
+            style="@style/TextOverlineDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Overline Dark" />
+
+        <TextView
+            style="@style/TextDigitalDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Digital Dark" />
+
+        <TextView
+            style="@style/TextNumPadDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGreyCard"
+            android:text="Text Num Pad Dark" />
+    </LinearLayout>
+</ScrollView>

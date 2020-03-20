@@ -10,9 +10,11 @@
     <dimen name="font_size_22sp">22.0sp</dimen>
     <dimen name="font_size_24sp">24.0sp</dimen>
     <dimen name="font_size_28sp">28.0sp</dimen>
-    <dimen name="font_size_30sp">30.0sp</dimen>
+    <dimen name="font_size_32sp">32.0sp</dimen>
+    <dimen name="font_size_36sp">36.0sp</dimen>
+    <dimen name="font_size_38sp">38.0sp</dimen>
 
-    <dimen name="progress_size">36dp</dimen>
+    <dimen name="progress_size">48dp</dimen>
 
     <dimen name="left_right_margin">16dp</dimen>
     <dimen name="left_right_padding">12dp</dimen>
@@ -33,5 +35,9 @@
     <dimen name="elevation_2">2dp</dimen>
     <dimen name="elevation_0">0dp</dimen>
     <dimen name="stroke_card">1dp</dimen>
+
+    <dimen name="num_pad_button_size">56dp</dimen>
+    <dimen name="num_pad_button_margin_vertical">0dp</dimen>
+    <dimen name="num_pad_button_margin_horizontal">12dp</dimen>
 
 </resources>

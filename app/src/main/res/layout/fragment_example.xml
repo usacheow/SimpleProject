@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/exampleRootView"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/exampleHeaderView"
+            style="@style/TextH1Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="Demo Uikit"
+            android:background="@color/colorDivider" />
+
+        <TextView
+            style="@style/TextOverlineDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="Components" />
+
+        <TextView
+            android:id="@+id/fontsScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Fonts Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/widgetsScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="2. Widgets Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/viewsScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Views Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            style="@style/TextOverlineDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:layout_marginTop="16dp"
+            android:text="Screens" />
+
+        <TextView
+            android:id="@+id/pinCodeScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Pin Code Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/signInByPhoneScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="2. Sign In By Phone Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/signInScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="3. Sign In Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/signUpScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="4. Sign Up Fragment"
+            android:background="@drawable/ripple_rectangle" />
+
+        <TextView
+            android:id="@+id/calendarScreen"
+            style="@style/TextButtonDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="5. Calendar Fragment (in progress)"
+            android:background="@drawable/ripple_rectangle" />
+    </LinearLayout>
+</ScrollView>

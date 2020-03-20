@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kapmayn.coreuikit.widgets.ViewTypeHorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuikit.widgets.lists.ViewTypeHorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -11,4 +11,4 @@
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:clipToPadding="false" />
-</com.kapmayn.coreuikit.widgets.ViewTypeHorizontalListView>
+</com.usacheow.coreuikit.widgets.lists.ViewTypeHorizontalListView>
