@@ -20,10 +20,10 @@ ext {
     browserVersion = '1.0.0'
     dexterVersion = '6.0.2'
 
-    crashlyticsVersion = '2.9.8'
     analyticsVersion = '17.2.1'
     messagingVersion = '20.1.0'
     configVersion = '19.0.3'
+    authVersion = '19.3.0'
     billingVersion = '1.2.1'
 
     picassoVersion = '2.71828'
@@ -70,8 +70,8 @@ ext {
     firebaseDependencies = [
             analytics:    "com.google.firebase:firebase-analytics:$analyticsVersion",
             messaging:    "com.google.firebase:firebase-messaging:$messagingVersion",
-            crashlytics:  "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
-            config:       "com.google.firebase:firebase-config:$configVersion"
+            config:       "com.google.firebase:firebase-config:$configVersion",
+            auth:         "com.google.firebase:firebase-auth:$authVersion"
     ]
 
     billingDependencies = [

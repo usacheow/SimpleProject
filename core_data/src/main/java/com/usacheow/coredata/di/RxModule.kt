@@ -1,7 +1,7 @@
 package com.usacheow.coredata.di
 
 import com.google.gson.Gson
-import com.usacheow.coredata.error.RxErrorHandlingCallAdapterFactory
+import com.usacheow.coredata.network.error.RxErrorHandlingCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable

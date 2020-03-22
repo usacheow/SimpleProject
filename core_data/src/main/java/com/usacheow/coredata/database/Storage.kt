@@ -1,4 +1,4 @@
-package com.usacheow.coredata
+package com.usacheow.coredata.database
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -2,20 +2,19 @@ package com.usacheow.authorization.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.usacheow.authorization.domain.commands.AuthByLoginAndPasswordCommand
-import com.usacheow.coredata.error.ErrorProcessorImpl
-import com.usacheow.coredata.setRequestThreads
-import com.usacheow.coreuikit.viewmodels.SimpleRxViewModel
+import com.usacheow.authorization.domain.AuthInteractor
+import com.usacheow.coredata.network.error.ErrorProcessorImpl
+import com.usacheow.coredata.network.observer.SimpleCompletableObserver
+import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
-import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
-class SignInViewModel
+class SignInWithLoginAndPasswordViewModel
 @Inject constructor(
     errorProcessor: ErrorProcessorImpl,
-    private val authCommand: AuthByLoginAndPasswordCommand
-) : SimpleRxViewModel(errorProcessor) {
+    private val interactor: AuthInteractor
+) : NetworkRxViewModel(errorProcessor) {
 
     val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
     private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
@@ -45,17 +44,25 @@ class SignInViewModel
     fun onSignInClicked(login: String, password: String) {
         if (!isLoginValid(login) || !isPasswordValid(password)) return
 
-        disposables.clear()
-        disposables += authCommand.execute(login, password)
-            .doOnSubscribe { _isLoadingStateLiveData.postValue(true) }
-            .setRequestThreads()
-            .defaultSubscribe {
+        val observer = SimpleCompletableObserver.Builder()
+            .onSubscribe { _isLoadingStateLiveData.postValue(true) }
+            .onError(::onError)
+            .onSuccess {
                 _isLoadingStateLiveData.value = false
                 _openMainScreenLiveData.value = SimpleAction()
             }
+            .build()
+
+        disposables.clear()
+        interactor.signInWithLoginAndPassword(login, password, observer)
     }
 
     fun onSignUpClicked() {
         _openSignUpScreenLiveData.value = SimpleAction()
+    }
+
+    override fun onCleared() {
+        interactor.onDetach()
+        super.onCleared()
     }
 }

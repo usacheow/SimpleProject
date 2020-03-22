@@ -1,4 +1,4 @@
-package com.usacheow.coredata.error
+package com.usacheow.coredata.network.error
 
 import com.google.gson.Gson
 import io.reactivex.Completable

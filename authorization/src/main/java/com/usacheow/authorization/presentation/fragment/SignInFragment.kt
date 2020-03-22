@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.usacheow.authorization.R
 import com.usacheow.authorization.di.AuthorizationComponent
 import com.usacheow.authorization.presentation.router.AuthorizationRouter
-import com.usacheow.authorization.presentation.viewmodels.SignInViewModel
+import com.usacheow.authorization.presentation.viewmodels.SignInWithLoginAndPasswordViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
 import com.usacheow.coreuikit.utils.ext.doOnClick
@@ -31,7 +31,7 @@ class SignInFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by lazy { injectViewModel<SignInViewModel>(viewModelFactory) }
+    private val viewModel by lazy { injectViewModel<SignInWithLoginAndPasswordViewModel>(viewModelFactory) }
 
     private var loginInputListener: TextWatcher? = null
     private var passwordInputListener: TextWatcher? = null

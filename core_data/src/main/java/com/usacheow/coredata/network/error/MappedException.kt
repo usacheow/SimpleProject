@@ -1,4 +1,4 @@
-package com.usacheow.coredata.error
+package com.usacheow.coredata.network.error
 
 data class MappedException(
     private val detailMessage: String,

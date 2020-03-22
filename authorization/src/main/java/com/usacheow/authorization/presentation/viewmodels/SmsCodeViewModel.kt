@@ -3,10 +3,15 @@ package com.usacheow.authorization.presentation.viewmodels
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.usacheow.authorization.R
+import com.usacheow.coredata.SMS_CODE_TIMEOUT_SECONDS
+import com.usacheow.coredata.network.setRequestThreads
+import com.usacheow.coreuikit.viewmodels.SimpleRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
+import io.reactivex.Observable
+import io.reactivex.rxkotlin.plusAssign
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 private const val EMPTY_MESSAGE = ""
@@ -15,7 +20,7 @@ private const val EMPTY_CODE = ""
 class SmsCodeViewModel
 @Inject constructor(
     private val resources: Resources
-) : ViewModel() {
+) : SimpleRxViewModel() {
 
     private var currentCode = ""
     private var maxCodeLength = 0
@@ -50,14 +55,31 @@ class SmsCodeViewModel
 
         _inputtedCodeLiveData.value = EMPTY_CODE
         _isLoadingStateLiveData.value = false
+
+        startTimer()
+    }
+
+    private fun startTimer() {
+        _isResendButtonEnabledLiveData.value = false
+        _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS)
+
+        disposables += Observable.interval(1L, TimeUnit.SECONDS)
+            .setRequestThreads()
+            .take(SMS_CODE_TIMEOUT_SECONDS.toLong())
+            .map { SMS_CODE_TIMEOUT_SECONDS - it }
+            .subscribe(
+                { _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer, it) },
+                {},
+                {
+                    _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend)
+                    _isResendButtonEnabledLiveData.value = true
+                }
+            )
     }
 
     fun onResendClicked() {
+        startTimer()
         _resendCodeLiveData.value = SimpleAction()
-
-        _isResendButtonEnabledLiveData.value = false
-        _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer)
-//        _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend)
     }
 
     fun onDigitAdded(digit: String) {

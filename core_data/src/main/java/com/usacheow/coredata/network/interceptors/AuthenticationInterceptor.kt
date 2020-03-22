@@ -1,6 +1,6 @@
-package com.usacheow.coredata.interceptors
+package com.usacheow.coredata.network.interceptors
 
-import com.usacheow.coredata.Storage
+import com.usacheow.coredata.database.Storage
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

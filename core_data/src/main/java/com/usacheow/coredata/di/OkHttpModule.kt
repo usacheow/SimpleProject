@@ -1,8 +1,8 @@
 package com.usacheow.coredata.di
 
 import com.usacheow.coredata.BuildConfig
-import com.usacheow.coredata.Storage
-import com.usacheow.coredata.interceptors.AuthenticationInterceptor
+import com.usacheow.coredata.database.Storage
+import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides

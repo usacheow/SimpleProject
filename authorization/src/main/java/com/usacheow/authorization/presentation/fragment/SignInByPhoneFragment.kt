@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.usacheow.authorization.R
 import com.usacheow.authorization.di.AuthorizationComponent
 import com.usacheow.authorization.presentation.router.AuthorizationRouter
-import com.usacheow.authorization.presentation.viewmodels.SignInByPhoneViewModel
+import com.usacheow.authorization.presentation.viewmodels.SignInWithPhoneViewModel
 import com.usacheow.authorization.presentation.viewmodels.SmsCodeViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
@@ -31,7 +31,7 @@ class SignInByPhoneFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by lazy { injectViewModel<SignInByPhoneViewModel>(viewModelFactory) }
+    private val viewModel by lazy { injectViewModel<SignInWithPhoneViewModel>(viewModelFactory) }
     private val smsCodeViewModel by lazy { injectViewModel<SmsCodeViewModel>(viewModelFactory) }
 
     private var signInPhoneInputListener: TextWatcher? = null

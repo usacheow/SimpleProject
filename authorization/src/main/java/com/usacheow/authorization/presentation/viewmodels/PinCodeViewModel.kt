@@ -3,7 +3,7 @@ package com.usacheow.authorization.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.usacheow.coredata.Storage
+import com.usacheow.coredata.database.Storage
 import com.usacheow.coreuikit.utils.biometric.BiometricManagerImpl
 import com.usacheow.coreuikit.utils.biometric.FingerprintManagerImpl
 import com.usacheow.coreuikit.utils.biometric.FingerprintUtils

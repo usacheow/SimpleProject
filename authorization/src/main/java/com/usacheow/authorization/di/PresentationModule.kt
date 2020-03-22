@@ -2,9 +2,9 @@ package com.usacheow.authorization.di
 
 import androidx.lifecycle.ViewModel
 import com.usacheow.authorization.presentation.viewmodels.PinCodeViewModel
-import com.usacheow.authorization.presentation.viewmodels.SignInByPhoneViewModel
-import com.usacheow.authorization.presentation.viewmodels.SignInViewModel
-import com.usacheow.authorization.presentation.viewmodels.SignUpViewModel
+import com.usacheow.authorization.presentation.viewmodels.SignInWithLoginAndPasswordViewModel
+import com.usacheow.authorization.presentation.viewmodels.SignInWithPhoneViewModel
+import com.usacheow.authorization.presentation.viewmodels.SignUpWithLoginAndPasswordViewModel
 import com.usacheow.authorization.presentation.viewmodels.SmsCodeViewModel
 import com.usacheow.coreuikit.viewmodels.ViewModelFactoryModule
 import com.usacheow.coreuikit.viewmodels.ViewModelKey
@@ -22,18 +22,18 @@ interface PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignUpViewModel::class)
-    fun signUpViewModel(viewModel: SignUpViewModel): ViewModel
+    @ViewModelKey(SignUpWithLoginAndPasswordViewModel::class)
+    fun signUpViewModel(viewModel: SignUpWithLoginAndPasswordViewModel): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignInViewModel::class)
-    fun signInViewModel(viewModel: SignInViewModel): ViewModel
+    @ViewModelKey(SignInWithLoginAndPasswordViewModel::class)
+    fun signInViewModel(viewModel: SignInWithLoginAndPasswordViewModel): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignInByPhoneViewModel::class)
-    fun signInByPhoneViewModel(viewModel: SignInByPhoneViewModel): ViewModel
+    @ViewModelKey(SignInWithPhoneViewModel::class)
+    fun signInByPhoneViewModel(viewModel: SignInWithPhoneViewModel): ViewModel
 
     @Binds
     @IntoMap

@@ -1,7 +1,7 @@
 package com.usacheow.coredata.di
 
 import com.usacheow.coredata.BuildConfig
-import com.usacheow.coredata.error.RxErrorHandlingCallAdapterFactory
+import com.usacheow.coredata.network.error.RxErrorHandlingCallAdapterFactory
 import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides

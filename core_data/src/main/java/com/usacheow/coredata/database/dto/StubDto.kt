@@ -1,4 +1,4 @@
-package com.usacheow.coredata.dto
+package com.usacheow.coredata.database.dto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

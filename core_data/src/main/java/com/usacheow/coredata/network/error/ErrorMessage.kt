@@ -1,4 +1,4 @@
-package com.usacheow.coredata.error
+package com.usacheow.coredata.network.error
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

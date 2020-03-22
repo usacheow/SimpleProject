@@ -2,28 +2,23 @@ package com.usacheow.authorization.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.usacheow.authorization.domain.commands.AuthByCodeCommand
-import com.usacheow.authorization.domain.commands.SendCodeByPhoneCommand
-import com.usacheow.coredata.Storage
-import com.usacheow.coredata.error.ErrorProcessorImpl
-import com.usacheow.coredata.setRequestThreads
+import com.usacheow.authorization.domain.AuthInteractor
+import com.usacheow.coredata.CONFIRM_CODE_LENGTH
+import com.usacheow.coredata.network.error.ErrorProcessorImpl
+import com.usacheow.coredata.network.observer.SimpleCompletableObserver
 import com.usacheow.coreuikit.utils.ext.normalizedPhoneNumber
-import com.usacheow.coreuikit.viewmodels.SimpleRxViewModel
+import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
-import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
-private const val CONFIRM_CODE_LENGTH = 4
 
-class SignInByPhoneViewModel
+class SignInWithPhoneViewModel
 @Inject constructor(
     errorProcessor: ErrorProcessorImpl,
-    private val sendCodeByPhoneCommand: SendCodeByPhoneCommand,
-    private val authByCodeCommand: AuthByCodeCommand,
-    private val storage: Storage
-) : SimpleRxViewModel(errorProcessor) {
+    private val interactor: AuthInteractor
+) : NetworkRxViewModel(errorProcessor) {
 
     val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
     private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
@@ -42,6 +37,8 @@ class SignInByPhoneViewModel
 
     val openConfirmScreen: LiveData<Int> get() = _openConfirmScreenLiveData
     private val _openConfirmScreenLiveData by lazy { ActionLiveData<Int>() }
+
+    private var phoneNumber = ""
 
     init {
         _isLoadingStateLiveData.value = false
@@ -63,18 +60,20 @@ class SignInByPhoneViewModel
     }
 
     private fun sendPhoneNumberIfValid(phone: String) {
-        val phoneNumber = phone.normalizedPhoneNumber()
+        phoneNumber = phone.normalizedPhoneNumber()
         if (!isValidPhoneNumber(phoneNumber)) return
 
-        disposables.clear()
-        disposables += sendCodeByPhoneCommand.execute(phone)
-            .doOnSubscribe { _isLoadingStateLiveData.postValue(true) }
-            .setRequestThreads()
-            .defaultSubscribe {
-                storage.phoneNumber = phone
+        val observer = SimpleCompletableObserver.Builder()
+            .onSubscribe { _isLoadingStateLiveData.postValue(true) }
+            .onError(::onError)
+            .onSuccess {
                 _isLoadingStateLiveData.value = false
                 _openConfirmScreenLiveData.value = CONFIRM_CODE_LENGTH
             }
+            .build()
+
+        disposables.clear()
+        interactor.signInWithPhone(phone, observer)
     }
 
     fun onSignUpClicked() {
@@ -84,12 +83,18 @@ class SignInByPhoneViewModel
     fun onCodeInputted(code: String) {
         if (code.isEmpty()) return
 
-        disposables += authByCodeCommand.execute(code)
-            .setRequestThreads()
-            .subscribe {
+        val observer = SimpleCompletableObserver.Builder()
+            .onError(::onError)
+            .onSuccess {
                 _codeConfirmStateLiveData.value = null
                 _openMainScreenLiveData.value = SimpleAction()
-            }
-//            .subscribe { _codeConfirmStateLiveData.value = "Неверный код" }
+//                _codeConfirmStateLiveData.value = "Неверный код"
+            }.build()
+        interactor.verifyPhone(phoneNumber, code, observer)
+    }
+
+    override fun onCleared() {
+        interactor.onDetach()
+        super.onCleared()
     }
 }

@@ -2,7 +2,7 @@ package com.usacheow.coredata.di
 
 import android.content.Context
 import androidx.room.Room
-import com.usacheow.coredata.AppDatabase
+import com.usacheow.coredata.database.AppDatabase
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage

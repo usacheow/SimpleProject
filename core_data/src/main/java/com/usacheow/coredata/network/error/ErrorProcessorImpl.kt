@@ -1,4 +1,4 @@
-package com.usacheow.coredata.error
+package com.usacheow.coredata.network.error
 
 import android.content.res.Resources
 import androidx.annotation.StringRes

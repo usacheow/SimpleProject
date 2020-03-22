@@ -1,6 +1,6 @@
 package com.usacheow.diprovider
 
-import com.usacheow.coredata.AppDatabase
+import com.usacheow.coredata.database.AppDatabase
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Retrofit

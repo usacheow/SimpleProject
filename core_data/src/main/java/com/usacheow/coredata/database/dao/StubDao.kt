@@ -1,11 +1,11 @@
-package com.usacheow.coredata.dao
+package com.usacheow.coredata.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.usacheow.coredata.dto.StubDto
+import com.usacheow.coredata.database.dto.StubDto
 import io.reactivex.Flowable
 
 @Dao
