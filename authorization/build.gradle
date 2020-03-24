@@ -37,6 +37,6 @@ dependencies {
     implementation daggerDependency
     kapt kaptDaggerDependency
 
-    testImplementation unitTestDependencies.values()
+    testImplementation project(':core_unit_test')
     androidTestImplementation uiTestDependencies.values()
 }
