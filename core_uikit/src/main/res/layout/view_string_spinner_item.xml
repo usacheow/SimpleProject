@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/spinnerTitle"
-        style="@style/TextOverlineDark"
+        style="@style/TextOverline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lines="1"

@@ -23,6 +23,12 @@ abstract class NetworkRxViewModel(
     private val errorProcessor: ErrorProcessor
 ) : ViewModel() {
 
+    val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
+    protected val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
+
+    val errorState: LiveData<MappedException> get() = _errorStateLiveData
+    protected val _errorStateLiveData by lazy { MutableLiveData<MappedException>() }
+
     protected var disposables = CompositeDisposable()
 
     override fun onCleared() {

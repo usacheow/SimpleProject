@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/signUpHeaderView"
-        style="@style/TextH5Dark"
+        style="@style/TextH5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_header"
@@ -30,7 +30,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/signUpLoginInput"
-            style="@style/TextBody1Dark"
+            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/sign_in_login"
@@ -53,7 +53,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/signUpPasswordInput"
-            style="@style/TextBody1Dark"
+            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

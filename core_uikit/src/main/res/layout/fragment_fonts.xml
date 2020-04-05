@@ -11,14 +11,14 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextH1Dark"
+            style="@style/TextH1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorGreyCard"
             android:text="Text H1 Dark" />
 
         <TextView
-            style="@style/TextH2Dark"
+            style="@style/TextH2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -26,7 +26,7 @@
             android:text="Text H2 Dark" />
 
         <TextView
-            style="@style/TextH3Dark"
+            style="@style/TextH3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -34,7 +34,7 @@
             android:text="Text H3 Dark" />
 
         <TextView
-            style="@style/TextH4Dark"
+            style="@style/TextH4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
             android:text="Text H4 Dark" />
 
         <TextView
-            style="@style/TextH5Dark"
+            style="@style/TextH5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -50,7 +50,7 @@
             android:text="Text H5 Dark" />
 
         <TextView
-            style="@style/TextH6Dark"
+            style="@style/TextH6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -58,7 +58,7 @@
             android:text="Text H6 Dark" />
 
         <TextView
-            style="@style/TextSubtitle1Dark"
+            style="@style/TextSubtitle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -66,7 +66,7 @@
             android:text="Text Subtitle1 Dark" />
 
         <TextView
-            style="@style/TextSubtitle2Dark"
+            style="@style/TextSubtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -74,7 +74,7 @@
             android:text="Text Subtitle2 Dark" />
 
         <TextView
-            style="@style/TextBody1Dark"
+            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -82,7 +82,7 @@
             android:text="Text Body1 Dark" />
 
         <TextView
-            style="@style/TextBody2Dark"
+            style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -90,7 +90,7 @@
             android:text="Text Body2 Dark" />
 
         <TextView
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -98,7 +98,7 @@
             android:text="Text Button Dark" />
 
         <TextView
-            style="@style/TextCaptionDark"
+            style="@style/TextCaption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -106,7 +106,7 @@
             android:text="Text Caption Dark" />
 
         <TextView
-            style="@style/TextOverlineDark"
+            style="@style/TextOverline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -114,7 +114,7 @@
             android:text="Text Overline Dark" />
 
         <TextView
-            style="@style/TextDigitalDark"
+            style="@style/TextDigital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -122,7 +122,7 @@
             android:text="Text Digital Dark" />
 
         <TextView
-            style="@style/TextNumPadDark"
+            style="@style/TextNumPad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

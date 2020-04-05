@@ -13,6 +13,7 @@ import com.usacheow.core.analytics.AnalyticsTrackerHolder
 import com.usacheow.core.analytics.Events
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
+import com.usacheow.coreuikit.utils.ext.isDarkMode
 import com.usacheow.diprovider.DiApp
 import com.usacheow.diprovider.DiProvider
 
@@ -20,7 +21,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected abstract val layoutId: Int
     protected open var needTransparentBars = true
-    protected open var needDarkIcons = true
+//    private var needDarkIcons = true
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
@@ -53,6 +54,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     private fun changeSystemIconColorIfNeed() {
         if (!needTransparentBars) return
 
+        val needDarkIcons = !isDarkMode()
         val canMakeDarkIconInStatusBar = needDarkIcons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
         val canMakeDarkIconInStatusAndNavigationBar = canMakeDarkIconInStatusBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 

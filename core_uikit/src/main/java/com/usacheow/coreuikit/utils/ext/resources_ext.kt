@@ -2,6 +2,7 @@ package com.usacheow.coreuikit.utils.ext
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Point
 import android.util.DisplayMetrics
@@ -41,5 +42,8 @@ val Int.toPx: Int
 
 fun Fragment.getDisplayWidthPixels() = activity?.getDisplayWidthPixels() ?: 0
 
-fun Fragment.getDisplayWidth(screenSize: Point = Point()) = activity?.getDisplayWidth(screenSize)
-    ?: 0
+fun Fragment.getDisplayWidth(screenSize: Point = Point()) = activity?.getDisplayWidth(screenSize) ?: 0
+
+fun Fragment.isDarkMode(): Boolean {
+    return context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+}

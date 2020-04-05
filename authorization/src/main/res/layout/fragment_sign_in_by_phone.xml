@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/signInHeaderView"
-        style="@style/TextH5Dark"
+        style="@style/TextH5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_in_by_phone_header"
@@ -18,7 +18,7 @@
 
     <br.com.sapereaude.maskedEditText.MaskedEditText
         android:id="@+id/signInPhoneInput"
-        style="@style/TextDigitalDark"
+        style="@style/TextDigital"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"

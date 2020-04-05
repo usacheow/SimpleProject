@@ -12,8 +12,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="collapsedTitleGravity">start</item>
         <item name="expandedTitleGravity">bottom</item>
-        <item name="collapsedTitleTextAppearance">@style/TextToolbarSmallDark</item>
-        <item name="expandedTitleTextAppearance">@style/TextToolbarBigDark</item>
+        <item name="collapsedTitleTextAppearance">@style/TextToolbarSmall</item>
+        <item name="expandedTitleTextAppearance">@style/TextToolbarBig</item>
         <item name="expandedTitleMarginStart">20dp</item>
         <item name="expandedTitleMarginBottom">20dp</item>
         <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
@@ -59,7 +59,7 @@
         <item name="elevation">@dimen/elevation_4</item>
     </style>
 
-    <style name="NumPadButton" parent="TextNumPadDark">
+    <style name="NumPadButton" parent="TextNumPad">
         <item name="android:layout_width">@dimen/num_pad_button_size</item>
         <item name="android:layout_height">@dimen/num_pad_button_size</item>
         <item name="android:layout_marginTop">@dimen/num_pad_button_margin_vertical</item>

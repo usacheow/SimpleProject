@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/fingerprintTitleView"
-        style="@style/TextH6Dark"
+        style="@style/TextH6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fingerprint_title" />
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/fingerprintMessageView"
-            style="@style/TextBody1Dark"
+            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fingerprint_message" />

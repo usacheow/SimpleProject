@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SplashAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="SplashAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/white</item>
@@ -13,7 +13,7 @@
         <item name="android:navigationBarColor">@color/transparent</item>
     </style>
 
-    <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -27,7 +27,7 @@
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>
 
-    <style name="ModalDialog" parent="Theme.MaterialComponents.Light.Dialog">
+    <style name="ModalDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -44,7 +44,7 @@
         <item name="android:navigationBarColor">#4D000000</item>
     </style>
 
-    <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+    <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 

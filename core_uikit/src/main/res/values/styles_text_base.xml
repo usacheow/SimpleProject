@@ -1,102 +1,102 @@
 <resources>
 
-    <style name="TextToolbarBig" parent="android:Widget.TextView">
+    <style name="BaseTextToolbarBig" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_28sp</item>
         <item name="android:textAppearance">@style/Logo</item>
     </style>
 
-    <style name="TextToolbarSmall" parent="android:Widget.TextView">
+    <style name="BaseTextToolbarSmall" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_22sp</item>
         <item name="android:textAppearance">@style/Logo</item>
     </style>
 
-    <style name="TextH1" parent="android:Widget.TextView">
+    <style name="BaseTextH1" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_38sp</item>
         <item name="android:textAppearance">@style/RobotoLight</item>
         <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH2" parent="android:Widget.TextView">
+    <style name="BaseTextH2" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_36sp</item>
         <item name="android:textAppearance">@style/RobotoLight</item>
         <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH3" parent="android:Widget.TextView">
+    <style name="BaseTextH3" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_32sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH4" parent="android:Widget.TextView">
+    <style name="BaseTextH4" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_28sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.025</item>
     </style>
 
-    <style name="TextH5" parent="android:Widget.TextView">
+    <style name="BaseTextH5" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_24sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH6" parent="android:Widget.TextView">
+    <style name="BaseTextH6" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_20sp</item>
         <item name="android:textAppearance">@style/RobotoMedium</item>
         <item name="android:letterSpacing">0.0075</item>
     </style>
 
-    <style name="TextSubtitle1" parent="android:Widget.TextView">
+    <style name="BaseTextSubtitle1" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_16sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.009</item>
     </style>
 
-    <style name="TextSubtitle2" parent="android:Widget.TextView">
+    <style name="BaseTextSubtitle2" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_14sp</item>
         <item name="android:textAppearance">@style/RobotoMedium</item>
         <item name="android:letterSpacing">0.007</item>
     </style>
 
-    <style name="TextBody1" parent="android:Widget.TextView">
+    <style name="BaseTextBody1" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_16sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.03125</item>
     </style>
 
-    <style name="TextBody2" parent="android:Widget.TextView">
+    <style name="BaseTextBody2" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_14sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.017</item>
     </style>
 
-    <style name="TextButton" parent="android:Widget.TextView">
+    <style name="BaseTextButton" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_14sp</item>
         <item name="android:textAppearance">@style/RobotoMedium</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.09</item>
     </style>
 
-    <style name="TextCaption" parent="android:Widget.TextView">
+    <style name="BaseTextCaption" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_12sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:letterSpacing">0.03</item>
     </style>
 
-    <style name="TextOverline" parent="android:Widget.TextView">
+    <style name="BaseTextOverline" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_10sp</item>
         <item name="android:textAppearance">@style/RobotoRegular</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.15</item>
     </style>
 
-    <style name="TextDigital" parent="android:Widget.TextView">
+    <style name="BaseTextDigital" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_24sp</item>
         <item name="android:textAppearance">@style/RobotoLight</item>
         <item name="android:letterSpacing">0.015</item>
     </style>
 
-    <style name="TextNumPad" parent="android:Widget.TextView">
+    <style name="BaseTextNumPad" parent="android:Widget.TextView">
         <item name="android:textSize">@dimen/font_size_36sp</item>
         <item name="android:textAppearance">@style/RobotoLight</item>
     </style>

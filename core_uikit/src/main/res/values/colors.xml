@@ -4,17 +4,20 @@
     <color name="colorPrimary">#2979FF</color>a
     <color name="colorPrimaryDark">#2979FF</color>
     <color name="colorAccent">#2979FF</color>
+
+    <color name="colorStatusBar">#4D000000</color>
+    <color name="colorNavigationBar">#4D000000</color>
     <color name="colorToolbar">#FFFFFF</color>
 
     <color name="colorBackground">#FFFFFF</color>
 
     <color name="colorCard">#FFFFFF</color>
     <color name="colorGreyCard">#F2F3F4</color>
-    <color name="cardStroke">#E3E7EB</color>
+    <color name="cardStroke">#E6E9EC</color>
 
     <color name="colorText">#212121</color>
     <color name="colorTextSecondary">#99212121</color>
-    <color name="colorTextNight">#FFFFFF</color>
+    <color name="colorTextInverse">#FFFFFF</color>
 
     <color name="colorIconPrimary">#212121</color>
     <color name="colorIconSecondary">#DBDEE6</color>
@@ -23,7 +26,7 @@
     <color name="colorBlur">#80000000</color>
 
     <color name="colorRipple">#33000000</color>
-    <color name="colorRippleNight">#99FFFFFF</color>
+    <color name="colorRippleInverse">#99FFFFFF</color>
 
     <color name="error">#F44336</color>
     <color name="success">#4CAF50</color>
@@ -35,6 +38,7 @@
     <color name="white_60">#99ffffff</color>
     <color name="white_50">#80FFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
+
     <color name="black">#000000</color>
     <color name="black_10">#1A000000</color>
     <color name="black_30">#4D000000</color>

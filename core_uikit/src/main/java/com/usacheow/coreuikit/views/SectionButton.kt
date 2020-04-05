@@ -63,7 +63,7 @@ class SectionButton
 
     private fun addButton(value: String, isLast: Boolean) {
         val padding = BUTTON_PADDING_DP.toPx
-        val button = TextView(ContextThemeWrapper(context, R.style.TextButton)).apply {
+        val button = TextView(ContextThemeWrapper(context, R.style.BaseTextButton)).apply {
             updatePadding(padding, padding, padding, padding)
             setOnClickListener(this@SectionButton)
             id = View.generateViewId()

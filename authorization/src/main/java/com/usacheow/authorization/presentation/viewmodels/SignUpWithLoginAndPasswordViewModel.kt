@@ -16,9 +16,6 @@ class SignUpWithLoginAndPasswordViewModel
     private val interactor: AuthInteractor
 ) : NetworkRxViewModel(errorProcessor) {
 
-    val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
-    private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
-
     val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData
     private val _submitButtonEnabledLiveData by lazy { MutableLiveData<Boolean>() }
 

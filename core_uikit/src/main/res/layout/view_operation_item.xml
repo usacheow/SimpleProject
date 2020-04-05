@@ -30,7 +30,7 @@
 
             <TextView
                 android:id="@+id/operationTypeView"
-                style="@style/TextOverlineDark_60"
+                style="@style/TextOverline_60"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/operationCardNumberView"
-                style="@style/TextOverlineDark_60"
+                style="@style/TextOverline_60"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -55,7 +55,7 @@
 
             <TextView
                 android:id="@+id/operationNameView"
-                style="@style/TextBody1Dark"
+                style="@style/TextBody1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,7 +65,7 @@
 
             <com.usacheow.coreuikit.views.BalanceTextView
                 android:id="@+id/operationSumView"
-                style="@style/TextBody1Dark"
+                style="@style/TextBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

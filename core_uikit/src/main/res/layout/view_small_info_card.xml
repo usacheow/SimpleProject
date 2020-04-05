@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/smallInfoHeaderView"
-            style="@style/TextBody2Dark_60"
+            style="@style/TextBody2_60"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/smallInfoValueView"
-            style="@style/TextBody1Dark"
+            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"

@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/exampleHeaderView"
-            style="@style/TextH1Dark"
+            style="@style/TextH1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -20,7 +20,7 @@
             android:background="@color/colorDivider" />
 
         <TextView
-            style="@style/TextOverlineDark"
+            style="@style/TextOverline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/fontsScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -37,7 +37,7 @@
 
         <TextView
             android:id="@+id/widgetsScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/viewsScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -54,7 +54,7 @@
             android:background="@drawable/ripple_rectangle" />
 
         <TextView
-            style="@style/TextOverlineDark"
+            style="@style/TextOverline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/pinCodeScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -72,7 +72,7 @@
 
         <TextView
             android:id="@+id/signInByPhoneScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/signInScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -90,7 +90,7 @@
 
         <TextView
             android:id="@+id/signUpScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
@@ -99,7 +99,7 @@
 
         <TextView
             android:id="@+id/calendarScreen"
-            style="@style/TextButtonDark"
+            style="@style/TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorCard"
     app:cardElevation="@dimen/elevation_0"
     app:cardCornerRadius="0dp">
 
     <TextView
         android:id="@+id/calendarMonthView"
-        style="@style/TextBody2Dark_60"
+        style="@style/TextBody2_60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

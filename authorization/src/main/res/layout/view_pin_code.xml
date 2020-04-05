@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/hintTextView"
-        style="@style/TextBody1Dark"
+        style="@style/TextBody1"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:gravity="center"

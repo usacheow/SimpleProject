@@ -20,9 +20,6 @@ class SignInWithPhoneViewModel
     private val interactor: AuthInteractor
 ) : NetworkRxViewModel(errorProcessor) {
 
-    val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
-    private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
-
     val codeConfirmState: LiveData<String?> get() = _codeConfirmStateLiveData
     private val _codeConfirmStateLiveData by lazy { MutableLiveData<String?>() }
 

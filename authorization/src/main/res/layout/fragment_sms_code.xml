@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/signInHeaderView"
-            style="@style/TextH5Dark"
+            style="@style/TextH5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sms_code_header"
@@ -45,7 +45,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/smsCodeInput"
-                style="@style/TextDigitalDark"
+                style="@style/TextDigital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="4"
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/smsCodeMessageView"
-            style="@style/TextBody2Dark"
+            style="@style/TextBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -73,7 +73,7 @@
 
         <TextView
             android:id="@+id/smsCodeResendButton"
-            style="@style/TextBody2Dark"
+            style="@style/TextBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/left_right_margin"

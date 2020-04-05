@@ -3,7 +3,6 @@ package com.usacheow.coredata.network.error
 import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.usacheow.coredata.R
-import java.io.IOException
 import javax.inject.Inject
 
 class ErrorProcessorImpl
@@ -13,8 +12,13 @@ class ErrorProcessorImpl
 
     override fun process(throwable: Throwable) = when (throwable) {
         is InvalidAccessTokenException -> MappedException(getString(R.string.invalid_token_error_message), ExceptionType.INVALID_TOKEN)
+
+        is NoConnectivityException -> MappedException(getErrorMessage(throwable.message, R.string.connection_error_message), ExceptionType.IO)
+
+        is HostException -> MappedException(getString(R.string.connection_error_message), ExceptionType.SERVER)
+
         is ServerException -> MappedException(getErrorMessage(throwable.message, R.string.server_error_message), ExceptionType.SERVER)
-        is IOException -> MappedException(getErrorMessage(throwable.message, R.string.connection_error_message), ExceptionType.IO)
+
         else -> MappedException(getString(R.string.unknown_error_message), ExceptionType.UNKNOWN)
     }
 

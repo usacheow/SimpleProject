@@ -1,164 +1,164 @@
 <resources>
 
-    <style name="TextToolbarBigDark" parent="@style/TextToolbarBig">
+    <style name="TextToolbarBig" parent="@style/BaseTextToolbarBig">
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextToolbarSmallDark" parent="@style/TextToolbarSmall">
+    <style name="TextToolbarSmall" parent="@style/BaseTextToolbarSmall">
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextH1Dark" parent="@style/TextH1">
+    <style name="TextH1" parent="@style/BaseTextH1">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextH2Dark" parent="@style/TextH2">
+    <style name="TextH2" parent="@style/BaseTextH2">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextH3Dark" parent="@style/TextH3">
+    <style name="TextH3" parent="@style/BaseTextH3">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextH4Dark" parent="@style/TextH4">
+    <style name="TextH4" parent="@style/BaseTextH4">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextH5Dark" parent="@style/TextH5">
+    <style name="TextH5" parent="@style/BaseTextH5">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextH6Dark" parent="@style/TextH6">
+    <style name="TextH6" parent="@style/BaseTextH6">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextSubtitle1Dark" parent="@style/TextSubtitle1">
+    <style name="TextSubtitle1" parent="@style/BaseTextSubtitle1">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextSubtitle2Dark" parent="@style/TextSubtitle2">
+    <style name="TextSubtitle2" parent="@style/BaseTextSubtitle2">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextBody1Dark" parent="@style/TextBody1">
+    <style name="TextBody1" parent="@style/BaseTextBody1">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextBody1Dark_60" parent="@style/TextBody1Dark">
+    <style name="TextBody1_60" parent="@style/TextBody1">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextBody2Dark" parent="@style/TextBody2">
+    <style name="TextBody2" parent="@style/BaseTextBody2">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextBody2Dark_60" parent="@style/TextBody2Dark">
+    <style name="TextBody2_60" parent="@style/TextBody2">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextButtonDark" parent="@style/TextButton">
+    <style name="TextButton" parent="@style/BaseTextButton">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextCaptionDark" parent="@style/TextCaption">
+    <style name="TextCaption" parent="@style/BaseTextCaption">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextCaptionDark_60" parent="@style/TextCaptionDark">
+    <style name="TextCaption_60" parent="@style/TextCaption">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextOverlineDark" parent="@style/TextOverline">
+    <style name="TextOverline" parent="@style/BaseTextOverline">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextOverlineDark_60" parent="@style/TextOverlineDark">
+    <style name="TextOverline_60" parent="@style/TextOverline">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextDigitalDark" parent="@style/TextDigital">
+    <style name="TextDigital" parent="@style/BaseTextDigital">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
-    <style name="TextNumPadDark" parent="@style/TextNumPad">
+    <style name="TextNumPad" parent="@style/BaseTextNumPad">
         <item name="android:textColor">@color/colorText</item>
     </style>
 
 
-    <style name="TextToolbarBigLight" parent="@style/TextToolbarBig">
+    <style name="TextToolbarBigInverse" parent="@style/BaseTextToolbarBig">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="TextToolbarSmallLight" parent="@style/TextToolbarSmall">
+    <style name="TextToolbarSmallInverse" parent="@style/BaseTextToolbarSmall">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="TextH1Light" parent="@style/TextH1">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH1Inverse" parent="@style/BaseTextH1">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextH2Light" parent="@style/TextH2">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH2Inverse" parent="@style/BaseTextH2">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextH3Light" parent="@style/TextH3">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH3Inverse" parent="@style/BaseTextH3">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextH4Light" parent="@style/TextH4">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH4Inverse" parent="@style/BaseTextH4">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextH5Light" parent="@style/TextH5">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH5Inverse" parent="@style/BaseTextH5">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextH6Light" parent="@style/TextH6">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextH6Inverse" parent="@style/BaseTextH6">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextSubtitle1Light" parent="@style/TextSubtitle1">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextSubtitle1Inverse" parent="@style/BaseTextSubtitle1">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextSubtitle2Light" parent="@style/TextSubtitle2">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextSubtitle2Inverse" parent="@style/BaseTextSubtitle2">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextBody1Light" parent="@style/TextBody1">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextBody1Inverse" parent="@style/BaseTextBody1">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextBody1Light_60" parent="@style/TextBody1Light">
+    <style name="TextBody1Inverse_60" parent="@style/TextBody1Inverse">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextBody2Light" parent="@style/TextBody2">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextBody2Inverse" parent="@style/BaseTextBody2">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextBody2Light_60" parent="@style/TextBody2Light">
+    <style name="TextBody2Inverse_60" parent="@style/TextBody2Inverse">
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="TextButtonLight" parent="@style/TextButton">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextButtonInverse" parent="@style/BaseTextButton">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextCaptionLight" parent="@style/TextCaption">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextCaptionInverse" parent="@style/BaseTextCaption">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextOverlineLight" parent="@style/TextOverline">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextOverlineInverse" parent="@style/BaseTextOverline">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextDigitalLight" parent="@style/TextDigital">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextDigitalInverse" parent="@style/BaseTextDigital">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
-    <style name="TextNumPadLight" parent="@style/TextNumPad">
-        <item name="android:textColor">@color/colorTextNight</item>
+    <style name="TextNumPadInverse" parent="@style/BaseTextNumPad">
+        <item name="android:textColor">@color/colorTextInverse</item>
     </style>
 
 </resources>

@@ -1,7 +1,26 @@
 package com.usacheow.coredata.network.error
 
-import java.io.IOException
+class InvalidAccessTokenException(
+    detailMessage: String? = null,
+    throwable: Throwable? = null
+) : Exception(detailMessage, throwable)
 
-class InvalidAccessTokenException(detailMessage: String?) : IOException(detailMessage)
+class NoConnectivityException(
+    detailMessage: String? = null,
+    throwable: Throwable? = null
+) : Exception(detailMessage, throwable)
 
-class ServerException(detailMessage: String? = null, throwable: Throwable? = null) : Exception(detailMessage, throwable)
+class HostException(
+    detailMessage: String? = null,
+    throwable: Throwable? = null
+) : Exception(detailMessage, throwable)
+
+class ServerException(
+    detailMessage: String? = null,
+    throwable: Throwable? = null
+) : Exception(detailMessage, throwable)
+
+class UnknownException(
+    detailMessage: String? = null,
+    throwable: Throwable? = null
+) : Exception(detailMessage, throwable)
