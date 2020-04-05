@@ -1,10 +1,10 @@
 package com.usacheow.coreuikit.demo
 
-import android.os.Bundle
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.diprovider.DiProvider
 import kotlinx.android.synthetic.main.fragment_fonts.fontsListView
 
@@ -19,9 +19,10 @@ class FontsFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        fontsListView.doOnApplyWindowInsets { insets, _ ->
-            fontsListView.updatePadding(top = insets.systemWindowInsetTop, bottom = insets.systemWindowInsetBottom)
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        fontsListView.updatePadding(
+            top = insets.systemWindowInsetTop,
+            bottom = insets.systemWindowInsetBottom
+        )
     }
 }

@@ -1,13 +1,14 @@
 package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.adapters.ViewTypesAdapter
 import com.usacheow.coreuikit.fragments.SimpleFragment
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.TODAY
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
 import com.usacheow.coreuikit.widgets.ActionIconSize
 import com.usacheow.coreuikit.widgets.ActionItem
 import com.usacheow.coreuikit.widgets.ActionSelectionType
@@ -31,11 +32,14 @@ class WidgetsFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        widgetsListView.doOnApplyWindowInsets { insets, _ ->
-            widgetsListView.updatePadding(top = insets.systemWindowInsetTop, bottom = insets.systemWindowInsetBottom)
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        widgetsListView.updatePadding(
+            top = insets.systemWindowInsetTop,
+            bottom = insets.systemWindowInsetBottom
+        )
+    }
 
+    override fun setupViews(savedInstanceState: Bundle?) {
         widgetsListView.layoutManager = LinearLayoutManager(context)
         widgetsListView.adapter = ViewTypesAdapter(listOf(
             HeaderWithActionItem("Action items", "Details"),

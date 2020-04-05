@@ -1,11 +1,11 @@
 package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.coreuikit.utils.BottomBarHistoryManager
+import com.usacheow.coreuikit.utils.MultiStackHistoryManager
 import javax.inject.Inject
 
-class MainScreenViewModel
+class StateViewModel
 @Inject constructor() : ViewModel() {
 
-    var state: BottomBarHistoryManager.State? = null
+    var state: MultiStackHistoryManager.State? = null
 }

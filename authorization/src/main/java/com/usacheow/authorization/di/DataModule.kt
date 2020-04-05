@@ -2,7 +2,7 @@ package com.usacheow.authorization.di
 
 import com.usacheow.authorization.data.AuthRepository
 import com.usacheow.authorization.data.AuthRepositoryImpl
-import com.usacheow.di.FeatureScope
+import com.usacheow.di.FragmentScope
 import dagger.Module
 import dagger.Provides
 
@@ -10,6 +10,6 @@ import dagger.Provides
 class DataModule {
 
     @Provides
-    @FeatureScope
+    @FragmentScope
     fun provideRepository(): AuthRepository = AuthRepositoryImpl()
 }

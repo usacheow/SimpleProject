@@ -18,7 +18,7 @@ fun View.getInitialPadding() = PaddingValue(paddingLeft, paddingTop, paddingRigh
 fun View.doOnApplyWindowInsets(block: (insets: WindowInsets, padding: PaddingValue) -> Unit) {
     ifSupportLollipop {
         val initialPadding = getInitialPadding()
-        setOnApplyWindowInsetsListener { view, insets ->
+        setOnApplyWindowInsetsListener { _, insets ->
             block(insets, initialPadding)
             insets
         }

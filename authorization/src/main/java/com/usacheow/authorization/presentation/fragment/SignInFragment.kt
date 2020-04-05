@@ -2,6 +2,7 @@ package com.usacheow.authorization.presentation.fragment
 
 import android.os.Bundle
 import android.text.TextWatcher
+import android.view.WindowInsets
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
@@ -11,7 +12,7 @@ import com.usacheow.authorization.di.AuthorizationComponent
 import com.usacheow.authorization.presentation.router.AuthorizationRouter
 import com.usacheow.authorization.presentation.viewmodels.SignInWithLoginAndPasswordViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.onTextChanged
 import com.usacheow.coreuikit.viewmodels.injectViewModel
@@ -44,14 +45,14 @@ class SignInFragment : SimpleFragment() {
         AuthorizationComponent.init(diProvider).inject(this)
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        signInRootView.doOnApplyWindowInsets { insets, padding ->
-            signInRootView.updatePadding(
-                top = insets.systemWindowInsetTop + padding.top,
-                bottom = insets.systemWindowInsetBottom + padding.bottom
-            )
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        signInRootView.updatePadding(
+            top = insets.systemWindowInsetTop + padding.top,
+            bottom = insets.systemWindowInsetBottom + padding.bottom
+        )
+    }
 
+    override fun setupViews(savedInstanceState: Bundle?) {
         loginInputListener = signInLoginInput.onTextChanged {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }

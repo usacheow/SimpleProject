@@ -21,11 +21,21 @@ import com.usacheow.diprovider.DiProvider
 abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     protected abstract val layoutId: Int
-    protected open val needWrapContent = true
-    protected open val needMiddleState = false
+
+    protected open val needWrapContent = false
+
     protected open val needExpand = false
-    protected open val peekHeightPercent = BottomDialogHeight.QUARTER_SIZE
-    protected open val halfHeightPercent = BottomDialogHeight.HALF_SIZE
+
+    /*
+    * halfExpandedRatio value when needMiddleState
+    * */
+    protected open val middleStatePercent = BottomDialogHeight.HALF_SIZE
+    protected open val needMiddleState = false
+
+    /*
+    * peekHeight value
+    * */
+    protected open val startStatePercent = BottomDialogHeight.QUARTER_SIZE
 
     override fun onStart() {
         super.onStart()
@@ -53,24 +63,22 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet!!)
 
             bottomSheetBehavior.isFitToContents = needWrapContent
+            if (needWrapContent) return@setOnShowListener
+
             if (needExpand) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
-            if (peekHeightPercent != BottomDialogHeight.WRAP_CONTENT) {
-                bottomSheetBehavior.peekHeight = getPeekHeight()
-            }
-            if (!needWrapContent && (needMiddleState || peekHeightPercent != BottomDialogHeight.FULL_SIZE)) {
-                bottomSheetBehavior.halfExpandedRatio = when (needMiddleState) {
-                    true -> halfHeightPercent.divisor
-                    false -> peekHeightPercent.divisor
-                }
+            bottomSheetBehavior.peekHeight = getPeekHeight()
+            bottomSheetBehavior.halfExpandedRatio = when {
+                needMiddleState -> middleStatePercent.divisor
+                else -> startStatePercent.divisor
             }
         }
 
         return bottomSheetDialog
     }
 
-    private fun getPeekHeight() = (peekHeightPercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
+    private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId, container, false)
@@ -99,9 +107,7 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
 enum class BottomDialogHeight(val divisor: Float) {
 
-    FULL_SIZE(1.0f),
     THREE_QUARTERS_SIZE(0.75f),
     HALF_SIZE(0.5f),
-    QUARTER_SIZE(0.25f),
-    WRAP_CONTENT(-1.0f)
+    QUARTER_SIZE(0.25f)
 }

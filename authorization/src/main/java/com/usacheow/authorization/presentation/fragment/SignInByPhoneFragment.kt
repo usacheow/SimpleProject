@@ -2,6 +2,7 @@ package com.usacheow.authorization.presentation.fragment
 
 import android.os.Bundle
 import android.text.TextWatcher
+import android.view.WindowInsets
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
@@ -12,7 +13,7 @@ import com.usacheow.authorization.presentation.router.AuthorizationRouter
 import com.usacheow.authorization.presentation.viewmodels.SignInWithPhoneViewModel
 import com.usacheow.authorization.presentation.viewmodels.SmsCodeViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.onTextChanged
 import com.usacheow.coreuikit.viewmodels.injectViewModel
@@ -44,14 +45,14 @@ class SignInByPhoneFragment : SimpleFragment() {
         AuthorizationComponent.init(diProvider).inject(this)
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        signInByPhoneRootView.doOnApplyWindowInsets { insets, padding ->
-            signInByPhoneRootView.updatePadding(
-                top = insets.systemWindowInsetTop + padding.top,
-                bottom = insets.systemWindowInsetBottom + padding.bottom
-            )
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        signInByPhoneRootView.updatePadding(
+            top = insets.systemWindowInsetTop + padding.top,
+            bottom = insets.systemWindowInsetBottom + padding.bottom
+        )
+    }
 
+    override fun setupViews(savedInstanceState: Bundle?) {
         signInPhoneInputListener = signInPhoneInput.onTextChanged { viewModel.onPhoneChanged(it) }
         signInPhoneInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {

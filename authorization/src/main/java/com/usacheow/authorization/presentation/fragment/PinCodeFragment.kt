@@ -1,6 +1,7 @@
 package com.usacheow.authorization.presentation.fragment
 
 import android.os.Bundle
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import com.usacheow.authorization.R
@@ -11,7 +12,7 @@ import com.usacheow.authorization.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.biometric.SignInError
 import com.usacheow.coreuikit.utils.biometric.SignInSuccess
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.string
 import com.usacheow.coreuikit.viewmodels.injectViewModel
@@ -38,14 +39,14 @@ class PinCodeFragment : SimpleFragment() {
         AuthorizationComponent.init(diProvider).inject(this)
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        pinCodeRootView.doOnApplyWindowInsets { insets, padding ->
-            pinCodeRootView.updatePadding(
-                top = insets.systemWindowInsetTop + padding.top,
-                bottom = insets.systemWindowInsetBottom + padding.bottom
-            )
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        pinCodeRootView.updatePadding(
+            top = insets.systemWindowInsetTop + padding.top,
+            bottom = insets.systemWindowInsetBottom + padding.bottom
+        )
+    }
 
+    override fun setupViews(savedInstanceState: Bundle?) {
         pinCodeView.setHint(string(R.string.pin_view_hint))
         pinCodeView.onBiometricButtonClickedAction = { viewModel.displayFingerprintPrompt() }
         pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }

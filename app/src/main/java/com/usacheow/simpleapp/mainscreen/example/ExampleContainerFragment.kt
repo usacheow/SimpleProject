@@ -1,4 +1,4 @@
-package com.usacheow.simpleapp.mainscreen
+package com.usacheow.simpleapp.mainscreen.example
 
 import com.usacheow.coreuikit.fragments.ContainerFragment
 

@@ -1,6 +1,7 @@
 package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.R
@@ -8,7 +9,7 @@ import com.usacheow.coreuikit.adapters.ViewTypesAdapter
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.CalendarWrapper
 import com.usacheow.coreuikit.utils.DateFormat
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.isToday
 import com.usacheow.coreuikit.widgets.calendar.CalendarDayItem
 import com.usacheow.coreuikit.widgets.calendar.CalendarMonthItem
@@ -29,11 +30,14 @@ class CalendarFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        calendarListView.doOnApplyWindowInsets { insets, _ ->
-            calendarListView.updatePadding(top = insets.systemWindowInsetTop, bottom = insets.systemWindowInsetBottom)
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        calendarListView.updatePadding(
+            top = insets.systemWindowInsetTop,
+            bottom = insets.systemWindowInsetBottom
+        )
+    }
 
+    override fun setupViews(savedInstanceState: Bundle?) {
         calendarListView.layoutManager = LinearLayoutManager(context)
         calendarListView.adapter = ViewTypesAdapter((0..11).map {
             currentMonth.getMonthItem().also { currentMonth.turnOnNextMonth() }

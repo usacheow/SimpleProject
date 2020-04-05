@@ -3,8 +3,8 @@ package com.usacheow.coreuikit.activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.R
+import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
-import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.inTransaction
 import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
 
@@ -57,7 +57,7 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
         val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
         val backStackEntryCount = supportFragmentManager.backStackEntryCount
 
-        if (activeFragment is SimpleFragment && activeFragment.onBackPressed()) {
+        if (activeFragment is IBackListener && activeFragment.onBackPressed()) {
         } else if (activeFragment != null && backStackEntryCount > 1) {
             supportFragmentManager.popBackStackImmediate()
         } else {

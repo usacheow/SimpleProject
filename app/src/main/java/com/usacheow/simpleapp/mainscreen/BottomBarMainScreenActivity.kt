@@ -9,11 +9,12 @@ import com.usacheow.diprovider.DiProvider
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
 import com.usacheow.simpleapp.mainscreen.example.ExampleContainerFragment
+import kotlinx.android.synthetic.main.activity_bottom_bar_main_screen.appBottomBar
 import javax.inject.Inject
 
-class MainScreenActivity : SimpleActivity(), MultiStackHistoryManager.OnSelectedSectionChangedListener {
+class BottomBarMainScreenActivity : SimpleActivity(), MultiStackHistoryManager.OnSelectedSectionChangedListener {
 
-    override val layoutId = R.layout.activity_main_screen
+    override val layoutId = R.layout.activity_bottom_bar_main_screen
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy { injectViewModel<StateViewModel>(viewModelFactory) }
@@ -21,6 +22,8 @@ class MainScreenActivity : SimpleActivity(), MultiStackHistoryManager.OnSelected
     private val manager = MultiStackHistoryManager(
         supportFragmentManager,
         R.id.appContainerLayout,
+        { ExampleContainerFragment.newInstance() },
+        { ExampleContainerFragment.newInstance() },
         { ExampleContainerFragment.newInstance() }
     )
 
@@ -37,6 +40,13 @@ class MainScreenActivity : SimpleActivity(), MultiStackHistoryManager.OnSelected
         viewModel.state?.let { manager.setState(it) }
         manager.listener = this
         manager.openActiveSection()
+
+        appBottomBar.setOnNavigationItemReselectedListener { manager.resetSection() }
+        appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
+            val position = AppScreenSections.indexOf(menuItem.itemId)
+            manager.openSection(position)
+            true
+        }
     }
 
     override fun onBackPressed() {
@@ -45,9 +55,17 @@ class MainScreenActivity : SimpleActivity(), MultiStackHistoryManager.OnSelected
 
     override fun selectSection(sectionNumber: Int) {
         manager.openSection(sectionNumber)
+
+        appBottomBar.selectedItemId = AppScreenSections[sectionNumber]
     }
 
     override fun closeScreen() {
         finish()
     }
 }
+
+private val AppScreenSections = listOf(
+    R.id.action_example_1,
+    R.id.action_example_2,
+    R.id.action_example_3
+)

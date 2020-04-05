@@ -1,6 +1,7 @@
-package com.usacheow.simpleapp.mainscreen
+package com.usacheow.simpleapp.mainscreen.example
 
 import android.os.Bundle
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.usacheow.authorization.presentation.fragment.AuthContainerFragment
@@ -12,7 +13,7 @@ import com.usacheow.coreuikit.demo.FontsFragment
 import com.usacheow.coreuikit.demo.ViewsFragment
 import com.usacheow.coreuikit.demo.WidgetsFragment
 import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.toPx
 import com.usacheow.diprovider.DiProvider
@@ -39,11 +40,12 @@ class ExampleFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        exampleHeaderView.updatePadding(top = insets.systemWindowInsetTop + 16.toPx)
+        exampleRootView.updatePadding(bottom = insets.systemWindowInsetBottom)
+    }
+
     override fun setupViews(savedInstanceState: Bundle?) {
-        exampleRootView.doOnApplyWindowInsets { insets, _ ->
-            exampleRootView.updatePadding(bottom = insets.systemWindowInsetBottom)
-            exampleHeaderView.updatePadding(top = insets.systemWindowInsetTop + 16.toPx)
-        }
         fontsScreen.doOnClick { show(FontsFragment.newInstance()) }
         widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
         viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }

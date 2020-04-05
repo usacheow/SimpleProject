@@ -5,11 +5,11 @@ import com.usacheow.authorization.presentation.fragment.SignInByPhoneFragment
 import com.usacheow.authorization.presentation.fragment.SignInFragment
 import com.usacheow.authorization.presentation.fragment.SignUpFragment
 import com.usacheow.authorization.presentation.fragment.SmsCodeModalFragment
-import com.usacheow.di.FeatureScope
+import com.usacheow.di.FragmentScope
 import com.usacheow.diprovider.DiProvider
 import dagger.Component
 
-@FeatureScope
+@FragmentScope
 @Component(
     dependencies = [DiProvider::class],
     modules = [PresentationModule::class, DataModule::class]

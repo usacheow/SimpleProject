@@ -9,13 +9,13 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class MediatorModule {
+interface MediatorModule {
 
     @Binds
     @ApplicationScope
-    abstract fun provideHelloMediator(mediator: HelloMediatorImpl): HelloMediator
+    fun provideHelloMediator(mediator: HelloMediatorImpl): HelloMediator
 
     @Binds
     @ApplicationScope
-    abstract fun provideAuthorizationMediator(mediator: AuthorizationMediatorImpl): AuthorizationMediator
+    fun provideAuthorizationMediator(mediator: AuthorizationMediatorImpl): AuthorizationMediator
 }

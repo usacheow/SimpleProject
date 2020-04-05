@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuikit.views.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/appBarLayout"
     style="@style/SimpleAppBarLayout">
 
@@ -7,10 +7,12 @@
         android:id="@+id/collapsingToolbarLayout"
         style="@style/SimpleCollapsingToolbar">
 
-        <View style="@style/SimpleCollapsingToolbarContent" />
+        <View
+            android:id="@+id/insetView"
+            style="@style/SimpleCollapsingToolbarContent" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/SimpleToolbar" />
     </com.google.android.material.appbar.CollapsingToolbarLayout>
-</com.google.android.material.appbar.AppBarLayout>
+</com.usacheow.coreuikit.views.SimpleAppBarLayout>

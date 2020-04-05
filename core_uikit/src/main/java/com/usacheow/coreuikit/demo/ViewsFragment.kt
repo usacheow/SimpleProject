@@ -2,22 +2,21 @@ package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
 import android.text.TextWatcher
+import android.view.WindowInsets
 import androidx.core.view.updatePadding
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.fragments.SimpleFragment
+import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.addCurrencyFormatter
-import com.usacheow.coreuikit.utils.ext.color
-import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
 import com.usacheow.coreuikit.views.Filter
 import com.usacheow.coreuikit.views.SectionButton
+import com.usacheow.coreuikit.views.SimpleAppBarLayout
 import com.usacheow.diprovider.DiProvider
 import kotlinx.android.synthetic.main.fragment_views.chipsLayout
+import kotlinx.android.synthetic.main.fragment_views.header
 import kotlinx.android.synthetic.main.fragment_views.sectionButton
 import kotlinx.android.synthetic.main.fragment_views.viewAmountInput
-import kotlinx.android.synthetic.main.fragment_views.viewsRootView
 import kotlinx.android.synthetic.main.fragment_views.viewsScrollView
-import kotlinx.android.synthetic.main.fragment_views.viewsToolbar
-import kotlinx.android.synthetic.main.simple_toolbar.toolbar
 
 class ViewsFragment : SimpleFragment() {
 
@@ -32,14 +31,16 @@ class ViewsFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        viewsRootView.doOnApplyWindowInsets { insets, _ ->
-            viewsToolbar.updatePadding(top = insets.systemWindowInsetTop)
-            viewsScrollView.updatePadding(bottom = insets.systemWindowInsetBottom)
-        }
+    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+        (header as SimpleAppBarLayout).setInset(insets.systemWindowInsetTop)
+        viewsScrollView.updatePadding(bottom = insets.systemWindowInsetBottom)
+    }
 
-        toolbar.title = "Simple Toolbar"
-        viewsToolbar.setBackgroundColor(color(R.color.colorDivider))
+    override fun setupViews(savedInstanceState: Bundle?) {
+        (header as SimpleAppBarLayout).apply {
+            setBackground(R.color.colorDivider)
+            title = "Simple Toolbar"
+        }
 
         (sectionButton as SectionButton).populate(listOf(
             "One",

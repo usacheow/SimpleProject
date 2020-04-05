@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FeatureDagger</string>
+    <string name="app_name">Simple Project</string>
+    <string name="example">Example</string>
 </resources>

@@ -22,7 +22,7 @@
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
-    <style name="LightAppTheme" parent="BaseAppTheme">
+    <style name="AppTheme" parent="BaseAppTheme">
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>

@@ -50,8 +50,7 @@ private class SingleRxCallAdapterWrapper<RESPONSE>(
     private val gson: Gson
 ) : CallAdapter<RESPONSE, Single<*>> {
 
-    override fun adapt(call: Call<RESPONSE>): Single<*> = wrapped.adapt(call)
-        .onErrorResumeNext {
+    override fun adapt(call: Call<RESPONSE>): Single<*> = wrapped.adapt(call).onErrorResumeNext {
             Single.error(it.parse(gson))
         }
 
@@ -63,8 +62,7 @@ private class CompletableRxCallAdapterWrapper<RESPONSE>(
     private val gson: Gson
 ) : CallAdapter<RESPONSE, Completable> {
 
-    override fun adapt(call: Call<RESPONSE>): Completable = wrapped.adapt(call)
-        .onErrorResumeNext {
+    override fun adapt(call: Call<RESPONSE>): Completable = wrapped.adapt(call).onErrorResumeNext {
             Completable.error(it.parse(gson))
         }
 

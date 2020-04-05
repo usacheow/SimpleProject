@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -13,6 +14,8 @@ import com.usacheow.core.analytics.AnalyticsTrackerHolder
 import com.usacheow.core.analytics.Events
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
+import com.usacheow.coreuikit.utils.ext.PaddingValue
+import com.usacheow.coreuikit.utils.ext.doOnApplyWindowInsets
 import com.usacheow.coreuikit.utils.ext.isDarkMode
 import com.usacheow.diprovider.DiApp
 import com.usacheow.diprovider.DiProvider
@@ -21,7 +24,6 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected abstract val layoutId: Int
     protected open var needTransparentBars = true
-//    private var needDarkIcons = true
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
@@ -71,6 +73,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         processArguments(arguments)
+        view.doOnApplyWindowInsets(::onApplyWindowInsets)
         setupViews(savedInstanceState)
         subscribe()
     }
@@ -78,6 +81,8 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     protected open fun processArguments(bundle: Bundle?) {}
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
+
+    protected open fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {}
 
     protected open fun subscribe() {}
 
@@ -102,9 +107,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
         container?.let { it.action(it) }
     }
 
-    override fun onBackPressed(): Boolean {
-        return false
-    }
+    override fun onBackPressed() = false
 
     open fun getSharedViews() = emptyList<View>()
 }

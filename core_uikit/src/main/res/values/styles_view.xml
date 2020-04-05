@@ -18,14 +18,13 @@
         <item name="expandedTitleMarginBottom">20dp</item>
         <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
         <item name="contentScrim">@color/transparent</item>
-        <item name="scrimAnimationDuration">250</item>
         <item name="statusBarScrim">@color/transparent</item>
+        <item name="scrimAnimationDuration">250</item>
     </style>
 
     <style name="SimpleCollapsingToolbarContent">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
-        <item name="layout_collapseMode">pin</item>
     </style>
 
     <style name="SimpleToolbar" parent="Widget.AppCompat.Toolbar">

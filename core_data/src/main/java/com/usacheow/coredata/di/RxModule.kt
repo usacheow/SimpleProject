@@ -2,6 +2,7 @@ package com.usacheow.coredata.di
 
 import com.google.gson.Gson
 import com.usacheow.coredata.network.error.RxErrorHandlingCallAdapterFactory
+import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -11,14 +12,14 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 class RxModule {
 
     @Provides
+    @ApplicationScope
     fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
 
     @Provides
-    fun provideRxJava2CallAdapterFactory() = RxJava2CallAdapterFactory.create()
+    @ApplicationScope
+    fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
 
     @Provides
-    fun provideRetailsRxCallFactory(gson: Gson) = RxErrorHandlingCallAdapterFactory(
-        RxJava2CallAdapterFactory.create(),
-        gson
-    )
+    @ApplicationScope
+    fun provideRetailsRxCallFactory(factory: RxJava2CallAdapterFactory, gson: Gson) = RxErrorHandlingCallAdapterFactory(factory, gson)
 }

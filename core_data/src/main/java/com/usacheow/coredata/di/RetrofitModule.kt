@@ -27,13 +27,11 @@ class RetrofitModule {
         converter: GsonConverterFactory,
         callAdapter: RxJava2CallAdapterFactory,
         rxCallFactory: RxErrorHandlingCallAdapterFactory
-    ): Retrofit {
-        return Retrofit.Builder()
-            .addCallAdapterFactory(callAdapter)
-            .addCallAdapterFactory(rxCallFactory)
-            .addConverterFactory(converter)
-            .client(okHttp)
-            .baseUrl(host)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .addCallAdapterFactory(callAdapter)
+        .addCallAdapterFactory(rxCallFactory)
+        .addConverterFactory(converter)
+        .client(okHttp)
+        .baseUrl(host)
+        .build()
 }

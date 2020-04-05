@@ -10,7 +10,7 @@ import java.io.Serializable
 
 private const val FIRST_STACK_NUMBER = 0
 
-class BottomBarHistoryManager(
+class MultiStackHistoryManager(
     private val fragmentManager: FragmentManager,
     private val transactionContainerId: Int,
     private vararg val initFragmentsAction: () -> Fragment
@@ -30,7 +30,7 @@ class BottomBarHistoryManager(
     }
 
     fun openActiveSection() {
-        openSection(activeSectionNumber)
+        listener?.selectSection(activeSectionNumber)
     }
 
     fun openSection(sectionNumber: Int) {
@@ -102,7 +102,7 @@ class BottomBarHistoryManager(
 
     data class State(
         val sections: List<String>,
-        var activeSectionNumber: Int
+        val activeSectionNumber: Int
     ) : Serializable
 
     interface OnSelectedSectionChangedListener {

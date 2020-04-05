@@ -22,13 +22,12 @@ class CoreDataModule {
 
     @Provides
     @ApplicationScope
-    fun provideAppDatabase(context: Context): AppDatabase {
-        return Room.databaseBuilder(
-            context.applicationContext,
-            AppDatabase::class.java,
-            AppDatabase.DATABASE_NAME
-        ).fallbackToDestructiveMigration().build()
-    }
+    fun provideAppDatabase(context: Context): AppDatabase = Room.databaseBuilder(
+        context.applicationContext,
+        AppDatabase::class.java,
+        AppDatabase.DATABASE_NAME
+    ).fallbackToDestructiveMigration()
+        .build()
 
     @Provides
     @ApplicationScope

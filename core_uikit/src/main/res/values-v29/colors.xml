@@ -2,6 +2,6 @@
 <resources>
 
     <color name="colorStatusBar">#00000000</color>
-    <color name="colorNavigationBar">#00000000</color>
+    <color name="colorNavigationBar">#40000000</color>
 
 </resources>
