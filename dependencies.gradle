@@ -70,8 +70,7 @@ ext {
     firebaseDependencies = [
             analytics:    "com.google.firebase:firebase-analytics:$analyticsVersion",
             messaging:    "com.google.firebase:firebase-messaging:$messagingVersion",
-            config:       "com.google.firebase:firebase-config:$configVersion",
-            auth:         "com.google.firebase:firebase-auth:$authVersion"
+            config:       "com.google.firebase:firebase-config:$configVersion"
     ]
 
     billingDependencies = [

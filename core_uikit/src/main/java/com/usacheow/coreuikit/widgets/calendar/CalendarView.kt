@@ -13,6 +13,7 @@ import com.usacheow.coreuikit.utils.CalendarWrapper
 import com.usacheow.coreuikit.utils.DateFormat
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.isToday
+import com.usacheow.coreuikit.utils.ext.parseTo
 import kotlinx.android.synthetic.main.view_calendar.view.calendarDaysListView
 import kotlinx.android.synthetic.main.view_calendar.view.calendarMonthNameView
 import kotlinx.android.synthetic.main.view_calendar.view.calendarNextButton
@@ -29,7 +30,7 @@ class CalendarView
 
     private val daysAdapter = ViewTypesAdapter()
     private val weekDaysAdapter = ViewTypesAdapter()
-    private var currentMonth = CalendarWrapper.getCurrentDayCalendar()
+    private var currentMonth = CalendarWrapper.get()
     private var selectedDays: HashMap<Date, Int> = hashMapOf()
     private var clickAction: (Date) -> Unit = {}
 
@@ -83,10 +84,10 @@ class CalendarView
 
         return currentMonth.getDaysListWithOffset {
             CalendarDayItem(
-                value = it.dayOfMonth.toString(),
-                isSelected = it.date.isToday(),
-                indicatorColorId = selectedDays[it.date],
-                clickAction = { clickAction(it.date) }
+                value = it.parseTo(DateFormat.dd),
+                isSelected = it.isToday(),
+                indicatorColorId = selectedDays[it],
+                clickAction = { clickAction(it) }
             )
         }.map { it ?: CalendarDayItem("") }
     }

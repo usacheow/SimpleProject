@@ -24,10 +24,4 @@ interface PresentationModule {
     @FragmentScope
     @ViewModelKey(AViewModel::class)
     fun aViewModel(viewModel: AViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @FragmentScope
-    @ViewModelKey(BViewModel::class)
-    fun bViewModel(viewModel: BViewModel): ViewModel
 }

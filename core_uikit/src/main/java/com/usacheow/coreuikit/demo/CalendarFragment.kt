@@ -11,6 +11,7 @@ import com.usacheow.coreuikit.utils.CalendarWrapper
 import com.usacheow.coreuikit.utils.DateFormat
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.isToday
+import com.usacheow.coreuikit.utils.ext.parseTo
 import com.usacheow.coreuikit.widgets.calendar.CalendarDayItem
 import com.usacheow.coreuikit.widgets.calendar.CalendarMonthItem
 import com.usacheow.diprovider.DiProvider
@@ -21,7 +22,7 @@ class CalendarFragment : SimpleFragment() {
 
     override val layoutId = R.layout.fragment_calendar
 
-    private var currentMonth = CalendarWrapper.getCurrentDayCalendar()
+    private var currentMonth = CalendarWrapper.get()
 
     companion object {
         fun newInstance() = CalendarFragment()
@@ -59,10 +60,10 @@ class CalendarFragment : SimpleFragment() {
 
         return getDaysListWithOffset {
             CalendarDayItem(
-                value = it.dayOfMonth.toString(),
-                isSelected = it.date.isToday(),
-                indicatorColorId = selectedDays[it.date],
-                clickAction = { clickAction(it.date) }
+                value = it.parseTo(DateFormat.dd),
+                isSelected = it.isToday(),
+                indicatorColorId = selectedDays[it],
+                clickAction = { clickAction(it) }
             )
         }.map { it ?: CalendarDayItem("") }
     }

@@ -1,66 +1,47 @@
 package com.usacheow.coreuikit.utils
 
+import com.usacheow.coreuikit.utils.ext.LOCALE
 import com.usacheow.coreuikit.utils.ext.parseTo
 import com.usacheow.coreuikit.utils.ext.toCalendar
 import com.usacheow.coreuikit.utils.ext.toDate
 import java.text.DateFormatSymbols
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
 
 private const val DAYS_OF_WEEK = 7
 private const val OFFSET_FOR_SUNDAY = 1
 
 class CalendarWrapper
-private constructor(
-    private val calendar: Calendar = Calendar.getInstance(Locale.getDefault())
-) {
+private constructor(private val calendar: Calendar) {
 
-    val date: Date
-        get() = calendar.time
-
-    val year: Int
-        get() = calendar.getActualMaximum(Calendar.YEAR)
-
-    val month: Int
-        get() = calendar.getActualMaximum(Calendar.MONTH)
-
-    val dayOfMonth: Int
-        get() = calendar.get(Calendar.DAY_OF_MONTH)
-
-    val dayOfWeek: Int
-        get() = calendar.get(Calendar.DAY_OF_WEEK)
-
-    val numberDayInMonth: Int
-        get() = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+    val date: Date get() = calendar.time
+    val year: Int get() = calendar.get(Calendar.YEAR)
+    val month: Int get() = calendar.get(Calendar.MONTH)
+    val dayOfMonth: Int get() = calendar.get(Calendar.DAY_OF_MONTH)
+    val dayOfWeek: Int get() = calendar.get(Calendar.DAY_OF_WEEK)
 
     val weekDaysShortNames: List<String>
-        get() {
-
-            return DateFormatSymbols.getInstance(Locale.getDefault())
-                .shortWeekdays
-                .drop(1)
-                .toMutableList()
-                .apply {
-                    add(first())
-                    removeAt(0)
-                }
-        }
-
+        get() = DateFormatSymbols.getInstance(LOCALE())
+            .shortWeekdays
+            .drop(1)
+            .toMutableList()
+            .apply {
+                add(first())
+                removeAt(0)
+            }
     val firstDayOffset: Int
         get() {
-            var monthOffset = calendar.get(Calendar.DAY_OF_WEEK).dec() - OFFSET_FOR_SUNDAY
+            var monthOffset = dayOfWeek.dec() - OFFSET_FOR_SUNDAY
             if (monthOffset < 0) {
                 monthOffset += DAYS_OF_WEEK
             }
             return monthOffset
         }
 
+    private val numberDayInMonth: Int get() = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+
     companion object {
-
-        fun getCurrentDayCalendar() = CalendarWrapper()
-
-        fun get(calendar: Calendar) = CalendarWrapper(calendar)
+        fun get(calendar: Calendar = Calendar.getInstance(LOCALE())) = CalendarWrapper(calendar)
 
         fun get(date: Date) = CalendarWrapper(date.toCalendar())
 
@@ -79,20 +60,14 @@ private constructor(
 
     fun parseTo(format: DateFormat): String = calendar.time.parseTo(format)
 
-    fun copy(
-        year: Int = calendar.get(Calendar.YEAR),
-        month: Int = calendar.get(Calendar.MONTH),
-        day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-    ): CalendarWrapper {
-        return get(Calendar.getInstance(Locale.getDefault()).apply {
-            set(year, month, day)
-        })
-    }
+    fun <T> getDaysListWithOffset(dayMapper: (Date) -> T): List<T?> {
+        val calendar = Calendar.getInstance(LOCALE()).apply {
+            set(year, month, 1)
+        }
 
-    fun <T> getDaysListWithOffset(dayMapper: (CalendarWrapper) -> T): List<T?> {
-        val daysList = List(numberDayInMonth) { it + 1 }
-            .map { copy(day = it) }
-            .map { dayMapper(it) }
+        val daysList = (1..numberDayInMonth).map {
+            dayMapper(calendar.apply { set(Calendar.DATE, it) }.time)
+        }
 
         return List(firstDayOffset) { null } + daysList
     }
