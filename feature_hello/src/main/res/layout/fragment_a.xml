@@ -7,9 +7,7 @@
 
     <include
         android:id="@+id/header"
-        layout="@layout/simple_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        layout="@layout/simple_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listView"

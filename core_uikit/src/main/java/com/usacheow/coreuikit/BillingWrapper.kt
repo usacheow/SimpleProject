@@ -46,6 +46,21 @@ class BillingWrapper(activity: Activity) {
 //        }
 //    }
 //
+//    fun createPurchaseFlow(onSuccessPurchase: (Purchase) -> Unit, onErrorPurchase: (Int, Exception) -> Unit) {
+//        checkout.createPurchaseFlow(
+//            object : RequestListener<Purchase> {
+//
+//                override fun onSuccess(result: Purchase) {
+//                    onSuccessPurchase(result)
+//                }
+//
+//                override fun onError(response: Int, e: Exception) {
+//                    onErrorPurchase(response, e)
+//                }
+//            }
+//        )
+//    }
+//
 //    fun subscribeOnPurchases(onSuccessPurchase: (Purchase) -> Unit, onErrorPurchase: (Int, Exception) -> Unit) {
 //        checkout.createPurchaseFlow(
 //            object : RequestListener<Purchase> {
