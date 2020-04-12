@@ -16,11 +16,11 @@ abstract class SimpleActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance().trackEvent(Events.START)
+        AnalyticsTrackerHolder.getInstance().trackEvent(Events.START_SCREEN)
     }
 
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance().trackEvent(Events.STOP)
+        AnalyticsTrackerHolder.getInstance().trackEvent(Events.STOP_SCREEN)
         super.onStop()
     }
 
