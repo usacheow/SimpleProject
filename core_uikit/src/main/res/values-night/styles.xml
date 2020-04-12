@@ -17,7 +17,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:textColor">@color/colorText</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
@@ -31,12 +31,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
 
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
 
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
 

@@ -10,6 +10,7 @@
     <color name="colorToolbar">#FFFFFF</color>
 
     <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackground_80">#CCFFFFFF</color>
 
     <color name="colorCard">#FFFFFF</color>
     <color name="colorGreyCard">#F2F3F4</color>

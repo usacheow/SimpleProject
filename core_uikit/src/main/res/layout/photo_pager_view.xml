@@ -17,8 +17,8 @@
         android:layout_marginStart="@dimen/left_right_margin"
         android:layout_marginEnd="@dimen/left_right_margin"
         android:layout_marginBottom="@dimen/left_right_margin"
-        app:item_color="@color/black_30"
+        app:item_color="@color/colorIconSecondary"
         app:item_height="2dp"
         app:item_margin="4dp"
-        app:item_selected_color="@color/black" />
+        app:item_selected_color="@color/colorIconPrimary" />
 </com.technokratos.unistroy.coreui.presentation.widgets.photo.PhotoPagerView>

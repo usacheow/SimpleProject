@@ -97,7 +97,7 @@ class SectionButton
     }
 
     enum class State(val colorBackground: Int, val colorText: Int) {
-        SELECTED(R.color.colorAccent, R.color.white),
-        UNSELECTED(R.color.white, R.color.colorAccent)
+        SELECTED(R.color.colorAccent, R.color.colorBackground),
+        UNSELECTED(R.color.colorBackground, R.color.colorAccent)
     }
 }
