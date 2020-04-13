@@ -40,6 +40,7 @@ ext {
     gsonVersion = '2.8.6'
 
     canaryVersion = '1.6.3'
+    chuckVersion = '1.1.0'
     junitVersion = '4.12'
     runnerVersion = '1.1.0'
     espressoVersion = '3.1.0'
@@ -107,6 +108,7 @@ ext {
             retrofit:      "com.squareup.retrofit2:retrofit:$retrofitVersion",
             okHttp:        "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+            chuck:         "com.readystatesoftware.chuck:library:$chuckVersion",
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson:          "com.google.code.gson:gson:$gsonVersion"
     ] << gsonDependencies

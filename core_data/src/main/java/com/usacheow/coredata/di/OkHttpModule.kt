@@ -1,5 +1,7 @@
 package com.usacheow.coredata.di
 
+import android.content.Context
+import com.readystatesoftware.chuck.ChuckInterceptor
 import com.usacheow.coredata.BuildConfig
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
@@ -31,9 +33,14 @@ class OkHttpModule {
 
     @Provides
     @ApplicationScope
+    fun provideChuckInterceptor(context: Context) = ChuckInterceptor(context)
+
+    @Provides
+    @ApplicationScope
     fun provideOkHttpBuilderClient(
         logger: HttpLoggingInterceptor,
-        authentication: AuthenticationInterceptor
+        authentication: AuthenticationInterceptor,
+        chuckInterceptor: ChuckInterceptor
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .connectTimeout(TIMEOUT_CONNECTION_SECONDS, TimeUnit.SECONDS)
@@ -44,6 +51,7 @@ class OkHttpModule {
             .followRedirects(true)
 
         if (BuildConfig.DEBUG) {
+            builder.addInterceptor(chuckInterceptor)
             builder.addInterceptor(logger)
         }
         return builder.build()
