@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.core.os.bundleOf
 import com.usacheow.core.analytics.Events
 import com.usacheow.core.analytics.ITracker
-import com.yandex.metrica.YandexMetrica
-import com.yandex.metrica.YandexMetricaConfig
 import javax.inject.Inject
 
 class AnalyticsTracker
@@ -19,10 +17,10 @@ class AnalyticsTracker
 //    }
 
     init {
-        YandexMetricaConfig.newConfigBuilder(BuildConfig.APP_METRICA_KEY).build().apply {
-            YandexMetrica.activate(application, this)
-            YandexMetrica.enableActivityAutoTracking(application)
-        }
+//        YandexMetricaConfig.newConfigBuilder(BuildConfig.APP_METRICA_KEY).build().apply {
+//            YandexMetrica.activate(application, this)
+//            YandexMetrica.enableActivityAutoTracking(application)
+//        }
     }
 
     override fun trackEvent(event: Events, attributes: Map<String, String>) {

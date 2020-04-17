@@ -11,6 +11,9 @@ import javax.inject.Inject
 class SimpleApp : Application(), DiApp {
 
     //todo: add firebase config json
+    //move to another place (e.g. start activity)
+    //when appmetrica is enabled
+    //https://github.com/yandexmobile/metrica-sdk-android/issues/76
 //    @Inject lateinit var featureToggleUpdater: FeatureToggleUpdater
     @Inject lateinit var tracker: ITracker
 
