@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.res.Resources
 import com.usacheow.core.analytics.ITracker
 import com.usacheow.di.ApplicationScope
-import com.usacheow.simpleapp.FirebaseTracker
+import com.usacheow.simpleapp.AnalyticsTracker
 import dagger.Module
 import dagger.Provides
 
@@ -28,7 +28,7 @@ class CoreModule(
 
     @Provides
     @ApplicationScope
-    fun provideTracker(): ITracker = FirebaseTracker(application)
+    fun provideTracker(): ITracker = AnalyticsTracker(application)
 
     //todo take token from play console
 //    @Provides

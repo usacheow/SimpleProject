@@ -25,6 +25,9 @@ ext {
     configVersion = '19.0.3'
     authVersion = '19.3.0'
     billingVersion = '1.2.1'
+    crashlyticsVersion = '2.10.1'
+    firebaseAdsVersion = '18.3.0'
+    yandexMetricaVersion = '3.2.2'
 
     picassoVersion = '2.71828'
     glideVersion = '4.11.0'
@@ -69,9 +72,12 @@ ext {
     ]
 
     firebaseDependencies = [
-            analytics:    "com.google.firebase:firebase-analytics:$analyticsVersion",
-            messaging:    "com.google.firebase:firebase-messaging:$messagingVersion",
-            config:       "com.google.firebase:firebase-config:$configVersion"
+            yandexMetrica: "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
+            analytics:     "com.google.firebase:firebase-analytics:$analyticsVersion",
+            messaging:     "com.google.firebase:firebase-messaging:$messagingVersion",
+            config:        "com.google.firebase:firebase-config:$configVersion",
+            ads:           "com.google.firebase:firebase-ads:$firebaseAdsVersion",
+            crashlytics:   "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
     ]
 
     billingDependencies = [

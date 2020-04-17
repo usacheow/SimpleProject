@@ -29,8 +29,8 @@
     <color name="colorRipple">#33000000</color>
     <color name="colorRippleInverse">#99FFFFFF</color>
 
-    <color name="error">#F44336</color>
-    <color name="success">#4CAF50</color>
+    <color name="error">#ff607f</color>
+    <color name="success">#24CF5F</color>
     <color name="disabled">#B3B3B3</color>
 
     <color name="white">#FFFFFF</color>

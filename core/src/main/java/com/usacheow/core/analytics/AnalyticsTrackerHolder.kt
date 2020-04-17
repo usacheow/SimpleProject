@@ -9,9 +9,7 @@ object AnalyticsTrackerHolder {
     }
 
     fun getInstance(): ITracker {
-        if (tracker == null) {
-            throw IllegalStateException("Don't init tracker")
-        }
+        checkNotNull(tracker) { "Don't init tracker" }
         return tracker as ITracker
     }
 }
