@@ -12,6 +12,7 @@ import androidx.core.widget.TextViewCompat
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
+import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.load
 import com.usacheow.coreuikit.utils.ext.makeGone
 import com.usacheow.coreuikit.utils.ext.makeVisible
@@ -60,7 +61,7 @@ class ActionItemView
             return
         }
         isEnabled = true
-        setOnClickListener {
+        doOnClick {
             model.onItemClicked?.invoke() ?: visibleControlButton?.performClick()
         }
     }

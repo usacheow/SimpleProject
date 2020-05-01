@@ -23,9 +23,13 @@ import javax.inject.Inject
 class AFragment : SimpleFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by lazy { activity!!.injectViewModel<AViewModel>(viewModelFactory) }
+    private val viewModel by lazy { requireParentFragment().injectViewModel<AViewModel>(viewModelFactory) }
 
     override val layoutId = R.layout.fragment_a
+
+    companion object {
+        fun newInstance() = AFragment()
+    }
 
     override fun inject(diProvider: DiProvider) {
         HelloComponent.init(diProvider).inject(this)

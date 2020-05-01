@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 
 interface AuthorizationMediator {
 
-    fun getAuthContainer(): Fragment
+    fun getAuthContainerFragment(): Fragment
 
     fun getPinCodeFragment(): Fragment
 }

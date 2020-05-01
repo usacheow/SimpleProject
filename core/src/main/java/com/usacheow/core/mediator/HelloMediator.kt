@@ -1,3 +1,8 @@
 package com.usacheow.core.mediator
 
-interface HelloMediator
+import androidx.fragment.app.Fragment
+
+interface HelloMediator {
+
+    fun getHelloContainer(): Fragment
+}

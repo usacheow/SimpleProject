@@ -7,8 +7,8 @@ import com.usacheow.coreuikit.viewmodels.ViewModelFactory
 import com.usacheow.coreuikit.viewmodels.injectViewModel
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.simpleapp.R
+import com.usacheow.simpleapp.example.ExampleContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
-import com.usacheow.simpleapp.mainscreen.example.ExampleContainerFragment
 import kotlinx.android.synthetic.main.activity_bottom_bar_main_screen.appBottomBar
 import javax.inject.Inject
 

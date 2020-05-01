@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.material.chip.Chip
 import com.usacheow.coreuikit.R
+import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.setVisible
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsButton
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsGroup
@@ -25,7 +26,7 @@ class ChipsLayout
 
     fun populate(filters: Set<Filter>, filterClick: (Filter, Boolean) -> Unit) {
         chipsButton.setVisible(filters.size > CHIPS_WITHOUT_BUTTON_COUNT)
-        chipsButton.setOnClickListener { onAllChipsClicked?.invoke() }
+        chipsButton.doOnClick { onAllChipsClicked?.invoke() }
         chipsGroup.removeAllViews()
         filters.map { createChip(it, filterClick) }
             .forEach { chipsGroup.addView(it) }

@@ -9,7 +9,7 @@ import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.router.HelloFeatureRouter
-import com.usacheow.featurehello.presentation.viewmodels.HelloViewModel
+import com.usacheow.featurehello.presentation.viewmodels.BViewModel
 import kotlinx.android.synthetic.main.activity_hello.helloButton
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class HelloActivity : SimpleActivity() {
 
     @Inject lateinit var router: HelloFeatureRouter
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by lazy { injectViewModel<HelloViewModel>(viewModelFactory) }
+    private val viewModel by lazy { injectViewModel<BViewModel>(viewModelFactory) }
 
     override val layoutId = R.layout.activity_hello
 

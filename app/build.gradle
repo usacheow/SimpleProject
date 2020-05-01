@@ -105,7 +105,7 @@ dependencies {
     implementation project(':core_uikit')
     implementation project(':di_provider')
     implementation project(':feature_hello')
-    implementation project(':authorization')
+    implementation project(':feature_auth')
 
     implementation androidxDependencies.values()
     implementation uiDependencies.values()

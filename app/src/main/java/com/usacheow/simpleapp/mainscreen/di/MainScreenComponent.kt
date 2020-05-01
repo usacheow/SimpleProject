@@ -3,7 +3,6 @@ package com.usacheow.simpleapp.mainscreen.di
 import com.usacheow.di.ActivityScope
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.simpleapp.mainscreen.BottomBarMainScreenActivity
-import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.Component
 
 @ActivityScope
@@ -21,8 +20,6 @@ interface MainScreenComponent {
                 .build()
         }
     }
-
-    fun inject(activity: MainScreenActivity)
 
     fun inject(activity: BottomBarMainScreenActivity)
 }

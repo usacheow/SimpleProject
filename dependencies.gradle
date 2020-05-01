@@ -9,6 +9,7 @@ ext {
     androidxVersion = '1.0.0'
     androidxLifecycleVersion = '2.0.0'
 
+    fragmentVersion = '1.3.0-alpha04'
     materialVersion = '1.2.0-alpha05'
     constraintVersion = '2.0.0-beta4'
     pleaseAnimateVersion = '1.0.4'
@@ -58,26 +59,29 @@ ext {
     ]
 
     uiDependencies = [
-            material:     "com.google.android.material:material:$materialVersion",
-            constraint:   "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            browser:      "androidx.browser:browser:$browserVersion",
-            gridLayout:   "androidx.gridlayout:gridlayout:$gridLayoutVersion",
-            biometric:    "androidx.biometric:biometric:$biometricVersion",
-            roundedImage: "com.makeramen:roundedimageview:$roundedImageVersion",
-            animations:   "com.github.florent37:kotlinpleaseanimate:$pleaseAnimateVersion",
-            qrScanner:    "com.budiyev.android:code-scanner:$qrScannerVersion",
-            maskInput:    "ru.egslava:MaskedEditText:$maskInputVersion",
-            rxBinding:    "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
-            dexter:       "com.karumi:dexter:$dexterVersion"
+            fragment:        "androidx.fragment:fragment:$fragmentVersion",
+            fragmentKtx:     "androidx.fragment:fragment-ktx:$fragmentVersion",
+            fragmentTesting: "androidx.fragment:fragment-testing:$fragmentVersion",
+            material:        "com.google.android.material:material:$materialVersion",
+            constraint:      "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            browser:         "androidx.browser:browser:$browserVersion",
+            gridLayout:      "androidx.gridlayout:gridlayout:$gridLayoutVersion",
+            biometric:       "androidx.biometric:biometric:$biometricVersion",
+            roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
+            animations:      "com.github.florent37:kotlinpleaseanimate:$pleaseAnimateVersion",
+            qrScanner:       "com.budiyev.android:code-scanner:$qrScannerVersion",
+            maskInput:       "ru.egslava:MaskedEditText:$maskInputVersion",
+            rxBinding:       "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
+            dexter:          "com.karumi:dexter:$dexterVersion"
     ]
 
     firebaseDependencies = [
-            yandexMetrica: "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
+//            yandexMetrica: "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
             analytics:     "com.google.firebase:firebase-analytics:$analyticsVersion",
             messaging:     "com.google.firebase:firebase-messaging:$messagingVersion",
-            config:        "com.google.firebase:firebase-config:$configVersion",
-            ads:           "com.google.firebase:firebase-ads:$firebaseAdsVersion",
-            crashlytics:   "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+            config:        "com.google.firebase:firebase-config:$configVersion"
+//            ads:           "com.google.firebase:firebase-ads:$firebaseAdsVersion",
+//            crashlytics:   "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
     ]
 
     billingDependencies = [
@@ -114,9 +118,7 @@ ext {
             retrofit:      "com.squareup.retrofit2:retrofit:$retrofitVersion",
             okHttp:        "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
-            chuck:         "com.readystatesoftware.chuck:library:$chuckVersion",
-            gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            gson:          "com.google.code.gson:gson:$gsonVersion"
+            chuck:         "com.readystatesoftware.chuck:library:$chuckVersion"
     ] << gsonDependencies
 
     debugCanaryDependencies = [

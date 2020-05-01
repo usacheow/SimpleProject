@@ -5,7 +5,7 @@ import com.usacheow.coreuikit.viewmodels.ViewModelFactoryModule
 import com.usacheow.coreuikit.viewmodels.ViewModelKey
 import com.usacheow.di.FragmentScope
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
-import com.usacheow.featurehello.presentation.viewmodels.HelloViewModel
+import com.usacheow.featurehello.presentation.viewmodels.BViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,12 +16,12 @@ interface PresentationModule {
     @Binds
     @IntoMap
     @FragmentScope
-    @ViewModelKey(HelloViewModel::class)
-    fun helloViewModel(viewModel: HelloViewModel): ViewModel
+    @ViewModelKey(AViewModel::class)
+    fun aViewModel(viewModel: AViewModel): ViewModel
 
     @Binds
     @IntoMap
     @FragmentScope
-    @ViewModelKey(AViewModel::class)
-    fun aViewModel(viewModel: AViewModel): ViewModel
+    @ViewModelKey(BViewModel::class)
+    fun bViewModel(viewModel: BViewModel): ViewModel
 }

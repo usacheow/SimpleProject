@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.usacheow.coreuikit.R
+import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.makeGone
 import com.usacheow.coreuikit.utils.ext.makeVisible
 import kotlinx.android.synthetic.main.view_error_message.view.errorMessageView
@@ -26,7 +27,7 @@ class ErrorMessageView
             repeatButton.makeGone()
         } else {
             repeatButton.makeVisible()
-            repeatButton.setOnClickListener { repeatClickAction() }
+            repeatButton.doOnClick { repeatClickAction() }
         }
     }
 }

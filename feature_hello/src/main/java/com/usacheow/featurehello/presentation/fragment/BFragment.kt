@@ -16,6 +16,7 @@ import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
+import com.usacheow.featurehello.presentation.viewmodels.BViewModel
 import kotlinx.android.synthetic.main.fragment_a.header
 import kotlinx.android.synthetic.main.fragment_a.listView
 import javax.inject.Inject
@@ -23,7 +24,8 @@ import javax.inject.Inject
 class BFragment : SimpleFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by lazy { activity!!.injectViewModel<AViewModel>(viewModelFactory) }
+    private val aViewModel by lazy { requireParentFragment().injectViewModel<AViewModel>(viewModelFactory) }
+    private val bViewModel by lazy { injectViewModel<BViewModel>(viewModelFactory) }
 
     override val layoutId = R.layout.fragment_b
 
@@ -37,8 +39,9 @@ class BFragment : SimpleFragment() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        bViewModel.x++
         (header as SimpleAppBarLayout).apply {
-            title = "B Fragment ${viewModel.x}"
+            title = "B Fragment ${aViewModel.x} ${bViewModel.x}"
             setBackground(R.color.colorGreyCard)
             setNavigationAction(R.drawable.ic_back) { activity?.onBackPressed() }
         }

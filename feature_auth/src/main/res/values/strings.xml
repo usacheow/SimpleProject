@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="sign_up_header">Для регистрации придумайте\nлогин и пароль</string>
+    <string name="sign_up_login">Логин</string>
+    <string name="sign_up_password">Пароль</string>
+    <string name="sign_up_button">Зарегистрироваться</string>
+
+    <string name="sign_in_header">Для продолжения введите\nлогин и пароль</string>
+    <string name="sign_in_login">Логин</string>
+    <string name="sign_in_password">Пароль</string>
+    <string name="sign_in_button">Войти</string>
+    <string name="sign_in_sing_up">У меня нет аккаунта</string>
+
+    <string name="sign_in_by_phone_header">Для входа введите свой\nномер телефона</string>
+    <string name="sign_in_by_phone_button">Войти</string>
+    <string name="sign_in_by_phone_sing_up">У меня нет аккаунта</string>
+
+    <string name="pin_view_hint">Для входа в приложение введите ваш PIN-код</string>
+    <string name="pin_view_code_error">Неверный PIN-код, попробуйте снова</string>
+    <string name="pin_view_code_forgot">Забыл пароль</string>
+
+</resources>
