@@ -40,16 +40,28 @@ class AFragment : SimpleFragment() {
         listView.updatePadding(bottom = insets.systemWindowInsetBottom + 80.toPx)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun setupViews(savedInstanceState: Bundle?) {
+        (header as SimpleAppBarLayout).inflateMenu(R.menu.menu_fragment) { menu ->
+            true
+        }
+
         (header as SimpleAppBarLayout).apply {
             title = "A Fragment ${viewModel.x}"
             setBackground(R.color.colorGreyCard)
         }
 
+        listView.setOnCreateContextMenuListener { menu, v, menuInfo ->
+            activity?.menuInflater?.inflate(R.menu.menu_fragment, menu)
+        }
         listView.layoutManager = LinearLayoutManager(context)
         listView.adapter = ViewTypesAdapter(listOf(
             ActionItem(title = "1 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "2 Go to next screen", onItemClicked = ::openNextScreen),
+            ActionItem(title = "2 Open context menu", onItemClicked = { listView.showContextMenu() }),
             ActionItem(title = "3 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "4 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "5 Go to next screen", onItemClicked = ::openNextScreen),

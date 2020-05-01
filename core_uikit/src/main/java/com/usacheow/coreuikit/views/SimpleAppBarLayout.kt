@@ -2,8 +2,10 @@ package com.usacheow.coreuikit.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MenuItem
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.MenuRes
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreuikit.utils.ext.color
 import com.usacheow.coreuikit.utils.ext.navigation
@@ -35,5 +37,10 @@ class SimpleAppBarLayout
     fun setInset(size: Int) {
         insetView.updateMargins(topPx = size)
         toolbar.updateMargins(topPx = size)
+    }
+
+    fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {
+        toolbar.inflateMenu(menuResId)
+        toolbar.setOnMenuItemClickListener(listener)
     }
 }
