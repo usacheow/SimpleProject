@@ -1,14 +1,16 @@
 package com.usacheow.coredata.cache
 
-import com.usacheow.coredata.cache.base.CacheManager
+import com.usacheow.coredata.cache.base.CacheProvider
 import io.reactivex.Single
 
+class CacheLoadingException : Exception("Don't cache")
+
 inline fun <reified RESULT> Single<RESULT>.takeCacheOrRefresh(
-    cacheManager: CacheManager,
+    cacheProvider: CacheProvider,
     key: String,
     timeInMillis: Long = 1 * 60 * 1000
 ) = Single.fromCallable {
-    cacheManager.loadData(RESULT::class.java, key, timeInMillis) ?: throw CacheLoadingException()
+    cacheProvider.get(RESULT::class.java, key, timeInMillis) ?: throw CacheLoadingException()
 }
     .onErrorResumeNext { this }
-    .doAfterSuccess { cacheManager.saveData(it as Any, key) }
+    .doAfterSuccess { cacheProvider.save(it as Any, key) }

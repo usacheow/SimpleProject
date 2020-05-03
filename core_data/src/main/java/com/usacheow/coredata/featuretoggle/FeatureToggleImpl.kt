@@ -5,7 +5,7 @@ import javax.inject.Inject
 class FeatureToggleImpl
 @Inject constructor(
     private val featureToggleStorage: FeatureToggleStorage
-) : FeatureToggle {
+) : EditableFeatureToggle {
 
     override fun enable(features: List<Feature>) = save(Feature.values().toList(), features)
 

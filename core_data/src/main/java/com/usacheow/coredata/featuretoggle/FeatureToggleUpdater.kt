@@ -10,7 +10,7 @@ private const val FETCH_TIME_HOURS_RELEASE = 6L
 
 class FeatureToggleUpdater
 @Inject constructor(
-    private val featureToggle: FeatureToggle
+    private val featureToggle: EditableFeatureToggle
 ) {
 
     private val firebaseRemoteConfig by lazy { FirebaseRemoteConfig.getInstance() }

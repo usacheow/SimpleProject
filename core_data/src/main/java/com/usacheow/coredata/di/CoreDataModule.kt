@@ -2,7 +2,11 @@ package com.usacheow.coredata.di
 
 import android.content.Context
 import androidx.room.Room
+import com.usacheow.coredata.cache.base.CacheCleaner
+import com.usacheow.coredata.cache.base.CacheProvider
+import com.usacheow.coredata.cache.lrucache.LruCacheProvider
 import com.usacheow.coredata.database.AppDatabase
+import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage
@@ -31,5 +35,17 @@ class CoreDataModule {
 
     @Provides
     @ApplicationScope
-    fun provideFeatureToggle(featureToggleStorage: FeatureToggleStorage): FeatureToggle = FeatureToggleImpl(featureToggleStorage)
+    fun provideEditableFeatureToggle(featureToggleStorage: FeatureToggleStorage): EditableFeatureToggle = FeatureToggleImpl(featureToggleStorage)
+
+    @Provides
+    @ApplicationScope
+    fun provideFeatureToggle(featureToggle: EditableFeatureToggle): FeatureToggle = featureToggle
+
+    @Provides
+    @ApplicationScope
+    fun provideCacheProvider(): CacheProvider = LruCacheProvider()
+
+    @Provides
+    @ApplicationScope
+    fun provideCacheCleaner(cacheProvider: CacheProvider): CacheCleaner = cacheProvider
 }
