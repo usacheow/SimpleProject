@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.usacheow.coredata.CONFIRM_CODE_LENGTH
 import com.usacheow.coredata.network.error.ErrorProcessorImpl
 import com.usacheow.coredata.network.observer.SimpleCompletableObserver
+import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreuikit.utils.ext.normalizedPhoneNumber
 import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
@@ -70,7 +71,9 @@ class SignInWithPhoneViewModel
             .build()
 
         disposables.clear()
-        interactor.signInWithPhone(phone, observer)
+        interactor.signInWithPhone(phone)
+            .setRequestThreads()
+            .subscribe(observer)
     }
 
     fun onSignUpClicked() {
@@ -84,11 +87,8 @@ class SignInWithPhoneViewModel
             .onError { _codeConfirmMessageLiveData.value = "Неверный код" }
             .onSuccess { _closeScreenLiveData.value = SimpleAction() }
             .build()
-        interactor.verifyPhone(phoneNumber, code, observer)
-    }
-
-    override fun onCleared() {
-        interactor.onDetach()
-        super.onCleared()
+        interactor.verifyPhone(phoneNumber, code)
+            .setRequestThreads()
+            .subscribe(observer)
     }
 }

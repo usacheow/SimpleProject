@@ -2,7 +2,6 @@ package com.usacheow.featureauth.domain
 
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coreunittest.RxRule
-import com.usacheow.featureauth.data.AuthRepository
 import com.usacheow.featureauth.data.models.AccessToken
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
@@ -20,7 +19,7 @@ class AuthInteractorTest {
 
     private val repository = mock(AuthRepository::class.java)
     private val storage = mock(Storage::class.java)
-    private val interactor = AuthInteractor(repository, storage)
+    private val interactor = AuthInteractor(repository)
 
     @Test
     fun `should return complete on success response`() {
@@ -32,10 +31,9 @@ class AuthInteractorTest {
         val response = Single.just(AccessToken(token))
         `when`(repository.signInWithLoginAndPassword(login, password)).thenReturn(response)
         //when
-        interactor.signInWithLoginAndPassword(login, password, observer)
+        interactor.signInWithLoginAndPassword(login, password).subscribe(observer)
         //then
         verify(repository).signInWithLoginAndPassword(login, password)
-        verify(storage).token = token
         observer.assertComplete()
     }
 

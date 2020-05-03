@@ -6,7 +6,7 @@ ext {
     androidCompileSdkVersion = 28
     applicationPackage = "com.usacheow.simpleapp"
 
-    androidxVersion = '1.0.0'
+    androidxVersion = '1.1.0'
     androidxLifecycleVersion = '2.0.0'
 
     fragmentVersion = '1.3.0-alpha04'
@@ -20,6 +20,7 @@ ext {
     maskInputVersion = '1.0.5'
     browserVersion = '1.0.0'
     dexterVersion = '6.0.2'
+    cameraXVersion = '1.0.0-alpha06'
 
     analyticsVersion = '17.2.1'
     messagingVersion = '20.1.0'
@@ -73,6 +74,11 @@ ext {
             maskInput:       "ru.egslava:MaskedEditText:$maskInputVersion",
             rxBinding:       "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
             dexter:          "com.karumi:dexter:$dexterVersion"
+    ]
+
+    cameraxDependencies = [
+            core:   "androidx.camera:camera-core:$cameraXVersion",
+            camera: "androidx.camera:camera-camera2:$cameraXVersion"
     ]
 
     firebaseDependencies = [

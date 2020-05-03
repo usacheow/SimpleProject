@@ -1,4 +1,4 @@
-package com.usacheow.featureauth.data
+package com.usacheow.featureauth.domain
 
 import com.usacheow.featureauth.data.models.AccessToken
 import io.reactivex.Completable

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.usacheow.coredata.network.error.ErrorProcessorImpl
 import com.usacheow.coredata.network.observer.SimpleCompletableObserver
+import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
@@ -51,15 +52,12 @@ class SignInWithLoginAndPasswordViewModel
             .build()
 
         disposables.clear()
-        interactor.signInWithLoginAndPassword(login, password, observer)
+        interactor.signInWithLoginAndPassword(login, password)
+            .setRequestThreads()
+            .subscribe(observer)
     }
 
     fun onSignUpClicked() {
         _openSignUpScreenLiveData.value = SimpleAction()
-    }
-
-    override fun onCleared() {
-        interactor.onDetach()
-        super.onCleared()
     }
 }

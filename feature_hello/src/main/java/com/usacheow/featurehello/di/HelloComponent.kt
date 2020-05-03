@@ -5,6 +5,7 @@ import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.presentation.activity.HelloActivity
 import com.usacheow.featurehello.presentation.fragment.AFragment
 import com.usacheow.featurehello.presentation.fragment.BFragment
+import com.usacheow.featurehello.presentation.fragment.CameraFragment
 import dagger.Component
 
 @FragmentScope
@@ -28,4 +29,6 @@ interface HelloComponent {
     fun inject(fragment: AFragment)
 
     fun inject(fragment: BFragment)
+
+    fun inject(fragment: CameraFragment)
 }

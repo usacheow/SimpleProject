@@ -1,7 +1,6 @@
 package com.usacheow.coredata.database
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import javax.inject.Inject
 
@@ -18,46 +17,46 @@ class Storage
 ) {
 
     var userName: String
-        get() = getApplicationPreferences().getString(PREF_NAME, "")!!
+        get() = getPreferences().getString(PREF_NAME, "")!!
         set(value) {
-            getApplicationEditor().putString(PREF_NAME, value).apply()
+            getPreferencesEditor().putString(PREF_NAME, value).apply()
         }
 
     var phoneNumber: String
-        get() = getApplicationPreferences().getString(PREF_PHONE, "")!!
+        get() = getPreferences().getString(PREF_PHONE, "")!!
         set(value) {
-            getApplicationEditor().putString(PREF_PHONE, value).apply()
+            getPreferencesEditor().putString(PREF_PHONE, value).apply()
         }
 
     var isFirstEntry: Boolean
-        get() = getApplicationPreferences().getBoolean(PREF_IS_FIRST_ENTRY, true)
+        get() = getPreferences().getBoolean(PREF_IS_FIRST_ENTRY, true)
         set(value) {
-            getApplicationEditor().putBoolean(PREF_IS_FIRST_ENTRY, value).apply()
+            getPreferencesEditor().putBoolean(PREF_IS_FIRST_ENTRY, value).apply()
         }
 
     var token: String
-        get() = getApplicationPreferences().getString(PREF_TOKEN, "")!!
+        get() = getPreferences().getString(PREF_TOKEN, "")!!
         set(value) {
-            getApplicationEditor().putString(PREF_TOKEN, value).apply()
+            getPreferencesEditor().putString(PREF_TOKEN, value).apply()
         }
 
     var pinCode: String
-        get() = getApplicationPreferences().getString(PREF_PIN_CODE, "")!!
+        get() = getPreferences().getString(PREF_PIN_CODE, "")!!
         set(value) {
-            getApplicationEditor().putString(PREF_PIN_CODE, value).apply()
+            getPreferencesEditor().putString(PREF_PIN_CODE, value).apply()
         }
 
     var isAllowFingerprint: Boolean
-        get() = getApplicationPreferences().getBoolean(PREF_ALLOW_FINGERPRINT, true)
+        get() = getPreferences().getBoolean(PREF_ALLOW_FINGERPRINT, true)
         set(value) {
-            getApplicationEditor().putBoolean(PREF_ALLOW_FINGERPRINT, value).apply()
+            getPreferencesEditor().putBoolean(PREF_ALLOW_FINGERPRINT, value).apply()
         }
 
     fun clearPreferences() {
-        getApplicationEditor().clear().apply()
+        getPreferencesEditor().clear().apply()
     }
 
-    private fun getApplicationEditor(): SharedPreferences.Editor = getApplicationPreferences().edit()
+    private fun getPreferencesEditor() = getPreferences().edit()
 
-    private fun getApplicationPreferences() = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
+    private fun getPreferences() = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
 }

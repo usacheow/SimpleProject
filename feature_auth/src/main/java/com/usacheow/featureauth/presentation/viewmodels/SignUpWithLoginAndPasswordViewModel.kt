@@ -48,11 +48,6 @@ class SignUpWithLoginAndPasswordViewModel
             .build()
 
         disposables.clear()
-        interactor.signUpWithLoginAndPassword(login, password, observer)
-    }
-
-    override fun onCleared() {
-        interactor.onDetach()
-        super.onCleared()
+        interactor.signUpWithLoginAndPassword(login, password).subscribe(observer)
     }
 }

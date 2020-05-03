@@ -26,6 +26,8 @@ dependencies {
     implementation project(':core_uikit')
     implementation project(':di_provider')
 
+    implementation cameraxDependencies.values()
+
     implementation firebaseDependencies.values()
 
     implementation networkDependencies.values()

@@ -27,6 +27,7 @@ class MainScreenContainerActivity : ContainerActivity() {
     override fun getInitFragment(): Fragment {
 //        return AuthContainerFragment.newInstance()
         return HelloContainerFragment.newInstance()
+//        return CameraFragment.newInstance()
 //        return PinCodeFragment.newInstance()
 //        return ExampleContainerFragment.newInstance()
     }
