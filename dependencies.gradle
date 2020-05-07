@@ -20,7 +20,8 @@ ext {
     maskInputVersion = '1.0.5'
     browserVersion = '1.0.0'
     dexterVersion = '6.0.2'
-    cameraXVersion = '1.0.0-alpha06'
+    cameraXVersion = '1.0.0-beta03'
+    cameraXViewVersion = '1.0.0-alpha10'
 
     analyticsVersion = '17.2.1'
     messagingVersion = '20.1.0'
@@ -52,7 +53,7 @@ ext {
     mockitoVersion = '2.7.22'
     truthVersion = '0.34'
 
-    kotlinDependency = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kotlinDependency = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     androidxDependencies = [
             appCompat:     "androidx.appcompat:appcompat:$androidxVersion",
@@ -77,8 +78,11 @@ ext {
     ]
 
     cameraxDependencies = [
-            core:   "androidx.camera:camera-core:$cameraXVersion",
-            camera: "androidx.camera:camera-camera2:$cameraXVersion"
+            core:       "androidx.camera:camera-core:$cameraXVersion",
+            camera:     "androidx.camera:camera-camera2:$cameraXVersion",
+            lifecycle:  "androidx.camera:camera-lifecycle:$cameraXVersion",
+            view:       "androidx.camera:camera-view:$cameraXViewVersion",
+            extensions: "androidx.camera:camera-extensions:$cameraXViewVersion"
     ]
 
     firebaseDependencies = [
