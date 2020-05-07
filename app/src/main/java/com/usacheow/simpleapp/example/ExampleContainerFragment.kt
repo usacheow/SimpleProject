@@ -9,8 +9,6 @@ import com.usacheow.featureauth.presentation.fragment.SignUpFragment
 
 class ExampleContainerFragment : ContainerFragment() {
 
-    override val INIT_FRAGMENT_TAG_KEY = ExampleContainerFragment::javaClass.name
-
     companion object {
         fun newInstance() = ExampleContainerFragment()
     }

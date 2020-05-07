@@ -1,7 +1,7 @@
 package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.R
@@ -31,7 +31,7 @@ class CalendarFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         calendarListView.updatePadding(
             top = insets.systemWindowInsetTop,
             bottom = insets.systemWindowInsetBottom

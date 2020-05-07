@@ -8,8 +8,6 @@ import com.usacheow.coreuikit.fragments.ContainerFragment
 
 class AuthContainerFragment : ContainerFragment() {
 
-    override val INIT_FRAGMENT_TAG_KEY = "HelloContainerFragment"
-
     companion object {
         const val REQUEST_KEY = "AuthContainerFragment"
         const val IS_AUTH_SUCCESS = "IS_AUTH_SUCCESS"

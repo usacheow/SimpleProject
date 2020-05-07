@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/exampleRootView"
+    android:id="@+id/rootView"
     android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="Demo Uikit"
-            android:background="@color/colorDivider" />
+            android:background="@color/colorGreyCard" />
 
         <TextView
             style="@style/TextOverline"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
-            android:text="1. Views Fragment"
+            android:text="3. Views Fragment"
             android:background="@drawable/ripple_rectangle" />
 
         <TextView

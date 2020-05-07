@@ -17,7 +17,7 @@ class HelloActivity : SimpleActivity() {
 
     @Inject lateinit var router: HelloFeatureRouter
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by lazy { injectViewModel<BViewModel>(viewModelFactory) }
+    private val viewModel by injectViewModel<BViewModel> { viewModelFactory }
 
     override val layoutId = R.layout.activity_hello
 

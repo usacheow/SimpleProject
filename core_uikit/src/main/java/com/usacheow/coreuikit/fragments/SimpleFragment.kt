@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -82,7 +82,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 
-    protected open fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {}
+    protected open fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {}
 
     protected open fun subscribe() {}
 

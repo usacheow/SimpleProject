@@ -1,7 +1,7 @@
 package com.usacheow.simpleapp.example
 
 import android.os.Bundle
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.demo.CalendarFragment
@@ -20,9 +20,9 @@ import com.usacheow.featureauth.presentation.fragment.SignUpFragment
 import com.usacheow.simpleapp.R
 import kotlinx.android.synthetic.main.fragment_example.calendarScreen
 import kotlinx.android.synthetic.main.fragment_example.exampleHeaderView
-import kotlinx.android.synthetic.main.fragment_example.exampleRootView
 import kotlinx.android.synthetic.main.fragment_example.fontsScreen
 import kotlinx.android.synthetic.main.fragment_example.pinCodeScreen
+import kotlinx.android.synthetic.main.fragment_example.rootView
 import kotlinx.android.synthetic.main.fragment_example.signInByPhoneScreen
 import kotlinx.android.synthetic.main.fragment_example.signInScreen
 import kotlinx.android.synthetic.main.fragment_example.signUpScreen
@@ -40,9 +40,9 @@ class ExampleFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         exampleHeaderView.updatePadding(top = insets.systemWindowInsetTop + 16.toPx)
-        exampleRootView.updatePadding(bottom = insets.systemWindowInsetBottom)
+        rootView.updatePadding(bottom = insets.systemWindowInsetBottom)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

@@ -16,10 +16,10 @@ class MultiStackHistoryManager(
     private vararg val initFragmentsAction: () -> Fragment
 ) {
 
-    var listener: OnSelectedSectionChangedListener? = null
+    var listener: OnSectionChangedListener? = null
 
     private val sections = MutableList(initFragmentsAction.size) { "" }
-    private var activeSectionNumber = 0
+    private var activeSectionNumber = FIRST_STACK_NUMBER
 
     fun getState() = State(sections, activeSectionNumber)
 
@@ -30,7 +30,8 @@ class MultiStackHistoryManager(
     }
 
     fun openActiveSection() {
-        listener?.selectSection(activeSectionNumber)
+        openSection(activeSectionNumber)
+        listener?.onSectionChanged(activeSectionNumber)
     }
 
     fun openSection(sectionNumber: Int) {
@@ -56,7 +57,7 @@ class MultiStackHistoryManager(
         }
     }
 
-    fun backSection() {
+    fun backSection(): Boolean {
         val activeFragmentTag = sections[activeSectionNumber]
         val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
         val isBackProcesses = if (activeFragment is IBackListener) {
@@ -65,11 +66,14 @@ class MultiStackHistoryManager(
             false
         }
 
-        if (!isBackProcesses) {
-            when (activeSectionNumber) {
-                FIRST_STACK_NUMBER -> listener?.closeScreen()
-                else -> listener?.selectSection(FIRST_STACK_NUMBER)
+        return when {
+            isBackProcesses -> true
+            activeSectionNumber != FIRST_STACK_NUMBER -> {
+                openSection(FIRST_STACK_NUMBER)
+                listener?.onSectionChanged(FIRST_STACK_NUMBER)
+                true
             }
+            else -> false
         }
     }
 
@@ -105,10 +109,8 @@ class MultiStackHistoryManager(
         val activeSectionNumber: Int
     ) : Serializable
 
-    interface OnSelectedSectionChangedListener {
+    interface OnSectionChangedListener {
 
-        fun selectSection(sectionNumber: Int)
-
-        fun closeScreen()
+        fun onSectionChanged(sectionNumber: Int)
     }
 }

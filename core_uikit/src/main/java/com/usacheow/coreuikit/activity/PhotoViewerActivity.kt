@@ -10,8 +10,6 @@ private const val DATA_EXTRA = "DATA_EXTRA"
 
 class PhotoViewerActivity : ContainerActivity() {
 
-    override val INIT_FRAGMENT_TAG_KEY = "PHOTO_VIEWER_PAGE_FRAGMENT"
-
     companion object {
         fun newInstance(context: Context, urls: List<String>, position: Int) {
             return context.start<PhotoViewerActivity> {

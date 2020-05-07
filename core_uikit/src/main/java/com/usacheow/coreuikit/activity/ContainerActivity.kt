@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
+import com.usacheow.coreuikit.utils.ext.hashTag
 import com.usacheow.coreuikit.utils.ext.inTransaction
 import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
 
@@ -12,13 +13,15 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
 
     override val layoutId = R.layout.frg_container
 
-    abstract val INIT_FRAGMENT_TAG_KEY: String
+    private var initFragmentHashTag: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (supportFragmentManager.findFragmentByTag(INIT_FRAGMENT_TAG_KEY) == null) {
-            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, INIT_FRAGMENT_TAG_KEY)
+        if (initFragmentHashTag == null || supportFragmentManager.findFragmentByTag(initFragmentHashTag) == null) {
+            val fragment = getInitFragment()
+            initFragmentHashTag = fragment.hashTag()
+            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, initFragmentHashTag!!)
         }
     }
 

@@ -2,9 +2,9 @@ package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
 import android.text.TextWatcher
-import android.view.WindowInsets
 import android.view.inputmethod.EditorInfo
 import androidx.core.os.bundleOf
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.setFragmentResult
@@ -34,8 +34,8 @@ class SignInWithPhoneFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by lazy { injectViewModel<SignInWithPhoneViewModel>(viewModelFactory) }
-    private val smsCodeViewModel by lazy { injectViewModel<SmsCodeViewModel>(viewModelFactory) }
+    private val viewModel by injectViewModel<SignInWithPhoneViewModel> { viewModelFactory }
+    private val smsCodeViewModel by injectViewModel<SmsCodeViewModel> { viewModelFactory }
 
     private var signInPhoneInputListener: TextWatcher? = null
 
@@ -51,7 +51,7 @@ class SignInWithPhoneFragment : SimpleFragment() {
         AuthorizationComponent.init(diProvider).inject(this)
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         signInByPhoneRootView.updatePadding(
             top = insets.systemWindowInsetTop + padding.top,
             bottom = insets.systemWindowInsetBottom + padding.bottom

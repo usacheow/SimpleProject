@@ -23,7 +23,7 @@
     <color name="colorIconPrimary">#212121</color>
     <color name="colorIconSecondary">#DBDEE6</color>
 
-    <color name="colorDivider">#E6E9EC</color>
+    <color name="colorDivider">#F2F3F4</color>
     <color name="colorBlur">#80000000</color>
 
     <color name="colorRipple">#33000000</color>

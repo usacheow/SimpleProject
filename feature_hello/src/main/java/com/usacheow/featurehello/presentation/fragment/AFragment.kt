@@ -1,7 +1,7 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.adapters.ViewTypesAdapter
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class AFragment : SimpleFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by lazy { requireParentFragment().injectViewModel<AViewModel>(viewModelFactory) }
+    private val viewModel by injectViewModel<AViewModel>({ requireParentFragment() }, { viewModelFactory })
 
     override val layoutId = R.layout.fragment_a
 
@@ -35,33 +35,20 @@ class AFragment : SimpleFragment() {
         HelloComponent.init(diProvider).inject(this)
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
-        (header as SimpleAppBarLayout).setInset(insets.systemWindowInsetTop)
-        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 80.toPx)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 56.toPx)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        (header as SimpleAppBarLayout).inflateMenu(R.menu.menu_fragment) { menu ->
-            true
-        }
-
         (header as SimpleAppBarLayout).apply {
             title = "A Fragment ${viewModel.x}"
             setBackground(R.color.colorGreyCard)
         }
 
-        listView.setOnCreateContextMenuListener { menu, v, menuInfo ->
-            activity?.menuInflater?.inflate(R.menu.menu_fragment, menu)
-        }
         listView.layoutManager = LinearLayoutManager(context)
         listView.adapter = ViewTypesAdapter(listOf(
             ActionItem(title = "1 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "2 Open context menu", onItemClicked = { listView.showContextMenu() }),
+            ActionItem(title = "2 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "3 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "4 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "5 Go to next screen", onItemClicked = ::openNextScreen),

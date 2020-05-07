@@ -2,7 +2,7 @@ package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
 import android.text.TextWatcher
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.fragments.SimpleFragment
@@ -31,14 +31,13 @@ class ViewsFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
-        (header as SimpleAppBarLayout).setInset(insets.systemWindowInsetTop)
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         viewsScrollView.updatePadding(bottom = insets.systemWindowInsetBottom)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
         (header as SimpleAppBarLayout).apply {
-            setBackground(R.color.colorDivider)
+            setBackground(R.color.colorGreyCard)
             title = "Simple Toolbar"
         }
 

@@ -1,14 +1,13 @@
 package com.usacheow.coreuikit.demo
 
 import android.os.Bundle
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.adapters.ViewTypesAdapter
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.PaddingValue
-import com.usacheow.coreuikit.utils.ext.TODAY
 import com.usacheow.coreuikit.widgets.ActionIconSize
 import com.usacheow.coreuikit.widgets.ActionItem
 import com.usacheow.coreuikit.widgets.ActionSelectionType
@@ -17,7 +16,6 @@ import com.usacheow.coreuikit.widgets.HeaderWithActionItem
 import com.usacheow.coreuikit.widgets.OperationItem
 import com.usacheow.coreuikit.widgets.SimpleButtonItem
 import com.usacheow.coreuikit.widgets.SmallInfoCardItem
-import com.usacheow.coreuikit.widgets.calendar.CalendarItem
 import com.usacheow.diprovider.DiProvider
 import kotlinx.android.synthetic.main.fragment_widgets.widgetsListView
 
@@ -32,7 +30,7 @@ class WidgetsFragment : SimpleFragment() {
     override fun inject(diProvider: DiProvider) {
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         widgetsListView.updatePadding(
             top = insets.systemWindowInsetTop,
             bottom = insets.systemWindowInsetBottom
@@ -86,10 +84,10 @@ class WidgetsFragment : SimpleFragment() {
                 sum = "500.00 ₽"
             ),
 
-            DividerItem.getBigDivider(),
-            HeaderWithActionItem("Calendar", "Details"),
-
-            CalendarItem(selectedMonth = TODAY(), isScrollable = true),
+//            DividerItem.getBigDivider(),
+//            HeaderWithActionItem("Calendar", "Details"),
+//
+//            CalendarItem(selectedMonth = TODAY(), isScrollable = true),
 
             DividerItem.getBigDivider(),
             HeaderWithActionItem("Small info card item", "Details"),

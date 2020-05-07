@@ -1,8 +1,8 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
-import android.view.WindowInsets
 import androidx.core.os.bundleOf
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
@@ -31,7 +31,7 @@ class PinCodeFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by lazy { injectViewModel<PinCodeViewModel>(viewModelFactory) }
+    private val viewModel by injectViewModel<PinCodeViewModel> { viewModelFactory }
 
     companion object {
 
@@ -45,7 +45,7 @@ class PinCodeFragment : SimpleFragment() {
         AuthorizationComponent.init(diProvider).inject(this)
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         pinCodeRootView.updatePadding(
             top = insets.systemWindowInsetTop + padding.top,
             bottom = insets.systemWindowInsetBottom + padding.bottom

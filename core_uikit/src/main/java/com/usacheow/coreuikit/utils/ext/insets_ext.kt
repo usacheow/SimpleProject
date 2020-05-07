@@ -1,43 +1,35 @@
 package com.usacheow.coreuikit.utils.ext
 
-import android.os.Build
+import android.graphics.Rect
 import android.view.View
-import android.view.WindowInsets
-import androidx.annotation.RequiresApi
-import com.usacheow.coreuikit.utils.ifSupportLollipop
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-data class PaddingValue(
-    val left: Int,
-    val top: Int,
-    val right: Int,
-    val bottom: Int
-)
+typealias PaddingValue = Rect
 
-fun View.getInitialPadding() = PaddingValue(paddingLeft, paddingTop, paddingRight, paddingBottom)
+fun View.getInitialPadding() = Rect(paddingLeft, paddingTop, paddingRight, paddingBottom)
 
-fun View.doOnApplyWindowInsets(block: (insets: WindowInsets, padding: PaddingValue) -> Unit) {
-    ifSupportLollipop {
-        val initialPadding = getInitialPadding()
-        setOnApplyWindowInsetsListener { _, insets ->
-            block(insets, initialPadding)
-            insets
-        }
-        requestApplyInsetsWhenAttached()
+fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> Unit) {
+    val initialPadding = getInitialPadding()
+    ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
+        block(insets, initialPadding)
+        insets
     }
+//    requestApplyInsetsWhenAttached()
 }
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun View.requestApplyInsetsWhenAttached() {
     if (isAttachedToWindow) {
-        requestApplyInsets()
+        ViewCompat.requestApplyInsets(this)
     } else {
         addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+
             override fun onViewAttachedToWindow(v: View) {
                 v.removeOnAttachStateChangeListener(this)
-                v.requestApplyInsets()
+                ViewCompat.requestApplyInsets(v)
             }
 
-            override fun onViewDetachedFromWindow(v: View) {}
+            override fun onViewDetachedFromWindow(v: View) = Unit
         })
     }
 }

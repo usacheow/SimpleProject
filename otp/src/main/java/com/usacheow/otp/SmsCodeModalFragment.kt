@@ -26,7 +26,7 @@ class SmsCodeModalFragment : SimpleModalFragment() {
     override val layoutId = R.layout.fragment_sms_code
 
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by lazy { requireParentFragment().injectViewModel<SmsCodeViewModel>(viewModelFactory) }
+    private val viewModel by injectViewModel<SmsCodeViewModel>({ requireParentFragment() }, { viewModelFactory })
 
     companion object {
         fun newInstance(codeLength: Int) = SmsCodeModalFragment().apply {

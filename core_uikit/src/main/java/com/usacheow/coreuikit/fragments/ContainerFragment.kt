@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
+import com.usacheow.coreuikit.utils.ext.hashTag
 import com.usacheow.coreuikit.utils.ext.inTransaction
 import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
 
 abstract class ContainerFragment : Fragment(), IContainer, IBackListener {
 
-    abstract val INIT_FRAGMENT_TAG_KEY: String
+    private var initFragmentHashTag: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frg_container, container, false)
@@ -22,8 +23,10 @@ abstract class ContainerFragment : Fragment(), IContainer, IBackListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (childFragmentManager.findFragmentByTag(INIT_FRAGMENT_TAG_KEY) == null) {
-            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, INIT_FRAGMENT_TAG_KEY)
+        if (initFragmentHashTag == null || childFragmentManager.findFragmentByTag(initFragmentHashTag) == null) {
+            val fragment = getInitFragment()
+            initFragmentHashTag = fragment.hashTag()
+            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, initFragmentHashTag!!)
         }
     }
 

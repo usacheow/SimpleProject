@@ -1,7 +1,7 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
-import android.view.WindowInsets
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreuikit.adapters.ViewTypesAdapter
@@ -17,15 +17,15 @@ import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
 import com.usacheow.featurehello.presentation.viewmodels.BViewModel
-import kotlinx.android.synthetic.main.fragment_a.header
-import kotlinx.android.synthetic.main.fragment_a.listView
+import kotlinx.android.synthetic.main.fragment_b.header
+import kotlinx.android.synthetic.main.fragment_b.listView
 import javax.inject.Inject
 
 class BFragment : SimpleFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val aViewModel by lazy { requireParentFragment().injectViewModel<AViewModel>(viewModelFactory) }
-    private val bViewModel by lazy { injectViewModel<BViewModel>(viewModelFactory) }
+    private val aViewModel by injectViewModel<AViewModel>({ requireParentFragment() }, { viewModelFactory })
+    private val bViewModel by injectViewModel<BViewModel> { viewModelFactory }
 
     override val layoutId = R.layout.fragment_b
 
@@ -33,9 +33,8 @@ class BFragment : SimpleFragment() {
         HelloComponent.init(diProvider).inject(this)
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsets, padding: PaddingValue) {
-        (header as SimpleAppBarLayout).setInset(insets.systemWindowInsetTop)
-        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 80.toPx)
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 56.toPx)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

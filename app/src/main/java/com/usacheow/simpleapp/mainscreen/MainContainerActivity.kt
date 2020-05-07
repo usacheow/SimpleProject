@@ -8,9 +8,7 @@ import com.usacheow.diprovider.DiProvider
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
 
-class MainScreenContainerActivity : ContainerActivity() {
-
-    override val INIT_FRAGMENT_TAG_KEY = MainScreenContainerActivity::class.java.simpleName
+class MainContainerActivity : ContainerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +23,9 @@ class MainScreenContainerActivity : ContainerActivity() {
     }
 
     override fun getInitFragment(): Fragment {
-        return AuthContainerFragment.newInstance()
+//        return AuthContainerFragment.newInstance()
+        return BottomBarFragment.newInstance()
 //        return HelloContainerFragment.newInstance()
-//        return CameraFragment.newInstance()
 //        return PinCodeFragment.newInstance()
 //        return ExampleContainerFragment.newInstance()
     }
