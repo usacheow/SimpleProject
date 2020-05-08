@@ -2,6 +2,7 @@
 <com.usacheow.coreuikit.views.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/appBarLayout"
     android:fitsSystemWindows="true"
+    android:transitionName="header"
     style="@style/SimpleAppBarLayout">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout

@@ -2,6 +2,7 @@ package com.usacheow.coreuikit.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.usacheow.coreuikit.base.DefaultTransition
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
 import com.usacheow.coreuikit.utils.ext.hashTag
@@ -86,6 +87,9 @@ class MultiStackHistoryManager(
         }
 
         inTransaction {
+            nextFragment.enterTransition = DefaultTransition()
+            activeFragment?.exitTransition = DefaultTransition()
+
             activeFragment?.let { hide(it) }
             add(transactionContainerId, nextFragment, nextFragment.hashTag())
             this
@@ -98,6 +102,9 @@ class MultiStackHistoryManager(
         val nextFragment = findFragmentByTag(nextFragmentTag)
 
         inTransaction {
+            nextFragment?.enterTransition = DefaultTransition()
+            activeFragment?.exitTransition = DefaultTransition()
+
             activeFragment?.let { hide(it) }
             nextFragment?.let { show(it) }
             this

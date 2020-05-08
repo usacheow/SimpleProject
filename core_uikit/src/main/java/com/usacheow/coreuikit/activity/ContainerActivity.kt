@@ -2,12 +2,16 @@ package com.usacheow.coreuikit.activity
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionSet
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
+import com.usacheow.coreuikit.fragments.SimpleFragment
+import com.usacheow.coreuikit.utils.ext.addSharedElementsFrom
 import com.usacheow.coreuikit.utils.ext.hashTag
 import com.usacheow.coreuikit.utils.ext.inTransaction
 import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
+import com.usacheow.coreuikit.utils.ifSupportLollipop
 
 abstract class ContainerActivity : SimpleActivity(), IContainer {
 
@@ -25,23 +29,21 @@ abstract class ContainerActivity : SimpleActivity(), IContainer {
         }
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean) {
-//        val activeFragment = childFragmentManager.findFragmentById(R.id.fragmentContainer)
-//        val transaction = childFragmentManager.createReplaceTransactionIn(R.id.fragmentContainer, fragment, needAddToBackStack)
-//        if(activeFragment is SimpleFragment) {
-//            fragment.sharedElementEnterTransition = TransitionInflater.from(context)
-//                .inflateTransition(R.transition.transition_default_screen)
-//            transaction.addSharedElements(*activeFragment.getSharedViews().toTypedArray())
-//        }
-//        transaction.commit()
+    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
+        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
 
         supportFragmentManager.inTransaction {
-            setCustomAnimations(
-                R.anim.anim_enter_from_right,
-                R.anim.anim_exit_to_left,
-                R.anim.anim_enter_from_left,
-                R.anim.anim_exit_to_right
-            )
+            //            setCustomAnimations(
+//                R.anim.anim_enter_from_right,
+//                R.anim.anim_exit_to_left,
+//                R.anim.anim_enter_from_left,
+//                R.anim.anim_exit_to_right
+//            )
+            ifSupportLollipop {
+                fragment.sharedElementEnterTransition = transition
+                fragment.sharedElementReturnTransition = transition
+            }
+            addSharedElementsFrom(activeFragment as? SimpleFragment)
             replace(R.id.fragmentContainer, fragment)
             if (needAddToBackStack) addToBackStack(null)
             this

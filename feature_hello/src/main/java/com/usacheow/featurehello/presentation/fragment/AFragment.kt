@@ -39,6 +39,8 @@ class AFragment : SimpleFragment() {
         listView.updatePadding(bottom = insets.systemWindowInsetBottom + 56.toPx)
     }
 
+    override fun getSharedViews() = listOf(header)
+
     override fun setupViews(savedInstanceState: Bundle?) {
         (header as SimpleAppBarLayout).apply {
             title = "A Fragment ${viewModel.x}"
