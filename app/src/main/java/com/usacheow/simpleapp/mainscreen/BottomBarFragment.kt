@@ -21,7 +21,7 @@ class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionCh
     override val layoutId = R.layout.fragment_bottom_bar
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by injectViewModel<StateViewModel> { viewModelFactory }
+    private val viewModel by injectViewModel<BottomBarViewModel> { viewModelFactory }
 
     private val manager by lazy {
         MultiStackHistoryManager(

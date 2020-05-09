@@ -3,12 +3,11 @@ package com.usacheow.featureauth.presentation.fragment
 import android.os.Bundle
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
-import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import com.usacheow.coreuikit.AppStateViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
@@ -34,6 +33,7 @@ class SignInWithPhoneFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val appStateViewModel by injectViewModel<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
     private val viewModel by injectViewModel<SignInWithPhoneViewModel> { viewModelFactory }
     private val smsCodeViewModel by injectViewModel<SmsCodeViewModel> { viewModelFactory }
 
@@ -81,7 +81,7 @@ class SignInWithPhoneFragment : SimpleFragment() {
         viewModel.submitButtonEnabled.subscribe(viewLifecycleOwner) { signInButton.isEnabled = it }
         viewModel.codeConfirmMessage.subscribe(viewLifecycleOwner) { smsCodeViewModel.showMessage(it) }
         viewModel.openConfirmScreen.subscribe(viewLifecycleOwner) { router.openConfirmScreen(this, it, viewModelFactory) }
-        viewModel.closeScreen.subscribe(viewLifecycleOwner) { setFragmentResult(REQUEST_KEY, bundleOf(IS_SUCCESS to true)) }
+        viewModel.closeScreen.subscribe(viewLifecycleOwner) { appStateViewModel.onSignIn() }
         smsCodeViewModel.code.subscribe(viewLifecycleOwner) { viewModel.onCodeInputted(it) }
     }
 }

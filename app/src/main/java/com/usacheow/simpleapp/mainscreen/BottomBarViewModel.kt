@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.usacheow.coreuikit.utils.MultiStackHistoryManager
 import javax.inject.Inject
 
-class StateViewModel
+class BottomBarViewModel
 @Inject constructor() : ViewModel() {
 
     var state: MultiStackHistoryManager.State? = null

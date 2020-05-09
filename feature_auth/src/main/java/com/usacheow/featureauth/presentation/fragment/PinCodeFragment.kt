@@ -1,11 +1,10 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import com.usacheow.coreuikit.AppStateViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.biometric.SignInError
 import com.usacheow.coreuikit.utils.biometric.SignInSuccess
@@ -31,13 +30,10 @@ class PinCodeFragment : SimpleFragment() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val appStateViewModel by injectViewModel<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
     private val viewModel by injectViewModel<PinCodeViewModel> { viewModelFactory }
 
     companion object {
-
-        const val REQUEST_KEY = "PinCodeFragment"
-        const val IS_SUCCESS = "IS_SUCCESS"
-
         fun newInstance() = PinCodeFragment()
     }
 
@@ -93,7 +89,7 @@ class PinCodeFragment : SimpleFragment() {
         if (bottomDialog?.isShowing == true && bottomDialog is FingerprintPromptBottomDialog) {
             (bottomDialog as FingerprintPromptBottomDialog).showSuccessState()
         }
-        setFragmentResult(REQUEST_KEY, bundleOf(IS_SUCCESS to true))
+        appStateViewModel.onPinCodeEntered()
     }
 
     private fun showDialog() {

@@ -11,6 +11,7 @@ import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
 import com.usacheow.coreuikit.utils.ext.color
 import com.usacheow.coreuikit.utils.ext.resize
+import com.usacheow.coreuikit.utils.ext.toPx
 import com.usacheow.coreuikit.utils.ext.updateMargins
 import kotlinx.android.synthetic.main.divider_item_view.view.dividerBackgroundView
 
@@ -28,15 +29,15 @@ class DividerItemView
             heightPx = resources.getDimension(model.heightResId).toInt()
         )
         dividerBackgroundView.updateMargins(
-            leftPx = model.startMarginPx,
-            rightPx = model.endMarginPx
+            leftPx = model.startMarginDp.toPx,
+            rightPx = model.endMarginDp.toPx
         )
     }
 }
 
 data class DividerItem(
-    val startMarginPx: Int = 0,
-    val endMarginPx: Int = 0,
+    val startMarginDp: Int = 0,
+    val endMarginDp: Int = 0,
     @DimenRes val heightResId: Int = R.dimen.divider_height_small,
     @ColorRes var colorResId: Int = R.color.colorDivider
 ) : ViewType(R.layout.divider_item_view) {
