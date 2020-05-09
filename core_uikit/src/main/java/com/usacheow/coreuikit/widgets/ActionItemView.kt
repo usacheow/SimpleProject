@@ -2,28 +2,21 @@ package com.usacheow.coreuikit.widgets
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import android.widget.CompoundButton
 import android.widget.LinearLayout
-import androidx.annotation.DimenRes
-import androidx.annotation.StyleRes
+import androidx.annotation.ColorRes
 import androidx.core.view.isVisible
-import androidx.core.widget.TextViewCompat
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
+import com.usacheow.coreuikit.utils.ext.color
 import com.usacheow.coreuikit.utils.ext.doOnClick
-import com.usacheow.coreuikit.utils.ext.load
 import com.usacheow.coreuikit.utils.ext.makeGone
 import com.usacheow.coreuikit.utils.ext.makeVisible
 import com.usacheow.coreuikit.utils.ext.populate
-import com.usacheow.coreuikit.utils.ext.resize
-import com.usacheow.coreuikit.utils.ext.toPx
 import kotlinx.android.synthetic.main.action_item_view.view.actionCheckBox
 import kotlinx.android.synthetic.main.action_item_view.view.actionDragFlagView
-import kotlinx.android.synthetic.main.action_item_view.view.actionIconShapeView
 import kotlinx.android.synthetic.main.action_item_view.view.actionIconView
-import kotlinx.android.synthetic.main.action_item_view.view.actionRootView
 import kotlinx.android.synthetic.main.action_item_view.view.actionSubtitleView
 import kotlinx.android.synthetic.main.action_item_view.view.actionSwitch
 import kotlinx.android.synthetic.main.action_item_view.view.actionTitleView
@@ -41,16 +34,11 @@ class ActionItemView
     override fun populate(model: ActionItem) {
         this.model = model
 
-        showImage(model)
         actionTitleView.text = model.title
-        TextViewCompat.setTextAppearance(actionTitleView, model.titleStyleResId)
+        model.titleColorResId?.let { actionTitleView.setTextColor(color(it)) }
         actionSubtitleView.populate(model.subtitle)
-        TextViewCompat.setTextAppearance(actionSubtitleView, model.subtitleStyleResId)
-
-        actionRootView.gravity = when (model.subtitle.isNullOrEmpty()) {
-            true -> Gravity.CENTER_VERTICAL
-            false -> Gravity.TOP
-        }
+        model.subtitleColorResId?.let { actionSubtitleView.setTextColor(color(it)) }
+        actionIconView.populate(model.imageInfo)
 
         actionDragFlagView.isVisible = model.isDraggable
         visibleControlButton = setupControl(model.isChecked, model.selectionType, model.onControlClicked)
@@ -60,20 +48,11 @@ class ActionItemView
             isEnabled = false
             return
         }
+
         isEnabled = true
         doOnClick {
             model.onItemClicked?.invoke() ?: visibleControlButton?.performClick()
         }
-    }
-
-    private fun showImage(model: ActionItem) {
-        actionIconShapeView.resize(model.imageSize.sizeDp.toPx, model.imageSize.sizeDp.toPx)
-        actionIconShapeView.makeVisible()
-
-        actionIconShapeView.radius = resources.getDimension(model.iconRadius)
-        if (!model.imageUrl.isNullOrBlank()) actionIconView.load(model.imageUrl)
-        else if (model.imageResId != null) actionIconView.setImageResource(model.imageResId)
-        else actionIconShapeView.makeGone()
     }
 
     private fun setupControl(
@@ -97,18 +76,14 @@ class ActionItemView
             }
         }
     }
-
 }
 
 data class ActionItem(
-    val imageUrl: String? = null,
-    val imageResId: Int? = null,
-    val imageSize: ActionIconSize = ActionIconSize.BIG,
+    val imageInfo: ImageInfo = EmptyState(),
     val title: String,
     val subtitle: String? = null,
-    @DimenRes val iconRadius: Int = R.dimen.radius_8,
-    @StyleRes val titleStyleResId: Int = R.style.TextBody1,
-    @StyleRes val subtitleStyleResId: Int = R.style.TextBody2_60,
+    @ColorRes val titleColorResId: Int? = null,
+    @ColorRes val subtitleColorResId: Int? = null,
     val isDraggable: Boolean = false,
     var isChecked: Boolean = false,
     val selectionType: ActionSelectionType = ActionSelectionType.NONE,
@@ -120,9 +95,4 @@ enum class ActionSelectionType {
     CHECK_BOX,
     SWITCH,
     NONE
-}
-
-enum class ActionIconSize(val sizeDp: Int) {
-    SMALL(24),
-    BIG(48)
 }

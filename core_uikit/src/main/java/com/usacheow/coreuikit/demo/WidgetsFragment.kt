@@ -8,11 +8,11 @@ import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.adapters.ViewTypesAdapter
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.PaddingValue
-import com.usacheow.coreuikit.widgets.ActionIconSize
 import com.usacheow.coreuikit.widgets.ActionItem
 import com.usacheow.coreuikit.widgets.ActionSelectionType
 import com.usacheow.coreuikit.widgets.DividerItem
 import com.usacheow.coreuikit.widgets.HeaderWithActionItem
+import com.usacheow.coreuikit.widgets.IconState
 import com.usacheow.coreuikit.widgets.OperationItem
 import com.usacheow.coreuikit.widgets.SimpleButtonItem
 import com.usacheow.coreuikit.widgets.SmallInfoCardItem
@@ -47,26 +47,17 @@ class WidgetsFragment : SimpleFragment() {
                 subtitle = "Subtitle"
             ),
             ActionItem(
-                imageResId = R.drawable.ic_fingerprint,
-                imageSize = ActionIconSize.SMALL,
+                imageInfo = IconState(resId = R.drawable.ic_fingerprint),
                 title = "Title"
             ),
             ActionItem(
-                imageResId = R.drawable.ic_fingerprint,
-                imageSize = ActionIconSize.SMALL,
+                imageInfo = IconState(resId = R.drawable.ic_fingerprint),
                 title = "Title",
                 selectionType = ActionSelectionType.CHECK_BOX,
                 onItemClicked = {}
             ),
             ActionItem(
-                imageResId = R.drawable.ic_fingerprint,
-                imageSize = ActionIconSize.BIG,
-                title = "Title",
-                isDraggable = true
-            ),
-            ActionItem(
-                imageResId = R.drawable.ic_fingerprint,
-                imageSize = ActionIconSize.SMALL,
+                imageInfo = IconState(resId = R.drawable.ic_fingerprint),
                 title = "Title",
                 subtitle = "Subtitle",
                 selectionType = ActionSelectionType.CHECK_BOX,

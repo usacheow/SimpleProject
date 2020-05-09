@@ -28,6 +28,7 @@
     <dimen name="radius_2">2dp</dimen>
     <dimen name="radius_4">4dp</dimen>
     <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_12">12dp</dimen>
     <dimen name="radius_16">16dp</dimen>
     <dimen name="elevation_8">8dp</dimen>
     <dimen name="elevation_4">4dp</dimen>

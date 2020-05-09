@@ -32,7 +32,6 @@ class DividerItemView
             rightPx = model.endMarginPx
         )
     }
-
 }
 
 data class DividerItem(
