@@ -78,4 +78,12 @@
         <item name="boxCornerRadiusTopEnd">@dimen/radius_8</item>
     </style>
 
+    <style name="SimpleShimmerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="shimmer_shape">linear</item>
+        <item name="shimmer_clip_to_children">true</item>
+        <item name="shimmer_intensity">0.1</item>
+    </style>
+
 </resources>

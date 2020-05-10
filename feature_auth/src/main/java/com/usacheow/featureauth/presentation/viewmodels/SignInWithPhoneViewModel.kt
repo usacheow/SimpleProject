@@ -11,6 +11,7 @@ import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
 import com.usacheow.featureauth.domain.AuthInteractor
+import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
@@ -62,12 +63,15 @@ class SignInWithPhoneViewModel
         if (!isValidPhoneNumber(phoneNumber)) return
 
         val observer = SimpleCompletableObserver.Builder()
-            .onSubscribe { _isLoadingStateLiveData.postValue(true) }
-            .onError(::onError)
+            .onSubscribe {
+                _isLoadingStateLiveData.postValue(true)
+                disposables += it
+            }
             .onSuccess {
                 _isLoadingStateLiveData.value = false
                 _openConfirmScreenLiveData.value = CONFIRM_CODE_LENGTH
             }
+            .onError(::onError)
             .build()
 
         disposables.clear()
@@ -84,6 +88,7 @@ class SignInWithPhoneViewModel
         if (code.isEmpty()) return
 
         val observer = SimpleCompletableObserver.Builder()
+            .onSubscribe { disposables += it }
             .onError { _codeConfirmMessageLiveData.value = "Неверный код" }
             .onSuccess { _closeScreenLiveData.value = SimpleAction() }
             .build()

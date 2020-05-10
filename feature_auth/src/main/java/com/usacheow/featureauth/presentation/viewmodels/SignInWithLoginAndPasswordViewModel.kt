@@ -9,6 +9,7 @@ import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
 import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
 import com.usacheow.featureauth.domain.AuthInteractor
+import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
 class SignInWithLoginAndPasswordViewModel
@@ -43,12 +44,15 @@ class SignInWithLoginAndPasswordViewModel
         if (!isLoginValid(login) || !isPasswordValid(password)) return
 
         val observer = SimpleCompletableObserver.Builder()
-            .onSubscribe { _isLoadingStateLiveData.postValue(true) }
-            .onError(::onError)
+            .onSubscribe {
+                _isLoadingStateLiveData.postValue(true)
+                disposables += it
+            }
             .onSuccess {
                 _isLoadingStateLiveData.value = false
                 _closeScreenLiveData.value = SimpleAction()
             }
+            .onError(::onError)
             .build()
 
         disposables.clear()

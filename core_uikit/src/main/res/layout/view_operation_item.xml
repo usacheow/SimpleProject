@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/ripple_rectangle"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/left_right_margin">
+    android:padding="@dimen/left_right_margin"
+    android:background="?selectableItemBackground">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/operationImageView"

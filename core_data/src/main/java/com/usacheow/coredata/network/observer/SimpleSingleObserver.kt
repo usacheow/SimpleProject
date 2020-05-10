@@ -16,6 +16,12 @@ private constructor(
         var onSubscribe: (Disposable) -> Unit = {}
         var onError: (Throwable) -> Unit = {}
 
+        fun onSuccess(onSuccess: (RESULT) -> Unit) = apply { this.onSuccess = onSuccess }
+
+        fun onSubscribe(onSubscribe: (Disposable) -> Unit) = apply { this.onSubscribe = onSubscribe }
+
+        fun onError(onError: (Throwable) -> Unit) = apply { this.onError = onError }
+
         fun build() = SimpleSingleObserver(
             onSuccess,
             onSubscribe,

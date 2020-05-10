@@ -2,76 +2,80 @@
 <com.usacheow.coreuikit.widgets.ActionItemView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/actionRootView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    style="@style/SimpleShimmerLayout"
     android:padding="@dimen/left_right_margin"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
     android:background="?attr/selectableItemBackground">
-
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/actionIconView"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:scaleType="centerCrop"
-        android:layout_marginEnd="@dimen/left_right_margin"
-        app:riv_corner_radius="@dimen/radius_12" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/actionIconView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="@dimen/left_right_margin"
+            app:riv_corner_radius="@dimen/radius_16" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/actionTitleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/actionTitleView"
+                    style="@style/TextBody1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    tools:text="Title" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/actionDragFlagView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="12dp"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_drag"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/actionSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:visibility="gone"
+                    tools:checked="true"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/actionCheckBox"
+                    android:layout_width="32dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="12dp"
+                    android:visibility="gone"
+                    tools:checked="true" />
+            </LinearLayout>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/actionTitleView"
-                style="@style/TextBody1"
-                android:layout_width="0dp"
+                android:id="@+id/actionSubtitleView"
+                style="@style/TextBody2_60"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:lines="1"
-                tools:text="Title" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/actionDragFlagView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="12dp"
-                android:visibility="gone"
-                app:srcCompat="@drawable/ic_drag"
-                tools:visibility="visible" />
-
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/actionSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:visibility="gone"
-                tools:checked="true"
-                tools:visibility="visible" />
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/actionCheckBox"
-                android:layout_width="32dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="12dp"
-                android:visibility="gone"
-                tools:checked="true" />
+                android:layout_marginTop="4dp"
+                tools:text="Subtitle" />
         </LinearLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/actionSubtitleView"
-            style="@style/TextBody2_60"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            tools:text="Subtitle" />
     </LinearLayout>
 </com.usacheow.coreuikit.widgets.ActionItemView>

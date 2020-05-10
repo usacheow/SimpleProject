@@ -6,9 +6,9 @@ import android.widget.LinearLayout
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
-import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.load
 import com.usacheow.coreuikit.utils.ext.makeGone
+import com.usacheow.coreuikit.utils.ext.setListenerIfNeed
 import kotlinx.android.synthetic.main.view_operation_item.view.operationCardNumberView
 import kotlinx.android.synthetic.main.view_operation_item.view.operationImageView
 import kotlinx.android.synthetic.main.view_operation_item.view.operationNameView
@@ -32,9 +32,7 @@ class OperationItemView
         operationNameView.text = model.name
         operationSumView.text = model.sum
 
-        doOnClick {
-            model.onItemClicked?.invoke()
-        }
+        setListenerIfNeed(model.onItemClicked)
     }
 }
 

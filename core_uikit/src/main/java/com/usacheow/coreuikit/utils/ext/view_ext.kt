@@ -47,3 +47,13 @@ fun View.doOnClick(listener: () -> Unit) {
         listener()
     }
 }
+
+fun View.setListenerIfNeed(listener: (() -> Unit)?) {
+    isEnabled = if (listener == null) {
+        setOnClickListener(null)
+        false
+    } else {
+        doOnClick { listener.invoke() }
+        true
+    }
+}

@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.view.ViewGroup
 import androidx.transition.AutoTransition
+import androidx.transition.Fade
 import androidx.transition.TransitionManager
 
 fun Animator.withEndAction(action: () -> Unit): Animator {
@@ -28,9 +29,20 @@ fun ViewGroup.doWithAutoTransition(
     duration: Long = 100L,
     block: () -> Unit
 ) {
-    val autoTransition = AutoTransition().apply {
+    val transition = AutoTransition().apply {
         this.duration = duration
     }
-    TransitionManager.beginDelayedTransition(this, autoTransition)
+    TransitionManager.beginDelayedTransition(this, transition)
+    block()
+}
+
+fun ViewGroup.doWithFadeTransition(
+    duration: Long = 200L,
+    block: () -> Unit
+) {
+    val transition = Fade().apply {
+        this.duration = duration
+    }
+    TransitionManager.beginDelayedTransition(this, transition)
     block()
 }
