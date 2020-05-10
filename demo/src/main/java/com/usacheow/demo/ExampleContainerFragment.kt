@@ -1,4 +1,4 @@
-package com.usacheow.simpleapp.example
+package com.usacheow.demo
 
 import android.os.Bundle
 import androidx.fragment.app.setFragmentResultListener

@@ -96,6 +96,8 @@ dependencies {
     implementation project(':feature_hello')
     implementation project(':feature_auth')
 
+    implementation project(':demo')
+
     implementation androidxDependencies.values()
     implementation uiDependencies.values()
 

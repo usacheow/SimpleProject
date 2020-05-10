@@ -18,8 +18,11 @@ class AppStateViewModel
     val openContentScreen: LiveData<SimpleAction> get() = _openContentScreenAction
     private val _openContentScreenAction by lazy { ActionLiveData<SimpleAction>() }
 
+    val openDemoScreen: LiveData<SimpleAction> get() = _openDemoScreenAction
+    private val _openDemoScreenAction by lazy { ActionLiveData<SimpleAction>() }
+
     init {
-        _openAuthScreenAction.value = SimpleAction()
+        _openDemoScreenAction.value = SimpleAction()
     }
 
     fun onPinCodeEntered() {

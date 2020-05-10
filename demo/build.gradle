@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    implementation project(':core')
+    implementation project(':core_data')
+    implementation project(':core_uikit')
+    implementation project(':di_provider')
+    implementation project(':otp')
+    implementation project(':feature_auth')
+
+    implementation firebaseDependencies.values()
+
+    implementation networkDependencies.values()
+    implementation rxDependencies.values()
+
+    implementation lifecycleDependency
+    kapt kaptLifecycleDependency
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
+
+    testImplementation project(':core_unit_test')
+    androidTestImplementation uiTestDependencies.values()
+}

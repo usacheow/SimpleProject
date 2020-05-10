@@ -1,8 +1,7 @@
-package com.usacheow.coreuikit.demo
+package com.usacheow.demo
 
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.diprovider.DiProvider

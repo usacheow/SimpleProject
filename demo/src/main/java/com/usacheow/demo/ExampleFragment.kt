@@ -1,13 +1,9 @@
-package com.usacheow.simpleapp.example
+package com.usacheow.demo
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
-import com.usacheow.coreuikit.demo.CalendarFragment
-import com.usacheow.coreuikit.demo.FontsFragment
-import com.usacheow.coreuikit.demo.ViewsFragment
-import com.usacheow.coreuikit.demo.WidgetsFragment
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
@@ -17,7 +13,6 @@ import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureauth.presentation.fragment.SignInFragment
 import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment
-import com.usacheow.simpleapp.R
 import kotlinx.android.synthetic.main.fragment_example.calendarScreen
 import kotlinx.android.synthetic.main.fragment_example.exampleHeaderView
 import kotlinx.android.synthetic.main.fragment_example.fontsScreen

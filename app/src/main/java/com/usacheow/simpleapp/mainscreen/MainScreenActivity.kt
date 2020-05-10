@@ -14,6 +14,7 @@ import com.usacheow.coreuikit.utils.ifSupportLollipop
 import com.usacheow.coreuikit.viewmodels.ViewModelFactory
 import com.usacheow.coreuikit.viewmodels.injectViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.subscribe
+import com.usacheow.demo.ExampleContainerFragment
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
@@ -31,14 +32,16 @@ class MainScreenActivity : SimpleActivity() {
 
         appStateViewModel.openAuthScreen.subscribe(this) {
             show(AuthContainerFragment.newInstance())
+//            show(AuthContainerFragment.newInstance())
+//            show(PinCodeFragment.newInstance())
         }
 
         appStateViewModel.openContentScreen.subscribe(this) {
             show(BottomBarFragment.newInstance())
-//            show(AuthContainerFragment.newInstance())
-//            show(HelloContainerFragment.newInstance())
-//            show(PinCodeFragment.newInstance())
-//            show(ExampleContainerFragment.newInstance())
+        }
+
+        appStateViewModel.openDemoScreen.subscribe(this) {
+            show(ExampleContainerFragment.newInstance())
         }
     }
 

@@ -8,10 +8,10 @@ import com.usacheow.coreuikit.utils.MultiStackHistoryManager
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.viewmodels.ViewModelFactory
 import com.usacheow.coreuikit.viewmodels.injectViewModel
+import com.usacheow.demo.ExampleContainerFragment
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
 import com.usacheow.simpleapp.R
-import com.usacheow.simpleapp.example.ExampleContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
 import kotlinx.android.synthetic.main.fragment_bottom_bar.appBottomBar
 import javax.inject.Inject
