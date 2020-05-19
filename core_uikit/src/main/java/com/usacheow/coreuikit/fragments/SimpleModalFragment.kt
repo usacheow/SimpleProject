@@ -55,4 +55,11 @@ abstract class SimpleModalFragment : DialogFragment() {
     protected open fun setupViews(savedInstanceState: Bundle?) {}
 
     protected open fun subscribe() {}
+
+    override fun onDestroyView() {
+        clearViews()
+        super.onDestroyView()
+    }
+
+    protected open fun clearViews() {}
 }

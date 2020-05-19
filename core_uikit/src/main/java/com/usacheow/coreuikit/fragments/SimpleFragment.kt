@@ -24,6 +24,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected abstract val layoutId: Int
     protected open var needTransparentBars = true
+    protected open var needForceDarkIcons = true
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
@@ -56,7 +57,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     private fun changeSystemIconColorIfNeed() {
         if (!needTransparentBars) return
 
-        val needDarkIcons = !isDarkMode()
+        val needDarkIcons = !isDarkMode() && needForceDarkIcons
         val canMakeDarkIconInStatusBar = needDarkIcons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
         val canMakeDarkIconInStatusAndNavigationBar = canMakeDarkIconInStatusBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 
