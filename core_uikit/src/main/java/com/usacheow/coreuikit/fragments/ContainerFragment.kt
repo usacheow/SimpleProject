@@ -6,62 +6,30 @@ import androidx.transition.TransitionSet
 import com.usacheow.coreuikit.R
 import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
-import com.usacheow.coreuikit.utils.ext.addSharedElementsFrom
-import com.usacheow.coreuikit.utils.ext.inTransaction
-import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
-import com.usacheow.coreuikit.utils.ifSupportLollipop
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.coreuikit.delegate.ContainerDelegate
 
 abstract class ContainerFragment : SimpleFragment(), IContainer, IBackListener {
 
     override val layoutId = R.layout.frg_container
 
-    private var initFragmentHashTag: String = "CONTAINER_TAG"
+    private val containerDelegate by lazy { ContainerDelegate() }
 
     protected abstract fun getInitFragment(): Fragment
 
-    override fun inject(diProvider: DiProvider) = Unit
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        if (childFragmentManager.findFragmentByTag(initFragmentHashTag) == null) {
-            childFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, initFragmentHashTag)
-        }
+        containerDelegate.onCreate(childFragmentManager, ::getInitFragment)
     }
 
     override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
-        val activeFragment = childFragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        childFragmentManager.inTransaction {
-            ifSupportLollipop {
-                fragment.sharedElementEnterTransition = transition
-                fragment.sharedElementReturnTransition = transition
-            }
-            addSharedElementsFrom(activeFragment as? SimpleFragment)
-            replace(R.id.fragmentContainer, fragment)
-            if (needAddToBackStack) addToBackStack(null)
-            this
-        }
+        containerDelegate.show(childFragmentManager, fragment, needAddToBackStack, transition)
     }
 
     override fun reset() {
-        while (childFragmentManager.backStackEntryCount > 1) {
-            childFragmentManager.popBackStackImmediate()
-        }
+        containerDelegate.reset(childFragmentManager)
     }
 
     override fun onBackPressed(): Boolean {
-        val activeFragment = childFragmentManager.findFragmentById(R.id.fragmentContainer)
-        val backStackEntryCount = childFragmentManager.backStackEntryCount
-
-        return if (activeFragment is IBackListener && activeFragment.onBackPressed()) {
-            true
-        } else if (activeFragment != null && backStackEntryCount > 1) {
-            childFragmentManager.popBackStackImmediate()
-            true
-        } else {
-            false
-        }
+        return containerDelegate.onBackPressed(childFragmentManager)
     }
 }

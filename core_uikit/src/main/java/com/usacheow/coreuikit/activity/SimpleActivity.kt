@@ -38,14 +38,14 @@ abstract class SimpleActivity : AppCompatActivity() {
         setupViews(savedInstanceState)
     }
 
-    abstract fun inject(diProvider: DiProvider)
+    protected open fun inject(diProvider: DiProvider) = Unit
 
-    protected open fun setupViews(savedInstanceState: Bundle?) {}
+    protected open fun setupViews(savedInstanceState: Bundle?) = Unit
 
     override fun onDestroy() {
         clearViews()
         super.onDestroy()
     }
 
-    protected open fun clearViews() {}
+    protected open fun clearViews() = Unit
 }

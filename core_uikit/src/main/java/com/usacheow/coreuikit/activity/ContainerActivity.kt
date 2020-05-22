@@ -4,59 +4,32 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionSet
 import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.base.IBackListener
 import com.usacheow.coreuikit.base.IContainer
-import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.addSharedElementsFrom
-import com.usacheow.coreuikit.utils.ext.inTransaction
-import com.usacheow.coreuikit.utils.ext.replaceFragmentIn
-import com.usacheow.coreuikit.utils.ifSupportLollipop
+import com.usacheow.coreuikit.delegate.ContainerDelegate
 
 abstract class ContainerActivity : SimpleActivity(), IContainer {
 
     override val layoutId = R.layout.frg_container
 
-    private var initFragmentHashTag: String = "CONTAINER_TAG"
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (supportFragmentManager.findFragmentByTag(initFragmentHashTag) == null) {
-            supportFragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), true, initFragmentHashTag)
-        }
-    }
-
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
-        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        supportFragmentManager.inTransaction {
-            ifSupportLollipop {
-                fragment.sharedElementEnterTransition = transition
-                fragment.sharedElementReturnTransition = transition
-            }
-            addSharedElementsFrom(activeFragment as? SimpleFragment)
-            replace(R.id.fragmentContainer, fragment)
-            if (needAddToBackStack) addToBackStack(null)
-            this
-        }
-    }
+    private val containerDelegate by lazy { ContainerDelegate() }
 
     protected abstract fun getInitFragment(): Fragment
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        containerDelegate.onCreate(supportFragmentManager, ::getInitFragment)
+    }
+
+    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
+        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, transition)
+    }
+
     override fun reset() {
-        while (supportFragmentManager.backStackEntryCount > 1) {
-            supportFragmentManager.popBackStackImmediate()
-        }
+        containerDelegate.reset(supportFragmentManager)
     }
 
     override fun onBackPressed() {
-        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-        val backStackEntryCount = supportFragmentManager.backStackEntryCount
-
-        if (activeFragment is IBackListener && activeFragment.onBackPressed()) {
-        } else if (activeFragment != null && backStackEntryCount > 1) {
-            supportFragmentManager.popBackStackImmediate()
-        } else {
+        if (!containerDelegate.onBackPressed(supportFragmentManager)) {
             finish()
         }
     }

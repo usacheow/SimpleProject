@@ -28,7 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.utils.ext.arePermissionsGranted
-import com.usacheow.coreuikit.utils.ext.doWithAutoTransition
+import com.usacheow.coreuikit.utils.ext.doWithTransition
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
@@ -71,7 +71,7 @@ class CameraFragment : SimpleFragment() {
         object : OrientationEventListener(requireContext()) {
             override fun onOrientationChanged(orientation: Int) {
                 if (abs(orientation - switchButton.rotation) >= 3) {
-                    (container as ViewGroup).doWithAutoTransition {
+                    (container as ViewGroup).doWithTransition {
                         switchButton.rotation = orientation.toFloat()
                     }
                 }

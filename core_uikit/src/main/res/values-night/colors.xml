@@ -15,6 +15,7 @@
     <color name="colorCard">#000000</color>
     <color name="colorGreyCard">#292929</color>
     <color name="cardStroke">#222222</color>
+    <color name="colorDialog">#292929</color>
 
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextSecondary">#99FFFFFF</color>

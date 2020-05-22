@@ -4,13 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.AppStateViewModel
 import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.activity.SimpleActivity
-import com.usacheow.coreuikit.base.DefaultTransition
-import com.usacheow.coreuikit.base.IBackListener
-import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.addSharedElementsFrom
-import com.usacheow.coreuikit.utils.ext.inTransaction
-import com.usacheow.coreuikit.utils.ifSupportLollipop
+import com.usacheow.coreuikit.activity.BillingActivity
+import com.usacheow.coreuikit.delegate.ContainerDelegate
+import com.usacheow.coreuikit.utils.ext.RoutingTransition
 import com.usacheow.coreuikit.viewmodels.ViewModelFactory
 import com.usacheow.coreuikit.viewmodels.injectViewModel
 import com.usacheow.coreuikit.viewmodels.livedata.subscribe
@@ -20,12 +16,14 @@ import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
 import javax.inject.Inject
 
-class MainScreenActivity : SimpleActivity() {
+class MainScreenActivity : BillingActivity() {
 
     override val layoutId = R.layout.frg_container
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val appStateViewModel by injectViewModel<AppStateViewModel> { viewModelFactory }
+
+    private val containerDelegate by lazy { ContainerDelegate() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +34,7 @@ class MainScreenActivity : SimpleActivity() {
 //            show(PinCodeFragment.newInstance())
         }
 
-        appStateViewModel.openContentScreen.subscribe(this) {
+        appStateViewModel.openAppScreen.subscribe(this) {
             show(BottomBarFragment.newInstance())
         }
 
@@ -49,25 +47,12 @@ class MainScreenActivity : SimpleActivity() {
         MainScreenComponent.init(diProvider).inject(this)
     }
 
-    private fun show(fragment: Fragment) {
-        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        supportFragmentManager.inTransaction {
-            ifSupportLollipop {
-                fragment.sharedElementEnterTransition = DefaultTransition()
-                fragment.sharedElementReturnTransition = DefaultTransition()
-            }
-            addSharedElementsFrom(activeFragment as? SimpleFragment)
-            replace(R.id.fragmentContainer, fragment)
-            this
-        }
+    private fun show(fragment: Fragment, needAddToBackstack: Boolean = false) {
+        containerDelegate.show(supportFragmentManager, fragment, needAddToBackstack, RoutingTransition())
     }
 
     override fun onBackPressed() {
-        val activeFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        if (activeFragment is IBackListener && activeFragment.onBackPressed()) {
-        } else {
+        if (!containerDelegate.onBackPressed(supportFragmentManager)) {
             finish()
         }
     }

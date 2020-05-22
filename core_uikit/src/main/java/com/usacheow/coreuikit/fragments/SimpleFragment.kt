@@ -46,7 +46,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
         inject((activity?.application as DiApp).diProvider)
     }
 
-    abstract fun inject(diProvider: DiProvider)
+    protected open fun inject(diProvider: DiProvider) = Unit
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(layoutId, container, false)
@@ -79,20 +79,20 @@ abstract class SimpleFragment : Fragment(), IBackListener {
         subscribe()
     }
 
-    protected open fun processArguments(bundle: Bundle?) {}
+    protected open fun processArguments(bundle: Bundle?) = Unit
 
-    protected open fun setupViews(savedInstanceState: Bundle?) {}
+    protected open fun setupViews(savedInstanceState: Bundle?) = Unit
 
     protected open fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {}
 
-    protected open fun subscribe() {}
+    protected open fun subscribe() = Unit
 
     override fun onDestroyView() {
         clearViews()
         super.onDestroyView()
     }
 
-    protected open fun clearViews() {}
+    protected open fun clearViews() = Unit
 
     protected fun getActivity(action: FragmentActivity.(FragmentActivity) -> Unit) {
         activity?.let { it.action(it) }

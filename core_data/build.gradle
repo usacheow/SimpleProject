@@ -30,4 +30,7 @@ dependencies {
 
     implementation daggerDependency
     kapt kaptDaggerDependency
+
+    implementation roomDependency
+    kapt kaptRoomDependency
 }
