@@ -9,7 +9,6 @@ import com.usacheow.coreuikit.utils.ext.openShareDialog
 import com.usacheow.coreuikit.widgets.photo.PhotoItem
 import com.usacheow.diprovider.DiProvider
 import kotlinx.android.synthetic.main.fragment_photo_viewer.photoViewPager
-import kotlinx.android.synthetic.main.fragment_photo_viewer.photoViewPagerIndicator
 import kotlinx.android.synthetic.main.fragment_photo_viewer.toolbar
 import java.io.Serializable
 
@@ -40,7 +39,6 @@ class PhotoViewerFragment : SimpleFragment() {
         val position = data?.position ?: 0
 
         photoViewPager.adapter = ViewTypePagerAdapter(urls.map { PhotoItem(it) })
-        photoViewPagerIndicator.setupWithViewPager(photoViewPager, urls.size)
         photoViewPager.currentItem = position
     }
 

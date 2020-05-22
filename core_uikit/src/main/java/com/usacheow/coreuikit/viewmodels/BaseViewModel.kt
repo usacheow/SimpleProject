@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.usacheow.coredata.network.error.ErrorProcessor
 import com.usacheow.coredata.network.error.MappedException
-import com.usacheow.coreuikit.viewmodels.livedata.EventData
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class MviViewModel<STATE, ACTION>(

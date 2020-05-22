@@ -26,3 +26,5 @@ class ActionLiveData<T> : MutableLiveData<T>() {
         value = data
     }
 }
+
+class SimpleAction
