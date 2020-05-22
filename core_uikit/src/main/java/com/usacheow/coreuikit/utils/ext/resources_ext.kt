@@ -8,6 +8,7 @@ import android.graphics.Point
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -24,6 +25,11 @@ fun Activity.getDisplayWidthPixels(): Int {
 fun Activity.getDisplayWidth(screenSize: Point = Point()): Int {
     (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getSize(screenSize)
     return screenSize.x
+}
+
+fun Context.isKeyboardEnabled(): Boolean {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    return imm.enabledInputMethodList.any { it.packageName == packageName }
 }
 
 fun View.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)

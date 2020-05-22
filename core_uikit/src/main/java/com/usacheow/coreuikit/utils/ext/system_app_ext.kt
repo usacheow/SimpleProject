@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.provider.Browser
+import android.provider.Settings
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
@@ -65,4 +66,9 @@ fun Fragment.openShareDialog(url: String) {
             .setType("text/plain")
             .startChooser()
     }
+}
+
+fun Fragment.openKeyboardSettingsScreen() {
+    val intent = Intent(Settings.ACTION_INPUT_METHOD_SETTINGS)
+    startActivity(intent)
 }
