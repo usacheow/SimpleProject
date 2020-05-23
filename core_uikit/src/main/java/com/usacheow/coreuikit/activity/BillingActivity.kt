@@ -1,5 +1,6 @@
 package com.usacheow.coreuikit.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import com.usacheow.coreuikit.delegate.BillingDelegate
@@ -26,6 +27,11 @@ abstract class BillingActivity : SimpleActivity() {
     override fun onDestroy() {
         billingDelegate.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        billingDelegate.onActivityResult(requestCode, resultCode, data)
     }
 
     protected open fun onFullVersionFound() {

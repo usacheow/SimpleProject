@@ -1,6 +1,7 @@
 package com.usacheow.coreuikit.delegate
 
 import android.app.Activity
+import android.content.Intent
 import com.usacheow.coreuikit.BillingWrapper
 import org.solovyev.android.checkout.Purchase
 
@@ -16,7 +17,7 @@ class BillingDelegate {
 //        billingHelper = BillingWrapper(activity).apply {
 //            start()
 //            checkAvailablePurchase { onFullVersionFound() }
-//            createPurchaseFlow({ onSuccessPurchase(it) }) { response, e -> onErrorPurchase(response, e) }
+//            subscribeOnPurchases({ onSuccessPurchase(it) }) { response, e -> onErrorPurchase(response, e) }
 //        }
     }
 
@@ -25,5 +26,9 @@ class BillingDelegate {
 //        onFullVersionFound = {}
 //        onSuccessPurchase = {}
 //        onErrorPurchase = { _, _ -> }
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        billingHelper?.onActivityResult(requestCode, resultCode, data)
     }
 }
