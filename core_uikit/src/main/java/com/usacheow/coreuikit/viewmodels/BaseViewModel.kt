@@ -7,17 +7,6 @@ import com.usacheow.coredata.network.error.ErrorProcessor
 import com.usacheow.coredata.network.error.MappedException
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class MviViewModel<STATE, ACTION>(
-    errorProcessor: ErrorProcessor
-) : NetworkRxViewModel(errorProcessor) {
-
-    protected val _state = MutableLiveData<STATE>()
-    val state: LiveData<STATE> = _state
-
-    protected val _action = MutableLiveData<EventData<ACTION>>()
-    val action: LiveData<EventData<ACTION>> = _action
-}
-
 abstract class NetworkRxViewModel(
     private val errorProcessor: ErrorProcessor
 ) : ViewModel() {

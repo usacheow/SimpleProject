@@ -8,7 +8,6 @@ import com.usacheow.coreuikit.adapters.ViewTypePagerAdapter
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
 import kotlinx.android.synthetic.main.photo_pager_view.view.photoViewPager
-import kotlinx.android.synthetic.main.photo_pager_view.view.photoViewPagerIndicator
 
 class PhotoPagerView
 @JvmOverloads constructor(
@@ -23,7 +22,6 @@ class PhotoPagerView
         })
 
         photoViewPager.adapter = adapter
-        photoViewPagerIndicator.setupWithViewPager(photoViewPager, model.photoUrlList.size)
     }
 }
 
