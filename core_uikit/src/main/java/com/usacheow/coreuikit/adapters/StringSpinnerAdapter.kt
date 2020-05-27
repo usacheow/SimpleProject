@@ -24,17 +24,9 @@ open class StringSpinnerAdapter(
 
     override fun getDropDownView(index: Int, view: View?, viewGroup: ViewGroup) = processView(index, view, viewGroup)
 
-    fun updateData(items: List<String>) {
-        models.clear()
-        models += items.toMutableList()
-        notifyDataSetChanged()
-    }
-
     protected open fun processView(index: Int, originalView: View?, viewGroup: ViewGroup): View {
-        val item = models[index]
-        return originalView
-            ?: LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false).apply {
-                findViewById<TextView>(R.id.spinnerTitle).text = models[index]
-            }
+        return originalView ?: LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false).apply {
+            findViewById<TextView>(R.id.spinnerTitle).text = models[index]
+        }
     }
 }

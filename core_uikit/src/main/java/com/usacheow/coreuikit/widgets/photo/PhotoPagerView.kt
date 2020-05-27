@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.adapters.ViewTypePagerAdapter
+import com.usacheow.coreuikit.adapters.ViewTypesPagerAdapter
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
 import kotlinx.android.synthetic.main.photo_pager_view.view.photoViewPager
@@ -15,7 +15,7 @@ class PhotoPagerView
 ) : LinearLayout(context, attrs, defStyleAttr), Populatable<PhotoPagerViewObject> {
 
     override fun populate(model: PhotoPagerViewObject) {
-        val adapter = ViewTypePagerAdapter(model.photoUrlList.map {
+        val adapter = ViewTypesPagerAdapter(model.photoUrlList.map {
             PhotoItem(it) {
                 model.onClickAction(model.photoUrlList, photoViewPager.currentItem)
             }

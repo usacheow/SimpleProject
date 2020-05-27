@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.adapters.ViewTypePagerAdapter
+import com.usacheow.coreuikit.adapters.ViewTypesPagerAdapter
 import com.usacheow.coreuikit.utils.ext.openShareDialog
 import com.usacheow.coreuikit.widgets.photo.PhotoItem
 import com.usacheow.diprovider.DiProvider
@@ -38,7 +38,7 @@ class PhotoViewerFragment : SimpleFragment() {
         urls = data?.urls ?: emptyList()
         val position = data?.position ?: 0
 
-        photoViewPager.adapter = ViewTypePagerAdapter(urls.map { PhotoItem(it) })
+        photoViewPager.adapter = ViewTypesPagerAdapter(urls.map { PhotoItem(it) })
         photoViewPager.currentItem = position
     }
 

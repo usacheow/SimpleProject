@@ -7,7 +7,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.ViewType
 
-open class ViewTypePagerAdapter(
+open class ViewTypesPagerAdapter(
     val models: List<ViewType>
 ) : PagerAdapter() {
 
