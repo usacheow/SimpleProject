@@ -32,6 +32,12 @@ class ContainerDelegate {
                 fragment.sharedElementReturnTransition = transition
             }
             addSharedElementsFrom(activeFragment as? SimpleFragment)
+//            setCustomAnimations(
+//                R.anim.anim_enter_from_right,
+//                R.anim.anim_exit_to_left,
+//                R.anim.anim_enter_from_left,
+//                R.anim.anim_exit_to_right
+//            )
             replace(R.id.fragmentContainer, fragment)
             if (needAddToBackStack) addToBackStack(null)
             this
