@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreuikit.base.Populatable
 import com.usacheow.coreuikit.base.RadioViewType
 
-class RadioActionItemAdapter(
+class RadioViewTypesAdapter(
     private val entities: List<RadioViewType> = emptyList()
-) : RecyclerView.Adapter<RadioActionItemAdapter.RadioActionItemHolder>() {
+) : RecyclerView.Adapter<RadioViewTypesAdapter.RadioActionItemHolder>() {
 
     private var selectedItemPosition: Int? = null
 
