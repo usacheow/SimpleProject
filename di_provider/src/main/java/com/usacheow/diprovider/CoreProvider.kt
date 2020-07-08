@@ -2,7 +2,7 @@ package com.usacheow.diprovider
 
 import android.app.Application
 import android.content.Context
-import android.content.res.Resources
+import com.usacheow.core.ResourcesWrapper
 import com.usacheow.core.analytics.ITracker
 
 interface CoreProvider {
@@ -11,7 +11,7 @@ interface CoreProvider {
 
     fun provideContext(): Context
 
-    fun provideResources(): Resources
+    fun provideResources(): ResourcesWrapper
 
     fun provideTracker(): ITracker
 

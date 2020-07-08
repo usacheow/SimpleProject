@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="1. Fonts Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/widgetsScreen"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="2. Widgets Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/viewsScreen"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="3. Views Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             style="@style/TextOverline"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="1. Pin Code Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/signInByPhoneScreen"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="2. Sign In By Phone Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/signInScreen"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="3. Sign In Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/signUpScreen"
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="4. Sign Up Fragment"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
 
         <TextView
             android:id="@+id/calendarScreen"
@@ -104,6 +104,6 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/left_right_margin"
             android:text="5. Calendar Fragment (in progress)"
-            android:background="@drawable/ripple_rectangle" />
+            android:background="?selectableItemBackground" />
     </LinearLayout>
 </ScrollView>

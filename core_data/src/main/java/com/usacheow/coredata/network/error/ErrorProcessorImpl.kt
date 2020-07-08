@@ -1,13 +1,13 @@
 package com.usacheow.coredata.network.error
 
-import android.content.res.Resources
 import androidx.annotation.StringRes
+import com.usacheow.core.ResourcesWrapper
 import com.usacheow.coredata.R
 import javax.inject.Inject
 
 class ErrorProcessorImpl
 @Inject constructor(
-    private val resources: Resources
+    private val resources: ResourcesWrapper
 ) : ErrorProcessor {
 
     override fun process(throwable: Throwable) = when (throwable) {

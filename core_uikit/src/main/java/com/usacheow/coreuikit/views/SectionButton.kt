@@ -2,6 +2,7 @@ package com.usacheow.coreuikit.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class SectionButton
     private val borderPx = BORDER_DP.toPx
 
     private var isClickLocked = false
-    private var onTabSelectHandler: ((Int) -> Unit)? = null
+    var onTabSelectHandler: ((Int) -> Unit)? = null
 
     override fun onClick(v: View) {
         if (isClickLocked) return
@@ -43,22 +44,21 @@ class SectionButton
             .postDelayed({ isClickLocked = false }, ANIMATION_DURATION)
     }
 
-    fun setSelected(position: Int, withoutAnimation: Boolean = false) {
+    fun setSelected(position: Int) {
         radioButtonsContainer.children.toList()
             .filterIsInstance<TextView>()
             .forEachIndexed { index, button ->
                 when {
-                    position != index -> button.changeState(State.UNSELECTED)
-                    withoutAnimation -> button.changeState(State.SELECTED)
-                    else -> button.selectWithAnimation()
+                    position != index -> button.setUnselectedState()
+                    else -> button.setSelectedState()
                 }
             }
     }
 
-    fun populate(list: List<String>) {
+    fun populate(list: List<String>, selectedPosition: Int = 0) {
         radioButtonsContainer.removeAllViews()
         list.forEachIndexed { index, text -> addButton(text, index == list.size + 1) }
-        setSelected(0)
+        setSelected(selectedPosition)
     }
 
     private fun addButton(value: String, isLast: Boolean) {
@@ -80,24 +80,16 @@ class SectionButton
         }
     }
 
-    private fun TextView.selectWithAnimation() {
-        animate().alpha(0.5f)
-            .setDuration(ANIMATION_DURATION)
-            .withEndAction {
-                changeState(State.SELECTED)
-                animate().alpha(1.0f)
-                    .setDuration((ANIMATION_DURATION / 2))
-                    .setListener(null)
-            }
+    private fun TextView.setSelectedState() {
+        setBackgroundResource(R.drawable.bg_section_button_selected)
+        setTextColor(color(R.color.white))
     }
 
-    private fun TextView.changeState(state: State) {
-        setBackgroundColor(color(state.colorBackground))
-        setTextColor(color(state.colorText))
-    }
-
-    enum class State(val colorBackground: Int, val colorText: Int) {
-        SELECTED(R.color.colorAccent, R.color.colorBackground),
-        UNSELECTED(R.color.colorBackground, R.color.colorAccent)
+    private fun TextView.setUnselectedState() {
+        with(TypedValue()) {
+            context.theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, this, true)
+            setBackgroundResource(resourceId)
+        }
+        setTextColor(color(R.color.colorTextSecondary))
     }
 }

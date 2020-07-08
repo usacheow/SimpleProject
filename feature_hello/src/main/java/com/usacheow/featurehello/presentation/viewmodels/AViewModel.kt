@@ -1,12 +1,12 @@
 package com.usacheow.featurehello.presentation.viewmodels
 
-import android.content.res.Resources
 import androidx.lifecycle.ViewModel
+import com.usacheow.core.ResourcesWrapper
 import javax.inject.Inject
 
 class AViewModel
 @Inject constructor(
-    private val resources: Resources
+    private val resources: ResourcesWrapper
 ) : ViewModel() {
 
     var x = 0

@@ -65,7 +65,7 @@
         <item name="android:layout_marginBottom">@dimen/num_pad_button_margin_vertical</item>
         <item name="android:layout_marginStart">@dimen/num_pad_button_margin_horizontal</item>
         <item name="android:layout_marginEnd">@dimen/num_pad_button_margin_horizontal</item>
-        <item name="android:background">@drawable/ripple_circle</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
         <item name="android:gravity">center</item>
     </style>
 

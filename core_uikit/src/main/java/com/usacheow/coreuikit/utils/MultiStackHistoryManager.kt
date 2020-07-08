@@ -18,15 +18,17 @@ class MultiStackHistoryManager(
 
     var listener: OnSectionChangedListener? = null
 
-    private val sections = MutableList(initFragmentsAction.size) { "" }
+    private var sections = MutableList(initFragmentsAction.size) { "" }
     private var activeSectionNumber = FIRST_STACK_NUMBER
 
     fun getState() = State(sections, activeSectionNumber)
 
     fun setState(state: State) {
-        sections.clear()
-        sections += state.sections
-        openSection(state.activeSectionNumber)
+        sections = state.sections.toMutableList()
+        if (sections.isEmpty()) {
+            sections = MutableList(initFragmentsAction.size) { "" }
+        }
+        activeSectionNumber = state.activeSectionNumber
     }
 
     fun openActiveSection() {
@@ -35,6 +37,9 @@ class MultiStackHistoryManager(
     }
 
     fun openSection(sectionNumber: Int) {
+        if (sections.size <= sectionNumber) {
+            return
+        }
         if (sections[sectionNumber].isEmpty()) {
             val nextFragment = initFragmentsAction[sectionNumber].invoke()
             fragmentManager.addFragment(nextFragment)

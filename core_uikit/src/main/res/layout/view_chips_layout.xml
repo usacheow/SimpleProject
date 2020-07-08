@@ -33,7 +33,7 @@
         android:layout_height="36dp"
         android:padding="4dp"
         android:layout_marginEnd="@dimen/left_right_margin"
-        android:background="@drawable/ripple_circle"
+        android:background="?selectableItemBackgroundBorderless"
         android:visibility="gone"
         app:srcCompat="@drawable/ic_filter_list"
         app:layout_constraintTop_toTopOf="parent"

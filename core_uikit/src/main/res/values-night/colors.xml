@@ -31,6 +31,8 @@
     <color name="colorRipple">#33FFFFFF</color>
     <color name="colorRippleInverse">#99000000</color>
 
+    <color name="colorSectionButton">#141414</color>
+
     <color name="error">#F44336</color>
     <color name="success">#4CAF50</color>
     <color name="disabled">#B3B3B3</color>

@@ -31,7 +31,7 @@
                 android:layout_height="32dp"
                 android:padding="4dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/ripple_circle"
+                android:background="?selectableItemBackgroundBorderless"
                 app:srcCompat="@drawable/ic_prev" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_height="32dp"
                 android:padding="4dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/ripple_circle"
+                android:background="?selectableItemBackgroundBorderless"
                 app:srcCompat="@drawable/ic_next" />
         </LinearLayout>
 

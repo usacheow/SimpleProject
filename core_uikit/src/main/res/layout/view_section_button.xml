@@ -3,15 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:strokeWidth="1dp"
-    app:strokeColor="@color/colorAccent"
-    app:cardBackgroundColor="@color/colorAccent"
     app:cardElevation="@dimen/elevation_0"
-    app:cardCornerRadius="@dimen/radius_8">
+    app:cardCornerRadius="@dimen/section_button_radius"
+    app:cardBackgroundColor="@color/colorSectionButton">
 
     <LinearLayout
         android:id="@+id/radioButtonsContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/section_button_height"
         android:orientation="horizontal" />
 </com.usacheow.coreuikit.views.SectionButton>

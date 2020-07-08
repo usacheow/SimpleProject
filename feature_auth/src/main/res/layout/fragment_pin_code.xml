@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:padding="8dp"
-        android:background="@drawable/ripple_rectangle"
+        android:background="?selectableItemBackground"
         android:text="@string/pin_view_code_forgot"
         android:textColor="@color/colorAccent" />
 </LinearLayout>

@@ -1,8 +1,8 @@
 package com.usacheow.otp
 
-import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.usacheow.core.ResourcesWrapper
 import com.usacheow.coredata.SMS_CODE_TIMEOUT_SECONDS
 import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreuikit.viewmodels.SimpleRxViewModel
@@ -18,7 +18,7 @@ private const val EMPTY_CODE = ""
 
 class SmsCodeViewModel
 @Inject constructor(
-    private val resources: Resources
+    private val resources: ResourcesWrapper
 ) : SimpleRxViewModel() {
 
     private var currentCode = ""

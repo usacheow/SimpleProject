@@ -28,7 +28,7 @@ class PinCodeView
         super.onFinishInflate()
         numPadView.onNumberClickedAction = ::onNumberButtonClicked
         numPadView.onBackspaceClickedAction = ::onBackspaceClicked
-        numPadView.onBiometricClickedAction = onBiometricButtonClickedAction
+        numPadView.onBiometricClickedAction = { onBiometricButtonClickedAction?.invoke() }
     }
 
     private fun onNumberButtonClicked(value: CharSequence?) {

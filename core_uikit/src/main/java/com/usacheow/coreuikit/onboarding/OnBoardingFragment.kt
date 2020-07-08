@@ -3,7 +3,7 @@ package com.usacheow.coreuikit.onboarding
 import android.os.Bundle
 import com.usacheow.coreuikit.AppStateViewModel
 import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.adapters.ViewTypesPagerAdapter
+import com.usacheow.coreuikit.adapters.ViewTypesAdapter
 import com.usacheow.coreuikit.fragments.SimpleFragment
 import com.usacheow.coreuikit.viewmodels.ViewModelFactory
 import com.usacheow.coreuikit.viewmodels.injectViewModel
@@ -25,7 +25,7 @@ class OnBoardingFragment : SimpleFragment() {
         OnBoardingItem(R.drawable.on_boarding_2, R.string.on_boarding_title_2, R.string.on_boarding_description_2),
         OnBoardingItem(R.drawable.on_boarding_3, R.string.on_boarding_title_3, R.string.on_boarding_description_3)
     )
-    private val adapter = ViewTypesPagerAdapter(onBoardingData)
+    private val adapter = ViewTypesAdapter(onBoardingData)
 
     override fun inject(diProvider: DiProvider) {
         OnBoardingComponent.init(diProvider).inject(this)

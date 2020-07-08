@@ -18,7 +18,7 @@
             android:padding="8dp"
             android:layout_margin="8dp"
             android:layout_gravity="start"
-            android:background="@drawable/ripple_circle"
+            android:background="?selectableItemBackgroundBorderless"
             app:srcCompat="@drawable/ic_close" />
 
         <TextView
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/left_right_margin"
             android:padding="8dp"
-            android:background="@drawable/ripple_rectangle"
+            android:background="?selectableItemBackground"
             android:text="@string/sms_code_resend"
             android:textColor="@color/colorAccent" />
     </LinearLayout>

@@ -2,7 +2,8 @@ package com.usacheow.simpleapp.di
 
 import android.app.Application
 import android.content.Context
-import android.content.res.Resources
+import com.usacheow.core.ResourcesWrapper
+import com.usacheow.core.ResourcesWrapperImpl
 import com.usacheow.core.analytics.ITracker
 import com.usacheow.di.ApplicationScope
 import com.usacheow.simpleapp.AnalyticsTracker
@@ -24,7 +25,7 @@ class CoreModule(
 
     @Provides
     @ApplicationScope
-    fun provideResources(): Resources = application.resources
+    fun provideResources(): ResourcesWrapper = ResourcesWrapperImpl(application)
 
     @Provides
     @ApplicationScope

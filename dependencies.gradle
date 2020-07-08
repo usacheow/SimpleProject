@@ -22,7 +22,7 @@ ext {
     dexterVersion = '6.0.2'
     cameraXVersion = '1.0.0-beta03'
     cameraXViewVersion = '1.0.0-alpha10'
-    pageIndicatorVersion = '1.0.3'
+    pageIndicatorVersion = '1.2.1'
     flexboxVersion = '2.0.1'
 
     analyticsVersion = '17.2.1'
@@ -80,7 +80,7 @@ ext {
             rxBinding:       "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
             dexter:          "com.karumi:dexter:$dexterVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
-            pageIndicator:   "com.romandanylyk:pageindicatorview:$pageIndicatorVersion",
+            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
             flexbox:         "com.google.android:flexbox:$flexboxVersion"
     ]
 

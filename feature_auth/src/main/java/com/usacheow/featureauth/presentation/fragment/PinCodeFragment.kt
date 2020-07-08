@@ -6,8 +6,7 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import com.usacheow.coreuikit.AppStateViewModel
 import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.biometric.SignInError
-import com.usacheow.coreuikit.utils.biometric.SignInSuccess
+import com.usacheow.coreuikit.utils.biometric.BiometricAuthorizationManager
 import com.usacheow.coreuikit.utils.ext.PaddingValue
 import com.usacheow.coreuikit.utils.ext.doOnClick
 import com.usacheow.coreuikit.utils.ext.string
@@ -16,9 +15,10 @@ import com.usacheow.coreuikit.viewmodels.livedata.subscribe
 import com.usacheow.diprovider.DiProvider
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.di.AuthorizationComponent
-import com.usacheow.featureauth.presentation.dialog.FingerprintPromptBottomDialog
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
+import com.usacheow.featureauth.presentation.viewmodels.SignInError
+import com.usacheow.featureauth.presentation.viewmodels.SignInSuccess
 import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeForgotButton
 import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeRootView
 import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeView
@@ -28,6 +28,7 @@ class PinCodeFragment : SimpleFragment() {
 
     override val layoutId = R.layout.fragment_pin_code
 
+    @Inject lateinit var biometricDelegate: BiometricAuthorizationManager
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private val appStateViewModel by injectViewModel<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
@@ -49,53 +50,36 @@ class PinCodeFragment : SimpleFragment() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        biometricDelegate.init(requireActivity())
+        biometricDelegate.onSuccessAction = {
+            appStateViewModel.onPinCodeEntered()
+        }
+        biometricDelegate.onUnavailableAction = {
+            pinCodeView.setFingerprintEnabled(false)
+        }
+
         pinCodeView.setHint(string(R.string.pin_view_hint))
-        pinCodeView.onBiometricButtonClickedAction = { viewModel.displayFingerprintPrompt() }
+        pinCodeView.onBiometricButtonClickedAction = { biometricDelegate.tryShow() }
         pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
         pinCodeForgotButton.doOnClick { }
     }
 
     override fun subscribe() {
-        viewModel.isFingerPrintEnabled.subscribe(viewLifecycleOwner) { isEnabled ->
+        viewModel.isFingerprintAllow.subscribe(viewLifecycleOwner) { isAllow ->
+            val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
             pinCodeView.setFingerprintEnabled(isEnabled)
             if (isEnabled) {
-                viewModel.displayFingerprintPrompt()
-            }
-        }
-        viewModel.isFingerPrintDialog.subscribe(viewLifecycleOwner) { isShowing ->
-            when {
-                isShowing -> showDialog()
-                else -> bottomDialog?.dismiss()
+                biometricDelegate.tryShow()
             }
         }
         viewModel.changeAuthState.subscribe(viewLifecycleOwner) {
             when (it) {
-                is SignInSuccess -> onSuccess()
-                is SignInError -> onError()
+                is SignInSuccess -> appStateViewModel.onPinCodeEntered()
+                is SignInError -> {
+                    pinCodeView.setHint(string(R.string.pin_view_code_error))
+                    pinCodeView.showError()
+                }
             }
         }
-    }
-
-    private fun onError() {
-        if (bottomDialog?.isShowing == true && bottomDialog is FingerprintPromptBottomDialog) {
-            (bottomDialog as FingerprintPromptBottomDialog).showErrorState()
-        } else {
-            pinCodeView.setHint(string(R.string.pin_view_code_error))
-        }
-        pinCodeView.showError()
-    }
-
-    private fun onSuccess() {
-        if (bottomDialog?.isShowing == true && bottomDialog is FingerprintPromptBottomDialog) {
-            (bottomDialog as FingerprintPromptBottomDialog).showSuccessState()
-        }
-        appStateViewModel.onPinCodeEntered()
-    }
-
-    private fun showDialog() {
-        if (bottomDialog == null) {
-            bottomDialog = FingerprintPromptBottomDialog(requireActivity())
-        }
-        bottomDialog?.show()
     }
 }
