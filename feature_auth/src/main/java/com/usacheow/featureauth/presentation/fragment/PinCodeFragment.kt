@@ -1,18 +1,19 @@
 package com.usacheow.featureauth.presentation.fragment
 
+import android.app.Application
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.usacheow.coreuikit.AppStateViewModel
-import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.biometric.BiometricAuthorizationManager
-import com.usacheow.coreuikit.utils.ext.PaddingValue
-import com.usacheow.coreuikit.utils.ext.doOnClick
-import com.usacheow.coreuikit.utils.ext.string
-import com.usacheow.coreuikit.viewmodels.injectViewModel
-import com.usacheow.coreuikit.viewmodels.livedata.subscribe
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.livedata.subscribe
+import com.usacheow.coreui.utils.biometric.BiometricAuthorizationManager
+import com.usacheow.coreui.utils.ext.PaddingValue
+import com.usacheow.coreui.utils.ext.doOnClick
+import com.usacheow.coreui.utils.ext.string
+import com.usacheow.diprovider.DiApp
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.di.AuthorizationComponent
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -31,15 +32,15 @@ class PinCodeFragment : SimpleFragment() {
     @Inject lateinit var biometricDelegate: BiometricAuthorizationManager
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val appStateViewModel by injectViewModel<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
-    private val viewModel by injectViewModel<PinCodeViewModel> { viewModelFactory }
+    private val appStateViewModel by viewModels<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
+    private val viewModel by viewModels<PinCodeViewModel> { viewModelFactory }
 
     companion object {
         fun newInstance() = PinCodeFragment()
     }
 
-    override fun inject(diProvider: DiProvider) {
-        AuthorizationComponent.init(diProvider).inject(this)
+    override fun inject(application: Application) {
+        AuthorizationComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

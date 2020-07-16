@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/exampleHeaderView"
+            style="@style/TextH1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="Demo Uikit"
+            android:background="@color/colorGreyCard" />
+
+        <TextView
+            style="@style/TextOverline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="Components" />
+
+        <TextView
+            android:id="@+id/fontsScreen"
+            style="@style/TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Fonts Fragment"
+            android:background="?selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/widgetsScreen"
+            style="@style/TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="2. Widgets Fragment"
+            android:background="?selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/viewsScreen"
+            style="@style/TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="3. Views Fragment"
+            android:background="?selectableItemBackground" />
+
+        <TextView
+            style="@style/TextOverline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:layout_marginTop="16dp"
+            android:text="Screens" />
+
+        <TextView
+            android:id="@+id/calendarScreen"
+            style="@style/TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Calendar Fragment (in progress)"
+            android:background="?selectableItemBackground" />
+    </LinearLayout>
+</ScrollView>

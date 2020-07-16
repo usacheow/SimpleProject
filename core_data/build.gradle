@@ -20,14 +20,12 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core')
     implementation project(':di')
 
     implementation firebaseDependencies.values()
-    implementation billingDependencies.values()
 
-    implementation networkDependencies.values()
-    implementation rxDependencies.values()
+    api networkDependencies.values()
+    api rxDependencies.values()
 
     implementation daggerDependency
     kapt kaptDaggerDependency

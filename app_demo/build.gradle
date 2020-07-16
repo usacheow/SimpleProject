@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    implementation project(':core_data')
+    implementation project(':core_ui')
+    implementation project(':di_app')
+    implementation project(':otp')
+
+    implementation cameraxDependencies.values()
+
+    implementation firebaseDependencies.values()
+
+    implementation lifecycleDependency
+    kapt kaptLifecycleDependency
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
+
+    testImplementation project(':core_unit_test')
+    androidTestImplementation uiTestDependencies.values()
+}

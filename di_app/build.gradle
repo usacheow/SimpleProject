@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    api project(':di')
+    implementation project(':core_mediator')
+    implementation project(':core_data')
+    implementation project(':core_ui')
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
+}

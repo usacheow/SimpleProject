@@ -1,6 +1,6 @@
 package com.usacheow.featurehello.presentation.fragment
 
-import com.usacheow.coreuikit.fragments.ContainerFragment
+import com.usacheow.coreui.fragments.ContainerFragment
 
 class HelloContainerFragment : ContainerFragment() {
 

@@ -1,17 +1,17 @@
 package com.usacheow.simpleapp.mainscreen
 
+import android.app.Application
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import com.usacheow.coreuikit.AppStateViewModel
-import com.usacheow.coreuikit.R
-import com.usacheow.coreuikit.activity.BillingActivity
-import com.usacheow.coreuikit.delegate.ContainerDelegate
-import com.usacheow.coreuikit.utils.ext.RoutingTransition
-import com.usacheow.coreuikit.viewmodels.ViewModelFactory
-import com.usacheow.coreuikit.viewmodels.injectViewModel
-import com.usacheow.coreuikit.viewmodels.livedata.subscribe
-import com.usacheow.demo.ExampleContainerFragment
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.coreui.R
+import com.usacheow.coreui.activity.BillingActivity
+import com.usacheow.coreui.delegate.ContainerDelegate
+import com.usacheow.coreui.livedata.subscribe
+import com.usacheow.coreui.utils.ext.RoutingTransition
+import com.usacheow.coreui.viewmodels.ViewModelFactory
+import com.usacheow.diprovider.DiApp
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class MainScreenActivity : BillingActivity() {
     override val layoutId = R.layout.frg_container
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val appStateViewModel by injectViewModel<AppStateViewModel> { viewModelFactory }
+    private val appStateViewModel by viewModels<AppStateViewModel> { viewModelFactory }
 
     private val containerDelegate by lazy { ContainerDelegate() }
 
@@ -37,14 +37,10 @@ class MainScreenActivity : BillingActivity() {
         appStateViewModel.openAppScreen.subscribe(this) {
             show(BottomBarFragment.newInstance())
         }
-
-        appStateViewModel.openDemoScreen.subscribe(this) {
-            show(ExampleContainerFragment.newInstance())
-        }
     }
 
-    override fun inject(diProvider: DiProvider) {
-        MainScreenComponent.init(diProvider).inject(this)
+    override fun inject(application: Application) {
+        MainScreenComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     private fun show(fragment: Fragment, needAddToBackstack: Boolean = false) {

@@ -1,9 +1,9 @@
 package com.usacheow.simpleapp.mainscreen.di
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.coreuikit.AppStateViewModel
-import com.usacheow.coreuikit.viewmodels.ViewModelFactoryModule
-import com.usacheow.coreuikit.viewmodels.ViewModelKey
+import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.coreui.viewmodels.ViewModelFactoryModule
+import com.usacheow.coreui.viewmodels.ViewModelKey
 import com.usacheow.simpleapp.mainscreen.BottomBarViewModel
 import dagger.Binds
 import dagger.Module

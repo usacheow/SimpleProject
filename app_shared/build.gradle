@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    implementation project(':core_data')
+    implementation project(':core_ui')
+
+    implementation firebaseDependencies.values()
+
+    implementation lifecycleDependency
+    kapt kaptLifecycleDependency
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
+
+    testImplementation project(':core_unit_test')
+    androidTestImplementation uiTestDependencies.values()
+}

@@ -2,9 +2,9 @@ package com.usacheow.simpleapp.di
 
 import android.app.Application
 import android.content.Context
-import com.usacheow.core.ResourcesWrapper
-import com.usacheow.core.ResourcesWrapperImpl
-import com.usacheow.core.analytics.ITracker
+import com.usacheow.coreui.analytics.Tracker
+import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.resources.ResourcesWrapperImpl
 import com.usacheow.di.ApplicationScope
 import com.usacheow.simpleapp.AnalyticsTracker
 import dagger.Module
@@ -29,7 +29,7 @@ class CoreModule(
 
     @Provides
     @ApplicationScope
-    fun provideTracker(): ITracker = AnalyticsTracker(application)
+    fun provideTracker(): Tracker = AnalyticsTracker(application)
 
     //todo take token from play console
 //    @Provides

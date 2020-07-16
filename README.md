@@ -40,9 +40,9 @@ Based on Checkout lib.
 BillingWrapper encapsulates the interaction with the library and is responsible for working with purchases
 
 #### 6. Analytics
-ITracker implementation can work with one system for analytics, or with a group of systems. 
+Tracker implementation can work with one system for analytics, or with a group of systems. 
 The project has an example wrapper for FirebaseAnalytics (FirebaseTracker). 
-Access to the ITracker object is through AnalyticsTrackerHolder
+Access to the Tracker object is through AnalyticsTrackerHolder
 
 #### 7. Error processing
 You can parse errors using RxErrorHandlingCallAdapterFactory. The error format is described in the ErrorMessage class.

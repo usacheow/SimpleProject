@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.calendar.CalendarMonthItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendarItemRootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="24dp">
+
+    <TextView
+        android:id="@+id/calendarMonthNameView"
+        style="@style/TextH1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/left_right_margin"
+        android:layout_marginEnd="@dimen/left_right_margin"
+        tools:text="April '20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarMonthDaysListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/view_calendar_day_item"
+        tools:itemCount="5" />
+</com.usacheow.coreui.uikit.calendar.CalendarMonthItemView>

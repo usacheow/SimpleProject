@@ -1,8 +1,8 @@
 package com.usacheow.featureauth.di
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.coreuikit.viewmodels.ViewModelFactoryModule
-import com.usacheow.coreuikit.viewmodels.ViewModelKey
+import com.usacheow.coreui.viewmodels.ViewModelFactoryModule
+import com.usacheow.coreui.viewmodels.ViewModelKey
 import com.usacheow.di.FragmentScope
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithLoginAndPasswordViewModel

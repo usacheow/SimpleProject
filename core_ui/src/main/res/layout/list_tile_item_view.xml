@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.listitem.ListTileItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/SimpleShimmerLayout"
+    android:padding="@dimen/left_right_margin"
+    android:background="?selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/actionIconView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="@dimen/left_right_margin"
+            app:riv_corner_radius="@dimen/radius_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/actionSubtitleView"
+                style="@style/TextCaption_60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                tools:text="Subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/actionTitleView"
+                style="@style/TextBody1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                tools:text="Title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/actionDescriptionView"
+                style="@style/TextBody2_60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                tools:text="Description" />
+        </LinearLayout>
+    </LinearLayout>
+</com.usacheow.coreui.uikit.listitem.ListTileItemView>

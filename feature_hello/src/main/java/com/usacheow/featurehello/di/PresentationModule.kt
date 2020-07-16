@@ -1,8 +1,8 @@
 package com.usacheow.featurehello.di
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.coreuikit.viewmodels.ViewModelFactoryModule
-import com.usacheow.coreuikit.viewmodels.ViewModelKey
+import com.usacheow.coreui.viewmodels.ViewModelFactoryModule
+import com.usacheow.coreui.viewmodels.ViewModelKey
 import com.usacheow.di.FragmentScope
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
 import com.usacheow.featurehello.presentation.viewmodels.BViewModel

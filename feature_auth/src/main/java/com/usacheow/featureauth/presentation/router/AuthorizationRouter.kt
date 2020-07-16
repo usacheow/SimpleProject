@@ -1,8 +1,8 @@
 package com.usacheow.featureauth.presentation.router
 
 import androidx.lifecycle.ViewModelProvider
-import com.usacheow.coreuikit.base.Router
-import com.usacheow.coreuikit.fragments.SimpleFragment
+import com.usacheow.coreui.base.Router
+import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment
 import com.usacheow.otp.SmsCodeModalFragment
 import javax.inject.Inject

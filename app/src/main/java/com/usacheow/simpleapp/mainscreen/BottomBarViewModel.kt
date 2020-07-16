@@ -1,7 +1,7 @@
 package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.coreuikit.utils.MultiStackHistoryManager
+import com.usacheow.coreui.utils.MultiStackHistoryManager
 import javax.inject.Inject
 
 class BottomBarViewModel

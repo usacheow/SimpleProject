@@ -20,7 +20,6 @@ android {
         versionCode configVersionCode()
 
         vectorDrawables.useSupportLibrary = true
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,17 +29,13 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    lintOptions {
-        disable 'RtlHardcoded', 'RtlSymmetry', 'InvalidPackage', 'MissingPermission', "MissingTranslation"
     }
 
     signingConfigs {
@@ -78,34 +73,24 @@ android {
             versionName configVersionName()
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core')
+    implementation project(':core_mediator')
     implementation project(':core_data')
-    implementation project(':core_uikit')
-    implementation project(':di_provider')
+    implementation project(':core_ui')
+    implementation project(':di_app')
+    implementation project(':app_shared')
+
     implementation project(':feature_hello')
     implementation project(':feature_auth')
-
-    implementation project(':demo')
-
-    implementation androidxDependencies.values()
-    implementation uiDependencies.values()
+    implementation project(':feature_onboarding')
 
     implementation firebaseDependencies.values()
     implementation billingDependencies.values()
-
-    implementation networkDependencies.values()
-    implementation rxDependencies.values()
 
     implementation daggerDependency
     kapt kaptDaggerDependency

@@ -3,25 +3,32 @@ package com.usacheow.featureauth.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.usacheow.coredata.network.error.ErrorProcessorImpl
+import com.usacheow.coredata.network.error.MappedException
 import com.usacheow.coredata.network.observer.SimpleCompletableObserver
-import com.usacheow.coreuikit.viewmodels.NetworkRxViewModel
-import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
-import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
+import com.usacheow.coreui.livedata.ActionLiveData
+import com.usacheow.coreui.livedata.SimpleAction
+import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
 class SignUpWithLoginAndPasswordViewModel
 @Inject constructor(
-    errorProcessor: ErrorProcessorImpl,
+    private val errorProcessor: ErrorProcessorImpl,
     private val interactor: AuthInteractor
-) : NetworkRxViewModel(errorProcessor) {
+) : SimpleViewModel() {
 
     val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData
     private val _submitButtonEnabledLiveData by lazy { MutableLiveData<Boolean>() }
 
     val openMainScreen: LiveData<SimpleAction> get() = _openMainScreenLiveData
     private val _openMainScreenLiveData by lazy { ActionLiveData<SimpleAction>() }
+
+    val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
+    protected val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
+
+    val errorState: LiveData<MappedException> get() = _errorStateLiveData
+    protected val _errorStateLiveData by lazy { MutableLiveData<MappedException>() }
 
     init {
         _isLoadingStateLiveData.value = false
@@ -48,7 +55,9 @@ class SignUpWithLoginAndPasswordViewModel
                 _isLoadingStateLiveData.value = false
                 _openMainScreenLiveData.value = SimpleAction()
             }
-            .onError(::onError)
+            .onError {
+                _errorStateLiveData.value = errorProcessor.process(it)
+            }
             .build()
 
         disposables.clear()

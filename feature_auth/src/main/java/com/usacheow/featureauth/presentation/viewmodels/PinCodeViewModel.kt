@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.usacheow.coredata.database.Storage
-import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
+import com.usacheow.coreui.livedata.ActionLiveData
 import javax.inject.Inject
 
 class PinCodeViewModel

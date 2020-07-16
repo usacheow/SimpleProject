@@ -1,18 +1,19 @@
 package com.usacheow.featurehello.presentation.fragment
 
+import android.app.Application
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.coreuikit.adapters.ViewTypesAdapter
-import com.usacheow.coreuikit.fragments.SimpleFragment
-import com.usacheow.coreuikit.utils.ext.PaddingValue
-import com.usacheow.coreuikit.utils.ext.toPx
-import com.usacheow.coreuikit.viewmodels.ViewModelFactory
-import com.usacheow.coreuikit.viewmodels.injectViewModel
-import com.usacheow.coreuikit.views.SimpleAppBarLayout
-import com.usacheow.coreuikit.widgets.ActionItem
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.coreui.adapters.ViewTypesAdapter
+import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
+import com.usacheow.coreui.uikit.listitem.ActionItem
+import com.usacheow.coreui.utils.ext.PaddingValue
+import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.viewmodels.ViewModelFactory
+import com.usacheow.diprovider.DiApp
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
@@ -24,13 +25,13 @@ import javax.inject.Inject
 class BFragment : SimpleFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val aViewModel by injectViewModel<AViewModel>({ requireParentFragment() }, { viewModelFactory })
-    private val bViewModel by injectViewModel<BViewModel> { viewModelFactory }
+    private val aViewModel by viewModels<AViewModel>({ requireParentFragment() }, { viewModelFactory })
+    private val bViewModel by viewModels<BViewModel> { viewModelFactory }
 
     override val layoutId = R.layout.fragment_b
 
-    override fun inject(diProvider: DiProvider) {
-        HelloComponent.init(diProvider).inject(this)
+    override fun inject(application: Application) {
+        HelloComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

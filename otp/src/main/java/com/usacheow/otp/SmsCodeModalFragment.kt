@@ -1,16 +1,16 @@
 package com.usacheow.otp
 
+import android.app.Application
 import android.os.Bundle
 import android.text.InputFilter
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.usacheow.coreuikit.fragments.SimpleModalFragment
-import com.usacheow.coreuikit.utils.ext.doOnClick
-import com.usacheow.coreuikit.viewmodels.injectViewModel
-import com.usacheow.coreuikit.viewmodels.livedata.subscribe
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.coreui.fragments.SimpleModalFragment
+import com.usacheow.coreui.livedata.subscribe
+import com.usacheow.coreui.utils.ext.doOnClick
 import kotlinx.android.synthetic.main.fragment_sms_code.loaderView
 import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeCloseButton
 import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeInput
@@ -26,7 +26,7 @@ class SmsCodeModalFragment : SimpleModalFragment() {
     override val layoutId = R.layout.fragment_sms_code
 
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by injectViewModel<SmsCodeViewModel>({ requireParentFragment() }, { viewModelFactory })
+    private val viewModel by viewModels<SmsCodeViewModel>({ requireParentFragment() }, { viewModelFactory })
 
     companion object {
         fun newInstance(codeLength: Int) = SmsCodeModalFragment().apply {
@@ -34,7 +34,7 @@ class SmsCodeModalFragment : SimpleModalFragment() {
         }
     }
 
-    override fun inject(diProvider: DiProvider) {}
+    override fun inject(application: Application) = Unit
 
     override fun processArguments(bundle: Bundle?) {
         val maxCodeLength = arguments?.getInt(CODE_LENGTH_KEY) ?: CODE_LENGTH_DEFAULT_VALUE

@@ -2,12 +2,11 @@ package com.usacheow.otp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.usacheow.core.ResourcesWrapper
-import com.usacheow.coredata.SMS_CODE_TIMEOUT_SECONDS
 import com.usacheow.coredata.network.setRequestThreads
-import com.usacheow.coreuikit.viewmodels.SimpleRxViewModel
-import com.usacheow.coreuikit.viewmodels.livedata.ActionLiveData
-import com.usacheow.coreuikit.viewmodels.livedata.SimpleAction
+import com.usacheow.coreui.livedata.ActionLiveData
+import com.usacheow.coreui.livedata.SimpleAction
+import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.viewmodels.SimpleViewModel
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.plusAssign
 import java.util.concurrent.TimeUnit
@@ -15,11 +14,12 @@ import javax.inject.Inject
 
 private const val EMPTY_MESSAGE = ""
 private const val EMPTY_CODE = ""
+private const val SMS_CODE_TIMEOUT_SECONDS = 60L
 
 class SmsCodeViewModel
 @Inject constructor(
     private val resources: ResourcesWrapper
-) : SimpleRxViewModel() {
+) : SimpleViewModel() {
 
     private var currentCode = ""
     private var maxCodeLength = 0
@@ -64,7 +64,7 @@ class SmsCodeViewModel
 
         disposables += Observable.interval(1L, TimeUnit.SECONDS)
             .setRequestThreads()
-            .take(SMS_CODE_TIMEOUT_SECONDS.toLong())
+            .take(SMS_CODE_TIMEOUT_SECONDS)
             .map { SMS_CODE_TIMEOUT_SECONDS - it }
             .subscribe(
                 { _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer, it) },

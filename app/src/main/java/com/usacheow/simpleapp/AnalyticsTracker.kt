@@ -2,14 +2,14 @@ package com.usacheow.simpleapp
 
 import android.app.Application
 import androidx.core.os.bundleOf
-import com.usacheow.core.analytics.Events
-import com.usacheow.core.analytics.ITracker
+import com.usacheow.coreui.analytics.Events
+import com.usacheow.coreui.analytics.Tracker
 import javax.inject.Inject
 
 class AnalyticsTracker
 @Inject constructor(
     private val application: Application
-) : ITracker {
+) : Tracker {
 
     //todo: add firebase config json
 //    private val firebaseAnalytics by lazy {

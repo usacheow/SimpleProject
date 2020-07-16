@@ -1,7 +1,7 @@
 package com.usacheow.featurehello.presentation.router
 
 import android.content.Context
-import com.usacheow.coreuikit.base.Router
+import com.usacheow.coreui.base.Router
 import javax.inject.Inject
 
 class HelloFeatureRouter

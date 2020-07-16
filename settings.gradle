@@ -1,3 +1,4 @@
-include ':app', ':core', ':core_data', ':core_uikit', ':core_unit_test', ':di', ':di_provider', ':otp'
-include ':feature_auth', ':feature_hello'
-include ':demo'
+include ':app', ':core_data', ':core_ui', ':core_unit_test', ':core_mediator', ':di', ':di_app'
+include ':app_shared', ':otp'
+include ':feature_auth', ':feature_hello', ':feature_onboarding'
+include ':app_demo'

@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlinDependency
+
+    api androidxDependencies.values()
+    api uiDependencies.values()
+
+    implementation firebaseDependencies.values()
+    implementation billingDependencies.values()
+
+    implementation rxDependencies.values()
+    implementation gsonDependencies.values()
+
+    implementation glideDependency
+    kapt kaprGlideDependency
+
+    implementation lifecycleDependency
+    kapt kaptLifecycleDependency
+
+    implementation daggerDependency
+    kapt kaptDaggerDependency
+}

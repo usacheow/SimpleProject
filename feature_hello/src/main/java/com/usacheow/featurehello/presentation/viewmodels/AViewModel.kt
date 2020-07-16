@@ -1,7 +1,7 @@
 package com.usacheow.featurehello.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.usacheow.core.ResourcesWrapper
+import com.usacheow.coreui.resources.ResourcesWrapper
 import javax.inject.Inject
 
 class AViewModel

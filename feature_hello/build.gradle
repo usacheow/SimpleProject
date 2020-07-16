@@ -14,8 +14,16 @@ android {
         targetSdkVersion androidTargetSdkVersion
 
         vectorDrawables.useSupportLibrary = true
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -23,17 +31,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':core')
+    implementation project(':core_mediator')
     implementation project(':core_data')
-    implementation project(':core_uikit')
-    implementation project(':di_provider')
-
-    implementation cameraxDependencies.values()
+    implementation project(':core_ui')
+    implementation project(':di_app')
+    implementation project(':app_shared')
 
     implementation firebaseDependencies.values()
-
-    implementation networkDependencies.values()
-    implementation rxDependencies.values()
 
     implementation lifecycleDependency
     kapt kaptLifecycleDependency
