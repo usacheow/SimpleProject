@@ -34,7 +34,7 @@ dependencies {
     implementation project(':core_mediator')
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':di_app')
+    implementation project(':di')
     implementation project(':app_shared')
     implementation project(':otp')
 

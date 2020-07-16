@@ -2,9 +2,9 @@ package com.usacheow.coredata.di
 
 import com.usacheow.coredata.BuildConfig
 import com.usacheow.coredata.network.error.RxErrorHandlingCallAdapterFactory
-import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,13 +15,13 @@ import javax.inject.Named
 class RetrofitModule {
 
     @Provides
-    @ApplicationScope
+    @Reusable
     @Named("ENDPOINT")
-    fun provideEndpoint(): String = BuildConfig.ENDPOINT
+    fun endpoint(): String = BuildConfig.ENDPOINT
 
     @Provides
-    @ApplicationScope
-    fun provideRetrofit(
+    @Reusable
+    fun retrofit(
         okHttp: OkHttpClient,
         @Named("ENDPOINT") host: String,
         converter: GsonConverterFactory,

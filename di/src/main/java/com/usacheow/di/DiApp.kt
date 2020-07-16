@@ -1,4 +1,4 @@
-package com.usacheow.diprovider
+package com.usacheow.di
 
 interface DiApp {
 

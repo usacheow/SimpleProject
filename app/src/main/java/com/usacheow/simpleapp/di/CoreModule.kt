@@ -5,10 +5,10 @@ import android.content.Context
 import com.usacheow.coreui.analytics.Tracker
 import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.resources.ResourcesWrapperImpl
-import com.usacheow.di.ApplicationScope
 import com.usacheow.simpleapp.AnalyticsTracker
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 
 @Module
 class CoreModule(
@@ -16,23 +16,23 @@ class CoreModule(
 ) {
 
     @Provides
-    @ApplicationScope
-    fun provideApplication() = application
+    @Reusable
+    fun application() = application
 
     @Provides
-    @ApplicationScope
-    fun provideContext(): Context = application
+    @Reusable
+    fun context(): Context = application
 
     @Provides
-    @ApplicationScope
-    fun provideResources(): ResourcesWrapper = ResourcesWrapperImpl(application)
+    @Reusable
+    fun resources(): ResourcesWrapper = ResourcesWrapperImpl(application)
 
     @Provides
-    @ApplicationScope
-    fun provideTracker(): Tracker = AnalyticsTracker(application)
+    @Reusable
+    fun analyticsTracker(): Tracker = AnalyticsTracker(application)
 
     //todo take token from play console
 //    @Provides
-//    @ApplicationScope
-//    fun provideBilling(): Billing = BillingWrapper.initBilling(application)
+//    @Reusable
+//    fun billing(): Billing = BillingWrapper.initBilling(application)
 }

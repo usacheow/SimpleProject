@@ -1,4 +1,4 @@
-include ':app', ':core_data', ':core_ui', ':core_unit_test', ':core_mediator', ':di', ':di_app'
+include ':app', ':app_demo'
+include ':core_data', ':core_ui', ':core_mediator', ':core_unit_test', ':di'
 include ':app_shared', ':otp'
 include ':feature_auth', ':feature_hello', ':feature_onboarding'
-include ':app_demo'

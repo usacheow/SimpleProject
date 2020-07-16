@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.utils.ext.doOnClick
 import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.router.HelloFeatureRouter

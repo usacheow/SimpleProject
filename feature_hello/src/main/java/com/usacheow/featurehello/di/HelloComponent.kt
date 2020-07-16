@@ -1,7 +1,7 @@
 package com.usacheow.featurehello.di
 
+import com.usacheow.di.DiProvider
 import com.usacheow.di.FragmentScope
-import com.usacheow.diprovider.DiProvider
 import com.usacheow.featurehello.presentation.activity.HelloActivity
 import com.usacheow.featurehello.presentation.fragment.AFragment
 import com.usacheow.featurehello.presentation.fragment.BFragment

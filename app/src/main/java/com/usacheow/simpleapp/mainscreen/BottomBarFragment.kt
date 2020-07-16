@@ -9,7 +9,7 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.MultiStackHistoryManager
 import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent

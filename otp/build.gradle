@@ -33,7 +33,7 @@ dependencies {
 
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':di_app')
+    implementation project(':di')
 
     implementation firebaseDependencies.values()
 

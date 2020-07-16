@@ -1,7 +1,7 @@
 package com.usacheow.featureauth.di
 
+import com.usacheow.di.DiProvider
 import com.usacheow.di.FragmentScope
-import com.usacheow.diprovider.DiProvider
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureauth.presentation.fragment.SignInFragment
 import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment

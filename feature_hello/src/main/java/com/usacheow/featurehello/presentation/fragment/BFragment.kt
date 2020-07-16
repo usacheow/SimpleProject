@@ -13,7 +13,7 @@ import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.utils.ext.toPx
 import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel

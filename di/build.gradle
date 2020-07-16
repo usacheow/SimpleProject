@@ -18,6 +18,10 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
+    implementation project(':core_mediator')
+    implementation project(':core_data')
+    implementation project(':core_ui')
+
     implementation daggerDependency
     kapt kaptDaggerDependency
 }

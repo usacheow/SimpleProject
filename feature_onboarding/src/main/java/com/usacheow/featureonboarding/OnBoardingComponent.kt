@@ -1,7 +1,7 @@
 package com.usacheow.featureonboarding
 
+import com.usacheow.di.DiProvider
 import com.usacheow.di.FragmentScope
-import com.usacheow.diprovider.DiProvider
 import dagger.Component
 
 @FragmentScope

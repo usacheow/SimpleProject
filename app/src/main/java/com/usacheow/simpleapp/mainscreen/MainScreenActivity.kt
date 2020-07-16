@@ -11,7 +11,7 @@ import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.ext.RoutingTransition
 import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
 import javax.inject.Inject

@@ -1,12 +1,12 @@
 package com.usacheow.simpleapp.di
 
 import com.usacheow.coredata.di.CoreDataModule
-import com.usacheow.di.ApplicationScope
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.di.DiProvider
 import com.usacheow.simpleapp.SimpleApp
 import dagger.Component
+import javax.inject.Singleton
 
-@ApplicationScope
+@Singleton
 @Component(
     modules = [
         CoreModule::class,

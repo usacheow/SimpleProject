@@ -13,7 +13,7 @@ import com.usacheow.coreui.utils.biometric.BiometricAuthorizationManager
 import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.utils.ext.doOnClick
 import com.usacheow.coreui.utils.ext.string
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.di.AuthorizationComponent
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter

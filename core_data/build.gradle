@@ -20,8 +20,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependency
 
-    implementation project(':di')
-
     implementation firebaseDependencies.values()
 
     api networkDependencies.values()

@@ -10,9 +10,9 @@ import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage
-import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 
 @Module(
     includes = [
@@ -25,8 +25,8 @@ import dagger.Provides
 class CoreDataModule {
 
     @Provides
-    @ApplicationScope
-    fun provideAppDatabase(context: Context): AppDatabase = Room.databaseBuilder(
+    @Reusable
+    fun appDatabase(context: Context): AppDatabase = Room.databaseBuilder(
         context.applicationContext,
         AppDatabase::class.java,
         AppDatabase.DATABASE_NAME
@@ -34,18 +34,18 @@ class CoreDataModule {
         .build()
 
     @Provides
-    @ApplicationScope
-    fun provideEditableFeatureToggle(featureToggleStorage: FeatureToggleStorage): EditableFeatureToggle = FeatureToggleImpl(featureToggleStorage)
+    @Reusable
+    fun editableFeatureToggle(featureToggleStorage: FeatureToggleStorage): EditableFeatureToggle = FeatureToggleImpl(featureToggleStorage)
 
     @Provides
-    @ApplicationScope
-    fun provideFeatureToggle(featureToggle: EditableFeatureToggle): FeatureToggle = featureToggle
+    @Reusable
+    fun featureToggle(featureToggle: EditableFeatureToggle): FeatureToggle = featureToggle
 
     @Provides
-    @ApplicationScope
-    fun provideCacheProvider(): CacheProvider = LruCacheProvider()
+    @Reusable
+    fun cacheProvider(): CacheProvider = LruCacheProvider()
 
     @Provides
-    @ApplicationScope
-    fun provideCacheCleaner(cacheProvider: CacheProvider): CacheCleaner = cacheProvider
+    @Reusable
+    fun cacheCleaner(cacheProvider: CacheProvider): CacheCleaner = cacheProvider
 }

@@ -5,9 +5,9 @@ import com.readystatesoftware.chuck.ChuckInterceptor
 import com.usacheow.coredata.BuildConfig
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
-import com.usacheow.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,24 +20,24 @@ private const val TIMEOUT_IO_OPERATION = 15L
 class OkHttpModule {
 
     @Provides
-    @ApplicationScope
-    fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
+    @Reusable
+    fun loggingInterceptor() = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     @Provides
-    @ApplicationScope
-    fun provideAuthenticationInterceptor(
+    @Reusable
+    fun authenticationInterceptor(
         storage: Storage
     ) = AuthenticationInterceptor(storage)
 
     @Provides
-    @ApplicationScope
-    fun provideChuckInterceptor(context: Context) = ChuckInterceptor(context)
+    @Reusable
+    fun chuckInterceptor(context: Context) = ChuckInterceptor(context)
 
     @Provides
-    @ApplicationScope
-    fun provideOkHttpBuilderClient(
+    @Reusable
+    fun okHttpBuilderClient(
         logger: HttpLoggingInterceptor,
         authentication: AuthenticationInterceptor,
         chuckInterceptor: ChuckInterceptor

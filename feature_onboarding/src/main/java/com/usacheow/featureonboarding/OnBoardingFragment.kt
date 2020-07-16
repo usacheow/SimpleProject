@@ -7,7 +7,7 @@ import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.diprovider.DiApp
+import com.usacheow.di.DiApp
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingNextButton
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingSkipButton
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingViewPager

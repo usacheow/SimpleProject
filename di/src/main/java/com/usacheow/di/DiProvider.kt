@@ -1,4 +1,4 @@
-package com.usacheow.diprovider
+package com.usacheow.di
 
 import com.usacheow.coredata.CoreDataProvider
 import com.usacheow.coremediator.MediatorProvider

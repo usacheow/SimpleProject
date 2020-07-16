@@ -3,8 +3,8 @@ package com.usacheow.simpleapp
 import android.app.Application
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Tracker
-import com.usacheow.diprovider.DiApp
-import com.usacheow.diprovider.DiProvider
+import com.usacheow.di.DiApp
+import com.usacheow.di.DiProvider
 import com.usacheow.simpleapp.di.AppComponent
 import javax.inject.Inject
 
