@@ -32,6 +32,7 @@ _mac/
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
 .gradle
+gradle/
 build/
 /vcs.xml
 /captures/
