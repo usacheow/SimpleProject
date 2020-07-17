@@ -1,5 +1,6 @@
 package com.usacheow.coreui.delegate
 
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.transition.TransitionSet
@@ -13,9 +14,9 @@ import com.usacheow.coreui.utils.ifSupportLollipop
 
 private const val INIT_FRAGMENT_HASH_TAG: String = "CONTAINER_TAG"
 
-class ContainerDelegate {
-
-    val layoutId = R.layout.frg_container
+class ContainerDelegate(
+    @LayoutRes val layoutId: Int
+) {
 
     fun onCreate(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {
         if (fragmentManager.findFragmentByTag(INIT_FRAGMENT_HASH_TAG) == null) {

@@ -11,45 +11,43 @@ ext {
     materialVersion = '1.2.0-alpha05'
     recyclerVersion = '1.1.0'
     constraintVersion = '2.0.0-beta4'
-    pleaseAnimateVersion = '1.0.4'
-    roundedImageVersion = '2.3.0'
     gridLayoutVersion = '1.0.0'
+    flexboxVersion = '2.0.1'
+    browserVersion = '1.0.0'
     biometricVersion = '1.0.1'
-    qrScannerVersion = '2.0.1'
+    roundedImageVersion = '2.3.0'
     maskInputVersion = '1.0.5'
     shimmerVersion = '0.5.0'
-    browserVersion = '1.0.0'
-    dexterVersion = '6.0.2'
+    pageIndicatorVersion = '1.2.1'
+
     cameraXVersion = '1.0.0-beta03'
     cameraXViewVersion = '1.0.0-alpha10'
-    pageIndicatorVersion = '1.2.1'
-    flexboxVersion = '2.0.1'
 
+    yandexMetricaVersion = '3.2.2'
     analyticsVersion = '17.2.1'
     messagingVersion = '20.1.0'
-    configVersion = '19.0.3'
     authVersion = '19.3.1'
     googleAuthVersion = '18.0.0'
-    billingVersion = '1.2.1'
-    crashlyticsVersion = '2.10.1'
     firebaseAdsVersion = '18.3.0'
-    yandexMetricaVersion = '3.2.2'
+    crashlyticsVersion = '2.10.1'
+    configVersion = '19.0.3'
 
-    picassoVersion = '2.71828'
-    glideVersion = '4.11.0'
+    billingVersion = '1.2.1'
+
     daggerVersion = '2.27'
+    glideVersion = '4.11.0'
+    roomVersion = '2.1.0'
 
     rxKotlinVersion = '2.4.0'
     rxAndroidVersion = '2.0.2'
     rxBindingVersion = '0.3.0'
 
-    roomVersion = '2.1.0'
     retrofitVersion = '2.7.2'
     okHttpVersion = '4.4.1'
+    chuckVersion = '1.1.0'
     gsonVersion = '2.8.6'
 
     canaryVersion = '1.6.3'
-    chuckVersion = '1.1.0'
     junitVersion = '4.12'
     runnerVersion = '1.1.0'
     espressoVersion = '3.1.0'
@@ -67,21 +65,20 @@ ext {
             fragment:        "androidx.fragment:fragment:$fragmentVersion",
             fragmentKtx:     "androidx.fragment:fragment-ktx:$fragmentVersion",
             fragmentTesting: "androidx.fragment:fragment-testing:$fragmentVersion",
+
             material:        "com.google.android.material:material:$materialVersion",
             recycler:        "androidx.recyclerview:recyclerview:$recyclerVersion",
             constraint:      "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            browser:         "androidx.browser:browser:$browserVersion",
             gridLayout:      "androidx.gridlayout:gridlayout:$gridLayoutVersion",
+            flexbox:         "com.google.android:flexbox:$flexboxVersion",
+
+            browser:         "androidx.browser:browser:$browserVersion",
             biometric:       "androidx.biometric:biometric:$biometricVersion",
+
             roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
-            animations:      "com.github.florent37:kotlinpleaseanimate:$pleaseAnimateVersion",
-            qrScanner:       "com.budiyev.android:code-scanner:$qrScannerVersion",
             maskInput:       "ru.egslava:MaskedEditText:$maskInputVersion",
-            rxBinding:       "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
-            dexter:          "com.karumi:dexter:$dexterVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
-            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
-            flexbox:         "com.google.android:flexbox:$flexboxVersion"
+            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion"
     ]
 
     cameraxDependencies = [
@@ -113,8 +110,6 @@ ext {
     daggerDependency = "com.google.dagger:dagger:$daggerVersion"
     kaptDaggerDependency = "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    picassoDependency = "com.squareup.picasso:picasso:$picassoVersion"
-
     glideDependency = "com.github.bumptech.glide:glide:$glideVersion"
     kaprGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
 
@@ -124,6 +119,7 @@ ext {
     rxDependencies = [
             rxKotlin:   "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
             rxAndroid:  "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            rxBinding:  "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
             rxRoom:     "androidx.room:room-rxjava2:$roomVersion",
             rxRetrofit: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     ]

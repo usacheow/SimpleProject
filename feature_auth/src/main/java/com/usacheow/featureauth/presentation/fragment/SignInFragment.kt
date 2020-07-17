@@ -41,10 +41,6 @@ class SignInFragment : SimpleFragment() {
     private var passwordInputListener: TextWatcher? = null
 
     companion object {
-
-        const val REQUEST_KEY = "SignInFragment"
-        const val IS_SUCCESS = "IS_SUCCESS"
-
         fun newInstance() = SignInFragment()
     }
 

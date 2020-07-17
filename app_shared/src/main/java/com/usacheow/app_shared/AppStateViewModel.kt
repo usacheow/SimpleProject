@@ -18,6 +18,9 @@ class AppStateViewModel
     val openAuthScreen: LiveData<SimpleAction> get() = _openAuthScreenAction
     private val _openAuthScreenAction by lazy { ActionLiveData<SimpleAction>() }
 
+    val openPinScreen: LiveData<SimpleAction> get() = _openPinScreenAction
+    private val _openPinScreenAction by lazy { ActionLiveData<SimpleAction>() }
+
     val openAppScreen: LiveData<SimpleAction> get() = _openAppScreenAction
     private val _openAppScreenAction by lazy { ActionLiveData<SimpleAction>() }
 

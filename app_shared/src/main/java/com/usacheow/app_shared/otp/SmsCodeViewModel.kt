@@ -1,7 +1,8 @@
-package com.usacheow.otp
+package com.usacheow.app_shared.otp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.usacheow.app_shared.R
 import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction

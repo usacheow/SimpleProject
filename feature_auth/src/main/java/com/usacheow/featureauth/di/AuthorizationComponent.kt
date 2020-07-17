@@ -1,12 +1,12 @@
 package com.usacheow.featureauth.di
 
+import com.usacheow.app_shared.otp.SmsCodeModalFragment
 import com.usacheow.di.DiProvider
 import com.usacheow.di.FragmentScope
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureauth.presentation.fragment.SignInFragment
 import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment
-import com.usacheow.otp.SmsCodeModalFragment
 import dagger.Component
 
 @FragmentScope

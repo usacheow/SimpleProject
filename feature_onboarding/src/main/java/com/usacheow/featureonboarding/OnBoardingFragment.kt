@@ -28,7 +28,7 @@ class OnBoardingFragment : SimpleFragment() {
     private val adapter = ViewTypesAdapter(onBoardingData)
 
     companion object {
-        fun getInstance() = OnBoardingFragment()
+        fun newInstance() = OnBoardingFragment()
     }
 
     override fun inject(application: Application) {

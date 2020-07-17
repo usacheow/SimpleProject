@@ -36,7 +36,6 @@ dependencies {
     implementation project(':core_ui')
     implementation project(':di')
     implementation project(':app_shared')
-    implementation project(':otp')
 
     implementation firebaseDependencies.values()
 

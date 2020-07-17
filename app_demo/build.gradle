@@ -34,7 +34,6 @@ dependencies {
     implementation project(':core_data')
     implementation project(':core_ui')
     implementation project(':di')
-    implementation project(':otp')
 
     implementation cameraxDependencies.values()
 

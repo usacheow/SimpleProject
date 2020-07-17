@@ -10,6 +10,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.app_shared.otp.SmsCodeViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.ext.PaddingValue
@@ -20,7 +21,6 @@ import com.usacheow.featureauth.R
 import com.usacheow.featureauth.di.AuthorizationComponent
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithPhoneViewModel
-import com.usacheow.otp.SmsCodeViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in_by_phone.signInButton
 import kotlinx.android.synthetic.main.fragment_sign_in_by_phone.signInByPhoneRootView
 import kotlinx.android.synthetic.main.fragment_sign_in_by_phone.signInLoaderView
@@ -41,10 +41,6 @@ class SignInWithPhoneFragment : SimpleFragment() {
     private var signInPhoneInputListener: TextWatcher? = null
 
     companion object {
-
-        const val REQUEST_KEY = "SignInWithPhoneFragment"
-        const val IS_SUCCESS = "IS_SUCCESS"
-
         fun newInstance() = SignInWithPhoneFragment()
     }
 

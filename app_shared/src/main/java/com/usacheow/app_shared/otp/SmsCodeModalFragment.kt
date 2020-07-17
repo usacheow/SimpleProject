@@ -1,4 +1,4 @@
-package com.usacheow.otp
+package com.usacheow.app_shared.otp
 
 import android.app.Application
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.usacheow.app_shared.R
 import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.ext.doOnClick

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -80,9 +79,9 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected open fun processArguments(bundle: Bundle?) = Unit
 
-    protected open fun setupViews(savedInstanceState: Bundle?) = Unit
+    protected open fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) = Unit
 
-    protected open fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {}
+    protected open fun setupViews(savedInstanceState: Bundle?) = Unit
 
     protected open fun subscribe() = Unit
 
@@ -93,21 +92,19 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected open fun clearViews() = Unit
 
-    protected fun getActivity(action: FragmentActivity.(FragmentActivity) -> Unit) {
-        activity?.let { it.action(it) }
-    }
-
-    fun getContainer(action: IContainer.(IContainer) -> Unit) {
-        val container = when {
-            parentFragment is IContainer -> parentFragment as IContainer
-            activity is IContainer -> activity as IContainer
-            else -> null
-        }
-
-        container?.let { it.action(it) }
-    }
-
     override fun onBackPressed() = false
 
     open fun getSharedViews() = emptyList<View>()
+
+    fun getContainer(action: IContainer.() -> Unit) {
+        if (parentFragment is IContainer) {
+            (parentFragment as IContainer).action()
+        }
+    }
+
+    fun getTopLevelContainer(action: IContainer.() -> Unit) {
+        if (activity is IContainer) {
+            (activity as IContainer).action()
+        }
+    }
 }

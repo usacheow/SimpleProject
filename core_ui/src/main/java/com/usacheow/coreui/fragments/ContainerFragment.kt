@@ -12,7 +12,7 @@ abstract class ContainerFragment : SimpleFragment(), IContainer, IBackListener {
 
     override val layoutId = R.layout.frg_container
 
-    private val containerDelegate by lazy { ContainerDelegate() }
+    private val containerDelegate by lazy { ContainerDelegate(layoutId) }
 
     protected abstract fun getInitFragment(): Fragment
 

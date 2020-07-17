@@ -1,6 +1,7 @@
 package com.usacheow.featureauth.di
 
 import androidx.lifecycle.ViewModel
+import com.usacheow.app_shared.otp.SmsCodeViewModel
 import com.usacheow.coreui.viewmodels.ViewModelFactoryModule
 import com.usacheow.coreui.viewmodels.ViewModelKey
 import com.usacheow.di.FragmentScope
@@ -8,7 +9,6 @@ import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithLoginAndPasswordViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithPhoneViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignUpWithLoginAndPasswordViewModel
-import com.usacheow.otp.SmsCodeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

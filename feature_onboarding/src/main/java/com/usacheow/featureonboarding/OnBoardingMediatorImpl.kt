@@ -6,5 +6,5 @@ import javax.inject.Inject
 class OnBoardingMediatorImpl
 @Inject constructor() : OnBoardingMediator {
 
-    override fun getOnBoardingScreen() = OnBoardingFragment.getInstance()
+    override fun getOnBoardingScreen() = OnBoardingFragment.newInstance()
 }
