@@ -17,6 +17,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependency
+    implementation kotlinDependencies.values()
     implementation androidxDependencies.values()
 }
