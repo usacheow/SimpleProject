@@ -1,7 +1,6 @@
 package com.usacheow.demo
 
 import android.Manifest
-import android.app.Application
 import android.content.Intent
 import android.media.MediaScannerConnection
 import android.net.Uri
@@ -90,8 +89,6 @@ class CameraFragment : SimpleFragment() {
     companion object {
         fun newInstance() = CameraFragment()
     }
-
-    override fun inject(application: Application) = Unit
 
     override fun setupViews(savedInstanceState: Bundle?) {
         cameraExecutor = Executors.newSingleThreadExecutor()

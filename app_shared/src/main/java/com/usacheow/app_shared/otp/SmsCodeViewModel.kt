@@ -1,7 +1,10 @@
 package com.usacheow.app_shared.otp
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.usacheow.app_shared.R
 import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreui.livedata.ActionLiveData
@@ -11,15 +14,15 @@ import com.usacheow.coreui.viewmodels.SimpleViewModel
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.plusAssign
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 private const val EMPTY_MESSAGE = ""
 private const val EMPTY_CODE = ""
 private const val SMS_CODE_TIMEOUT_SECONDS = 60L
 
 class SmsCodeViewModel
-@Inject constructor(
-    private val resources: ResourcesWrapper
+@ViewModelInject constructor(
+    private val resources: ResourcesWrapper,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
     private var currentCode = ""

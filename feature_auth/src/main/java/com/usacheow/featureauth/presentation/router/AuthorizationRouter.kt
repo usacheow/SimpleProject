@@ -1,6 +1,5 @@
 package com.usacheow.featureauth.presentation.router
 
-import androidx.lifecycle.ViewModelProvider
 import com.usacheow.app_shared.otp.SmsCodeModalFragment
 import com.usacheow.coreui.base.Router
 import com.usacheow.coreui.fragments.SimpleFragment
@@ -16,9 +15,8 @@ class AuthorizationRouter
         }
     }
 
-    fun openConfirmScreen(fragment: SimpleFragment, codeLength: Int, viewModelFactory: ViewModelProvider.Factory) {
+    fun openConfirmScreen(fragment: SimpleFragment, codeLength: Int) {
         SmsCodeModalFragment.newInstance(codeLength)
-            .also { it.viewModelFactory = viewModelFactory }
             .show(fragment.childFragmentManager, SmsCodeModalFragment::javaClass.name)
     }
 }

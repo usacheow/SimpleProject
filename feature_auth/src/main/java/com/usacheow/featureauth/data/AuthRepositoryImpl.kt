@@ -2,7 +2,6 @@ package com.usacheow.featureauth.data
 
 import com.usacheow.coredata.database.Storage
 import com.usacheow.featureauth.data.models.AccessToken
-import com.usacheow.featureauth.domain.AuthRepository
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit

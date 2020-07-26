@@ -6,11 +6,12 @@ import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class ResourcesWrapperImpl
 @Inject constructor(
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) : ResourcesWrapper {
 
     override fun getString(@StringRes id: Int) = context.getString(id)

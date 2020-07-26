@@ -2,6 +2,7 @@ package com.usacheow.coredata.database
 
 import android.content.Context
 import android.preference.PreferenceManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 private const val PREF_TOKEN = "PREF_TOKEN"
@@ -13,7 +14,7 @@ private const val PREF_ALLOW_FINGERPRINT = "PREF_ALLOW_FINGERPRINT"
 
 class Storage
 @Inject constructor(
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) {
 
     var userName: String

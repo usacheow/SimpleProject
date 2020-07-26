@@ -1,7 +1,10 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.usacheow.coredata.network.error.ErrorProcessorImpl
 import com.usacheow.coredata.network.error.MappedException
 import com.usacheow.coredata.network.observer.SimpleCompletableObserver
@@ -10,12 +13,12 @@ import com.usacheow.coreui.livedata.SimpleAction
 import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import io.reactivex.rxkotlin.plusAssign
-import javax.inject.Inject
 
 class SignUpWithLoginAndPasswordViewModel
-@Inject constructor(
+@ViewModelInject constructor(
     private val errorProcessor: ErrorProcessorImpl,
-    private val interactor: AuthInteractor
+    private val interactor: AuthInteractor,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
     val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData

@@ -12,7 +12,9 @@ import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @Module(
     includes = [
@@ -22,10 +24,11 @@ import dagger.Reusable
         RetrofitModule::class
     ]
 )
+@InstallIn(ApplicationComponent::class)
 class CoreDataModule {
 
     @Provides
-    @Reusable
+    @Singleton
     fun appDatabase(context: Context): AppDatabase = Room.databaseBuilder(
         context.applicationContext,
         AppDatabase::class.java,
@@ -34,18 +37,18 @@ class CoreDataModule {
         .build()
 
     @Provides
-    @Reusable
+    @Singleton
     fun editableFeatureToggle(featureToggleStorage: FeatureToggleStorage): EditableFeatureToggle = FeatureToggleImpl(featureToggleStorage)
 
     @Provides
-    @Reusable
+    @Singleton
     fun featureToggle(featureToggle: EditableFeatureToggle): FeatureToggle = featureToggle
 
     @Provides
-    @Reusable
+    @Singleton
     fun cacheProvider(): CacheProvider = LruCacheProvider()
 
     @Provides
-    @Reusable
+    @Singleton
     fun cacheCleaner(cacheProvider: CacheProvider): CacheCleaner = cacheProvider
 }

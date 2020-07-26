@@ -1,6 +1,5 @@
 package com.usacheow.coreui.fragments
 
-import android.app.Application
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -38,13 +37,6 @@ abstract class SimpleFragment : Fragment(), IBackListener {
         messageDialog?.cancel()
         super.onStop()
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.application?.let { inject(it) }
-    }
-
-    protected open fun inject(application: Application) = Unit
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(layoutId, container, false)

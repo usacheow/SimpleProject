@@ -1,4 +1,4 @@
-package com.usacheow.coremediator.mediator
+package com.usacheow.coremediator
 
 import androidx.fragment.app.Fragment
 

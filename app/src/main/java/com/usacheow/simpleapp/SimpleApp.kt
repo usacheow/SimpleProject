@@ -3,12 +3,11 @@ package com.usacheow.simpleapp
 import android.app.Application
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Tracker
-import com.usacheow.di.DiApp
-import com.usacheow.di.DiProvider
-import com.usacheow.simpleapp.di.AppComponent
+import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
-class SimpleApp : Application(), DiApp {
+@HiltAndroidApp
+class SimpleApp : Application() {
 
     //todo: add firebase config json
     //move to another place (e.g. start activity)
@@ -18,13 +17,11 @@ class SimpleApp : Application(), DiApp {
     @Inject lateinit var tracker: Tracker
 
     //todo take token from play console
-//    @Inject override lateinit var billing: Billing
-    override val diProvider: DiProvider by lazy { AppComponent.init(this) }
+//    @Inject lateinit var billing: Billing
 
     override fun onCreate() {
         super.onCreate()
 
-        (diProvider as AppComponent).inject(this)
         AnalyticsTrackerHolder.init(tracker)
     }
 }

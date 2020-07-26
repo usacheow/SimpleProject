@@ -1,24 +1,21 @@
 package com.usacheow.featureonboarding
 
-import android.app.Application
 import android.os.Bundle
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.di.DiApp
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingNextButton
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingSkipButton
 import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingViewPager
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class OnBoardingFragment : SimpleFragment() {
 
     override val layoutId = R.layout.fragment_onboarding
 
-    @Inject lateinit var factory: ViewModelFactory
-    private val viewModel by viewModels<AppStateViewModel>({ requireActivity() }, { factory })
+    private val viewModel by activityViewModels<AppStateViewModel>()
 
     private val onBoardingData = mutableListOf(
         OnBoardingItem(R.drawable.on_boarding_1, R.string.on_boarding_title_1, R.string.on_boarding_description_1),
@@ -29,10 +26,6 @@ class OnBoardingFragment : SimpleFragment() {
 
     companion object {
         fun newInstance() = OnBoardingFragment()
-    }
-
-    override fun inject(application: Application) {
-        OnBoardingComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

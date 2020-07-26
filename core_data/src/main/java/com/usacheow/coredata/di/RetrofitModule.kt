@@ -4,23 +4,26 @@ import com.usacheow.coredata.BuildConfig
 import com.usacheow.coredata.network.error.RxErrorHandlingCallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class RetrofitModule {
 
     @Provides
-    @Reusable
+    @Singleton
     @Named("ENDPOINT")
     fun endpoint(): String = BuildConfig.ENDPOINT
 
     @Provides
-    @Reusable
+    @Singleton
     fun retrofit(
         okHttp: OkHttpClient,
         @Named("ENDPOINT") host: String,

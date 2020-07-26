@@ -7,36 +7,39 @@ import com.usacheow.coredata.database.Storage
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 private const val TIMEOUT_CONNECTION_SECONDS = 20L
 private const val TIMEOUT_IO_OPERATION = 15L
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class OkHttpModule {
 
     @Provides
-    @Reusable
+    @Singleton
     fun loggingInterceptor() = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     @Provides
-    @Reusable
+    @Singleton
     fun authenticationInterceptor(
         storage: Storage
     ) = AuthenticationInterceptor(storage)
 
     @Provides
-    @Reusable
+    @Singleton
     fun chuckInterceptor(context: Context) = ChuckInterceptor(context)
 
     @Provides
-    @Reusable
+    @Singleton
     fun okHttpBuilderClient(
         logger: HttpLoggingInterceptor,
         authentication: AuthenticationInterceptor,

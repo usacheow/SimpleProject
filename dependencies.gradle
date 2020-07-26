@@ -36,7 +36,6 @@ ext {
 
     billingVersion = '1.2.1'
 
-    daggerVersion = '2.27'
     glideVersion = '4.11.0'
     roomVersion = '2.1.0'
 
@@ -56,9 +55,8 @@ ext {
     mockitoVersion = '2.7.22'
     truthVersion = '0.34'
 
-    kotlinDependency = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     kotlinDependencies = [
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     ]
 
     androidxDependencies = [
@@ -116,8 +114,10 @@ ext {
     lifecycleDependency = "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleVersion"
     kaptLifecycleDependency = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
 
-    daggerDependency = "com.google.dagger:dagger:$daggerVersion"
-    kaptDaggerDependency = "com.google.dagger:dagger-compiler:$daggerVersion"
+    daggerDependency = "com.google.dagger:hilt-android:$hiltVersion"
+    kaptDaggerDependency = "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    daggerViewModelDependency = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
     glideDependency = "com.github.bumptech.glide:glide:$glideVersion"
     kaprGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
@@ -156,6 +156,7 @@ ext {
 
     unitTestDependencies = [
             junit:          "junit:junit:$junitVersion",
+            mockitoCore:    "org.mockito:mockito-core:$mockitoVersion",
             mockitoInline:  "org.mockito:mockito-inline:$mockitoVersion",
             mockitoAndroid: "org.mockito:mockito-android:$mockitoVersion",
             truth:          "com.google.truth:truth:$truthVersion"

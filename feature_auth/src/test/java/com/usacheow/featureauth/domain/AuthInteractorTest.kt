@@ -2,6 +2,7 @@ package com.usacheow.featureauth.domain
 
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coreunittest.RxRule
+import com.usacheow.featureauth.data.AuthRepository
 import com.usacheow.featureauth.data.models.AccessToken
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver

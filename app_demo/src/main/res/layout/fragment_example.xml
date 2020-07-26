@@ -69,5 +69,14 @@
             android:padding="@dimen/left_right_margin"
             android:text="1. Calendar Fragment (in progress)"
             android:background="?selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/cameraScreen"
+            style="@style/TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/left_right_margin"
+            android:text="1. Camera Example Fragment"
+            android:background="?selectableItemBackground" />
     </LinearLayout>
 </ScrollView>

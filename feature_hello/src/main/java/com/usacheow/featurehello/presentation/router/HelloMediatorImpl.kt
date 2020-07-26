@@ -1,6 +1,6 @@
 package com.usacheow.featurehello.presentation.router
 
-import com.usacheow.coremediator.mediator.HelloMediator
+import com.usacheow.coremediator.HelloMediator
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
 import javax.inject.Inject
 

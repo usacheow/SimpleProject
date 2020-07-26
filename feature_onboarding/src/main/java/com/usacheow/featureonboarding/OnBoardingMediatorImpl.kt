@@ -1,6 +1,6 @@
 package com.usacheow.featureonboarding
 
-import com.usacheow.coremediator.mediator.OnBoardingMediator
+import com.usacheow.coremediator.OnBoardingMediator
 import javax.inject.Inject
 
 class OnBoardingMediatorImpl

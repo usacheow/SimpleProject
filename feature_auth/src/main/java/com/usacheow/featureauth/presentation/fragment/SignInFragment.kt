@@ -1,25 +1,23 @@
 package com.usacheow.featureauth.presentation.fragment
 
-import android.app.Application
 import android.os.Bundle
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.utils.ext.doOnClick
 import com.usacheow.coreui.utils.ext.onTextChanged
-import com.usacheow.di.DiApp
 import com.usacheow.featureauth.R
-import com.usacheow.featureauth.di.AuthorizationComponent
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithLoginAndPasswordViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_sign_in.signInButton
 import kotlinx.android.synthetic.main.fragment_sign_in.signInLoaderView
 import kotlinx.android.synthetic.main.fragment_sign_in.signInLoginInput
@@ -28,24 +26,20 @@ import kotlinx.android.synthetic.main.fragment_sign_in.signInRootView
 import kotlinx.android.synthetic.main.fragment_sign_in.signUpButton
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignInFragment : SimpleFragment() {
 
     override val layoutId = R.layout.fragment_sign_in
 
     @Inject lateinit var router: AuthorizationRouter
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val appStateViewModel by viewModels<AppStateViewModel>({ requireActivity() }, { viewModelFactory })
-    private val viewModel by viewModels<SignInWithLoginAndPasswordViewModel> { viewModelFactory }
+    private val appStateViewModel by activityViewModels<AppStateViewModel>()
+    private val viewModel by viewModels<SignInWithLoginAndPasswordViewModel>()
 
     private var loginInputListener: TextWatcher? = null
     private var passwordInputListener: TextWatcher? = null
 
     companion object {
         fun newInstance() = SignInFragment()
-    }
-
-    override fun inject(application: Application) {
-        AuthorizationComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

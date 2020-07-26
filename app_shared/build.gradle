@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: "$project.rootDir/dependencies.gradle"
 
@@ -41,6 +42,9 @@ dependencies {
 
     implementation daggerDependency
     kapt kaptDaggerDependency
+    implementation daggerViewModelDependency
+    kapt kaptDaggerViewModelDependency
+    kaptAndroidTest kaptDaggerViewModelDependency
 
     testImplementation project(':core_unit_test')
     androidTestImplementation uiTestDependencies.values()

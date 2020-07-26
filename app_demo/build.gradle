@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
+apply from: "$project.rootDir/build_script/version.gradle"
+apply from: "$project.rootDir/build_script/build_types.gradle"
+apply from: "$project.rootDir/build_script/ktlint.gradle"
 apply from: "$project.rootDir/dependencies.gradle"
 
 android {
@@ -10,11 +13,19 @@ android {
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
+        applicationId applicationPackage
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
+        versionCode configVersionCode()
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlin {
+        kapt {
+            useBuildCache = true
+        }
     }
 
     kotlinOptions {
@@ -25,6 +36,42 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    signingConfigs {
+        release {
+            storeFile ConfigStoreFile
+            storePassword ConfigStorePassword
+            keyAlias ConfigKeyAlias
+            keyPassword ConfigKeyPassword
+        }
+    }
+
+    buildTypes {
+        release {
+            versionNameSuffix ReleaseSuffix
+            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
+        }
+        debug {
+            versionNameSuffix DebugSuffix
+            applicationIdSuffix DebugApplicationIdSuffix
+            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        play {
+            versionName configVersionName()
+        }
+        development {
+            versionName configVersionName()
+        }
+    }
 }
 
 dependencies {
@@ -33,7 +80,6 @@ dependencies {
 
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':di')
 
     implementation cameraxDependencies.values()
 
@@ -41,9 +87,6 @@ dependencies {
 
     implementation lifecycleDependency
     kapt kaptLifecycleDependency
-
-    implementation daggerDependency
-    kapt kaptDaggerDependency
 
     testImplementation project(':core_unit_test')
     androidTestImplementation uiTestDependencies.values()

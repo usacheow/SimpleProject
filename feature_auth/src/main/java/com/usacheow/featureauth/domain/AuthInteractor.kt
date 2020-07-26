@@ -1,5 +1,6 @@
 package com.usacheow.featureauth.domain
 
+import com.usacheow.featureauth.data.AuthRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 

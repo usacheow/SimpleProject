@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: "$project.rootDir/build_script/version.gradle"
 apply from: "$project.rootDir/build_script/build_types.gradle"
@@ -82,7 +83,6 @@ dependencies {
     implementation project(':core_mediator')
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':di')
     implementation project(':app_shared')
 
     implementation project(':feature_hello')
@@ -94,4 +94,7 @@ dependencies {
 
     implementation daggerDependency
     kapt kaptDaggerDependency
+    implementation daggerViewModelDependency
+    kapt kaptDaggerViewModelDependency
+    kaptAndroidTest kaptDaggerViewModelDependency
 }

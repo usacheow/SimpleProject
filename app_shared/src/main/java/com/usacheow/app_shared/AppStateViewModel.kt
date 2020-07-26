@@ -1,15 +1,18 @@
 package com.usacheow.app_shared
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
-import javax.inject.Inject
 
 class AppStateViewModel
-@Inject constructor(
-    private val storage: Storage
+@ViewModelInject constructor(
+    private val storage: Storage,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     val openOnBoardingScreen: LiveData<SimpleAction> get() = _openOnBoardingScreenAction

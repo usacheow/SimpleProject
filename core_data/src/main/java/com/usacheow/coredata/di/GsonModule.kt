@@ -4,17 +4,20 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class GsonModule {
 
     @Provides
-    @Reusable
+    @Singleton
     fun gson(): Gson = GsonBuilder().disableHtmlEscaping().create()
 
     @Provides
-    @Reusable
+    @Singleton
     fun gsonConverterFactory(gson: Gson): GsonConverterFactory = GsonConverterFactory.create(gson)
 }

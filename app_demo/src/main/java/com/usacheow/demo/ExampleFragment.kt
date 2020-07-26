@@ -9,6 +9,7 @@ import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.utils.ext.doOnClick
 import com.usacheow.coreui.utils.ext.toPx
 import kotlinx.android.synthetic.main.fragment_example.calendarScreen
+import kotlinx.android.synthetic.main.fragment_example.cameraScreen
 import kotlinx.android.synthetic.main.fragment_example.exampleHeaderView
 import kotlinx.android.synthetic.main.fragment_example.fontsScreen
 import kotlinx.android.synthetic.main.fragment_example.rootView
@@ -33,6 +34,7 @@ class ExampleFragment : SimpleFragment() {
         widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
         viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
         calendarScreen.doOnClick { show(CalendarFragment.newInstance()) }
+        cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
     }
 
     private fun show(fragment: Fragment) {

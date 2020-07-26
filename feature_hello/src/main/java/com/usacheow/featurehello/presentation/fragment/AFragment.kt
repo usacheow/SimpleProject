@@ -1,6 +1,5 @@
 package com.usacheow.featurehello.presentation.fragment
 
-import android.app.Application
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -12,28 +11,21 @@ import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.utils.ext.PaddingValue
 import com.usacheow.coreui.utils.ext.toPx
-import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.di.DiApp
 import com.usacheow.featurehello.R
-import com.usacheow.featurehello.di.HelloComponent
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_a.header
 import kotlinx.android.synthetic.main.fragment_a.listView
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class AFragment : SimpleFragment() {
 
-    @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel by viewModels<AViewModel>({ requireParentFragment() }, { viewModelFactory })
+    private val viewModel by viewModels<AViewModel>({ requireParentFragment() })
 
     override val layoutId = R.layout.fragment_a
 
     companion object {
         fun newInstance() = AFragment()
-    }
-
-    override fun inject(application: Application) {
-        HelloComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

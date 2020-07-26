@@ -1,6 +1,5 @@
 package com.usacheow.simpleapp.mainscreen
 
-import android.app.Application
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -11,20 +10,17 @@ import com.usacheow.coreui.activity.BillingActivity
 import com.usacheow.coreui.base.IContainer
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.livedata.subscribe
-import com.usacheow.coreui.viewmodels.ViewModelFactory
-import com.usacheow.di.DiApp
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
-import com.usacheow.simpleapp.mainscreen.di.MainScreenComponent
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainScreenActivity : BillingActivity(), IContainer {
 
     override val layoutId = R.layout.frg_container
 
-    @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val appStateViewModel by viewModels<AppStateViewModel> { viewModelFactory }
+    private val appStateViewModel by viewModels<AppStateViewModel>()
 
     private val containerDelegate by lazy { ContainerDelegate(layoutId) }
 
@@ -46,10 +42,6 @@ class MainScreenActivity : BillingActivity(), IContainer {
         appStateViewModel.openAppScreen.subscribe(this) {
             show(BottomBarFragment.newInstance(), false)
         }
-    }
-
-    override fun inject(application: Application) {
-        MainScreenComponent.init((application as DiApp).diProvider).inject(this)
     }
 
     override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {

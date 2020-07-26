@@ -1,6 +1,5 @@
 package com.usacheow.coreui.fragments
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,10 +32,7 @@ abstract class SimpleModalFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_TITLE, R.style.ModalDialog)
         setHasOptionsMenu(true)
-        activity?.application?.let { inject(it) }
     }
-
-    abstract fun inject(application: Application)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId, container, false)

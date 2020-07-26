@@ -1,6 +1,5 @@
 package com.usacheow.coreui.activity
 
-import android.app.Application
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
@@ -26,7 +25,6 @@ abstract class SimpleActivity : AppCompatActivity() {
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inject(application)
 
         if (needTransparentBars) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -36,8 +34,6 @@ abstract class SimpleActivity : AppCompatActivity() {
         setContentView(layoutId)
         setupViews(savedInstanceState)
     }
-
-    protected open fun inject(application: Application) = Unit
 
     protected open fun setupViews(savedInstanceState: Bundle?) = Unit
 

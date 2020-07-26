@@ -1,6 +1,5 @@
 package com.usacheow.coreui.fragments
 
-import android.app.Application
 import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
@@ -45,13 +44,6 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
         AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.STOP_SCREEN)
         super.onStop()
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.application?.let { inject(it) }
-    }
-
-    abstract fun inject(application: Application)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
