@@ -6,8 +6,8 @@ import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.populate
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.populate
 import kotlinx.android.synthetic.main.view_header_with_action_item.view.actionButton
 import kotlinx.android.synthetic.main.view_header_with_action_item.view.headerView
 

@@ -6,8 +6,8 @@ import com.google.android.material.card.MaterialCardView
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.RadioViewType
-import com.usacheow.coreui.utils.ext.color
-import com.usacheow.coreui.utils.ext.populate
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.populate
 import kotlinx.android.synthetic.main.view_tag_item.view.tagItemNameView
 
 class TagItemView

@@ -7,9 +7,9 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 import com.google.android.material.appbar.AppBarLayout
-import com.usacheow.coreui.utils.ext.color
-import com.usacheow.coreui.utils.ext.navigation
-import com.usacheow.coreui.utils.ext.updateMargins
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.navigation
+import com.usacheow.coreui.utils.view.updateMargins
 import kotlinx.android.synthetic.main.simple_toolbar.view.insetView
 import kotlinx.android.synthetic.main.simple_toolbar.view.toolbar
 

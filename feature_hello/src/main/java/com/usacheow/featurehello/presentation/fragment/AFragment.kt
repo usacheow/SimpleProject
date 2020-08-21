@@ -9,8 +9,8 @@ import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.listitem.ActionItem
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
 import dagger.hilt.android.AndroidEntryPoint

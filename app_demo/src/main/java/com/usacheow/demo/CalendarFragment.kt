@@ -8,11 +8,11 @@ import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.calendar.CalendarDayItem
 import com.usacheow.coreui.uikit.calendar.CalendarMonthItem
-import com.usacheow.coreui.utils.CalendarWrapper
-import com.usacheow.coreui.utils.DateFormat
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.isToday
-import com.usacheow.coreui.utils.ext.parseTo
+import com.usacheow.coreui.utils.values.CalendarWrapper
+import com.usacheow.coreui.utils.values.DateFormat
+import com.usacheow.coreui.utils.values.isToday
+import com.usacheow.coreui.utils.values.parseTo
+import com.usacheow.coreui.utils.view.PaddingValue
 import kotlinx.android.synthetic.main.fragment_calendar.calendarListView
 import java.util.Date
 

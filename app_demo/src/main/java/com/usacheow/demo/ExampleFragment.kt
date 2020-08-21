@@ -5,9 +5,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.toPx
 import kotlinx.android.synthetic.main.fragment_example.calendarScreen
 import kotlinx.android.synthetic.main.fragment_example.cameraScreen
 import kotlinx.android.synthetic.main.fragment_example.exampleHeaderView

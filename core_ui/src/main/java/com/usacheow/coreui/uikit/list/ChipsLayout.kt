@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.material.chip.Chip
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.setVisible
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.setVisible
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsButton
 import kotlinx.android.synthetic.main.view_chips_layout.view.chipsGroup
 

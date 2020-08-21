@@ -6,9 +6,9 @@ import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.ext.load
-import com.usacheow.coreui.utils.ext.makeGone
-import com.usacheow.coreui.utils.ext.setListenerIfNeed
+import com.usacheow.coreui.utils.view.load
+import com.usacheow.coreui.utils.view.makeGone
+import com.usacheow.coreui.utils.view.setListenerIfNeed
 import kotlinx.android.synthetic.main.view_operation_item.view.operationCardNumberView
 import kotlinx.android.synthetic.main.view_operation_item.view.operationImageView
 import kotlinx.android.synthetic.main.view_operation_item.view.operationNameView

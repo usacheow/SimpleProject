@@ -8,9 +8,7 @@ import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.IContainer
 import com.usacheow.coreui.delegate.ContainerDelegate
 
-class DemoScreenActivity : SimpleActivity(), IContainer {
-
-    override val layoutId = R.layout.frg_container
+class DemoScreenActivity : SimpleActivity(R.layout.frg_container), IContainer {
 
     private val containerDelegate by lazy { ContainerDelegate(layoutId) }
 

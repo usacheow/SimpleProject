@@ -11,7 +11,7 @@ import com.usacheow.coredata.network.observer.SimpleCompletableObserver
 import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
-import com.usacheow.coreui.utils.ext.normalizedPhoneNumber
+import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import io.reactivex.rxkotlin.plusAssign

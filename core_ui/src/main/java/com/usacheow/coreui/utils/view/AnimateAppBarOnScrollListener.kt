@@ -1,11 +1,11 @@
-package com.usacheow.coreui.utils
+package com.usacheow.coreui.utils.view
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-import com.usacheow.coreui.utils.ext.animateElevation
+import com.usacheow.coreui.utils.system.ifSupportLollipop
 
-class ListWithAppBarScrollListener(
+class AnimateAppBarOnScrollListener(
     private val manager: LinearLayoutManager,
     private val appBarLayout: AppBarLayout
 ) : RecyclerView.OnScrollListener() {

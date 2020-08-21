@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.view
 
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.Toolbar

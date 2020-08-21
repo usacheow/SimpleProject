@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.view
 
 import android.graphics.Rect
 import android.view.View

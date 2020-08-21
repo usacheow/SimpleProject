@@ -1,6 +1,5 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.values
 
-import com.usacheow.coreui.utils.DateFormat
 import java.text.NumberFormat
 import java.util.Locale
 

@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.system
 
 import android.content.Context
 import android.content.pm.PackageManager

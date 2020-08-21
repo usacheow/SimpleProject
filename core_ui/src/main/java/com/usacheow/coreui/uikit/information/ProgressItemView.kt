@@ -9,7 +9,7 @@ import androidx.annotation.ColorRes
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.utils.ext.color
+import com.usacheow.coreui.utils.view.color
 import kotlinx.android.synthetic.main.view_progress_item.view.progressLayout
 import kotlinx.android.synthetic.main.view_progress_item.view.progressView
 

@@ -3,13 +3,13 @@ package com.usacheow.coreui.activity
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 
-abstract class SimpleActivity : AppCompatActivity() {
+abstract class SimpleActivity(@LayoutRes val layoutId: Int) : AppCompatActivity(layoutId) {
 
-    protected abstract val layoutId: Int
     protected open var needTransparentBars = false
 
     override fun onStart() {

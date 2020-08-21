@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.makeGone
-import com.usacheow.coreui.utils.ext.makeVisible
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.makeGone
+import com.usacheow.coreui.utils.view.makeVisible
 import kotlinx.android.synthetic.main.view_error_message.view.errorMessageView
 import kotlinx.android.synthetic.main.view_error_message.view.repeatButton
 

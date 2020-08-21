@@ -6,7 +6,7 @@ import android.view.View
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.toPx
 
 class SpaceView
 @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0)

@@ -9,9 +9,9 @@ import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.biometric.BiometricAuthorizationManager
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.string
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.string
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel

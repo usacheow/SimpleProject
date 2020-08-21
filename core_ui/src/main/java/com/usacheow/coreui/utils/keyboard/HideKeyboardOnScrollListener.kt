@@ -1,9 +1,9 @@
-package com.usacheow.coreui.utils
+package com.usacheow.coreui.utils.keyboard
 
 import androidx.recyclerview.widget.RecyclerView
-import com.usacheow.coreui.utils.ext.hideKeyboard
+import com.usacheow.coreui.utils.textinput.hideKeyboard
 
-class ListWithKeyboardScrollListener : RecyclerView.OnScrollListener() {
+class HideKeyboardOnScrollListener : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         recyclerView.hideKeyboard()

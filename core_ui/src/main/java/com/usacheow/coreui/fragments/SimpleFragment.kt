@@ -13,9 +13,9 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.base.IContainer
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.doOnApplyWindowInsets
-import com.usacheow.coreui.utils.ext.isDarkMode
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
+import com.usacheow.coreui.utils.view.isDarkMode
 
 abstract class SimpleFragment : Fragment(), IBackListener {
 

@@ -1,9 +1,5 @@
-package com.usacheow.coreui.utils
+package com.usacheow.coreui.utils.values
 
-import com.usacheow.coreui.utils.ext.LOCALE
-import com.usacheow.coreui.utils.ext.parseTo
-import com.usacheow.coreui.utils.ext.toCalendar
-import com.usacheow.coreui.utils.ext.toDate
 import java.text.DateFormatSymbols
 import java.util.Calendar
 import java.util.Date

@@ -9,9 +9,9 @@ import androidx.core.view.updatePadding
 import androidx.core.widget.ImageViewCompat
 import com.makeramen.roundedimageview.RoundedImageView
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ext.color
-import com.usacheow.coreui.utils.ext.load
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.load
+import com.usacheow.coreui.utils.view.toPx
 
 private const val ICON_PADDING_DP = 4
 private const val IMAGE_PADDING_DP = 0

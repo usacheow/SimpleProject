@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.values
 
 import android.content.res.Resources
 import com.google.gson.Gson

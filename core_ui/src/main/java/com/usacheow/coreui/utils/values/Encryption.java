@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils;
+package com.usacheow.coreui.utils.values;
 
 import android.util.Base64;
 

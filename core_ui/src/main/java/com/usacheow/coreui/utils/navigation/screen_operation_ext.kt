@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.navigation
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.ifSupportLollipop
+import com.usacheow.coreui.utils.system.ifSupportLollipop
 
 inline fun <reified ACTIVITY> Context.intentOf(noinline block: (Intent.() -> Unit)? = null): Intent {
     return Intent(this, ACTIVITY::class.java).apply {

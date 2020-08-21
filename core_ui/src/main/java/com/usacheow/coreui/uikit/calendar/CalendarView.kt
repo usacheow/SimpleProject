@@ -9,11 +9,11 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.CalendarWrapper
-import com.usacheow.coreui.utils.DateFormat
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.isToday
-import com.usacheow.coreui.utils.ext.parseTo
+import com.usacheow.coreui.utils.values.CalendarWrapper
+import com.usacheow.coreui.utils.values.DateFormat
+import com.usacheow.coreui.utils.values.isToday
+import com.usacheow.coreui.utils.values.parseTo
+import com.usacheow.coreui.utils.view.doOnClick
 import kotlinx.android.synthetic.main.view_calendar.view.calendarDaysListView
 import kotlinx.android.synthetic.main.view_calendar.view.calendarMonthNameView
 import kotlinx.android.synthetic.main.view_calendar.view.calendarNextButton

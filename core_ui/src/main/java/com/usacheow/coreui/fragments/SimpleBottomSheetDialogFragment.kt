@@ -14,7 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.toPx
 
 abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 

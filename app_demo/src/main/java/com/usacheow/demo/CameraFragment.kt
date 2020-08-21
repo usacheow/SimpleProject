@@ -27,8 +27,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.ext.arePermissionsGranted
-import com.usacheow.coreui.utils.ext.doWithTransition
+import com.usacheow.coreui.utils.system.arePermissionsGranted
+import com.usacheow.coreui.utils.view.doWithTransition
 import kotlinx.android.synthetic.main.fragment_camera.captureButton
 import kotlinx.android.synthetic.main.fragment_camera.container
 import kotlinx.android.synthetic.main.fragment_camera.switchButton

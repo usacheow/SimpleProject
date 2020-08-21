@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.textinput
 
 import android.app.Activity
 import android.content.Context
@@ -9,8 +9,6 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
-import com.usacheow.coreui.utils.textinput.DecimalFormatter
-import com.usacheow.coreui.utils.textinput.FormatterTextWatcher
 import java.math.BigDecimal
 
 fun EditText.onTextChanged(action: (String) -> Unit): TextWatcher {

@@ -3,10 +3,11 @@ package com.usacheow.coreui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.CallSuper
+import androidx.annotation.LayoutRes
 import com.usacheow.coreui.delegate.BillingDelegate
 import org.solovyev.android.checkout.Purchase
 
-abstract class BillingActivity : SimpleActivity() {
+abstract class BillingActivity(@LayoutRes layoutId: Int) : SimpleActivity(layoutId) {
 
     protected val billingDelegate by lazy { BillingDelegate() }
 

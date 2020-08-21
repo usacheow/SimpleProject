@@ -8,8 +8,8 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.button.SectionButton
 import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.list.Filter
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.addCurrencyFormatter
+import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
+import com.usacheow.coreui.utils.view.PaddingValue
 import kotlinx.android.synthetic.main.fragment_views.chipsLayout
 import kotlinx.android.synthetic.main.fragment_views.header
 import kotlinx.android.synthetic.main.fragment_views.sectionButton

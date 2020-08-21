@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.ext
+package com.usacheow.coreui.utils.navigation
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.R
+import com.usacheow.coreui.utils.view.color
 
 fun Fragment.openDialer(phoneNumber: String) {
     val intent = Intent(Intent.ACTION_DIAL).apply {

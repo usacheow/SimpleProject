@@ -1,11 +1,9 @@
-package com.usacheow.coreui.utils
+package com.usacheow.coreui.utils.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.base.IContainer
-import com.usacheow.coreui.utils.ext.hashTag
-import com.usacheow.coreui.utils.ext.inTransaction
 import java.io.Serializable
 
 private const val FIRST_STACK_NUMBER = 0

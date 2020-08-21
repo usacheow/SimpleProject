@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.usacheow.app_shared.R
 import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.livedata.subscribe
-import com.usacheow.coreui.utils.ext.doOnClick
+import com.usacheow.coreui.utils.view.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_sms_code.loaderView
 import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeCloseButton

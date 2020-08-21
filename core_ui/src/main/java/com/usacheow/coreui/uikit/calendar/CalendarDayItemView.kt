@@ -8,7 +8,7 @@ import androidx.annotation.ColorRes
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.ext.color
+import com.usacheow.coreui.utils.view.color
 import kotlinx.android.synthetic.main.view_calendar_day_item.view.calendarDayItemIndicatorView
 import kotlinx.android.synthetic.main.view_calendar_day_item.view.calendarDayNumberView
 

@@ -14,7 +14,7 @@ import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.uikit.listitem.ActionSelectionType
 import com.usacheow.coreui.uikit.listitem.OperationItem
 import com.usacheow.coreui.uikit.utils.IconState
-import com.usacheow.coreui.utils.ext.PaddingValue
+import com.usacheow.coreui.utils.view.PaddingValue
 import kotlinx.android.synthetic.main.fragment_widgets.widgetsListView
 
 class WidgetsFragment : SimpleFragment() {

@@ -7,10 +7,10 @@ import androidx.transition.TransitionSet
 import com.usacheow.coreui.R
 import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.ext.addSharedElementsFrom
-import com.usacheow.coreui.utils.ext.inTransaction
-import com.usacheow.coreui.utils.ext.replaceFragmentIn
-import com.usacheow.coreui.utils.ifSupportLollipop
+import com.usacheow.coreui.utils.navigation.addSharedElementsFrom
+import com.usacheow.coreui.utils.navigation.inTransaction
+import com.usacheow.coreui.utils.navigation.replaceFragmentIn
+import com.usacheow.coreui.utils.system.ifSupportLollipop
 
 private const val INIT_FRAGMENT_HASH_TAG: String = "CONTAINER_TAG"
 

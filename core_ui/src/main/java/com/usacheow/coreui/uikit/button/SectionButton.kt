@@ -15,8 +15,8 @@ import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ext.color
-import com.usacheow.coreui.utils.ext.toPx
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.toPx
 import kotlinx.android.synthetic.main.view_section_button.view.radioButtonsContainer
 
 private const val ANIMATION_DURATION = 200L

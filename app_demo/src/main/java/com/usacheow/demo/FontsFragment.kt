@@ -3,7 +3,7 @@ package com.usacheow.demo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.ext.PaddingValue
+import com.usacheow.coreui.utils.view.PaddingValue
 import kotlinx.android.synthetic.main.fragment_fonts.fontsListView
 
 class FontsFragment : SimpleFragment() {

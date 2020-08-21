@@ -16,9 +16,7 @@ import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainScreenActivity : BillingActivity(), IContainer {
-
-    override val layoutId = R.layout.frg_container
+class MainScreenActivity : BillingActivity(R.layout.frg_container), IContainer {
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
 

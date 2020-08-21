@@ -12,9 +12,9 @@ import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.app_shared.otp.SmsCodeViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.livedata.subscribe
-import com.usacheow.coreui.utils.ext.PaddingValue
-import com.usacheow.coreui.utils.ext.doOnClick
-import com.usacheow.coreui.utils.ext.onTextChanged
+import com.usacheow.coreui.utils.textinput.onTextChanged
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithPhoneViewModel

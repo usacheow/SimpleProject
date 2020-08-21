@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.GridLayout
 import androidx.core.view.isInvisible
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ext.doOnClick
+import com.usacheow.coreui.utils.view.doOnClick
 import kotlinx.android.synthetic.main.view_num_pad.view.backspaceButton
 import kotlinx.android.synthetic.main.view_num_pad.view.fingerprintButton
 import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton0

@@ -9,10 +9,10 @@ import androidx.annotation.DimenRes
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.ext.color
-import com.usacheow.coreui.utils.ext.resize
-import com.usacheow.coreui.utils.ext.toPx
-import com.usacheow.coreui.utils.ext.updateMargins
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.resize
+import com.usacheow.coreui.utils.view.toPx
+import com.usacheow.coreui.utils.view.updateMargins
 import kotlinx.android.synthetic.main.divider_item_view.view.dividerBackgroundView
 
 class DividerItemView
