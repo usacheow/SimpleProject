@@ -21,7 +21,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     protected abstract val layoutId: Int
     protected open var needTransparentBars = true
-    protected open var needWhiteIcons = true
+    protected open var needWhiteIcons = false
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
