@@ -16,7 +16,7 @@ class ResourcesWrapperImpl
 
     override fun getString(@StringRes id: Int) = context.getString(id)
 
-    override fun getString(@StringRes id: Int, vararg formatArgs: Any) = context.getString(id, formatArgs)
+    override fun getString(@StringRes id: Int, vararg formatArgs: Any) = context.getString(id, *formatArgs)
 
     override fun getColor(@ColorRes id: Int) = ContextCompat.getColor(context, id)
 
