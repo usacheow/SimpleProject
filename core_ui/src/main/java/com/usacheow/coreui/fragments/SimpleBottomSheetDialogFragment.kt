@@ -20,6 +20,8 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     protected abstract val layoutId: Int
 
+    protected open val canHide = true
+
     protected open val needWrapContent = false
 
     protected open val needExpand = false
@@ -52,6 +54,8 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
             val bottomSheet = (dialog as BottomSheetDialog).findViewById<FrameLayout>(R.id.design_bottom_sheet)
             bottomSheet?.updateLayoutParams<ViewGroup.LayoutParams> { height = ViewGroup.LayoutParams.MATCH_PARENT }
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet!!)
+
+            bottomSheetBehavior.isHideable = canHide
 
             bottomSheetBehavior.isFitToContents = needWrapContent
             if (needWrapContent) return@setOnShowListener
