@@ -12,25 +12,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_in_by_phone_header"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <br.com.sapereaude.maskedEditText.MaskedEditText
-        android:id="@+id/signInPhoneInput"
-        style="@style/TextDigital"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/SimpleInputLayout"
         android:layout_marginTop="24dp"
-        android:typeface="monospace"
-        android:imeOptions="actionDone"
-        android:background="@null"
-        app:allowed_chars="1234567890"
-        app:keep_hint="true"
-        app:mask="+7 ### ### ## ##"
+        android:hint="@string/sign_in_by_phone_hint"
+        android:inputType="phone"
+        app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signInHeaderView" />
+        app:layout_constraintTop_toBottomOf="@id/signInHeaderView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signInPhoneInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signInButton"

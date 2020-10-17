@@ -2,47 +2,65 @@ package com.usacheow.demo
 
 import android.os.Bundle
 import android.text.TextWatcher
+import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.button.SectionButton
 import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.list.Filter
 import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
+import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.view.PaddingValue
-import kotlinx.android.synthetic.main.fragment_views.chipsLayout
-import kotlinx.android.synthetic.main.fragment_views.header
-import kotlinx.android.synthetic.main.fragment_views.sectionButton
-import kotlinx.android.synthetic.main.fragment_views.viewAmountInput
-import kotlinx.android.synthetic.main.fragment_views.viewsScrollView
+import com.usacheow.coreui.utils.view.doWithTransitionOnParentView
+import kotlinx.android.synthetic.main.fragment_views.*
 
 class ViewsFragment : SimpleFragment() {
 
     override val layoutId = R.layout.fragment_views
-
-    private var textWatcher: TextWatcher? = null
 
     companion object {
         fun newInstance() = ViewsFragment()
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        viewsScrollView.updatePadding(bottom = insets.systemWindowInsetBottom)
+        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        doWithTransitionOnParentView {
+            viewsScrollView.updatePadding(bottom = when (isKeyboardVisible) {
+                true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            })
+        }
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
         (header as SimpleAppBarLayout).apply {
-            setBackground(R.color.colorGreyCard)
-            title = "Simple Toolbar"
+            title = "Views Samples"
+            setNavigationAction(R.drawable.ic_back) {
+                requireActivity().onBackPressed()
+            }
         }
 
-        (sectionButton as SectionButton).populate(listOf(
-            "One",
-            "Two",
-            "Three"
-        ))
+        viewAmountInput.addCurrencyFormatter("50000.00")
+        viewPhoneNumberInput.addPhoneNumberFormatter({}, {})
 
-        textWatcher = viewAmountInput.addCurrencyFormatter("50000.00")
+        viewPasswordInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                viewAmountInput.requestFocus()
+            }
+            false
+        }
+        viewAmountInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                viewPhoneNumberInput.requestFocus()
+            }
+            false
+        }
+        viewPhoneNumberInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                viewPhoneNumberInput.clearFocus()
+            }
+            false
+        }
 
         chipsLayout.populate(setOf(
             Filter(1, "Chip 1", true),
@@ -51,9 +69,5 @@ class ViewsFragment : SimpleFragment() {
             Filter(4, "Chip 4", false),
             Filter(5, "Chip 5", false)
         )) { _, _ -> }
-    }
-
-    override fun clearViews() {
-        viewAmountInput.removeTextChangedListener(textWatcher)
     }
 }

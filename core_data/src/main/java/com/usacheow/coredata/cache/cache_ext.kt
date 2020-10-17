@@ -1,16 +1,21 @@
 package com.usacheow.coredata.cache
 
 import com.usacheow.coredata.cache.base.CacheProvider
-import io.reactivex.Single
+import com.usacheow.coredata.network.Effect
+import com.usacheow.coredata.network.apiCall
+import com.usacheow.coredata.network.ifError
+import com.usacheow.coredata.network.ifSuccess
+import retrofit2.Response
 
-class CacheLoadingException : Exception("Don't cache")
-
-inline fun <reified RESULT> Single<RESULT>.takeCacheOrRefresh(
+suspend inline fun <reified T : Any> takeCacheOrRefresh(
+    noinline request: suspend () -> Response<T>,
     cacheProvider: CacheProvider,
     key: String,
     timeInMillis: Long = 1 * 60 * 1000
-) = Single.fromCallable {
-    cacheProvider.get(RESULT::class.java, key, timeInMillis) ?: throw CacheLoadingException()
+) = cacheProvider.get(T::class.java, key, timeInMillis)?.let {
+    Effect.Success(it)
+} ?: apiCall(request).ifSuccess {
+    cacheProvider.save(data, key)
+}.ifError {
+    cacheProvider.clear(T::class.java, key)
 }
-    .onErrorResumeNext { this }
-    .doAfterSuccess { cacheProvider.save(it as Any, key) }

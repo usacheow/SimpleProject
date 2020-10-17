@@ -8,17 +8,17 @@ import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.IContainer
 import com.usacheow.coreui.delegate.ContainerDelegate
 
-class DemoScreenActivity : SimpleActivity(R.layout.frg_container), IContainer {
+class DemoScreenActivity : SimpleActivity(R.layout.fragment_container), IContainer {
 
     private val containerDelegate by lazy { ContainerDelegate(layoutId) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        show(ExampleContainerFragment.newInstance(), false)
+        show(ExampleContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
-        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, transition)
+    override fun show(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
     }
 
     override fun reset() {

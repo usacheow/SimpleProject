@@ -18,7 +18,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation kotlinDependencies.values()
 
-    implementation rxDependencies.values()
     implementation gsonDependencies.values()
 
     api unitTestDependencies.values()

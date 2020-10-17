@@ -80,3 +80,12 @@ fun TextInputEditText.addCurrencyFormatter(defaultHint: String? = null): TextWat
 
     return textWatcher
 }
+
+fun TextInputEditText.addPhoneNumberFormatter(
+    onPhoneNumberCompleted: (String) -> Unit,
+    onPhoneNumberInputChanged: (String) -> Unit
+) = PhoneNumberFormatter(
+    inputEditText = this,
+    onPhoneNumberCompleted = onPhoneNumberCompleted,
+    onPhoneNumberInputChanged = onPhoneNumberInputChanged
+)

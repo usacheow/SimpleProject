@@ -27,7 +27,9 @@ class BFragment : SimpleFragment() {
     override val layoutId = R.layout.fragment_b
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 56.toPx)
+        listView.updatePadding(
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

@@ -5,24 +5,26 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import com.usacheow.coredata.network.error.ErrorProcessorImpl
-import com.usacheow.coredata.network.error.MappedException
-import com.usacheow.coredata.network.observer.SimpleCompletableObserver
-import com.usacheow.coredata.network.setRequestThreads
+import androidx.lifecycle.viewModelScope
+import com.usacheow.coredata.network.ifError
+import com.usacheow.coredata.network.ifSuccess
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
+import com.usacheow.coreui.livedata.postValue
+import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
-import io.reactivex.rxkotlin.plusAssign
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
 private const val CONFIRM_CODE_LENGTH = 4
 
 class SignInWithPhoneViewModel
 @ViewModelInject constructor(
-    private val errorProcessor: ErrorProcessorImpl,
     private val interactor: AuthInteractor,
+    private val resources: ResourcesWrapper,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
@@ -42,10 +44,10 @@ class SignInWithPhoneViewModel
     private val _openConfirmScreenLiveData by lazy { ActionLiveData<Int>() }
 
     val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
-    protected val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
 
-    val errorState: LiveData<MappedException> get() = _errorStateLiveData
-    protected val _errorStateLiveData by lazy { MutableLiveData<MappedException>() }
+    val errorState: LiveData<String?> get() = _errorStateLiveData
+    private val _errorStateLiveData by lazy { MutableLiveData<String?>() }
 
     private var phoneNumber = ""
 
@@ -72,24 +74,15 @@ class SignInWithPhoneViewModel
         phoneNumber = phone.normalizedPhoneNumber()
         if (!isValidPhoneNumber(phoneNumber)) return
 
-        val observer = SimpleCompletableObserver.Builder()
-            .onSubscribe {
-                _isLoadingStateLiveData.postValue(true)
-                disposables += it
+        viewModelScope.launch(Dispatchers.IO) {
+            _isLoadingStateLiveData.postValue = true
+            interactor.signInWithPhone(phone).ifSuccess {
+                _openConfirmScreenLiveData.postValue = CONFIRM_CODE_LENGTH
+            }.ifError {
+                _errorStateLiveData.postValue = exception.getMessage(resources.get)
             }
-            .onSuccess {
-                _isLoadingStateLiveData.value = false
-                _openConfirmScreenLiveData.value = CONFIRM_CODE_LENGTH
-            }
-            .onError {
-                _errorStateLiveData.value = errorProcessor.process(it)
-            }
-            .build()
-
-        disposables.clear()
-        interactor.signInWithPhone(phone)
-            .setRequestThreads()
-            .subscribe(observer)
+            _isLoadingStateLiveData.postValue = false
+        }
     }
 
     fun onSignUpClicked() {
@@ -99,13 +92,14 @@ class SignInWithPhoneViewModel
     fun onCodeInputted(code: String) {
         if (code.isEmpty()) return
 
-        val observer = SimpleCompletableObserver.Builder()
-            .onSubscribe { disposables += it }
-            .onError { _codeConfirmMessageLiveData.value = "Неверный код" }
-            .onSuccess { _closeScreenLiveData.value = SimpleAction() }
-            .build()
-        interactor.verifyPhone(phoneNumber, code)
-            .setRequestThreads()
-            .subscribe(observer)
+        viewModelScope.launch(Dispatchers.IO) {
+            _isLoadingStateLiveData.postValue = true
+            interactor.verifyPhone(phoneNumber, code).ifSuccess {
+                _closeScreenLiveData.postValue = SimpleAction()
+            }.ifError {
+                _codeConfirmMessageLiveData.postValue = "Неверный код"
+            }
+            _isLoadingStateLiveData.postValue = false
+        }
     }
 }

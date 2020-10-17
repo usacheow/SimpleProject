@@ -29,7 +29,9 @@ class AFragment : SimpleFragment() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        listView.updatePadding(bottom = insets.systemWindowInsetBottom + 56.toPx)
+        listView.updatePadding(
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+        )
     }
 
     override fun getSharedViews() = listOf(header)

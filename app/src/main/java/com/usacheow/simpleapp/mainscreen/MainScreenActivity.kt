@@ -3,20 +3,21 @@ package com.usacheow.simpleapp.mainscreen
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.transition.TransitionSet
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.BillingActivity
 import com.usacheow.coreui.base.IContainer
 import com.usacheow.coreui.delegate.ContainerDelegate
-import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainScreenActivity : BillingActivity(R.layout.frg_container), IContainer {
+class MainScreenActivity : BillingActivity(R.layout.fragment_container), IContainer {
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
 
@@ -25,25 +26,25 @@ class MainScreenActivity : BillingActivity(R.layout.frg_container), IContainer {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appStateViewModel.openAuthScreen.subscribe(this) {
-            show(AuthContainerFragment.newInstance(), false)
+        appStateViewModel.openAuthScreen.observe(this) {
+            show(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
 
-        appStateViewModel.openPinScreen.subscribe(this) {
+        appStateViewModel.openPinScreen.observe(this) {
             show(PinCodeFragment.newInstance(), false)
         }
 
-        appStateViewModel.openOnBoardingScreen.subscribe(this) {
+        appStateViewModel.openOnBoardingScreen.observe(this) {
             show(OnBoardingFragment.newInstance(), false)
         }
 
-        appStateViewModel.openAppScreen.subscribe(this) {
+        appStateViewModel.openAppScreen.observe(this) {
             show(BottomBarFragment.newInstance(), false)
         }
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
-        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, transition)
+    override fun show(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
     }
 
     override fun reset() {

@@ -5,16 +5,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.fragment_example.calendarScreen
-import kotlinx.android.synthetic.main.fragment_example.cameraScreen
-import kotlinx.android.synthetic.main.fragment_example.exampleHeaderView
-import kotlinx.android.synthetic.main.fragment_example.fontsScreen
-import kotlinx.android.synthetic.main.fragment_example.rootView
-import kotlinx.android.synthetic.main.fragment_example.viewsScreen
-import kotlinx.android.synthetic.main.fragment_example.widgetsScreen
+import kotlinx.android.synthetic.main.fragment_example.*
+import kotlinx.android.synthetic.main.fragment_example.header
+import kotlinx.android.synthetic.main.fragment_views.*
 
 class ExampleFragment : SimpleFragment() {
 
@@ -25,11 +22,14 @@ class ExampleFragment : SimpleFragment() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        exampleHeaderView.updatePadding(top = insets.systemWindowInsetTop + 16.toPx)
-        rootView.updatePadding(bottom = insets.systemWindowInsetBottom)
+        listView.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        (header as SimpleAppBarLayout).apply {
+            title = "Demo UiKit"
+        }
+
         fontsScreen.doOnClick { show(FontsFragment.newInstance()) }
         widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
         viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }

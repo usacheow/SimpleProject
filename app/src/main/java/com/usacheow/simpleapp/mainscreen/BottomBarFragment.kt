@@ -39,7 +39,9 @@ class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionCh
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        appBottomBar.updatePadding(bottom = insets.systemWindowInsetBottom)
+        appBottomBar.updatePadding(
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

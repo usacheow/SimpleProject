@@ -10,7 +10,7 @@ import com.usacheow.coreui.delegate.ContainerDelegate
 
 abstract class ContainerFragment : SimpleFragment(), IContainer, IBackListener {
 
-    override val layoutId = R.layout.frg_container
+    override val layoutId = R.layout.fragment_container
 
     private val containerDelegate by lazy { ContainerDelegate(layoutId) }
 
@@ -21,8 +21,8 @@ abstract class ContainerFragment : SimpleFragment(), IContainer, IBackListener {
         containerDelegate.onCreate(childFragmentManager, ::getInitFragment)
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, transition: TransitionSet) {
-        containerDelegate.show(childFragmentManager, fragment, needAddToBackStack, transition)
+    override fun show(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+        containerDelegate.show(childFragmentManager, fragment, needAddToBackStack, needAnimate)
     }
 
     override fun reset() {

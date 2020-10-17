@@ -33,7 +33,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/actionTitleView"
                     style="@style/TextBody1"
                     android:layout_width="0dp"
@@ -50,6 +50,7 @@
                     android:layout_marginStart="12dp"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_drag"
+                    app:tint="@color/colorIconSecondary"
                     tools:visibility="visible" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
@@ -69,7 +70,7 @@
                     tools:checked="true" />
             </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/actionSubtitleView"
                 style="@style/TextBody2_60"
                 android:layout_width="match_parent"

@@ -19,7 +19,6 @@ import javax.inject.Singleton
 @Module(
     includes = [
         OkHttpModule::class,
-        RxModule::class,
         GsonModule::class,
         RetrofitModule::class
     ]

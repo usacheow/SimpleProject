@@ -7,14 +7,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.button.SimpleButtonItem
+import com.usacheow.coreui.uikit.button.SimpleOutlinedButtonItem
+import com.usacheow.coreui.uikit.button.SimpleTextButtonItem
+import com.usacheow.coreui.uikit.calendar.CalendarItem
 import com.usacheow.coreui.uikit.decoration.DividerItem
 import com.usacheow.coreui.uikit.header.HeaderWithActionItem
+import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.information.SmallInfoCardItem
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.uikit.listitem.ActionSelectionType
 import com.usacheow.coreui.uikit.listitem.OperationItem
 import com.usacheow.coreui.uikit.utils.IconState
+import com.usacheow.coreui.utils.values.TODAY
 import com.usacheow.coreui.utils.view.PaddingValue
+import kotlinx.android.synthetic.main.fragment_views.*
 import kotlinx.android.synthetic.main.fragment_widgets.widgetsListView
 
 class WidgetsFragment : SimpleFragment() {
@@ -27,12 +33,19 @@ class WidgetsFragment : SimpleFragment() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         widgetsListView.updatePadding(
-            top = insets.systemWindowInsetTop,
-            bottom = insets.systemWindowInsetBottom
+            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        (header as SimpleAppBarLayout).apply {
+            title = "Widgets samples"
+            setNavigationAction(R.drawable.ic_back) {
+                requireActivity().onBackPressed()
+            }
+        }
+
         widgetsListView.layoutManager = LinearLayoutManager(context)
         widgetsListView.adapter = ViewTypesAdapter(listOf(
             HeaderWithActionItem("Action items", "Details"),
@@ -60,8 +73,7 @@ class WidgetsFragment : SimpleFragment() {
                 onControlClicked = {}
             ),
 
-            DividerItem.getBigDivider(),
-            HeaderWithActionItem("Operation item", "Details"),
+            DividerItem(heightResId = R.dimen.divider_height_big, colorResId = R.color.colorBackground),
 
             OperationItem(
                 operationType = "Some operation",
@@ -70,23 +82,20 @@ class WidgetsFragment : SimpleFragment() {
                 sum = "500.00 ₽"
             ),
 
-//            DividerItem.getBigDivider(),
-//            HeaderWithActionItem("Calendar", "Details"),
-//
-//            CalendarItem(selectedMonth = TODAY(), isScrollable = true),
-
-            DividerItem.getBigDivider(),
-            HeaderWithActionItem("Small info card item", "Details"),
-
-            SmallInfoCardItem(header = "Header", value = "Some value text", needExpandOnWidth = true),
-            SmallInfoCardItem(header = "Header", value = "Some value text", needExpandOnWidth = false),
-
-            DividerItem.getBigDivider(),
-            HeaderWithActionItem("Simple button", "Details"),
+            DividerItem.getSmallDivider(),
+            HeaderWithActionItem("Buttons"),
 
             SimpleButtonItem(text = "Button") {},
+            SimpleOutlinedButtonItem(text = "Outlined button") {},
+            SimpleTextButtonItem(text = "Text button") {},
 
-            DividerItem.getBigDivider()
+            SmallInfoCardItem(header = "Small info card", value = "Width = match_parent", needExpandOnWidth = true),
+            SmallInfoCardItem(header = "Clickable small info card", value = "Width = wrap_content", needExpandOnWidth = false, clickAction = {}),
+
+            DividerItem.getBigDivider(),
+            HeaderWithActionItem("Calendar", "Details"),
+
+            CalendarItem(selectedMonth = TODAY(), isScrollable = true)
         ))
     }
 }

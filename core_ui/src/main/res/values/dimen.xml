@@ -24,9 +24,6 @@
     <dimen name="divider_height_small">1dp</dimen>
     <dimen name="divider_height_big">16dp</dimen>
 
-    <dimen name="section_button_height">56dp</dimen>
-    <dimen name="section_button_radius">8dp</dimen>
-
     <dimen name="radius_0">0dp</dimen>
     <dimen name="radius_2">2dp</dimen>
     <dimen name="radius_4">4dp</dimen>

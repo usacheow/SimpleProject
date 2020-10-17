@@ -5,15 +5,16 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.usacheow.app_shared.R
-import com.usacheow.coredata.network.setRequestThreads
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
+import com.usacheow.coreui.livedata.postValue
 import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.viewmodels.SimpleViewModel
-import io.reactivex.Observable
-import io.reactivex.rxkotlin.plusAssign
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private const val EMPTY_MESSAGE = ""
 private const val EMPTY_CODE = ""
@@ -66,18 +67,17 @@ class SmsCodeViewModel
         _isResendButtonEnabledLiveData.value = false
         _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS)
 
-        disposables += Observable.interval(1L, TimeUnit.SECONDS)
-            .setRequestThreads()
-            .take(SMS_CODE_TIMEOUT_SECONDS)
-            .map { SMS_CODE_TIMEOUT_SECONDS - it }
-            .subscribe(
-                { _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend_timer, it) },
-                {},
-                {
-                    _resendButtonTextLiveData.value = resources.getString(R.string.sms_code_resend)
-                    _isResendButtonEnabledLiveData.value = true
-                }
-            )
+        viewModelScope.launch(Dispatchers.IO) {
+            (0..SMS_CODE_TIMEOUT_SECONDS).forEach {
+                delay(1000)
+                _resendButtonTextLiveData.postValue = resources.getString(
+                    R.string.sms_code_resend_timer,
+                    SMS_CODE_TIMEOUT_SECONDS - it
+                )
+            }
+            _resendButtonTextLiveData.postValue = resources.getString(R.string.sms_code_resend)
+            _isResendButtonEnabledLiveData.postValue = true
+        }
     }
 
     fun onResendClicked() {

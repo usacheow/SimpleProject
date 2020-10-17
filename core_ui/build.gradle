@@ -39,7 +39,6 @@ dependencies {
     implementation firebaseDependencies.values()
     implementation billingDependencies.values()
 
-    implementation rxDependencies.values()
     implementation gsonDependencies.values()
 
     implementation glideDependency

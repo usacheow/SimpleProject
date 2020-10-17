@@ -1,5 +1,6 @@
 package com.usacheow.coredata.di
 
+import android.app.Application
 import android.content.Context
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.usacheow.coredata.BuildConfig
@@ -36,7 +37,7 @@ class OkHttpModule {
 
     @Provides
     @Singleton
-    fun chuckInterceptor(context: Context) = ChuckInterceptor(context)
+    fun chuckInterceptor(application: Application) = ChuckInterceptor(application)
 
     @Provides
     @Singleton

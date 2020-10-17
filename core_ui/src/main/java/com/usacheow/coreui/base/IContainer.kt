@@ -6,7 +6,7 @@ import com.usacheow.coreui.utils.view.RoutingTransition
 
 interface IContainer {
 
-    fun show(fragment: Fragment, needAddToBackStack: Boolean = true, transition: TransitionSet = RoutingTransition())
+    fun show(fragment: Fragment, needAddToBackStack: Boolean = true, needAnimate: Boolean = true)
 
     fun reset()
 }

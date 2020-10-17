@@ -16,10 +16,7 @@ import com.usacheow.coreui.utils.view.populate
 import com.usacheow.coreui.utils.view.resize
 import com.usacheow.coreui.utils.view.setListenerIfNeed
 import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.list_tile_item_view.view.actionDescriptionView
-import kotlinx.android.synthetic.main.list_tile_item_view.view.actionIconView
-import kotlinx.android.synthetic.main.list_tile_item_view.view.actionSubtitleView
-import kotlinx.android.synthetic.main.list_tile_item_view.view.actionTitleView
+import kotlinx.android.synthetic.main.view_list_tile_item.view.*
 
 private const val SUBTITLE_SHIMMER_WIDTH_DP = 120
 private const val TITLE_SHIMMER_WIDTH_DP = 200
@@ -69,7 +66,7 @@ data class ListTileItem(
     val subtitle: String,
     val description: String? = null,
     val onItemClicked: (() -> Unit)? = null
-) : ViewType(R.layout.list_tile_item_view) {
+) : ViewType(R.layout.view_list_tile_item) {
 
     companion object {
         fun shimmer() = ListTileItem(subtitle = "").apply { isShimmer = true }

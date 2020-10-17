@@ -1,82 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootView"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <include
+        android:id="@+id/header"
+        layout="@layout/simple_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/listView"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <TextView
-            android:id="@+id/exampleHeaderView"
-            style="@style/TextH1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="Demo Uikit"
-            android:background="@color/colorGreyCard" />
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/TextOverline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="Components" />
+            <TextView
+                style="@style/TextOverline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="Components" />
 
-        <TextView
-            android:id="@+id/fontsScreen"
-            style="@style/TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="1. Fonts Fragment"
-            android:background="?selectableItemBackground" />
+            <TextView
+                android:id="@+id/fontsScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="1. Fonts Fragment"
+                android:background="?selectableItemBackground" />
 
-        <TextView
-            android:id="@+id/widgetsScreen"
-            style="@style/TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="2. Widgets Fragment"
-            android:background="?selectableItemBackground" />
+            <TextView
+                android:id="@+id/widgetsScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="2. Widgets Fragment"
+                android:background="?selectableItemBackground" />
 
-        <TextView
-            android:id="@+id/viewsScreen"
-            style="@style/TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="3. Views Fragment"
-            android:background="?selectableItemBackground" />
+            <TextView
+                android:id="@+id/viewsScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="3. Views Fragment"
+                android:background="?selectableItemBackground" />
 
-        <TextView
-            style="@style/TextOverline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:layout_marginTop="16dp"
-            android:text="Screens" />
+            <TextView
+                style="@style/TextOverline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Screens" />
 
-        <TextView
-            android:id="@+id/calendarScreen"
-            style="@style/TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="1. Calendar Fragment (in progress)"
-            android:background="?selectableItemBackground" />
+            <TextView
+                android:id="@+id/calendarScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="1. Calendar Fragment (in progress)"
+                android:background="?selectableItemBackground" />
 
-        <TextView
-            android:id="@+id/cameraScreen"
-            style="@style/TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/left_right_margin"
-            android:text="1. Camera Example Fragment"
-            android:background="?selectableItemBackground" />
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/cameraScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="2. Camera Example Fragment"
+                android:background="?selectableItemBackground" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

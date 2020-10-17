@@ -8,5 +8,5 @@ class AuthContainerFragment : ContainerFragment() {
         fun newInstance() = AuthContainerFragment()
     }
 
-    override fun getInitFragment() = SignInFragment.newInstance()
+    override fun getInitFragment() = SignInWithPhoneFragment.newInstance()
 }

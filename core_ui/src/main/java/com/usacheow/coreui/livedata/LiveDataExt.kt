@@ -1,9 +1,9 @@
 package com.usacheow.coreui.livedata
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.MutableLiveData
 
-fun <T> LiveData<T>.subscribe(lifecycleOwner: LifecycleOwner, action: (T) -> Unit) {
-    observe(lifecycleOwner, Observer { action(it) })
-}
+var <T> MutableLiveData<T>.postValue
+    get() = value
+    set(value) {
+        postValue(value)
+    }
