@@ -17,7 +17,7 @@ import com.usacheow.featureauth.domain.AuthInteractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SignUpWithLoginAndPasswordViewModel
+class SignInViewModel
 @ViewModelInject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
@@ -25,21 +25,19 @@ class SignUpWithLoginAndPasswordViewModel
 ) : SimpleViewModel() {
 
     val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData
-    private val _submitButtonEnabledLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _submitButtonEnabledLiveData = MutableLiveData<Boolean>(false)
 
-    val openMainScreen: LiveData<SimpleAction> get() = _openMainScreenLiveData
-    private val _openMainScreenLiveData by lazy { ActionLiveData<SimpleAction>() }
+    val closeScreen: LiveData<SimpleAction> get() = _closeScreenLiveData
+    private val _closeScreenLiveData = ActionLiveData<SimpleAction>()
+
+    val openSignUpScreen: LiveData<SimpleAction> get() = _openSignUpScreenLiveData
+    private val _openSignUpScreenLiveData = ActionLiveData<SimpleAction>()
 
     val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
-    private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _isLoadingStateLiveData = MutableLiveData<Boolean>(false)
 
     val errorState: LiveData<String?> get() = _errorStateLiveData
-    private val _errorStateLiveData by lazy { MutableLiveData<String?>() }
-
-    init {
-        _isLoadingStateLiveData.value = false
-        _submitButtonEnabledLiveData.value = false
-    }
+    private val _errorStateLiveData = MutableLiveData<String?>()
 
     fun onDataChanged(login: String, password: String) {
         _submitButtonEnabledLiveData.value = isLoginValid(login) && isPasswordValid(password)
@@ -54,12 +52,17 @@ class SignUpWithLoginAndPasswordViewModel
 
         viewModelScope.launch(Dispatchers.IO) {
             _isLoadingStateLiveData.postValue = true
-            interactor.signUpWithLoginAndPassword(login, password).ifSuccess {
-                _openMainScreenLiveData.postValue = SimpleAction()
-            }.ifError {
-                _errorStateLiveData.postValue = exception.getMessage(resources.get)
-            }
+            interactor.signInWithLoginAndPassword(login, password)
+                .ifSuccess {
+                    _closeScreenLiveData.postValue = SimpleAction()
+                }.ifError {
+                    _errorStateLiveData.postValue = exception.getMessage(resources.get)
+                }
             _isLoadingStateLiveData.postValue = false
         }
+    }
+
+    fun onSignUpClicked() {
+        _openSignUpScreenLiveData.value = SimpleAction()
     }
 }

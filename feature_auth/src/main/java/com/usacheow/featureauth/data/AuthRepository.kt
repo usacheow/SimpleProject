@@ -1,18 +1,18 @@
 package com.usacheow.featureauth.data
 
+import com.usacheow.coredata.network.Completable
+import com.usacheow.coredata.network.Effect
 import com.usacheow.featureauth.data.models.AccessToken
-import io.reactivex.Completable
-import io.reactivex.Single
 
 interface AuthRepository {
 
-    fun signInWithLoginAndPassword(login: String, password: String): Single<AccessToken>
+    suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<AccessToken>
 
-    fun signUpWithLoginAndPassword(login: String, password: String): Single<AccessToken>
+    suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect<AccessToken>
 
-    fun signInWithPhone(phone: String): Completable
+    suspend fun signInWithPhone(phone: String): Effect<Completable>
 
-    fun resendCode(phone: String): Completable
+    suspend fun resendCode(phone: String): Effect<Completable>
 
-    fun verifyPhone(phone: String, code: String): Single<AccessToken>
+    suspend fun verifyPhone(phone: String, code: String): Effect<AccessToken>
 }

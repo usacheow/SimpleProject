@@ -15,8 +15,6 @@
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/left_right_margin"
-        android:paddingBottom="@dimen/left_right_margin"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -115,22 +113,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center_vertical">
 
                 <TextView
                     style="@style/TextBody1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/left_right_margin"
-                    android:text="Radio buttons" />
-
-                <include
-                    android:id="@+id/sectionButton"
-                    layout="@layout/view_section_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin" />
+                    android:paddingHorizontal="@dimen/left_right_margin"
+                    android:text="Toggle buttons" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/left_right_margin"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/SimpleButtonOutlined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/SimpleButtonOutlined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Second"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/SimpleButtonOutlined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Third"/>
+                </com.google.android.material.button.MaterialButtonToggleGroup>
             </LinearLayout>
 
             <View
@@ -141,20 +157,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center_vertical">
 
                 <TextView
                     style="@style/TextBody1"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/left_right_margin"
+                    android:layout_marginTop="@dimen/left_right_margin"
+                    android:layout_marginHorizontal="@dimen/left_right_margin"
                     android:text="Simple input" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/SimpleInputLayout"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
                     app:startIconDrawable="@drawable/ic_lock"
@@ -162,35 +178,29 @@
                     app:hintEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/viewPasswordInput"
                         style="@style/TextBody1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
                         android:hint="Hello World!"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
                         android:lines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
 
                 <TextView
                     style="@style/TextBody1"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/left_right_margin"
+                    android:layout_marginHorizontal="@dimen/left_right_margin"
                     android:text="Currency formatter" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/SimpleInputLayout"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
-                    app:endIconDrawable="@drawable/ic_euro"
+                    app:startIconDrawable="@drawable/ic_money"
                     app:hintEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -198,7 +208,34 @@
                         style="@style/TextBody1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
                         android:inputType="numberDecimal"
+                        android:lines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/TextBody1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/left_right_margin"
+                    android:layout_marginHorizontal="@dimen/left_right_margin"
+                    android:text="Phone number formatter" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/SimpleInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/left_right_margin"
+                    app:startIconDrawable="@drawable/ic_phone"
+                    app:hintEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/viewPhoneNumberInput"
+                        style="@style/TextBody1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textShortMessage"
                         android:lines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -211,14 +248,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center_vertical">
 
                 <TextView
                     style="@style/TextBody1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/left_right_margin"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="@dimen/left_right_margin"
                     android:text="Chips layout" />
 
                 <com.usacheow.coreui.uikit.list.ChipsLayout

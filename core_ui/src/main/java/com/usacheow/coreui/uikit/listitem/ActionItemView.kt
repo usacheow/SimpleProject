@@ -20,13 +20,7 @@ import com.usacheow.coreui.utils.view.makeVisible
 import com.usacheow.coreui.utils.view.populate
 import com.usacheow.coreui.utils.view.resize
 import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.action_item_view.view.actionCheckBox
-import kotlinx.android.synthetic.main.action_item_view.view.actionDragFlagView
-import kotlinx.android.synthetic.main.action_item_view.view.actionIconView
-import kotlinx.android.synthetic.main.action_item_view.view.actionSubtitleView
-import kotlinx.android.synthetic.main.action_item_view.view.actionSwitch
-import kotlinx.android.synthetic.main.action_item_view.view.actionTitleLayout
-import kotlinx.android.synthetic.main.action_item_view.view.actionTitleView
+import kotlinx.android.synthetic.main.view_action_item.view.*
 
 private const val TITLE_SHIMMER_WIDTH_DP = 180
 
@@ -117,7 +111,7 @@ data class ActionItem(
     val selectionType: ActionSelectionType = ActionSelectionType.NONE,
     val onItemClicked: (() -> Unit)? = null,
     val onControlClicked: ((Boolean) -> Unit)? = null
-) : ViewType(R.layout.action_item_view) {
+) : ViewType(R.layout.view_action_item) {
 
     companion object {
         fun shimmer() = ActionItem(title = "").apply { isShimmer = true }

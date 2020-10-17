@@ -13,7 +13,7 @@ import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.resize
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.coreui.utils.view.updateMargins
-import kotlinx.android.synthetic.main.divider_item_view.view.dividerBackgroundView
+import kotlinx.android.synthetic.main.view_divider_item.view.dividerBackgroundView
 
 class DividerItemView
 @JvmOverloads constructor(
@@ -40,7 +40,7 @@ data class DividerItem(
     val endMarginDp: Int = 0,
     @DimenRes val heightResId: Int = R.dimen.divider_height_small,
     @ColorRes var colorResId: Int = R.color.colorDivider
-) : ViewType(R.layout.divider_item_view) {
+) : ViewType(R.layout.view_divider_item) {
 
     companion object {
 

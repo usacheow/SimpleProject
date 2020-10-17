@@ -6,20 +6,20 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.usacheow.coredata.database.dto.StubDto
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StubDao {
 
     @Query("SELECT * FROM stubdto")
-    fun getAll(): Flowable<List<StubDto>>
+    fun getAll(): Flow<List<StubDto>>
 
     @Insert
-    fun insertAll(vararg items: StubDto)
+    suspend fun insertAll(vararg items: StubDto)
 
     @Update
-    fun update(item: StubDto): Int
+    suspend fun update(item: StubDto)
 
     @Delete
-    fun delete(item: StubDto): Int
+    suspend fun delete(item: StubDto)
 }

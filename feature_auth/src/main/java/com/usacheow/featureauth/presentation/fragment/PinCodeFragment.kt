@@ -5,9 +5,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.biometric.BiometricAuthorizationManager
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
@@ -39,8 +39,8 @@ class PinCodeFragment : SimpleFragment() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         pinCodeRootView.updatePadding(
-            top = insets.systemWindowInsetTop + padding.top,
-            bottom = insets.systemWindowInsetBottom + padding.bottom
+            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top + padding.top,
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + padding.bottom
         )
     }
 
@@ -60,14 +60,14 @@ class PinCodeFragment : SimpleFragment() {
     }
 
     override fun subscribe() {
-        viewModel.isFingerprintAllow.subscribe(viewLifecycleOwner) { isAllow ->
+        viewModel.isFingerprintAllow.observe(viewLifecycleOwner) { isAllow ->
             val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
             pinCodeView.setFingerprintEnabled(isEnabled)
             if (isEnabled) {
                 biometricDelegate.tryShow()
             }
         }
-        viewModel.changeAuthState.subscribe(viewLifecycleOwner) {
+        viewModel.changeAuthState.observe(viewLifecycleOwner) {
             when (it) {
                 is SignInSuccess -> appStateViewModel.onPinCodeEntered()
                 is SignInError -> {

@@ -8,22 +8,20 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.livedata.subscribe
+import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.*
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignUpWithLoginAndPasswordViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_sign_up.signUpButton
-import kotlinx.android.synthetic.main.fragment_sign_up.signUpLoaderView
-import kotlinx.android.synthetic.main.fragment_sign_up.signUpLoginInput
-import kotlinx.android.synthetic.main.fragment_sign_up.signUpPasswordInput
-import kotlinx.android.synthetic.main.fragment_sign_up.signUpRootView
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 import javax.inject.Inject
+
+private const val DEFAULT_HEADER_MARGIN_TOP_DP = 120
 
 @AndroidEntryPoint
 class SignUpFragment : SimpleFragment() {
@@ -42,10 +40,21 @@ class SignUpFragment : SimpleFragment() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        signUpRootView.updatePadding(
-            top = insets.systemWindowInsetTop + padding.top,
-            bottom = insets.systemWindowInsetBottom + padding.bottom
-        )
+        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        val bottomPadding = when (isKeyboardVisible) {
+            true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+        }
+        val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+
+        doWithTransitionOnParentView {
+            signUpHeaderView.updateMargins(topPx = when (isKeyboardVisible) {
+                true -> 0
+                false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
+            })
+
+            signUpRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+        }
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -70,6 +79,7 @@ class SignUpFragment : SimpleFragment() {
             false
         }
         signUpButton.doOnClick {
+            requireView().hideKeyboard()
             viewModel.onSignInClicked(
                 signUpLoginInput.text.toString(),
                 signUpPasswordInput.text.toString()
@@ -83,9 +93,9 @@ class SignUpFragment : SimpleFragment() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.subscribe(viewLifecycleOwner) { signUpLoaderView.isVisible = it }
-        viewModel.submitButtonEnabled.subscribe(viewLifecycleOwner) { signUpButton.isEnabled = it }
-        viewModel.openMainScreen.subscribe(viewLifecycleOwner) { appStateViewModel.onSignUp() }
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { signUpLoaderView.isVisible = it }
+        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { signUpButton.isEnabled = it }
+        viewModel.openMainScreen.observe(viewLifecycleOwner) { appStateViewModel.onSignUp() }
     }
 
     private fun getLoginAndPassword() = signUpLoginInput.text.toString() to signUpPasswordInput.text.toString()

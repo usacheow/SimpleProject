@@ -23,11 +23,11 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.core.SurfaceOrientedMeteringPointFactory
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
+import com.usacheow.coreui.utils.system.checkPermissions
 import com.usacheow.coreui.utils.view.doWithTransition
 import kotlinx.android.synthetic.main.fragment_camera.captureButton
 import kotlinx.android.synthetic.main.fragment_camera.container
@@ -94,8 +94,11 @@ class CameraFragment : SimpleFragment() {
         cameraExecutor = Executors.newSingleThreadExecutor()
         orientationEventListener.enable()
 
-        checkPermissions {
-            ActivityCompat.requestPermissions(requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        checkPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS) {
+            viewFinder.post {
+                updateCameraUi()
+                bindCameraUseCases()
+            }
         }
     }
 
@@ -238,20 +241,14 @@ class CameraFragment : SimpleFragment() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            checkPermissions {
+            if (requireContext().arePermissionsGranted(REQUIRED_PERMISSIONS)) {
+                viewFinder.post {
+                    updateCameraUi()
+                    bindCameraUseCases()
+                }
+            } else {
                 Toast.makeText(requireContext(), PERMISSIONS_DENIED_MESSAGE, Toast.LENGTH_SHORT).show()
             }
-        }
-    }
-
-    private fun checkPermissions(onDeniedAction: () -> Unit) {
-        if (requireContext().arePermissionsGranted(REQUIRED_PERMISSIONS)) {
-            viewFinder.post {
-                updateCameraUi()
-                bindCameraUseCases()
-            }
-        } else {
-            onDeniedAction()
         }
     }
 }

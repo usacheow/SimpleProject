@@ -24,11 +24,10 @@ dependencies {
     implementation firebaseDependencies.values()
 
     api networkDependencies.values()
-    api rxDependencies.values()
 
     implementation daggerDependency
     kapt kaptDaggerDependency
 
-    implementation roomDependency
+    implementation roomDependencies.values()
     kapt kaptRoomDependency
 }

@@ -10,7 +10,7 @@
         android:id="@+id/progressView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_line_radius"
+        android:background="@drawable/bg_line_grey_card_8dp"
         android:backgroundTint="@color/success"
         tools:layout_weight="18" />
 </androidx.appcompat.widget.LinearLayoutCompat>

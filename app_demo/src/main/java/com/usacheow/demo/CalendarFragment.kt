@@ -28,8 +28,8 @@ class CalendarFragment : SimpleFragment() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         calendarListView.updatePadding(
-            top = insets.systemWindowInsetTop,
-            bottom = insets.systemWindowInsetBottom
+            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 

@@ -1,6 +1,7 @@
 package com.usacheow.coreui.resources
 
 import android.content.Context
+import android.content.res.Resources
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -13,6 +14,9 @@ class ResourcesWrapperImpl
 @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ResourcesWrapper {
+
+    override val get: Resources
+        get() = context.resources
 
     override fun getString(@StringRes id: Int) = context.getString(id)
 

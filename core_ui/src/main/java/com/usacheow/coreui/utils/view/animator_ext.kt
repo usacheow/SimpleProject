@@ -29,23 +29,24 @@ fun Animator.withStartAction(action: () -> Unit): Animator {
     return this
 }
 
-fun Fragment.doWithTransitionOnParentView(block: () -> Unit) {
+fun Fragment.doWithTransitionOnParentView(duration: Long = 100, block: () -> Unit) {
     val view = parentFragment?.view ?: view
-    (view as? ViewGroup)?.doWithTransition(block)
+    (view as? ViewGroup)?.doWithTransition(duration, block)
 }
 
-fun View.doWithTransition(block: () -> Unit) {
-    (this as? ViewGroup)?.doWithTransition(block)
+fun View.doWithTransition(duration: Long = 100, block: () -> Unit) {
+    (this as? ViewGroup)?.doWithTransition(duration, block)
 }
 
-fun ViewGroup.doWithTransition(block: () -> Unit) {
-    TransitionManager.beginDelayedTransition(this, ScreenUpdateTransition())
+fun ViewGroup.doWithTransition(duration: Long = 100, block: () -> Unit) {
+    TransitionManager.beginDelayedTransition(this, ScreenUpdateTransition(duration))
     block()
 }
 
-class ScreenUpdateTransition : TransitionSet() {
+class ScreenUpdateTransition(duration: Long = 100) : TransitionSet() {
 
     init {
+        this.duration = duration
         ordering = ORDERING_TOGETHER
         addTransition(Fade())
         addTransition(ChangeBounds())

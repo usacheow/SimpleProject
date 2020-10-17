@@ -6,9 +6,9 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.usacheow.app_shared.R
 import com.usacheow.coreui.fragments.SimpleModalFragment
-import com.usacheow.coreui.livedata.subscribe
 import com.usacheow.coreui.utils.view.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_sms_code.loaderView
@@ -51,15 +51,15 @@ class SmsCodeModalFragment : SimpleModalFragment() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.subscribe(viewLifecycleOwner) { loaderView.isVisible = it }
-        viewModel.inputtedCode.subscribe(viewLifecycleOwner) {
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { loaderView.isVisible = it }
+        viewModel.inputtedCode.observe(viewLifecycleOwner) {
             smsCodeInput.setText(it)
             smsCodeNumPadView.setBackspaceButtonsVisibility(it.isNotEmpty())
         }
-        viewModel.resendButtonText.subscribe(viewLifecycleOwner) { smsCodeResendButton.text = it }
-        viewModel.isResendButtonEnabled.subscribe(viewLifecycleOwner) { smsCodeResendButton.setEnabledTextButton(it) }
-        viewModel.showMessage.subscribe(viewLifecycleOwner) { smsCodeMessageView.text = it }
-        viewModel.closeScreen.subscribe(viewLifecycleOwner) { dismiss() }
+        viewModel.resendButtonText.observe(viewLifecycleOwner) { smsCodeResendButton.text = it }
+        viewModel.isResendButtonEnabled.observe(viewLifecycleOwner) { smsCodeResendButton.setEnabledTextButton(it) }
+        viewModel.showMessage.observe(viewLifecycleOwner) { smsCodeMessageView.text = it }
+        viewModel.closeScreen.observe(viewLifecycleOwner) { dismiss() }
     }
 
     private fun TextView.setEnabledTextButton(isEnabled: Boolean) {

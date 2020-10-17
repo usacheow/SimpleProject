@@ -1,7 +1,9 @@
 package com.usacheow.featureauth.domain
 
+import com.usacheow.coredata.network.Completable
+import com.usacheow.coredata.network.Effect
+import com.usacheow.coredata.network.toCompletableResult
 import com.usacheow.featureauth.data.AuthRepository
-import io.reactivex.Completable
 import javax.inject.Inject
 
 class AuthInteractor
@@ -9,26 +11,23 @@ class AuthInteractor
     private val repository: AuthRepository
 ) {
 
-    fun signInWithLoginAndPassword(login: String, password: String): Completable {
-        return repository.signInWithLoginAndPassword(login, password)
-            .ignoreElement()
+    suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<Completable> {
+        return repository.signInWithLoginAndPassword(login, password).toCompletableResult()
     }
 
-    fun signUpWithLoginAndPassword(login: String, password: String): Completable {
-        return repository.signUpWithLoginAndPassword(login, password)
-            .ignoreElement()
+    suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect<Completable> {
+        return repository.signUpWithLoginAndPassword(login, password).toCompletableResult()
     }
 
-    fun signInWithPhone(phone: String): Completable {
+    suspend fun signInWithPhone(phone: String): Effect<Completable> {
         return repository.signInWithPhone(phone)
     }
 
-    fun resendCode(phone: String): Completable {
+    suspend fun resendCode(phone: String): Effect<Completable> {
         return repository.resendCode(phone)
     }
 
-    fun verifyPhone(phone: String, code: String): Completable {
-        return repository.verifyPhone(phone, code)
-            .ignoreElement()
+    suspend fun verifyPhone(phone: String, code: String): Effect<Completable> {
+        return repository.verifyPhone(phone, code).toCompletableResult()
     }
 }

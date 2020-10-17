@@ -4,9 +4,11 @@ ext {
     androidCompileSdkVersion = 30
     applicationPackage = "com.usacheow.simpleapp"
 
+    coroutinesVersion = '1.1.1'
+
     androidxVersion = '1.1.0'
     androidxCoreVersion = '1.5.0-alpha02'
-    androidxLifecycleVersion = '2.0.0'
+    androidxLifecycleVersion = '2.2.0'
 
     fragmentVersion = '1.3.0-alpha04'
     materialVersion = '1.2.0-alpha05'
@@ -19,11 +21,11 @@ ext {
     browserVersion = '1.0.0'
     biometricVersion = '1.0.1'
     roundedImageVersion = '2.3.0'
-    maskInputVersion = '1.0.5'
+    decoroVersion = '1.5.0'
     shimmerVersion = '0.5.0'
     pageIndicatorVersion = '1.2.1'
 
-    cameraXVersion = '1.0.0-beta03'
+    cameraXVersion = '1.0.0-beta11'
     cameraXViewVersion = '1.0.0-alpha10'
 
     yandexMetricaVersion = '3.2.2'
@@ -38,11 +40,8 @@ ext {
     billingVersion = '1.2.1'
 
     glideVersion = '4.11.0'
-    roomVersion = '2.1.0'
-
-    rxKotlinVersion = '2.4.0'
-    rxAndroidVersion = '2.0.2'
-    rxBindingVersion = '0.3.0'
+    roomVersion = '2.2.5'
+    roomCoroutinesVersion = '2.1.0-alpha04'
 
     retrofitVersion = '2.7.2'
     okHttpVersion = '4.4.1'
@@ -57,13 +56,22 @@ ext {
     truthVersion = '0.34'
 
     kotlinDependencies = [
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            coroutinesAndroid:  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            coroutinesCore:     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            fix:                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+            guava:              "com.google.guava:guava:27.0.1-android"
     ]
 
     androidxDependencies = [
             appCompat:     "androidx.appcompat:appcompat:$androidxVersion",
             core:          "androidx.core:core-ktx:$androidxCoreVersion"
     ]
+
+
+    /*
+    * Dependencies for ui
+    */
 
     uiDependencies = [
             fragment:        "androidx.fragment:fragment:$fragmentVersion",
@@ -75,23 +83,23 @@ ext {
             viewPager:       "androidx.viewpager2:viewpager2:$viewPagerVersion",
             recycler:        "androidx.recyclerview:recyclerview:$recyclerVersion",
             constraint:      "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            gridLayout:      "androidx.gridlayout:gridlayout:$gridLayoutVersion",
-            flexbox:         "com.google.android:flexbox:$flexboxVersion",
+//            gridLayout:      "androidx.gridlayout:gridlayout:$gridLayoutVersion",
+//            flexbox:         "com.google.android:flexbox:$flexboxVersion",
 
             roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
-            maskInput:       "ru.egslava:MaskedEditText:$maskInputVersion",
+            decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
             pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion"
     ]
 
     firebaseDependencies = [
 //            yandexMetrica: "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
-            analytics:     "com.google.firebase:firebase-analytics:$analyticsVersion",
-            messaging:     "com.google.firebase:firebase-messaging:$messagingVersion",
 //            auth:        "com.google.firebase:firebase-auth:$authVersion",
 //            googleAuth:  "com.google.android.gms:play-services-auth:$googleAuthVersion",
 //            ads:           "com.google.firebase:firebase-ads:$firebaseAdsVersion",
 //            crashlytics:   "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
+            analytics:     "com.google.firebase:firebase-analytics:$analyticsVersion",
+            messaging:     "com.google.firebase:firebase-messaging:$messagingVersion",
             config:        "com.google.firebase:firebase-config:$configVersion"
     ]
 
@@ -112,6 +120,11 @@ ext {
             biometric:       "androidx.biometric:biometric:$biometricVersion",
     ]
 
+
+    /*
+    * Dependencies for lifecycle
+    */
+
     lifecycleDependency = "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleVersion"
     kaptLifecycleDependency = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
 
@@ -120,19 +133,20 @@ ext {
     daggerViewModelDependency = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
+
+    /*
+    * Dependencies for data
+    */
+
     glideDependency = "com.github.bumptech.glide:glide:$glideVersion"
     kaprGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
 
-    roomDependency = "androidx.room:room-runtime:$roomVersion"
-    kaptRoomDependency = "androidx.room:room-compiler:$roomVersion"
-
-    rxDependencies = [
-            rxKotlin:   "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
-            rxAndroid:  "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-            rxBinding:  "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
-            rxRoom:     "androidx.room:room-rxjava2:$roomVersion",
-            rxRetrofit: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    roomDependencies = [
+            room:           "androidx.room:room-runtime:$roomVersion",
+            roomCompiler:   "androidx.room:room-compiler:$roomVersion",
+            roomKtx:        "androidx.room:room-ktx:$roomVersion"
     ]
+    kaptRoomDependency = "androidx.room:room-compiler:$roomVersion"
 
     gsonDependencies = [
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
@@ -145,6 +159,11 @@ ext {
             okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             chuck:         "com.readystatesoftware.chuck:library:$chuckVersion"
     ] << gsonDependencies
+
+
+    /*
+    * Dependencies for tests
+    */
 
     debugCanaryDependencies = [
             canary:         "com.squareup.leakcanary:leakcanary-android:$canaryVersion",

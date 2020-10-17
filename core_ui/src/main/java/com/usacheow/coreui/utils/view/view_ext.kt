@@ -2,8 +2,6 @@ package com.usacheow.coreui.utils.view
 
 import android.view.View
 import android.view.ViewGroup
-import com.jakewharton.rxbinding.view.RxView
-import java.util.concurrent.TimeUnit
 
 fun View.makeVisible() {
     visibility = View.VISIBLE
@@ -42,9 +40,17 @@ fun View.updateMargins(leftPx: Int? = null, topPx: Int? = null, rightPx: Int? = 
     }
 }
 
-fun View.doOnClick(listener: () -> Unit) {
-    RxView.clicks(this).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
-        listener()
+/*Set ?selectableItemBackground programmatically
+
+with(TypedValue()) {
+    context.theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, this, true)
+    setBackgroundResource(resourceId)
+}
+* */
+
+fun View.doOnClick(action: () -> Unit) {
+    setOnClickListener {
+        action()
     }
 }
 
@@ -53,7 +59,7 @@ fun View.setListenerIfNeed(listener: (() -> Unit)?) {
         setOnClickListener(null)
         false
     } else {
-        doOnClick { listener.invoke() }
+        doOnClick(listener)
         true
     }
 }
