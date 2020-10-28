@@ -20,9 +20,9 @@ The remaining fragments are recommended to inherit from SimpleFragment, which pr
 to initialize the fragment. Through the SimpleFragment.getContainer(...) method, you can access the parent container 
 that contains the current one
 
-#### 2. Custom views and screens
+#### 2. Custom views and screens and resources for light/night mode
 The project contains custom elements (part is not finished) and screen templates. 
-For more information, see the ExampleFragment screen
+For more information, see the app_demo
 
 #### 3. Universal Lists
 Each list item inherits from Populatable and has a view object that inherits a ViewType. 
@@ -43,7 +43,3 @@ BillingWrapper encapsulates the interaction with the library and is responsible 
 Tracker implementation can work with one system for analytics, or with a group of systems. 
 The project has an example wrapper for FirebaseAnalytics (FirebaseTracker). 
 Access to the Tracker object is through AnalyticsTrackerHolder
-
-#### 7. Error processing
-You can parse errors using RxErrorHandlingCallAdapterFactory. The error format is described in the ErrorMessage class.
-ErrorProcessor processes the error and returns a MappedException object with the text and type of error
