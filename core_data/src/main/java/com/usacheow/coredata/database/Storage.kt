@@ -5,6 +5,7 @@ import android.preference.PreferenceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
+private const val PREF_UI_MODE = "PREF_UI_MODE"
 private const val PREF_TOKEN = "PREF_TOKEN"
 private const val PREF_IS_FIRST_ENTRY = "PREF_IS_FIRST_ENTRY"
 private const val PREF_PHONE = "PREF_PHONE"
@@ -16,6 +17,12 @@ class Storage
 @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
+
+    var uiMode: UiMode
+        get() = UiMode.get(getPreferences().getString(PREF_UI_MODE, ""))
+        set(value) {
+            getPreferencesEditor().putString(PREF_UI_MODE, value.name).apply()
+        }
 
     var userName: String
         get() = getPreferences().getString(PREF_NAME, "")!!
@@ -60,4 +67,14 @@ class Storage
     private fun getPreferencesEditor() = getPreferences().edit()
 
     private fun getPreferences() = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
+}
+
+enum class UiMode {
+    LIGHT,
+    NIGHT,
+    SYSTEM;
+
+    companion object {
+        fun get(name: String?) = values().firstOrNull { name == it.name } ?: SYSTEM
+    }
 }

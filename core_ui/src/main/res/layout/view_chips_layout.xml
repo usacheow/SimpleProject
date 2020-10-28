@@ -16,15 +16,14 @@
         android:fadingEdgeLength="@dimen/left_right_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/chipsButton">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chipsButton">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipsGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="@dimen/left_right_margin" />
+            android:orientation="horizontal" />
     </HorizontalScrollView>
 
     <ImageView
@@ -38,7 +37,7 @@
         app:srcCompat="@drawable/ic_filter_list"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/chipsContainerLayout"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@id/chipsContainerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.base.IContainer
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
-import com.usacheow.coreui.utils.view.isDarkMode
+import com.usacheow.coreui.utils.view.isNightMode
 
 abstract class SimpleFragment : Fragment(), IBackListener {
 
@@ -47,7 +47,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     private fun changeSystemIconColorIfNeed() {
         if (!needTransparentBars) return
 
-        val needDarkIcons = !(isDarkMode() || needWhiteIcons)
+        val needDarkIcons = !(isNightMode() || needWhiteIcons)
         val canMakeDarkIconInStatusBar = needDarkIcons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
         val canMakeDarkIconInStatusAndNavigationBar = canMakeDarkIconInStatusBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 

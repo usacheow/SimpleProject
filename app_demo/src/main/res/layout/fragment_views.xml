@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView"
-    android:clipToPadding="false"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false">
 
     <include
         android:id="@+id/header"
@@ -12,9 +12,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/viewsScrollView"
-        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -25,8 +25,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/TextBody1"
@@ -47,8 +47,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/TextBody1"
@@ -69,8 +69,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/TextBody1"
@@ -91,8 +91,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/TextBody1"
@@ -110,161 +110,141 @@
                     android:text="Button" />
             </LinearLayout>
 
-            <LinearLayout
+            <TextView
+                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:paddingHorizontal="@dimen/left_right_margin"
+                android:text="Toggle buttons" />
 
-                <TextView
-                    style="@style/TextBody1"
-                    android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/left_right_margin"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/SimpleButtonOutlined"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/left_right_margin"
-                    android:text="Toggle buttons" />
+                    android:text="First" />
 
-                <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:layout_width="match_parent"
+                <com.google.android.material.button.MaterialButton
+                    style="@style/SimpleButtonOutlined"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin"
-                    app:singleSelection="true">
+                    android:text="Second" />
 
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="First"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Second"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Third"/>
-                </com.google.android.material.button.MaterialButtonToggleGroup>
-            </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/SimpleButtonOutlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Third" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_height_big"
                 android:background="@color/colorDivider" />
 
-            <LinearLayout
+            <TextView
+                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:layout_marginHorizontal="@dimen/left_right_margin"
+                android:layout_marginTop="@dimen/left_right_margin"
+                android:text="Simple input" />
 
-                <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/SimpleInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/left_right_margin"
+                app:endIconMode="password_toggle"
+                app:hintEnabled="true"
+                app:startIconDrawable="@drawable/ic_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/viewPasswordInput"
                     style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/left_right_margin"
-                    android:layout_marginHorizontal="@dimen/left_right_margin"
-                    android:text="Simple input" />
+                    android:hint="Hello World!"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/SimpleInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin"
-                    app:startIconDrawable="@drawable/ic_lock"
-                    app:endIconMode="password_toggle"
-                    app:hintEnabled="true">
+            <TextView
+                style="@style/TextBody1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/left_right_margin"
+                android:text="Currency formatter" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/viewPasswordInput"
-                        style="@style/TextBody1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Hello World!"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPassword"
-                        android:lines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/SimpleInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/left_right_margin"
+                app:hintEnabled="true"
+                app:startIconDrawable="@drawable/ic_money">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/viewAmountInput"
                     style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/left_right_margin"
-                    android:text="Currency formatter" />
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/SimpleInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin"
-                    app:startIconDrawable="@drawable/ic_money"
-                    app:hintEnabled="true">
+            <TextView
+                style="@style/TextBody1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/left_right_margin"
+                android:layout_marginTop="@dimen/left_right_margin"
+                android:text="Phone number formatter" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/viewAmountInput"
-                        style="@style/TextBody1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:lines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/SimpleInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/left_right_margin"
+                android:hint="Phone number"
+                app:hintEnabled="true"
+                app:startIconDrawable="@drawable/ic_phone">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/viewPhoneNumberInput"
                     style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/left_right_margin"
-                    android:layout_marginHorizontal="@dimen/left_right_margin"
-                    android:text="Phone number formatter" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/SimpleInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin"
-                    app:startIconDrawable="@drawable/ic_phone"
-                    app:hintEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/viewPhoneNumberInput"
-                        style="@style/TextBody1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionDone"
-                        android:inputType="textShortMessage"
-                        android:lines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_height_big"
                 android:background="@color/colorDivider" />
 
-            <LinearLayout
+            <TextView
+                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:layout_marginHorizontal="@dimen/left_right_margin"
+                android:layout_marginTop="16dp"
+                android:text="Chips layout" />
 
-                <TextView
-                    style="@style/TextBody1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="@dimen/left_right_margin"
-                    android:text="Chips layout" />
-
-                <com.usacheow.coreui.uikit.list.ChipsLayout
-                    android:id="@+id/chipsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/left_right_margin" />
-            </LinearLayout>
+            <com.usacheow.coreui.uikit.list.ChipsLayout
+                android:id="@+id/chipsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/left_right_margin" />
 
             <View
                 android:layout_width="match_parent"
