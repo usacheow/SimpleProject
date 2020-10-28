@@ -2,8 +2,8 @@
 
 Starter project with functional modules on the next stack:
 + kotlin
-+ aac (viewModel, liveData, room), dagger 2 (components)
-+ rxJava 2, retrofit 2, gson, glide
++ aac (viewModel, liveData, room), hilt
++ coroutines, retrofit 2, gson, glide
 + junit, espresso
 + gitlab ci
 
