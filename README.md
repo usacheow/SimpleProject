@@ -7,7 +7,7 @@ Starter project with functional modules on the next stack:
 + junit, espresso
 + gitlab ci
 
-## Has the following tools
+## Has the following features
 
 #### 1. Single Activity
 BottomBarHistoryManager is responsible for working with one or more stacks of fragments on a Single Activity. 
