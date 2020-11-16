@@ -14,7 +14,7 @@ import com.usacheow.coreui.utils.view.enableSystemMode
 
 class DemoScreenActivity : SimpleActivity(R.layout.fragment_container), IContainer {
 
-    private val containerDelegate by lazy { ContainerDelegate(layoutId) }
+    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

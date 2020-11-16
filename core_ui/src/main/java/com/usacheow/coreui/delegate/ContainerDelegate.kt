@@ -12,15 +12,14 @@ import com.usacheow.coreui.utils.navigation.inTransaction
 import com.usacheow.coreui.utils.navigation.replaceFragmentIn
 import com.usacheow.coreui.utils.system.ifSupportLollipop
 
-private const val INIT_FRAGMENT_HASH_TAG: String = "CONTAINER_TAG"
-
 class ContainerDelegate(
-    @LayoutRes val layoutId: Int
+    private val initFragmentTag: String
 ) {
 
     fun onCreate(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {
-        if (fragmentManager.findFragmentByTag(INIT_FRAGMENT_HASH_TAG) == null) {
-            fragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), false, INIT_FRAGMENT_HASH_TAG)
+//        if (fragmentManager.findFragmentByTag(INIT_FRAGMENT_HASH_TAG) == null) {
+        if (fragmentManager.fragments.isEmpty()) {
+            fragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), false, initFragmentTag)
         }
     }
 

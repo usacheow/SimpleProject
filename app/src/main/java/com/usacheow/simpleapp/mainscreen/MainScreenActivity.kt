@@ -21,7 +21,7 @@ class MainScreenActivity : BillingActivity(R.layout.fragment_container), IContai
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
 
-    private val containerDelegate by lazy { ContainerDelegate(layoutId) }
+    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
