@@ -4,14 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import kotlinx.android.synthetic.main.view_calendar_month_item.view.calendarMonthDaysListView
-import kotlinx.android.synthetic.main.view_calendar_month_item.view.calendarMonthNameView
-import kotlin.math.min
+import com.usacheow.coreui.databinding.ViewCalendarMonthItemBinding
 
 private const val DAYS_OF_WEEK = 7
 
@@ -22,10 +19,12 @@ class CalendarMonthItemView
 
     private val daysAdapter = ViewTypesAdapter()
 
+    private val binding by lazy { ViewCalendarMonthItemBinding.bind(this) }
+
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        with(calendarMonthDaysListView) {
+        with(binding.calendarMonthDaysListView) {
             layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             adapter = daysAdapter
             isNestedScrollingEnabled = false
@@ -33,7 +32,7 @@ class CalendarMonthItemView
     }
 
     override fun populate(model: CalendarMonthItem) {
-        calendarMonthNameView.text = model.name
+        binding.calendarMonthNameView.text = model.name
         daysAdapter.update(model.days)
     }
 }

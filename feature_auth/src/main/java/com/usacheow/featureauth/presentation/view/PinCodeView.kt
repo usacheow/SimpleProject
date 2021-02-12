@@ -2,11 +2,9 @@ package com.usacheow.featureauth.presentation.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.GridLayout
-import com.usacheow.featureauth.R
-import kotlinx.android.synthetic.main.view_pin_code.view.hintTextView
-import kotlinx.android.synthetic.main.view_pin_code.view.indicatorView
-import kotlinx.android.synthetic.main.view_pin_code.view.numPadView
+import com.usacheow.featureauth.databinding.ViewPinCodeBinding
 
 private const val PIN_CODE_LENGTH = 4
 
@@ -20,27 +18,25 @@ class PinCodeView
     private val pinCode = StringBuilder()
     private var isErrorState = false
 
-    init {
-        inflate(context, R.layout.view_pin_code, this)
-    }
+    private var binding = ViewPinCodeBinding.inflate(LayoutInflater.from(context), this, true)
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        numPadView.onNumberClickedAction = ::onNumberButtonClicked
-        numPadView.onBackspaceClickedAction = ::onBackspaceClicked
-        numPadView.onBiometricClickedAction = { onBiometricButtonClickedAction?.invoke() }
+        binding.numPadView.onNumberClickedAction = ::onNumberButtonClicked
+        binding.numPadView.onBackspaceClickedAction = ::onBackspaceClicked
+        binding.numPadView.onBiometricClickedAction = { onBiometricButtonClickedAction?.invoke() }
     }
 
     private fun onNumberButtonClicked(value: CharSequence?) {
         if (isErrorState) {
             isErrorState = false
             pinCode.clear()
-            indicatorView.refreshPinView()
+            binding.indicatorView.refreshPinView()
         }
 
         if (pinCode.length < PIN_CODE_LENGTH) {
             pinCode.append(value)
-            indicatorView.increaseCounter()
+            binding.indicatorView.increaseCounter()
         }
 
         checkBackspaceButtonsState()
@@ -51,7 +47,7 @@ class PinCodeView
     }
 
     private fun checkBackspaceButtonsState() {
-        numPadView.setBackspaceButtonsVisibility(pinCode.isNotEmpty())
+        binding.numPadView.setBackspaceButtonsVisibility(pinCode.isNotEmpty())
     }
 
     private fun onBackspaceClicked() {
@@ -66,25 +62,25 @@ class PinCodeView
         isErrorState = false
         pinCode.clear()
         checkBackspaceButtonsState()
-        indicatorView.refreshPinView()
+        binding.indicatorView.refreshPinView()
     }
 
     private fun deleteLastNumeral() {
         pinCode.deleteCharAt(pinCode.length - 1)
-        indicatorView.decreaseCounter()
+        binding.indicatorView.decreaseCounter()
         checkBackspaceButtonsState()
     }
 
     fun showError() {
         isErrorState = true
-        indicatorView.indicateError()
+        binding.indicatorView.indicateError()
     }
 
     fun setHint(hint: String) {
-        hintTextView.text = hint
+        binding.hintTextView.text = hint
     }
 
     fun setFingerprintEnabled(isEnabled: Boolean) {
-        numPadView.isFingerprintEnabled = isEnabled
+        binding.numPadView.isFingerprintEnabled = isEnabled
     }
 }

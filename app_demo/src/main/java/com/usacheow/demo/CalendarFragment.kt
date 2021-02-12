@@ -1,6 +1,8 @@
 package com.usacheow.demo
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,12 +15,10 @@ import com.usacheow.coreui.utils.values.DateFormat
 import com.usacheow.coreui.utils.values.isToday
 import com.usacheow.coreui.utils.values.parseTo
 import com.usacheow.coreui.utils.view.PaddingValue
-import kotlinx.android.synthetic.main.fragment_calendar.calendarListView
-import java.util.Date
+import com.usacheow.demo.databinding.FragmentCalendarBinding
+import java.util.*
 
-class CalendarFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_calendar
+class CalendarFragment : SimpleFragment<FragmentCalendarBinding>() {
 
     private var currentMonth = CalendarWrapper.get()
 
@@ -26,16 +26,20 @@ class CalendarFragment : SimpleFragment() {
         fun newInstance() = CalendarFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCalendarBinding {
+        return FragmentCalendarBinding.inflate(inflater, container, false)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        calendarListView.updatePadding(
+        binding.calendarListView.updatePadding(
             top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        calendarListView.layoutManager = LinearLayoutManager(context)
-        calendarListView.adapter = ViewTypesAdapter((0..11).map {
+        binding.calendarListView.layoutManager = LinearLayoutManager(context)
+        binding.calendarListView.adapter = ViewTypesAdapter((0..11).map {
             currentMonth.getMonthItem().also { currentMonth.turnOnNextMonth() }
         })
     }

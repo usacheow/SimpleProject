@@ -1,6 +1,8 @@
 package com.usacheow.demo
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +14,6 @@ import com.usacheow.coreui.uikit.button.SimpleTextButtonItem
 import com.usacheow.coreui.uikit.calendar.CalendarItem
 import com.usacheow.coreui.uikit.decoration.DividerItem
 import com.usacheow.coreui.uikit.header.HeaderWithActionItem
-import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.information.SmallInfoCardItem
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.uikit.listitem.ActionSelectionType
@@ -20,34 +21,35 @@ import com.usacheow.coreui.uikit.listitem.OperationItem
 import com.usacheow.coreui.uikit.utils.IconState
 import com.usacheow.coreui.utils.values.TODAY
 import com.usacheow.coreui.utils.view.PaddingValue
-import kotlinx.android.synthetic.main.fragment_views.*
-import kotlinx.android.synthetic.main.fragment_widgets.widgetsListView
+import com.usacheow.demo.databinding.FragmentWidgetsBinding
 
-class WidgetsFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_widgets
+class WidgetsFragment : SimpleFragment<FragmentWidgetsBinding>() {
 
     companion object {
         fun newInstance() = WidgetsFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentWidgetsBinding {
+        return FragmentWidgetsBinding.inflate(inflater, container, false)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        widgetsListView.updatePadding(
+        binding.widgetsListView.updatePadding(
             top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        (header as SimpleAppBarLayout).apply {
+        binding.header.root.apply {
             title = "Widgets samples"
             setNavigationAction(R.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }
 
-        widgetsListView.layoutManager = LinearLayoutManager(context)
-        widgetsListView.adapter = ViewTypesAdapter(listOf(
+        binding.widgetsListView.layoutManager = LinearLayoutManager(context)
+        binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             HeaderWithActionItem("Action items", "Details"),
 
             ActionItem(

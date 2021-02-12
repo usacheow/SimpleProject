@@ -1,6 +1,8 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -14,19 +16,16 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.view.*
-import com.usacheow.featureauth.R
+import com.usacheow.featureauth.databinding.FragmentSignInByPhoneBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithPhoneViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_sign_in_by_phone.*
 import javax.inject.Inject
 
 private const val DEFAULT_HEADER_MARGIN_TOP_DP = 120
 
 @AndroidEntryPoint
-class SignInWithPhoneFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_sign_in_by_phone
+class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
 
     @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
@@ -35,6 +34,10 @@ class SignInWithPhoneFragment : SimpleFragment() {
 
     companion object {
         fun newInstance() = SignInWithPhoneFragment()
+    }
+
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSignInByPhoneBinding {
+        return FragmentSignInByPhoneBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
@@ -46,33 +49,33 @@ class SignInWithPhoneFragment : SimpleFragment() {
         val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
 
         doWithTransitionOnParentView {
-            signInHeaderView.updateMargins(topPx = when (isKeyboardVisible) {
+            binding.signInHeaderView.updateMargins(topPx = when (isKeyboardVisible) {
                 true -> 0
                 false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
             })
 
-            signUpButton.isVisible = !isKeyboardVisible
-            signInByPhoneRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+            binding.signUpButton.isVisible = !isKeyboardVisible
+            binding.signInByPhoneRootView.updatePadding(top = topPadding, bottom = bottomPadding)
         }
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        signInPhoneInput.addPhoneNumberFormatter(
+        binding.signInPhoneInput.addPhoneNumberFormatter(
             viewModel::onPhoneChanged,
             viewModel::onPhoneChanged
         )
-        signInPhoneInput.setOnEditorActionListener { _, actionId, _ ->
+        binding.signInPhoneInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                signInPhoneInput.clearFocus()
-                viewModel.onSubmitClicked(signInPhoneInput.text.toString())
+                binding.signInPhoneInput.clearFocus()
+                viewModel.onSubmitClicked(binding.signInPhoneInput.text.toString())
             }
             false
         }
-        signInButton.doOnClick {
+        binding.signInButton.doOnClick {
             requireView().hideKeyboard()
-            viewModel.onSignInClicked(signInPhoneInput.text.toString())
+            viewModel.onSignInClicked(binding.signInPhoneInput.text.toString())
         }
-        signUpButton.doOnClick {
+        binding.signUpButton.doOnClick {
             requireView().hideKeyboard()
             viewModel.onSignUpClicked()
         }
@@ -80,8 +83,8 @@ class SignInWithPhoneFragment : SimpleFragment() {
 
     override fun subscribe() {
         viewModel.openSignUpScreen.observe(viewLifecycleOwner) { router.openSignUpScreen(this) }
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { signInLoaderView.isVisible = it }
-        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { signInButton.isEnabled = it }
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.signInLoaderView.root.isVisible = it }
+        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
         viewModel.codeConfirmMessage.observe(viewLifecycleOwner) { smsCodeViewModel.showMessage(it) }
         viewModel.openConfirmScreen.observe(viewLifecycleOwner) { router.openConfirmScreen(this, it) }
         viewModel.closeScreen.observe(viewLifecycleOwner) { appStateViewModel.onSignIn() }

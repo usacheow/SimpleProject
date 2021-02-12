@@ -9,11 +9,11 @@ import androidx.annotation.DimenRes
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewDividerItemBinding
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.resize
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.coreui.utils.view.updateMargins
-import kotlinx.android.synthetic.main.view_divider_item.view.dividerBackgroundView
 
 class DividerItemView
 @JvmOverloads constructor(
@@ -22,13 +22,15 @@ class DividerItemView
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), Populatable<DividerItem> {
 
+    private val binding by lazy { ViewDividerItemBinding.bind(this) }
+
     override fun populate(model: DividerItem) {
-        dividerBackgroundView.setBackgroundColor(color(model.colorResId))
-        dividerBackgroundView.resize(
+        binding.dividerBackgroundView.setBackgroundColor(color(model.colorResId))
+        binding.dividerBackgroundView.resize(
             widthPx = ViewGroup.LayoutParams.MATCH_PARENT,
             heightPx = resources.getDimension(model.heightResId).toInt()
         )
-        dividerBackgroundView.updateMargins(
+        binding.dividerBackgroundView.updateMargins(
             leftPx = model.startMarginDp.toPx,
             rightPx = model.endMarginDp.toPx
         )

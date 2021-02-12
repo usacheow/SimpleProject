@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import kotlinx.android.extensions.LayoutContainer
 
 class ViewTypesAdapter(
     private var entities: List<ViewType> = emptyList()
@@ -42,10 +41,7 @@ class ViewTypesAdapter(
 
     class ViewTypesViewHolder(
         itemView: View
-    ) : RecyclerView.ViewHolder(itemView), Populatable<ViewType>, LayoutContainer {
-
-        override val containerView: View?
-            get() = itemView
+    ) : RecyclerView.ViewHolder(itemView), Populatable<ViewType> {
 
         override fun populate(model: ViewType) {
             (itemView as Populatable<ViewType>).populate(model)

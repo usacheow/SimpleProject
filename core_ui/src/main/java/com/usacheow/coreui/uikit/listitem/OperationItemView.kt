@@ -6,14 +6,10 @@ import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewOperationItemBinding
 import com.usacheow.coreui.utils.view.load
 import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.setListenerIfNeed
-import kotlinx.android.synthetic.main.view_operation_item.view.operationCardNumberView
-import kotlinx.android.synthetic.main.view_operation_item.view.operationImageView
-import kotlinx.android.synthetic.main.view_operation_item.view.operationNameView
-import kotlinx.android.synthetic.main.view_operation_item.view.operationSumView
-import kotlinx.android.synthetic.main.view_operation_item.view.operationTypeView
 
 class OperationItemView
 @JvmOverloads constructor(
@@ -22,15 +18,17 @@ class OperationItemView
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), Populatable<OperationItem> {
 
+    private val binding by lazy { ViewOperationItemBinding.bind(this) }
+
     override fun populate(model: OperationItem) {
         model.imageUrl?.let {
-            operationImageView.load(model.imageUrl)
-        } ?: operationImageView.makeGone()
+            binding.operationImageView.load(model.imageUrl)
+        } ?: binding.operationImageView.makeGone()
 
-        operationCardNumberView.text = model.cardNumber
-        operationTypeView.text = model.operationType
-        operationNameView.text = model.name
-        operationSumView.text = model.sum
+        binding.operationCardNumberView.text = model.cardNumber
+        binding.operationTypeView.text = model.operationType
+        binding.operationNameView.text = model.name
+        binding.operationSumView.text = model.sum
 
         setListenerIfNeed(model.onItemClicked)
     }

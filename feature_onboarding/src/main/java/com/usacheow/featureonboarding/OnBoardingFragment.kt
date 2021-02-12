@@ -1,19 +1,17 @@
 package com.usacheow.featureonboarding
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingNextButton
-import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingSkipButton
-import kotlinx.android.synthetic.main.fragment_onboarding.onBoardingViewPager
 
 @AndroidEntryPoint
-class OnBoardingFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_onboarding
+class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
 
     private val viewModel by activityViewModels<AppStateViewModel>()
 
@@ -28,13 +26,17 @@ class OnBoardingFragment : SimpleFragment() {
         fun newInstance() = OnBoardingFragment()
     }
 
-    override fun setupViews(savedInstanceState: Bundle?) {
-        onBoardingViewPager.adapter = adapter
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentOnboardingBinding {
+        return FragmentOnboardingBinding.inflate(inflater, container, false)
+    }
 
-        onBoardingSkipButton.setOnClickListener { startNextScreen() }
-        onBoardingNextButton.setOnClickListener {
-            if (onBoardingViewPager.currentItem < onBoardingData.size - 1) {
-                onBoardingViewPager.currentItem += 1
+    override fun setupViews(savedInstanceState: Bundle?) {
+        binding.onBoardingViewPager.adapter = adapter
+
+        binding.onBoardingSkipButton.setOnClickListener { startNextScreen() }
+        binding.onBoardingNextButton.setOnClickListener {
+            if (binding.onBoardingViewPager.currentItem < onBoardingData.size - 1) {
+                binding.onBoardingViewPager.currentItem += 1
             } else {
                 startNextScreen()
             }

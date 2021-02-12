@@ -47,7 +47,7 @@ fun FragmentTransaction.addSharedElements(vararg transitionViews: View): Fragmen
     return this
 }
 
-fun FragmentTransaction.addSharedElementsFrom(fragment: SimpleFragment?): FragmentTransaction {
+fun FragmentTransaction.addSharedElementsFrom(fragment: SimpleFragment<*>?): FragmentTransaction {
     fragment?.let { addSharedElements(*it.getSharedViews().toTypedArray()) }
     return this
 }

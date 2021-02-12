@@ -24,6 +24,7 @@ ext {
     decoroVersion = '1.5.0'
     shimmerVersion = '0.5.0'
     pageIndicatorVersion = '1.2.1'
+    pagingVersion = '3.0.0-alpha13'
 
     cameraXVersion = '1.0.0-beta11'
     cameraXViewVersion = '1.0.0-alpha10'
@@ -39,8 +40,8 @@ ext {
 
     billingVersion = '1.2.1'
 
-    glideVersion = '4.11.0'
-    roomVersion = '2.2.5'
+    glideVersion = '4.12.0'
+    roomVersion = '2.2.6'
     roomCoroutinesVersion = '2.1.0-alpha04'
 
     retrofitVersion = '2.7.2'
@@ -89,7 +90,8 @@ ext {
             roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
             decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
-            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion"
+            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
+            paging:          "androidx.paging:paging-runtime:$pagingVersion"
     ]
 
     firebaseDependencies = [

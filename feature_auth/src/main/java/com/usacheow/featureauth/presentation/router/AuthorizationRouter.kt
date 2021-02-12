@@ -9,13 +9,13 @@ import javax.inject.Inject
 class AuthorizationRouter
 @Inject constructor() : Router {
 
-    fun openSignUpScreen(fragment: SimpleFragment) {
+    fun openSignUpScreen(fragment: SimpleFragment<*>) {
         fragment.getContainer {
             show(SignUpFragment.newInstance())
         }
     }
 
-    fun openConfirmScreen(fragment: SimpleFragment, codeLength: Int) {
+    fun openConfirmScreen(fragment: SimpleFragment<*>, codeLength: Int) {
         SmsCodeModalFragment.newInstance(codeLength)
             .show(fragment.childFragmentManager, SmsCodeModalFragment::javaClass.name)
     }

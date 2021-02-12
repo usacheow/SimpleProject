@@ -1,6 +1,8 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
@@ -13,20 +15,16 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.string
 import com.usacheow.featureauth.R
+import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInError
 import com.usacheow.featureauth.presentation.viewmodels.SignInSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeForgotButton
-import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeRootView
-import kotlinx.android.synthetic.main.fragment_pin_code.pinCodeView
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class PinCodeFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_pin_code
+class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
 
     @Inject lateinit var biometricDelegate: BiometricAuthorizationManager
     @Inject lateinit var router: AuthorizationRouter
@@ -37,8 +35,12 @@ class PinCodeFragment : SimpleFragment() {
         fun newInstance() = PinCodeFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentPinCodeBinding {
+        return FragmentPinCodeBinding.inflate(inflater, container, false)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        pinCodeRootView.updatePadding(
+        binding.pinCodeRootView.updatePadding(
             top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top + padding.top,
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + padding.bottom
         )
@@ -50,19 +52,19 @@ class PinCodeFragment : SimpleFragment() {
             appStateViewModel.onPinCodeEntered()
         }
         biometricDelegate.onUnavailableAction = {
-            pinCodeView.setFingerprintEnabled(false)
+            binding.pinCodeView.setFingerprintEnabled(false)
         }
 
-        pinCodeView.setHint(string(R.string.pin_view_hint))
-        pinCodeView.onBiometricButtonClickedAction = { biometricDelegate.tryShow() }
-        pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
-        pinCodeForgotButton.doOnClick { }
+        binding.pinCodeView.setHint(string(R.string.pin_view_hint))
+        binding.pinCodeView.onBiometricButtonClickedAction = { biometricDelegate.tryShow() }
+        binding.pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
+        binding.pinCodeForgotButton.doOnClick { }
     }
 
     override fun subscribe() {
         viewModel.isFingerprintAllow.observe(viewLifecycleOwner) { isAllow ->
             val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
-            pinCodeView.setFingerprintEnabled(isEnabled)
+            binding.pinCodeView.setFingerprintEnabled(isEnabled)
             if (isEnabled) {
                 biometricDelegate.tryShow()
             }
@@ -71,8 +73,8 @@ class PinCodeFragment : SimpleFragment() {
             when (it) {
                 is SignInSuccess -> appStateViewModel.onPinCodeEntered()
                 is SignInError -> {
-                    pinCodeView.setHint(string(R.string.pin_view_code_error))
-                    pinCodeView.showError()
+                    binding.pinCodeView.setHint(string(R.string.pin_view_code_error))
+                    binding.pinCodeView.showError()
                 }
             }
         }

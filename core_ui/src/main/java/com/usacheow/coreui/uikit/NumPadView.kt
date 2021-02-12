@@ -2,22 +2,11 @@ package com.usacheow.coreui.uikit
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.GridLayout
 import androidx.core.view.isInvisible
-import com.usacheow.coreui.R
+import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.utils.view.doOnClick
-import kotlinx.android.synthetic.main.view_num_pad.view.backspaceButton
-import kotlinx.android.synthetic.main.view_num_pad.view.fingerprintButton
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton0
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton1
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton2
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton3
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton4
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton5
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton6
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton7
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton8
-import kotlinx.android.synthetic.main.view_num_pad.view.numPadButton9
 
 class NumPadView
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
@@ -29,38 +18,36 @@ class NumPadView
     var isFingerprintEnabled = false
         set(value) {
             field = value
-            fingerprintButton.isInvisible = !value
+            binding.fingerprintButton.isInvisible = !value
         }
 
     private val numberButtons by lazy {
         arrayOf(
-            numPadButton1,
-            numPadButton2,
-            numPadButton3,
-            numPadButton4,
-            numPadButton5,
-            numPadButton6,
-            numPadButton7,
-            numPadButton8,
-            numPadButton9,
-            numPadButton0
+            binding.numPadButton1,
+            binding.numPadButton2,
+            binding.numPadButton3,
+            binding.numPadButton4,
+            binding.numPadButton5,
+            binding.numPadButton6,
+            binding.numPadButton7,
+            binding.numPadButton8,
+            binding.numPadButton9,
+            binding.numPadButton0
         )
     }
 
-    init {
-        inflate(context, R.layout.view_num_pad, this)
-    }
+    private val binding by lazy { ViewNumPadBinding.inflate(LayoutInflater.from(context), this, true) }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
         numberButtons.forEach { button ->
             button.setOnClickListener { onNumberClickedAction?.invoke(button.text.toString()) }
         }
-        fingerprintButton.doOnClick { onBiometricClickedAction?.invoke() }
-        backspaceButton.setOnClickListener { onBackspaceClickedAction?.invoke() }
+        binding.fingerprintButton.doOnClick { onBiometricClickedAction?.invoke() }
+        binding.backspaceButton.setOnClickListener { onBackspaceClickedAction?.invoke() }
     }
 
     fun setBackspaceButtonsVisibility(isVisible: Boolean) {
-        backspaceButton.isInvisible = !isVisible
+        binding.backspaceButton.isInvisible = !isVisible
     }
 }

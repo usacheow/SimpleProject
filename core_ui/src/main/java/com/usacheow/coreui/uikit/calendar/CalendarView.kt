@@ -9,17 +9,13 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewCalendarBinding
 import com.usacheow.coreui.utils.values.CalendarWrapper
 import com.usacheow.coreui.utils.values.DateFormat
 import com.usacheow.coreui.utils.values.isToday
 import com.usacheow.coreui.utils.values.parseTo
 import com.usacheow.coreui.utils.view.doOnClick
-import kotlinx.android.synthetic.main.view_calendar.view.calendarDaysListView
-import kotlinx.android.synthetic.main.view_calendar.view.calendarMonthNameView
-import kotlinx.android.synthetic.main.view_calendar.view.calendarNextButton
-import kotlinx.android.synthetic.main.view_calendar.view.calendarPrevButton
-import kotlinx.android.synthetic.main.view_calendar.view.calendarWeekDaysListView
-import java.util.Date
+import java.util.*
 
 private const val DAYS_OF_WEEK = 7
 
@@ -34,26 +30,28 @@ class CalendarView
     private var selectedDays: HashMap<Date, Int> = hashMapOf()
     private var clickAction: (Date) -> Unit = {}
 
+    private val binding by lazy { ViewCalendarBinding.bind(this) }
+
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        with(calendarWeekDaysListView) {
+        with(binding.calendarWeekDaysListView) {
             layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             adapter = weekDaysAdapter
             isNestedScrollingEnabled = false
         }
 
-        with(calendarDaysListView) {
+        with(binding.calendarDaysListView) {
             layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             adapter = daysAdapter
             isNestedScrollingEnabled = false
         }
 
-        calendarPrevButton.doOnClick {
+        binding.calendarPrevButton.doOnClick {
             currentMonth.turnOnPrevMonth()
             updateCalendar()
         }
-        calendarNextButton.doOnClick {
+        binding.calendarNextButton.doOnClick {
             currentMonth.turnOnNextMonth()
             updateCalendar()
         }
@@ -63,14 +61,14 @@ class CalendarView
         currentMonth = CalendarWrapper.get(model.selectedMonth)
         selectedDays = model.selectedDays
         clickAction = model.clickAction
-        calendarPrevButton.isVisible = model.isScrollable
-        calendarNextButton.isVisible = model.isScrollable
+        binding.calendarPrevButton.isVisible = model.isScrollable
+        binding.calendarNextButton.isVisible = model.isScrollable
         weekDaysAdapter.update(getWeekDaysShortNames())
         updateCalendar()
     }
 
     private fun updateCalendar() {
-        calendarMonthNameView.text = currentMonth.parseTo(DateFormat.MMMM__yy)
+        binding.calendarMonthNameView.text = currentMonth.parseTo(DateFormat.MMMM__yy)
         daysAdapter.update(getDaysList(selectedDays, clickAction))
     }
 

@@ -1,6 +1,8 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
@@ -10,38 +12,38 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featurehello.R
+import com.usacheow.featurehello.databinding.FragmentBBinding
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
 import com.usacheow.featurehello.presentation.viewmodels.BViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_b.header
-import kotlinx.android.synthetic.main.fragment_b.listView
 
 @AndroidEntryPoint
-class BFragment : SimpleFragment() {
+class BFragment : SimpleFragment<FragmentBBinding>() {
 
     private val aViewModel by viewModels<AViewModel>({ requireParentFragment() })
     private val bViewModel by viewModels<BViewModel>()
 
-    override val layoutId = R.layout.fragment_b
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentBBinding {
+        return FragmentBBinding.inflate(inflater, container, false)
+    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        listView.updatePadding(
+        binding.listView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
         bViewModel.x++
-        (header as SimpleAppBarLayout).apply {
+        binding.header.root.apply {
             title = "B Fragment ${aViewModel.x} ${bViewModel.x}"
             setBackground(R.color.colorGreyCard)
             setNavigationAction(R.drawable.ic_back) { activity?.onBackPressed() }
         }
 
-        listView.layoutManager = LinearLayoutManager(context)
-        listView.adapter = ViewTypesAdapter(listOf(
+        binding.listView.layoutManager = LinearLayoutManager(context)
+        binding.listView.adapter = ViewTypesAdapter(listOf(
             ActionItem(title = "1 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "2 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "3 Go to next screen", onItemClicked = ::openNextScreen),

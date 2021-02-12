@@ -1,49 +1,50 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featurehello.R
+import com.usacheow.featurehello.databinding.FragmentABinding
 import com.usacheow.featurehello.presentation.viewmodels.AViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_a.header
-import kotlinx.android.synthetic.main.fragment_a.listView
 
 @AndroidEntryPoint
-class AFragment : SimpleFragment() {
+class AFragment : SimpleFragment<FragmentABinding>() {
 
     private val viewModel by viewModels<AViewModel>({ requireParentFragment() })
-
-    override val layoutId = R.layout.fragment_a
 
     companion object {
         fun newInstance() = AFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentABinding {
+        return FragmentABinding.inflate(inflater, container, false)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        listView.updatePadding(
+        binding.listView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
 
-    override fun getSharedViews() = listOf(header)
+    override fun getSharedViews() = listOf(binding.header.root)
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        (header as SimpleAppBarLayout).apply {
+        binding.header.root.apply {
             title = "A Fragment ${viewModel.x}"
             setBackground(R.color.colorGreyCard)
         }
 
-        listView.layoutManager = LinearLayoutManager(context)
-        listView.adapter = ViewTypesAdapter(listOf(
+        binding.listView.layoutManager = LinearLayoutManager(context)
+        binding.listView.adapter = ViewTypesAdapter(listOf(
             ActionItem(title = "1 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "2 Go to next screen", onItemClicked = ::openNextScreen),
             ActionItem(title = "3 Go to next screen", onItemClicked = ::openNextScreen),

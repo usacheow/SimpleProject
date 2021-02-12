@@ -7,17 +7,8 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.makeInvisible
-import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.resize
-import com.usacheow.coreui.utils.view.setListenerIfNeed
-import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.view_small_info_card.view.smallInfoCardView
-import kotlinx.android.synthetic.main.view_small_info_card.view.smallInfoClickableView
-import kotlinx.android.synthetic.main.view_small_info_card.view.smallInfoHeaderView
-import kotlinx.android.synthetic.main.view_small_info_card.view.smallInfoValueView
+import com.usacheow.coreui.databinding.ViewSmallInfoCardBinding
+import com.usacheow.coreui.utils.view.*
 
 private const val SHIMMER_WIDTH_DP = 120
 
@@ -26,18 +17,20 @@ class SmallInfoCardItemView
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ShimmerFrameLayout(context, attrs, defStyleAttr), Populatable<SmallInfoCardItem> {
 
+    private val binding by lazy { ViewSmallInfoCardBinding.bind(this) }
+
     override fun populate(model: SmallInfoCardItem) {
         if (model.isShimmer) {
-            smallInfoHeaderView.makeInvisible()
-            smallInfoValueView.makeInvisible()
-            smallInfoCardView.setCardBackgroundColor(color(R.color.colorShimmer))
+            binding.smallInfoHeaderView.makeInvisible()
+            binding.smallInfoValueView.makeInvisible()
+            binding.smallInfoCardView.setCardBackgroundColor(color(R.color.colorShimmer))
             resize(widthPx = SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
             showShimmer(true)
         } else {
-            smallInfoHeaderView.makeVisible()
-            smallInfoValueView.makeVisible()
-            smallInfoCardView.setCardBackgroundColor(color(R.color.colorGreyCard))
+            binding.smallInfoHeaderView.makeVisible()
+            binding.smallInfoValueView.makeVisible()
+            binding.smallInfoCardView.setCardBackgroundColor(color(R.color.colorGreyCard))
 
             showData(model)
             hideShimmer()
@@ -45,8 +38,8 @@ class SmallInfoCardItemView
     }
 
     private fun showData(model: SmallInfoCardItem) {
-        smallInfoHeaderView.populate(model.header)
-        smallInfoValueView.text = model.value
+        binding.smallInfoHeaderView.populate(model.header)
+        binding.smallInfoValueView.text = model.value
 
         resize(widthPx = when {
             model.widthDp != null -> model.widthDp.toPx
@@ -54,7 +47,7 @@ class SmallInfoCardItemView
             else -> ViewGroup.LayoutParams.WRAP_CONTENT
         }, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        smallInfoClickableView.setListenerIfNeed(model.clickAction)
+        binding.smallInfoClickableView.setListenerIfNeed(model.clickAction)
     }
 }
 

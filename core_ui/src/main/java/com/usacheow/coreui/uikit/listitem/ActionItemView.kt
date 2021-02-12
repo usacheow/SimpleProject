@@ -10,17 +10,11 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewActionItemBinding
 import com.usacheow.coreui.uikit.utils.EmptyState
 import com.usacheow.coreui.uikit.utils.ImageInfo
 import com.usacheow.coreui.uikit.utils.populate
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.makeGone
-import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.resize
-import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.view_action_item.view.*
+import com.usacheow.coreui.utils.view.*
 
 private const val TITLE_SHIMMER_WIDTH_DP = 180
 
@@ -34,19 +28,21 @@ class ActionItemView
     private var visibleControlButton: CompoundButton? = null
     private var model: ActionItem? = null
 
+    private val binding by lazy { ViewActionItemBinding.bind(this) }
+
     override fun populate(model: ActionItem) {
         if (model.isShimmer) {
-            actionIconView.makeGone()
-            actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            actionTitleLayout.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionSubtitleView.makeGone()
+            binding.actionIconView.makeGone()
+            binding.actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
+            binding.actionTitleLayout.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionSubtitleView.makeGone()
 
             showShimmer(true)
         } else {
-            actionIconView.makeVisible()
-            actionTitleView.background = null
-            actionTitleLayout.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionSubtitleView.makeVisible()
+            binding.actionIconView.makeVisible()
+            binding.actionTitleView.background = null
+            binding.actionTitleLayout.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionSubtitleView.makeVisible()
 
             hideShimmer()
             showData(model)
@@ -56,13 +52,13 @@ class ActionItemView
     private fun showData(model: ActionItem) {
         this.model = model
 
-        actionTitleView.text = model.title
-        model.titleColorResId?.let { actionTitleView.setTextColor(color(it)) }
-        actionSubtitleView.populate(model.subtitle)
-        model.subtitleColorResId?.let { actionSubtitleView.setTextColor(color(it)) }
-        actionIconView.populate(model.imageInfo)
+        binding.actionTitleView.text = model.title
+        model.titleColorResId?.let { binding.actionTitleView.setTextColor(color(it)) }
+        binding.actionSubtitleView.populate(model.subtitle)
+        model.subtitleColorResId?.let { binding.actionSubtitleView.setTextColor(color(it)) }
+        binding.actionIconView.populate(model.imageInfo)
 
-        actionDragFlagView.isVisible = model.isDraggable
+        binding.actionDragFlagView.isVisible = model.isDraggable
         visibleControlButton = setupControl(model.isChecked, model.selectionType, model.onControlClicked)
 
         if (model.onItemClicked == null && model.onControlClicked == null) {
@@ -82,12 +78,12 @@ class ActionItemView
         selectionType: ActionSelectionType,
         onClicked: ((Boolean) -> Unit)?
     ): CompoundButton? {
-        actionSwitch.makeGone()
-        actionCheckBox.makeGone()
+        binding.actionSwitch.makeGone()
+        binding.actionCheckBox.makeGone()
 
         return when (selectionType) {
-            ActionSelectionType.CHECK_BOX -> actionCheckBox
-            ActionSelectionType.SWITCH -> actionSwitch
+            ActionSelectionType.CHECK_BOX -> binding.actionCheckBox
+            ActionSelectionType.SWITCH -> binding.actionSwitch
             ActionSelectionType.NONE -> null
         }?.apply {
             makeVisible()

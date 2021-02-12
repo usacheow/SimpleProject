@@ -7,21 +7,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.LayoutInflater
 import android.view.OrientationEventListener
 import android.view.Surface
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
-import androidx.camera.core.AspectRatio
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.FocusMeteringAction
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
-import androidx.camera.core.SurfaceOrientedMeteringPointFactory
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
@@ -29,16 +21,18 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
 import com.usacheow.coreui.utils.system.checkPermissions
 import com.usacheow.coreui.utils.view.doWithTransition
-import kotlinx.android.synthetic.main.fragment_camera.captureButton
-import kotlinx.android.synthetic.main.fragment_camera.container
-import kotlinx.android.synthetic.main.fragment_camera.switchButton
-import kotlinx.android.synthetic.main.fragment_camera.viewFinder
+import com.usacheow.demo.databinding.FragmentCameraBinding
 import java.io.File
 import java.nio.ByteBuffer
-import java.util.ArrayDeque
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
+import kotlin.collections.average
+import kotlin.collections.first
+import kotlin.collections.forEach
+import kotlin.collections.map
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -52,9 +46,7 @@ private const val RATIO_16_9_VALUE = 16.0 / 9.0
 
 typealias LumaListener = (luma: Double) -> Unit
 
-class CameraFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_camera
+class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
@@ -67,9 +59,9 @@ class CameraFragment : SimpleFragment() {
     private val orientationEventListener by lazy {
         object : OrientationEventListener(requireContext()) {
             override fun onOrientationChanged(orientation: Int) {
-                if (abs(orientation - switchButton.rotation) >= 3) {
-                    (container as ViewGroup).doWithTransition {
-                        switchButton.rotation = orientation.toFloat()
+                if (abs(orientation - binding.switchButton.rotation) >= 3) {
+                    (binding.container as ViewGroup).doWithTransition {
+                        binding.switchButton.rotation = orientation.toFloat()
                     }
                 }
 
@@ -90,12 +82,16 @@ class CameraFragment : SimpleFragment() {
         fun newInstance() = CameraFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCameraBinding {
+        return FragmentCameraBinding.inflate(inflater, container, false)
+    }
+
     override fun setupViews(savedInstanceState: Bundle?) {
         cameraExecutor = Executors.newSingleThreadExecutor()
         orientationEventListener.enable()
 
         checkPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS) {
-            viewFinder.post {
+            binding.viewFinder.post {
                 updateCameraUi()
                 bindCameraUseCases()
             }
@@ -108,7 +104,7 @@ class CameraFragment : SimpleFragment() {
     }
 
     private fun updateCameraUi() {
-        captureButton.setOnClickListener {
+        binding.captureButton.setOnClickListener {
             imageCapture?.let { imageCapture ->
                 val file = File(requireContext().externalMediaDirs.first(), "${System.currentTimeMillis()}.jpg")
                 val metadata = ImageCapture.Metadata().apply {
@@ -121,7 +117,7 @@ class CameraFragment : SimpleFragment() {
                 imageCapture.takePicture(outputOptions, cameraExecutor, object : ImageCapture.OnImageSavedCallback {
                     override fun onError(exception: ImageCaptureException) {
                         val msg = "Photo capture failed: ${exception.message}"
-                        viewFinder.post {
+                        binding.viewFinder.post {
                             Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -151,7 +147,7 @@ class CameraFragment : SimpleFragment() {
             }
         }
 
-        switchButton.setOnClickListener {
+        binding.switchButton.setOnClickListener {
             lensFacing = if (CameraSelector.LENS_FACING_FRONT == lensFacing) {
                 CameraSelector.LENS_FACING_BACK
             } else {
@@ -162,9 +158,9 @@ class CameraFragment : SimpleFragment() {
     }
 
     private fun bindCameraUseCases() {
-        val metrics = DisplayMetrics().also { viewFinder.display.getRealMetrics(it) }
+        val metrics = DisplayMetrics().also { binding.viewFinder.display.getRealMetrics(it) }
         val screenAspectRatio = aspectRatio(metrics.widthPixels, metrics.heightPixels)
-        val rotation = viewFinder.display.rotation
+        val rotation = binding.viewFinder.display.rotation
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener(Runnable {
@@ -208,7 +204,7 @@ class CameraFragment : SimpleFragment() {
             try {
                 camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis)
                 addFocusControl()
-                val surfaceProvider = viewFinder.createSurfaceProvider(camera?.cameraInfo)
+                val surfaceProvider = binding.viewFinder.createSurfaceProvider(camera?.cameraInfo)
                 preview?.setSurfaceProvider(surfaceProvider)
             } catch (exc: Exception) {
             }
@@ -242,7 +238,7 @@ class CameraFragment : SimpleFragment() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (requireContext().arePermissionsGranted(REQUIRED_PERMISSIONS)) {
-                viewFinder.post {
+                binding.viewFinder.post {
                     updateCameraUi()
                     bindCameraUseCases()
                 }

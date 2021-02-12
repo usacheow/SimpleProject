@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -17,14 +18,18 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.isNightMode
 
-abstract class SimpleFragment : Fragment(), IBackListener {
+abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), IBackListener {
 
-    protected abstract val layoutId: Int
+    private var _binding: VIEW_BINDING? = null
+    protected val binding get() = _binding!!
+
     protected open var needTransparentBars = true
     protected open var needWhiteIcons = false
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
+
+    protected abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): VIEW_BINDING
 
     override fun onStart() {
         super.onStart()
@@ -39,9 +44,10 @@ abstract class SimpleFragment : Fragment(), IBackListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(layoutId, container, false)
         changeSystemIconColorIfNeed()
-        return rootView
+
+        _binding = createViewBinding(inflater, container)
+        return binding.root
     }
 
     private fun changeSystemIconColorIfNeed() {
@@ -79,6 +85,7 @@ abstract class SimpleFragment : Fragment(), IBackListener {
 
     override fun onDestroyView() {
         clearViews()
+        _binding = null
         super.onDestroyView()
     }
 

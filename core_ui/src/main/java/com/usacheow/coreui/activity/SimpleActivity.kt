@@ -5,12 +5,17 @@ import android.view.View
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
+import com.usacheow.coreui.databinding.FragmentContainerBinding
 
-abstract class SimpleActivity(@LayoutRes val layoutId: Int) : AppCompatActivity(layoutId) {
+abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity() {
 
+    protected lateinit var binding: VIEW_BINDING
     protected open var needTransparentBars = false
+
+    abstract fun createViewBinding(): VIEW_BINDING
 
     override fun onStart() {
         super.onStart()
@@ -31,7 +36,8 @@ abstract class SimpleActivity(@LayoutRes val layoutId: Int) : AppCompatActivity(
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
-        setContentView(layoutId)
+        binding = createViewBinding()
+        setContentView(binding.root)
         setupViews(savedInstanceState)
     }
 

@@ -3,14 +3,12 @@ package com.usacheow.coreui.uikit.list
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import com.google.android.material.chip.Chip
 import com.usacheow.coreui.R
+import com.usacheow.coreui.databinding.ViewChipsLayoutBinding
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.setVisible
-import kotlinx.android.synthetic.main.view_chips_layout.view.chipsButton
-import kotlinx.android.synthetic.main.view_chips_layout.view.chipsGroup
 
 private const val CHIPS_WITHOUT_BUTTON_COUNT = 3
 
@@ -20,16 +18,14 @@ class ChipsLayout
 
     var onAllChipsClicked: (() -> Unit)? = null
 
-    init {
-        View.inflate(context, R.layout.view_chips_layout, this)
-    }
+    private val binding by lazy { ViewChipsLayoutBinding.inflate(LayoutInflater.from(context), this, true) }
 
     fun populate(filters: Set<Filter>, filterClick: (Filter, Boolean) -> Unit) {
-        chipsButton.setVisible(filters.size > CHIPS_WITHOUT_BUTTON_COUNT)
-        chipsButton.doOnClick { onAllChipsClicked?.invoke() }
-        chipsGroup.removeAllViews()
+        binding.chipsButton.setVisible(filters.size > CHIPS_WITHOUT_BUTTON_COUNT)
+        binding.chipsButton.doOnClick { onAllChipsClicked?.invoke() }
+        binding.chipsGroup.removeAllViews()
         filters.map { createChip(it, filterClick) }
-            .forEach { chipsGroup.addView(it) }
+            .forEach { binding.chipsGroup.addView(it) }
     }
 
     private fun createChip(filter: Filter, filterClick: (Filter, Boolean) -> Unit): Chip {

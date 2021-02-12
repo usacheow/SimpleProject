@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/header"
-        layout="@layout/simple_toolbar" />
+        layout="@layout/simple_app_bar_layout" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/listView"
@@ -58,6 +58,36 @@
                 android:paddingVertical="16dp"
                 android:text="3. Views Fragment"
                 android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/materialDialog"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="4. Material Dialog"
+                android:background="?selectableItemBackground" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/bottomDialog"-->
+<!--                style="@style/TextButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingHorizontal="20dp"-->
+<!--                android:paddingVertical="16dp"-->
+<!--                android:text="5. Bottom Dialog"-->
+<!--                android:background="?selectableItemBackground" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/modalScreen"-->
+<!--                style="@style/TextButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingHorizontal="20dp"-->
+<!--                android:paddingVertical="16dp"-->
+<!--                android:text="6. Modal Fragment"-->
+<!--                android:background="?selectableItemBackground" />-->
 
             <TextView
                 style="@style/TextOverline"

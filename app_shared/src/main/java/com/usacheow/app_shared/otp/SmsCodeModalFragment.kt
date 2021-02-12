@@ -2,29 +2,24 @@ package com.usacheow.app_shared.otp
 
 import android.os.Bundle
 import android.text.InputFilter
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.usacheow.app_shared.R
+import com.usacheow.app_shared.databinding.FragmentSmsCodeBinding
 import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.utils.view.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_sms_code.loaderView
-import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeCloseButton
-import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeInput
-import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeMessageView
-import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeNumPadView
-import kotlinx.android.synthetic.main.fragment_sms_code.smsCodeResendButton
 
 private const val CODE_LENGTH_KEY = "CODE_LENGTH_KEY"
 private const val CODE_LENGTH_DEFAULT_VALUE = 4
 
 @AndroidEntryPoint
-class SmsCodeModalFragment : SimpleModalFragment() {
-
-    override val layoutId = R.layout.fragment_sms_code
+class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
     private val viewModel by viewModels<SmsCodeViewModel>({ requireParentFragment() })
 
@@ -34,31 +29,35 @@ class SmsCodeModalFragment : SimpleModalFragment() {
         }
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSmsCodeBinding {
+        return FragmentSmsCodeBinding.inflate(inflater, container, false)
+    }
+
     override fun processArguments(bundle: Bundle?) {
         val maxCodeLength = arguments?.getInt(CODE_LENGTH_KEY) ?: CODE_LENGTH_DEFAULT_VALUE
-        smsCodeInput.filters = arrayOf(InputFilter.LengthFilter(maxCodeLength))
+        binding.smsCodeInput.filters = arrayOf(InputFilter.LengthFilter(maxCodeLength))
         viewModel.setupInitState(maxCodeLength)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        smsCodeNumPadView.apply {
+        binding.smsCodeNumPadView.apply {
             isFingerprintEnabled = false
             onBackspaceClickedAction = { viewModel.onDigitRemoved() }
             onNumberClickedAction = { viewModel.onDigitAdded(it) }
         }
-        smsCodeCloseButton.doOnClick { dismiss() }
-        smsCodeResendButton.doOnClick { viewModel.onResendClicked() }
+        binding.smsCodeCloseButton.doOnClick { dismiss() }
+        binding.smsCodeResendButton.doOnClick { viewModel.onResendClicked() }
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { loaderView.isVisible = it }
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.root.isVisible = it }
         viewModel.inputtedCode.observe(viewLifecycleOwner) {
-            smsCodeInput.setText(it)
-            smsCodeNumPadView.setBackspaceButtonsVisibility(it.isNotEmpty())
+            binding.smsCodeInput.setText(it)
+            binding.smsCodeNumPadView.setBackspaceButtonsVisibility(it.isNotEmpty())
         }
-        viewModel.resendButtonText.observe(viewLifecycleOwner) { smsCodeResendButton.text = it }
-        viewModel.isResendButtonEnabled.observe(viewLifecycleOwner) { smsCodeResendButton.setEnabledTextButton(it) }
-        viewModel.showMessage.observe(viewLifecycleOwner) { smsCodeMessageView.text = it }
+        viewModel.resendButtonText.observe(viewLifecycleOwner) { binding.smsCodeResendButton.text = it }
+        viewModel.isResendButtonEnabled.observe(viewLifecycleOwner) { binding.smsCodeResendButton.setEnabledTextButton(it) }
+        viewModel.showMessage.observe(viewLifecycleOwner) { binding.smsCodeMessageView.text = it }
         viewModel.closeScreen.observe(viewLifecycleOwner) { dismiss() }
     }
 

@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/header"
-        layout="@layout/simple_toolbar" />
+        layout="@layout/simple_app_bar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/widgetsListView"

@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
+import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.delegate.BillingDelegate
 import org.solovyev.android.checkout.Purchase
 
-abstract class BillingActivity(@LayoutRes layoutId: Int) : SimpleActivity(layoutId) {
+abstract class BillingActivity<VIEW_BINDING : ViewBinding> : SimpleActivity<VIEW_BINDING>() {
 
     protected val billingDelegate by lazy { BillingDelegate() }
 

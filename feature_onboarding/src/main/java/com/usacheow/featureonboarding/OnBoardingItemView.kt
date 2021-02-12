@@ -7,18 +7,18 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import kotlinx.android.synthetic.main.on_boarding_item_view.view.onboardingItemDescriptionView
-import kotlinx.android.synthetic.main.on_boarding_item_view.view.onboardingItemImageView
-import kotlinx.android.synthetic.main.on_boarding_item_view.view.onboardingItemTitleView
+import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
 class OnBoardingItemView
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
     : LinearLayout(context, attrs), Populatable<OnBoardingItem> {
 
     override fun populate(model: OnBoardingItem) {
-        onboardingItemImageView.setImageResource(model.imageId)
-        onboardingItemTitleView.text = resources.getString(model.titleId)
-        onboardingItemDescriptionView.text = resources.getString(model.descriptionId)
+        val binding = OnBoardingItemViewBinding.bind(this)
+
+        binding.onboardingItemImageView.setImageResource(model.imageId)
+        binding.onboardingItemTitleView.text = resources.getString(model.titleId)
+        binding.onboardingItemDescriptionView.text = resources.getString(model.descriptionId)
     }
 }
 

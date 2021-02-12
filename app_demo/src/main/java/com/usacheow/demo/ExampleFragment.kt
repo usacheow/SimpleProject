@@ -1,43 +1,68 @@
 package com.usacheow.demo
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.fragment_example.*
-import kotlinx.android.synthetic.main.fragment_example.header
-import kotlinx.android.synthetic.main.fragment_views.*
+import com.usacheow.coreui.utils.view.drawable
+import com.usacheow.demo.databinding.FragmentExampleBinding
 
-class ExampleFragment : SimpleFragment() {
-
-    override val layoutId = R.layout.fragment_example
+class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
 
     companion object {
         fun newInstance() = ExampleFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentExampleBinding {
+        return FragmentExampleBinding.inflate(inflater, container, false)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        listView.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
+        binding.listView.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        (header as SimpleAppBarLayout).apply {
+        binding.header.root.apply {
             title = "Demo UiKit"
         }
 
-        fontsScreen.doOnClick { show(FontsFragment.newInstance()) }
-        widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
-        viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
-        calendarScreen.doOnClick { show(CalendarFragment.newInstance()) }
-        cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
+        binding.fontsScreen.doOnClick { show(FontsFragment.newInstance()) }
+        binding.widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
+        binding.viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
+        binding.materialDialog.doOnClick { showMaterialDialog() }
+//        binding.bottomDialog.doOnClick { showBottomDialog() }
+//        binding.modalScreen.doOnClick { showModalScreen() }
+        binding.calendarScreen.doOnClick { show(CalendarFragment.newInstance()) }
+        binding.cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
     }
 
     private fun show(fragment: Fragment) {
         getContainer { show(fragment) }
+    }
+
+    private fun showMaterialDialog() {
+        messageDialog = MaterialAlertDialogBuilder(requireContext())
+                .setBackground(drawable(R.drawable.bg_alert_dialog))
+                .setTitle("Lorem ipsum")
+                .setMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+                .setPositiveButton("Agree") { _, _ -> }
+                .setNegativeButton("Disagree") { _, _ -> }
+                .setNeutralButton("Ok") { _, _ -> }
+                .create()
+                .also { it.show() }
+    }
+
+    private fun showBottomDialog() {
+
+    }
+
+    private fun showModalScreen() {
+
     }
 }

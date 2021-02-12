@@ -6,19 +6,20 @@ import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewHeaderWithActionItemBinding
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.populate
-import kotlinx.android.synthetic.main.view_header_with_action_item.view.actionButton
-import kotlinx.android.synthetic.main.view_header_with_action_item.view.headerView
 
 class HeaderWithActionView
 @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attributeSet, defStyleAttr), Populatable<HeaderWithActionItem> {
 
+    private val binding by lazy { ViewHeaderWithActionItemBinding.bind(this) }
+
     override fun populate(model: HeaderWithActionItem) {
-        headerView.text = model.title
-        actionButton.populate(model.actionTitle)
-        actionButton.doOnClick {
+        binding.headerView.text = model.title
+        binding.actionButton.populate(model.actionTitle)
+        binding.actionButton.doOnClick {
             model.clickAction?.invoke()
         }
     }

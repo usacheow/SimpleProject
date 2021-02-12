@@ -7,11 +7,10 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 import com.google.android.material.appbar.AppBarLayout
+import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.navigation
 import com.usacheow.coreui.utils.view.updateMargins
-import kotlinx.android.synthetic.main.simple_toolbar.view.insetView
-import kotlinx.android.synthetic.main.simple_toolbar.view.toolbar
 
 class SimpleAppBarLayout
 @JvmOverloads constructor(
@@ -21,26 +20,28 @@ class SimpleAppBarLayout
 ) : AppBarLayout(context, attrs, defStyle) {
 
     var title: String
-        get() = toolbar.title.toString()
+        get() = binding.toolbar.title.toString()
         set(value) {
-            toolbar.title = value
+            binding.toolbar.title = value
         }
+
+    private val binding by lazy { SimpleAppBarLayoutBinding.bind(this) }
 
     fun setBackground(@ColorRes colorId: Int) {
         setBackgroundColor(color(colorId))
     }
 
     fun setNavigationAction(@DrawableRes iconResId: Int, action: () -> Unit) {
-        toolbar.navigation(iconResId, action)
+        binding.toolbar.navigation(iconResId, action)
     }
 
     fun setInset(size: Int) {
-        insetView.updateMargins(topPx = size)
-        toolbar.updateMargins(topPx = size)
+        binding.insetView.updateMargins(topPx = size)
+        binding.toolbar.updateMargins(topPx = size)
     }
 
     fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {
-        toolbar.inflateMenu(menuResId)
-        toolbar.setOnMenuItemClickListener(listener)
+        binding.toolbar.inflateMenu(menuResId)
+        binding.toolbar.setOnMenuItemClickListener(listener)
     }
 }

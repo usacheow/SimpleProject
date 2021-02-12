@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.view.updateLayoutParams
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -16,9 +17,10 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.utils.view.toPx
 
-abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
+abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : BottomSheetDialogFragment() {
 
-    protected abstract val layoutId: Int
+    private var _binding: VIEW_BINDING? = null
+    protected val binding get() = _binding!!
 
     protected open val canHide = true
 
@@ -36,6 +38,8 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
     * peekHeight value
     * */
     protected open val startStatePercent = BottomDialogHeight.QUARTER_SIZE
+
+    protected abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): VIEW_BINDING
 
     override fun onStart() {
         super.onStart()
@@ -76,7 +80,8 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, container, false)
+        _binding = createViewBinding(inflater, container)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,6 +99,7 @@ abstract class SimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onDestroyView() {
         clearViews()
+        _binding = null
         super.onDestroyView()
     }
 

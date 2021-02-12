@@ -7,16 +7,11 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.databinding.ViewListTileItemBinding
 import com.usacheow.coreui.uikit.utils.EmptyState
 import com.usacheow.coreui.uikit.utils.ImageInfo
 import com.usacheow.coreui.uikit.utils.populate
-import com.usacheow.coreui.utils.view.makeGone
-import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.resize
-import com.usacheow.coreui.utils.view.setListenerIfNeed
-import com.usacheow.coreui.utils.view.toPx
-import kotlinx.android.synthetic.main.view_list_tile_item.view.*
+import com.usacheow.coreui.utils.view.*
 
 private const val SUBTITLE_SHIMMER_WIDTH_DP = 120
 private const val TITLE_SHIMMER_WIDTH_DP = 200
@@ -28,23 +23,25 @@ class ListTileItemView
     defStyleAttr: Int = 0
 ) : ShimmerFrameLayout(context, attrs, defStyleAttr), Populatable<ListTileItem> {
 
+    private val binding by lazy { ViewListTileItemBinding.bind(this) }
+
     override fun populate(model: ListTileItem) {
         if (model.isShimmer) {
-            actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            actionTitleView.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionSubtitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            actionSubtitleView.resize(widthPx = SUBTITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionIconView.setImageResource(R.drawable.bg_shimmer_circle)
-            actionDescriptionView.makeGone()
+            binding.actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
+            binding.actionTitleView.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionSubtitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
+            binding.actionSubtitleView.resize(widthPx = SUBTITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionIconView.setImageResource(R.drawable.bg_shimmer_circle)
+            binding.actionDescriptionView.makeGone()
 
             showShimmer(true)
         } else {
-            actionTitleView.background = null
-            actionTitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionSubtitleView.background = null
-            actionSubtitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionIconView.setImageDrawable(null)
-            actionDescriptionView.makeVisible()
+            binding.actionTitleView.background = null
+            binding.actionTitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionSubtitleView.background = null
+            binding.actionSubtitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
+            binding.actionIconView.setImageDrawable(null)
+            binding.actionDescriptionView.makeVisible()
 
             hideShimmer()
             showData(model)
@@ -52,10 +49,10 @@ class ListTileItemView
     }
 
     private fun showData(model: ListTileItem) {
-        actionTitleView.text = model.title
-        actionSubtitleView.populate(model.subtitle)
-        actionDescriptionView.populate(model.description)
-        actionIconView.populate(model.imageInfo)
+        binding.actionTitleView.text = model.title
+        binding.actionSubtitleView.populate(model.subtitle)
+        binding.actionDescriptionView.populate(model.description)
+        binding.actionIconView.populate(model.imageInfo)
         setListenerIfNeed(model.onItemClicked)
     }
 }

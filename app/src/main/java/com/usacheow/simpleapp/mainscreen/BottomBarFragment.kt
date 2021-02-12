@@ -1,6 +1,8 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
@@ -9,13 +11,11 @@ import com.usacheow.coreui.utils.navigation.MultiStackHistoryManager
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
 import com.usacheow.simpleapp.R
+import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_bottom_bar.appBottomBar
 
 @AndroidEntryPoint
-class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionChangedListener {
-
-    override val layoutId = R.layout.fragment_bottom_bar
+class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStackHistoryManager.OnSectionChangedListener {
 
     private val viewModel by viewModels<BottomBarViewModel>()
 
@@ -33,13 +33,17 @@ class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionCh
         fun newInstance() = BottomBarFragment()
     }
 
+    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentBottomBarBinding {
+        return FragmentBottomBarBinding.inflate(inflater, container, false)
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         viewModel.state = manager.getState()
         super.onSaveInstanceState(outState)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        appBottomBar.updatePadding(
+        binding.appBottomBar.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
@@ -49,8 +53,8 @@ class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionCh
         manager.listener = this
         manager.openActiveSection()
 
-        appBottomBar.setOnNavigationItemReselectedListener { manager.resetSection() }
-        appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
+        binding.appBottomBar.setOnNavigationItemReselectedListener { manager.resetSection() }
+        binding.appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
             val position = AppScreenSections.indexOf(menuItem.itemId)
             manager.openSection(position)
             true
@@ -60,7 +64,7 @@ class BottomBarFragment : SimpleFragment(), MultiStackHistoryManager.OnSectionCh
     override fun onBackPressed() = manager.backSection()
 
     override fun onSectionChanged(sectionNumber: Int) {
-        appBottomBar.selectedItemId = AppScreenSections[sectionNumber]
+        binding.appBottomBar.selectedItemId = AppScreenSections[sectionNumber]
     }
 }
 

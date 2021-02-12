@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 
-abstract class SimpleModalFragment : DialogFragment() {
+abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment() {
 
-    protected abstract val layoutId: Int
+    private var _binding: VIEW_BINDING? = null
+    protected val binding get() = _binding!!
+
+    protected abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): VIEW_BINDING
 
     override fun onStart() {
         super.onStart()
@@ -35,7 +39,8 @@ abstract class SimpleModalFragment : DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, container, false)
+        _binding = createViewBinding(inflater, container)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,6 +58,7 @@ abstract class SimpleModalFragment : DialogFragment() {
 
     override fun onDestroyView() {
         clearViews()
+        _binding = null
         super.onDestroyView()
     }
 
