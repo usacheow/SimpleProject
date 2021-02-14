@@ -2,8 +2,6 @@ package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -27,6 +25,10 @@ private const val DEFAULT_HEADER_MARGIN_TOP_DP = 120
 @AndroidEntryPoint
 class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentSignInBinding::inflate,
+    )
+
     @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInViewModel>()
@@ -36,10 +38,6 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
 
     companion object {
         fun newInstance() = SignInFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSignInBinding {
-        return FragmentSignInBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

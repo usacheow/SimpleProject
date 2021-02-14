@@ -1,15 +1,12 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.header.SimpleAppBarLayout
 import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featurehello.R
@@ -21,12 +18,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class BFragment : SimpleFragment<FragmentBBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentBBinding::inflate,
+    )
+
     private val aViewModel by viewModels<AViewModel>({ requireParentFragment() })
     private val bViewModel by viewModels<BViewModel>()
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentBBinding {
-        return FragmentBBinding.inflate(inflater, container, false)
-    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         binding.listView.updatePadding(

@@ -10,6 +10,7 @@ import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 import com.usacheow.coreui.databinding.ViewCalendarDayItemBinding
 import com.usacheow.coreui.utils.view.color
+import java.time.LocalDate
 
 class CalendarDayItemView
 @JvmOverloads constructor(
@@ -19,16 +20,18 @@ class CalendarDayItemView
     private val binding by lazy { ViewCalendarDayItemBinding.bind(this) }
 
     override fun populate(model: CalendarDayItem) {
-        binding.calendarDayNumberView.text = model.value
-        val textColorId = when (model.isSelected) {
-            true -> R.color.colorAccent
-            false -> R.color.colorText
-        }
+        binding.calendarDayNumberView.text = model.value.dayOfMonth.toString()
+
         binding.calendarDayNumberView.typeface = when (model.isSelected) {
             true -> Typeface.DEFAULT_BOLD
             false -> Typeface.DEFAULT
         }
-        binding.calendarDayNumberView.setTextColor(color(textColorId))
+        binding.calendarDayNumberView.setTextColor(color(when {
+            !model.isActive -> R.color.disabled
+            model.isSelected -> R.color.colorAccent
+            else -> R.color.colorText
+        }))
+
         model.indicatorColorId?.let {
             binding.calendarDayItemIndicatorView.setCardBackgroundColor(color(it))
         }
@@ -36,8 +39,9 @@ class CalendarDayItemView
 }
 
 data class CalendarDayItem(
-    val value: String,
+    val value: LocalDate,
+    val isActive: Boolean = true,
     val isSelected: Boolean = false,
     @ColorRes val indicatorColorId: Int? = null,
-    val clickAction: () -> Unit = {}
+    val clickAction: () -> Unit = {},
 ) : ViewType(R.layout.view_calendar_day_item)

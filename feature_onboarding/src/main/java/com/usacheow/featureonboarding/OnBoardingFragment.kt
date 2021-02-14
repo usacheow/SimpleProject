@@ -1,8 +1,6 @@
 package com.usacheow.featureonboarding
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.usacheow.app_shared.AppStateViewModel
 import com.usacheow.coreui.adapters.ViewTypesAdapter
@@ -12,6 +10,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
+
+    override val params = Params(
+        viewBindingProvider = FragmentOnboardingBinding::inflate,
+    )
 
     private val viewModel by activityViewModels<AppStateViewModel>()
 
@@ -24,10 +26,6 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
 
     companion object {
         fun newInstance() = OnBoardingFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentOnboardingBinding {
-        return FragmentOnboardingBinding.inflate(inflater, container, false)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

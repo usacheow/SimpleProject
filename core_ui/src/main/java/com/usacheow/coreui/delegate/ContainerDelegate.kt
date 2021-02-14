@@ -7,7 +7,7 @@ import androidx.transition.TransitionSet
 import com.usacheow.coreui.R
 import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.navigation.addSharedElementsFrom
+import com.usacheow.coreui.utils.navigation.addSharedElements
 import com.usacheow.coreui.utils.navigation.inTransaction
 import com.usacheow.coreui.utils.navigation.replaceFragmentIn
 import com.usacheow.coreui.utils.system.ifSupportLollipop
@@ -31,7 +31,7 @@ class ContainerDelegate(
 //                fragment.sharedElementEnterTransition = transition
 //                fragment.sharedElementReturnTransition = transition
 //            }
-//            addSharedElementsFrom(activeFragment as? SimpleFragment)
+//            addSharedElements(activeFragment as? SimpleFragment)
             if (needAnimate) {
                 setCustomAnimations(
                     R.anim.anim_enter_from_right,

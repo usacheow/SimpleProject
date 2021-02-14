@@ -1,8 +1,6 @@
 package com.usacheow.demo
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,12 +23,12 @@ import com.usacheow.demo.databinding.FragmentWidgetsBinding
 
 class WidgetsFragment : SimpleFragment<FragmentWidgetsBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentWidgetsBinding::inflate,
+    )
+
     companion object {
         fun newInstance() = WidgetsFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentWidgetsBinding {
-        return FragmentWidgetsBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

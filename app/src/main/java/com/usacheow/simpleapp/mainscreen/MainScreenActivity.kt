@@ -12,22 +12,27 @@ import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
+import com.usacheow.featurehello.databinding.ActivityHelloBinding
 import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), IContainer {
 
+    override val params = Params(
+        viewBindingProvider = FragmentContainerBinding::inflate,
+    )
+
     private val appStateViewModel by viewModels<AppStateViewModel>()
 
     private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
-    override fun createViewBinding() = FragmentContainerBinding.inflate(layoutInflater)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+    }
 
+    override fun subscribe() {
         appStateViewModel.openAuthScreen.observe(this) {
             show(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }

@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.LayoutInflater
 import android.view.OrientationEventListener
 import android.view.Surface
 import android.view.ViewGroup
@@ -29,10 +28,6 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
-import kotlin.collections.average
-import kotlin.collections.first
-import kotlin.collections.forEach
-import kotlin.collections.map
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -47,6 +42,10 @@ private const val RATIO_16_9_VALUE = 16.0 / 9.0
 typealias LumaListener = (luma: Double) -> Unit
 
 class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
+
+    override val params = Params(
+        viewBindingProvider = FragmentCameraBinding::inflate,
+    )
 
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
@@ -80,10 +79,6 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
     companion object {
         fun newInstance() = CameraFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCameraBinding {
-        return FragmentCameraBinding.inflate(inflater, container, false)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

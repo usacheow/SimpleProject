@@ -8,7 +8,7 @@ import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 
 class ViewTypesAdapter(
-    private var entities: List<ViewType> = emptyList()
+    var entities: List<ViewType> = emptyList()
 ) : RecyclerView.Adapter<ViewTypesAdapter.ViewTypesViewHolder>() {
 
     var onPaginationAction: (() -> Unit)? = null

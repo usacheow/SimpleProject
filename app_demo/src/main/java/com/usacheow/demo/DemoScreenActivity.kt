@@ -2,7 +2,6 @@ package com.usacheow.demo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coredata.database.UiMode
 import com.usacheow.coreui.R
@@ -16,9 +15,11 @@ import com.usacheow.coreui.utils.view.enableSystemMode
 
 class DemoScreenActivity : SimpleActivity<FragmentContainerBinding>(), IContainer {
 
-    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
+    override val params = Params(
+        viewBindingProvider = FragmentContainerBinding::inflate,
+    )
 
-    override fun createViewBinding() = FragmentContainerBinding.inflate(layoutInflater)
+    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         when (Storage(this).uiMode) {

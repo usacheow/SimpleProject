@@ -1,8 +1,6 @@
 package com.usacheow.demo
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
@@ -15,12 +13,12 @@ import com.usacheow.demo.databinding.FragmentExampleBinding
 
 class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentExampleBinding::inflate,
+    )
+
     companion object {
         fun newInstance() = ExampleFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentExampleBinding {
-        return FragmentExampleBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

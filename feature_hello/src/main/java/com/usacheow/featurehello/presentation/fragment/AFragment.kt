@@ -1,8 +1,6 @@
 package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
@@ -19,14 +17,14 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AFragment : SimpleFragment<FragmentABinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentABinding::inflate,
+    )
+
     private val viewModel by viewModels<AViewModel>({ requireParentFragment() })
 
     companion object {
         fun newInstance() = AFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentABinding {
-        return FragmentABinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
@@ -34,8 +32,6 @@ class AFragment : SimpleFragment<FragmentABinding>() {
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )
     }
-
-    override fun getSharedViews() = listOf(binding.header.root)
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {

@@ -1,8 +1,6 @@
 package com.usacheow.demo
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
@@ -11,12 +9,12 @@ import com.usacheow.demo.databinding.FragmentFontsBinding
 
 class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentFontsBinding::inflate,
+    )
+
     companion object {
         fun newInstance() = FontsFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentFontsBinding {
-        return FragmentFontsBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {

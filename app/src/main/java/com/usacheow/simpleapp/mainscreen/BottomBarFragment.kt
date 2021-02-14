@@ -1,8 +1,6 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
@@ -16,6 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStackHistoryManager.OnSectionChangedListener {
+
+    override val params = Params(
+        viewBindingProvider = FragmentBottomBarBinding::inflate,
+    )
 
     private val viewModel by viewModels<BottomBarViewModel>()
 
@@ -31,10 +33,6 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStack
 
     companion object {
         fun newInstance() = BottomBarFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentBottomBarBinding {
-        return FragmentBottomBarBinding.inflate(inflater, container, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

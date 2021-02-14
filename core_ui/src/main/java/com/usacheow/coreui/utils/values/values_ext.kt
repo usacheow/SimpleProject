@@ -21,16 +21,3 @@ fun Double.toRub() = NumberFormat.getNumberInstance(Locale("ru")).format(this) +
 fun String.toSquare() = "$this м²"
 
 fun Double.toSquare() = "$this м²"
-
-fun String?.getRomanDateWithQuarter(): String {
-    val (year, month) = this?.toDate(DateFormat.yyyy__MM__dd)?.let {
-        it.parseTo(DateFormat.yyyy).toInt() to it.parseTo(DateFormat.mm).toInt()
-    } ?: 1 to 1
-    val romanMonth = when (month / QUARTERS_COUNT) {
-        0 -> "I"
-        1 -> "II"
-        2 -> "III"
-        else -> "IV"
-    }
-    return DATE_FORMAT.format(year, romanMonth)
-}

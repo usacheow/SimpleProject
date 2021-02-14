@@ -28,7 +28,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/actionSubtitleView"
-                style="@style/TextCaption_60"
+                style="@style/TextBody2_60"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

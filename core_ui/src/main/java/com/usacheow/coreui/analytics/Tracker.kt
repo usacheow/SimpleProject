@@ -2,7 +2,7 @@ package com.usacheow.coreui.analytics
 
 interface Tracker {
 
-    fun trackEvent(event: Events, attributes: Map<String, String> = emptyMap())
+    fun trackEvent(event: Events, clazz: Class<*>, attributes: Map<String, String> = emptyMap())
 }
 
 enum class Events(val value: String) {

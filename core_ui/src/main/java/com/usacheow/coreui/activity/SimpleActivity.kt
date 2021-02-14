@@ -1,29 +1,33 @@
 package com.usacheow.coreui.activity
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.CallSuper
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
-import com.usacheow.coreui.databinding.FragmentContainerBinding
+import com.usacheow.coreui.base.SimpleLifecycle
 
-abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity() {
+abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity(), SimpleLifecycle {
 
-    protected lateinit var binding: VIEW_BINDING
-    protected open var needTransparentBars = false
+    protected abstract val params: Params<VIEW_BINDING>
 
-    abstract fun createViewBinding(): VIEW_BINDING
+    protected val binding: VIEW_BINDING by lazy { viewBindingProvider(layoutInflater) }
+    private val viewBindingProvider get() = params.viewBindingProvider
 
+    private val needTransparentBars get() = params.needTransparentBars
+
+    @CallSuper
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.START_SCREEN)
+        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.START_SCREEN, this.javaClass)
     }
 
+    @CallSuper
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.STOP_SCREEN)
+        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.STOP_SCREEN, this.javaClass)
         super.onStop()
     }
 
@@ -36,17 +40,22 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity() 
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
-        binding = createViewBinding()
         setContentView(binding.root)
         setupViews(savedInstanceState)
+        subscribe()
     }
 
-    protected open fun setupViews(savedInstanceState: Bundle?) = Unit
-
+    @CallSuper
     override fun onDestroy() {
         clearViews()
         super.onDestroy()
     }
 
-    protected open fun clearViews() = Unit
+    //do nothing
+    override fun processArguments(bundle: Bundle?) = Unit
+
+    data class Params<VIEW_BINDING : ViewBinding>(
+        var needTransparentBars: Boolean = false,
+        val viewBindingProvider: (LayoutInflater) -> VIEW_BINDING,
+    )
 }

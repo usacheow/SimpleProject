@@ -21,9 +21,9 @@ class AnalyticsTracker
 //        }
     }
 
-    override fun trackEvent(event: Events, attributes: Map<String, String>) {
+    override fun trackEvent(event: Events, clazz: Class<*>, attributes: Map<String, String>) {
         val bundle = bundleOf(*attributes.map { it.key to it.value }.toTypedArray())
 
-//        firebaseAnalytics.logEvent(event.value, bundle)
+//        firebaseAnalytics.logEvent("${event.value} ${clazz.simpleName}", bundle)
     }
 }

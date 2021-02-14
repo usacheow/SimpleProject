@@ -1,33 +1,26 @@
 package com.usacheow.demo
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.calendar.CalendarDayItem
-import com.usacheow.coreui.uikit.calendar.CalendarMonthItem
-import com.usacheow.coreui.utils.values.CalendarWrapper
-import com.usacheow.coreui.utils.values.DateFormat
-import com.usacheow.coreui.utils.values.isToday
-import com.usacheow.coreui.utils.values.parseTo
+import com.usacheow.coreui.uikit.calendar.CalendarGenerator
+import com.usacheow.coreui.uikit.calendar.CalendarMonthNameItem
+import com.usacheow.coreui.utils.values.DAYS_OF_WEEK
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.demo.databinding.FragmentCalendarBinding
-import java.util.*
+import java.time.LocalDate
 
 class CalendarFragment : SimpleFragment<FragmentCalendarBinding>() {
 
-    private var currentMonth = CalendarWrapper.get()
+    override val params = Params(
+        viewBindingProvider = FragmentCalendarBinding::inflate,
+    )
 
     companion object {
         fun newInstance() = CalendarFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCalendarBinding {
-        return FragmentCalendarBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
@@ -38,32 +31,22 @@ class CalendarFragment : SimpleFragment<FragmentCalendarBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.calendarListView.layoutManager = LinearLayoutManager(context)
-        binding.calendarListView.adapter = ViewTypesAdapter((0..11).map {
-            currentMonth.getMonthItem().also { currentMonth.turnOnNextMonth() }
-        })
-    }
+        val adapter = ViewTypesAdapter()
+        binding.calendarListView.adapter = adapter
 
-    private fun CalendarWrapper.getMonthItem(): CalendarMonthItem {
+        binding.calendarListView.layoutManager = GridLayoutManager(context, DAYS_OF_WEEK).apply {
+            setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int = when {
+                    adapter.entities[position] is CalendarMonthNameItem -> DAYS_OF_WEEK
 
-        return CalendarMonthItem(
-            name = parseTo(DateFormat.MMMM__yy),
-            days = getDaysList()
-        )
-    }
+                    else -> 1
+                }
+            })
+        }
 
-    private fun CalendarWrapper.getDaysList(
-        selectedDays: HashMap<Date, Int> = hashMapOf(),
-        clickAction: (Date) -> Unit = {}
-    ): List<CalendarDayItem> {
-
-        return getDaysListWithOffset {
-            CalendarDayItem(
-                value = it.parseTo(DateFormat.dd),
-                isSelected = it.isToday(),
-                indicatorColorId = selectedDays[it],
-                clickAction = { clickAction(it) }
-            )
-        }.map { it ?: CalendarDayItem("") }
+        adapter.update(CalendarGenerator().generatePeriod(
+            LocalDate.parse("2021-02-14"),
+            LocalDate.parse("2022-02-14"),
+        ))
     }
 }

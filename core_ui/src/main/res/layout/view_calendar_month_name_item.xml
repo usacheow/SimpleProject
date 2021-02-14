@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.calendar.CalendarMonthNameItemView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendarItemRootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/colorCard"
-    app:cardElevation="@dimen/elevation_0"
-    app:cardCornerRadius="0dp">
+    android:orientation="vertical"
+    android:paddingTop="24dp">
 
     <TextView
-        android:id="@+id/calendarMonthView"
-        style="@style/TextBody2_60"
-        android:layout_width="wrap_content"
+        android:id="@+id/calendarMonthNameView"
+        style="@style/TextH1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="4dp"
-        tools:text="Вт" />
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/left_right_margin"
+        android:layout_marginEnd="@dimen/left_right_margin"
+        tools:text="April '20" />
 </com.usacheow.coreui.uikit.calendar.CalendarMonthNameItemView>

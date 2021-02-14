@@ -2,8 +2,6 @@ package com.usacheow.app_shared.otp
 
 import android.os.Bundle
 import android.text.InputFilter
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -21,16 +19,16 @@ private const val CODE_LENGTH_DEFAULT_VALUE = 4
 @AndroidEntryPoint
 class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentSmsCodeBinding::inflate,
+    )
+
     private val viewModel by viewModels<SmsCodeViewModel>({ requireParentFragment() })
 
     companion object {
         fun newInstance(codeLength: Int) = SmsCodeModalFragment().apply {
             arguments = bundleOf(CODE_LENGTH_KEY to codeLength)
         }
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSmsCodeBinding {
-        return FragmentSmsCodeBinding.inflate(inflater, container, false)
     }
 
     override fun processArguments(bundle: Bundle?) {

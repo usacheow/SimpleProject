@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.CallSuper
 import androidx.core.view.updateLayoutParams
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -15,39 +16,36 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
+import com.usacheow.coreui.base.SimpleLifecycle
+import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.utils.view.toPx
 
-abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : BottomSheetDialogFragment() {
+abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : BottomSheetDialogFragment(), SimpleLifecycle {
 
-    private var _binding: VIEW_BINDING? = null
-    protected val binding get() = _binding!!
+    protected abstract val params: Params<VIEW_BINDING>
 
-    protected open val canHide = true
+    protected val binding get() = viewBindingDelegate.binding
+    private val viewBindingDelegate by lazy { ViewBindingDelegate<VIEW_BINDING>() }
+    private val viewBindingProvider get() = params.viewBindingProvider
 
-    protected open val needWrapContent = false
+    private val canHide get() = params.canHide
+    private val needWrapContent get() = params.needWrapContent
+    private val needExpand get() = params.needExpand
 
-    protected open val needExpand = false
+    private val middleStatePercent get() = params.middleStatePercent
+    private val needMiddleState get() = params.needMiddleState
 
-    /*
-    * halfExpandedRatio value when needMiddleState
-    * */
-    protected open val middleStatePercent = BottomDialogHeight.HALF_SIZE
-    protected open val needMiddleState = false
+    private val startStatePercent get() = params.startStatePercent
 
-    /*
-    * peekHeight value
-    * */
-    protected open val startStatePercent = BottomDialogHeight.QUARTER_SIZE
-
-    protected abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): VIEW_BINDING
-
+    @CallSuper
     override fun onStart() {
         super.onStart()
-        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.START_SCREEN)
+        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.START_SCREEN, this.javaClass)
     }
 
+    @CallSuper
     override fun onStop() {
-        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.STOP_SCREEN)
+        AnalyticsTrackerHolder.getInstance()?.trackEvent(Events.STOP_SCREEN, this.javaClass)
         super.onStop()
     }
 
@@ -80,10 +78,12 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : Bo
     private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = createViewBinding(inflater, container)
-        return binding.root
+        container ?: return null
+        viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
+        return viewBindingDelegate.rootView
     }
 
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         processArguments(arguments)
@@ -91,24 +91,36 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : Bo
         subscribe()
     }
 
-    protected open fun processArguments(bundle: Bundle?) {}
-
-    protected open fun setupViews(savedInstanceState: Bundle?) {}
-
-    protected open fun subscribe() {}
-
+    @CallSuper
     override fun onDestroyView() {
         clearViews()
-        _binding = null
+        viewBindingDelegate.clear()
         super.onDestroyView()
     }
 
-    protected open fun clearViews() {}
-}
+    data class Params<VIEW_BINDING : ViewBinding>(
+            var canHide: Boolean = true,
+            var needWrapContent: Boolean = false,
+            var needExpand: Boolean = false,
 
-enum class BottomDialogHeight(val divisor: Float) {
+            /*
+            * halfExpandedRatio value when needMiddleState
+            * */
+            var middleStatePercent: BottomDialogHeight = BottomDialogHeight.HALF_SIZE,
+            var needMiddleState: Boolean = false,
 
-    THREE_QUARTERS_SIZE(0.75f),
-    HALF_SIZE(0.5f),
-    QUARTER_SIZE(0.25f)
+            /*
+            * peekHeight value
+            * */
+            var startStatePercent: BottomDialogHeight = BottomDialogHeight.QUARTER_SIZE,
+
+            val viewBindingProvider: (LayoutInflater, ViewGroup, Boolean) -> VIEW_BINDING,
+    )
+
+    enum class BottomDialogHeight(val divisor: Float) {
+
+        THREE_QUARTERS_SIZE(0.75f),
+        HALF_SIZE(0.5f),
+        QUARTER_SIZE(0.25f)
+    }
 }

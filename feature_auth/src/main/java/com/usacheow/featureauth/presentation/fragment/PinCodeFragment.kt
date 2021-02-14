@@ -1,8 +1,6 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
@@ -26,6 +24,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
 
+    override val params = Params(
+        viewBindingProvider = FragmentPinCodeBinding::inflate,
+    )
+
     @Inject lateinit var biometricDelegate: BiometricAuthorizationManager
     @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
@@ -33,10 +35,6 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
 
     companion object {
         fun newInstance() = PinCodeFragment()
-    }
-
-    override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentPinCodeBinding {
-        return FragmentPinCodeBinding.inflate(inflater, container, false)
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
