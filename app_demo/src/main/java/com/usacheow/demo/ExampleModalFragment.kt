@@ -4,30 +4,27 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.demo.databinding.FragmentExampleBinding
+import com.usacheow.demo.databinding.FragmentExampleModalBinding
 import com.usacheow.demo.databinding.FragmentFontsBinding
 
-class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
+class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {
 
     override val params = Params(
-        viewBindingProvider = FragmentFontsBinding::inflate,
+        viewBindingProvider = FragmentExampleModalBinding::inflate,
     )
 
     companion object {
-        fun newInstance() = FontsFragment()
-    }
-
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.fontsListView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+        fun newInstance() = ExampleModalFragment()
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
-            title = "Fonts samples"
+            title = "Modal fragment"
             setNavigationAction(R.drawable.ic_back) {
-                requireActivity().onBackPressed()
+                dismiss()
             }
         }
 

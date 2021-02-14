@@ -22,7 +22,9 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.listView.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
+        binding.listView.updatePadding(
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -34,10 +36,11 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
         binding.widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
         binding.viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
         binding.materialDialog.doOnClick { showMaterialDialog() }
-//        binding.bottomDialog.doOnClick { showBottomDialog() }
-//        binding.modalScreen.doOnClick { showModalScreen() }
-        binding.calendarScreen.doOnClick { show(CalendarFragment.newInstance()) }
+        binding.bottomDialog.doOnClick { showBottomDialog() }
+        binding.modalScreen.doOnClick { showModalScreen() }
         binding.cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
+        binding.calendarListScreen.doOnClick { show(CalendarListFragment.newInstance()) }
+        binding.calendarWidgetScreen.doOnClick { show(CalendarWidgetFragment.newInstance()) }
     }
 
     private fun show(fragment: Fragment) {
@@ -57,10 +60,10 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
     }
 
     private fun showBottomDialog() {
-
+        ExampleBottomFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT")
     }
 
     private fun showModalScreen() {
-
+        ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT")
     }
 }

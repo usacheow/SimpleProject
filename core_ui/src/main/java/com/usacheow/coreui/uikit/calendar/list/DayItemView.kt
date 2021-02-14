@@ -1,4 +1,4 @@
-package com.usacheow.coreui.uikit.calendar
+package com.usacheow.coreui.uikit.calendar.list
 
 import android.content.Context
 import android.graphics.Typeface
@@ -8,18 +8,18 @@ import androidx.annotation.ColorRes
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.databinding.ViewCalendarDayItemBinding
+import com.usacheow.coreui.databinding.ViewDayItemBinding
 import com.usacheow.coreui.utils.view.color
 import java.time.LocalDate
 
-class CalendarDayItemView
+class DayItemView
 @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), Populatable<CalendarDayItem> {
+) : LinearLayout(context, attrs, defStyleAttr), Populatable<DayItem> {
 
-    private val binding by lazy { ViewCalendarDayItemBinding.bind(this) }
+    private val binding by lazy { ViewDayItemBinding.bind(this) }
 
-    override fun populate(model: CalendarDayItem) {
+    override fun populate(model: DayItem) {
         binding.calendarDayNumberView.text = model.value.dayOfMonth.toString()
 
         binding.calendarDayNumberView.typeface = when (model.isSelected) {
@@ -38,10 +38,10 @@ class CalendarDayItemView
     }
 }
 
-data class CalendarDayItem(
+data class DayItem(
     val value: LocalDate,
     val isActive: Boolean = true,
     val isSelected: Boolean = false,
     @ColorRes val indicatorColorId: Int? = null,
     val clickAction: () -> Unit = {},
-) : ViewType(R.layout.view_calendar_day_item)
+) : ViewType(R.layout.view_day_item)

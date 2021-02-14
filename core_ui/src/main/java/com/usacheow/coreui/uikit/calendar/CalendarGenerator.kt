@@ -1,38 +1,36 @@
 package com.usacheow.coreui.uikit.calendar
 
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.uikit.calendar.CalendarDayItem
-import com.usacheow.coreui.uikit.calendar.CalendarEmptyDayItem
-import com.usacheow.coreui.uikit.calendar.CalendarMonthNameItem
+import com.usacheow.coreui.uikit.calendar.list.DayItem
+import com.usacheow.coreui.uikit.calendar.widget.MonthDayItem
+import com.usacheow.coreui.uikit.calendar.widget.MonthDaysItem
 import com.usacheow.coreui.utils.values.LOCALE
-import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.Month
 import java.time.format.TextStyle
 
 class CalendarGenerator {
 
-    val weekDaysShortNames: List<String>
-        get() = DayOfWeek
-            .values()
-            .map { it.getDisplayName(TextStyle.SHORT, LOCALE()) }
-
-    fun generateMonth(date: LocalDate): List<ViewType> {
+    fun generateMonth(date: LocalDate): MonthDaysItem {
         val currentMonth = date.month
         var currentDay = date
         while (currentDay.dayOfMonth != 1) {
             currentDay = currentDay.minusDays(1)
         }
 
-        val days = getEmptyDayItems(currentDay.dayOfWeek)
+        val offset = currentDay.dayOfWeek.value
 
+        val days = mutableListOf<MonthDayItem>()
         while (currentDay.month == currentMonth) {
-            days += getDayItem(currentDay, true)
+            days += MonthDayItem(currentDay, isActive = true)
 
             currentDay = currentDay.plusDays(1)
         }
 
-        return days
+        return MonthDaysItem(
+            offset = offset,
+            days = days,
+        )
     }
 
     fun generatePeriod(start: LocalDate, end: LocalDate): List<ViewType> {
@@ -57,7 +55,7 @@ class CalendarGenerator {
             currentDay = currentDay.minusDays(1)
         }
 
-        return mutableListOf(getMonthNameItem(currentMonth)) + getEmptyDayItems(currentDayOfWeek) + days
+        return mutableListOf(getMonthNameItem(currentMonth)) + days
     }
 
     private fun generateNextPart(start: LocalDate, end: LocalDate): List<ViewType> {
@@ -70,7 +68,6 @@ class CalendarGenerator {
             if (currentDay.month != currentMonth) {
                 currentMonth = currentDay.month
                 days += getMonthNameItem(currentMonth)
-                days += getEmptyDayItems(currentDay.dayOfWeek)
             }
             days += getDayItem(currentDay, true)
 
@@ -80,9 +77,7 @@ class CalendarGenerator {
         return days
     }
 
-    private fun getMonthNameItem(month: Month): ViewType = CalendarMonthNameItem(month.getDisplayName(TextStyle.FULL, LOCALE()))
+    private fun getMonthNameItem(month: Month): ViewType = MonthNameItem(month.getDisplayName(TextStyle.FULL, LOCALE()))
 
-    private fun getDayItem(day: LocalDate, isActive: Boolean): ViewType = CalendarDayItem(day, isActive = isActive)
-
-    private fun getEmptyDayItems(dayOfWeek: DayOfWeek): MutableList<ViewType> = MutableList(dayOfWeek.value - 1) { CalendarEmptyDayItem }
+    private fun getDayItem(day: LocalDate, isActive: Boolean): ViewType = DayItem(day, isActive = isActive)
 }

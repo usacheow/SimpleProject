@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.calendar.widget.MonthDaysItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/calendarMonthDayFlow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flow_maxElementsWrap="7"
+        app:flow_wrapMode="aligned"
+        tools:constraint_referenced_ids="monthEmptyDay1View,monthEmptyDay2View,monthEmptyDay3View,monthEmptyDay4View,monthEmptyDay5View,monthEmptyDay6View,monthDay1View,monthDay2View,monthDay3View,monthDay4View,monthDay5View,monthDay6View,monthDay7View,monthDay8View,monthDay9View,monthDay10View,monthDay11View,monthDay12View,monthDay13View,monthDay14View,monthDay15View,monthDay16View,monthDay17View,monthDay18View,monthDay19View,monthDay20View,monthDay21View,monthDay22View,monthDay23View,monthDay24View,monthDay25View,monthDay26View,monthDay27View,monthDay28View,monthDay29View,monthDay30View,monthDay31View"/>
+
+    <Space
+        android:id="@+id/monthEmptyDay1View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:id="@+id/monthEmptyDay2View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/monthEmptyDay3View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/monthEmptyDay4View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/monthEmptyDay5View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/monthEmptyDay6View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:id="@+id/monthDay1View"
+        layout="@layout/view_day_item"/>
+
+    <include
+        android:id="@+id/monthDay2View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay3View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay4View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay5View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay6View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay7View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay8View"
+        layout="@layout/view_day_item"/>
+
+    <include
+        android:id="@+id/monthDay9View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay10View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay11View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay12View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay13View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay14View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay15View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay16View"
+        layout="@layout/view_day_item"/>
+
+    <include
+        android:id="@+id/monthDay17View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay18View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay19View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay20View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay21View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay22View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay23View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay24View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay25View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay26View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay27View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay28View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay29View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay30View"
+        layout="@layout/view_day_item" />
+
+    <include
+        android:id="@+id/monthDay31View"
+        layout="@layout/view_day_item" />
+</com.usacheow.coreui.uikit.calendar.widget.MonthDaysItemView>

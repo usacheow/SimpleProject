@@ -47,7 +47,6 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        container ?: return null
         viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
         return viewBindingDelegate.rootView
     }
@@ -68,6 +67,6 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment(
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(
-        val viewBindingProvider: (LayoutInflater, ViewGroup, Boolean) -> VIEW_BINDING,
+        val viewBindingProvider: (LayoutInflater, ViewGroup?, Boolean) -> VIEW_BINDING,
     )
 }

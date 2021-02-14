@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.calendar.widget.WeekItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorCard"
+    app:cardElevation="@dimen/elevation_0"
+    app:cardCornerRadius="0dp">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/calendarWeekDayFlow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flow_maxElementsWrap="7"
+        app:flow_wrapMode="aligned"
+        app:constraint_referenced_ids="weekDay1View,weekDay2View,weekDay3View,weekDay4View,weekDay5View,weekDay6View,weekDay7View,"/>
+
+    <TextView
+        android:id="@+id/weekDay1View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay2View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay3View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay4View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay5View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay6View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+
+    <TextView
+        android:id="@+id/weekDay7View"
+        style="@style/TextBody2_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:text="Вт" />
+</com.usacheow.coreui.uikit.calendar.widget.WeekItemView>

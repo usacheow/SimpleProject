@@ -78,7 +78,6 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : Bo
     private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        container ?: return null
         viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
         return viewBindingDelegate.rootView
     }
@@ -114,7 +113,7 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : Bo
             * */
             var startStatePercent: BottomDialogHeight = BottomDialogHeight.QUARTER_SIZE,
 
-            val viewBindingProvider: (LayoutInflater, ViewGroup, Boolean) -> VIEW_BINDING,
+            val viewBindingProvider: (LayoutInflater, ViewGroup?, Boolean) -> VIEW_BINDING,
     )
 
     enum class BottomDialogHeight(val divisor: Float) {

@@ -69,25 +69,25 @@
                 android:text="4. Material Dialog"
                 android:background="?selectableItemBackground" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/bottomDialog"-->
-<!--                style="@style/TextButton"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingHorizontal="20dp"-->
-<!--                android:paddingVertical="16dp"-->
-<!--                android:text="5. Bottom Dialog"-->
-<!--                android:background="?selectableItemBackground" />-->
+            <TextView
+                android:id="@+id/bottomDialog"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="5. Bottom Dialog"
+                android:background="?selectableItemBackground" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/modalScreen"-->
-<!--                style="@style/TextButton"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingHorizontal="20dp"-->
-<!--                android:paddingVertical="16dp"-->
-<!--                android:text="6. Modal Fragment"-->
-<!--                android:background="?selectableItemBackground" />-->
+            <TextView
+                android:id="@+id/modalScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="6. Modal Fragment"
+                android:background="?selectableItemBackground" />
 
             <TextView
                 style="@style/TextOverline"
@@ -99,23 +99,33 @@
                 android:text="Screens" />
 
             <TextView
-                android:id="@+id/calendarScreen"
-                style="@style/TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp"
-                android:text="1. Calendar Fragment (in progress)"
-                android:background="?selectableItemBackground" />
-
-            <TextView
                 android:id="@+id/cameraScreen"
                 style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="2. Camera Example Fragment"
+                android:text="1. Camera Example Fragment"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/calendarListScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="2. Calendar List (in progress)"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/calendarWidgetScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="3. Calendar Widget (in progress)"
                 android:background="?selectableItemBackground" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

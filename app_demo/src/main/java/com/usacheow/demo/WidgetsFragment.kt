@@ -9,7 +9,7 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.button.SimpleButtonItem
 import com.usacheow.coreui.uikit.button.SimpleOutlinedButtonItem
 import com.usacheow.coreui.uikit.button.SimpleTextButtonItem
-import com.usacheow.coreui.uikit.calendar.CalendarItem
+import com.usacheow.coreui.uikit.calendar.widget.CalendarItem
 import com.usacheow.coreui.uikit.decoration.DividerItem
 import com.usacheow.coreui.uikit.header.HeaderWithActionItem
 import com.usacheow.coreui.uikit.information.SmallInfoCardItem
@@ -33,8 +33,7 @@ class WidgetsFragment : SimpleFragment<FragmentWidgetsBinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         binding.widgetsListView.updatePadding(
-            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
         )
     }
 
@@ -93,9 +92,6 @@ class WidgetsFragment : SimpleFragment<FragmentWidgetsBinding>() {
             SmallInfoCardItem(header = "Clickable small info card", value = "Width = wrap_content", needExpandOnWidth = false, clickAction = {}),
 
             DividerItem.getBigDivider(),
-            HeaderWithActionItem("Calendar", "Details"),
-
-            CalendarItem(selectedMonth = TODAY(), isScrollable = true)
         ))
     }
 }
