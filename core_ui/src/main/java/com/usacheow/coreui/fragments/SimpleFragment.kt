@@ -56,14 +56,14 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), SimpleLi
 
             requireActivity().window.decorView.systemUiVisibility = when {
                 canMakeDarkIconInStatusAndNavigationBar -> View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
-                        View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 
                 canMakeDarkIconInStatusBar -> View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
                 else -> View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             }
         }
 

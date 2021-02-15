@@ -36,8 +36,8 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
         binding.widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
         binding.viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
         binding.materialDialog.doOnClick { showMaterialDialog() }
-        binding.bottomDialog.doOnClick { showBottomDialog() }
-        binding.modalScreen.doOnClick { showModalScreen() }
+        binding.bottomDialog.doOnClick { ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT") }
+        binding.modalScreen.doOnClick { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") }
         binding.cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
         binding.calendarListScreen.doOnClick { show(CalendarListFragment.newInstance()) }
         binding.calendarWidgetScreen.doOnClick { show(CalendarWidgetFragment.newInstance()) }
@@ -50,20 +50,12 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
     private fun showMaterialDialog() {
         messageDialog = MaterialAlertDialogBuilder(requireContext())
                 .setBackground(drawable(R.drawable.bg_alert_dialog))
-                .setTitle("Lorem ipsum")
-                .setMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+                .setTitle("Material dialog")
+                .setMessage("Material dialog example")
                 .setPositiveButton("Agree") { _, _ -> }
                 .setNegativeButton("Disagree") { _, _ -> }
                 .setNeutralButton("Ok") { _, _ -> }
                 .create()
                 .also { it.show() }
-    }
-
-    private fun showBottomDialog() {
-        ExampleBottomFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT")
-    }
-
-    private fun showModalScreen() {
-        ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT")
     }
 }

@@ -6,6 +6,7 @@ import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.navigation
 import com.usacheow.demo.databinding.FragmentExampleBinding
 import com.usacheow.demo.databinding.FragmentExampleModalBinding
 import com.usacheow.demo.databinding.FragmentFontsBinding
@@ -21,15 +22,8 @@ class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() 
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.root.apply {
-            title = "Modal fragment"
-            setNavigationAction(R.drawable.ic_back) {
-                dismiss()
-            }
-        }
-
-        binding.fontsListView.setOnClickListener {
-
+        binding.toolbar.navigation(R.drawable.ic_close) {
+            dismiss()
         }
     }
 }

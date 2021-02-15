@@ -20,7 +20,7 @@ import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.utils.view.toPx
 
-abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : BottomSheetDialogFragment(), SimpleLifecycle {
+abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> : BottomSheetDialogFragment(), SimpleLifecycle {
 
     protected abstract val params: Params<VIEW_BINDING>
 
@@ -98,22 +98,22 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding>  : Bo
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(
-            var canHide: Boolean = true,
-            var needWrapContent: Boolean = false,
-            var needExpand: Boolean = false,
+        var canHide: Boolean = true,
+        var needWrapContent: Boolean = false,
+        var needExpand: Boolean = false,
 
-            /*
-            * halfExpandedRatio value when needMiddleState
-            * */
-            var middleStatePercent: BottomDialogHeight = BottomDialogHeight.HALF_SIZE,
-            var needMiddleState: Boolean = false,
+        /*
+        * halfExpandedRatio value when needMiddleState
+        * */
+        var middleStatePercent: BottomDialogHeight = BottomDialogHeight.HALF_SIZE,
+        var needMiddleState: Boolean = false,
 
-            /*
-            * peekHeight value
-            * */
-            var startStatePercent: BottomDialogHeight = BottomDialogHeight.QUARTER_SIZE,
+        /*
+        * peekHeight value
+        * */
+        var startStatePercent: BottomDialogHeight = BottomDialogHeight.QUARTER_SIZE,
 
-            val viewBindingProvider: (LayoutInflater, ViewGroup?, Boolean) -> VIEW_BINDING,
+        val viewBindingProvider: (LayoutInflater, ViewGroup?, Boolean) -> VIEW_BINDING,
     )
 
     enum class BottomDialogHeight(val divisor: Float) {
