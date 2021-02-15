@@ -1,4 +1,4 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import com.usacheow.coreui.fragments.ContainerFragment
 

@@ -1,15 +1,9 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.os.Bundle
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
-import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.fragments.SimpleModalFragment
-import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.appdemo.databinding.FragmentExampleModalBinding
 import com.usacheow.coreui.utils.view.navigation
-import com.usacheow.demo.databinding.FragmentExampleBinding
-import com.usacheow.demo.databinding.FragmentExampleModalBinding
-import com.usacheow.demo.databinding.FragmentFontsBinding
 
 class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {
 

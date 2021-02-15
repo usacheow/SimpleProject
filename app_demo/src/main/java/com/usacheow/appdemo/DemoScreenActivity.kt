@@ -1,4 +1,4 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

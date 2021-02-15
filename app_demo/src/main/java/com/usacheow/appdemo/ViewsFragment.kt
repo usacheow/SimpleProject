@@ -1,4 +1,4 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
@@ -6,11 +6,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.list.Filter
-import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
-import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doWithTransitionOnParentView
-import com.usacheow.demo.databinding.FragmentViewsBinding
+import com.usacheow.appdemo.databinding.FragmentViewsBinding
+import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
+import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 
 class ViewsFragment : SimpleFragment<FragmentViewsBinding>() {
 

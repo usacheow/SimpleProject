@@ -16,6 +16,7 @@ fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: Padd
         insets
     }
 //    requestApplyInsetsWhenAttached()
+    ViewCompat.requestApplyInsets(this)
 }
 
 fun View.requestApplyInsetsWhenAttached() {

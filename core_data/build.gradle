@@ -1,32 +1,19 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+apply from: "$project.rootDir/configs.gradle"
 
-apply from: "$project.rootDir/dependencies.gradle"
+applyAndroidLibrary(this)
+applyAndroidCommon(this)
+applyDagger(this)
 
 android {
-
-    compileSdkVersion androidCompileSdkVersion
-
     defaultConfig {
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
-
         buildConfigField("String", "ENDPOINT", '"https://stub.com/api/v1/"')
     }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependencies.values()
-
     implementation firebaseDependencies.values()
 
     api networkDependencies.values()
-
-    implementation daggerDependency
-    kapt kaptDaggerDependency
 
     implementation roomDependencies.values()
     kapt kaptRoomDependency

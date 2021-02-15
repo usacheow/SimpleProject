@@ -1,40 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+apply from: "$project.rootDir/configs.gradle"
 
-apply from: "$project.rootDir/dependencies.gradle"
-
-android {
-
-    compileSdkVersion androidCompileSdkVersion
-
-    defaultConfig {
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
-
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
+applyAndroidLibrary(this)
+applyAndroidCommon(this)
+applyDagger(this)
+applyLifecycle(this)
+applyTest(this)
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependencies.values()
-
     implementation project(':core_mediator')
     implementation project(':core_data')
     implementation project(':core_ui')
@@ -43,16 +15,4 @@ dependencies {
     implementation utilsDependencies.values()
 
     implementation firebaseDependencies.values()
-
-    implementation lifecycleDependency
-    kapt kaptLifecycleDependency
-
-    implementation daggerDependency
-    kapt kaptDaggerDependency
-    implementation daggerViewModelDependency
-    kapt kaptDaggerViewModelDependency
-    kaptAndroidTest kaptDaggerViewModelDependency
-
-    testImplementation project(':core_unit_test')
-    androidTestImplementation uiTestDependencies.values()
 }

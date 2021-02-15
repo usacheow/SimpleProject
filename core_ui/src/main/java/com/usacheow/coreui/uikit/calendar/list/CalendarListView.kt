@@ -16,6 +16,7 @@ import com.usacheow.coreui.uikit.calendar.CalendarGenerator
 import com.usacheow.coreui.uikit.calendar.MonthNameItem
 import com.usacheow.coreui.utils.date.DateFormat
 import com.usacheow.coreui.utils.values.*
+import com.usacheow.coreui.utils.view.dimen
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.coreui.utils.view.updateMargins
@@ -43,8 +44,8 @@ class CalendarListView
         }
         post {
             updatePadding(
-                left = resources.getDimension(R.dimen.left_right_margin).toInt(),
-                right = resources.getDimension(R.dimen.left_right_margin).toInt(),
+                left = dimen(R.dimen.left_right_margin).toInt(),
+                right = dimen(R.dimen.left_right_margin).toInt(),
             )
         }
     }

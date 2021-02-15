@@ -1,44 +1,20 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-
+apply from: "$project.rootDir/configs.gradle"
 apply from: "$project.rootDir/build_script/version.gradle"
 apply from: "$project.rootDir/build_script/build_types.gradle"
 apply from: "$project.rootDir/build_script/ktlint.gradle"
-apply from: "$project.rootDir/dependencies.gradle"
+
+applyAndroidApp(this)
+applyAndroidCommon(this)
+applyLifecycle(this)
+applyTest(this)
 
 android {
 
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
-        applicationId applicationPackage
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
         versionCode configVersionCode()
-
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    kotlin {
-        kapt {
-            useBuildCache = true
-        }
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        applicationId applicationPackage
     }
 
     signingConfigs {
@@ -79,20 +55,10 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependencies.values()
-
     implementation project(':core_data')
     implementation project(':core_ui')
 
     implementation cameraxDependencies.values()
 
     implementation firebaseDependencies.values()
-
-    implementation lifecycleDependency
-    kapt kaptLifecycleDependency
-
-    testImplementation project(':core_unit_test')
-    androidTestImplementation uiTestDependencies.values()
 }

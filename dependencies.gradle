@@ -5,6 +5,7 @@ ext {
     applicationPackage = "com.usacheow.simpleapp"
 
     coroutinesVersion = '1.1.1'
+    coreLibraryDesugaringVersion = "1.1.1"
 
     androidxVersion = '1.1.0'
     androidxCoreVersion = '1.5.0-alpha02'
@@ -55,6 +56,8 @@ ext {
     espressoVersion = '3.1.0'
     mockitoVersion = '2.7.22'
     truthVersion = '0.34'
+
+    coreLibraryDesugaringDependency = "com.android.tools:desugar_jdk_libs:$coreLibraryDesugaringVersion"
 
     kotlinDependencies = [
             kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",

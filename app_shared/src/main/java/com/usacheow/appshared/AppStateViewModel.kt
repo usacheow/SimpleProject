@@ -1,4 +1,4 @@
-package com.usacheow.app_shared
+package com.usacheow.appshared
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
-import kotlinx.coroutines.flow.flow
 
 class AppStateViewModel
 @ViewModelInject constructor(

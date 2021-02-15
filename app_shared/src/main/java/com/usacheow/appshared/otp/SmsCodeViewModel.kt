@@ -1,4 +1,4 @@
-package com.usacheow.app_shared.otp
+package com.usacheow.appshared.otp
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.app_shared.R
+import com.usacheow.appshared.R
 import com.usacheow.coreui.livedata.ActionLiveData
 import com.usacheow.coreui.livedata.SimpleAction
 import com.usacheow.coreui.livedata.postValue

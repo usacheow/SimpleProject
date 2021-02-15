@@ -1,4 +1,4 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
@@ -9,7 +9,6 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.button.SimpleButtonItem
 import com.usacheow.coreui.uikit.button.SimpleOutlinedButtonItem
 import com.usacheow.coreui.uikit.button.SimpleTextButtonItem
-import com.usacheow.coreui.uikit.calendar.widget.CalendarItem
 import com.usacheow.coreui.uikit.decoration.DividerItem
 import com.usacheow.coreui.uikit.header.HeaderWithActionItem
 import com.usacheow.coreui.uikit.information.SmallInfoCardItem
@@ -17,9 +16,8 @@ import com.usacheow.coreui.uikit.listitem.ActionItem
 import com.usacheow.coreui.uikit.listitem.ActionSelectionType
 import com.usacheow.coreui.uikit.listitem.OperationItem
 import com.usacheow.coreui.uikit.utils.IconState
-import com.usacheow.coreui.utils.values.TODAY
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.demo.databinding.FragmentWidgetsBinding
+import com.usacheow.appdemo.databinding.FragmentWidgetsBinding
 
 class WidgetsFragment : SimpleFragment<FragmentWidgetsBinding>() {
 

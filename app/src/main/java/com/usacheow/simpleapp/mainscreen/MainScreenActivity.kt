@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
-import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.BillingActivity
 import com.usacheow.coreui.base.IContainer
@@ -12,7 +12,6 @@ import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
-import com.usacheow.featurehello.databinding.ActivityHelloBinding
 import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 

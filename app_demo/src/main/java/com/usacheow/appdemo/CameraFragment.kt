@@ -1,4 +1,4 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.Manifest
 import android.content.Intent
@@ -20,7 +20,7 @@ import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
 import com.usacheow.coreui.utils.system.checkPermissions
 import com.usacheow.coreui.utils.view.doWithTransition
-import com.usacheow.demo.databinding.FragmentCameraBinding
+import com.usacheow.appdemo.databinding.FragmentCameraBinding
 import java.io.File
 import java.nio.ByteBuffer
 import java.util.*

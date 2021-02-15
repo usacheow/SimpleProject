@@ -1,41 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+apply from: "$project.rootDir/configs.gradle"
 
-apply from: "$project.rootDir/dependencies.gradle"
-
-android {
-
-    compileSdkVersion androidCompileSdkVersion
-
-    defaultConfig {
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
-
-        vectorDrawables.useSupportLibrary = true
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
+applyAndroidLibrary(this)
+applyAndroidCommon(this)
+applyDagger(this)
+applyLifecycle(this)
+applyTest(this)
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation kotlinDependencies.values()
-
     api androidxDependencies.values()
     api uiDependencies.values()
 
@@ -48,10 +19,4 @@ dependencies {
 
     implementation glideDependency
     kapt kaprGlideDependency
-
-    implementation lifecycleDependency
-    kapt kaptLifecycleDependency
-
-    implementation daggerDependency
-    kapt kaptDaggerDependency
 }

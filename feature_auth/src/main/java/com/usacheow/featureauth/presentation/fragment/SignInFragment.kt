@@ -9,7 +9,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import com.usacheow.app_shared.AppStateViewModel
+import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged

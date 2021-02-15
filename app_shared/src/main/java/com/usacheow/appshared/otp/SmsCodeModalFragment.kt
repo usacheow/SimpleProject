@@ -1,17 +1,14 @@
-package com.usacheow.app_shared.otp
+package com.usacheow.appshared.otp
 
 import android.os.Bundle
 import android.text.InputFilter
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import com.usacheow.app_shared.R
-import com.usacheow.app_shared.databinding.FragmentSmsCodeBinding
+import com.usacheow.appshared.R
+import com.usacheow.appshared.databinding.FragmentSmsCodeBinding
 import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.utils.view.doOnClick
 import dagger.hilt.android.AndroidEntryPoint

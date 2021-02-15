@@ -1,6 +1,6 @@
 package com.usacheow.featureauth.presentation.router
 
-import com.usacheow.app_shared.otp.SmsCodeModalFragment
+import com.usacheow.appshared.otp.SmsCodeModalFragment
 import com.usacheow.coreui.base.Router
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment

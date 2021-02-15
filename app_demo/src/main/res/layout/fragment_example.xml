@@ -13,10 +13,11 @@
         android:id="@+id/listView"
         android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
+            android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -80,13 +81,23 @@
                 android:background="?selectableItemBackground" />
 
             <TextView
+                android:id="@+id/bottomSheet"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="6. Bottom sheet"
+                android:background="?selectableItemBackground" />
+
+            <TextView
                 android:id="@+id/modalScreen"
                 style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="6. Modal Fragment"
+                android:text="7. Modal Fragment"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -129,4 +140,38 @@
                 android:background="?selectableItemBackground" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.usacheow.coreui.uikit.SimpleBottomSheetLayout
+        android:id="@+id/bottomSheetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/elevation_4"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/left_right_margin">
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bottom" />
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sheet" />
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.usacheow.coreui.uikit.SimpleBottomSheetLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

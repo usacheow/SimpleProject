@@ -1,13 +1,12 @@
-package com.usacheow.demo
+package com.usacheow.appdemo
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.fragments.SimpleModalFragment
 import com.usacheow.coreui.uikit.calendar.list.CalendarListItem
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.demo.databinding.FragmentCalendarListBinding
+import com.usacheow.appdemo.databinding.FragmentCalendarListBinding
 import java.time.LocalDate
 
 class CalendarListFragment : SimpleFragment<FragmentCalendarListBinding>() {
