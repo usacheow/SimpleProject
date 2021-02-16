@@ -1,10 +1,7 @@
 package com.usacheow.appshared.otp
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.appshared.R
 import com.usacheow.coreui.livedata.ActionLiveData
@@ -12,18 +9,19 @@ import com.usacheow.coreui.livedata.SimpleAction
 import com.usacheow.coreui.livedata.postValue
 import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.viewmodels.SimpleViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val EMPTY_MESSAGE = ""
 private const val EMPTY_CODE = ""
 private const val SMS_CODE_TIMEOUT_SECONDS = 60L
 
-class SmsCodeViewModel
-@ViewModelInject constructor(
+@HiltViewModel
+class SmsCodeViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
     private var currentCode = ""

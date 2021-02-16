@@ -2,6 +2,7 @@ package com.usacheow.coreui.utils.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import com.usacheow.coreui.base.IBackListener
 import com.usacheow.coreui.base.IContainer
 import java.io.Serializable
@@ -50,13 +51,12 @@ class MultiStackHistoryManager(
     }
 
     fun resetSection() {
-        fragmentManager.inTransaction {
+        fragmentManager.commit {
             val activeFragmentTag = sections[activeSectionNumber]
             val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
             if (activeFragment is IContainer) {
                 activeFragment.reset()
             }
-            this
         }
     }
 
@@ -88,10 +88,9 @@ class MultiStackHistoryManager(
             null
         }
 
-        inTransaction {
+        commit {
             activeFragment?.let { hide(it) }
             add(transactionContainerId, nextFragment, nextFragment.hashTag())
-            this
         }
     }
 
@@ -100,10 +99,9 @@ class MultiStackHistoryManager(
         val activeFragment = findFragmentByTag(activeFragmentTag)
         val nextFragment = findFragmentByTag(nextFragmentTag)
 
-        inTransaction {
+        commit {
             activeFragment?.let { hide(it) }
             nextFragment?.let { show(it) }
-            this
         }
     }
 

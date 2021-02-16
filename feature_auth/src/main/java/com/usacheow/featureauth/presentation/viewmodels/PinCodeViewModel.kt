@@ -1,18 +1,16 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coreui.livedata.ActionLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class PinCodeViewModel
-@ViewModelInject constructor(
+@HiltViewModel
+class PinCodeViewModel @Inject constructor(
     private val storage: Storage,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     val isFingerprintAllow: LiveData<Boolean> get() = _fingerprintAllowLiveData

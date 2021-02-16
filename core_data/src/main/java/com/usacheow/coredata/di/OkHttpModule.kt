@@ -9,7 +9,7 @@ import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +20,7 @@ private const val TIMEOUT_CONNECTION_SECONDS = 20L
 private const val TIMEOUT_IO_OPERATION = 15L
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class OkHttpModule {
 
     @Provides

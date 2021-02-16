@@ -1,37 +1,25 @@
 package com.usacheow.coreui.delegate
 
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.transition.TransitionSet
+import androidx.fragment.app.commit
 import com.usacheow.coreui.R
 import com.usacheow.coreui.base.IBackListener
-import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.navigation.addSharedElements
-import com.usacheow.coreui.utils.navigation.inTransaction
-import com.usacheow.coreui.utils.navigation.replaceFragmentIn
-import com.usacheow.coreui.utils.system.ifSupportLollipop
 
 class ContainerDelegate(
     private val initFragmentTag: String
 ) {
 
     fun onCreate(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {
-//        if (fragmentManager.findFragmentByTag(INIT_FRAGMENT_HASH_TAG) == null) {
         if (fragmentManager.fragments.isEmpty()) {
-            fragmentManager.replaceFragmentIn(R.id.fragmentContainer, getInitFragment(), false, initFragmentTag)
+            fragmentManager.commit {
+                replace(R.id.fragmentContainer, getInitFragment(), initFragmentTag)
+            }
         }
     }
 
     fun show(fragmentManager: FragmentManager, fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-//        val activeFragment = fragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        fragmentManager.inTransaction {
-//            ifSupportLollipop {
-//                fragment.sharedElementEnterTransition = transition
-//                fragment.sharedElementReturnTransition = transition
-//            }
-//            addSharedElements(activeFragment as? SimpleFragment)
+        fragmentManager.commit {
             if (needAnimate) {
                 setCustomAnimations(
                     R.anim.anim_enter_from_right,
@@ -42,7 +30,6 @@ class ContainerDelegate(
             }
             replace(R.id.fragmentContainer, fragment)
             if (needAddToBackStack) addToBackStack(null)
-            this
         }
     }
 

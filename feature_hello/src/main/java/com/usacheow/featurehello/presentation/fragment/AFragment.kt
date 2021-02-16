@@ -65,5 +65,8 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     private fun openNextScreen() {
         viewModel.x++
         getContainer { show(BFragment()) }
+
+        childFragmentManager
+        parentFragmentManager
     }
 }

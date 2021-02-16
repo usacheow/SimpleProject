@@ -1,10 +1,7 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ifError
 import com.usacheow.coredata.network.ifSuccess
@@ -15,17 +12,18 @@ import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
 private const val CONFIRM_CODE_LENGTH = 4
 
-class SignInWithPhoneViewModel
-@ViewModelInject constructor(
+@HiltViewModel
+class SignInWithPhoneViewModel @Inject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
     val codeConfirmMessage: LiveData<String> get() = _codeConfirmMessageLiveData

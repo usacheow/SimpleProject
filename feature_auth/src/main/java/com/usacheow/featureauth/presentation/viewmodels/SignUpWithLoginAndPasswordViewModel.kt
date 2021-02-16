@@ -1,10 +1,7 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ifError
 import com.usacheow.coredata.network.ifSuccess
@@ -14,14 +11,15 @@ import com.usacheow.coreui.livedata.postValue
 import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.viewmodels.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpWithLoginAndPasswordViewModel
-@ViewModelInject constructor(
+@HiltViewModel
+class SignUpWithLoginAndPasswordViewModel @Inject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : SimpleViewModel() {
 
     val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData

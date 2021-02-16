@@ -94,12 +94,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), SimpleLi
         }
     }
 
-    fun getTopLevelContainer(action: IContainer.() -> Unit) {
-        if (requireActivity() is IContainer) {
-            (requireActivity() as IContainer).action()
-        }
-    }
-
     data class Params<VIEW_BINDING : ViewBinding>(
         var needTransparentBars: Boolean = true,
         var needWhiteIcons: Boolean = false,

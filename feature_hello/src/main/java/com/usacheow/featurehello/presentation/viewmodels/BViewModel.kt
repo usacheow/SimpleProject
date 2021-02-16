@@ -1,15 +1,13 @@
 package com.usacheow.featurehello.presentation.viewmodels
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.usacheow.coreui.resources.ResourcesWrapper
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class BViewModel
-@ViewModelInject constructor(
+@HiltViewModel
+class BViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     var x = 0
