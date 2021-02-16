@@ -12,7 +12,9 @@ import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.utils.view.enableLightMode
 import com.usacheow.coreui.utils.view.enableNightMode
 import com.usacheow.coreui.utils.view.enableSystemMode
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DemoScreenActivity : SimpleActivity<FragmentContainerBinding>(), IContainer {
 
     override val params = Params(

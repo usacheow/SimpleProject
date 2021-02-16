@@ -7,11 +7,3 @@ inline fun ifSupportLollipop(action: () -> Unit) {
         action()
     }
 }
-
-inline fun ifSupportMarshmallow(action: () -> Unit): Boolean {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        action()
-        return true
-    }
-    return false
-}

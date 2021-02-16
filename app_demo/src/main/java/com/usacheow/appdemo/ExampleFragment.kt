@@ -6,10 +6,12 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.SimpleBottomSheetLayout
-import com.usacheow.coreui.utils.view.*
 import com.usacheow.appdemo.databinding.FragmentExampleBinding
+import com.usacheow.appshared.otp.SmsCodeModalFragment
+import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
+import com.usacheow.coreui.utils.view.*
+import com.usacheow.featureonboarding.OnBoardingFragment
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
@@ -40,16 +42,33 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
         }
 
         binding.fontsScreen.doOnClick { show(FontsFragment.newInstance()) }
-        binding.widgetsScreen.doOnClick { show(WidgetsFragment.newInstance()) }
-        binding.viewsScreen.doOnClick { show(ViewsFragment.newInstance()) }
+        binding.buttonsScreen.doOnClick { show(ButtonsFragment.newInstance()) }
+        binding.textInputsScreen.doOnClick { show(TextInputsFragment.newInstance()) }
+
+        binding.actionItemsScreen.doOnClick { show(ActionItemFragment.newInstance()) }
+        binding.listTileItemScreen.doOnClick { show(ListTileFragment.newInstance()) }
+        binding.chipsGroupScreen.doOnClick { show(ChipsGroupFragment.newInstance()) }
+        binding.radioTagListScreen.doOnClick { show(RadioTagListFragment.newInstance()) }
+        binding.informationItemsScreen.doOnClick { show(InformationItemsFragment.newInstance()) }
+
+        binding.errorMessageViewScreen.doOnClick { show(ErrorMessageFragment.newInstance()) }
+        binding.numPadViewScreen.doOnClick { show(NumPadFragment.newInstance()) }
+
         binding.materialDialog.doOnClick { showMaterialDialog() }
         binding.bottomDialog.doOnClick { ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT") }
         binding.bottomSheet.doOnClick { binding.bottomSheetLayout.setCollapseState() }
         binding.modalScreen.doOnClick { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") }
-        binding.cameraScreen.doOnClick { show(CameraFragment.newInstance()) }
+        binding.onboardingScreen.doOnClick { show(OnBoardingFragment.newInstance()) }
+
+        binding.smsCodeScreen.doOnClick { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") }
+
         binding.calendarListScreen.doOnClick { show(CalendarListFragment.newInstance()) }
         binding.calendarWidgetScreen.doOnClick { show(CalendarWidgetFragment.newInstance()) }
 
+        setupBottomSheet()
+    }
+
+    private fun setupBottomSheet() {
         binding.bottomSheetLayout.setHiddenState()
         binding.bottomSheetLayout.setup(
             SimpleBottomSheetLayout.BottomSheetHeight.QUARTER_SIZE,

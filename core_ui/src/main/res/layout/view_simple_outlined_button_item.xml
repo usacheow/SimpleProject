@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreui.uikit.button.SimpleOutlinedButton style="@style/SimpleButtonOutlined" />
+<com.usacheow.coreui.uikit.atom.SimpleOutlinedButton style="@style/SimpleButtonOutlined" />

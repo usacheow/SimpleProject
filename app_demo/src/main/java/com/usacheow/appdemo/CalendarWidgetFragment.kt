@@ -4,17 +4,17 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.calendar.widget.CalendarItem
+import com.usacheow.coreui.uikit.organism.calendar.widget.CalendarItem
 import com.usacheow.coreui.utils.values.TODAY
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.appdemo.databinding.FragmentWidgetsBinding
 
-class CalendarWidgetFragment : SimpleFragment<FragmentWidgetsBinding>() {
+class CalendarWidgetFragment : SimpleFragment<FragmentListBinding>() {
 
     override val params = Params(
-        viewBindingProvider = FragmentWidgetsBinding::inflate,
+        viewBindingProvider = FragmentListBinding::inflate,
     )
 
     companion object {

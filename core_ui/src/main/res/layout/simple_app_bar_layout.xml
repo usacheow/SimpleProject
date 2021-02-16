@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreui.uikit.header.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreui.uikit.organism.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appBarLayout"
@@ -22,4 +22,4 @@
             style="@style/SimpleToolbar"
             tools:title="Title"/>
     </com.google.android.material.appbar.CollapsingToolbarLayout>
-</com.usacheow.coreui.uikit.header.SimpleAppBarLayout>
+</com.usacheow.coreui.uikit.organism.SimpleAppBarLayout>

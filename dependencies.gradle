@@ -20,7 +20,7 @@ ext {
     gridLayoutVersion = '1.0.0'
     flexboxVersion = '2.0.1'
     browserVersion = '1.0.0'
-    biometricVersion = '1.0.1'
+    biometricVersion = '1.2.0-alpha02'
     roundedImageVersion = '2.3.0'
     decoroVersion = '1.5.0'
     shimmerVersion = '0.5.0'
@@ -122,7 +122,7 @@ ext {
 
     utilsDependencies = [
             browser:         "androidx.browser:browser:$browserVersion",
-            biometric:       "androidx.biometric:biometric:$biometricVersion",
+            biometric:       "androidx.biometric:biometric-ktx:$biometricVersion",
     ]
 
 

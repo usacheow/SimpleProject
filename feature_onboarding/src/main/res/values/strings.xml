@@ -2,11 +2,11 @@
 
     <string name="on_boarding_skip">Skip</string>
     <string name="on_boarding_next">Next</string>
-    <string name="on_boarding_title_1">Canned reply templates</string>
-    <string name="on_boarding_description_1">Save your time and use quick access to your permanent phrases</string>
-    <string name="on_boarding_title_2">Type phrases with a tap</string>
-    <string name="on_boarding_description_2">Do not waste time on a set of long phrases and type them 1 click</string>
-    <string name="on_boarding_title_3">Quick import phones</string>
-    <string name="on_boarding_description_3">Keep your contacts handy</string>
+    <string name="on_boarding_title_1">Title 1</string>
+    <string name="on_boarding_description_1">Description 1</string>
+    <string name="on_boarding_title_2">Title 2</string>
+    <string name="on_boarding_description_2">Description 2</string>
+    <string name="on_boarding_title_3">Title 3</string>
+    <string name="on_boarding_description_3">Description 3</string>
 
 </resources>

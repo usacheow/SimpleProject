@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreui.uikit.button.SimpleButton style="@style/SimpleButton" />
+<com.usacheow.coreui.uikit.atom.SimpleButton style="@style/SimpleButton" />

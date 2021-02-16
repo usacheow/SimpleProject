@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -28,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="Components" />
+                android:text="Atoms" />
 
             <TextView
                 android:id="@+id/fontsScreen"
@@ -37,28 +38,122 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="1. Fonts Fragment"
+                android:text="1. Fonts"
                 android:background="?selectableItemBackground" />
 
             <TextView
-                android:id="@+id/widgetsScreen"
+                android:id="@+id/buttonsScreen"
                 style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="2. Widgets Fragment"
+                android:text="2. Buttons"
                 android:background="?selectableItemBackground" />
 
             <TextView
-                android:id="@+id/viewsScreen"
+                android:id="@+id/textInputsScreen"
                 style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="3. Views Fragment"
+                android:text="3. Text Inputs"
                 android:background="?selectableItemBackground" />
+
+            <TextView
+                style="@style/TextOverline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="Molecules" />
+
+            <TextView
+                android:id="@+id/actionItemsScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="1. Action Item"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/listTileItemScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="2. List Tile Item"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/chipsGroupScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="3. Chips Group"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/radioTagListScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="4. Radio Tag List"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/informationItemsScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="5. Information Items"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                style="@style/TextOverline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="Organisms" />
+
+            <TextView
+                android:id="@+id/errorMessageViewScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="1. Error Message View"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/numPadViewScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="2. Num Pad View"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                style="@style/TextOverline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="Templates" />
 
             <TextView
                 android:id="@+id/materialDialog"
@@ -67,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="4. Material Dialog"
+                android:text="1. Material Dialog"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -77,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="5. Bottom Dialog"
+                android:text="2. Bottom Dialog"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -87,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="6. Bottom sheet"
+                android:text="3. Bottom sheet"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -97,7 +192,17 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="7. Modal Fragment"
+                android:text="4. Modal Fragment"
+                android:background="?selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/onboardingScreen"
+                style="@style/TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp"
+                android:text="5. Onboarding Fragment"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -106,17 +211,16 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Screens" />
+                android:text="Pages" />
 
             <TextView
-                android:id="@+id/cameraScreen"
+                android:id="@+id/smsCodeScreen"
                 style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="1. Camera Example Fragment"
+                android:text="1. SMS Code Fragment"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -126,7 +230,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="2. Calendar List (in progress)"
+                android:text="1. Calendar List"
+                android:visibility="gone"
                 android:background="?selectableItemBackground" />
 
             <TextView
@@ -136,17 +241,19 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="3. Calendar Widget (in progress)"
+                android:text="2. Calendar Widget"
+                android:visibility="gone"
                 android:background="?selectableItemBackground" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.usacheow.coreui.uikit.SimpleBottomSheetLayout
+    <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
         android:id="@+id/bottomSheetLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="@dimen/elevation_4"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:visibility="gone">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -173,5 +280,5 @@
                 android:layout_height="wrap_content"
                 android:text="example" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </com.usacheow.coreui.uikit.SimpleBottomSheetLayout>
+    </com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

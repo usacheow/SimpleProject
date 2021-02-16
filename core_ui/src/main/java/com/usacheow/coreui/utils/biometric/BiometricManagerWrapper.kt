@@ -2,6 +2,7 @@ package com.usacheow.coreui.utils.biometric
 
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
+import androidx.biometric.auth.AuthPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 

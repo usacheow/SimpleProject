@@ -6,6 +6,7 @@ apply from: "$project.rootDir/build_script/ktlint.gradle"
 applyAndroidApp(this)
 applyAndroidCommon(this)
 applyLifecycle(this)
+applyDagger(this)
 applyTest(this)
 
 android {
@@ -57,6 +58,9 @@ android {
 dependencies {
     implementation project(':core_data')
     implementation project(':core_ui')
+    implementation project(':app_shared')
+
+    implementation project(':feature_onboarding')
 
     implementation cameraxDependencies.values()
 

@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.listitem.ActionItem
+import com.usacheow.coreui.uikit.molecule.ActionItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.databinding.FragmentABinding
