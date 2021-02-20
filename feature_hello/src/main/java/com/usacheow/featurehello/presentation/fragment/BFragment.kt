@@ -2,12 +2,12 @@ package com.usacheow.featurehello.presentation.fragment
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.molecule.ActionItem
+import com.usacheow.coreui.uikit.molecule.ListTileItem
+import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featurehello.R
 import com.usacheow.featurehello.databinding.FragmentBBinding
@@ -26,9 +26,9 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     private val bViewModel by viewModels<BViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.listView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-        )
+//        binding.listView.updatePadding(
+//            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+//        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -41,24 +41,24 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
 
         binding.listView.layoutManager = LinearLayoutManager(context)
         binding.listView.adapter = ViewTypesAdapter(listOf(
-            ActionItem(title = "1 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "2 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "3 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "4 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "5 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "6 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "7 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "8 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "9 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "10 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "11 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "12 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "13 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "14 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "15 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "16 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "17 Go to next screen", onItemClicked = ::openNextScreen),
-            ActionItem(title = "18 Go to next screen", onItemClicked = ::openNextScreen)
+            ListTileItem(title = TextString("1 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("2 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("3 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("4 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("5 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("6 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("7 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("8 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("9 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("10 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("11 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("12 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("13 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("14 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("15 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("16 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("17 Go to next screen"), onItemClicked = ::openNextScreen),
+            ListTileItem(title = TextString("18 Go to next screen"), onItemClicked = ::openNextScreen)
         ))
     }
 

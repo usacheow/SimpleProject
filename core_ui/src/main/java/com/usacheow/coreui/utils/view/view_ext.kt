@@ -2,6 +2,7 @@ package com.usacheow.coreui.utils.view
 
 import android.view.View
 import android.view.ViewGroup
+import com.usacheow.coreui.utils.*
 
 fun View.makeVisible() {
     visibility = View.VISIBLE
@@ -29,17 +30,6 @@ fun View.resize(widthPx: Int = width, heightPx: Int = height) {
     }
 }
 
-fun View.updateMargins(leftPx: Int? = null, topPx: Int? = null, rightPx: Int? = null, bottomPx: Int? = null) {
-    layoutParams = (layoutParams as ViewGroup.MarginLayoutParams).apply {
-        setMargins(
-            leftPx ?: leftMargin,
-            topPx ?: topMargin,
-            rightPx ?: rightMargin,
-            bottomPx ?: bottomMargin
-        )
-    }
-}
-
 /*Set ?selectableItemBackground programmatically
 
 with(TypedValue()) {
@@ -63,3 +53,8 @@ fun View.setListenerIfNeed(listener: (() -> Unit)?) {
         true
     }
 }
+
+fun View.setListenerIfNeed(isShimmer: Boolean, listener: (() -> Unit)?) = setListenerIfNeed(when {
+    isShimmer -> null
+    else -> listener
+})

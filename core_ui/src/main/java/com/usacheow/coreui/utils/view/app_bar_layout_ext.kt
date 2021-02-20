@@ -2,7 +2,9 @@ package com.usacheow.coreui.utils.view
 
 import android.animation.ValueAnimator
 import android.os.Build
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
 
 private const val SMALL_ANIMATION_DURATION_IN_MILLIS = 200L
@@ -25,4 +27,9 @@ fun AppBarLayout.animateElevation(
             addUpdateListener { elevation = it.animatedValue as Float }
             start()
         }
+}
+
+fun Toolbar.navigation(@DrawableRes iconId: Int, listener: () -> Unit) {
+    setNavigationIcon(iconId)
+    setNavigationOnClickListener { listener() }
 }

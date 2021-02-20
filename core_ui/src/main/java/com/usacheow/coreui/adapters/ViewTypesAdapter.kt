@@ -8,10 +8,8 @@ import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 
 class ViewTypesAdapter(
-    var entities: List<ViewType> = emptyList()
+    private var entities: List<ViewType> = emptyList()
 ) : RecyclerView.Adapter<ViewTypesAdapter.ViewTypesViewHolder>() {
-
-    var onPaginationAction: (() -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypesViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
@@ -20,10 +18,6 @@ class ViewTypesAdapter(
 
     override fun onBindViewHolder(holder: ViewTypesViewHolder, position: Int) {
         holder.populate(entities[position])
-        if (itemCount - position == 10) {
-            onPaginationAction?.invoke()
-            onPaginationAction = null
-        }
     }
 
     override fun getItemCount(): Int {
@@ -39,9 +33,7 @@ class ViewTypesAdapter(
 
     fun getData() = entities
 
-    class ViewTypesViewHolder(
-        itemView: View
-    ) : RecyclerView.ViewHolder(itemView), Populatable<ViewType> {
+    class ViewTypesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Populatable<ViewType> {
 
         override fun populate(model: ViewType) {
             (itemView as Populatable<ViewType>).populate(model)

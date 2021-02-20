@@ -3,20 +3,19 @@ package com.usacheow.coreui.uikit.molecule
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import androidx.annotation.ColorRes
-import androidx.core.view.isVisible
+import android.widget.ImageView
+import androidx.core.view.updatePadding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 import com.usacheow.coreui.databinding.ViewActionItemBinding
-import com.usacheow.coreui.utils.EmptyState
-import com.usacheow.coreui.utils.ImageInfo
-import com.usacheow.coreui.utils.populate
+import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.*
 
-private const val TITLE_SHIMMER_WIDTH_DP = 180
+private const val TEXT_SHIMMER_WIDTH_DP = 180
+private const val ICON_PADDING_DP = 4
+private const val DEFAULT_PADDING_DP = 0
 
 class ActionItemView
 @JvmOverloads constructor(
@@ -25,97 +24,93 @@ class ActionItemView
     defStyleAttr: Int = 0
 ) : ShimmerFrameLayout(context, attrs, defStyleAttr), Populatable<ActionItem> {
 
-    private var visibleControlButton: CompoundButton? = null
-    private var model: ActionItem? = null
-
     private val binding by lazy { ViewActionItemBinding.bind(this) }
 
+    private val textShimmerWidthPx by lazy { TEXT_SHIMMER_WIDTH_DP.toPx }
+
     override fun populate(model: ActionItem) {
+        populateImage(model)
+        populateTitle(model)
+        populateSubtitle(model)
+        populateClickListener(model)
+        setShimmer(model.isShimmer)
+    }
+
+    private fun populateClickListener(model: ActionItem) {
+        binding.switchView.makeGone()
+        binding.checkBox.makeGone()
+
         if (model.isShimmer) {
-            binding.actionIconView.makeGone()
-            binding.actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            binding.actionTitleLayout.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionSubtitleView.makeGone()
-
-            showShimmer(true)
+            setListenerIfNeed(null)
         } else {
-            binding.actionIconView.makeVisible()
-            binding.actionTitleView.background = null
-            binding.actionTitleLayout.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionSubtitleView.makeVisible()
-
-            hideShimmer()
-            showData(model)
-        }
-    }
-
-    private fun showData(model: ActionItem) {
-        this.model = model
-
-        binding.actionTitleView.text = model.title
-        model.titleColorResId?.let { binding.actionTitleView.setTextColor(color(it)) }
-        binding.actionSubtitleView.populate(model.subtitle)
-        model.subtitleColorResId?.let { binding.actionSubtitleView.setTextColor(color(it)) }
-        binding.actionIconView.populate(model.imageInfo)
-
-        binding.actionDragFlagView.isVisible = model.isDraggable
-        visibleControlButton = setupControl(model.isChecked, model.selectionType, model.onControlClicked)
-
-        if (model.onItemClicked == null && model.onControlClicked == null) {
-            setOnClickListener(null)
-            isEnabled = false
-            return
-        }
-
-        isEnabled = true
-        doOnClick {
-            model.onItemClicked?.invoke() ?: visibleControlButton?.performClick()
-        }
-    }
-
-    private fun setupControl(
-        isSelected: Boolean,
-        selectionType: ActionSelectionType,
-        onClicked: ((Boolean) -> Unit)?
-    ): CompoundButton? {
-        binding.actionSwitch.makeGone()
-        binding.actionCheckBox.makeGone()
-
-        return when (selectionType) {
-            ActionSelectionType.CHECK_BOX -> binding.actionCheckBox
-            ActionSelectionType.SWITCH -> binding.actionSwitch
-            ActionSelectionType.NONE -> null
-        }?.apply {
-            makeVisible()
-            isChecked = isSelected
-            setOnCheckedChangeListener { _, isChecked ->
-                model?.isChecked = isChecked
-                onClicked?.invoke(isChecked)
+            val visibleControlButton = when (model.selectionType) {
+                ActionSelectionType.CHECK_BOX -> binding.checkBox
+                ActionSelectionType.SWITCH -> binding.switchView
+            }.apply {
+                makeVisible()
+                isChecked = isSelected
+                setOnCheckedChangeListener { _, isChecked ->
+                    model.isChecked = isChecked
+                    model.onControlClicked.invoke(isChecked)
+                }
             }
+
+            setListenerIfNeed { visibleControlButton.performClick() }
+        }
+    }
+
+    private fun populateImage(model: ActionItem) = with (binding.imageView) {
+        fun ImageView.updatePadding(imageInfo: ImageInfo) {
+            val padding = when (imageInfo) {
+                is IconInfo -> ICON_PADDING_DP
+                else -> DEFAULT_PADDING_DP
+            }.toPx
+            updatePadding(padding, padding, padding, padding)
+        }
+
+        if (model.isShimmer) {
+            showCircleShimmer()
+            updatePadding(EmptyInfo())
+        } else {
+            hideShimmer(model.image)
+            updatePadding(model.image)
+        }
+    }
+
+    private fun populateTitle(model: ActionItem) = with (binding.titleView) {
+        if (model.isShimmer) {
+            showShimmer(widthPx = textShimmerWidthPx)
+        } else {
+            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+            apply(model.title)
+        }
+    }
+
+    private fun populateSubtitle(model: ActionItem) = with (binding.subtitleView) {
+        if (model.isShimmer) {
+            showShimmer(widthPx = textShimmerWidthPx)
+        } else {
+            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+            apply(model.subtitle)
         }
     }
 }
 
 data class ActionItem(
-    val imageInfo: ImageInfo = EmptyState(),
-    val title: String,
-    val subtitle: String? = null,
-    @ColorRes val titleColorResId: Int? = null,
-    @ColorRes val subtitleColorResId: Int? = null,
-    val isDraggable: Boolean = false,
+    val image: ImageInfo = EmptyInfo(),
+    val title: TextInfo,
+    val subtitle: TextInfo? = null,
     var isChecked: Boolean = false,
-    val selectionType: ActionSelectionType = ActionSelectionType.NONE,
-    val onItemClicked: (() -> Unit)? = null,
-    val onControlClicked: ((Boolean) -> Unit)? = null
+    val selectionType: ActionSelectionType = ActionSelectionType.CHECK_BOX,
+    val onControlClicked: (Boolean) -> Unit = {}
 ) : ViewType(R.layout.view_action_item) {
 
     companion object {
-        fun shimmer() = ActionItem(title = "").apply { isShimmer = true }
+        fun shimmer() = ActionItem(title = TextInfo(TextString(""))).apply { isShimmer = true }
     }
 }
 
 enum class ActionSelectionType {
     CHECK_BOX,
     SWITCH,
-    NONE
 }

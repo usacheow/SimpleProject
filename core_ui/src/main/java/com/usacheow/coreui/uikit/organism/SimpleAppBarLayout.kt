@@ -8,9 +8,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
+import com.usacheow.coreui.utils.MarginTop
+import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.navigation
-import com.usacheow.coreui.utils.view.updateMargins
 
 class SimpleAppBarLayout
 @JvmOverloads constructor(
@@ -36,8 +37,8 @@ class SimpleAppBarLayout
     }
 
     fun setInset(size: Int) {
-        binding.insetView.updateMargins(topPx = size)
-        binding.toolbar.updateMargins(topPx = size)
+        binding.insetView.updateMargins(MarginTop(size))
+        binding.toolbar.updateMargins(MarginTop(size))
     }
 
     fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {

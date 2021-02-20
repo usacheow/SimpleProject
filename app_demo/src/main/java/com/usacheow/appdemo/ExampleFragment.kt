@@ -31,7 +31,7 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
                 binding.header.toolbar.height + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             )
         }
-        binding.listView.updatePadding(
+        binding.buttonsLayout.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
         )
     }
@@ -47,8 +47,7 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
 
         binding.actionItemsScreen.doOnClick { show(ActionItemFragment.newInstance()) }
         binding.listTileItemScreen.doOnClick { show(ListTileFragment.newInstance()) }
-        binding.chipsGroupScreen.doOnClick { show(ChipsGroupFragment.newInstance()) }
-        binding.radioTagListScreen.doOnClick { show(RadioTagListFragment.newInstance()) }
+        binding.tagListScreen.doOnClick { show(TagListFragment.newInstance()) }
         binding.informationItemsScreen.doOnClick { show(InformationItemsFragment.newInstance()) }
 
         binding.errorMessageViewScreen.doOnClick { show(ErrorMessageFragment.newInstance()) }

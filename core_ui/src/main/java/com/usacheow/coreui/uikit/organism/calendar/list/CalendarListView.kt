@@ -26,7 +26,7 @@ class CalendarListView
         layoutManager = GridLayoutManager(context, DAYS_OF_WEEK).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int = when {
-                    viewTypesAdapter.entities[position] is MonthNameItem -> DAYS_OF_WEEK
+                    viewTypesAdapter.getData()[position] is MonthNameItem -> DAYS_OF_WEEK
 
                     else -> 1
                 }

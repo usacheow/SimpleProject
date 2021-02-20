@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.molecule.BadgeItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/SimpleShimmerLayout"
+    android:layout_width="wrap_content"
+    tools:shimmer_base_alpha="1">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/colorGreyCard"
+        app:cardCornerRadius="@dimen/radius_8"
+        app:cardElevation="@dimen/elevation_0">
+
+        <LinearLayout
+            android:id="@+id/clickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:padding="@dimen/left_right_margin">
+
+            <TextView
+                android:id="@+id/headerView"
+                style="@style/TextBody2_60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:maxWidth="156dp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                tools:text="@tools:sample/cities" />
+
+            <TextView
+                android:id="@+id/valueView"
+                style="@style/TextBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:maxWidth="156dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                tools:text="@tools:sample/us_zipcodes" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.usacheow.coreui.uikit.molecule.BadgeItemView>

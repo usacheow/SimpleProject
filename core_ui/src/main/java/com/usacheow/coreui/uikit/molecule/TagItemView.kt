@@ -5,10 +5,12 @@ import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.RadioViewType
+import com.usacheow.coreui.adapters.base.TagViewType
 import com.usacheow.coreui.databinding.ViewTagItemBinding
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.populate
+import com.usacheow.coreui.utils.view.setListenerIfNeed
 
 class TagItemView
 @JvmOverloads constructor(
@@ -18,16 +20,22 @@ class TagItemView
     private val binding by lazy { ViewTagItemBinding.bind(this) }
 
     override fun populate(model: TagItem) {
-        binding.tagItemNameView.populate(model.name)
+        binding.nameView.populate(model.name)
+        binding.nameView.setTextColor(color(when (model.isSelected) {
+            true -> model.selectedColor.text
+            false -> model.unselectedColor.text
+        }))
         setCardBackgroundColor(color(when (model.isSelected) {
-            true -> R.color.disabled
-            false -> R.color.colorDivider
+            true -> model.selectedColor.background
+            false -> model.unselectedColor.background
         }))
 
         if (model.isSelected) {
-            setOnClickListener(null)
+            setListenerIfNeed {
+                model.onSelectAction()
+            }
         } else {
-            setOnClickListener {
+            setListenerIfNeed {
                 model.onSelectAction()
                 model.onClickAction()
             }
@@ -36,6 +44,13 @@ class TagItemView
 }
 
 data class TagItem(
-    val name: String,
-    val onClickAction: () -> Unit
-) : RadioViewType(R.layout.view_tag_item)
+    val name: TextSource,
+    val unselectedColor: TagColor = TagColor(R.color.colorText, R.color.colorDivider),
+    val selectedColor: TagColor = TagColor(R.color.colorTextInverse, R.color.disabled),
+    val onClickAction: () -> Unit,
+) : TagViewType(R.layout.view_tag_item)
+
+data class TagColor(
+    val text: Int,
+    val background: Int,
+)

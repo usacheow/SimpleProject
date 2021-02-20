@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/SimpleShimmerLayout"
     android:padding="@dimen/left_right_margin"
-    android:background="?selectableItemBackground">
+    android:background="?selectableItemBackground"
+    tools:shimmer_base_alpha="1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,12 +14,13 @@
         android:gravity="center_vertical">
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/actionIconView"
+            android:id="@+id/imageView"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:scaleType="centerCrop"
             android:layout_marginEnd="@dimen/left_right_margin"
-            app:riv_corner_radius="@dimen/radius_16" />
+            app:riv_corner_radius="@dimen/radius_16"
+            tools:src="@tools:sample/avatars"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,34 +29,23 @@
             android:layout_gravity="center_vertical">
 
             <LinearLayout
-                android:id="@+id/actionTitleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/actionTitleView"
+                    android:id="@+id/titleView"
                     style="@style/TextBody1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:lines="1"
-                    tools:text="Title" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/actionDragFlagView"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="12dp"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_drag"
-                    app:tint="@color/colorIconSecondary"
-                    tools:visibility="visible" />
+                    tools:text="@tools:sample/full_names" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/actionSwitch"
+                    android:id="@+id/switchView"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:visibility="gone"
@@ -62,7 +53,7 @@
                     tools:visibility="visible" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/actionCheckBox"
+                    android:id="@+id/checkBox"
                     android:layout_width="32dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="12dp"
@@ -71,12 +62,12 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/actionSubtitleView"
+                android:id="@+id/subtitleView"
                 style="@style/TextBody2_60"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                tools:text="Subtitle" />
+                tools:text="@tools:sample/cities" />
         </LinearLayout>
     </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.ActionItemView>

@@ -7,13 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.atom.DividerItem
-import com.usacheow.coreui.uikit.atom.SimpleButtonItem
-import com.usacheow.coreui.uikit.atom.SimpleOutlinedButtonItem
-import com.usacheow.coreui.uikit.atom.SimpleTextButtonItem
 import com.usacheow.coreui.uikit.molecule.*
-import com.usacheow.coreui.utils.IconState
-import com.usacheow.coreui.utils.ImageState
+import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.PaddingValue
 
 class ActionItemFragment : SimpleFragment<FragmentListBinding>() {
@@ -43,36 +38,33 @@ class ActionItemFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             ActionItem(
-                title = "Title",
+                title = TextInfo(TextString("Title")),
             ),
 
             ActionItem(
-                title = "Title",
-                subtitle = "Subtitle",
+                title = TextInfo(TextString("Title")),
+                subtitle = TextInfo(TextString("Subtitle")),
+                selectionType = ActionSelectionType.SWITCH,
             ),
 
             ActionItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
-                subtitle = "Subtitle",
-            ),
-
-            ActionItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
-                subtitle = "Subtitle",
+                image = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextInfo(TextString("Title")),
+                subtitle = TextInfo(TextString("Subtitle")),
                 selectionType = ActionSelectionType.CHECK_BOX,
-                onItemClicked = {},
+                onControlClicked = {},
             ),
 
             ActionItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
-                subtitle = "Subtitle",
+                image = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextInfo(TextString("Title")),
+                subtitle = TextInfo(TextString("Subtitle")),
                 selectionType = ActionSelectionType.SWITCH,
                 isChecked = true,
                 onControlClicked = {},
             ),
+
+            ActionItem.shimmer(),
         ))
     }
 }

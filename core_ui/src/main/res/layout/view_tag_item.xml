@@ -5,20 +5,22 @@
     android:id="@+id/rootView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:minHeight="56dp"
     android:layout_margin="8dp"
     app:cardElevation="@dimen/elevation_0"
-    app:cardCornerRadius="@dimen/radius_4">
+    app:cardCornerRadius="@dimen/radius_4"
+    tools:cardBackgroundColor="@color/colorGreyCard">
 
     <TextView
-        android:id="@+id/tagItemNameView"
+        android:id="@+id/nameView"
         style="@style/TextBody2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:minWidth="112dp"
+        android:maxWidth="156dp"
         android:padding="20dp"
         android:lines="1"
+        android:ellipsize="end"
         android:gravity="center"
         android:background="?selectableItemBackgroundBorderless"
-        tools:text="Acco" />
+        tools:text="@tools:sample/lorem/random" />
 </com.usacheow.coreui.uikit.molecule.TagItemView>

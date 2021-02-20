@@ -3,18 +3,20 @@ package com.usacheow.coreui.uikit.molecule
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.updatePadding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 import com.usacheow.coreui.databinding.ViewListTileItemBinding
-import com.usacheow.coreui.utils.EmptyState
-import com.usacheow.coreui.utils.ImageInfo
-import com.usacheow.coreui.utils.populate
+import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.*
 
-private const val SUBTITLE_SHIMMER_WIDTH_DP = 120
+private const val TOP_DESCRIPTION_SHIMMER_WIDTH_DP = 120
 private const val TITLE_SHIMMER_WIDTH_DP = 200
+private const val ICON_PADDING_DP = 4
+private const val DEFAULT_PADDING_DP = 0
 
 class ListTileItemView
 @JvmOverloads constructor(
@@ -25,47 +27,83 @@ class ListTileItemView
 
     private val binding by lazy { ViewListTileItemBinding.bind(this) }
 
+    private val topDescriptionShimmerWidthPx by lazy { TOP_DESCRIPTION_SHIMMER_WIDTH_DP.toPx }
+    private val titleShimmerWidthPx by lazy { TITLE_SHIMMER_WIDTH_DP.toPx }
+
     override fun populate(model: ListTileItem) {
+        populateTitle(model)
+        populateTopDescription(model)
+        populateBottomDescription(model)
+        populateLeftIcon(model)
+        populateRightIcon(model)
+        setListenerIfNeed(model.isShimmer, model.onItemClicked)
+        setShimmer(model.isShimmer)
+    }
+
+    private fun populateTitle(model: ListTileItem) = with (binding.titleView) {
         if (model.isShimmer) {
-            binding.actionTitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            binding.actionTitleView.resize(widthPx = TITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionSubtitleView.setBackgroundResource(R.drawable.bg_shimmer_line)
-            binding.actionSubtitleView.resize(widthPx = SUBTITLE_SHIMMER_WIDTH_DP.toPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionIconView.setImageResource(R.drawable.bg_shimmer_circle)
-            binding.actionDescriptionView.makeGone()
-
-            showShimmer(true)
+            showShimmer(widthPx = titleShimmerWidthPx)
         } else {
-            binding.actionTitleView.background = null
-            binding.actionTitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionSubtitleView.background = null
-            binding.actionSubtitleView.resize(widthPx = ViewGroup.LayoutParams.MATCH_PARENT, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
-            binding.actionIconView.setImageDrawable(null)
-            binding.actionDescriptionView.makeVisible()
-
-            hideShimmer()
-            showData(model)
+            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+            populate(model.title)
         }
     }
 
-    private fun showData(model: ListTileItem) {
-        binding.actionTitleView.text = model.title
-        binding.actionSubtitleView.populate(model.subtitle)
-        binding.actionDescriptionView.populate(model.description)
-        binding.actionIconView.populate(model.imageInfo)
-        setListenerIfNeed(model.onItemClicked)
+    private fun populateTopDescription(model: ListTileItem) = with (binding.topDescriptionView) {
+        if (model.isShimmer) {
+            showShimmer(widthPx = topDescriptionShimmerWidthPx)
+        } else {
+            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+            populate(model.topDescription)
+        }
+    }
+
+    private fun populateBottomDescription(model: ListTileItem) = with (binding.bottomDescriptionView) {
+        if (model.isShimmer) {
+            makeGone()
+        } else {
+            populate(model.bottomDescription)
+        }
+    }
+
+    private fun populateLeftIcon(model: ListTileItem) = with (binding.leftIconView) {
+        if (model.isShimmer) {
+            showCircleShimmer()
+            updatePadding(EmptyInfo())
+        } else {
+            hideShimmer(model.leftImageInfo)
+            updatePadding(model.leftImageInfo)
+        }
+    }
+
+    private fun populateRightIcon(model: ListTileItem) = with (binding.rightIconView) {
+        if (model.isShimmer) {
+            makeGone()
+        } else {
+            apply(model.rightImageInfo)
+            updatePadding(model.rightImageInfo)
+        }
+    }
+
+    private fun ImageView.updatePadding(imageInfo: ImageInfo) {
+        val padding = when (imageInfo) {
+            is IconInfo -> ICON_PADDING_DP
+            else -> DEFAULT_PADDING_DP
+        }.toPx
+        updatePadding(padding, padding, padding, padding)
     }
 }
 
 data class ListTileItem(
-    val imageInfo: ImageInfo = EmptyState(),
-    val title: String,
-    val subtitle: String? = null,
-    val description: String? = null,
+    val leftImageInfo: ImageInfo = EmptyInfo(),
+    val rightImageInfo: ImageInfo = EmptyInfo(),
+    val title: TextSource,
+    val topDescription: TextSource? = null,
+    val bottomDescription: TextSource? = null,
     val onItemClicked: (() -> Unit)? = null
 ) : ViewType(R.layout.view_list_tile_item) {
 
     companion object {
-        fun shimmer() = ListTileItem(title = "").apply { isShimmer = true }
+        fun shimmer() = ListTileItem(title = TextString("")).apply { isShimmer = true }
     }
 }

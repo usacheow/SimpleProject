@@ -10,10 +10,10 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
 import com.usacheow.coreui.databinding.ViewDividerItemBinding
+import com.usacheow.coreui.utils.MarginHorizontal
+import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.resize
-import com.usacheow.coreui.utils.view.toPx
-import com.usacheow.coreui.utils.view.updateMargins
 
 class DividerItemView
 @JvmOverloads constructor(
@@ -30,16 +30,12 @@ class DividerItemView
             widthPx = ViewGroup.LayoutParams.MATCH_PARENT,
             heightPx = resources.getDimension(model.heightResId).toInt()
         )
-        binding.dividerBackgroundView.updateMargins(
-            leftPx = model.startMarginDp.toPx,
-            rightPx = model.endMarginDp.toPx
-        )
+        binding.dividerBackgroundView.updateMargins(model.margin)
     }
 }
 
 data class DividerItem(
-    val startMarginDp: Int = 0,
-    val endMarginDp: Int = 0,
+    val margin: MarginHorizontal = MarginHorizontal(0, 0),
     @DimenRes val heightResId: Int = R.dimen.divider_height_small,
     @ColorRes var colorResId: Int = R.color.colorDivider
 ) : ViewType(R.layout.view_divider_item) {

@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapters.ViewTypesAdapter
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.uikit.atom.DividerItem
-import com.usacheow.coreui.uikit.atom.SimpleButtonItem
-import com.usacheow.coreui.uikit.atom.SimpleOutlinedButtonItem
-import com.usacheow.coreui.uikit.atom.SimpleTextButtonItem
 import com.usacheow.coreui.uikit.molecule.*
-import com.usacheow.coreui.utils.IconState
-import com.usacheow.coreui.utils.ImageState
+import com.usacheow.coreui.utils.IconInfo
+import com.usacheow.coreui.utils.ImageRes
+import com.usacheow.coreui.utils.LogoInfo
+import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 
 class ListTileFragment : SimpleFragment<FragmentListBinding>() {
@@ -43,25 +41,40 @@ class ListTileFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             ListTileItem(
-                title = "Title",
+                title = TextString("Title"),
             ),
 
             ListTileItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
+                leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextString("Title"),
             ),
 
             ListTileItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
-                subtitle = "Subtitle",
+                leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextString("Title"),
+                topDescription = TextString("Top description"),
             ),
 
             ListTileItem(
-                imageInfo = IconState(resId = R.drawable.ic_phone),
-                title = "Title",
-                subtitle = "Subtitle",
-                description = "Description",
+                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextString("Title"),
+                bottomDescription = TextString("Bottom description"),
+            ),
+
+            ListTileItem(
+                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                title = TextString("Title"),
+                topDescription = TextString("Top description"),
+                bottomDescription = TextString("Bottom description"),
+                onItemClicked = {},
+            ),
+
+            ListTileItem(
+                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_next)),
+                title = TextString("Title"),
+                topDescription = TextString("Top description"),
+                bottomDescription = TextString("Bottom description"),
                 onItemClicked = {},
             ),
 

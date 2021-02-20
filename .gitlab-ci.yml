@@ -24,7 +24,8 @@ before_script:
 - chmod +x ./gradlew
 - apt-get update -y && apt-get install wget -y
 
-- git remote set-url origin https://${CI_USER_NAME}:${CI_USER_TOKEN}@gitlab.com/usacheow402/food-reserver.git
+#todo: change url and add variables
+- git remote set-url origin https://${CI_USER_NAME}:${CI_USER_TOKEN}@gitlab.com/account_name/project_name.git
 - git config --global user.email "${GITLAB_USER_EMAIL}"
 - git config --global user.name "${GITLAB_USER_NAME}"
 - git checkout ${CI_COMMIT_REF_NAME}

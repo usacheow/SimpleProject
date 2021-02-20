@@ -11,8 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.utils.Margin4
+import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged
+import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.*
 import com.usacheow.featureauth.databinding.FragmentSignUpBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -49,10 +52,11 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
 
         doWithTransitionOnParentView {
-            binding.signUpHeaderView.updateMargins(topPx = when (isKeyboardVisible) {
+            val topMargin = when (isKeyboardVisible) {
                 true -> 0
                 false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
-            })
+            }
+            binding.signUpHeaderView.updateMargins(MarginTop(topMargin))
 
             binding.signUpRootView.updatePadding(top = topPadding, bottom = bottomPadding)
         }

@@ -17,7 +17,9 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:padding="8dp"
-        tools:text="Header" />
+        android:lines="1"
+        android:ellipsize="end"
+        tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_height="wrap_content"
@@ -31,12 +33,15 @@
             style="@style/TextCaption"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:maxWidth="88dp"
             android:layout_gravity="end|center_vertical"
             android:background="@drawable/ripple_rectangle"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            tools:text="Action" />
+            android:lines="1"
+            android:ellipsize="end"
+            tools:text="@tools:sample/lorem" />
     </com.google.android.material.card.MaterialCardView>
 </com.usacheow.coreui.uikit.molecule.HeaderWithActionItemView>

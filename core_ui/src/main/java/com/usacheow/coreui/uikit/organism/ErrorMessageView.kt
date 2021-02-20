@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.usacheow.coreui.databinding.ViewErrorMessageBinding
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.makeVisible
@@ -17,8 +19,8 @@ class ErrorMessageView
     private val binding by lazy { ViewErrorMessageBinding.inflate(LayoutInflater.from(context), this, true) }
 
     fun populate(state: ErrorMessageItem) {
-        binding.errorMessageTitleView.text = state.title
-        binding.errorMessageDescriptionView.text = state.description
+        binding.errorMessageTitleView.populate(state.title)
+        binding.errorMessageDescriptionView.populate(state.description)
 
         state.repeatClickAction?.let {
             binding.repeatButton.makeVisible()
@@ -28,8 +30,8 @@ class ErrorMessageView
 }
 
 data class ErrorMessageItem(
-    val title: String?,
-    val description: String?,
+    val title: TextSource?,
+    val description: TextSource?,
     val repeatClickAction: (() -> Unit)?,
 )
 
