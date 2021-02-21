@@ -7,7 +7,7 @@ import androidx.lifecycle.observe
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.BillingActivity
-import com.usacheow.coreui.base.IContainer
+import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
@@ -16,7 +16,7 @@ import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), IContainer {
+class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), Container {
 
     override val params = Params(
         viewBindingProvider = FragmentContainerBinding::inflate,

@@ -1,19 +1,38 @@
 package com.usacheow.coreui.delegate
 
-import android.view.View
 import androidx.viewbinding.ViewBinding
 
-class ViewBindingDelegate<VIEW_BINDING : ViewBinding> {
+interface ViewBindingDelegate<VIEW_BINDING : ViewBinding> {
+
+    val binding: VIEW_BINDING
+
+    fun saveBinding(binding: VIEW_BINDING)
+
+    fun clearBinding()
+}
+
+class FragmentViewBindingDelegate<VIEW_BINDING : ViewBinding> : ViewBindingDelegate<VIEW_BINDING> {
 
     private var _binding: VIEW_BINDING? = null
-    val binding get() = _binding!!
-    val rootView get() = binding.root
+    override val binding get() = _binding!!
 
-    fun save(binding: VIEW_BINDING) {
+    override fun saveBinding(binding: VIEW_BINDING) {
         _binding = binding
     }
 
-    fun clear() {
+    override fun clearBinding() {
         _binding = null
     }
+}
+
+class ActivityViewBindingDelegate<VIEW_BINDING : ViewBinding> : ViewBindingDelegate<VIEW_BINDING> {
+
+    private var _binding: VIEW_BINDING? = null
+    override val binding get() = _binding!!
+
+    override fun saveBinding(binding: VIEW_BINDING) {
+        _binding = binding
+    }
+
+    override fun clearBinding() { }
 }

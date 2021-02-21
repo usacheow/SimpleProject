@@ -9,13 +9,16 @@ import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
+import com.usacheow.coreui.delegate.ActivityViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
+import com.usacheow.coreui.delegate.ViewBindingDelegate
 
-abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity(), SimpleLifecycle {
+abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
+    AppCompatActivity(),
+    SimpleLifecycle,
+    ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
-
-    protected val binding: VIEW_BINDING by lazy { viewBindingProvider(layoutInflater) }
-    private val viewBindingProvider get() = params.viewBindingProvider
 
     private val needTransparentBars get() = params.needTransparentBars
 
@@ -40,6 +43,7 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> : AppCompatActivity(),
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
+        saveBinding(params.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
         setupViews(savedInstanceState)
         subscribe()

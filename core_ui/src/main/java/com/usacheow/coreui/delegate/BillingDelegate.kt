@@ -7,28 +7,27 @@ import org.solovyev.android.checkout.Purchase
 
 class BillingDelegate {
 
-    var billingHelper: BillingWrapper? = null
+    var billing: BillingWrapper? = null
 
-    var onFullVersionFound: () -> Unit = {}
-    var onSuccessPurchase: (Purchase) -> Unit = {}
-    var onErrorPurchase: (Int, Exception) -> Unit = { _, _ -> }
-
-    fun onCreate(activity: Activity) {
-//        billingHelper = BillingWrapper(activity).apply {
+    fun createBilling(
+        activity: Activity,
+        onFullVersionFound: () -> Unit,
+        onSuccessPurchase: (Purchase) -> Unit,
+        onErrorPurchase: (Int, Exception) -> Unit,
+    ) {
+//        billing = BillingWrapper(activity).apply {
 //            start()
 //            checkAvailablePurchase { onFullVersionFound() }
 //            subscribeOnPurchases({ onSuccessPurchase(it) }) { response, e -> onErrorPurchase(response, e) }
 //        }
     }
 
-    fun onDestroy() {
-//        billingHelper?.stop()
-//        onFullVersionFound = {}
-//        onSuccessPurchase = {}
-//        onErrorPurchase = { _, _ -> }
+    fun destroyBilling() {
+//        billing?.stop()
+//        billing = null
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        billingHelper?.onActivityResult(requestCode, resultCode, data)
+    fun onBillingResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        billing?.onBillingResult(requestCode, resultCode, data)
     }
 }

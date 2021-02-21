@@ -5,12 +5,14 @@ import java.io.File
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-class RootCheckerDelegate
-@Inject constructor() {
+interface RootCheckerDelegate {
 
-    lateinit var onRootFound: () -> Unit
+    fun checkRoot(onRootFound: () -> Unit)
+}
 
-    fun onCreate() {
+class SimpleRootCheckerDelegate : RootCheckerDelegate {
+
+    override fun checkRoot(onRootFound: () -> Unit) {
         if (hasRoot()) {
             onRootFound()
         }

@@ -1,6 +1,6 @@
 package com.usacheow.coreui.base
 
-interface IBackListener {
+interface BackListener {
 
     /**
     * false - click was not processed

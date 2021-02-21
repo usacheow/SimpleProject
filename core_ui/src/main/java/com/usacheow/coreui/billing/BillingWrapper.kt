@@ -30,7 +30,7 @@ class BillingWrapper(activity: Activity) {
 //        checkout.stop()
 //    }
 //
-//    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//    fun onBillingResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //        checkout.onActivityResult(requestCode, resultCode, data)
 //    }
 //

@@ -18,15 +18,15 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.utils.view.toPx
 
-abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> : BottomSheetDialogFragment(), SimpleLifecycle {
+abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
+    BottomSheetDialogFragment(),
+    SimpleLifecycle,
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
-
-    protected val binding get() = viewBindingDelegate.binding
-    private val viewBindingDelegate by lazy { ViewBindingDelegate<VIEW_BINDING>() }
-    private val viewBindingProvider get() = params.viewBindingProvider
 
     private val canHide get() = params.canHide
     private val needWrapContent get() = params.needWrapContent
@@ -78,8 +78,8 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> : Bot
     private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
-        return viewBindingDelegate.rootView
+        saveBinding(params.viewBindingProvider(inflater, container, false))
+        return binding.root
     }
 
     @CallSuper
@@ -93,7 +93,7 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> : Bot
     @CallSuper
     override fun onDestroyView() {
         clearViews()
-        viewBindingDelegate.clear()
+        clearBinding()
         super.onDestroyView()
     }
 

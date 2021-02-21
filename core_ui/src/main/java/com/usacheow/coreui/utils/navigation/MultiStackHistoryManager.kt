@@ -3,8 +3,8 @@ package com.usacheow.coreui.utils.navigation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import com.usacheow.coreui.base.IBackListener
-import com.usacheow.coreui.base.IContainer
+import com.usacheow.coreui.base.BackListener
+import com.usacheow.coreui.base.Container
 import java.io.Serializable
 
 private const val FIRST_STACK_NUMBER = 0
@@ -54,7 +54,7 @@ class MultiStackHistoryManager(
         fragmentManager.commit {
             val activeFragmentTag = sections[activeSectionNumber]
             val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
-            if (activeFragment is IContainer) {
+            if (activeFragment is Container) {
                 activeFragment.reset()
             }
         }
@@ -63,7 +63,7 @@ class MultiStackHistoryManager(
     fun backSection(): Boolean {
         val activeFragmentTag = sections[activeSectionNumber]
         val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
-        val isBackProcesses = if (activeFragment is IBackListener) {
+        val isBackProcesses = if (activeFragment is BackListener) {
             activeFragment.onBackPressed()
         } else {
             false

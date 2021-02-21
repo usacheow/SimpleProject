@@ -100,15 +100,8 @@ class ActionItemView
         if (model.isShimmer) {
             showShimmer(widthPx = textShimmerWidthPx)
         } else {
-//            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
-//            apply(model.subtitle)
-
-            makeExpandable(
-                "Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very long long long long long text",
-                true,
-                WeakReference(this@ActionItemView),
-            )
-
+            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+            apply(model.subtitle)
         }
     }
 }

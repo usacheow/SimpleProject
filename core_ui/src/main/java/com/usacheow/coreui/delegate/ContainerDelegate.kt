@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.usacheow.coreui.R
-import com.usacheow.coreui.base.IBackListener
+import com.usacheow.coreui.base.BackListener
 
 class ContainerDelegate(
     private val initFragmentTag: String
@@ -43,7 +43,7 @@ class ContainerDelegate(
         val activeFragment = fragmentManager.findFragmentById(R.id.fragmentContainer)
         val backStackEntryCount = fragmentManager.backStackEntryCount
 
-        return if (activeFragment is IBackListener && activeFragment.onBackPressed()) {
+        return if (activeFragment is BackListener && activeFragment.onBackPressed()) {
             true
         } else if (activeFragment != null && backStackEntryCount > 0) {
             fragmentManager.popBackStackImmediate()

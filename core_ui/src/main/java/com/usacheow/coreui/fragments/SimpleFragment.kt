@@ -13,23 +13,25 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
-import com.usacheow.coreui.base.IBackListener
-import com.usacheow.coreui.base.IContainer
+import com.usacheow.coreui.base.BackListener
+import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.isNightMode
 
-abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), SimpleLifecycle, ApplyWindowInsets, IBackListener {
+abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
+    Fragment(),
+    SimpleLifecycle,
+    ApplyWindowInsets,
+    BackListener,
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
-
-    protected val binding get() = viewBindingDelegate.binding
-    private val viewBindingDelegate by lazy { ViewBindingDelegate<VIEW_BINDING>() }
-    private val viewBindingProvider get() = params.viewBindingProvider
 
     private val needTransparentBars get() = params.needTransparentBars
     private val needWhiteIcons get() = params.needWhiteIcons
@@ -68,8 +70,8 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), SimpleLi
         }
 
         container ?: return null
-        viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
-        return viewBindingDelegate.rootView
+        saveBinding(params.viewBindingProvider(inflater, container, false))
+        return binding.root
     }
 
     @CallSuper
@@ -84,13 +86,13 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> : Fragment(), SimpleLi
     @CallSuper
     override fun onDestroyView() {
         clearViews()
-        viewBindingDelegate.clear()
+        clearBinding()
         super.onDestroyView()
     }
 
-    fun getContainer(action: IContainer.() -> Unit) {
-        if (requireParentFragment() is IContainer) {
-            (requireParentFragment() as IContainer).action()
+    fun getContainer(action: Container.() -> Unit) {
+        if (requireParentFragment() is Container) {
+            (requireParentFragment() as Container).action()
         }
     }
 

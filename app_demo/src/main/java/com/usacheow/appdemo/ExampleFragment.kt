@@ -11,6 +11,10 @@ import com.usacheow.appshared.otp.SmsCodeModalFragment
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import com.usacheow.coreui.utils.view.*
+import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
+import com.usacheow.featureauth.presentation.fragment.SignInFragment
+import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment
+import com.usacheow.featureauth.presentation.fragment.SignUpFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
@@ -60,6 +64,10 @@ class ExampleFragment : SimpleFragment<FragmentExampleBinding>() {
         binding.onboardingScreen.doOnClick { show(OnBoardingFragment.newInstance()) }
 
         binding.smsCodeScreen.doOnClick { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") }
+        binding.singUpScreen.doOnClick { show(SignUpFragment.newInstance()) }
+        binding.singInScreen.doOnClick { show(SignInFragment.newInstance()) }
+        binding.singInWithPhoneScreen.doOnClick { show(SignInWithPhoneFragment.newInstance()) }
+        binding.pinCodeScreen.doOnClick { show(PinCodeFragment.newInstance()) }
 
         binding.calendarListScreen.doOnClick { show(CalendarListFragment.newInstance()) }
         binding.calendarWidgetScreen.doOnClick { show(CalendarWidgetFragment.newInstance()) }

@@ -12,14 +12,14 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 
-abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment(), SimpleLifecycle {
+abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
+    DialogFragment(),
+    SimpleLifecycle,
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
-
-    protected val binding get() = viewBindingDelegate.binding
-    private val viewBindingDelegate by lazy { ViewBindingDelegate<VIEW_BINDING>() }
-    private val viewBindingProvider get() = params.viewBindingProvider
 
     @CallSuper
     override fun onStart() {
@@ -47,8 +47,8 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewBindingDelegate.save(viewBindingProvider(inflater, container, false))
-        return viewBindingDelegate.rootView
+        saveBinding(params.viewBindingProvider(inflater, container, false))
+        return binding.root
     }
 
     @CallSuper
@@ -62,7 +62,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> : DialogFragment(
     @CallSuper
     override fun onDestroyView() {
         clearViews()
-        viewBindingDelegate.clear()
+        clearBinding()
         super.onDestroyView()
     }
 

@@ -2,12 +2,12 @@ package com.usacheow.coreui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.base.IBackListener
-import com.usacheow.coreui.base.IContainer
+import com.usacheow.coreui.base.BackListener
+import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 
-abstract class ContainerFragment : SimpleFragment<FragmentContainerBinding>(), IContainer, IBackListener {
+abstract class ContainerFragment : SimpleFragment<FragmentContainerBinding>(), Container, BackListener {
 
     override val params = Params(
         viewBindingProvider = FragmentContainerBinding::inflate,
