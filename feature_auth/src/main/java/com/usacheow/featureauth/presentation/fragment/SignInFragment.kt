@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.Margin4
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
-import com.usacheow.coreui.utils.view.*
+import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.startFragmentTransition
+import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignInBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInViewModel
@@ -51,7 +53,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
         }
         val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
 
-        doWithTransitionOnParentView {
+        startFragmentTransition {
             val topMargin = when (isKeyboardVisible) {
                 true -> 0
                 false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx

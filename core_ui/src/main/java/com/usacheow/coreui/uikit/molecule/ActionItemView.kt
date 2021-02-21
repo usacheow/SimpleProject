@@ -1,9 +1,18 @@
 package com.usacheow.coreui.uikit.molecule
 
 import android.content.Context
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.SpannedString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.text.PrecomputedTextCompat
 import androidx.core.view.updatePadding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
@@ -12,6 +21,7 @@ import com.usacheow.coreui.adapters.base.ViewType
 import com.usacheow.coreui.databinding.ViewActionItemBinding
 import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.*
+import java.lang.ref.WeakReference
 
 private const val TEXT_SHIMMER_WIDTH_DP = 180
 private const val ICON_PADDING_DP = 4
@@ -55,7 +65,7 @@ class ActionItemView
                 }
             }
 
-            setListenerIfNeed { visibleControlButton.performClick() }
+//            setListenerIfNeed { visibleControlButton.performClick() }
         }
     }
 
@@ -90,8 +100,15 @@ class ActionItemView
         if (model.isShimmer) {
             showShimmer(widthPx = textShimmerWidthPx)
         } else {
-            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
-            apply(model.subtitle)
+//            hideShimmer(widthPx = ViewGroup.LayoutParams.MATCH_PARENT)
+//            apply(model.subtitle)
+
+            makeExpandable(
+                "Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very Very very very very very long long long long long text",
+                true,
+                WeakReference(this@ActionItemView),
+            )
+
         }
     }
 }

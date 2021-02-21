@@ -9,7 +9,6 @@ import com.usacheow.coreui.uikit.organism.ErrorMessageItem
 import com.usacheow.coreui.uikit.organism.showOrHideError
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.doWithTransitionOnParentView
 
 class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
@@ -23,12 +22,9 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        doWithTransitionOnParentView {
-            binding.viewsScrollView.updatePadding(bottom = when (isKeyboardVisible) {
-                true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-                false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            })
-        }
+        binding.viewsScrollView.updatePadding(
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

@@ -7,9 +7,9 @@ import androidx.core.view.updatePadding
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.coreui.fragments.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.doWithTransitionOnParentView
 import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
+import com.usacheow.coreui.utils.view.startFragmentTransition
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
@@ -23,7 +23,7 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        doWithTransitionOnParentView {
+        startFragmentTransition {
             binding.viewsScrollView.updatePadding(bottom = when (isKeyboardVisible) {
                 true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
                 false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

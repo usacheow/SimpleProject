@@ -26,7 +26,7 @@ class AppStateViewModel @Inject constructor(
     private val _openAppScreenAction by lazy { ActionLiveData<SimpleAction>() }
 
     init {
-        _openAppScreenAction.value = SimpleAction()
+        _openAuthScreenAction.value = SimpleAction()
     }
 
     fun onPinCodeEntered() {
