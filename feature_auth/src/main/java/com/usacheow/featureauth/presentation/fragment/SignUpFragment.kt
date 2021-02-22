@@ -21,7 +21,7 @@ import com.usacheow.coreui.utils.view.startFragmentTransition
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignUpBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
-import com.usacheow.featureauth.presentation.viewmodels.SignUpWithLoginAndPasswordViewModel
+import com.usacheow.featureauth.presentation.viewmodels.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,7 +36,7 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
 
     @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
-    private val viewModel by viewModels<SignUpWithLoginAndPasswordViewModel>()
+    private val viewModel by viewModels<SignUpViewModel>()
 
     private var loginInputListener: TextWatcher? = null
     private var passwordInputListener: TextWatcher? = null

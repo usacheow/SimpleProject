@@ -20,7 +20,6 @@
         style="@style/SimpleInputLayout"
         android:layout_marginTop="24dp"
         android:hint="@string/sign_in_by_phone_hint"
-        android:inputType="phone"
         app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signInHeaderView">
@@ -29,7 +28,9 @@
             android:id="@+id/signInPhoneInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionDone" />
+            android:inputType="phone"
+            android:imeOptions="actionDone"
+            android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
