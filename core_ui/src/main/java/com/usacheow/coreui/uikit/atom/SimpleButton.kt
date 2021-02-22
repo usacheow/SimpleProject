@@ -35,5 +35,5 @@ data class SimpleButtonItem(
     val text: String,
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
-    val clickAction: () -> Unit
+    val clickAction: () -> Unit,
 ) : ViewType(R.layout.view_simple_button_item)

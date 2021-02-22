@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/simple_app_bar_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+    <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
+        android:id="@+id/bottomSheetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/elevation_4"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:visibility="gone">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/left_right_margin">
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bottom" />
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sheet" />
+
+            <TextView
+                style="@style/TextH1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

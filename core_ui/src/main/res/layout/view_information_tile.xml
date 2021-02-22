@@ -1,0 +1,82 @@
+<com.usacheow.coreui.uikit.molecule.InformationTileView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/left_right_margin"
+    android:background="?selectableItemBackground">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:riv_corner_radius="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/leftTopView"
+        style="@style/TextOverline_60"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintHorizontal_weight="0.7"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/leftMainView"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintEnd_toStartOf="@id/rightTopView"
+        tools:text="@tools:sample/cities" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rightTopView"
+        style="@style/TextOverline_60"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:lines="1"
+        android:gravity="end"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rightMainView"
+        app:layout_constraintStart_toEndOf="@id/leftTopView"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@tools:sample/date/day_of_week" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/leftMainView"
+        style="@style/TextBody1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintHorizontal_weight="0.7"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/leftTopView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintEnd_toStartOf="@id/rightMainView"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rightMainView"
+        style="@style/TextBody1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:lines="1"
+        android:gravity="end"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintTop_toBottomOf="@id/rightTopView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftMainView"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@tools:sample/date/ddmmyy" />
+</com.usacheow.coreui.uikit.molecule.InformationTileView>

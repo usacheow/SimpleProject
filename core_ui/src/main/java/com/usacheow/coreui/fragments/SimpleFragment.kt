@@ -91,8 +91,9 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     }
 
     fun getContainer(action: Container.() -> Unit) {
-        if (requireParentFragment() is Container) {
-            (requireParentFragment() as Container).action()
+        val container = parentFragment ?: activity
+        if (container is Container) {
+            container.action()
         }
     }
 

@@ -1,7 +1,9 @@
 package com.usacheow.coreui.adapters.base
 
+import androidx.annotation.LayoutRes
+
 abstract class ViewType(
-    val layoutId: Int,
+    @LayoutRes val layoutId: Int,
     var isShimmer: Boolean = false,
 )
 

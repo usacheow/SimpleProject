@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreui.uikit.molecule.HeaderTileView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/headerView"
+        style="@style/TextH1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingTop="16dp"
+        android:paddingHorizontal="@dimen/left_right_margin"
+        android:paddingBottom="8dp"
+        android:lines="1"
+        android:ellipsize="end"
+        tools:text="@tools:sample/lorem" />
+</com.usacheow.coreui.uikit.molecule.HeaderTileView>
