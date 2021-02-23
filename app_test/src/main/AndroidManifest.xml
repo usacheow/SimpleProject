@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.usacheow.apptest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_demo"
+        android:label="@string/app_name"
+        android:name=".TestApp"
+        android:roundIcon="@mipmap/ic_launcher_demo_round"
+        android:supportsRtl="true"
+        android:theme="@style/SplashAppTheme">
+        <activity android:name="com.usacheow.apptest.TestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".ServiceImpl"/>
+        <service android:name=".IntentServiceImpl"/>
+        <service
+            android:name=".JobIntentServiceImpl"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name=".JobServiceImpl"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+    </application>
+
+</manifest>

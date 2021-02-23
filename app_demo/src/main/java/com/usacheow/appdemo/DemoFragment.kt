@@ -27,14 +27,14 @@ import com.usacheow.featureonboarding.OnBoardingFragment
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
-class CatalogFragment : SimpleFragment<FragmentDemoBinding>() {
+class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
     override val params = Params(
         viewBindingProvider = FragmentDemoBinding::inflate,
     )
 
     companion object {
-        fun newInstance() = CatalogFragment()
+        fun newInstance() = DemoFragment()
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
