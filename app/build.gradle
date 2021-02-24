@@ -69,5 +69,5 @@ dependencies {
     implementation project(':feature_onboarding')
 
     implementation firebaseDependencies.values()
-    implementation billingDependencies.values()
+    implementation billingDependency
 }

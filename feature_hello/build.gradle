@@ -12,7 +12,6 @@ dependencies {
     implementation project(':core_ui')
     implementation project(':app_shared')
 
-    implementation utilsDependencies.values()
     implementation firebaseDependencies.values()
 
     testImplementation project(':core_unit_test')
