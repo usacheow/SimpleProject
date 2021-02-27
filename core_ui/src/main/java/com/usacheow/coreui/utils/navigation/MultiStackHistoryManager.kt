@@ -55,7 +55,7 @@ class MultiStackHistoryManager(
             val activeFragmentTag = sections[activeSectionNumber]
             val activeFragment = fragmentManager.findFragmentByTag(activeFragmentTag)
             if (activeFragment is Container) {
-                activeFragment.reset()
+                activeFragment.resetContainer()
             }
         }
     }

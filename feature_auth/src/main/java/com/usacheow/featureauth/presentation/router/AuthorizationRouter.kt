@@ -11,7 +11,7 @@ class AuthorizationRouter
 
     fun openSignUpScreen(fragment: SimpleFragment<*>) {
         fragment.getContainer {
-            show(SignUpFragment.newInstance())
+            navigateTo(SignUpFragment.newInstance())
         }
     }
 

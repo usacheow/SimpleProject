@@ -33,28 +33,32 @@ class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), Containe
 
     override fun subscribe() {
         appStateViewModel.openAuthScreen.observe(this) {
-            show(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
+            navigateTo(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
 
         appStateViewModel.openPinScreen.observe(this) {
-            show(PinCodeFragment.newInstance(), false)
+            navigateTo(PinCodeFragment.newInstance(), false)
         }
 
         appStateViewModel.openOnBoardingScreen.observe(this) {
-            show(OnBoardingFragment.newInstance(), false)
+            navigateTo(OnBoardingFragment.newInstance(), false)
         }
 
         appStateViewModel.openAppScreen.observe(this) {
-            show(BottomBarFragment.newInstance(), false)
+            navigateTo(BottomBarFragment.newInstance(), false)
         }
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
+    override fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+        containerDelegate.showFragment(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
     }
 
-    override fun reset() {
-        containerDelegate.reset(supportFragmentManager)
+    override fun resetContainer() {
+        containerDelegate.resetContainer(supportFragmentManager)
+    }
+
+    override fun closeContainer() {
+        finish()
     }
 
     override fun onBackPressed() {

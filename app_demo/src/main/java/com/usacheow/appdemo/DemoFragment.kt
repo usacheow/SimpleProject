@@ -55,7 +55,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
         binding.listView.adapter = ViewTypesAdapter(listOf(
             HeaderTileItem(TextString("Atoms")),
-            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("1. Fonts"), clickAction = { show(FontsFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("1. Fonts"), clickAction = { show(DemoContainer1.newInstance()) }),
             BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("2. Buttons"), clickAction = { show(ButtonsFragment.newInstance()) }),
             BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("3. Text Inputs"), clickAction = { show(TextInputsFragment.newInstance()) }),
 
@@ -123,7 +123,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     }
 
     private fun show(fragment: Fragment) {
-        getContainer { show(fragment) }
+        getContainer { navigateTo(fragment) }
     }
 
     private fun showMaterialDialog() {

@@ -34,16 +34,20 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
         super.onCreate(savedInstanceState)
 
         if (supportFragmentManager.backStackEntryCount == 0) {
-            show(DemoFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
+            navigateTo(DemoContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
     }
 
-    override fun show(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        containerDelegate.show(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
+    override fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+        containerDelegate.showFragment(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
     }
 
-    override fun reset() {
-        containerDelegate.reset(supportFragmentManager)
+    override fun resetContainer() {
+        containerDelegate.resetContainer(supportFragmentManager)
+    }
+
+    override fun closeContainer() {
+        finish()
     }
 
     override fun onBackPressed() {

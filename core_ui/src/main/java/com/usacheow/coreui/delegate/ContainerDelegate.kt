@@ -18,7 +18,7 @@ class ContainerDelegate(
         }
     }
 
-    fun show(fragmentManager: FragmentManager, fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
+    fun showFragment(fragmentManager: FragmentManager, fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
         fragmentManager.commit {
             if (needAnimate) {
                 setCustomAnimations(
@@ -33,10 +33,14 @@ class ContainerDelegate(
         }
     }
 
-    fun reset(fragmentManager: FragmentManager) {
+    fun resetContainer(fragmentManager: FragmentManager) {
         while (fragmentManager.backStackEntryCount > 1) {
             fragmentManager.popBackStackImmediate()
         }
+    }
+
+    fun closeContainer(fragmentManager: FragmentManager) {
+        fragmentManager.popBackStackImmediate()
     }
 
     fun onBackPressed(fragmentManager: FragmentManager): Boolean {

@@ -6,7 +6,9 @@ import com.usacheow.coreui.utils.view.RoutingTransition
 
 interface Container {
 
-    fun show(fragment: Fragment, needAddToBackStack: Boolean = true, needAnimate: Boolean = true)
+    fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean = true, needAnimate: Boolean = true)
 
-    fun reset()
+    fun closeContainer()
+
+    fun resetContainer()
 }
