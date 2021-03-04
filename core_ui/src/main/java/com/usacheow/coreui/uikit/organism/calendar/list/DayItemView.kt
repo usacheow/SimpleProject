@@ -28,8 +28,8 @@ class DayItemView
         }
         binding.calendarDayNumberView.setTextColor(color(when {
             !model.isActive -> R.color.disabled
-            model.isSelected -> R.color.colorAccent
-            else -> R.color.colorText
+            model.isSelected -> R.color.colorPrimary
+            else -> R.color.text
         }))
 
         model.indicatorColorId?.let {

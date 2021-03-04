@@ -18,7 +18,7 @@ class SimpleButton
 
     override fun populate(model: SimpleButtonItem) {
         text = model.text
-        doOnClick { model.clickAction() }
+        doOnClick { model.clickListener() }
 
         updateLayoutParams<ViewGroup.MarginLayoutParams> {
             updateMargins(
@@ -35,5 +35,5 @@ data class SimpleButtonItem(
     val text: String,
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
-    val clickAction: () -> Unit,
+    val clickListener: () -> Unit,
 ) : ViewType(R.layout.view_simple_button_item)

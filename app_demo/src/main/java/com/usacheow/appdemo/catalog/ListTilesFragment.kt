@@ -67,7 +67,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
                 title = TextString("Title"),
                 topDescription = TextString("Top description"),
                 bottomDescription = TextString("Bottom description"),
-                onItemClicked = {},
+                clickListener = {},
             ),
 
             ListTileItem(
@@ -76,7 +76,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
                 title = TextString("Title"),
                 topDescription = TextString("Top description"),
                 bottomDescription = TextString("Bottom description"),
-                onItemClicked = {},
+                clickListener = {},
             ),
 
             ListTileItem.shimmer(),

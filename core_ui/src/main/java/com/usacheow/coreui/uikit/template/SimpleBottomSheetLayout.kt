@@ -34,7 +34,7 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
     private val bottomSheetBehavior by lazy { BottomSheetBehavior.from<View>(this) }
 
     init {
-        setBackgroundColor(color(R.color.colorBackground))
+        setBackgroundColor(color(R.color.background))
         isClickable = true
     }
 

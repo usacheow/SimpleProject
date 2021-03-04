@@ -51,7 +51,7 @@ class ActionTileView
                 isChecked = isSelected
                 setOnCheckedChangeListener { _, isChecked ->
                     model.isChecked = isChecked
-                    model.onControlClicked.invoke(isChecked)
+                    model.clickListener.invoke(isChecked)
                 }
             }
 
@@ -102,7 +102,7 @@ data class ActionTileItem(
     val subtitle: TextInfo? = null,
     var isChecked: Boolean = false,
     val selectionType: ActionSelectionType = ActionSelectionType.CHECK_BOX,
-    val onControlClicked: (Boolean) -> Unit = {},
+    val clickListener: (Boolean) -> Unit = {},
 ) : ViewType(R.layout.view_action_tile) {
 
     companion object {

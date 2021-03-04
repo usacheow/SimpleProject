@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#2979FF</color>a
-    <color name="colorPrimaryDark">#2979FF</color>
-    <color name="colorAccent">#2979FF</color>
+    <color name="colorPrimary">#0336FF</color>a
+    <color name="colorPrimaryVariant">#0336FF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <color name="colorSecondary">#FFDE03</color>
+    <color name="colorSecondaryVariant">#FFDE03</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
 
     <color name="colorStatusBar">#4D000000</color>
     <color name="colorNavigationBar">#4D000000</color>
-    <color name="colorToolbar">#FFFFFF</color>
+    <color name="colorStatusBarForModal">#4D000000</color>
+    <color name="colorNavigationBarForModal">#4D000000</color>
 
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorBackground_80">#CCFFFFFF</color>
+    <color name="background">#FFFFFF</color>
+    <color name="backgroundBlurred">#CCFFFFFF</color>
+    <color name="backgroundSecondary">#F2F3F4</color>
+    <color name="backgroundToolbar">@color/background</color>
 
-    <color name="colorCard">#FFFFFF</color>
-    <color name="colorGreyCard">#F2F3F4</color>
-    <color name="cardStroke">#E6E9EC</color>
-    <color name="colorDialog">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surfaceSecondary">#F2F3F4</color>
+    <color name="surfaceSecondaryVariant">#DBDEE6</color>
 
-    <color name="colorText">#212121</color>
-    <color name="colorTextSecondary">#99212121</color>
-    <color name="colorTextInverse">#FFFFFF</color>
+    <color name="error">#B00020</color>
+    <color name="onError">#FFFFFF</color>
 
-    <color name="colorIconPrimary">#212121</color>
-    <color name="colorIconSecondary">#DBDEE6</color>
+    <color name="symbol">#212121</color>
+    <color name="symbolInverse">#FFFFFF</color>
+    <color name="text">@color/symbol</color>
+    <color name="textInverse">@color/symbolInverse</color>
+    <color name="icon">@color/symbol</color>
+    <color name="iconInverse">@color/symbolInverse</color>
 
-    <color name="colorShimmer">#DBDEE6</color>
-    <color name="colorDivider">#F2F3F4</color>
-    <color name="colorBlur">#80000000</color>
-
-    <color name="error">#ff607f</color>
-    <color name="success">#24CF5F</color>
-    <color name="disabled">#B3B3B3</color>
+    <color name="stroke">#E6E9EC</color>
+    <color name="unselected">#DBDEE6</color>
+    <color name="shimmer">#DBDEE6</color>
+    <color name="divider">#F2F3F4</color>
+    <color name="disabled">#DBDEE6</color>
+    <color name="success">#388E3C</color>
 
     <color name="white">#FFFFFF</color>
     <color name="white_90">#E6FFFFFF</color>
@@ -38,12 +46,11 @@
     <color name="white_60">#99ffffff</color>
     <color name="white_50">#80FFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
-
     <color name="black">#000000</color>
     <color name="black_10">#1A000000</color>
     <color name="black_30">#4D000000</color>
     <color name="black_50">#80000000</color>
     <color name="black_80">#CC000000</color>
-
     <color name="transparent">#00000000</color>
+
 </resources>

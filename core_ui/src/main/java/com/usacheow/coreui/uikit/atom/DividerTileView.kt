@@ -37,7 +37,7 @@ class DividerTileView
 data class DividerTileItem(
     val margin: MarginHorizontal = MarginHorizontal(0, 0),
     @DimenRes val heightResId: Int = R.dimen.divider_height_small,
-    @ColorRes var colorResId: Int = R.color.colorDivider,
+    @ColorRes var colorResId: Int = R.color.divider,
 ) : ViewType(R.layout.view_divider_tile) {
 
     companion object {

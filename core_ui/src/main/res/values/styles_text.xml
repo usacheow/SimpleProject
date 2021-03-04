@@ -1,164 +1,104 @@
 <resources>
 
-    <style name="TextToolbarBig" parent="@style/BaseTextToolbarBig">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextToolbarBig" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/font_size_28sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
     </style>
 
-    <style name="TextToolbarSmall" parent="@style/BaseTextToolbarSmall">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextToolbarSmall" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/font_size_22sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
     </style>
 
-    <style name="TextH1" parent="@style/BaseTextH1">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">@dimen/font_size_38sp</item>
+        <item name="android:textAppearance">@style/RobotoLight</item>
+        <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH2" parent="@style/BaseTextH2">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">@dimen/font_size_36sp</item>
+        <item name="android:textAppearance">@style/RobotoLight</item>
+        <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH3" parent="@style/BaseTextH3">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/font_size_32sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH4" parent="@style/BaseTextH4">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">@dimen/font_size_28sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.025</item>
     </style>
 
-    <style name="TextH5" parent="@style/BaseTextH5">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">@dimen/font_size_24sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.0</item>
     </style>
 
-    <style name="TextH6" parent="@style/BaseTextH6">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextH6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/font_size_20sp</item>
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+        <item name="android:letterSpacing">0.0075</item>
     </style>
 
-    <style name="TextSubtitle1" parent="@style/BaseTextSubtitle1">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">@dimen/font_size_16sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.009</item>
     </style>
 
-    <style name="TextSubtitle2" parent="@style/BaseTextSubtitle2">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">@dimen/font_size_14sp</item>
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+        <item name="android:letterSpacing">0.007</item>
     </style>
 
-    <style name="TextBody1" parent="@style/BaseTextBody1">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/font_size_16sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.03125</item>
     </style>
 
-    <style name="TextBody1_60" parent="@style/TextBody1">
-        <item name="android:alpha">0.6</item>
+    <style name="TextBody2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">@dimen/font_size_14sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.017</item>
     </style>
 
-    <style name="TextBody2" parent="@style/BaseTextBody2">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/font_size_14sp</item>
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.09</item>
     </style>
 
-    <style name="TextBody2_60" parent="@style/TextBody2">
-        <item name="android:alpha">0.6</item>
+    <style name="TextCaption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/font_size_12sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:letterSpacing">0.03</item>
     </style>
 
-    <style name="TextButton" parent="@style/BaseTextButton">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextOverline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">@dimen/font_size_10sp</item>
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.15</item>
     </style>
 
-    <style name="TextCaption" parent="@style/BaseTextCaption">
-        <item name="android:textColor">@color/colorText</item>
+    <style name="TextDigital" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/font_size_24sp</item>
+        <item name="android:textAppearance">@style/RobotoLight</item>
+        <item name="android:letterSpacing">0.015</item>
     </style>
 
-    <style name="TextCaption_60" parent="@style/TextCaption">
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="TextOverline" parent="@style/BaseTextOverline">
-        <item name="android:textColor">@color/colorText</item>
-    </style>
-
-    <style name="TextOverline_60" parent="@style/TextOverline">
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="TextDigital" parent="@style/BaseTextDigital">
-        <item name="android:textColor">@color/colorText</item>
-    </style>
-
-    <style name="TextNumPad" parent="@style/BaseTextNumPad">
-        <item name="android:textColor">@color/colorText</item>
-    </style>
-
-
-    <style name="TextToolbarBigInverse" parent="@style/BaseTextToolbarBig">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextToolbarSmallInverse" parent="@style/BaseTextToolbarSmall">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH1Inverse" parent="@style/BaseTextH1">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH2Inverse" parent="@style/BaseTextH2">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH3Inverse" parent="@style/BaseTextH3">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH4Inverse" parent="@style/BaseTextH4">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH5Inverse" parent="@style/BaseTextH5">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextH6Inverse" parent="@style/BaseTextH6">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextSubtitle1Inverse" parent="@style/BaseTextSubtitle1">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextSubtitle2Inverse" parent="@style/BaseTextSubtitle2">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextBody1Inverse" parent="@style/BaseTextBody1">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextBody1Inverse_60" parent="@style/TextBody1Inverse">
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="TextBody2Inverse" parent="@style/BaseTextBody2">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextBody2Inverse_60" parent="@style/TextBody2Inverse">
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="TextButtonInverse" parent="@style/BaseTextButton">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextCaptionInverse" parent="@style/BaseTextCaption">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextOverlineInverse" parent="@style/BaseTextOverline">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextDigitalInverse" parent="@style/BaseTextDigital">
-        <item name="android:textColor">@color/colorTextInverse</item>
-    </style>
-
-    <style name="TextNumPadInverse" parent="@style/BaseTextNumPad">
-        <item name="android:textColor">@color/colorTextInverse</item>
+    <style name="TextNumPad" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/font_size_36sp</item>
+        <item name="android:textAppearance">@style/RobotoLight</item>
     </style>
 
 </resources>

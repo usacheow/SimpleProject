@@ -41,7 +41,7 @@ fun Fragment.openMail(mail: String, subject: String) {
 fun Fragment.openUrl(url: String) {
     CustomTabsIntent.Builder()
         .setShowTitle(true)
-        .setToolbarColor(color(R.color.colorToolbar))
+        .setToolbarColor(color(R.color.backgroundToolbar))
         .build()
         .apply {
             intent.putExtra(Browser.EXTRA_HEADERS, bundleOf())

@@ -55,33 +55,33 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
         binding.listView.adapter = ViewTypesAdapter(listOf(
             HeaderTileItem(TextString("Atoms")),
-            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("1. Fonts"), clickAction = { show(DemoContainer1.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("2. Buttons"), clickAction = { show(ButtonsFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("3. Text Inputs"), clickAction = { show(TextInputsFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("1. Fonts"), clickListener = { show(FontsFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("2. Buttons"), clickListener = { show(ButtonsFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("atom"), value = TextString("3. Text Inputs"), clickListener = { show(TextInputsFragment.newInstance()) }),
 
             HeaderTileItem(TextString("Molecules")),
-            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("1. Action Tiles"), clickAction = { show(ActionTilesFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("2. List Tiles"), clickAction = { show(ListTilesFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("3. Tag Lists"), clickAction = { show(TagListFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("4. Information Tiles"), clickAction = { show(InformationTilesFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("1. Action Tiles"), clickListener = { show(ActionTilesFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("2. List Tiles"), clickListener = { show(ListTilesFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("3. Tag Lists"), clickListener = { show(TagListFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("molecule"), value = TextString("4. Information Tiles"), clickListener = { show(InformationTilesFragment.newInstance()) }),
 
             HeaderTileItem(TextString("Organisms")),
-            BadgeTileItem(needAdapt = false, header = TextString("organism"), value = TextString("1. Error Message View"), clickAction = { show(ErrorMessageFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("organism"), value = TextString("2. Num Pad View"), clickAction = { show(NumPadFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("organism"), value = TextString("1. Error Message View"), clickListener = { show(ErrorMessageFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("organism"), value = TextString("2. Num Pad View"), clickListener = { show(NumPadFragment.newInstance()) }),
 
             HeaderTileItem(TextString("Templates")),
-            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("1. Material Dialog"), clickAction = { showMaterialDialog() }),
-            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("2. Bottom Dialog"), clickAction = { ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT") }),
-            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("3. Bottom sheet"), clickAction = { showOrHideBottomSheet() }),
-            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("4. Modal Fragment"), clickAction = { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") }),
-            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("5. Onboarding Fragment"), clickAction = { show(OnBoardingFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("1. Material Dialog"), clickListener = { showMaterialDialog() }),
+            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("2. Bottom Dialog"), clickListener = { ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT") }),
+            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("3. Bottom sheet"), clickListener = { showOrHideBottomSheet() }),
+            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("4. Modal Fragment"), clickListener = { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") }),
+            BadgeTileItem(needAdapt = false, header = TextString("template"), value = TextString("5. Onboarding Fragment"), clickListener = { show(OnBoardingFragment.newInstance()) }),
 
             HeaderTileItem(TextString("Pages")),
-            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("1. SMS Code Fragment"), clickAction = { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") }),
-            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("2. Sign Up Fragment"), clickAction = { show(SignUpFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("3. Sign In Fragment"), clickAction = { show(SignInFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("4. Sign In With Phone Fragment"), clickAction = { show(SignInWithPhoneFragment.newInstance()) }),
-            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("5. Pin Code Fragment"), clickAction = { show(PinCodeFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("1. SMS Code Fragment"), clickListener = { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") }),
+            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("2. Sign Up Fragment"), clickListener = { show(SignUpFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("3. Sign In Fragment"), clickListener = { show(SignInFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("4. Sign In With Phone Fragment"), clickListener = { show(SignInWithPhoneFragment.newInstance()) }),
+            BadgeTileItem(needAdapt = false, header = TextString("page"), value = TextString("5. Pin Code Fragment"), clickListener = { show(PinCodeFragment.newInstance()) }),
         ))
         binding.listView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

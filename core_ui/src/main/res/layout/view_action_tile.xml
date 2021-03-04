@@ -63,10 +63,11 @@
 
             <TextView
                 android:id="@+id/subtitleView"
-                style="@style/TextBody2_60"
+                style="@style/TextBody2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:alpha="@dimen/text_alpha_60"
                 tools:text="@tools:sample/cities" />
         </LinearLayout>
     </LinearLayout>

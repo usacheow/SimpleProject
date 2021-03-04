@@ -9,7 +9,7 @@
     android:layout_margin="16dp"
     app:cardCornerRadius="@dimen/radius_16"
     app:strokeWidth="0dp"
-    app:cardBackgroundColor="@color/colorGreyCard"
+    app:cardBackgroundColor="@color/surfaceSecondary"
     app:cardElevation="0dp">
 
     <LinearLayout
@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/errorMessageDescriptionView"
-            style="@style/TextBody2_60"
+            style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -38,6 +38,7 @@
             android:layout_marginHorizontal="@dimen/left_right_margin"
             android:maxLines="3"
             android:ellipsize="end"
+            android:alpha="@dimen/text_alpha_60"
             tools:text="@tools:sample/lorem/random" />
 
         <com.google.android.material.button.MaterialButton

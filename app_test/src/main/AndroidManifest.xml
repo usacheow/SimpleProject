@@ -9,7 +9,7 @@
         android:name=".TestApp"
         android:roundIcon="@mipmap/ic_launcher_demo_round"
         android:supportsRtl="true"
-        android:theme="@style/SplashAppTheme">
+        android:theme="@style/AppTheme.Splash">
         <activity android:name="com.usacheow.apptest.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,7 +6,6 @@ import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapters.base.Populatable
 import com.usacheow.coreui.adapters.base.ViewType
-import com.usacheow.coreui.databinding.ViewHeaderTileBinding
 import com.usacheow.coreui.databinding.ViewSubtitleTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
@@ -21,12 +20,12 @@ class SubtitleTileView
     override fun populate(model: SubtitleTileItem) {
         binding.headerView.populate(model.title)
         binding.actionButton.populate(model.actionTitle)
-        binding.actionButton.setListenerIfNeed(model.clickAction)
+        binding.actionButton.setListenerIfNeed(model.clickListener)
     }
 }
 
 data class SubtitleTileItem(
     val title: TextSource,
     val actionTitle: TextSource? = null,
-    val clickAction: (() -> Unit)? = null,
+    val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_subtitle_tile)

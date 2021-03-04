@@ -18,12 +18,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/leftTopView"
-        style="@style/TextOverline_60"
+        style="@style/TextOverline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:lines="1"
+        android:alpha="@dimen/text_alpha_60"
         app:layout_constraintHorizontal_weight="0.7"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintVertical_chainStyle="spread"
@@ -35,12 +36,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/rightTopView"
-        style="@style/TextOverline_60"
+        style="@style/TextOverline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:lines="1"
         android:gravity="end"
+        android:alpha="@dimen/text_alpha_60"
         app:layout_constraintHorizontal_weight="0.3"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintTop_toTopOf="parent"

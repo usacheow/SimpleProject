@@ -22,7 +22,7 @@ class ErrorMessageView
         binding.errorMessageTitleView.populate(state.title)
         binding.errorMessageDescriptionView.populate(state.description)
 
-        state.repeatClickAction?.let {
+        state.clickListener?.let {
             binding.repeatButton.makeVisible()
             binding.repeatButton.doOnClick { it() }
         } ?: binding.repeatButton.makeGone()
@@ -32,7 +32,7 @@ class ErrorMessageView
 data class ErrorMessageItem(
     val title: TextSource?,
     val description: TextSource?,
-    val repeatClickAction: (() -> Unit)?,
+    val clickListener: (() -> Unit)?,
 )
 
 fun ErrorMessageView.showOrHideError(state: ErrorMessageItem?) {

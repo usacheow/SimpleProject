@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:cardCornerRadius="@dimen/radius_8"
+        app:cardCornerRadius="@dimen/radius_16"
         app:cardElevation="@dimen/elevation_0"
-        app:cardBackgroundColor="@color/colorGreyCard">
+        app:cardBackgroundColor="@color/surfaceSecondary">
 
         <LinearLayout
             android:id="@+id/bannerClickableView"

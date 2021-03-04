@@ -80,7 +80,7 @@
             android:padding="8dp"
             android:background="?selectableItemBackground"
             android:text="@string/sms_code_resend"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
     <include

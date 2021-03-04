@@ -18,7 +18,7 @@ class SimpleOutlinedButton
 
     override fun populate(model: SimpleOutlinedButtonItem) {
         text = model.text
-        doOnClick { model.clickAction() }
+        doOnClick { model.clickListener() }
 
         updateLayoutParams<ViewGroup.MarginLayoutParams> {
             updateMargins(
@@ -35,5 +35,5 @@ data class SimpleOutlinedButtonItem(
     val text: String,
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
-    val clickAction: () -> Unit,
+    val clickListener: () -> Unit,
 ) : ViewType(R.layout.view_simple_outlined_button_item)

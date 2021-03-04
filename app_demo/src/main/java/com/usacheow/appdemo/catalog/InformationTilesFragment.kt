@@ -58,13 +58,13 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
             ViewTypeHorizontalListItem(listOf(
                 BadgeTileItem.shimmer(),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), clickAction = {}),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Non-clickable"), backgroundColorRes = R.color.colorAccent, textColorRes = R.color.white),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), backgroundColorRes = R.color.error, textColorRes = R.color.white, clickAction = {}),
+                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), clickListener = {}),
+                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Non-clickable"), backgroundColorRes = R.color.colorPrimary, textColorRes = R.color.white),
+                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), backgroundColorRes = R.color.error, textColorRes = R.color.white, clickListener = {}),
             )),
 
             ViewTypeHorizontalListItem(listOf(
-                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.ic_money), clickAction = {}),
+                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.ic_money), clickListener = {}),
                 BannerTileItem.shimmer(),
             )),
         ))

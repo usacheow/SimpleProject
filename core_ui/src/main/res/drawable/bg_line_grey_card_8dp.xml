@@ -4,5 +4,5 @@
 
     <corners android:radius="@dimen/radius_8" />
 
-    <solid android:color="@color/colorGreyCard" />
+    <solid android:color="@color/surfaceSecondary" />
 </shape>

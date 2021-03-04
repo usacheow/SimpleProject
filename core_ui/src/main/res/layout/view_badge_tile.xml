@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:cardBackgroundColor="@color/colorGreyCard"
-        app:cardCornerRadius="@dimen/radius_8"
+        app:cardBackgroundColor="@color/surfaceSecondary"
+        app:cardCornerRadius="@dimen/radius_16"
         app:cardElevation="@dimen/elevation_0">
 
         <LinearLayout
@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/headerView"
-                style="@style/TextBody2_60"
+                style="@style/TextBody2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -33,6 +33,7 @@
                 android:maxWidth="156dp"
                 android:ellipsize="end"
                 android:lines="1"
+                android:alpha="@dimen/text_alpha_60"
                 tools:text="@tools:sample/cities" />
 
             <TextView

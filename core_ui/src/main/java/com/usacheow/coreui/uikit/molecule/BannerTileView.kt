@@ -23,7 +23,7 @@ class BannerTileView
     private val textShimmerWidthPx by lazy { TEXT_SHIMMER_WIDTH_DP.toPx }
 
     override fun populate(model: BannerTileItem) {
-        binding.bannerClickableView.setListenerIfNeed(model.isShimmer, model.clickAction)
+        binding.bannerClickableView.setListenerIfNeed(model.isShimmer, model.clickListener)
 
         updateMargins(model.margin)
         populateIcon(model)
@@ -52,8 +52,8 @@ class BannerTileView
 data class BannerTileItem(
     val icon: ImageSource,
     val text: TextSource,
-    val margin: Margin2 = Margin2(8.toPx, 8.toPx),
-    val clickAction: (() -> Unit)? = null,
+    val margin: Margin = Margin2(8.toPx, 8.toPx),
+    val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_banner_tile) {
 
     companion object {

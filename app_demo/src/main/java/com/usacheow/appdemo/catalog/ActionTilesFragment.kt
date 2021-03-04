@@ -53,7 +53,7 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
                 title = TextInfo(TextString("Title")),
                 subtitle = TextInfo(TextString("Subtitle")),
                 selectionType = ActionSelectionType.CHECK_BOX,
-                onControlClicked = {},
+                clickListener = {},
             ),
 
             ActionTileItem(
@@ -62,7 +62,7 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
                 subtitle = TextInfo(TextString("Subtitle")),
                 selectionType = ActionSelectionType.SWITCH,
                 isChecked = true,
-                onControlClicked = {},
+                clickListener = {},
             ),
 
             ActionTileItem.shimmer(),

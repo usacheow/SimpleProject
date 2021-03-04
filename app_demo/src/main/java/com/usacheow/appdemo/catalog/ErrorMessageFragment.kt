@@ -39,7 +39,7 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
         binding.errorMessageView.showOrHideError(ErrorMessageItem(
             title = TextString("Error title"),
             description = TextString("Error description"),
-            repeatClickAction = {},
+            clickListener = {},
         ))
     }
 }

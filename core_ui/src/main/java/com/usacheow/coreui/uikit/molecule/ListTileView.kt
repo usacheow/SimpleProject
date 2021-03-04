@@ -36,7 +36,7 @@ class ListTileView
         populateBottomDescription(model)
         populateLeftIcon(model)
         populateRightIcon(model)
-        setListenerIfNeed(model.isShimmer, model.onItemClicked)
+        setListenerIfNeed(model.isShimmer, model.clickListener)
         setShimmer(model.isShimmer)
     }
 
@@ -100,7 +100,7 @@ data class ListTileItem(
     val title: TextSource,
     val topDescription: TextSource? = null,
     val bottomDescription: TextSource? = null,
-    val onItemClicked: (() -> Unit)? = null,
+    val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_list_tile) {
 
     companion object {

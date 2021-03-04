@@ -7,7 +7,7 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:clipToPadding="false" />
 </com.usacheow.coreui.uikit.container.ViewTypeHorizontalListView>

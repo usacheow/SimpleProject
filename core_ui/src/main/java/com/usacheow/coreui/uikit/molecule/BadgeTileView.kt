@@ -35,7 +35,7 @@ class BadgeTileView
         binding.clickableView.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
         binding.cardView.setCardBackgroundColor(color(model.backgroundColorRes))
-        binding.clickableView.setListenerIfNeed(model.isShimmer, model.clickAction)
+        binding.clickableView.setListenerIfNeed(model.isShimmer, model.clickListener)
 
         updateMargins(model.margin)
         populateHeader(model)
@@ -73,10 +73,10 @@ data class BadgeTileItem(
     val header: TextSource? = null,
     val value: TextSource,
     val needAdapt: Boolean = true,
-    @ColorRes val textColorRes: Int = R.color.colorText,
-    @ColorRes val backgroundColorRes: Int = R.color.colorGreyCard,
-    val margin: Margin2 = Margin2(8.toPx, 8.toPx),
-    val clickAction: (() -> Unit)? = null,
+    @ColorRes val textColorRes: Int = R.color.text,
+    @ColorRes val backgroundColorRes: Int = R.color.surfaceSecondary,
+    val margin: Margin = Margin2(8.toPx, 8.toPx),
+    val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_badge_tile) {
 
     companion object {

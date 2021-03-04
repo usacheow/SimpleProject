@@ -37,7 +37,7 @@ class TagTileView
         } else {
             setListenerIfNeed {
                 model.onSelectAction()
-                model.onClickAction()
+                model.clickListener()
             }
         }
     }
@@ -45,9 +45,9 @@ class TagTileView
 
 data class TagTileItem(
     val name: TextSource,
-    val unselectedColor: TagColor = TagColor(R.color.colorText, R.color.colorDivider),
-    val selectedColor: TagColor = TagColor(R.color.colorTextInverse, R.color.disabled),
-    val onClickAction: () -> Unit,
+    val unselectedColor: TagColor = TagColor(R.color.text, R.color.surfaceSecondary),
+    val selectedColor: TagColor = TagColor(R.color.textInverse, R.color.surfaceSecondaryVariant),
+    val clickListener: () -> Unit,
 ) : TagViewType(R.layout.view_tag_tile)
 
 data class TagColor(

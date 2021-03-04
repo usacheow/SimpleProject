@@ -36,7 +36,7 @@ class PinIndicatorView
     private val diameterWithMargin = DOT_MARGIN.toPx + DEFAULT_RADIUS_DP.toPx * 2
     private val errorColor = R.color.error
     private val defaultColor = R.color.black_10
-    private val selectedColor = R.color.colorAccent
+    private val selectedColor = R.color.colorPrimary
 
     private var firstDotX = paddingLeft + DEFAULT_RADIUS_DP.toPx.toFloat()
     private var firstDotY = paddingTop + DEFAULT_RADIUS_DP.toPx.toFloat()

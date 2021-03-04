@@ -29,7 +29,7 @@ class InformationTileView
         binding.leftMainView.populate(model.leftMain)
         binding.rightMainView.populate(model.rightMain)
 
-        setListenerIfNeed(model.onItemClicked)
+        setListenerIfNeed(model.clickListener)
     }
 }
 
@@ -39,5 +39,5 @@ data class InformationTileItem(
     val rightTopText: TextSource,
     val leftMain: TextSource,
     val rightMain: TextSource,
-    val onItemClicked: (() -> Unit)? = null,
+    val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_information_tile)

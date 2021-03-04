@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="SimpleBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_dialog</item>
+    </style>
+
     <style name="SimpleAppBarLayout" parent="Widget.Design.AppBarLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/colorToolbar</item>
+        <item name="android:background">@color/backgroundToolbar</item>
     </style>
 
     <style name="SimpleCollapsingToolbar" parent="Widget.Design.CollapsingToolbar">
@@ -69,7 +73,7 @@
         <item name="cornerRadius">20dp</item>
     </style>
 
-    <style name="NumPadButton" parent="TextNumPad">
+    <style name="NumPadButton">
         <item name="android:layout_width">@dimen/num_pad_button_size</item>
         <item name="android:layout_height">@dimen/num_pad_button_size</item>
         <item name="android:layout_marginTop">@dimen/num_pad_button_margin_vertical</item>
@@ -77,6 +81,7 @@
         <item name="android:layout_marginStart">@dimen/num_pad_button_margin_horizontal</item>
         <item name="android:layout_marginEnd">@dimen/num_pad_button_margin_horizontal</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:textAppearance">@style/TextNumPad</item>
         <item name="android:gravity">center</item>
     </style>
 

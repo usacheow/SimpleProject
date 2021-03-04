@@ -77,11 +77,11 @@
         app:layout_constraintStart_toEndOf="@id/numPadButton8"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backspaceButton"
         style="@style/NumPadButton"
         android:padding="20dp"
-        android:tint="@color/colorIconSecondary"
+        android:tint="@color/unselected"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_backspace"
         app:layout_constraintTop_toBottomOf="@id/numPadButton7"
@@ -97,11 +97,11 @@
         app:layout_constraintStart_toEndOf="@id/backspaceButton"
         app:layout_constraintEnd_toStartOf="@id/fingerprintButton" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fingerprintButton"
         style="@style/NumPadButton"
         android:padding="16dp"
-        android:tint="@color/colorIconSecondary"
+        android:tint="@color/unselected"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/numPadButton9"
         app:layout_constraintEnd_toEndOf="parent"

@@ -30,11 +30,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/topDescriptionView"
-                style="@style/TextBody2_60"
+                style="@style/TextBody2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
+                android:alpha="@dimen/text_alpha_60"
                 tools:text="Subtitle"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -49,11 +50,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/bottomDescriptionView"
-                style="@style/TextBody2_60"
+                style="@style/TextBody2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
+                android:alpha="@dimen/text_alpha_60"
                 tools:text="Description" />
         </LinearLayout>
 
