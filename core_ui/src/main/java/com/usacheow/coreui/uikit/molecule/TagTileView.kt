@@ -31,10 +31,10 @@ class TagTileView
         }))
 
         setListenerIfNeed {
-            model.onSelectAction()
             if (!model.isSelected) {
                 model.clickListener()
             }
+            model.onSelectAction()
         }
     }
 }
