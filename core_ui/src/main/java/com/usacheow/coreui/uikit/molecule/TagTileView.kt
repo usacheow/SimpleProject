@@ -30,13 +30,9 @@ class TagTileView
             false -> model.unselectedColor.background
         }))
 
-        if (model.isSelected) {
-            setListenerIfNeed {
-                model.onSelectAction()
-            }
-        } else {
-            setListenerIfNeed {
-                model.onSelectAction()
+        setListenerIfNeed {
+            model.onSelectAction()
+            if (!model.isSelected) {
                 model.clickListener()
             }
         }
