@@ -28,4 +28,9 @@ data class SubtitleTileItem(
     val title: TextSource,
     val actionTitle: TextSource? = null,
     val clickListener: (() -> Unit)? = null,
-) : ViewType(R.layout.view_subtitle_tile)
+) : ViewType(R.layout.view_subtitle_tile) {
+
+    companion object {
+        fun shimmer() = ShimmerTileItem(topLine = false, bottomLine = false, leftIcon = false, rightIcon = false)
+    }
+}

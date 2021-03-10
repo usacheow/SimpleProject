@@ -2,50 +2,43 @@
 <com.usacheow.coreui.uikit.molecule.BadgeTileView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/SimpleShimmerLayout"
     android:layout_width="wrap_content"
-    tools:shimmer_base_alpha="1">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/surfaceSecondary"
+    app:cardCornerRadius="@dimen/radius_16"
+    app:cardElevation="@dimen/elevation_0">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView"
+    <LinearLayout
+        android:id="@+id/clickableView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:cardBackgroundColor="@color/surfaceSecondary"
-        app:cardCornerRadius="@dimen/radius_16"
-        app:cardElevation="@dimen/elevation_0">
+        android:background="?selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="@dimen/left_right_margin">
 
-        <LinearLayout
-            android:id="@+id/clickableView"
+        <TextView
+            android:id="@+id/headerView"
+            style="@style/TextBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?selectableItemBackground"
-            android:orientation="vertical"
-            android:padding="@dimen/left_right_margin">
+            android:layout_marginBottom="8dp"
+            android:minWidth="120dp"
+            android:maxWidth="156dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:alpha="@dimen/text_alpha_60"
+            tools:text="@tools:sample/cities" />
 
-            <TextView
-                android:id="@+id/headerView"
-                style="@style/TextBody2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:minWidth="100dp"
-                android:maxWidth="156dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:alpha="@dimen/text_alpha_60"
-                tools:text="@tools:sample/cities" />
-
-            <TextView
-                android:id="@+id/valueView"
-                style="@style/TextBody1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:maxWidth="156dp"
-                android:ellipsize="end"
-                android:lines="2"
-                tools:text="@tools:sample/us_zipcodes" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/valueView"
+            style="@style/TextBody1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="120dp"
+            android:maxWidth="156dp"
+            android:ellipsize="end"
+            android:lines="2"
+            tools:text="@tools:sample/us_zipcodes" />
+    </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.BadgeTileView>

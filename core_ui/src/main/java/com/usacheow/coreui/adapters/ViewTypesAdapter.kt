@@ -36,7 +36,7 @@ class ViewTypesAdapter(
     class ViewTypesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Populatable<ViewType> {
 
         override fun populate(model: ViewType) {
-            (itemView as Populatable<ViewType>).populate(model)
+            (itemView as? Populatable<ViewType>)?.populate(model)
         }
     }
 

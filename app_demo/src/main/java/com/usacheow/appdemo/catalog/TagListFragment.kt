@@ -3,6 +3,7 @@ package com.usacheow.appdemo.catalog
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
@@ -38,7 +39,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         }
 
         binding.radioListView.isNestedScrollingEnabled = false
-        binding.radioListView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.radioListView.layoutManager = GridLayoutManager(context, 2)
         binding.radioListView.adapter = SingleSelectionViewTypesAdapter(listOf(
             TagTileItem(TextString("Radio tag 1")) {},
             TagTileItem(TextString("Radio tag 2")) {},
@@ -50,7 +51,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         ))
 
         binding.chipListView.isNestedScrollingEnabled = false
-        binding.chipListView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.chipListView.layoutManager = GridLayoutManager(context, 2)
         binding.chipListView.adapter = MultipleSelectionViewTypesAdapter(listOf(
             TagTileItem(TextString("Chip tag 1")) {},
             TagTileItem(TextString("Chip tag 2")) {},

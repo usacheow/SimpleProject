@@ -23,4 +23,9 @@ class HeaderTileView
 
 data class HeaderTileItem(
     val title: TextSource,
-) : ViewType(R.layout.view_header_tile)
+) : ViewType(R.layout.view_header_tile) {
+
+    companion object {
+        fun shimmer() = ShimmerTileItem(topLine = false, bottomLine = false, leftIcon = false, rightIcon = false)
+    }
+}

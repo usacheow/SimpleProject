@@ -42,29 +42,29 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             ListTileItem(
-                title = TextString("Title"),
+                value = TextString("Title"),
             ),
 
             ListTileItem(
                 leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextString("Title"),
+                value = TextString("Title"),
             ),
 
             ListTileItem(
                 leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextString("Title"),
+                value = TextString("Title"),
                 topDescription = TextString("Top description"),
             ),
 
             ListTileItem(
                 leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextString("Title"),
+                value = TextString("Title"),
                 bottomDescription = TextString("Bottom description"),
             ),
 
             ListTileItem(
                 leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextString("Title"),
+                value = TextString("Title"),
                 topDescription = TextString("Top description"),
                 bottomDescription = TextString("Bottom description"),
                 clickListener = {},
@@ -73,7 +73,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
             ListTileItem(
                 leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
                 rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_next)),
-                title = TextString("Title"),
+                value = TextString("Title"),
                 topDescription = TextString("Top description"),
                 bottomDescription = TextString("Bottom description"),
                 clickListener = {},

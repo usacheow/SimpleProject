@@ -42,7 +42,9 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             HeaderTileItem(TextString("Header")),
+            HeaderTileItem.shimmer(),
             SubtitleTileItem(TextString("Subtitle"), TextString("With action")),
+            SubtitleTileItem.shimmer(),
 
             DividerTileItem.getSmallDivider(),
 
@@ -58,14 +60,14 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
             ViewTypeHorizontalListItem(listOf(
                 BadgeTileItem.shimmer(),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), clickListener = {}),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Non-clickable"), backgroundColorRes = R.color.colorPrimary, textColorRes = R.color.white),
-                BadgeTileItem(needAdapt = true, header = TextString("Badge"), value = TextString("Clickable"), backgroundColorRes = R.color.error, textColorRes = R.color.white, clickListener = {}),
+                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Clickable"), clickListener = {}),
+                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Non-clickable"), backgroundColorRes = R.color.colorPrimary, textColorRes = R.color.white),
+                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Clickable"), backgroundColorRes = R.color.error, textColorRes = R.color.white, clickListener = {}),
             )),
 
             ViewTypeHorizontalListItem(listOf(
-                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.ic_money), clickListener = {}),
                 BannerTileItem.shimmer(),
+                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.ic_money), clickListener = {}),
             )),
         ))
     }
