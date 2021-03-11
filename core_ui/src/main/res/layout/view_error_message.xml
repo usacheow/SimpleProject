@@ -18,9 +18,17 @@
         android:layout_width="match_parent"
         android:gravity="center_vertical">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center_horizontal"/>
+
         <TextView
-            android:id="@+id/errorMessageTitleView"
-            style="@style/TextSubtitle1"
+            android:id="@+id/titleView"
+            style="@style/TextH4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -29,12 +37,13 @@
             tools:text="@tools:sample/lorem" />
 
         <TextView
-            android:id="@+id/errorMessageDescriptionView"
+            android:id="@+id/descriptionView"
             style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginHorizontal="@dimen/left_right_margin"
             android:maxLines="3"
             android:ellipsize="end"
@@ -46,7 +55,6 @@
             style="@style/SimpleButtonOutlined"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="12dp"
             android:layout_marginHorizontal="@dimen/left_right_margin"
             android:text="@string/repeat" />

@@ -67,7 +67,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
             ViewTypeHorizontalListItem(listOf(
                 BannerTileItem.shimmer(),
-                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.ic_money), clickListener = {}),
+                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.demo_avatar), clickListener = {}),
             )),
         ))
     }

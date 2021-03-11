@@ -22,11 +22,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.usacheow.coreui.uikit.organism.ErrorMessageView
-                android:id="@+id/errorMessageView"
+            <com.usacheow.coreui.uikit.organism.MessageBannerView
+                android:id="@+id/errorMessageView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/left_right_margin" />
+                android:layout_height="wrap_content" />
+
+            <com.usacheow.coreui.uikit.organism.MessageBannerView
+                android:id="@+id/errorMessageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.usacheow.coreui.uikit.organism.MessageBannerView
+                android:id="@+id/errorMessageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.usacheow.coreui.uikit.organism.MessageBannerView
+                android:id="@+id/errorMessageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
