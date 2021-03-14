@@ -8,7 +8,7 @@ import java.util.*
 object DateFactory {
 
     fun from(milliseconds: Long): Date {
-        val dateFormat = SimpleDateFormat(DateFormat.yyyy__MM__dd.code, LOCALE())
+        val dateFormat = SimpleDateFormat(DateFormat.yyyy__MM__dd_T_hh_mm_ss.code, LOCALE())
         return dateFormat.parse(dateFormat.format(milliseconds))!!
     }
 

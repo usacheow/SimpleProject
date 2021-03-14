@@ -25,13 +25,13 @@ class Storage
         }
 
     var userName: String
-        get() = getPreferences().getString(PREF_NAME, "")!!
+        get() = getPreferences().getString(PREF_NAME, "") ?: ""
         set(value) {
             getPreferencesEditor().putString(PREF_NAME, value).apply()
         }
 
     var phoneNumber: String
-        get() = getPreferences().getString(PREF_PHONE, "")!!
+        get() = getPreferences().getString(PREF_PHONE, "") ?: ""
         set(value) {
             getPreferencesEditor().putString(PREF_PHONE, value).apply()
         }
@@ -43,13 +43,13 @@ class Storage
         }
 
     var token: String
-        get() = getPreferences().getString(PREF_TOKEN, "")!!
+        get() = getPreferences().getString(PREF_TOKEN, "") ?: ""
         set(value) {
             getPreferencesEditor().putString(PREF_TOKEN, value).apply()
         }
 
     var pinCode: String
-        get() = getPreferences().getString(PREF_PIN_CODE, "")!!
+        get() = getPreferences().getString(PREF_PIN_CODE, "") ?: ""
         set(value) {
             getPreferencesEditor().putString(PREF_PIN_CODE, value).apply()
         }

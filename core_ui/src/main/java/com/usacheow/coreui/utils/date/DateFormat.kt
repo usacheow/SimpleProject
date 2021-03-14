@@ -16,5 +16,5 @@ enum class DateFormat(val code: String) {
     d_MMMM("d MMMM"),
     dd__MM__yyyy("dd.MM.yyyy"),
     dd_MMMM_yyyy("dd MMMM yyyy"),
-    yyyy__MM__dd_T_hh_mm_ss("yyyy-MM-ddTHH:mm:ss"),
+    yyyy__MM__dd_T_hh_mm_ss("yyyy-MM-dd'T'HH:mm:ss"),
 }

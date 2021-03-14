@@ -30,13 +30,10 @@ ext {
     cameraXViewVersion = '1.0.0-alpha10'
 
     yandexMetricaVersion = '3.2.2'
-    analyticsVersion = '17.2.1'
-    messagingVersion = '20.1.0'
-    authVersion = '19.3.1'
-    googleAuthVersion = '18.0.0'
-    firebaseAdsVersion = '18.3.0'
-    crashlyticsVersion = '17.0.1'
-    configVersion = '19.0.3'
+    analyticsVersion = '18.0.2'
+    messagingVersion = '21.0.1'
+    crashlyticsVersion = '17.4.0'
+    configVersion = '20.0.4'
 
     billingVersion = '1.2.1'
     browserVersion = '1.0.0'
@@ -113,13 +110,10 @@ ext {
 
     firebaseDependencies = [
 //            yandexMetrica:  "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
-//            auth:           "com.google.firebase:firebase-auth:$authVersion",
-//            googleAuth:     "com.google.android.gms:play-services-auth:$googleAuthVersion",
-//            ads:            "com.google.firebase:firebase-ads:$firebaseAdsVersion",
-            crashlytics:    "com.google.firebase:firebase-crashlytics:$crashlyticsVersion",
-            analytics:      "com.google.firebase:firebase-analytics:$analyticsVersion",
-            messaging:      "com.google.firebase:firebase-messaging:$messagingVersion",
-            config:         "com.google.firebase:firebase-config:$configVersion",
+            crashlytics:    "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsVersion",
+            analytics:      "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
+            messaging:      "com.google.firebase:firebase-messaging-ktx:$messagingVersion",
+            config:         "com.google.firebase:firebase-config-ktx:$configVersion",
     ]
 
     cameraxDependencies = [
