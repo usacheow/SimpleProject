@@ -1,11 +1,17 @@
 package com.usacheow.coreui.utils.date
 
 import com.usacheow.coreui.utils.values.LOCALE
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
 object LocalDateTimeFactory {
+
+    fun from(milliseconds: Long): LocalDateTime {
+        val dateFormat = SimpleDateFormat(DateFormat.yyyy__MM__dd_T_hh_mm_ss.code, LOCALE())
+        return LocalDateTime.parse(dateFormat.format(milliseconds))
+    }
 
     /**
      * The string must represent a valid date-time and is parsed using
