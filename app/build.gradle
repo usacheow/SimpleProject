@@ -7,7 +7,6 @@ applyAndroidApp(this)
 applyAndroidCommon(this)
 applyDagger(this)
 applyLifecycle(this)
-applyTest(this)
 
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
@@ -33,29 +32,29 @@ android {
     buildTypes {
         release {
             versionNameSuffix ReleaseSuffix
-            signingConfig signingConfigs.release
 
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
         }
         debug {
             versionNameSuffix DebugSuffix
-            applicationIdSuffix DebugApplicationIdSuffix
+
             buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
         }
     }
 
-    flavorDimensions "default"
-
-    productFlavors {
-        play {
-            versionName configVersionName()
-        }
-        development {
-            versionName configVersionName()
-        }
-    }
+//    flavorDimensions "default"
+//
+//    productFlavors {
+//        play {
+//            versionName configVersionName()
+//        }
+//        development {
+//            versionName configVersionName()
+//        }
+//    }
 }
 
 dependencies {

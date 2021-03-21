@@ -6,5 +6,4 @@ ext {
 
     ReleaseSuffix = "-release"
     DebugSuffix = "-debug"
-    DebugApplicationIdSuffix = ".debug"
 }

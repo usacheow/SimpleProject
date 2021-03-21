@@ -39,7 +39,7 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas?) {
-        val curveRadius = dimen(R.dimen.radius_16)
+        val curveRadius = dimen(R.dimen.radius_large)
 
         outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {

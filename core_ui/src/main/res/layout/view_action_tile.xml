@@ -15,7 +15,7 @@
         android:layout_height="32dp"
         android:scaleType="centerCrop"
         android:layout_marginEnd="@dimen/left_right_margin"
-        app:riv_corner_radius="@dimen/radius_16"
+        app:riv_corner_radius="16dp"
         tools:src="@tools:sample/avatars"/>
 
     <LinearLayout
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:alpha="@dimen/text_alpha_60"
+            android:alpha="@dimen/text_alpha"
             tools:text="@tools:sample/cities" />
     </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.ActionTileView>

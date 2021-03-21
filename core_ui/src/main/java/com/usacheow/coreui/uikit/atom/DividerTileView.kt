@@ -44,7 +44,9 @@ data class DividerTileItem(
 
         fun getSmallDivider() = DividerTileItem()
 
-        fun getBigDivider() = DividerTileItem(heightResId = R.dimen.divider_height_big)
+        fun getMediumDivider() = DividerTileItem(heightResId = R.dimen.divider_height_medium)
+
+        fun getLargeDivider() = DividerTileItem(heightResId = R.dimen.divider_height_large)
 
     }
 }

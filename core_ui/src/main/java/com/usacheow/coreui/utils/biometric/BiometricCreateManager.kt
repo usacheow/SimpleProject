@@ -5,25 +5,20 @@ import androidx.fragment.app.FragmentActivity
 import com.usacheow.coreui.R
 import javax.inject.Inject
 
-open class BiometricAuthorizationManager
+class BiometricCreateManager
 @Inject constructor() : BiometricManagerWrapper() {
 
-    var onSuccessAction: (List<Int>) -> Unit = {}
-    var onUnavailableAction: () -> Unit = {}
+    var onSuccessAction: (BiometricPrompt.AuthenticationResult) -> Unit = {}
+    var onErrorAction: () -> Unit = {}
+    var onShowMessageAction: () -> Unit = {}
 
     fun init(activity: FragmentActivity) {
         super.init(
             activity,
-            activity.getString(R.string.fingerprint_title),
-            activity.getString(R.string.fingerprint_message),
-            activity.getString(R.string.fingerprint_cancel_button)
+            activity.getString(R.string.biometric_create_title),
+            activity.getString(R.string.biometric_create_message),
+            activity.getString(R.string.biometric_create_cancel)
         )
-    }
-
-    fun checkFingerprintState() {
-        if (!hasBiometricScanner()) {
-            onUnavailableAction.invoke()
-        }
     }
 
     fun tryShow(data: BiometricData?) {
@@ -39,14 +34,14 @@ open class BiometricAuthorizationManager
     }
 
     override fun onSuccess(result: BiometricPrompt.AuthenticationResult) {
-        super.onSuccess(result)
-
-        onSuccessAction.invoke(emptyList())
+        onSuccessAction.invoke(result)
     }
 
     override fun onError(errorMsg: String, errorCode: Int) {
-        if (errorCode in arrayOf(ERROR_LOCKOUT, ERROR_LOCKOUT_PERMANENT)) {
-            onUnavailableAction.invoke()
+        onErrorAction.invoke()
+
+        if (errorCode == ERROR_LOCKOUT || errorCode == ERROR_LOCKOUT_PERMANENT) {
+            onShowMessageAction.invoke()
         }
     }
 

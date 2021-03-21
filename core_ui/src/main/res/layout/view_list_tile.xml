@@ -15,7 +15,7 @@
         android:layout_height="32dp"
         android:scaleType="centerCrop"
         android:layout_marginEnd="@dimen/left_right_margin"
-        app:riv_corner_radius="@dimen/radius_16" />
+        app:riv_corner_radius="16dp" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:alpha="@dimen/text_alpha_60"
+            android:alpha="@dimen/text_alpha"
             tools:text="Subtitle"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:alpha="@dimen/text_alpha_60"
+            android:alpha="@dimen/text_alpha"
             tools:text="Description" />
     </LinearLayout>
 
@@ -60,6 +60,5 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:scaleType="centerCrop"
-        android:layout_marginStart="@dimen/left_right_margin"
-        app:riv_corner_radius="@dimen/radius_16" />
+        android:layout_marginStart="@dimen/left_right_margin" />
 </com.usacheow.coreui.uikit.molecule.ListTileView>

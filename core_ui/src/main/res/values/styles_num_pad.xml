@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NumPadButton">
+        <item name="android:layout_width">@dimen/num_pad_button_size</item>
+        <item name="android:layout_height">@dimen/num_pad_button_size</item>
+        <item name="android:layout_marginTop">@dimen/num_pad_button_margin_vertical</item>
+        <item name="android:layout_marginBottom">@dimen/num_pad_button_margin_vertical</item>
+        <item name="android:layout_marginStart">@dimen/num_pad_button_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/num_pad_button_margin_horizontal</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:textAppearance">@style/TextNumPad</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

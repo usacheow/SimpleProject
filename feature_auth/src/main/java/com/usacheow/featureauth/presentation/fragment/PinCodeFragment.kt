@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.biometric.BiometricAuthorizationManager
+import com.usacheow.coreui.utils.biometric.BiometricEnterManager
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.string
@@ -28,7 +28,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         viewBindingProvider = FragmentPinCodeBinding::inflate,
     )
 
-    @Inject lateinit var biometricDelegate: BiometricAuthorizationManager
+    @Inject lateinit var biometricDelegate: BiometricEnterManager
     @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<PinCodeViewModel>()

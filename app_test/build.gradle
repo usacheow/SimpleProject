@@ -7,51 +7,15 @@ applyAndroidApp(this)
 applyAndroidCommon(this)
 applyLifecycle(this)
 applyDagger(this)
-applyTest(this)
 
 android {
 
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
-        versionCode configVersionCode()
-        applicationId applicationPackage
-    }
-
-    signingConfigs {
-        release {
-            storeFile ConfigStoreFile
-            storePassword ConfigStorePassword
-            keyAlias ConfigKeyAlias
-            keyPassword ConfigKeyPassword
-        }
-    }
-
-    buildTypes {
-        release {
-            versionNameSuffix ReleaseSuffix
-            signingConfig signingConfigs.release
-
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
-        }
-        debug {
-            versionNameSuffix DebugSuffix
-            applicationIdSuffix DebugApplicationIdSuffix
-            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
-        }
-    }
-
-    flavorDimensions "default"
-
-    productFlavors {
-        play {
-            versionName configVersionName()
-        }
-        development {
-            versionName configVersionName()
-        }
+        versionName '9.9.9'
+        versionCode 999
+        applicationId 'com.usacheow.simpleapp.sandbox'
     }
 }
 

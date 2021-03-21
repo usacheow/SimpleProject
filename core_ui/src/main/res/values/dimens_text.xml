@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_alpha">0.6</dimen>
+
+    <dimen name="text_10sp">10.0sp</dimen>
+    <dimen name="text_12sp">12.0sp</dimen>
+    <dimen name="text_14sp">14.0sp</dimen>
+    <dimen name="text_16sp">16.0sp</dimen>
+    <dimen name="text_18sp">18.0sp</dimen>
+    <dimen name="text_20sp">20.0sp</dimen>
+    <dimen name="text_22sp">22.0sp</dimen>
+    <dimen name="text_24sp">24.0sp</dimen>
+    <dimen name="text_28sp">28.0sp</dimen>
+    <dimen name="text_32sp">32.0sp</dimen>
+    <dimen name="text_36sp">36.0sp</dimen>
+    <dimen name="text_38sp">38.0sp</dimen>
+
+</resources>

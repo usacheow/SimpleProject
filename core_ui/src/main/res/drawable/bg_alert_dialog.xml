@@ -5,9 +5,9 @@
     <solid android:color="@color/surface" />
 
     <corners
-        android:topLeftRadius="@dimen/radius_16"
-        android:topRightRadius="@dimen/radius_16"
-        android:bottomRightRadius="@dimen/radius_16"
-        android:bottomLeftRadius="@dimen/radius_16" />
+        android:topLeftRadius="@dimen/radius_large"
+        android:topRightRadius="@dimen/radius_large"
+        android:bottomRightRadius="@dimen/radius_large"
+        android:bottomLeftRadius="@dimen/radius_large" />
 
 </shape>
