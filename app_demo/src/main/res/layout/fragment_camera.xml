@@ -23,7 +23,7 @@
         android:padding="16dp"
         android:scaleType="fitCenter"
         android:background="@color/transparent"
-        android:tint="@color/white"
+        app:tint="@color/white"
         app:srcCompat="@drawable/ic_switch"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -10,7 +10,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
 
-        const val DATABASE_NAME = "featuredagger.db"
+        const val DATABASE_NAME = "simple.db"
     }
 
     abstract fun stubDao(): StubDao

@@ -250,7 +250,7 @@ class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyze
     private val frameTimestamps = ArrayDeque<Long>(5)
     private val listeners = ArrayList<LumaListener>().apply { listener?.let { add(it) } }
     private var lastAnalyzedTimestamp = 0L
-    var framesPerSecond: Double = -1.0
+    private var framesPerSecond: Double = -1.0
         private set
 
     private fun ByteBuffer.toByteArray(): ByteArray {

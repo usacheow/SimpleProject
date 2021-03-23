@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.usacheow.coredata.R
 
 sealed class ApiError(
-    val defaultMessageId: Int,
+    private val defaultMessageId: Int,
     message: String? = null,
     cause: Throwable? = null
 ) : Exception(message, cause) {
