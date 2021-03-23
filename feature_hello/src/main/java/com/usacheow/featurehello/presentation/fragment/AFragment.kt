@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue

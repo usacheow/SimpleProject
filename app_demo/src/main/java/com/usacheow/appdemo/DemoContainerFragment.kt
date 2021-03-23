@@ -1,6 +1,6 @@
 package com.usacheow.appdemo
 
-import com.usacheow.coreui.fragments.ContainerFragment
+import com.usacheow.coreui.fragment.ContainerFragment
 
 class DemoContainerFragment : ContainerFragment() {
 

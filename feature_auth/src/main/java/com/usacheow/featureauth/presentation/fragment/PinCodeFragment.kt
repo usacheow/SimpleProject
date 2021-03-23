@@ -5,10 +5,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.biometric.BiometricEnterManager
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.string
@@ -16,6 +17,7 @@ import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
+import com.usacheow.featureauth.presentation.viewmodels.SignInInput
 import com.usacheow.featureauth.presentation.viewmodels.SignInError
 import com.usacheow.featureauth.presentation.viewmodels.SignInSuccess
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,19 +62,22 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isFingerprintAllow.observe(viewLifecycleOwner) { isAllow ->
+        viewModel.isFingerprintAllowState.observe(lifecycleScope) { isAllow ->
             val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
             binding.pinCodeView.setFingerprintEnabled(isEnabled)
             if (isEnabled) {
                 requireView().post { biometricDelegate.tryShow() }
             }
         }
-        viewModel.changeAuthState.observe(viewLifecycleOwner) {
+        viewModel.changeAuthState.observe(lifecycleScope) {
             when (it) {
                 is SignInSuccess -> appStateViewModel.onPinCodeEntered()
                 is SignInError -> {
                     binding.pinCodeView.setHint(string(R.string.pin_view_code_error))
                     binding.pinCodeView.showError()
+                }
+                is SignInInput -> {
+                    binding.pinCodeView.resetState()
                 }
             }
         }

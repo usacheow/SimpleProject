@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewTypeHorizontalListViewBinding
 
 class ViewTypeHorizontalListView

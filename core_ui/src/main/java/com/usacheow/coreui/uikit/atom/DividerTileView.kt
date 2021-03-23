@@ -7,8 +7,8 @@ import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
 import com.usacheow.coreui.utils.MarginHorizontal
 import com.usacheow.coreui.utils.updateMargins

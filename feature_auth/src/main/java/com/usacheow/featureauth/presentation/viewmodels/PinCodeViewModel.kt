@@ -1,33 +1,32 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.database.Storage
-import com.usacheow.coreui.livedata.ActionLiveData
+import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PinCodeViewModel @Inject constructor(
     private val storage: Storage,
-) : ViewModel() {
+) : SimpleViewModel() {
 
-    val isFingerprintAllow: LiveData<Boolean> get() = _fingerprintAllowLiveData
-    private val _fingerprintAllowLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _isFingerprintAllowState = MutableStateFlow(storage.isAllowFingerprint)
+    val isFingerprintAllowState = _isFingerprintAllowState.asStateFlow()
 
-    val changeAuthState: LiveData<SignInResult> get() = _changeAuthStateLiveData
-    private val _changeAuthStateLiveData by lazy { ActionLiveData<SignInResult>() }
+    private val _changeAuthState = MutableStateFlow<SignInResult>(SignInInput)
+    val changeAuthState = _changeAuthState.asStateFlow()
 
-    init {
-        _fingerprintAllowLiveData.value = storage.isAllowFingerprint
-    }
-
-    fun onPinCodeInputted(pinCode: String) {
-        _changeAuthStateLiveData.value = when (verifyPinCode(pinCode)) {
-            true -> SignInSuccess
-            false -> SignInError()
-        }
+    fun onPinCodeInputted(pinCode: String) = viewModelScope.launch {
+        _changeAuthState.emit(
+            when (verifyPinCode(pinCode)) {
+                true -> SignInSuccess
+                false -> SignInError()
+            }
+        )
     }
 
     //TODO: stub
@@ -36,5 +35,6 @@ class PinCodeViewModel @Inject constructor(
 
 sealed class SignInResult
 
+object SignInInput : SignInResult()
 object SignInSuccess : SignInResult()
 data class SignInError(val errorText: String? = null) : SignInResult()

@@ -1,6 +1,6 @@
-package com.usacheow.coreui.adapters
+package com.usacheow.coreui.adapter
 
-import com.usacheow.coreui.adapters.base.TagViewType
+import com.usacheow.coreui.adapter.base.TagViewType
 
 class MultipleSelectionViewTypesAdapter(
     private var entities: List<TagViewType> = emptyList()

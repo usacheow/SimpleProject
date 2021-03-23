@@ -5,7 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.organism.MessageBannerItem
 import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.TextRes

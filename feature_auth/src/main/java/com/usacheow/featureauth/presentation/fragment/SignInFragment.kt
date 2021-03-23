@@ -8,10 +8,11 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
@@ -105,10 +106,10 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.signInLoaderView.root.isVisible = it }
-        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
-        viewModel.openSignUpScreen.observe(viewLifecycleOwner) { router.openSignUpScreen(this) }
-        viewModel.closeScreen.observe(viewLifecycleOwner) { appStateViewModel.onSignIn() }
+        viewModel.isLoadingState.observe(lifecycleScope) { binding.signInLoaderView.root.isVisible = it }
+        viewModel.submitButtonEnabledState.observe(lifecycleScope) { binding.signInButton.isEnabled = it }
+        viewModel.openSignUpScreenAction.observe(lifecycleScope) { router.openSignUpScreen(this) }
+        viewModel.closeScreenAction.observe(lifecycleScope) { appStateViewModel.onSignIn() }
     }
 
     private fun getLoginAndPassword() = binding.signInLoginInput.text.toString() to binding.signInPasswordInput.text.toString()

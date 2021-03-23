@@ -6,8 +6,8 @@ import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentListBinding
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.*
 import com.usacheow.coreui.utils.IconInfo
 import com.usacheow.coreui.utils.ImageRes

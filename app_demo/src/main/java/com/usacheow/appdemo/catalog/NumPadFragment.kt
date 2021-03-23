@@ -5,7 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentNumPadBinding
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
 
 class NumPadFragment : SimpleFragment<FragmentNumPadBinding>() {

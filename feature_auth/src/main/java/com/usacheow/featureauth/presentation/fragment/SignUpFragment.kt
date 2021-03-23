@@ -8,10 +8,11 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
@@ -100,9 +101,9 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.signUpLoaderView.root.isVisible = it }
-        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { binding.signUpButton.isEnabled = it }
-        viewModel.openMainScreen.observe(viewLifecycleOwner) { appStateViewModel.onSignUp() }
+        viewModel.isLoadingState.observe(lifecycleScope) { binding.signUpLoaderView.root.isVisible = it }
+        viewModel.isSubmitButtonEnabledState.observe(lifecycleScope) { binding.signUpButton.isEnabled = it }
+        viewModel.openMainScreenAction.observe(lifecycleScope) { appStateViewModel.onSignUp() }
     }
 
     private fun getLoginAndPassword() = binding.signUpLoginInput.text.toString() to binding.signUpPasswordInput.text.toString()

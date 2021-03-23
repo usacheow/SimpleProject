@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
+import com.usacheow.coreui.utils.view.string
+import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
 
 private const val PIN_CODE_LENGTH = 4
@@ -78,6 +80,11 @@ class PinCodeView
 
     fun setHint(hint: String) {
         binding.hintTextView.text = hint
+    }
+
+    fun resetState() {
+        clearCode()
+        binding.hintTextView.text = string(R.string.pin_view_hint)
     }
 
     fun setFingerprintEnabled(isEnabled: Boolean) {

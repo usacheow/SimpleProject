@@ -1,11 +1,11 @@
-package com.usacheow.coreui.adapters
+package com.usacheow.coreui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 
 class ViewTypesAdapter(
     private var entities: List<ViewType> = emptyList()

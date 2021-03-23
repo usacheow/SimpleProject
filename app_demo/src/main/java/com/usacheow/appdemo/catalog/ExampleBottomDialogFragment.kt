@@ -1,6 +1,6 @@
 package com.usacheow.appdemo.catalog
 
-import com.usacheow.coreui.fragments.SimpleBottomSheetDialogFragment
+import com.usacheow.coreui.fragment.SimpleBottomSheetDialogFragment
 import com.usacheow.appdemo.databinding.DialogExampleBottomBinding
 
 class ExampleBottomDialogFragment : SimpleBottomSheetDialogFragment<DialogExampleBottomBinding>() {

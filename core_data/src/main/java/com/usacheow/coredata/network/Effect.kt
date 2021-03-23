@@ -31,7 +31,7 @@ fun <T : Any> Effect<T>.getIfSuccess(): Effect.Success<T>? = when (this) {
     is Effect.Error -> null
 }
 
-fun <T : Any> Effect<T>.ifSuccess(block: Effect.Success<T>.() -> Unit): Effect<T> {
+suspend fun <T : Any> Effect<T>.ifSuccess(block: suspend Effect.Success<T>.() -> Unit): Effect<T> {
     if (this is Effect.Success<T>) {
         this.block()
     }
@@ -39,7 +39,7 @@ fun <T : Any> Effect<T>.ifSuccess(block: Effect.Success<T>.() -> Unit): Effect<T
     return this
 }
 
-fun <T : Any> Effect<T>.ifError(block: Effect.Error.() -> Unit): Effect<T> {
+suspend fun <T : Any> Effect<T>.ifError(block: suspend Effect.Error.() -> Unit): Effect<T> {
     if (this is Effect.Error) {
         this.block()
     }

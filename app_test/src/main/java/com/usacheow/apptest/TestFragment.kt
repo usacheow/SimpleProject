@@ -13,15 +13,8 @@ import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.JobIntentService
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.button.MaterialButton
 import com.usacheow.apptest.databinding.FragmentTestBinding
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
-import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.fragment.SimpleFragment
 import kotlinx.coroutines.*
 
 class TestFragment : SimpleFragment<FragmentTestBinding>() {

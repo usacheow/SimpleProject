@@ -1,4 +1,4 @@
-package com.usacheow.coreui.fragments
+package com.usacheow.coreui.fragment
 
 import android.app.Dialog
 import android.content.res.Resources

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.appdemo.R
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.appdemo.databinding.FragmentFontsBinding
 

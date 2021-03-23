@@ -1,4 +1,4 @@
-package com.usacheow.coreui.adapters
+package com.usacheow.coreui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

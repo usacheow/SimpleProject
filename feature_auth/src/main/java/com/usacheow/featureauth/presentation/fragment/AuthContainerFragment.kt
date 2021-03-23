@@ -1,6 +1,6 @@
 package com.usacheow.featureauth.presentation.fragment
 
-import com.usacheow.coreui.fragments.ContainerFragment
+import com.usacheow.coreui.fragment.ContainerFragment
 
 class AuthContainerFragment : ContainerFragment() {
 

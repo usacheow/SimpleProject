@@ -1,20 +1,21 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ifError
 import com.usacheow.coredata.network.ifSuccess
-import com.usacheow.coreui.livedata.ActionLiveData
-import com.usacheow.coreui.livedata.SimpleAction
-import com.usacheow.coreui.livedata.postValue
 import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
-import com.usacheow.coreui.viewmodels.SimpleViewModel
+import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
@@ -26,36 +27,31 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
 ) : SimpleViewModel() {
 
-    val codeConfirmMessage: LiveData<String> get() = _codeConfirmMessageLiveData
-    private val _codeConfirmMessageLiveData by lazy { MutableLiveData<String>() }
+    private val _codeConfirmMessageState = MutableStateFlow("")
+    val codeConfirmMessageState = _codeConfirmMessageState.asStateFlow()
 
-    val submitButtonEnabled: LiveData<Boolean> get() = _submitButtonEnabledLiveData
-    private val _submitButtonEnabledLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _isSubmitButtonEnabledState = MutableStateFlow(false)
+    val isSubmitButtonEnabledState = _isSubmitButtonEnabledState.asStateFlow()
 
-    val closeScreen: LiveData<SimpleAction> get() = _closeScreenLiveData
-    private val _closeScreenLiveData by lazy { ActionLiveData<SimpleAction>() }
+    private val _isLoadingState = MutableStateFlow(false)
+    val isLoadingState = _isLoadingState.asStateFlow()
 
-    val openSignUpScreen: LiveData<SimpleAction> get() = _openSignUpScreenLiveData
-    private val _openSignUpScreenLiveData by lazy { ActionLiveData<SimpleAction>() }
+    private val _errorState = MutableStateFlow<String?>(null)
+    val errorState = _errorState.asStateFlow()
 
-    val openConfirmScreen: LiveData<Int> get() = _openConfirmScreenLiveData
-    private val _openConfirmScreenLiveData by lazy { ActionLiveData<Int>() }
+    private val _closeScreenAction = Channel<SimpleAction>()
+    val closeScreenAction = _closeScreenAction.receiveAsFlow()
 
-    val isLoadingState: LiveData<Boolean> get() = _isLoadingStateLiveData
-    private val _isLoadingStateLiveData by lazy { MutableLiveData<Boolean>() }
+    private val _openSignUpScreenAction = Channel<SimpleAction>()
+    val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
 
-    val errorState: LiveData<String?> get() = _errorStateLiveData
-    private val _errorStateLiveData by lazy { MutableLiveData<String?>() }
+    private val _openConfirmScreenAction = Channel<Int>()
+    val openConfirmScreenAction = _openConfirmScreenAction.receiveAsFlow()
 
     private var phoneNumber = ""
 
-    init {
-        _isLoadingStateLiveData.value = false
-        _submitButtonEnabledLiveData.value = false
-    }
-
     fun onPhoneChanged(phone: String) {
-        _submitButtonEnabledLiveData.value = isValidPhoneNumber(phone.normalizedPhoneNumber())
+        _isSubmitButtonEnabledState.value = isValidPhoneNumber(phone.normalizedPhoneNumber())
     }
 
     private fun isValidPhoneNumber(phone: String) = phone.length == EXPECTED_PHONE_NUMBER_LENGTH
@@ -68,36 +64,44 @@ class SignInWithPhoneViewModel @Inject constructor(
         sendPhoneNumberIfValid(phone)
     }
 
-    private fun sendPhoneNumberIfValid(phone: String) {
+    private fun sendPhoneNumberIfValid(phone: String) = viewModelScope.launch {
         phoneNumber = phone.normalizedPhoneNumber()
-        if (!isValidPhoneNumber(phoneNumber)) return
-
-        viewModelScope.launch(Dispatchers.IO) {
-            _isLoadingStateLiveData.postValue = true
-            interactor.signInWithPhone(phone).ifSuccess {
-                _openConfirmScreenLiveData.postValue = CONFIRM_CODE_LENGTH
-            }.ifError {
-                _errorStateLiveData.postValue = exception.getMessage(resources.get)
-            }
-            _isLoadingStateLiveData.postValue = false
+        if (!isValidPhoneNumber(phoneNumber)) {
+            return@launch
         }
+
+        _isLoadingState.emit(true)
+
+        withContext(Dispatchers.IO) {
+            interactor.signInWithPhone(phone)
+        }.ifSuccess {
+            _openConfirmScreenAction.send(CONFIRM_CODE_LENGTH)
+        }.ifError {
+            _errorState.emit(exception.getMessage(resources.get))
+        }
+
+        _isLoadingState.emit(false)
     }
 
-    fun onSignUpClicked() {
-        _openSignUpScreenLiveData.value = SimpleAction()
+    fun onSignUpClicked() = viewModelScope.launch {
+        _openSignUpScreenAction.send(SimpleAction)
     }
 
-    fun onCodeInputted(code: String) {
-        if (code.isEmpty()) return
-
-        viewModelScope.launch(Dispatchers.IO) {
-            _isLoadingStateLiveData.postValue = true
-            interactor.verifyPhone(phoneNumber, code).ifSuccess {
-                _closeScreenLiveData.postValue = SimpleAction()
-            }.ifError {
-                _codeConfirmMessageLiveData.postValue = "Неверный код"
-            }
-            _isLoadingStateLiveData.postValue = false
+    fun onCodeInputted(code: String) = viewModelScope.launch {
+        if (code.isEmpty()) {
+            return@launch
         }
+
+        _isLoadingState.emit(true)
+
+        withContext(Dispatchers.IO) {
+            interactor.verifyPhone(phoneNumber, code)
+        }.ifSuccess {
+            _closeScreenAction.send(SimpleAction)
+        }.ifError {
+            _codeConfirmMessageState.emit("Неверный код")
+        }
+
+        _isLoadingState.emit(false)
     }
 }

@@ -1,94 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/signInRootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/left_right_margin"
-    tools:paddingVertical="16dp">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/signInHeaderView"
-        style="@style/TextH5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in_header"
-        android:layout_marginTop="120dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signInLoginInputLayout"
-        style="@style/SimpleInputLayout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:hintEnabled="true"
-        app:startIconDrawable="@drawable/ic_user"
-        app:layout_constraintTop_toBottomOf="@id/signInHeaderView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signInLoginInput"
-            style="@style/TextBody1"
+        <LinearLayout
+            android:id="@+id/signInRootView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_in_login"
-            android:imeOptions="actionNext"
-            android:lines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/left_right_margin"
+            tools:paddingVertical="16dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signInPasswordInputLayout"
-        style="@style/SimpleInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:startIconDrawable="@drawable/ic_lock"
-        app:endIconMode="password_toggle"
-        app:hintEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/signInLoginInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/signInHeaderView"
+                style="@style/TextH5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:text="@string/sign_in_header" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signInPasswordInput"
-            style="@style/TextBody1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="@string/sign_in_password"
-            android:lines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signInLoginInputLayout"
+                style="@style/SimpleInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:hintEnabled="true"
+                app:startIconDrawable="@drawable/ic_user">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/signInButton"
-        style="@style/SimpleButton"
-        android:layout_width="0dp"
-        android:text="@string/sign_in_button"
-        app:layout_constraintBottom_toTopOf="@id/signUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signInLoginInput"
+                    style="@style/TextBody1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_in_login"
+                    android:imeOptions="actionNext"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/signUpButton"
-        style="@style/SimpleButtonText"
-        android:layout_width="0dp"
-        android:text="@string/sign_in_sing_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signInPasswordInputLayout"
+                style="@style/SimpleInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:endIconMode="password_toggle"
+                app:hintEnabled="true"
+                app:startIconDrawable="@drawable/ic_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signInPasswordInput"
+                    style="@style/TextBody1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_in_password"
+                    android:inputType="textPassword"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signInButton"
+                style="@style/SimpleButton"
+                android:text="@string/sign_in_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signUpButton"
+                style="@style/SimpleButtonText"
+                android:text="@string/sign_in_sing_up" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/signInLoaderView"
         layout="@layout/view_fullscreen_loader"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</FrameLayout>

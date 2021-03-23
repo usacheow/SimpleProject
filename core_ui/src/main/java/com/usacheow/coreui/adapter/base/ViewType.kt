@@ -1,4 +1,4 @@
-package com.usacheow.coreui.adapters.base
+package com.usacheow.coreui.adapter.base
 
 import androidx.annotation.LayoutRes
 

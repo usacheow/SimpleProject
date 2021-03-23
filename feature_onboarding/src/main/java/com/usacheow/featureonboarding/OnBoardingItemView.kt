@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
 class OnBoardingItemView

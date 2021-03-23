@@ -1,9 +1,9 @@
 # Simple project
 
 Starter project with functional modules on the next stack:
-+ kotlin
-+ aac (viewModel, liveData, room), hilt
-+ coroutines, retrofit 2, gson, glide
++ kotlin, coroutines
++ mvvm, hilt, view binding
++ retrofit 2, gson, glide, room
 + junit, espresso
 + gitlab ci
 
@@ -21,7 +21,7 @@ to initialize the fragment. Through the SimpleFragment.getContainer(...) method,
 that contains the current one
 
 #### 2. Custom views and screens and resources for light/night mode
-The project contains custom elements (part is not finished) and screen templates. 
+The project contains custom elements and screen templates. 
 For more information, see the app_demo
 
 #### 3. Universal Lists

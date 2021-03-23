@@ -2,14 +2,12 @@ package com.usacheow.coreui.uikit.molecule
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.view.updatePadding
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewActionTileBinding
 import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.*

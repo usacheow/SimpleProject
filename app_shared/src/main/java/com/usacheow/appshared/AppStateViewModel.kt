@@ -1,52 +1,56 @@
 package com.usacheow.appshared
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.database.Storage
-import com.usacheow.coreui.livedata.ActionLiveData
-import com.usacheow.coreui.livedata.SimpleAction
+import com.usacheow.coreui.utils.SimpleAction
+import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AppStateViewModel @Inject constructor(
     private val storage: Storage,
-) : ViewModel() {
+) : SimpleViewModel() {
 
-    val openOnBoardingScreen: LiveData<SimpleAction> get() = _openOnBoardingScreenAction
-    private val _openOnBoardingScreenAction by lazy { ActionLiveData<SimpleAction>() }
+    private val _openOnBoardingScreenAction = Channel<SimpleAction>()
+    val openOnBoardingScreenAction = _openOnBoardingScreenAction.receiveAsFlow()
 
-    val openAuthScreen: LiveData<SimpleAction> get() = _openAuthScreenAction
-    private val _openAuthScreenAction by lazy { ActionLiveData<SimpleAction>() }
+    private val _openAuthScreenAction = Channel<SimpleAction>()
+    val openAuthScreenAction = _openAuthScreenAction.receiveAsFlow()
 
-    val openPinScreen: LiveData<SimpleAction> get() = _openPinScreenAction
-    private val _openPinScreenAction by lazy { ActionLiveData<SimpleAction>() }
+    private val _openPinScreenAction = Channel<SimpleAction>()
+    val openPinScreenAction = _openPinScreenAction.receiveAsFlow()
 
-    val openAppScreen: LiveData<SimpleAction> get() = _openAppScreenAction
-    private val _openAppScreenAction by lazy { ActionLiveData<SimpleAction>() }
+    private val _openAppScreenAction = Channel<SimpleAction>()
+    val openAppScreenAction = _openAppScreenAction.receiveAsFlow()
 
     init {
-        _openAppScreenAction.value = SimpleAction()
+        viewModelScope.launch {
+            _openAppScreenAction.send(SimpleAction)
+        }
     }
 
-    fun onPinCodeEntered() {
-        _openAppScreenAction.value = SimpleAction()
+    fun onPinCodeEntered() = viewModelScope.launch {
+        _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignIn() {
-        _openAppScreenAction.value = SimpleAction()
+    fun onSignIn() = viewModelScope.launch {
+        _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignUp() {
-        _openAppScreenAction.value = SimpleAction()
+    fun onSignUp() = viewModelScope.launch {
+        _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignOut() {
-        _openAuthScreenAction.value = SimpleAction()
+    fun onSignOut() = viewModelScope.launch {
+        _openAuthScreenAction.send(SimpleAction)
     }
 
-    fun onOnBoardingFinished() {
+    fun onOnBoardingFinished() = viewModelScope.launch {
         storage.isFirstEntry = false
-        _openAppScreenAction.value = SimpleAction()
+        _openAppScreenAction.send(SimpleAction)
     }
 }

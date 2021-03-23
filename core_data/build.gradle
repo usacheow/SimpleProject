@@ -14,6 +14,7 @@ dependencies {
     implementation firebaseDependencies.values()
 
     api networkDependencies.values()
+    api gsonDependency
 
     implementation roomDependencies.values()
     kapt kaptRoomDependency

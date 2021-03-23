@@ -1,5 +1,6 @@
-package com.usacheow.coreui.fragments
+package com.usacheow.coreui.fragment
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater

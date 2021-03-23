@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewInformationTileBinding
 import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource

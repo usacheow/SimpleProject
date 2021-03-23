@@ -3,8 +3,8 @@ package com.usacheow.featureonboarding
 import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 

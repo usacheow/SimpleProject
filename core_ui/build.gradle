@@ -15,7 +15,7 @@ dependencies {
     implementation biometricDependency
     implementation browserDependency
 
-    implementation gsonDependencies.values()
+    implementation gsonDependency
 
     implementation glideDependency
     kapt kaprGlideDependency

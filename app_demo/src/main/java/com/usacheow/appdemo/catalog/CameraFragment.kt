@@ -16,7 +16,7 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
 import com.usacheow.coreui.utils.system.checkPermissions
 import com.usacheow.coreui.utils.view.doWithTransition

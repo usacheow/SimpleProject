@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.TagViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.TagViewType
 import com.usacheow.coreui.databinding.ViewTagTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate

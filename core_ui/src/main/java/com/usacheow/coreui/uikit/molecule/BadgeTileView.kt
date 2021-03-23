@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
 import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.*

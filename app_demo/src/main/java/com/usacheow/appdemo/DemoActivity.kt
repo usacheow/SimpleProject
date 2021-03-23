@@ -33,7 +33,7 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-        if (supportFragmentManager.backStackEntryCount == 0) {
+        if (supportFragmentManager.fragments.size == 0) {
             navigateTo(DemoContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
     }

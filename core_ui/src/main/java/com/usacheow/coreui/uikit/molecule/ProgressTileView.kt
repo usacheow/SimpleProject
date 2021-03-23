@@ -8,7 +8,7 @@ import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
+import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.databinding.ViewProgressTileBinding
 import com.usacheow.coreui.utils.view.color
 

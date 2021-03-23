@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.base.ViewType
 
 class TestPagingAdapter : PagingDataAdapter<TestModel, ViewTypesAdapter.ViewTypesViewHolder>(TestModelDiffUtil) {
 

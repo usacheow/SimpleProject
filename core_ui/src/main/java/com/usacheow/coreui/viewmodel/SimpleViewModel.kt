@@ -1,4 +1,4 @@
-package com.usacheow.coreui.viewmodels
+package com.usacheow.coreui.viewmodel
 
 import androidx.lifecycle.ViewModel
 

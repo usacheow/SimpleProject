@@ -1,76 +1,36 @@
 ext {
+
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 30
     androidCompileSdkVersion = 30
     applicationPackage = "com.usacheow.simpleapp"
 
     coroutinesVersion = '1.1.1'
-    coreLibraryDesugaringVersion = "1.1.1"
-
-    androidxVersion = '1.1.0'
-    androidxCoreVersion = '1.5.0-alpha02'
-    androidxLifecycleVersion = '2.2.0'
-
-    composeVersion = '1.0.0-beta01'
-    fragmentVersion = '1.3.0-alpha04'
-    materialVersion = '1.2.0-alpha05'
-    cardViewVersion = '1.0.0'
-    viewPagerVersion = '1.0.0'
-    recyclerVersion = '1.1.0'
-    constraintVersion = '2.0.0-beta4'
-    gridLayoutVersion = '1.0.0'
-    flexboxVersion = '2.0.1'
-    pagingVersion = '3.0.0-alpha13'
-    roundedImageVersion = '2.3.0'
-    decoroVersion = '1.5.0'
-    shimmerVersion = '0.5.0'
-    pageIndicatorVersion = '1.2.1'
-
-    cameraXVersion = '1.0.0-beta11'
-    cameraXViewVersion = '1.0.0-alpha10'
-
-    yandexMetricaVersion = '3.2.2'
-    analyticsVersion = '18.0.2'
-    messagingVersion = '21.0.1'
-    crashlyticsVersion = '17.4.0'
-    configVersion = '20.0.4'
-
-    billingVersion = '1.2.1'
-    browserVersion = '1.0.0'
-    biometricVersion = '1.2.0-alpha02'
-
-    glideVersion = '4.12.0'
-    roomVersion = '2.2.6'
-    roomCoroutinesVersion = '2.1.0-alpha04'
-
-    retrofitVersion = '2.7.2'
-    okHttpVersion = '4.4.1'
-    chuckVersion = '1.1.0'
-    gsonVersion = '2.8.6'
-
-    canaryVersion = '1.6.3'
-    junitVersion = '4.12'
-    runnerVersion = '1.1.0'
-    espressoVersion = '3.1.0'
-    mockitoVersion = '2.7.22'
-    truthVersion = '0.34'
-
     kotlinDependencies = [
             kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
             coroutinesAndroid:  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
             coroutinesCore:     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            fix:                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-            guava:              "com.google.guava:guava:27.0.1-android",
+//            fix:                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+//            guava:              "com.google.guava:guava:27.0.1-android",
     ]
 
+    androidxVersion = '1.3.0-beta01'
+    androidxCoreVersion = '1.5.0-beta03'
     androidxDependencies = [
             appCompat:      "androidx.appcompat:appcompat:$androidxVersion",
             core:           "androidx.core:core-ktx:$androidxCoreVersion",
     ]
 
-    lifecycleDependency = "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleVersion"
+    androidxLifecycleVersion = '2.3.0'
+    lifecycleDependency = "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion"
     kaptLifecycleDependency = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
 
+    daggerDependency = "com.google.dagger:hilt-android:$hiltVersion"
+    kaptDaggerDependency = "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    daggerViewModelDependency = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+
+    coreLibraryDesugaringVersion = "1.1.1"
     coreLibraryDesugaringDependency = "com.android.tools:desugar_jdk_libs:$coreLibraryDesugaringVersion"
 
 
@@ -78,6 +38,7 @@ ext {
     * Dependencies for ui
     */
 
+    composeVersion = '1.0.0-beta01'
     composeDependencies = [
             ui:             "androidx.compose.ui:ui:$composeVersion",
             uiTooling:      "androidx.compose.ui:ui-tooling:$composeVersion",
@@ -91,6 +52,24 @@ ext {
             viewmodel:      "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02",
     ]
 
+    roundedImageVersion = '2.3.0'
+    decoroVersion = '1.5.0'
+    shimmerVersion = '0.5.0'
+    pageIndicatorVersion = '1.2.1'
+    customUiDependencies = [
+            roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
+            decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
+            shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
+            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
+    ]
+
+    fragmentVersion = '1.3.0-alpha04'
+    materialVersion = '1.2.0-alpha05'
+    cardViewVersion = '1.0.0'
+    viewPagerVersion = '1.0.0'
+    recyclerVersion = '1.1.0'
+    constraintVersion = '2.0.0-beta4'
+    pagingVersion = '3.0.0-alpha13'
     uiDependencies = [
             fragment:        "androidx.fragment:fragment:$fragmentVersion",
             fragmentKtx:     "androidx.fragment:fragment-ktx:$fragmentVersion",
@@ -101,13 +80,13 @@ ext {
             recycler:        "androidx.recyclerview:recyclerview:$recyclerVersion",
             constraint:      "androidx.constraintlayout:constraintlayout:$constraintVersion",
             paging:          "androidx.paging:paging-runtime:$pagingVersion",
+    ] << customUiDependencies
 
-            roundedImage:    "com.makeramen:roundedimageview:$roundedImageVersion",
-            decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
-            shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
-            pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
-    ]
-
+    yandexMetricaVersion = '3.2.2'
+    crashlyticsVersion = '17.4.0'
+    analyticsVersion = '18.0.2'
+    messagingVersion = '21.0.1'
+    configVersion = '20.0.4'
     firebaseDependencies = [
 //            yandexMetrica:  "com.yandex.android:mobmetricalib:$yandexMetricaVersion",
             crashlytics:    "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsVersion",
@@ -116,6 +95,8 @@ ext {
             config:         "com.google.firebase:firebase-config-ktx:$configVersion",
     ]
 
+    cameraXVersion = '1.0.0-beta11'
+    cameraXViewVersion = '1.0.0-alpha10'
     cameraxDependencies = [
             core:       "androidx.camera:camera-core:$cameraXVersion",
             camera:     "androidx.camera:camera-camera2:$cameraXVersion",
@@ -124,47 +105,53 @@ ext {
             extensions: "androidx.camera:camera-extensions:$cameraXViewVersion",
     ]
 
+    billingVersion = '1.2.1'
     billingDependency = "org.solovyev.android:checkout:$billingVersion"
-    browserDependency = "androidx.browser:browser:$browserVersion"
-    biometricDependency = "androidx.biometric:biometric-ktx:$biometricVersion"
 
-    daggerDependency = "com.google.dagger:hilt-android:$hiltVersion"
-    kaptDaggerDependency = "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    daggerViewModelDependency = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
-    kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+    browserVersion = '1.0.0'
+    browserDependency = "androidx.browser:browser:$browserVersion"
+
+    biometricVersion = '1.2.0-alpha03'
+    biometricDependency = "androidx.biometric:biometric-ktx:$biometricVersion"
 
 
     /*
     * Dependencies for data
     */
 
+    glideVersion = '4.12.0'
     glideDependency = "com.github.bumptech.glide:glide:$glideVersion"
     kaprGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
 
+    roomVersion = '2.2.6'
     roomDependencies = [
             room:           "androidx.room:room-runtime:$roomVersion",
-            roomCompiler:   "androidx.room:room-compiler:$roomVersion",
-            roomKtx:        "androidx.room:room-ktx:$roomVersion"
+            roomKtx:        "androidx.room:room-ktx:$roomVersion",
     ]
     kaptRoomDependency = "androidx.room:room-compiler:$roomVersion"
 
-    gsonDependencies = [
-            gsonConverter:  "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            gson:           "com.google.code.gson:gson:$gsonVersion"
-    ]
+    gsonVersion = '2.8.6'
+    gsonDependency = "com.google.code.gson:gson:$gsonVersion"
 
+    retrofitVersion = '2.9.0'
+    okHttpVersion = '4.9.0'
+    chuckVersion = '1.1.0'
     networkDependencies = [
+            gsonConverter:  "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             retrofit:       "com.squareup.retrofit2:retrofit:$retrofitVersion",
             okHttp:         "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpLogging:  "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
-            chuck:          "com.readystatesoftware.chuck:library:$chuckVersion"
-    ] << gsonDependencies
+            chuck:          "com.readystatesoftware.chuck:library:$chuckVersion",
+    ]
 
 
     /*
     * Dependencies for tests
     */
 
+    junitVersion = '4.12'
+    mockitoVersion = '2.7.22'
+    truthVersion = '0.34'
     unitTestDependencies = [
             junit:          "junit:junit:$junitVersion",
             mockitoCore:    "org.mockito:mockito-core:$mockitoVersion",
@@ -173,6 +160,8 @@ ext {
             truth:          "com.google.truth:truth:$truthVersion",
     ]
 
+    espressoVersion = '3.1.0'
+    runnerVersion = '1.1.0'
     uiTestDependencies = [
             espresso:        "androidx.test.espresso:espresso-core:$espressoVersion",
             espressoIntents: "androidx.test.espresso:espresso-intents:$espressoVersion",

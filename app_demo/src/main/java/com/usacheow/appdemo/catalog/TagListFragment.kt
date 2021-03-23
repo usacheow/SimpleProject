@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
-import com.usacheow.coreui.adapters.MultipleSelectionViewTypesAdapter
-import com.usacheow.coreui.adapters.SingleSelectionViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.adapter.MultipleSelectionViewTypesAdapter
+import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.TagTileItem
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue

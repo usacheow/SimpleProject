@@ -10,8 +10,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.catalog.*
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.appshared.otp.SmsCodeModalFragment
-import com.usacheow.coreui.adapters.ViewTypesAdapter
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout

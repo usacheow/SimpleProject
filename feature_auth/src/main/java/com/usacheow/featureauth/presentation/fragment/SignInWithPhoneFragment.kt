@@ -7,11 +7,12 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.appshared.otp.SmsCodeViewModel
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.updateMargins
@@ -86,12 +87,14 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.openSignUpScreen.observe(viewLifecycleOwner) { router.openSignUpScreen(this) }
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.signInLoaderView.root.isVisible = it }
-        viewModel.submitButtonEnabled.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
-        viewModel.codeConfirmMessage.observe(viewLifecycleOwner) { smsCodeViewModel.showMessage(it) }
-        viewModel.openConfirmScreen.observe(viewLifecycleOwner) { router.openConfirmScreen(this, it) }
-        viewModel.closeScreen.observe(viewLifecycleOwner) { appStateViewModel.onSignIn() }
-        smsCodeViewModel.code.observe(viewLifecycleOwner) { viewModel.onCodeInputted(it) }
+        viewModel.openSignUpScreenAction.observe(lifecycleScope) { router.openSignUpScreen(this) }
+        viewModel.isLoadingState.observe(lifecycleScope) {
+            binding.signInLoaderView.root.isVisible = it
+        }
+        viewModel.isSubmitButtonEnabledState.observe(lifecycleScope) { binding.signInButton.isEnabled = it }
+        viewModel.codeConfirmMessageState.observe(lifecycleScope) { smsCodeViewModel.showMessage(it) }
+        viewModel.openConfirmScreenAction.observe(lifecycleScope) { router.openConfirmScreen(this, it) }
+        viewModel.closeScreenAction.observe(lifecycleScope) { appStateViewModel.onSignIn() }
+        smsCodeViewModel.processCodeAction.observe(lifecycleScope) { viewModel.onCodeInputted(it) }
     }
 }

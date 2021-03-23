@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.usacheow.coreui.fragments.SimpleFragment
+import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.navigation.MultiStackHistoryManager
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment

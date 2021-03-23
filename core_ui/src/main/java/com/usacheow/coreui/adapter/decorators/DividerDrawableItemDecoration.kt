@@ -1,4 +1,4 @@
-package com.usacheow.coreui.adapters.decorators
+package com.usacheow.coreui.adapter.decorators
 
 import android.content.Context
 import android.graphics.Canvas

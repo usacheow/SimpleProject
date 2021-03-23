@@ -7,8 +7,8 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import com.google.android.material.button.MaterialButton
 import com.usacheow.coreui.R
-import com.usacheow.coreui.adapters.base.Populatable
-import com.usacheow.coreui.adapters.base.ViewType
+import com.usacheow.coreui.adapter.base.Populatable
+import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.toPx
 
