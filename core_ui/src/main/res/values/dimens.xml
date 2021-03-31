@@ -3,10 +3,13 @@
 
     <dimen name="left_right_margin">16dp</dimen>
 
+    <dimen name="spot_shadow_alpha">0.05</dimen>
+    <dimen name="ambient_shadow_alpha">0.05</dimen>
+
     <dimen name="stroke_card">1dp</dimen>
 
-    <dimen name="radius_small">4dp</dimen>
-    <dimen name="radius_medium">8dp</dimen>
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_medium">16dp</dimen>
     <dimen name="radius_large">16dp</dimen>
 
     <dimen name="radius_0">0dp</dimen>
@@ -16,6 +19,8 @@
     <dimen name="radius_12">12dp</dimen>
     <dimen name="radius_16">16dp</dimen>
 
+    <dimen name="elevation_32">32dp</dimen>
+    <dimen name="elevation_16">16dp</dimen>
     <dimen name="elevation_8">8dp</dimen>
     <dimen name="elevation_4">4dp</dimen>
     <dimen name="elevation_0">0dp</dimen>

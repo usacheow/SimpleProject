@@ -106,10 +106,10 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycleScope) { binding.signInLoaderView.root.isVisible = it }
-        viewModel.submitButtonEnabledState.observe(lifecycleScope) { binding.signInButton.isEnabled = it }
-        viewModel.openSignUpScreenAction.observe(lifecycleScope) { router.openSignUpScreen(this) }
-        viewModel.closeScreenAction.observe(lifecycleScope) { appStateViewModel.onSignIn() }
+        viewModel.isLoadingState.observe(lifecycle) { binding.signInLoaderView.root.isVisible = it }
+        viewModel.submitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
+        viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen(this) }
+        viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignIn() }
     }
 
     private fun getLoginAndPassword() = binding.signInLoginInput.text.toString() to binding.signInPasswordInput.text.toString()

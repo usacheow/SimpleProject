@@ -28,7 +28,12 @@
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
 
-        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
+        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
+        <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>
+        <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
     </style>
 
     <style name="AppTheme.Splash">
@@ -66,15 +71,14 @@
         <item name="android:statusBarColor">@color/colorStatusBarForModal</item>
         <item name="android:navigationBarColor">@color/colorNavigationBarForModal</item>
 
+        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
+        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="AppBottomSheetDialogTheme" parent="BottomSheetDialogThemeBridge">
-        <item name="bottomSheetStyle">@style/SimpleBottomSheetStyle</item>
     </style>
 
 </resources>

@@ -43,7 +43,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
             HeaderTileItem(TextString("Header")),
             HeaderTileItem.shimmer(),
-            SubtitleTileItem(TextString("Subtitle"), TextString("With action")),
+            SubtitleTileItem(TextString("Subtitle"), TextString("With action"), {}),
             SubtitleTileItem.shimmer(),
 
             DividerTileItem.getSmallDivider(),

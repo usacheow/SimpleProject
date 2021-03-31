@@ -14,8 +14,6 @@ import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.dimen
 import com.usacheow.coreui.utils.view.toPx
 
-private const val CORNER_RADIUS_DP = 16
-
 class SimpleBottomSheetLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
@@ -29,6 +27,8 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
             state != BottomSheetBehavior.STATE_HIDDEN
         }
 
+    private val cornerRadiusPx by lazy { dimen(R.dimen.radius_large) }
+
     private var percent = BottomSheetHeight.QUARTER_SIZE.divisor
     private var canSwipeToHide = false
     private val bottomSheetBehavior by lazy { BottomSheetBehavior.from<View>(this) }
@@ -39,12 +39,10 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas?) {
-        val curveRadius = dimen(R.dimen.radius_large)
-
         outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {
                 view ?: return
-                outline?.setRoundRect(0, 0, view.width, (view.height + curveRadius).toInt(), curveRadius)
+                outline?.setRoundRect(0, 0, view.width, (view.height + cornerRadiusPx).toInt(), cornerRadiusPx)
             }
         }
 
@@ -77,7 +75,7 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
         (percent * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     fun setExpandOffset(heightPx: Int) = with(bottomSheetBehavior) {
-        expandedOffset = heightPx - CORNER_RADIUS_DP.toPx
+        expandedOffset = heightPx - cornerRadiusPx.toInt()
     }
 
     fun setExpandState() = with(bottomSheetBehavior) {

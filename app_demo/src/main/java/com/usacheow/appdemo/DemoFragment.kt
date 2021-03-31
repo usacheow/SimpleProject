@@ -128,7 +128,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
     private fun showMaterialDialog() {
         messageDialog = MaterialAlertDialogBuilder(requireContext())
-                .setBackground(drawable(R.drawable.bg_alert_dialog))
+//                .setBackground(drawable(R.drawable.bg_alert_dialog))
                 .setTitle("Material dialog")
                 .setMessage("Material dialog example")
                 .setPositiveButton("Agree") { _, _ -> }

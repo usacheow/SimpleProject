@@ -4,10 +4,6 @@
     <style name="SimpleInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/radius_medium</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/radius_medium</item>
-        <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/radius_medium</item>
     </style>
 
 </resources>

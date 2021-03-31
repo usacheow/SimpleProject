@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.R
 import com.usacheow.appshared.databinding.FragmentSmsCodeBinding
 import com.usacheow.coreui.fragment.SimpleModalFragment
@@ -25,7 +24,7 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
         viewBindingProvider = FragmentSmsCodeBinding::inflate,
     )
 
-    private val viewModel by viewModels<SmsCodeViewModel>({ requireParentFragment() })
+    private val viewModel by viewModels<OtpViewModel>({ requireParentFragment() })
 
     companion object {
         fun newInstance(codeLength: Int) = SmsCodeModalFragment().apply {
@@ -54,18 +53,18 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycleScope) { binding.loaderView.root.isVisible = it }
-        viewModel.maxCodeLengthState.observe(lifecycleScope) {
+        viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
+        viewModel.maxCodeLengthState.observe(lifecycle) {
             binding.smsCodeInput.filters = arrayOf(InputFilter.LengthFilter(it))
         }
-        viewModel.inputtedCodeState.observe(lifecycleScope) {
+        viewModel.inputtedCodeState.observe(lifecycle) {
             binding.smsCodeInput.setText(it)
             binding.smsCodeNumPadView.setBackspaceButtonsVisibility(it.isNotEmpty())
         }
-        viewModel.showMessageAction.observe(lifecycleScope) { binding.smsCodeMessageView.text = it }
-        viewModel.closeScreenAction.observe(lifecycleScope) { dismiss() }
-        viewModel.resendButtonTextState.observe(lifecycleScope) { binding.smsCodeResendButton.text = it }
-        viewModel.isResendButtonEnabledAction.observe(lifecycleScope) {
+        viewModel.showMessageAction.observe(lifecycle) { binding.smsCodeMessageView.text = it }
+        viewModel.closeScreenAction.observe(lifecycle) { dismiss() }
+        viewModel.resendButtonTextState.observe(lifecycle) { binding.smsCodeResendButton.text = it }
+        viewModel.isResendButtonEnabledAction.observe(lifecycle) {
             binding.smsCodeResendButton.setEnabledTextButton(it)
         }
     }

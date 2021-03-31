@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/surfaceSecondary"
-    app:cardCornerRadius="@dimen/radius_large"
-    app:cardElevation="@dimen/elevation_0">
+    app:cardCornerRadius="@dimen/radius_medium"
+    app:cardElevation="@dimen/elevation_32">
 
     <LinearLayout
         android:id="@+id/clickableView"
@@ -23,11 +23,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:minWidth="120dp"
-            android:maxWidth="156dp"
+            android:alpha="@dimen/text_alpha"
             android:ellipsize="end"
             android:lines="1"
-            android:alpha="@dimen/text_alpha"
+            android:maxWidth="156dp"
+            android:minWidth="120dp"
             tools:text="@tools:sample/cities" />
 
         <TextView
@@ -35,10 +35,10 @@
             style="@style/TextBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="120dp"
-            android:maxWidth="156dp"
             android:ellipsize="end"
             android:lines="2"
+            android:maxWidth="156dp"
+            android:minWidth="120dp"
             tools:text="@tools:sample/us_zipcodes" />
     </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.BadgeTileView>

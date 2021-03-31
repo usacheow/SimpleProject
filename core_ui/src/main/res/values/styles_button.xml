@@ -4,25 +4,21 @@
     <style name="SimpleButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
-        <item name="cornerRadius">@dimen/radius_medium</item>
     </style>
 
     <style name="SimpleButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
-        <item name="cornerRadius">@dimen/radius_medium</item>
     </style>
 
     <style name="SimpleButtonText" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
-        <item name="cornerRadius">@dimen/radius_medium</item>
     </style>
 
     <style name="SimpleButtonElevation" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
-        <item name="cornerRadius">@dimen/radius_medium</item>
         <item name="elevation">@dimen/elevation_8</item>
     </style>
 
@@ -31,6 +27,7 @@
         <item name="android:layout_height">?actionBarSize</item>
         <item name="android:padding">16dp</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="shapeAppearance">?shapeAppearanceSmallComponent</item>
     </style>
 
 </resources>

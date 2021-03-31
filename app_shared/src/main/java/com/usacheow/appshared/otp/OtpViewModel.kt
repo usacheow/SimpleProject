@@ -22,7 +22,7 @@ private const val SMS_CODE_TIMEOUT_SECONDS = 60
 private const val SECOND_IN_MILLISECONDS = 1000L
 
 @HiltViewModel
-class SmsCodeViewModel @Inject constructor(
+class OtpViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
 ) : SimpleViewModel() {
 

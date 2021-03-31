@@ -3,6 +3,5 @@
 
     <style name="AppThemeBridge" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
     <style name="ModalDialogThemeBridge" parent="Theme.MaterialComponents.DayNight.Dialog"/>
-    <style name="BottomSheetDialogThemeBridge" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog"/>
 
 </resources>

@@ -10,7 +10,7 @@ class ExampleBottomDialogFragment : SimpleBottomSheetDialogFragment<DialogExampl
         needWrapContent = false,
         needExpand = false,
         middleStatePercent = BottomDialogHeight.HALF_SIZE,
-        needMiddleState = false,
+        needMiddleState = true,
         startStatePercent = BottomDialogHeight.QUARTER_SIZE,
         viewBindingProvider = DialogExampleBottomBinding::inflate,
     )

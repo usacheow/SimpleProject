@@ -62,14 +62,14 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isFingerprintAllowState.observe(lifecycleScope) { isAllow ->
+        viewModel.isFingerprintAllowState.observe(lifecycle) { isAllow ->
             val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
             binding.pinCodeView.setFingerprintEnabled(isEnabled)
             if (isEnabled) {
                 requireView().post { biometricDelegate.tryShow() }
             }
         }
-        viewModel.changeAuthState.observe(lifecycleScope) {
+        viewModel.changeAuthState.observe(lifecycle) {
             when (it) {
                 is SignInSuccess -> appStateViewModel.onPinCodeEntered()
                 is SignInError -> {

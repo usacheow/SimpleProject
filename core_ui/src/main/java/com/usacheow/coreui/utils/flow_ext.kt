@@ -1,11 +1,14 @@
 package com.usacheow.coreui.utils
 
-import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.flowWithLifecycle
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-inline fun <T> Flow<T>.observe(scope: LifecycleCoroutineScope, crossinline action: suspend (value: T) -> Unit) {
-    scope.launchWhenStarted {
-        collect(action)
-    }
+fun <T> Flow<T>.observe(lifecycle: Lifecycle, action: suspend (value: T) -> Unit) {
+    onEach(action)
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .launchIn(lifecycle.coroutineScope)
 }

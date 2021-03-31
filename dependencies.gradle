@@ -21,7 +21,7 @@ ext {
             core:           "androidx.core:core-ktx:$androidxCoreVersion",
     ]
 
-    androidxLifecycleVersion = '2.3.0'
+    androidxLifecycleVersion = '2.4.0-alpha01'
     lifecycleDependency = "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion"
     kaptLifecycleDependency = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
 

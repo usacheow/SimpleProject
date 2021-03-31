@@ -33,19 +33,19 @@ class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), Containe
     }
 
     override fun subscribe() {
-        appStateViewModel.openAuthScreenAction.observe(lifecycleScope) {
+        appStateViewModel.openAuthScreenAction.observe(lifecycle) {
             navigateTo(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
 
-        appStateViewModel.openPinScreenAction.observe(lifecycleScope) {
+        appStateViewModel.openPinScreenAction.observe(lifecycle) {
             navigateTo(PinCodeFragment.newInstance(), false)
         }
 
-        appStateViewModel.openOnBoardingScreenAction.observe(lifecycleScope) {
+        appStateViewModel.openOnBoardingScreenAction.observe(lifecycle) {
             navigateTo(OnBoardingFragment.newInstance(), false)
         }
 
-        appStateViewModel.openAppScreenAction.observe(lifecycleScope) {
+        appStateViewModel.openAppScreenAction.observe(lifecycle) {
             navigateTo(BottomBarFragment.newInstance(), false)
         }
     }
