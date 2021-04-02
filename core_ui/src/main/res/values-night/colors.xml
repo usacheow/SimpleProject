@@ -12,16 +12,16 @@
     <color name="colorStatusBar">#00000000</color>
     <color name="colorNavigationBar">#00000000</color>
     <color name="colorStatusBarForModal">#00000000</color>
-    <color name="colorNavigationBarForModal">#00000000</color>
+    <color name="colorNavigationBarForModal">@color/background</color>
 
     <color name="background">#000000</color>
     <color name="backgroundBlurred">#CC000000</color>
     <color name="backgroundSecondary">#292929</color>
     <color name="backgroundToolbar">@color/background</color>
 
-    <color name="surface">#292929</color>
-    <color name="surfaceSecondary">#000000</color>
-    <color name="surfaceSecondaryVariant">#B3B3B3</color>
+    <color name="surface">#0E0E0E</color>
+    <color name="surfaceSecondary">#191919</color>
+    <color name="surfaceSecondaryVariant">#6E6E6E</color>
 
     <color name="error">#B00020</color>
     <color name="onError">#FFFFFF</color>

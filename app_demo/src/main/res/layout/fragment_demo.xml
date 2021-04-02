@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingHorizontal="8dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
         android:id="@+id/bottomSheetLayout"
@@ -34,22 +34,22 @@
             android:padding="@dimen/left_right_margin">
 
             <TextView
-                style="@style/TextH1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bottom" />
+                android:text="Bottom"
+                android:textAppearance="?textAppearanceHeadline1" />
 
             <TextView
-                style="@style/TextH1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sheet" />
+                android:text="sheet"
+                android:textAppearance="?textAppearanceHeadline1" />
 
             <TextView
-                style="@style/TextH1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="example" />
+                android:text="example"
+                android:textAppearance="?textAppearanceHeadline1" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

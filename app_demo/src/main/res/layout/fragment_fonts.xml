@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clipToPadding="false"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false">
 
     <include
         android:id="@+id/header"
@@ -13,9 +13,9 @@
         android:id="@+id/fontsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="16dp"
-        android:paddingHorizontal="20dp"
         android:clipToPadding="false"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -24,94 +24,94 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/TextH1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Text H1 Dark" />
+                android:text="Text H1 Dark"
+                android:textAppearance="?textAppearanceHeadline1" />
 
             <TextView
-                style="@style/TextH2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Text H2 Dark" />
-
-            <TextView
-                style="@style/TextH3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H3 Dark" />
+                android:text="Text H2 Dark"
+                android:textAppearance="?textAppearanceHeadline2" />
 
             <TextView
-                style="@style/TextH4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H4 Dark" />
+                android:text="Text H3 Dark"
+                android:textAppearance="?textAppearanceHeadline3" />
 
             <TextView
-                style="@style/TextH5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H5 Dark" />
+                android:text="Text H4 Dark"
+                android:textAppearance="?textAppearanceHeadline4" />
 
             <TextView
-                style="@style/TextH6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H6 Dark" />
+                android:text="Text H5 Dark"
+                android:textAppearance="?textAppearanceHeadline5" />
 
             <TextView
-                style="@style/TextSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Text H6 Dark"
+                android:textAppearance="?textAppearanceHeadline6" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Subtitle1 Dark" />
+                android:text="Text Subtitle1 Dark"
+                android:textAppearance="?textAppearanceSubtitle1" />
 
             <TextView
-                style="@style/TextSubtitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Subtitle2 Dark" />
+                android:text="Text Subtitle2 Dark"
+                android:textAppearance="?textAppearanceSubtitle2" />
 
             <TextView
-                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Body1 Dark" />
+                android:text="Text Body1 Dark"
+                android:textAppearance="?textAppearanceBody1" />
 
             <TextView
-                style="@style/TextBody2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Body2 Dark" />
+                android:text="Text Body2 Dark"
+                android:textAppearance="?textAppearanceBody2" />
 
             <TextView
-                style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Button Dark" />
+                android:text="Text Button Dark"
+                android:textAppearance="?textAppearanceButton" />
 
             <TextView
-                style="@style/TextCaption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Caption Dark" />
+                android:text="Text Caption Dark"
+                android:textAppearance="?textAppearanceCaption" />
 
             <TextView
-                style="@style/TextOverline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Overline Dark" />
+                android:text="Text Overline Dark"
+                android:textAppearance="?textAppearanceOverline" />
 
             <TextView
                 style="@style/TextDigital"

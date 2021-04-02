@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/hintTextView"
-        style="@style/TextBody1"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_gravity="center"
         android:ellipsize="end"
+        android:gravity="center"
         android:lines="3"
-        android:text="@string/pin_view_hint" />
+        android:text="@string/pin_view_hint"
+        android:textAppearance="?textAppearanceBody1" />
 
     <com.usacheow.featureauth.presentation.view.PinIndicatorView
         android:id="@+id/indicatorView"

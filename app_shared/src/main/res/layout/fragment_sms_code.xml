@@ -20,20 +20,20 @@
                 android:id="@+id/smsCodeCloseButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:padding="8dp"
-                android:layout_margin="8dp"
                 android:layout_gravity="start"
+                android:layout_margin="8dp"
                 android:background="?selectableItemBackgroundBorderless"
+                android:padding="8dp"
                 app:srcCompat="@drawable/ic_close" />
 
             <TextView
                 android:id="@+id/signInHeaderView"
-                style="@style/TextH5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sms_code_header"
                 android:layout_marginStart="@dimen/left_right_margin"
                 android:layout_marginEnd="@dimen/left_right_margin"
+                android:text="@string/sms_code_header"
+                android:textAppearance="?textAppearanceHeadline5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,21 +53,21 @@
                     style="@style/TextDigital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLength="4"
                     android:ems="5"
-                    android:gravity="center"
                     android:enabled="false"
+                    android:gravity="center"
                     android:letterSpacing="0.3"
+                    android:maxLength="4"
                     tools:text="0000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/smsCodeMessageView"
-                style="@style/TextBody2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:gravity="center_horizontal"
+                android:padding="8dp"
+                android:textAppearance="?textAppearanceBody2"
                 android:textColor="@color/error"
                 tools:text="Message" />
 
@@ -78,12 +78,12 @@
 
             <TextView
                 android:id="@+id/smsCodeResendButton"
-                style="@style/TextBody2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/left_right_margin"
-                android:padding="8dp"
                 android:background="?selectableItemBackground"
+                android:padding="8dp"
+                android:textAppearance="?textAppearanceBody2"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

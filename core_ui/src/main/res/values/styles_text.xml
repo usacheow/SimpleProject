@@ -96,8 +96,8 @@
 
     <style name="TextButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textSize">@dimen/text_14sp</item>
-        <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.09</item>

@@ -3,7 +3,7 @@ buildscript {
     ext {
         gmsVersion = '4.3.4'
         kotlinVersion = '1.4.30'
-        buildToolsVersion = '7.0.0-alpha10'
+        buildToolsVersion = '7.0.0-alpha12'
         hiltVersion = '2.31.2-alpha'
         hiltJetpackVersion = '1.0.0-alpha03'
     }

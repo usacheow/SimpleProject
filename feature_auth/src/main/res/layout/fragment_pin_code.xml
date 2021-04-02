@@ -19,13 +19,13 @@
 
         <TextView
             android:id="@+id/pinCodeForgotButton"
-            style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="?selectableItemBackground"
             android:padding="8dp"
             android:text="@string/pin_view_code_forgot"
+            android:textAppearance="?textAppearanceButton"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

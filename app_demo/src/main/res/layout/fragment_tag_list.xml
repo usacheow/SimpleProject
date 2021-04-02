@@ -22,12 +22,12 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="Single selection mode" />
+                android:text="Single selection mode"
+                android:textAppearance="?textAppearanceButton" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/radioListView"
@@ -37,13 +37,13 @@
                 android:paddingHorizontal="12dp" />
 
             <TextView
-                style="@style/TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
-                android:text="Multiple selection mode" />
+                android:text="Multiple selection mode"
+                android:textAppearance="?textAppearanceButton" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chipListView"

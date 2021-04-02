@@ -32,7 +32,12 @@ sealed class ApiError(
         cause: Throwable? = null
     ) : ApiError(R.string.server_error_message, message, cause)
 
-    class NoDataException(
+    class EmptyResponseException(
+        message: String? = null,
+        cause: Throwable? = null
+    ) : ApiError(R.string.unknown_error_message, message, cause)
+
+    class DataMappingException(
         message: String? = null,
         cause: Throwable? = null
     ) : ApiError(R.string.unknown_error_message, message, cause)

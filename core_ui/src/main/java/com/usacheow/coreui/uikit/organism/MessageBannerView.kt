@@ -3,6 +3,7 @@ package com.usacheow.coreui.uikit.organism
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.usacheow.coreui.databinding.ViewErrorMessageBinding
 import com.usacheow.coreui.utils.ImageSource
@@ -17,7 +18,7 @@ import com.usacheow.coreui.utils.view.string
 class MessageBannerView
 @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val binding by lazy { ViewErrorMessageBinding.inflate(LayoutInflater.from(context), this, true) }
 

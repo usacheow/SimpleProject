@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/surfaceSecondary"
+    app:cardBackgroundColor="@color/surface"
     app:cardCornerRadius="@dimen/radius_medium"
     app:cardElevation="@dimen/elevation_32">
 
@@ -19,7 +19,6 @@
 
         <TextView
             android:id="@+id/headerView"
-            style="@style/TextBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -28,17 +27,18 @@
             android:lines="1"
             android:maxWidth="156dp"
             android:minWidth="120dp"
+            android:textAppearance="?textAppearanceBody2"
             tools:text="@tools:sample/cities" />
 
         <TextView
             android:id="@+id/valueView"
-            style="@style/TextBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="2"
             android:maxWidth="156dp"
             android:minWidth="120dp"
+            android:textAppearance="?textAppearanceBody1"
             tools:text="@tools:sample/us_zipcodes" />
     </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.BadgeTileView>

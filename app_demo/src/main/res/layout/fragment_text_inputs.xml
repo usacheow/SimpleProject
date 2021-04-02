@@ -23,12 +23,12 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/left_right_margin"
                 android:layout_marginTop="@dimen/left_right_margin"
-                android:text="Simple input" />
+                android:text="Simple input"
+                android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/SimpleInputLayout"
@@ -41,21 +41,21 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/viewPasswordInput"
-                    style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Hello World!"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/left_right_margin"
-                android:text="Currency formatter" />
+                android:text="Currency formatter"
+                android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/SimpleInputLayout"
@@ -67,21 +67,21 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/viewAmountInput"
-                    style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/TextBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/left_right_margin"
                 android:layout_marginTop="@dimen/left_right_margin"
-                android:text="Phone number formatter" />
+                android:text="Phone number formatter"
+                android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/SimpleInputLayout"
@@ -94,12 +94,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/viewPhoneNumberInput"
-                    style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="phone"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

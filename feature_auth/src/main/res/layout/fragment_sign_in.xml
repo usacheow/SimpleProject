@@ -21,11 +21,11 @@
 
             <TextView
                 android:id="@+id/signInHeaderView"
-                style="@style/TextH5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
-                android:text="@string/sign_in_header" />
+                android:text="@string/sign_in_header"
+                android:textAppearance="?textAppearanceHeadline5" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signInLoginInputLayout"
@@ -38,12 +38,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signInLoginInput"
-                    style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_login"
                     android:imeOptions="actionNext"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -58,12 +58,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signInPasswordInput"
-                    style="@style/TextBody1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_password"
                     android:inputType="textPassword"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space

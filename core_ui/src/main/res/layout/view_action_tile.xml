@@ -4,40 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="?selectableItemBackground"
     android:gravity="center_vertical"
-    android:padding="@dimen/left_right_margin"
-    android:background="?selectableItemBackground">
+    android:orientation="horizontal"
+    android:padding="@dimen/left_right_margin">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageView"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:scaleType="centerCrop"
         android:layout_marginEnd="@dimen/left_right_margin"
+        android:scaleType="centerCrop"
         app:riv_corner_radius="16dp"
-        tools:src="@tools:sample/avatars"/>
+        tools:src="@tools:sample/avatars" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/titleView"
-                style="@style/TextBody1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:lines="1"
+                android:textAppearance="?textAppearanceBody1"
                 tools:text="@tools:sample/full_names" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -59,11 +59,11 @@
 
         <TextView
             android:id="@+id/subtitleView"
-            style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:alpha="@dimen/text_alpha"
+            android:textAppearance="?textAppearanceBody2"
             tools:text="@tools:sample/cities" />
     </LinearLayout>
 </com.usacheow.coreui.uikit.molecule.ActionTileView>

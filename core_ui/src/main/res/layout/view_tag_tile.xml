@@ -12,15 +12,15 @@
 
     <TextView
         android:id="@+id/nameView"
-        style="@style/TextBody2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:minWidth="112dp"
-        android:maxWidth="156dp"
-        android:padding="20dp"
-        android:lines="1"
+        android:background="?selectableItemBackgroundBorderless"
         android:ellipsize="end"
         android:gravity="center"
-        android:background="?selectableItemBackgroundBorderless"
+        android:lines="1"
+        android:maxWidth="156dp"
+        android:minWidth="112dp"
+        android:padding="20dp"
+        android:textAppearance="?textAppearanceBody2"
         tools:text="@tools:sample/lorem/random" />
 </com.usacheow.coreui.uikit.molecule.TagTileView>

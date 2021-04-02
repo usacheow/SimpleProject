@@ -16,6 +16,7 @@
         <item name="android:colorBackground">@color/background</item>
         <item name="colorOnBackground">@color/symbol</item>
 
+        <item name="elevationOverlayColor">@color/surface</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/symbol</item>
 
@@ -31,6 +32,20 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
+        <item name="textAppearanceHeadline1">@style/TextH1</item>
+        <item name="textAppearanceHeadline2">@style/TextH2</item>
+        <item name="textAppearanceHeadline3">@style/TextH3</item>
+        <item name="textAppearanceHeadline4">@style/TextH4</item>
+        <item name="textAppearanceHeadline5">@style/TextH5</item>
+        <item name="textAppearanceHeadline6">@style/TextH6</item>
+        <item name="textAppearanceSubtitle1">@style/TextSubtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextSubtitle2</item>
+        <item name="textAppearanceBody1">@style/TextBody1</item>
+        <item name="textAppearanceBody2">@style/TextBody2</item>
+        <item name="textAppearanceButton">@style/TextButton</item>
+        <item name="textAppearanceCaption">@style/TextCaption</item>
+        <item name="textAppearanceOverline">@style/TextOverline</item>
+
         <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
         <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>
         <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
@@ -40,7 +55,7 @@
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:navigationBarColor">@color/transparent</item>
 
-        <item name="android:windowBackground">?colorPrimary</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
@@ -59,6 +74,7 @@
         <item name="android:colorBackground">@color/background</item>
         <item name="colorOnBackground">@color/symbol</item>
 
+        <item name="elevationOverlayColor">@color/surface</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/symbol</item>
 
@@ -73,6 +89,24 @@
 
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+
+        <item name="textAppearanceHeadline1">@style/TextH1</item>
+        <item name="textAppearanceHeadline2">@style/TextH2</item>
+        <item name="textAppearanceHeadline3">@style/TextH3</item>
+        <item name="textAppearanceHeadline4">@style/TextH4</item>
+        <item name="textAppearanceHeadline5">@style/TextH5</item>
+        <item name="textAppearanceHeadline6">@style/TextH6</item>
+        <item name="textAppearanceSubtitle1">@style/TextSubtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextSubtitle2</item>
+        <item name="textAppearanceBody1">@style/TextBody1</item>
+        <item name="textAppearanceBody2">@style/TextBody2</item>
+        <item name="textAppearanceButton">@style/TextButton</item>
+        <item name="textAppearanceCaption">@style/TextCaption</item>
+        <item name="textAppearanceOverline">@style/TextOverline</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
+        <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>
+        <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
 
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>

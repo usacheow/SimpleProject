@@ -4,54 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="?selectableItemBackground"
     android:gravity="center_vertical"
-    android:padding="@dimen/left_right_margin"
-    android:background="?selectableItemBackground">
+    android:orientation="horizontal"
+    android:padding="@dimen/left_right_margin">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/leftIconView"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:scaleType="centerCrop"
         android:layout_marginEnd="@dimen/left_right_margin"
+        android:scaleType="centerCrop"
         app:riv_corner_radius="16dp" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/topDescriptionView"
-            style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="@dimen/text_alpha"
             android:ellipsize="end"
             android:lines="1"
-            android:alpha="@dimen/text_alpha"
-            tools:text="Subtitle"/>
+            android:textAppearance="?textAppearanceBody2"
+            tools:text="Subtitle" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/valueView"
-            style="@style/TextBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textAppearance="?textAppearanceBody1"
             tools:text="Title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bottomDescriptionView"
-            style="@style/TextBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="@dimen/text_alpha"
             android:ellipsize="end"
             android:lines="1"
-            android:alpha="@dimen/text_alpha"
+            android:textAppearance="?textAppearanceBody2"
             tools:text="Description" />
     </LinearLayout>
 
@@ -59,6 +59,6 @@
         android:id="@+id/rightIconView"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:scaleType="centerCrop"
-        android:layout_marginStart="@dimen/left_right_margin" />
+        android:layout_marginStart="@dimen/left_right_margin"
+        android:scaleType="centerCrop" />
 </com.usacheow.coreui.uikit.molecule.ListTileView>

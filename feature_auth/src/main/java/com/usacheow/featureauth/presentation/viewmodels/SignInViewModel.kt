@@ -1,8 +1,8 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coredata.network.ifError
-import com.usacheow.coredata.network.ifSuccess
+import com.usacheow.coredata.network.doOnError
+import com.usacheow.coredata.network.doOnSuccess
 import com.usacheow.coreui.resources.ResourcesWrapper
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
@@ -54,9 +54,9 @@ class SignInViewModel @Inject constructor(
 
         withContext(Dispatchers.IO) {
             interactor.signInWithLoginAndPassword(login, password)
-        }.ifSuccess {
+        }.doOnSuccess {
             _closeScreenAction.send(SimpleAction)
-        }.ifError {
+        }.doOnError {
             _errorState.emit(exception.getMessage(resources.get))
         }
 

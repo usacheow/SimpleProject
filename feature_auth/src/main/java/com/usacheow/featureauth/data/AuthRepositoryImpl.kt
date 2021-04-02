@@ -3,7 +3,7 @@ package com.usacheow.featureauth.data
 import com.usacheow.coredata.database.Storage
 import com.usacheow.coredata.network.Completable
 import com.usacheow.coredata.network.Effect
-import com.usacheow.coredata.network.ifSuccess
+import com.usacheow.coredata.network.doOnSuccess
 import com.usacheow.featureauth.data.models.AccessToken
 import kotlinx.coroutines.delay
 import javax.inject.Inject
@@ -16,7 +16,7 @@ class AuthRepositoryImpl
     override suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<AccessToken> {
         delay(2000)
 //        apiCall
-        return Effect.Success(AccessToken("token")).ifSuccess {
+        return Effect.Success(AccessToken("token")).doOnSuccess {
             storage.token = data.token
         }
     }
@@ -24,7 +24,7 @@ class AuthRepositoryImpl
     override suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect<AccessToken> {
         delay(2000)
 //        apiCall
-        return Effect.Success(AccessToken("token")).ifSuccess {
+        return Effect.Success(AccessToken("token")).doOnSuccess {
             storage.token = data.token
         }
     }
@@ -42,7 +42,7 @@ class AuthRepositoryImpl
     override suspend fun verifyPhone(phone: String, code: String): Effect<AccessToken> {
         delay(2000)
 //        apiCall
-        return Effect.Success(AccessToken("token")).ifSuccess {
+        return Effect.Success(AccessToken("token")).doOnSuccess {
             storage.token = data.token
             storage.phoneNumber = phone
         }

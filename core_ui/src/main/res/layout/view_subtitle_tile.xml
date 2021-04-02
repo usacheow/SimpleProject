@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.molecule.SubtitleTileView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:paddingTop="8dp"
+    android:orientation="horizontal"
     android:paddingStart="8dp"
+    android:paddingTop="8dp"
     android:paddingEnd="8dp">
 
     <TextView
         android:id="@+id/headerView"
-        style="@style/TextSubtitle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_width="0dp"
-        android:padding="8dp"
-        android:lines="1"
         android:ellipsize="end"
+        android:lines="1"
+        android:padding="8dp"
+        android:textAppearance="?textAppearanceSubtitle1"
         tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/background"
         app:cardElevation="@dimen/elevation_0"
         app:shapeAppearance="?shapeAppearanceSmallComponent">
 
         <TextView
             android:id="@+id/actionButton"
-            style="@style/TextCaption"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:maxWidth="88dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:background="?selectableItemBackground"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:lines="1"
             android:ellipsize="end"
+            android:lines="1"
+            android:maxWidth="88dp"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:textAppearance="?textAppearanceCaption"
             tools:text="@tools:sample/lorem" />
     </com.google.android.material.card.MaterialCardView>
 </com.usacheow.coreui.uikit.molecule.SubtitleTileView>
