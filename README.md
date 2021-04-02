@@ -13,7 +13,7 @@ Starter project with functional modules on the next stack:
 BottomBarHistoryManager is responsible for working with one or more stacks of fragments on a Single Activity. 
 Each stack contains a fragment that implements ContainerFragment.
 
-ContainerFragment is responsible for displaying fragments within itself. ContainerFragment.show(...) replaces 
+ContainerFragment is responsible for displaying fragments within itself. ContainerFragment.navigateTo(...) replaces 
 the current fragment with a new one.
 
 The remaining fragments are recommended to inherit from SimpleFragment, which provides a convenient way 

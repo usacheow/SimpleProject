@@ -27,8 +27,13 @@ class TestActivity : SimpleActivity<FragmentContainerBinding>(), Container {
         }
     }
 
-    override fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        containerDelegate.showFragment(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
+    override fun navigateTo(
+        fragment: Fragment,
+        needAddToBackStack: Boolean,
+        needAnimate: Boolean,
+        needReplace: Boolean,
+    ) {
+        containerDelegate.navigateTo(supportFragmentManager, fragment, needAddToBackStack, needAnimate, needReplace)
     }
 
     override fun resetContainer() {

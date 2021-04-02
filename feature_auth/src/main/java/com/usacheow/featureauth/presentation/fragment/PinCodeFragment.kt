@@ -58,7 +58,9 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         binding.pinCodeView.setHint(string(R.string.pin_view_hint))
         binding.pinCodeView.onBiometricButtonClickedAction = { biometricDelegate.tryShow() }
         binding.pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
-        binding.pinCodeForgotButton.doOnClick { }
+        binding.pinCodeForgotButton.doOnClick {
+            // todo: implement
+        }
     }
 
     override fun subscribe() {

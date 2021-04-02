@@ -22,8 +22,13 @@ abstract class ContainerFragment : SimpleFragment<FragmentContainerBinding>(), C
         containerDelegate.onCreate(childFragmentManager, ::getInitFragment)
     }
 
-    override fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        containerDelegate.showFragment(childFragmentManager, fragment, needAddToBackStack, needAnimate)
+    override fun navigateTo(
+        fragment: Fragment,
+        needAddToBackStack: Boolean,
+        needAnimate: Boolean,
+        needReplace: Boolean,
+    ) {
+        containerDelegate.navigateTo(childFragmentManager, fragment, needAddToBackStack, needAnimate, needReplace)
     }
 
     override fun resetContainer() {

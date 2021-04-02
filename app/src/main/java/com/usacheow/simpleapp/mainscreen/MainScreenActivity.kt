@@ -3,7 +3,6 @@ package com.usacheow.simpleapp.mainscreen
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.BillingActivity
@@ -50,8 +49,13 @@ class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), Containe
         }
     }
 
-    override fun navigateTo(fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        containerDelegate.showFragment(supportFragmentManager, fragment, needAddToBackStack, needAnimate)
+    override fun navigateTo(
+        fragment: Fragment,
+        needAddToBackStack: Boolean,
+        needAnimate: Boolean,
+        needReplace: Boolean,
+    ) {
+        containerDelegate.navigateTo(supportFragmentManager, fragment, needAddToBackStack, needAnimate, needReplace)
     }
 
     override fun resetContainer() {

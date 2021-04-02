@@ -86,13 +86,13 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen(this) }
+        viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
         viewModel.isLoadingState.observe(lifecycle) {
             binding.signInLoaderView.root.isVisible = it
         }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
         viewModel.codeConfirmMessageState.observe(lifecycle) { smsCodeViewModel.showMessage(it) }
-        viewModel.openConfirmScreenAction.observe(lifecycle) { router.openConfirmScreen(this, it) }
+        viewModel.openConfirmScreenAction.observe(lifecycle) { router.openConfirmScreen(it) }
         viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignIn() }
         smsCodeViewModel.processCodeAction.observe(lifecycle) { viewModel.onCodeInputted(it) }
     }

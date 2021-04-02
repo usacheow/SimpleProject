@@ -1,14 +1,13 @@
 package com.usacheow.coreui.base
 
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import com.usacheow.coreui.fragment.SimpleFragment
 
-interface Router {
+abstract class Router(protected val fragment: Fragment) {
 
-    fun moveToBack(activity: FragmentActivity) {
-        activity.onBackPressed()
-    }
+    protected val simpleFragment get() = fragment as? SimpleFragment<*>
 
-    fun close(activity: FragmentActivity) {
-        activity.finish()
+    fun moveToBack() {
+        fragment.requireActivity().onBackPressed()
     }
 }

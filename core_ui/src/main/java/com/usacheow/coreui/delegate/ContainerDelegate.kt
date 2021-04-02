@@ -18,18 +18,27 @@ class ContainerDelegate(
         }
     }
 
-    fun showFragment(fragmentManager: FragmentManager, fragment: Fragment, needAddToBackStack: Boolean, needAnimate: Boolean) {
-        fragmentManager.commit {
-            if (needAnimate) {
-                setCustomAnimations(
-                    R.anim.anim_enter_from_right,
-                    R.anim.anim_exit_to_left,
-                    R.anim.anim_enter_from_left,
-                    R.anim.anim_exit_to_right
-                )
-            }
-            replace(R.id.fragmentContainer, fragment)
-            if (needAddToBackStack) addToBackStack(null)
+    fun navigateTo(
+        fragmentManager: FragmentManager,
+        fragment: Fragment,
+        needAddToBackStack: Boolean,
+        needAnimate: Boolean,
+        needReplace: Boolean,
+    ) = fragmentManager.commit {
+        if (needAnimate) {
+            setCustomAnimations(
+                R.anim.anim_enter_from_right,
+                R.anim.anim_exit_to_left,
+                R.anim.anim_enter_from_left,
+                R.anim.anim_exit_to_right
+            )
+        }
+        when (needReplace) {
+            true -> replace(R.id.fragmentContainer, fragment)
+            false -> add(R.id.fragmentContainer, fragment)
+        }
+        if (needAddToBackStack) {
+            addToBackStack(null)
         }
     }
 
