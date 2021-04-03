@@ -1,4 +1,4 @@
-package  com.usacheow.simpleapp.notification
+package com.usacheow.simpleapp.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -11,19 +11,27 @@ import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.usacheow.coreui.R
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val APP_PACKAGE = "com.usacheow.simpleapp"
 private const val APP_INFO_CHANEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"
 
 private const val SIMPLE_NOTIFICATION_ID = 221
 
-class NotificationHelper(
-    private val context: Context
+@Singleton
+class NotificationHelper @Inject constructor(
+    @ApplicationContext private val context: Context,
 ) {
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val appInfoChannel = NotificationChannel(APP_INFO_CHANEL_ID, "Channel Name", NotificationManager.IMPORTANCE_DEFAULT).apply {
+            val appInfoChannel = NotificationChannel(
+                APP_INFO_CHANEL_ID,
+                "Channel Name",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
                 description = "Channel description"
                 setShowBadge(true)
             }

@@ -105,8 +105,8 @@ ext {
             extensions: "androidx.camera:camera-extensions:$cameraXViewVersion",
     ]
 
-    billingVersion = '1.2.1'
-    billingDependency = "org.solovyev.android:checkout:$billingVersion"
+    billingVersion = '3.0.0'
+    billingDependency = "com.android.billingclient:billing-ktx:$billingVersion"
 
     browserVersion = '1.0.0'
     browserDependency = "androidx.browser:browser:$browserVersion"

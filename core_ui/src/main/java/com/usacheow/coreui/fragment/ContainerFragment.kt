@@ -19,7 +19,7 @@ abstract class ContainerFragment : SimpleFragment<FragmentContainerBinding>(), C
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        containerDelegate.onCreate(childFragmentManager, ::getInitFragment)
+        containerDelegate.showInitFragment(childFragmentManager, ::getInitFragment)
     }
 
     override fun navigateTo(

@@ -4,10 +4,15 @@ import android.content.Intent
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 const val MESSAGE_KEY = "MESSAGE_KEY"
 
+@AndroidEntryPoint
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    @Inject lateinit var notificationHelper: NotificationHelper
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         sendNotification(remoteMessage)
@@ -24,6 +29,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             intent = notificationIntent
         )
 
-        NotificationHelper(this).showSimpleNotification(model)
+        notificationHelper.showSimpleNotification(model)
     }
 }

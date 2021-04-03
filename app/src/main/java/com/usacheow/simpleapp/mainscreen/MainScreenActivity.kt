@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.usacheow.appshared.AppStateViewModel
+import com.usacheow.appshared.PurchaseStateViewModel
 import com.usacheow.coreui.R
-import com.usacheow.coreui.activity.BillingActivity
+import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
@@ -16,13 +17,14 @@ import com.usacheow.featureonboarding.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainScreenActivity : BillingActivity<FragmentContainerBinding>(), Container {
+class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container {
 
     override val params = Params(
         viewBindingProvider = FragmentContainerBinding::inflate,
     )
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
+    private val purchaseStateViewModel by viewModels<PurchaseStateViewModel>()
 
     private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 

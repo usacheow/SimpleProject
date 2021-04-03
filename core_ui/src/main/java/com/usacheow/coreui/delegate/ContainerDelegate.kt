@@ -10,7 +10,7 @@ class ContainerDelegate(
     private val initFragmentTag: String
 ) {
 
-    fun onCreate(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {
+    fun showInitFragment(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {
         if (fragmentManager.fragments.isEmpty()) {
             fragmentManager.commit {
                 replace(R.id.fragmentContainer, getInitFragment(), initFragmentTag)
@@ -43,7 +43,7 @@ class ContainerDelegate(
     }
 
     fun resetContainer(fragmentManager: FragmentManager) {
-        while (fragmentManager.backStackEntryCount > 1) {
+        while (fragmentManager.backStackEntryCount > 0) {
             fragmentManager.popBackStackImmediate()
         }
     }

@@ -12,6 +12,7 @@ private const val PREF_PHONE = "PREF_PHONE"
 private const val PREF_NAME = "PREF_NAME"
 private const val PREF_PIN_CODE = "PREF_PIN_CODE"
 private const val PREF_ALLOW_FINGERPRINT = "PREF_ALLOW_FINGERPRINT"
+private const val PREF_IS_PAYED = "PREF_IS_PAYED"
 
 class Storage
 @Inject constructor(
@@ -58,6 +59,12 @@ class Storage
         get() = getPreferences().getBoolean(PREF_ALLOW_FINGERPRINT, true)
         set(value) {
             getPreferencesEditor().putBoolean(PREF_ALLOW_FINGERPRINT, value).apply()
+        }
+
+    var isPayedVersion: Boolean
+        get() = getPreferences().getBoolean(PREF_IS_PAYED, false)
+        set(value) {
+            getPreferencesEditor().putBoolean(PREF_IS_PAYED, value).apply()
         }
 
     fun clearPreferences() {
