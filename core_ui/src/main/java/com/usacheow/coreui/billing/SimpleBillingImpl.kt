@@ -20,7 +20,7 @@ import kotlin.coroutines.suspendCoroutine
 interface SimpleBilling : BillingWrapper, BillingMediator
 
 class SimpleBillingImpl(
-    private val context: Context,
+    context: Context,
 ) : SimpleBilling {
 
     private var onPurchasesUpdated: ((List<Purchase>) -> Unit)? = null
