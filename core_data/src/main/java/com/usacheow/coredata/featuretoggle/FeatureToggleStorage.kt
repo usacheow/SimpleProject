@@ -2,13 +2,14 @@ package com.usacheow.coredata.featuretoggle
 
 import android.content.Context
 import android.content.SharedPreferences
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 private const val SETTINGS_NAME = "FeatureToggleImpl"
 
 class FeatureToggleStorage
 @Inject constructor(
-    context: Context
+    @ApplicationContext context: Context
 ) {
 
     private val preferences = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE)

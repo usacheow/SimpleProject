@@ -6,6 +6,7 @@ buildscript {
         buildToolsVersion = '7.0.0-alpha12'
         hiltVersion = '2.31.2-alpha'
         hiltJetpackVersion = '1.0.0-alpha03'
+        crashlyticsVersion = '2.5.2'
     }
 
     repositories {
@@ -18,7 +19,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         classpath "com.google.gms:google-services:$gmsVersion"
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.1'
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsVersion"
     }
 }
 

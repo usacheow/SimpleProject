@@ -2,6 +2,7 @@ package com.usacheow.coreui.analytics
 
 import android.app.Application
 import androidx.core.os.bundleOf
+import com.google.firebase.analytics.FirebaseAnalytics
 import javax.inject.Inject
 
 class AnalyticsTracker
@@ -9,10 +10,9 @@ class AnalyticsTracker
     private val application: Application
 ) : Tracker {
 
-    //todo: add firebase config json
-//    private val firebaseAnalytics by lazy {
-//        FirebaseAnalytics.getInstance(application)
-//    }
+    private val firebaseAnalytics by lazy {
+        FirebaseAnalytics.getInstance(application)
+    }
 
     init {
 //        YandexMetricaConfig.newConfigBuilder(BuildConfig.APP_METRICA_KEY).build().apply {
