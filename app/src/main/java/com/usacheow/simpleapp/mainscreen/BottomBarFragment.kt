@@ -7,7 +7,8 @@ import androidx.fragment.app.viewModels
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.navigation.MultiStackHistoryManager
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.featurehello.presentation.fragment.HelloContainerFragment
+import com.usacheow.featuremain.presentation.fragment.container.HelloContainerFragment
+import com.usacheow.featuremain.presentation.fragment.container.MockContainerFragment
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,8 +27,8 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStack
             childFragmentManager,
             R.id.appContainerLayout,
             { HelloContainerFragment.newInstance() },
-            { HelloContainerFragment.newInstance() },
-            { HelloContainerFragment.newInstance() }
+            { MockContainerFragment.newInstance() },
+            { MockContainerFragment.newInstance() }
         )
     }
 

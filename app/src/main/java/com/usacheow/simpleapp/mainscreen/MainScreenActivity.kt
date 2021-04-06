@@ -14,6 +14,7 @@ import com.usacheow.coreui.utils.observe
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
+import com.usacheow.featurepurchase.PurchaseModalFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,6 +49,9 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
 
         appStateViewModel.openAppScreenAction.observe(lifecycle) {
             navigateTo(BottomBarFragment.newInstance(), false)
+        }
+        purchaseStateViewModel.openPurchaseScreenAction.observe(lifecycle) {
+            PurchaseModalFragment.newInstance().show(supportFragmentManager, null)
         }
     }
 

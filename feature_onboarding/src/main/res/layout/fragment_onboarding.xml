@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/onBoardingSkipButton"
+        android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -20,33 +20,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/onBoardingViewPager"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/onBoardingIndicatorView"
+        app:layout_constraintBottom_toTopOf="@+id/indicatorView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoardingSkipButton" />
 
     <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
-        android:id="@+id/onBoardingIndicatorView"
+        android:id="@+id/indicatorView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@id/onBoardingNextButton"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onBoardingViewPager"
+        app:layout_constraintTop_toBottomOf="@id/viewPager"
         app:spi_dotColor="@color/backgroundSecondary"
         app:spi_dotSelectedColor="@color/colorPrimary"
         app:spi_dotSelectedSize="8dp"
         app:spi_dotSize="8dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/onBoardingNextButton"
+        android:id="@+id/nextButton"
         style="@style/SimpleButton"
         android:layout_width="190dp"
         android:layout_marginBottom="88dp"

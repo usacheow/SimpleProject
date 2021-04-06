@@ -1,10 +1,10 @@
 package com.usacheow.simpleapp
 
 import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.HelloMediator
+import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.featureauth.presentation.router.AuthorizationMediatorImpl
-import com.usacheow.featurehello.presentation.router.HelloMediatorImpl
+import com.usacheow.featuremain.presentation.router.MainMediatorImpl
 import com.usacheow.featureonboarding.OnBoardingMediatorImpl
 import dagger.Binds
 import dagger.Module
@@ -18,7 +18,7 @@ interface MediatorModule {
 
     @Binds
     @Singleton
-    fun helloMediator(mediator: HelloMediatorImpl): HelloMediator
+    fun helloMediator(mediator: MainMediatorImpl): MainMediator
 
     @Binds
     @Singleton

@@ -29,12 +29,13 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.onBoardingViewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
+        binding.indicatorView.attachToPager(binding.viewPager)
 
-        binding.onBoardingSkipButton.setOnClickListener { startNextScreen() }
-        binding.onBoardingNextButton.setOnClickListener {
-            if (binding.onBoardingViewPager.currentItem < onBoardingData.size - 1) {
-                binding.onBoardingViewPager.currentItem += 1
+        binding.skipButton.setOnClickListener { startNextScreen() }
+        binding.nextButton.setOnClickListener {
+            if (binding.viewPager.currentItem < onBoardingData.size - 1) {
+                binding.viewPager.currentItem += 1
             } else {
                 startNextScreen()
             }

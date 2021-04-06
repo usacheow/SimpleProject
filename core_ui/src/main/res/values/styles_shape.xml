@@ -16,4 +16,9 @@
         <item name="cornerSize">@dimen/radius_large</item>
     </style>
 
+    <style name="DiscountShapeAppearance">
+        <item name="cornerSizeBottomLeft">@dimen/radius_8</item>
+        <item name="cornerSizeTopRight">@dimen/radius_8</item>
+    </style>
+
 </resources>

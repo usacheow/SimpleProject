@@ -16,6 +16,7 @@ android {
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
+        versionName configVersionName()
         versionCode configVersionCode()
         applicationId applicationPackage
     }
@@ -63,9 +64,10 @@ dependencies {
     implementation project(':core_ui')
     implementation project(':app_shared')
 
-    implementation project(':feature_hello')
+    implementation project(':feature_main')
     implementation project(':feature_auth')
     implementation project(':feature_onboarding')
+    implementation project(':feature_purchase')
 
     implementation firebaseDependencies.values()
     implementation billingDependency

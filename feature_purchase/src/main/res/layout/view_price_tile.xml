@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.featurepurchase.PriceTileView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:strokeColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/surfaceSecondary"
+        app:cardCornerRadius="@dimen/radius_8"
+        app:cardElevation="@dimen/elevation_0"
+        tools:strokeWidth="2dp">
+
+        <FrameLayout
+            android:id="@+id/clickableView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:minWidth="152dp"
+            android:maxWidth="200dp"
+            android:background="?selectableItemBackground"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/discountLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_gravity="end"
+                app:shapeAppearance="@style/DiscountShapeAppearance">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/discountView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textColor="@color/colorOnPrimary"
+                    android:background="@color/colorPrimary"
+                    android:textAppearance="?textAppearanceCaption"
+                    tools:text="Скидка 56%" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/periodView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:alpha="@dimen/text_alpha"
+                        android:textAppearance="?textAppearanceSubtitle1"
+                        tools:text="799₽ / год" />
+
+                    <TextView
+                        android:id="@+id/priceView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        tools:text="66,58₽ / месяц" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/pricePerMonthView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceHeadline6"
+                    tools:text="66,58₽ / месяц" />
+            </LinearLayout>
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.usacheow.featurepurchase.PriceTileView>
