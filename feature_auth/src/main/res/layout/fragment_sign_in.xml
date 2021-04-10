@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_login"
                     android:imeOptions="actionNext"
+                    android:inputType="textShortMessage"
                     android:lines="1"
                     android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>

@@ -1,24 +1,22 @@
 package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
-import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.hideKeyboard
+import com.usacheow.coreui.utils.textinput.doOnActionClicked
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.startFragmentTransition
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignUpBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -35,12 +33,10 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         viewBindingProvider = FragmentSignUpBinding::inflate,
     )
 
-    @Inject lateinit var router: AuthorizationRouter
+    @Inject
+    lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignUpViewModel>()
-
-    private var loginInputListener: TextWatcher? = null
-    private var passwordInputListener: TextWatcher? = null
 
     companion object {
         fun newInstance() = SignUpFragment()
@@ -54,50 +50,39 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         }
         val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
 
-        startFragmentTransition {
-            val topMargin = when (isKeyboardVisible) {
-                true -> 0
-                false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
-            }
-            binding.signUpHeaderView.updateMargins(MarginTop(topMargin))
-
-            binding.signUpRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+        val topMargin = when (isKeyboardVisible) {
+            true -> 0
+            false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
         }
+        binding.signUpHeaderView.updateMargins(MarginTop(topMargin))
+
+        binding.signUpRootView.updatePadding(top = topPadding, bottom = bottomPadding)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        loginInputListener = binding.signUpLoginInput.onTextChanged {
+        binding.signUpLoginInput.onTextChanged {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
-        binding.signUpLoginInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.signUpLoginInput.clearFocus()
-                viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
-            }
-            false
-        }
-        passwordInputListener = binding.signUpPasswordInput.onTextChanged {
+        binding.signUpPasswordInput.onTextChanged {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
-        binding.signUpPasswordInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.signUpPasswordInput.clearFocus()
-                viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
-            }
-            false
+
+        binding.signUpLoginInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+            binding.signUpPasswordInput.requestFocus()
+            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
+        binding.signUpPasswordInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+            binding.signUpPasswordInput.clearFocus()
+            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
+        }
+
         binding.signUpButton.doOnClick {
-            requireView().hideKeyboard()
+            binding.root.hideKeyboard()
             viewModel.onSignInClicked(
                 binding.signUpLoginInput.text.toString(),
                 binding.signUpPasswordInput.text.toString()
             )
         }
-    }
-
-    override fun clearViews() {
-        binding.signUpLoginInput.removeTextChangedListener(loginInputListener)
-        binding.signUpPasswordInput.removeTextChangedListener(passwordInputListener)
     }
 
     override fun subscribe() {
@@ -106,5 +91,6 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         viewModel.openMainScreenAction.observe(lifecycle) { appStateViewModel.onSignUp() }
     }
 
-    private fun getLoginAndPassword() = binding.signUpLoginInput.text.toString() to binding.signUpPasswordInput.text.toString()
+    private fun getLoginAndPassword() =
+        binding.signUpLoginInput.text.toString() to binding.signUpPasswordInput.text.toString()
 }

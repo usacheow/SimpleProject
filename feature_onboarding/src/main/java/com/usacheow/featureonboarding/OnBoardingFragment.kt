@@ -1,10 +1,13 @@
 package com.usacheow.featureonboarding
 
 import android.os.Bundle
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +29,13 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
 
     companion object {
         fun newInstance() = OnBoardingFragment()
+    }
+
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        binding.root.updatePadding(
+            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

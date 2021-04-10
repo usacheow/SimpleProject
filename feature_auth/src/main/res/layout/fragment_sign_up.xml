@@ -43,6 +43,7 @@
                     android:hint="@string/sign_in_login"
                     android:imeOptions="actionNext"
                     android:lines="1"
+                    android:inputType="textShortMessage"
                     android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_password"
                     android:inputType="textPassword"
+                    android:imeOptions="actionDone"
                     android:lines="1"
                     android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>

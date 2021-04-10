@@ -29,7 +29,7 @@ fun Effect<*>.toCompletableResult() = when (this) {
     }
 }
 
-suspend fun <T : Any> Effect<T>.mapWhenSuccess(block: suspend Effect.Success<T>.() -> Effect<T>): Effect<T> = try {
+inline fun <T : Any> Effect<T>.mapWhenSuccess(block: Effect.Success<T>.() -> Effect<T>): Effect<T> = try {
     when (this) {
         is Effect.Success<T> -> this.block()
 
@@ -39,7 +39,7 @@ suspend fun <T : Any> Effect<T>.mapWhenSuccess(block: suspend Effect.Success<T>.
     Effect.Error(ApiError.DataMappingException())
 }
 
-suspend fun <T : Any> Effect<T>.mapWhenError(block: suspend Effect.Error.() -> Effect<T>): Effect<T> = try {
+inline fun <T : Any> Effect<T>.mapWhenError(block: Effect.Error.() -> Effect<T>): Effect<T> = try {
     when (this) {
         is Effect.Error -> this.block()
 
@@ -49,7 +49,7 @@ suspend fun <T : Any> Effect<T>.mapWhenError(block: suspend Effect.Error.() -> E
     Effect.Error(ApiError.DataMappingException())
 }
 
-suspend fun <T : Any> Effect<T>.doOnSuccess(block: suspend Effect.Success<T>.() -> Unit): Effect<T> {
+inline fun <T : Any> Effect<T>.doOnSuccess(block: Effect.Success<T>.() -> Unit): Effect<T> {
     if (this is Effect.Success<T>) {
         this.block()
     }
@@ -57,7 +57,7 @@ suspend fun <T : Any> Effect<T>.doOnSuccess(block: suspend Effect.Success<T>.() 
     return this
 }
 
-suspend fun <T : Any> Effect<T>.doOnError(block: suspend Effect.Error.() -> Unit): Effect<T> {
+inline fun <T : Any> Effect<T>.doOnError(block: Effect.Error.() -> Unit): Effect<T> {
     if (this is Effect.Error) {
         this.block()
     }
@@ -65,13 +65,13 @@ suspend fun <T : Any> Effect<T>.doOnError(block: suspend Effect.Error.() -> Unit
     return this
 }
 
-suspend fun <T : Any> apiCall(block: suspend () -> Response<T>): Effect<T> = try {
+inline fun <T : Any> apiCall(block: () -> Response<T>): Effect<T> = try {
     block.invoke().process()
 } catch (t: Throwable) {
     Effect.Error(t.toError())
 }
 
-private fun <T : Any> Response<T>.process() = when {
+fun <T : Any> Response<T>.process() = when {
     isSuccessful -> body()?.let {
         Effect.Success(it)
     } ?: Effect.Error(ApiError.EmptyResponseException())
@@ -86,7 +86,7 @@ private fun <T : Any> Response<T>.process() = when {
     }
 }
 
-private fun Throwable.toError() = when (this) {
+fun Throwable.toError() = when (this) {
     is UnknownHostException -> ApiError.HostException()
 
     is HttpException -> when (val code = response()?.code()) {

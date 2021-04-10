@@ -6,6 +6,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.navigation.MultiStackHistoryManager
+import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featuremain.presentation.fragment.container.HelloContainerFragment
 import com.usacheow.featuremain.presentation.fragment.container.MockContainerFragment
@@ -52,8 +53,12 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStack
         manager.listener = this
         manager.openActiveSection()
 
-        binding.appBottomBar.setOnNavigationItemReselectedListener { manager.resetSection() }
+        binding.appBottomBar.setOnNavigationItemReselectedListener {
+            binding.root.hideKeyboard()
+            manager.resetSection()
+        }
         binding.appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
+            binding.root.hideKeyboard()
             val position = AppScreenSections.indexOf(menuItem.itemId)
             manager.openSection(position)
             true

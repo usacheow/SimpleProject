@@ -7,8 +7,8 @@ import com.usacheow.coredata.network.doOnError
 import com.usacheow.coredata.network.doOnSuccess
 import retrofit2.Response
 
-suspend inline fun <reified T : Any> takeCacheOrRefresh(
-    noinline request: suspend () -> Response<T>,
+inline fun <reified T : Any> takeCacheOrRefresh(
+    request: () -> Response<T>,
     cacheProvider: CacheProvider,
     key: String,
     timeInMillis: Long = 1 * 60 * 1000

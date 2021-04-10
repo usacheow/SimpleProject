@@ -14,10 +14,10 @@ import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.textinput.hideKeyboard
+import com.usacheow.coreui.utils.textinput.doOnActionClicked
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.startFragmentTransition
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignInByPhoneBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -34,7 +34,8 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
         viewBindingProvider = FragmentSignInByPhoneBinding::inflate,
     )
 
-    @Inject lateinit var router: AuthorizationRouter
+    @Inject
+    lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInWithPhoneViewModel>()
     private val smsCodeViewModel by viewModels<OtpViewModel>()
@@ -51,16 +52,14 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
         }
         val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
 
-        startFragmentTransition {
-            val topMargin = when (isKeyboardVisible) {
-                true -> 0
-                false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
-            }
-            binding.signInHeaderView.updateMargins(MarginTop(topMargin))
-
-            binding.signUpButton.isVisible = !isKeyboardVisible
-            binding.signInByPhoneRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+        val topMargin = when (isKeyboardVisible) {
+            true -> 0
+            false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
         }
+        binding.signInHeaderView.updateMargins(MarginTop(topMargin))
+
+        binding.signUpButton.isVisible = !isKeyboardVisible
+        binding.signInByPhoneRootView.updatePadding(top = topPadding, bottom = bottomPadding)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -68,19 +67,16 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
             viewModel::onPhoneChanged,
             viewModel::onPhoneChanged
         )
-        binding.signInPhoneInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.signInPhoneInput.clearFocus()
-                viewModel.onSubmitClicked(binding.signInPhoneInput.text.toString())
-            }
-            false
+        binding.signInPhoneInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+            binding.signInPhoneInput.clearFocus()
+            viewModel.onSubmitClicked(binding.signInPhoneInput.text.toString())
         }
         binding.signInButton.doOnClick {
-            requireView().hideKeyboard()
+            binding.root.hideKeyboard()
             viewModel.onSignInClicked(binding.signInPhoneInput.text.toString())
         }
         binding.signUpButton.doOnClick {
-            requireView().hideKeyboard()
+            binding.root.hideKeyboard()
             viewModel.onSignUpClicked()
         }
     }

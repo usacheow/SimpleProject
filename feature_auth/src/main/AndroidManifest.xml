@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.usacheow.featureauth" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.usacheow.featureauth">
+
+    <application android:theme="@style/AppTheme" />
+</manifest>

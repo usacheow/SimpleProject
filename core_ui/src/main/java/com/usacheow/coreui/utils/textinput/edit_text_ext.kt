@@ -11,18 +11,14 @@ import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
 import java.math.BigDecimal
 
-fun EditText.onTextChanged(action: (String) -> Unit): TextWatcher {
-    val listener = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {}
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
+fun EditText.onTextChanged(action: (String) -> Unit) {
+    addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) = Unit
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             action(s.toString())
         }
-    }
-    addTextChangedListener(listener)
-    return listener
+    })
 }
 
 fun EditText.afterTextChanged(action: (String) -> Unit) {
@@ -30,17 +26,17 @@ fun EditText.afterTextChanged(action: (String) -> Unit) {
         override fun afterTextChanged(s: Editable?) {
             action(s.toString())
         }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
     })
 }
 
-fun EditText.clearFocusOnImeClick(actionId: Int, onClearedAction: () -> Unit = {}) {
-    if (actionId == EditorInfo.IME_ACTION_DONE) {
-        clearFocus()
-        onClearedAction()
+fun EditText.doOnActionClicked(imeActionId: Int, action: () -> Unit = {}) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == imeActionId) {
+            action()
+        }
+        actionId != EditorInfo.IME_ACTION_DONE
     }
 }
 
@@ -82,8 +78,8 @@ fun TextInputEditText.addCurrencyFormatter(defaultHint: String? = null): TextWat
 }
 
 fun TextInputEditText.addPhoneNumberFormatter(
-    onPhoneNumberCompleted: (String) -> Unit,
-    onPhoneNumberInputChanged: (String) -> Unit
+    onPhoneNumberCompleted: (String) -> Unit = {},
+    onPhoneNumberInputChanged: (String) -> Unit = {},
 ) = PhoneNumberFormatter(
     inputEditText = this,
     onPhoneNumberCompleted = onPhoneNumberCompleted,

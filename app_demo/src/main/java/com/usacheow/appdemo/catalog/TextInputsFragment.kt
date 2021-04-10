@@ -7,10 +7,10 @@ import androidx.core.view.updatePadding
 import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
-import com.usacheow.coreui.utils.view.startFragmentTransition
+import com.usacheow.coreui.utils.textinput.doOnActionClicked
+import com.usacheow.coreui.utils.view.PaddingValue
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
@@ -24,12 +24,12 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        startFragmentTransition {
-            binding.viewsScrollView.updatePadding(bottom = when (isKeyboardVisible) {
+        binding.viewsScrollView.updatePadding(
+            bottom = when (isKeyboardVisible) {
                 true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
                 false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            })
-        }
+            }
+        )
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -43,23 +43,14 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
         binding.viewAmountInput.addCurrencyFormatter("50000.00")
         binding.viewPhoneNumberInput.addPhoneNumberFormatter({}, {})
 
-        binding.viewPasswordInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                binding.viewAmountInput.requestFocus()
-            }
-            false
+        binding.viewPasswordInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+            binding.viewAmountInput.requestFocus()
         }
-        binding.viewAmountInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                binding.viewPhoneNumberInput.requestFocus()
-            }
-            false
+        binding.viewAmountInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+            binding.viewPhoneNumberInput.requestFocus()
         }
-        binding.viewPhoneNumberInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                binding.viewPhoneNumberInput.clearFocus()
-            }
-            false
+        binding.viewPhoneNumberInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+            binding.viewPhoneNumberInput.clearFocus()
         }
     }
 }

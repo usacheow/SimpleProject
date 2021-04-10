@@ -3,14 +3,17 @@
     package="com.usacheow.apptest">
 
     <application
+        android:name=".TestApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_demo"
         android:label="@string/app_name"
-        android:name=".TestApp"
         android:roundIcon="@mipmap/ic_launcher_demo_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.Splash">
-        <activity android:name="com.usacheow.apptest.TestActivity">
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.usacheow.apptest.TestActivity"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,14 +21,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ServiceImpl"/>
-        <service android:name=".IntentServiceImpl"/>
+        <service android:name=".ServiceImpl" />
+        <service android:name=".IntentServiceImpl" />
         <service
             android:name=".JobIntentServiceImpl"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".JobServiceImpl"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>
