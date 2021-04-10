@@ -28,7 +28,7 @@ class BadgeTileView
         binding.clickableView.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
         binding.root.setCardBackgroundColor(color(model.backgroundColorRes))
-        binding.clickableView.setListenerIfNeed(model.isShimmer, model.clickListener)
+        binding.clickableView.doOnClick(model.isShimmer, model.clickListener)
 
         binding.headerView.apply {
             populate(model.header)

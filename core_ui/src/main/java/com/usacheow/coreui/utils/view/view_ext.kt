@@ -1,8 +1,6 @@
 package com.usacheow.coreui.utils.view
 
 import android.view.View
-import android.view.ViewGroup
-import com.usacheow.coreui.utils.*
 
 fun View.makeVisible() {
     visibility = View.VISIBLE
@@ -14,13 +12,6 @@ fun View.makeInvisible() {
 
 fun View.makeGone() {
     visibility = View.GONE
-}
-
-fun View.setVisible(isVisible: Boolean) {
-    when {
-        isVisible -> makeVisible()
-        else -> makeGone()
-    }
 }
 
 fun View.resize(widthPx: Int = width, heightPx: Int = height) {
@@ -38,23 +29,19 @@ with(TypedValue()) {
 }
 * */
 
-fun View.doOnClick(action: () -> Unit) {
-    setOnClickListener {
-        action()
-    }
-}
-
-fun View.setListenerIfNeed(listener: (() -> Unit)?) {
-    isEnabled = if (listener == null) {
+fun View.doOnClick(action: (() -> Unit)?) {
+    isEnabled = if (action == null) {
         setOnClickListener(null)
         false
     } else {
-        doOnClick(listener)
+        setOnClickListener { action() }
         true
     }
 }
 
-fun View.setListenerIfNeed(isShimmer: Boolean, listener: (() -> Unit)?) = setListenerIfNeed(when {
-    isShimmer -> null
-    else -> listener
-})
+fun View.doOnClick(isShimmer: Boolean, listener: (() -> Unit)?) = doOnClick(
+    when {
+        isShimmer -> null
+        else -> listener
+    }
+)

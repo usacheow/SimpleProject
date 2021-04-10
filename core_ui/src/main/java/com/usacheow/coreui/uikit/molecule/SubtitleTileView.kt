@@ -9,7 +9,7 @@ import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewSubtitleTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
-import com.usacheow.coreui.utils.view.setListenerIfNeed
+import com.usacheow.coreui.utils.view.doOnClick
 
 class SubtitleTileView
 @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0)
@@ -20,7 +20,7 @@ class SubtitleTileView
     override fun populate(model: SubtitleTileItem) {
         binding.headerView.populate(model.title)
         binding.actionButton.populate(model.actionTitle)
-        binding.actionButton.setListenerIfNeed(model.clickListener)
+        binding.actionButton.doOnClick(model.clickListener)
     }
 }
 

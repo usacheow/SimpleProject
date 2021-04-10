@@ -22,7 +22,7 @@ class PriceTileView
     private val binding by lazy { ViewPriceTileBinding.bind(this) }
 
     override fun populate(model: PriceTileItem) {
-        binding.clickableView.setListenerIfNeed {
+        binding.clickableView.doOnClick {
             if (!model.isSelected) {
                 model.clickListener()
             }

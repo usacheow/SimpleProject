@@ -18,7 +18,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
-import com.usacheow.coreui.utils.system.checkPermissions
 import com.usacheow.coreui.utils.view.doWithTransition
 import com.usacheow.appdemo.databinding.FragmentCameraBinding
 import java.io.File
@@ -90,6 +89,14 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
                 updateCameraUi()
                 bindCameraUseCases()
             }
+        }
+    }
+
+    private fun checkPermissions(requiredPermissions: Array<String>, codeResult: Int, onGrantedAction: () -> Unit) {
+        if (requireContext().arePermissionsGranted(requiredPermissions)) {
+            onGrantedAction()
+        } else {
+            requestPermissions(requiredPermissions, codeResult)
         }
     }
 

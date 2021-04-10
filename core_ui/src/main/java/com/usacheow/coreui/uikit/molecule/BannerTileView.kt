@@ -18,7 +18,7 @@ class BannerTileView
     private val binding by lazy { ViewBannerTileBinding.bind(this) }
 
     override fun populate(model: BannerTileItem) {
-        binding.bannerClickableView.setListenerIfNeed(model.isShimmer, model.clickListener)
+        binding.bannerClickableView.doOnClick(model.isShimmer, model.clickListener)
 
         binding.bannerIconView.populate(model.icon)
         binding.bannerTextView.populate(model.text)

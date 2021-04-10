@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.keyboard
+package com.usacheow.coreui.utils.textinput
 
 import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.utils.textinput.hideKeyboard

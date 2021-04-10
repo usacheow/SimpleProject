@@ -10,7 +10,7 @@ import com.usacheow.coreui.databinding.ViewTagTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.setListenerIfNeed
+import com.usacheow.coreui.utils.view.doOnClick
 
 class TagTileView
 @JvmOverloads constructor(
@@ -30,7 +30,7 @@ class TagTileView
             false -> model.unselectedColor.background
         }))
 
-        setListenerIfNeed {
+        doOnClick {
             if (!model.isSelected) {
                 model.clickListener()
             }

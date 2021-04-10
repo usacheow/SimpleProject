@@ -53,6 +53,11 @@ fun View.hideKeyboard() {
     inputMethodManger!!.hideSoftInputFromWindow(windowToken, 0)
 }
 
+fun Context.isKeyboardEnabled(): Boolean {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    return imm.enabledInputMethodList.any { it.packageName == packageName }
+}
+
 fun TextInputEditText.addCurrencyFormatter(defaultHint: String? = null): TextWatcher {
     val formatter = DecimalFormatter().apply {
         negativePrefix = ""

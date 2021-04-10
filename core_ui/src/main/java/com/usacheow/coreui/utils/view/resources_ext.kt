@@ -1,21 +1,14 @@
 package com.usacheow.coreui.utils.view
 
 import android.app.Activity
-import android.content.Context
 import android.content.res.Resources
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-
-fun Context.isKeyboardEnabled(): Boolean {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    return imm.enabledInputMethodList.any { it.packageName == packageName }
-}
 
 fun View.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
 

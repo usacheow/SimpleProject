@@ -10,7 +10,7 @@ import com.usacheow.coreui.databinding.ViewInformationTileBinding
 import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
-import com.usacheow.coreui.utils.view.setListenerIfNeed
+import com.usacheow.coreui.utils.view.doOnClick
 
 class InformationTileView
 @JvmOverloads constructor(
@@ -29,7 +29,7 @@ class InformationTileView
         binding.leftMainView.populate(model.leftMain)
         binding.rightMainView.populate(model.rightMain)
 
-        setListenerIfNeed(model.clickListener)
+        doOnClick(model.clickListener)
     }
 }
 

@@ -39,7 +39,7 @@ class ActionTileView
         binding.checkBox.makeGone()
 
         if (model.isShimmer) {
-            setListenerIfNeed(null)
+            doOnClick(null)
         } else {
             val visibleControlButton = when (model.selectionType) {
                 ActionSelectionType.CHECK_BOX -> binding.checkBox
@@ -53,7 +53,7 @@ class ActionTileView
                 }
             }
 
-            setListenerIfNeed { visibleControlButton.performClick() }
+            doOnClick { visibleControlButton.performClick() }
         }
     }
 
