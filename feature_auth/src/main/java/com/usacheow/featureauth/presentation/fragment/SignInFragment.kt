@@ -12,7 +12,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.hideKeyboard
-import com.usacheow.coreui.utils.textinput.doOnActionClicked
+import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
@@ -68,11 +68,11 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
 
-        binding.signInLoginInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+        binding.signInLoginInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
             binding.signInPasswordInput.requestFocus()
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
-        binding.signInPasswordInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+        binding.signInPasswordInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
             binding.signInPasswordInput.clearFocus()
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }

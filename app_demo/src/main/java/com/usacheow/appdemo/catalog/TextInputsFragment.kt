@@ -9,7 +9,7 @@ import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
-import com.usacheow.coreui.utils.textinput.doOnActionClicked
+import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.view.PaddingValue
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
@@ -43,13 +43,13 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
         binding.viewAmountInput.addCurrencyFormatter("50000.00")
         binding.viewPhoneNumberInput.addPhoneNumberFormatter({}, {})
 
-        binding.viewPasswordInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+        binding.viewPasswordInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
             binding.viewAmountInput.requestFocus()
         }
-        binding.viewAmountInput.doOnActionClicked(EditorInfo.IME_ACTION_NEXT) {
+        binding.viewAmountInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
             binding.viewPhoneNumberInput.requestFocus()
         }
-        binding.viewPhoneNumberInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+        binding.viewPhoneNumberInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
             binding.viewPhoneNumberInput.clearFocus()
         }
     }

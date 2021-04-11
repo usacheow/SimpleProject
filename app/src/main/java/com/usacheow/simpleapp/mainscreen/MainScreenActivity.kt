@@ -2,6 +2,7 @@ package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.appshared.PurchaseStateViewModel
@@ -11,6 +12,8 @@ import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.utils.observe
+import com.usacheow.coreui.utils.textinput.hideKeyboard
+import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
@@ -26,8 +29,13 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
     private val purchaseStateViewModel by viewModels<PurchaseStateViewModel>()
-
     private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
+
+    private var isKeyboardVisible = false
+
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -73,7 +81,9 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
     }
 
     override fun onBackPressed() {
-        if (!containerDelegate.onBackPressed(supportFragmentManager)) {
+        if (isKeyboardVisible) {
+            binding.root.hideKeyboard()
+        } else if (!containerDelegate.onBackPressed(supportFragmentManager)) {
             finish()
         }
     }

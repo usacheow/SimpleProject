@@ -40,7 +40,28 @@ class PhoneNumberFormatter(
     }
 
     private fun initMaskFormatWatcher() {
-        val slots = Slot.copySlotArray(PredefinedSlots.RUS_PHONE_NUMBER)
+        val slots = Slot.copySlotArray(
+            arrayOf(
+                PredefinedSlots.hardcodedSlot('+'),
+                PredefinedSlots.hardcodedSlot('7'),
+                PredefinedSlots.hardcodedSlot(' ').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.hardcodedSlot('(').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+                PredefinedSlots.hardcodedSlot(')').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.hardcodedSlot(' ').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+                PredefinedSlots.hardcodedSlot('-').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+                PredefinedSlots.hardcodedSlot('-').withTags(Slot.TAG_DECORATION),
+                PredefinedSlots.digit(),
+                PredefinedSlots.digit(),
+            )
+        )
         slots[PHONE_NUMBER_CODE_POSITION].setValueInterpreter(valueInterpreter)
 
         val mask = MaskImpl(slots, true).apply { isHideHardcodedHead = true }

@@ -14,7 +14,7 @@ import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.textinput.hideKeyboard
-import com.usacheow.coreui.utils.textinput.doOnActionClicked
+import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
@@ -67,7 +67,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
             viewModel::onPhoneChanged,
             viewModel::onPhoneChanged
         )
-        binding.signInPhoneInput.doOnActionClicked(EditorInfo.IME_ACTION_DONE) {
+        binding.signInPhoneInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
             binding.signInPhoneInput.clearFocus()
             viewModel.onSubmitClicked(binding.signInPhoneInput.text.toString())
         }

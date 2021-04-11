@@ -8,14 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
+import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ActivityViewBindingDelegate
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 
 abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     AppCompatActivity(),
     SimpleLifecycle,
+    ApplyWindowInsets,
     ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
@@ -45,6 +48,7 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
 
         saveBinding(params.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
+        binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
         setupViews(savedInstanceState)
         subscribe()
     }
