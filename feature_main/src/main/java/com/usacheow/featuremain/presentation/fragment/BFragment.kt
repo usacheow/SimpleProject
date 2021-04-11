@@ -26,16 +26,13 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     private val bViewModel by viewModels<BViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-//        binding.listView.updatePadding(
-//            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-//        )
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
         bViewModel.x++
         binding.header.root.apply {
             title = "B Fragment ${aViewModel.x} ${bViewModel.x}"
-            setBackground(R.color.surfaceSecondary)
             setNavigationAction(R.drawable.ic_back) { activity?.onBackPressed() }
         }
 

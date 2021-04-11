@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appBarLayout"
-    style="@style/SimpleAppBarLayout"
-    android:fitsSystemWindows="true"
-    android:transitionName="header">
+    style="@style/SimpleAppBarLayout">
 
-    <com.google.android.material.appbar.CollapsingToolbarLayout
-        android:id="@+id/collapsingToolbarLayout"
-        style="@style/SimpleCollapsingToolbar"
-        android:fitsSystemWindows="true">
+    <View
+        android:id="@+id/insetView"
+        style="@style/SimpleAppBarLayoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_scrollFlags="scroll|enterAlways" />
 
-        <View
-            android:id="@+id/insetView"
-            style="@style/SimpleCollapsingToolbarContent"
-            android:fitsSystemWindows="true" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/SimpleToolbar"
-            tools:title="@tools:sample/lorem"/>
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/SimpleToolbar"
+        tools:title="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.organism.SimpleAppBarLayout>

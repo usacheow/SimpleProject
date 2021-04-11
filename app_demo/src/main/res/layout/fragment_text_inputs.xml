@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/header"
@@ -31,6 +30,7 @@
                 android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/viewPasswordInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,6 +58,7 @@
                 android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/viewAmountInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,6 +85,7 @@
                 android:textAppearance="?textAppearanceBody1" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/viewPhoneNumberInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

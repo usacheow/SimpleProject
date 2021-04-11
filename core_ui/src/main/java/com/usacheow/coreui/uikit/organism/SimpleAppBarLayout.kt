@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
+import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.utils.MarginTop
@@ -36,9 +37,8 @@ class SimpleAppBarLayout
         binding.toolbar.navigation(iconResId, action)
     }
 
-    fun setInset(size: Int) {
-        binding.insetView.updateMargins(MarginTop(size))
-        binding.toolbar.updateMargins(MarginTop(size))
+    fun applyInsets(size: Int) {
+        updatePadding(top = size)
     }
 
     fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {

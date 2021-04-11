@@ -19,6 +19,7 @@ class NumPadFragment : SimpleFragment<FragmentNumPadBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.numPadView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
         )

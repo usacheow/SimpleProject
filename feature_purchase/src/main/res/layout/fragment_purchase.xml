@@ -15,7 +15,7 @@
             android:id="@+id/closeButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="end"
+            android:layout_gravity="start"
             android:padding="12dp"
             app:srcCompat="@drawable/ic_close" />
 

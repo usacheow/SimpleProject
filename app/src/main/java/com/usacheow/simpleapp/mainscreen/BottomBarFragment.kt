@@ -15,7 +15,8 @@ import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(), MultiStackHistoryManager.OnSectionChangedListener {
+class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
+    MultiStackHistoryManager.OnSectionChangedListener {
 
     override val params = Params(
         viewBindingProvider = FragmentBottomBarBinding::inflate,

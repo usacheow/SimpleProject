@@ -4,33 +4,32 @@
     <style name="SimpleAppBarLayout" parent="Widget.Design.AppBarLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/backgroundToolbar</item>
+        <item name="android:background">@color/surface</item>
+        <item name="liftOnScroll">true</item>
     </style>
 
-    <style name="SimpleCollapsingToolbar" parent="Widget.Design.CollapsingToolbar">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="collapsedTitleGravity">start</item>
-        <item name="expandedTitleGravity">bottom</item>
-        <item name="collapsedTitleTextAppearance">@style/TextToolbarSmall</item>
-        <item name="expandedTitleTextAppearance">@style/TextToolbarBig</item>
-        <item name="expandedTitleMarginStart">20dp</item>
-        <item name="expandedTitleMarginBottom">20dp</item>
-        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
-        <item name="contentScrim">@color/transparent</item>
-        <item name="statusBarScrim">@color/transparent</item>
-        <item name="scrimAnimationDuration">250</item>
-    </style>
+<!--    <style name="SimpleCollapsingToolbar" parent="Widget.Design.CollapsingToolbar">-->
+<!--        <item name="android:layout_width">match_parent</item>-->
+<!--        <item name="android:layout_height">wrap_content</item>-->
+<!--        <item name="collapsedTitleGravity">start</item>-->
+<!--        <item name="expandedTitleGravity">bottom</item>-->
+<!--        <item name="collapsedTitleTextAppearance">@style/TextToolbarSmall</item>-->
+<!--        <item name="expandedTitleTextAppearance">@style/TextToolbarBig</item>-->
+<!--        <item name="expandedTitleMarginStart">20dp</item>-->
+<!--        <item name="expandedTitleMarginBottom">20dp</item>-->
+<!--        <item name="contentScrim">@color/transparent</item>-->
+<!--        <item name="statusBarScrim">@color/transparent</item>-->
+<!--        <item name="scrimAnimationDuration">250</item>-->
+<!--    </style>-->
 
-    <style name="SimpleCollapsingToolbarContent">
+    <style name="SimpleAppBarLayoutContent">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_height">0dp</item>
     </style>
 
     <style name="SimpleToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?actionBarSize</item>
-        <item name="layout_collapseMode">pin</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>

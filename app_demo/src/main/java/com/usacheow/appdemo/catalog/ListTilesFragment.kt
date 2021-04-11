@@ -26,6 +26,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.widgetsListView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
         )

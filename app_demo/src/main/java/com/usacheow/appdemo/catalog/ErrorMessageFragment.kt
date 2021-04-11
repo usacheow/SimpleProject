@@ -24,6 +24,7 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.viewsScrollView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + 56.toPx
         )

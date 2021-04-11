@@ -16,7 +16,7 @@
         android:id="@+id/appBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/surfaceSecondary"
+        android:background="@color/surface"
         app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/bg_bottom_bar"
         app:itemIconTint="@color/bg_bottom_bar"

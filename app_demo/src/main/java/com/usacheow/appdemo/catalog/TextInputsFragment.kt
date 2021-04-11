@@ -1,6 +1,7 @@
 package com.usacheow.appdemo.catalog
 
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -24,6 +25,7 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
         val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.viewsScrollView.updatePadding(
             bottom = when (isKeyboardVisible) {
                 true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom

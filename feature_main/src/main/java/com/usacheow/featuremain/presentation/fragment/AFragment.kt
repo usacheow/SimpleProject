@@ -9,7 +9,6 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.featuremain.R
 import com.usacheow.featuremain.databinding.FragmentABinding
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,16 +27,11 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-//        binding.listView.updatePadding(
-//            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-//        )
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.root.apply {
-            title = "A Fragment ${viewModel.x}"
-            setBackground(R.color.surfaceSecondary)
-        }
+        binding.header.root.title = "A Fragment ${viewModel.x}"
 
         binding.listView.layoutManager = LinearLayoutManager(context)
         binding.listView.adapter = ViewTypesAdapter(listOf(

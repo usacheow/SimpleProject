@@ -19,6 +19,7 @@ class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.fontsListView.updatePadding(
             bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
         )

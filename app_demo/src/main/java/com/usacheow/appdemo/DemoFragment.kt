@@ -43,8 +43,9 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 binding.header.toolbar.height + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             )
         }
+        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
         binding.listView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + 56.toPx,
+            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
         )
     }
 
