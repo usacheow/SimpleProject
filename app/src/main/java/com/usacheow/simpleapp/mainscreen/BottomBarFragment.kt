@@ -58,10 +58,9 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
             insets.getInsets(WindowInsetsCompat.Type.ime()).right,
             max(insets.getInsets(WindowInsetsCompat.Type.ime()).bottom - binding.appBottomBar.height, 0),
         )
-        val i = WindowInsetsCompat.Builder(insets)
+        return WindowInsetsCompat.Builder(insets)
             .setInsets(WindowInsetsCompat.Type.ime(), imeInset)
             .build()
-        return i
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
@@ -69,13 +68,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
         manager.listener = this
         manager.openActiveSection()
 
-        binding.appContainerLayout.doOnApplyWindowInsets { insets, padding ->
-            insets
-        }
-        binding.appBottomBar.doOnApplyWindowInsets { insets, padding ->
-            insets
-        }
-
+        binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
         binding.appBottomBar.setOnNavigationItemReselectedListener {
             binding.root.hideKeyboard()
             manager.resetSection()
