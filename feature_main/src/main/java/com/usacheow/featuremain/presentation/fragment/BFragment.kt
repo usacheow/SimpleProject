@@ -9,6 +9,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.R
 import com.usacheow.featuremain.databinding.FragmentBBinding
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
@@ -25,8 +26,9 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     private val aViewModel by viewModels<AViewModel>({ requireParentFragment() })
     private val bViewModel by viewModels<BViewModel>()
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

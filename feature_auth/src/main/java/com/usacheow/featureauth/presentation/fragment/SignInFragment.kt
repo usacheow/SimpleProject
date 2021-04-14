@@ -17,6 +17,9 @@ import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignInBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -42,46 +45,41 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
         fun newInstance() = SignInFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        val bottomPadding = when (isKeyboardVisible) {
-            true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-        }
-        val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-
-        val topMargin = when (isKeyboardVisible) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        val topMargin = when (insets.isImeVisible()) {
             true -> 0
             false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
         }
-        binding.signInHeaderView.updateMargins(MarginTop(topMargin))
 
-        binding.signUpButton.isVisible = !isKeyboardVisible
-        binding.root.updatePadding(top = topPadding, bottom = bottomPadding)
+        binding.signUpButton.isVisible = !insets.isImeVisible()
+        binding.headerView.updateMargins(MarginTop(topMargin))
+        binding.scrollView.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
+
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.signInLoginInput.onTextChanged {
-            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
+        binding.loginInput.onTextChanged {
+            viewModel.onDataChanged(getLoginAndPassword())
         }
-        binding.signInPasswordInput.onTextChanged {
-            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
+        binding.passwordInput.onTextChanged {
+            viewModel.onDataChanged(getLoginAndPassword())
         }
 
-        binding.signInLoginInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
-            binding.signInPasswordInput.requestFocus()
-            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
+        binding.loginInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
+            binding.passwordInput.requestFocus()
+            viewModel.onDataChanged(getLoginAndPassword())
         }
-        binding.signInPasswordInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
-            binding.signInPasswordInput.clearFocus()
-            viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
+        binding.passwordInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
+            binding.passwordInput.clearFocus()
+            viewModel.onDataChanged(getLoginAndPassword())
         }
 
         binding.signInButton.doOnClick {
             binding.root.hideKeyboard()
             viewModel.onSignInClicked(
-                binding.signInLoginInput.text.toString(),
-                binding.signInPasswordInput.text.toString()
+                binding.loginInput.text.toString(),
+                binding.passwordInput.text.toString()
             )
         }
         binding.signUpButton.doOnClick {
@@ -91,12 +89,12 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycle) { binding.signInLoaderView.root.isVisible = it }
+        viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
         viewModel.submitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
         viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
         viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignIn() }
     }
 
     private fun getLoginAndPassword() =
-        binding.signInLoginInput.text.toString() to binding.signInPasswordInput.text.toString()
+        binding.loginInput.text.toString() to binding.passwordInput.text.toString()
 }

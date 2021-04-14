@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/signUpRootView"
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/left_right_margin"
-            tools:paddingVertical="16dp">
+            android:padding="@dimen/left_right_margin">
 
             <TextView
-                android:id="@+id/signUpHeaderView"
+                android:id="@+id/headerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
@@ -28,7 +27,7 @@
                 android:textAppearance="?textAppearanceHeadline5" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpLoginInputLayout"
+                android:id="@+id/loginInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +36,7 @@
                 app:startIconDrawable="@drawable/ic_user">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signUpLoginInput"
+                    android:id="@+id/loginInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_login"
@@ -48,7 +47,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpPasswordInputLayout"
+                android:id="@+id/passwordInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
                 app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signUpPasswordInput"
+                    android:id="@+id/passwordInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_in_password"
@@ -81,13 +80,9 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
-        android:id="@+id/signUpLoaderView"
+        android:id="@+id/loaderView"
         layout="@layout/view_fullscreen_loader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 </FrameLayout>

@@ -11,7 +11,6 @@ import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ActivityViewBindingDelegate
-import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 

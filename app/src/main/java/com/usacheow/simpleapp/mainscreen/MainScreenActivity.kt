@@ -33,8 +33,9 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
 
     private var isKeyboardVisible = false
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        return insets
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,13 +7,24 @@ import androidx.core.view.WindowInsetsCompat
 
 typealias PaddingValue = Rect
 
+fun WindowInsetsCompat.getImeHeight() = getInsets(WindowInsetsCompat.Type.ime()).bottom
+fun WindowInsetsCompat.isImeVisible() = getImeHeight() != 0
+
+fun WindowInsetsCompat.getStatusBarHeight() = getInsets(WindowInsetsCompat.Type.systemBars()).top
+fun WindowInsetsCompat.getNavigationBarHeight() = getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+
+fun WindowInsetsCompat.getTopInset() = getStatusBarHeight()
+fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme && isImeVisible()) {
+    true -> getImeHeight()
+    false -> getNavigationBarHeight()
+}
+
 fun View.getInitialPadding() = Rect(paddingLeft, paddingTop, paddingRight, paddingBottom)
 
-fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> Unit) {
+fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> WindowInsetsCompat) {
     val initialPadding = getInitialPadding()
     ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
         block(insets, initialPadding)
-        insets
     }
 //    requestApplyInsetsWhenAttached()
     ViewCompat.requestApplyInsets(this)

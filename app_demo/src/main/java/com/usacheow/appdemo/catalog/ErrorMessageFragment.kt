@@ -11,6 +11,8 @@ import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.TextRes
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.toPx
 
 class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
@@ -23,11 +25,10 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
         fun newInstance() = ErrorMessageFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.viewsScrollView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + 56.toPx
-        )
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.viewsScrollView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

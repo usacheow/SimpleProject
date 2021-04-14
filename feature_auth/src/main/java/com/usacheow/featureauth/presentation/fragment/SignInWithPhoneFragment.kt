@@ -18,6 +18,9 @@ import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignInByPhoneBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -44,36 +47,31 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
         fun newInstance() = SignInWithPhoneFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        val bottomPadding = when (isKeyboardVisible) {
-            true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-        }
-        val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-
-        val topMargin = when (isKeyboardVisible) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        val topMargin = when (insets.isImeVisible()) {
             true -> 0
             false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
         }
-        binding.signInHeaderView.updateMargins(MarginTop(topMargin))
 
-        binding.signUpButton.isVisible = !isKeyboardVisible
-        binding.signInByPhoneRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+        binding.signUpButton.isVisible = !insets.isImeVisible()
+        binding.headerView.updateMargins(MarginTop(topMargin))
+        binding.scrollView.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
+
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.signInPhoneInput.addPhoneNumberFormatter(
+        binding.phoneInput.addPhoneNumberFormatter(
             viewModel::onPhoneChanged,
             viewModel::onPhoneChanged
         )
-        binding.signInPhoneInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
-            binding.signInPhoneInput.clearFocus()
-            viewModel.onSubmitClicked(binding.signInPhoneInput.text.toString())
+        binding.phoneInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
+            binding.phoneInput.clearFocus()
+            viewModel.onSubmitClicked(binding.phoneInput.text.toString())
         }
         binding.signInButton.doOnClick {
             binding.root.hideKeyboard()
-            viewModel.onSignInClicked(binding.signInPhoneInput.text.toString())
+            viewModel.onSignInClicked(binding.phoneInput.text.toString())
         }
         binding.signUpButton.doOnClick {
             binding.root.hideKeyboard()
@@ -84,7 +82,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
     override fun subscribe() {
         viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
         viewModel.isLoadingState.observe(lifecycle) {
-            binding.signInLoaderView.root.isVisible = it
+            binding.loaderView.root.isVisible = it
         }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
         viewModel.codeConfirmMessageState.observe(lifecycle) { smsCodeViewModel.showMessage(it) }

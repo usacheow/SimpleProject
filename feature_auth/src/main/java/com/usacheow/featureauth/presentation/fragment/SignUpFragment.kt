@@ -17,6 +17,9 @@ import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignUpBinding
 import com.usacheow.featureauth.presentation.router.AuthorizationRouter
@@ -42,55 +45,50 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         fun newInstance() = SignUpFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        val bottomPadding = when (isKeyboardVisible) {
-            true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-        }
-        val topPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-
-        val topMargin = when (isKeyboardVisible) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        val topMargin = when (insets.isImeVisible()) {
             true -> 0
             false -> DEFAULT_HEADER_MARGIN_TOP_DP.toPx
         }
-        binding.signUpHeaderView.updateMargins(MarginTop(topMargin))
 
-        binding.signUpRootView.updatePadding(top = topPadding, bottom = bottomPadding)
+        binding.headerView.updateMargins(MarginTop(topMargin))
+        binding.scrollView.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
+
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.signUpLoginInput.onTextChanged {
+        binding.loginInput.onTextChanged {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
-        binding.signUpPasswordInput.onTextChanged {
+        binding.passwordInput.onTextChanged {
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
 
-        binding.signUpLoginInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
-            binding.signUpPasswordInput.requestFocus()
+        binding.loginInput.doOnActionClick(EditorInfo.IME_ACTION_NEXT) {
+            binding.passwordInput.requestFocus()
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
-        binding.signUpPasswordInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
-            binding.signUpPasswordInput.clearFocus()
+        binding.passwordInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
+            binding.passwordInput.clearFocus()
             viewModel.onDataChanged(getLoginAndPassword().first, getLoginAndPassword().second)
         }
 
         binding.signUpButton.doOnClick {
             binding.root.hideKeyboard()
             viewModel.onSignInClicked(
-                binding.signUpLoginInput.text.toString(),
-                binding.signUpPasswordInput.text.toString()
+                binding.loginInput.text.toString(),
+                binding.passwordInput.text.toString()
             )
         }
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycle) { binding.signUpLoaderView.root.isVisible = it }
+        viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signUpButton.isEnabled = it }
         viewModel.openMainScreenAction.observe(lifecycle) { appStateViewModel.onSignUp() }
     }
 
     private fun getLoginAndPassword() =
-        binding.signUpLoginInput.text.toString() to binding.signUpPasswordInput.text.toString()
+        binding.loginInput.text.toString() to binding.passwordInput.text.toString()
 }

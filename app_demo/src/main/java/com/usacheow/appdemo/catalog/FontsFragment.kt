@@ -7,6 +7,8 @@ import com.usacheow.appdemo.R
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.appdemo.databinding.FragmentFontsBinding
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 
 class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
 
@@ -18,11 +20,10 @@ class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
         fun newInstance() = FontsFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.fontsListView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.fontsListView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

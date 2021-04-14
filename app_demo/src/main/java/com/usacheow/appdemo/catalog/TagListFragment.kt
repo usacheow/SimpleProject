@@ -12,6 +12,8 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.TagTileItem
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 
 class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
@@ -23,11 +25,10 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         fun newInstance() = TagListFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.widgetsListView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

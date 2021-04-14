@@ -18,6 +18,8 @@ import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.drawable
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureauth.presentation.fragment.SignInFragment
@@ -37,16 +39,13 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         fun newInstance() = DemoFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.toolbar.post {
-            binding.bottomSheetLayout.setExpandOffset(
-                binding.header.toolbar.height + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-            )
+            binding.bottomSheetLayout.setExpandOffset(binding.header.toolbar.height + insets.getTopInset())
         }
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.listView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.listView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

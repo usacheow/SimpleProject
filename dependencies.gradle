@@ -15,7 +15,7 @@ ext {
     ]
 
     androidxVersion = '1.3.0-beta01'
-    androidxCoreVersion = '1.5.0-beta03'
+    androidxCoreVersion = '1.5.0-rc01'
     androidxDependencies = [
             appCompat:      "androidx.appcompat:appcompat:$androidxVersion",
             core:           "androidx.core:core-ktx:$androidxCoreVersion",

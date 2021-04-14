@@ -2,23 +2,23 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/signInByPhoneRootView"
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/left_right_margin">
 
             <TextView
-                android:id="@+id/signInHeaderView"
+                android:id="@+id/headerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
@@ -26,18 +26,20 @@
                 android:textAppearance="?textAppearanceHeadline5" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneInputLayout"
                 style="@style/SimpleInputLayout"
                 android:layout_marginTop="24dp"
                 android:hint="@string/sign_in_by_phone_hint"
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signInPhoneInput"
+                    android:id="@+id/phoneInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="phone"
-                    android:lines="1" />
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceBody1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -58,13 +60,9 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
-        android:id="@+id/signInLoaderView"
+        android:id="@+id/loaderView"
         layout="@layout/view_fullscreen_loader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 </FrameLayout>

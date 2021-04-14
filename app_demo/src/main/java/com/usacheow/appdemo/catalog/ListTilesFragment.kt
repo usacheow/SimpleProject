@@ -14,6 +14,8 @@ import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.LogoInfo
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 
 class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
 
@@ -25,11 +27,10 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         fun newInstance() = ListTilesFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.widgetsListView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

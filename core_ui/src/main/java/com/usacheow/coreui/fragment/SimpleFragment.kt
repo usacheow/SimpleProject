@@ -1,6 +1,5 @@
 package com.usacheow.coreui.fragment
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,8 +16,8 @@ import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.BackListener
 import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
+import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.isNightMode
 

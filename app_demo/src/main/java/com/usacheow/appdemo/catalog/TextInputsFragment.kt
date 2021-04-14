@@ -12,6 +12,8 @@ import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
 import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
 import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
@@ -23,15 +25,10 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
         fun newInstance() = TextInputsFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
-        val isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
-        binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.viewsScrollView.updatePadding(
-            bottom = when (isKeyboardVisible) {
-                true -> insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-                false -> insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            }
-        )
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.viewsScrollView.updatePadding(bottom = insets.getBottomInset(needIme = true))
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

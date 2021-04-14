@@ -22,7 +22,7 @@
         android:id="@+id/bottomSheetLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="@dimen/elevation_16"
+        android:elevation="@dimen/elevation_4"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         tools:visibility="gone">
 

@@ -5,5 +5,5 @@ import com.usacheow.coreui.utils.view.PaddingValue
 
 interface ApplyWindowInsets {
 
-    fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) = Unit
+    fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat = insets
 }

@@ -38,8 +38,8 @@ class SignInViewModel @Inject constructor(
     private val _openSignUpScreenAction = Channel<SimpleAction>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
 
-    fun onDataChanged(login: String, password: String) {
-        _submitButtonEnabledState.value = isLoginValid(login) && isPasswordValid(password)
+    fun onDataChanged(loginAndPassword: Pair<String, String>) {
+        _submitButtonEnabledState.value = isLoginValid(loginAndPassword.first) && isPasswordValid(loginAndPassword.second)
     }
 
     private fun isLoginValid(login: String) = login.length >= 6

@@ -8,6 +8,8 @@ import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,11 +33,12 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
         fun newInstance() = OnBoardingFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.root.updatePadding(
-            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
+            top = insets.getTopInset(),
+            bottom = insets.getBottomInset(),
         )
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

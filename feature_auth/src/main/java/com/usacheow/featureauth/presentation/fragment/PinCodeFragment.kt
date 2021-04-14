@@ -11,6 +11,8 @@ import com.usacheow.coreui.utils.biometric.BiometricEnterManager
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.string
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
@@ -38,11 +40,12 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         fun newInstance() = PinCodeFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.pinCodeRootView.updatePadding(
-            top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top + padding.top,
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + padding.bottom
+            top = insets.getTopInset() + padding.top,
+            bottom = insets.getBottomInset() + padding.bottom
         )
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {

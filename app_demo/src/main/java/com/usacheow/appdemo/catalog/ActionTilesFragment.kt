@@ -11,6 +11,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.*
 import com.usacheow.coreui.utils.*
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
 
 class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
 
@@ -22,11 +23,10 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
         fun newInstance() = ActionTilesFragment()
     }
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue) {
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-        binding.widgetsListView.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom,
-        )
+        binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())
+        return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
