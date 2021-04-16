@@ -12,8 +12,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.usacheow.apptest.TestActivity"
-            android:theme="@style/AppTheme.Splash">
+            android:name=".TestActivity"
+            android:theme="@style/AppTheme.Splash"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

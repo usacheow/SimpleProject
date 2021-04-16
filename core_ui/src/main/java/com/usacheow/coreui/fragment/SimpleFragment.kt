@@ -1,12 +1,13 @@
 package com.usacheow.coreui.fragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -29,6 +30,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
+    protected var windowInsetsController: WindowInsetsControllerCompat? = null
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
@@ -51,26 +53,16 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (needTransparentBars) {
-            val needDarkIcons = !(isNightMode() || needWhiteIcons)
-            val canMakeDarkIconInStatusBar = needDarkIcons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            val canMakeDarkIconInStatusAndNavigationBar = canMakeDarkIconInStatusBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-
-            requireActivity().window.decorView.systemUiVisibility = when {
-                canMakeDarkIconInStatusAndNavigationBar -> View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-
-                canMakeDarkIconInStatusBar -> View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-
-                else -> View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            }
-        }
-
         container ?: return null
         saveBinding(params.viewBindingProvider(inflater, container, false))
+
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
+        windowInsetsController = WindowCompat.getInsetsController(requireActivity().window, binding.root).apply {
+            val needDarkIcons = needTransparentBars && !(isNightMode() || needWhiteIcons)
+            this?.isAppearanceLightStatusBars = needDarkIcons
+            this?.isAppearanceLightNavigationBars = needDarkIcons
+        }
+
         return binding.root
     }
 

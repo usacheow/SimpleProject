@@ -4,11 +4,14 @@ import android.graphics.Rect
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 typealias PaddingValue = Rect
 
-fun WindowInsetsCompat.getImeHeight() = getInsets(WindowInsetsCompat.Type.ime()).bottom
 fun WindowInsetsCompat.isImeVisible() = getImeHeight() != 0
+fun WindowInsetsCompat.getImeHeight() = getInsets(WindowInsetsCompat.Type.ime()).bottom
+fun WindowInsetsControllerCompat.showIme() = show(WindowInsetsCompat.Type.ime())
+fun WindowInsetsControllerCompat.hideIme() = hide(WindowInsetsCompat.Type.ime())
 
 fun WindowInsetsCompat.getStatusBarHeight() = getInsets(WindowInsetsCompat.Type.systemBars()).top
 fun WindowInsetsCompat.getNavigationBarHeight() = getInsets(WindowInsetsCompat.Type.systemBars()).bottom
@@ -19,10 +22,8 @@ fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme 
     false -> getNavigationBarHeight()
 }
 
-fun View.getInitialPadding() = Rect(paddingLeft, paddingTop, paddingRight, paddingBottom)
-
 fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> WindowInsetsCompat) {
-    val initialPadding = getInitialPadding()
+    val initialPadding = Rect(paddingLeft, paddingTop, paddingRight, paddingBottom)
     ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
         block(insets, initialPadding)
     }

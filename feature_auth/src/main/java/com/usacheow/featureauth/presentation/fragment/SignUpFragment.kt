@@ -11,7 +11,6 @@ import com.usacheow.appshared.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.textinput.onTextChanged
 import com.usacheow.coreui.utils.updateMargins
@@ -19,6 +18,7 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignUpBinding
@@ -75,7 +75,7 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
         }
 
         binding.signUpButton.doOnClick {
-            binding.root.hideKeyboard()
+            windowInsetsController?.hideIme()
             viewModel.onSignInClicked(
                 binding.loginInput.text.toString(),
                 binding.passwordInput.text.toString()

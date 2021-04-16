@@ -12,8 +12,9 @@ import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.hideIme
+import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureonboarding.OnBoardingFragment
@@ -34,7 +35,7 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
     private var isKeyboardVisible = false
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        isKeyboardVisible = insets.isImeVisible()
         return insets
     }
 
@@ -83,7 +84,7 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
 
     override fun onBackPressed() {
         if (isKeyboardVisible) {
-            binding.root.hideKeyboard()
+            windowInsetsController?.hideIme()
         } else if (!containerDelegate.onBackPressed(supportFragmentManager)) {
             finish()
         }

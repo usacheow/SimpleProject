@@ -16,9 +16,9 @@ class OnBoardingItemView
     override fun populate(model: OnBoardingItem) {
         val binding = OnBoardingItemViewBinding.bind(this)
 
-        binding.onboardingItemImageView.setImageResource(model.imageId)
-        binding.onboardingItemTitleView.text = resources.getString(model.titleId)
-        binding.onboardingItemDescriptionView.text = resources.getString(model.descriptionId)
+        binding.imageView.setImageResource(model.imageId)
+        binding.titleView.text = resources.getString(model.titleId)
+        binding.descriptionView.text = resources.getString(model.descriptionId)
     }
 }
 

@@ -34,10 +34,7 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.root.updatePadding(
-            top = insets.getTopInset(),
-            bottom = insets.getBottomInset(),
-        )
+        binding.root.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset(),)
         return insets
     }
 

@@ -2,9 +2,10 @@ package com.usacheow.coreui.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -21,6 +22,7 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
+    protected var windowInsetsController: WindowInsetsControllerCompat? = null
 
     private val needTransparentBars get() = params.needTransparentBars
 
@@ -40,14 +42,15 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (needTransparentBars) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
-
         saveBinding(params.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
         binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
+
+        windowInsetsController = WindowCompat.getInsetsController(window, binding.root).apply {
+            this?.isAppearanceLightStatusBars = needTransparentBars
+            this?.isAppearanceLightNavigationBars = needTransparentBars
+        }
+
         setupViews(savedInstanceState)
         subscribe()
     }

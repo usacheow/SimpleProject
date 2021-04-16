@@ -1,6 +1,5 @@
 package com.usacheow.simpleapp.mainscreen
 
-import android.graphics.Rect
 import android.os.Bundle
 import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
@@ -8,9 +7,10 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.navigation.MultiStackHistoryManager
-import com.usacheow.coreui.utils.textinput.hideKeyboard
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
+import com.usacheow.coreui.utils.view.getBottomInset
+import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.featuremain.presentation.fragment.container.HelloContainerFragment
 import com.usacheow.featuremain.presentation.fragment.container.MockContainerFragment
 import com.usacheow.simpleapp.R
@@ -48,9 +48,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.appBottomBar.updatePadding(
-            bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-        )
+        binding.appBottomBar.updatePadding(bottom = insets.getBottomInset())
 
         val imeInset = Insets.of(
             insets.getInsets(WindowInsetsCompat.Type.ime()).left,
@@ -70,11 +68,11 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
 
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
         binding.appBottomBar.setOnNavigationItemReselectedListener {
-            binding.root.hideKeyboard()
+            windowInsetsController?.hideIme()
             manager.resetSection()
         }
         binding.appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
-            binding.root.hideKeyboard()
+            windowInsetsController?.hideIme()
             val position = AppScreenSections.indexOf(menuItem.itemId)
             manager.openSection(position)
             true

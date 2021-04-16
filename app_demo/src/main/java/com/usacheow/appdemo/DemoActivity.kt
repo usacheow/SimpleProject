@@ -1,7 +1,7 @@
 package com.usacheow.appdemo
 
 import android.os.Bundle
-import android.util.Log
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.usacheow.coredata.database.Storage
@@ -11,11 +11,13 @@ import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
-import com.usacheow.coreui.utils.textinput.hideKeyboard
+import com.usacheow.coreui.utils.textinput.isKeyboardEnabled
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.enableLightMode
 import com.usacheow.coreui.utils.view.enableNightMode
 import com.usacheow.coreui.utils.view.enableSystemMode
+import com.usacheow.coreui.utils.view.hideIme
+import com.usacheow.coreui.utils.view.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +32,7 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
     private var isKeyboardVisible = false
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        isKeyboardVisible = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom != 0
+        isKeyboardVisible = insets.isImeVisible()
         return insets
     }
 
@@ -68,7 +70,7 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
 
     override fun onBackPressed() {
         if (isKeyboardVisible) {
-            binding.root.hideKeyboard()
+            windowInsetsController?.hideIme()
         } else if (!containerDelegate.onBackPressed(supportFragmentManager)) {
             finish()
         }
