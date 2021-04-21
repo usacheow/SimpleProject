@@ -2,7 +2,7 @@ package com.usacheow.featurepurchase
 
 import com.example.featurepurchase.R
 import com.usacheow.coreui.billing.Product
-import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.TextString
 import java.util.Currency
 import javax.inject.Inject

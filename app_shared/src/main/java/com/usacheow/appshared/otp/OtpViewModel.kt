@@ -2,7 +2,7 @@ package com.usacheow.appshared.otp
 
 import androidx.lifecycle.viewModelScope
 import com.usacheow.appshared.R
-import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -7,9 +7,8 @@ import com.usacheow.coreui.billing.BillingMediator
 import com.usacheow.coreui.billing.BillingWrapper
 import com.usacheow.coreui.billing.SimpleBilling
 import com.usacheow.coreui.billing.SimpleBillingImpl
-import com.usacheow.coreui.resources.ResourcesWrapper
-import com.usacheow.coreui.resources.ResourcesWrapperImpl
-import dagger.Binds
+import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.coreui.resource.ResourcesWrapperImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

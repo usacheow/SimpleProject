@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.coreui.billing.BillingWrapper
 import com.usacheow.coreui.billing.Product
 import com.usacheow.coreui.billing.ProductType
-import com.usacheow.coreui.resources.ResourcesWrapper
+import com.usacheow.coreui.resource.ResourcesWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +37,6 @@ class PurchaseViewModel @Inject constructor(
     }
 
     private fun loadData() = viewModelScope.launch {
-        billingWrapper.fetchProducts(ProductType.SUBSCRIPTIONS)
         val products = billingWrapper.fetchProducts(ProductType.SUBSCRIPTIONS).data
 
         val selectedProductIndex = 0
