@@ -2,18 +2,13 @@ package com.usacheow.featuremain.presentation.fragment
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
-import com.usacheow.coreui.utils.Margin4
 import com.usacheow.coreui.utils.TextString
-import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getImeHeight
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.databinding.FragmentABinding
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel

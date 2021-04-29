@@ -2,8 +2,8 @@ package com.usacheow.featuremain.di
 
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(FragmentComponent::class)
+@InstallIn(ViewModelComponent::class)
 class DataModule

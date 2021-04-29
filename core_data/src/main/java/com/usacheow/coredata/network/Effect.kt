@@ -29,11 +29,11 @@ fun Effect<*>.toCompletableResult() = when (this) {
     }
 }
 
-inline fun <T : Any> Effect<T>.mapWhenSuccess(block: Effect.Success<T>.() -> Effect<T>): Effect<T> = try {
+inline fun <T : Any, R : Any> Effect<T>.mapWhenSuccess(block: Effect.Success<T>.() -> Effect<R>): Effect<R> = try {
     when (this) {
         is Effect.Success<T> -> this.block()
 
-        else -> this
+        is Effect.Error -> Effect.Error(exception)
     }
 } catch (e: Exception) {
     Effect.Error(ApiError.DataMappingException())
@@ -43,7 +43,7 @@ inline fun <T : Any> Effect<T>.mapWhenError(block: Effect.Error.() -> Effect<T>)
     when (this) {
         is Effect.Error -> this.block()
 
-        else -> this
+        is Effect.Success<T> -> this
     }
 } catch (e: Exception) {
     Effect.Error(ApiError.DataMappingException())

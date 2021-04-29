@@ -4,8 +4,10 @@ import com.usacheow.coredata.network.Completable
 import com.usacheow.coredata.network.Effect
 import com.usacheow.coredata.network.toCompletableResult
 import com.usacheow.featureauth.data.AuthRepository
+import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
+@ViewModelScoped
 class AuthInteractor
 @Inject constructor(
     private val repository: AuthRepository

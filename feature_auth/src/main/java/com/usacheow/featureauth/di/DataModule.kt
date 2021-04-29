@@ -5,14 +5,14 @@ import com.usacheow.featureauth.data.AuthRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
-@InstallIn(ActivityRetainedComponent::class)
+@InstallIn(ViewModelComponent::class)
 interface DataModule {
 
     @Binds
-    @ActivityRetainedScoped
+    @ViewModelScoped
     fun provideRepository(repository: AuthRepositoryImpl): AuthRepository
 }
