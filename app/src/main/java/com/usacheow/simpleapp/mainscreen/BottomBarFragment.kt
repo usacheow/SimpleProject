@@ -42,11 +42,6 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
         fun newInstance() = BottomBarFragment()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        viewModel.state = manager.getState()
-        super.onSaveInstanceState(outState)
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.appBottomBar.updatePadding(bottom = insets.getBottomInset())
 
@@ -79,10 +74,15 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
         }
     }
 
-    override fun onBackPressed() = manager.backSection()
-
     override fun onSectionChanged(sectionNumber: Int) {
         binding.appBottomBar.selectedItemId = AppScreenSections[sectionNumber]
+    }
+
+    override fun onBackPressed() = manager.backSection()
+
+    override fun onDestroyView() {
+        viewModel.state = manager.getState()
+        super.onDestroyView()
     }
 }
 
