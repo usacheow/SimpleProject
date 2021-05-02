@@ -1,11 +1,11 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.appshared.PurchaseStateViewModel
+import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.Container
@@ -17,8 +17,7 @@ import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
 import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
-import com.usacheow.featureonboarding.OnBoardingFragment
-import com.usacheow.featurepurchase.PurchaseModalFragment
+import com.usacheow.featureonboarding.fragment.OnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +28,6 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
     )
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
-    private val purchaseStateViewModel by viewModels<PurchaseStateViewModel>()
     private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
     private var isKeyboardVisible = false
@@ -59,9 +57,6 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
 
         appStateViewModel.openAppScreenAction.observe(lifecycle) {
             navigateTo(BottomBarFragment.newInstance(), false)
-        }
-        purchaseStateViewModel.openPurchaseScreenAction.observe(lifecycle) {
-            PurchaseModalFragment.newInstance().show(supportFragmentManager, null)
         }
     }
 

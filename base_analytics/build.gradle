@@ -1,0 +1,10 @@
+apply from: "$project.rootDir/configs.gradle"
+
+applyAndroidLibrary(this)
+applyAndroidCommon(this)
+applyDagger(this)
+
+dependencies {
+    implementation androidxDependencies.values()
+    implementation firebaseDependencies.values()
+}

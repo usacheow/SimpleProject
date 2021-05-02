@@ -11,11 +11,8 @@ dependencies {
     api uiDependencies.values()
 
     implementation firebaseDependencies.values()
-    implementation billingDependency
     implementation biometricDependency
     implementation browserDependency
-
-    implementation gsonDependency
 
     implementation glideDependency
     kapt kaprGlideDependency

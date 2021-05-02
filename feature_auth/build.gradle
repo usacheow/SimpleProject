@@ -7,12 +7,11 @@ applyLifecycle(this)
 applyTest(this)
 
 dependencies {
-    implementation project(':core_mediator')
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':app_shared')
+    implementation project(':core_mediator')
+    implementation project(':app_state')
 
     implementation biometricDependency
-
     implementation firebaseDependencies.values()
 }

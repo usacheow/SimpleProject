@@ -7,8 +7,8 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.usacheow.appshared.AppStateViewModel
-import com.usacheow.appshared.otp.OtpViewModel
+import com.usacheow.appstate.AppStateViewModel
+import com.usacheow.appstate.otp.OtpViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
@@ -23,7 +23,7 @@ import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.coreui.utils.view.toPx
 import com.usacheow.featureauth.databinding.FragmentSignInByPhoneBinding
-import com.usacheow.featureauth.presentation.router.AuthorizationRouter
+import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.SignInWithPhoneViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

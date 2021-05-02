@@ -49,7 +49,7 @@ open class BiometricManagerWrapper {
         prompt.cancelAuthentication()
     }
 
-    fun hasBiometricScanner(): Boolean = manager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS
+    fun hasBiometricScanner(): Boolean = manager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK) == BiometricManager.BIOMETRIC_SUCCESS
 
     protected open fun onSuccess(result: BiometricPrompt.AuthenticationResult) = Unit
 

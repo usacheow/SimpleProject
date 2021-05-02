@@ -22,7 +22,7 @@ android {
 dependencies {
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':app_shared')
+    implementation project(':app_state')
 
     implementation project(':feature_onboarding')
     implementation project(':feature_auth')

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.featurepurchase.AdvantageTileView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.featurepurchase.view.AdvantageTileView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,4 +32,4 @@
         android:layout_marginTop="4dp"
         android:textAppearance="?textAppearanceBody1"
         tools:text="@tools:sample/lorem" />
-</com.usacheow.featurepurchase.AdvantageTileView>
+</com.usacheow.featurepurchase.view.AdvantageTileView>

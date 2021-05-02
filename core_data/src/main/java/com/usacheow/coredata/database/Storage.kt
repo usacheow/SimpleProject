@@ -4,6 +4,7 @@ import android.content.Context
 import android.preference.PreferenceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val PREF_UI_MODE = "PREF_UI_MODE"
 private const val PREF_TOKEN = "PREF_TOKEN"
@@ -14,6 +15,7 @@ private const val PREF_PIN_CODE = "PREF_PIN_CODE"
 private const val PREF_ALLOW_FINGERPRINT = "PREF_ALLOW_FINGERPRINT"
 private const val PREF_IS_PAYED = "PREF_IS_PAYED"
 
+@Singleton
 class Storage
 @Inject constructor(
     @ApplicationContext private val context: Context

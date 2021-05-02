@@ -11,10 +11,10 @@ android {
 }
 
 dependencies {
-    implementation firebaseDependencies.values()
-
     api networkDependencies.values()
     api gsonDependency
+
+    implementation firebaseDependencies.values()
 
     implementation roomDependencies.values()
     kapt kaptRoomDependency

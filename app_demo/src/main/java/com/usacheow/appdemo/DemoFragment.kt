@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.catalog.*
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
-import com.usacheow.appshared.otp.SmsCodeModalFragment
+import com.usacheow.appstate.otp.SmsCodeModalFragment
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
@@ -17,7 +17,6 @@ import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.drawable
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.toPx
@@ -25,7 +24,7 @@ import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
 import com.usacheow.featureauth.presentation.fragment.SignInFragment
 import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment
-import com.usacheow.featureonboarding.OnBoardingFragment
+import com.usacheow.featureonboarding.fragment.OnBoardingFragment
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
@@ -74,7 +73,8 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
             BadgeTileItem(needAdaptWidth = false, header = TextString("template"), value = TextString("2. Bottom Dialog"), clickListener = { ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT") }),
             BadgeTileItem(needAdaptWidth = false, header = TextString("template"), value = TextString("3. Bottom sheet"), clickListener = { showOrHideBottomSheet() }),
             BadgeTileItem(needAdaptWidth = false, header = TextString("template"), value = TextString("4. Modal Fragment"), clickListener = { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") }),
-            BadgeTileItem(needAdaptWidth = false, header = TextString("template"), value = TextString("5. Onboarding Fragment"), clickListener = { show(OnBoardingFragment.newInstance()) }),
+            BadgeTileItem(needAdaptWidth = false, header = TextString("template"), value = TextString("5. Onboarding Fragment"), clickListener = { show(
+                OnBoardingFragment.newInstance()) }),
 
             HeaderTileItem(TextString("Pages")),
             BadgeTileItem(needAdaptWidth = false, header = TextString("page"), value = TextString("1. SMS Code Fragment"), clickListener = { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") }),

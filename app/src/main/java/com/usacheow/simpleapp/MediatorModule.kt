@@ -3,9 +3,11 @@ package com.usacheow.simpleapp
 import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.featureauth.presentation.router.AuthorizationMediatorImpl
-import com.usacheow.featuremain.presentation.router.MainMediatorImpl
-import com.usacheow.featureonboarding.OnBoardingMediatorImpl
+import com.usacheow.coremediator.PurchaseMediator
+import com.usacheow.featureauth.presentation.navigation.AuthorizationMediatorImpl
+import com.usacheow.featuremain.presentation.navigation.MainMediatorImpl
+import com.usacheow.featureonboarding.navigation.OnBoardingMediatorImpl
+import com.usacheow.featurepurchase.navigation.PurchaseMediatorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +29,8 @@ interface MediatorModule {
     @Binds
     @Singleton
     fun authorizationMediator(mediator: AuthorizationMediatorImpl): AuthorizationMediator
+
+    @Binds
+    @Singleton
+    fun purchaseMediator(mediator: PurchaseMediatorImpl): PurchaseMediator
 }

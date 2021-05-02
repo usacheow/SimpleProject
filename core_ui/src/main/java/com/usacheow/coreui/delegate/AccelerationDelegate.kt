@@ -9,15 +9,25 @@ import javax.inject.Inject
 import kotlin.math.sqrt
 
 private const val SHAKE_ACCELERATION = 15
-private const val BUILD_TYPE_DEBUG = "debug"
-private const val BUILD_TYPE_BETA = "beta"
 
-class AccelerationDelegate
-@Inject constructor() {
+interface AccelerationDelegate {
 
-    private lateinit var sensorManager: SensorManager
+    fun resume(listener: OnShakeListener)
 
-    private var listener: OnShakeListener? = null
+    fun pause()
+
+    interface OnShakeListener {
+
+        fun onShakeDetected()
+    }
+}
+
+class SimpleAccelerationDelegate
+@Inject constructor(
+    private val sensorManager: SensorManager,
+) : AccelerationDelegate {
+
+    private var listener: AccelerationDelegate.OnShakeListener? = null
 
     private var acceleration = 10f
     private var currentAcceleration = SensorManager.GRAVITY_EARTH
@@ -42,14 +52,10 @@ class AccelerationDelegate
         override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) = Unit
     }
 
-    fun onCreate(sensorManager: SensorManager) {
-        this.sensorManager = sensorManager
-    }
-
-    fun onResume(listener: OnShakeListener) {
+    override fun resume(listener: AccelerationDelegate.OnShakeListener) {
         this.listener = listener
 
-        if (BuildConfig.BUILD_TYPE == BUILD_TYPE_DEBUG || BuildConfig.BUILD_TYPE == BUILD_TYPE_BETA) {
+        if (BuildConfig.DEBUG) {
             sensorManager.registerListener(
                 sensorListener,
                 sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
@@ -58,14 +64,8 @@ class AccelerationDelegate
         }
     }
 
-    fun onPause() {
+    override fun pause() {
         listener = null
         sensorManager.unregisterListener(sensorListener)
     }
-
-    interface OnShakeListener {
-
-        fun onShakeDetected()
-    }
-
 }

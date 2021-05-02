@@ -45,24 +45,14 @@ android {
             buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
         }
     }
-
-//    flavorDimensions "default"
-//
-//    productFlavors {
-//        play {
-//            versionName configVersionName()
-//        }
-//        development {
-//            versionName configVersionName()
-//        }
-//    }
 }
 
 dependencies {
-    implementation project(':core_mediator')
     implementation project(':core_data')
     implementation project(':core_ui')
-    implementation project(':app_shared')
+    implementation project(':core_mediator')
+    implementation project(':core_billing')
+    implementation project(':app_state')
 
     implementation project(':feature_main')
     implementation project(':feature_auth')
@@ -70,5 +60,4 @@ dependencies {
     implementation project(':feature_purchase')
 
     implementation firebaseDependencies.values()
-    implementation billingDependency
 }

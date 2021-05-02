@@ -5,7 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.usacheow.appshared.AppStateViewModel
+import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.biometric.BiometricEnterManager
 import com.usacheow.coreui.utils.observe
@@ -16,7 +16,7 @@ import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.string
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
-import com.usacheow.featureauth.presentation.router.AuthorizationRouter
+import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInInput
 import com.usacheow.featureauth.presentation.viewmodels.SignInError
