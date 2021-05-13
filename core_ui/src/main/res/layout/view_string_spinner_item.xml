@@ -19,6 +19,6 @@
         android:textAllCaps="true"
         android:textAppearance="?textAppearanceOverline"
         android:visibility="gone"
-        tools:text="Title"
+        tools:text="@tools:sample/lorem"
         tools:visibility="visible" />
 </FrameLayout>

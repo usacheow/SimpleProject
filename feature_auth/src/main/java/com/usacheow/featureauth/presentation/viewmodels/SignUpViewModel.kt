@@ -50,9 +50,7 @@ class SignUpViewModel @Inject constructor(
 
         _isLoadingState.emit(true)
 
-        withContext(Dispatchers.IO) {
-            interactor.signUpWithLoginAndPassword(login, password)
-        }.doOnSuccess {
+        interactor.signUpWithLoginAndPassword(login, password).doOnSuccess {
             _openMainScreenAction.send(SimpleAction)
         }.doOnError {
             _errorState.emit(exception.getMessage(resources.get))

@@ -2,6 +2,7 @@
 <com.usacheow.coreui.uikit.container.ViewTypeHorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clipChildren="false">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -10,5 +11,6 @@
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        tools:listitem="@layout/view_list_tile"/>
 </com.usacheow.coreui.uikit.container.ViewTypeHorizontalListView>

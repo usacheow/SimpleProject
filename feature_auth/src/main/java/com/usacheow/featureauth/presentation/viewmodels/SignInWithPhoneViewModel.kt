@@ -72,9 +72,7 @@ class SignInWithPhoneViewModel @Inject constructor(
 
         _isLoadingState.emit(true)
 
-        withContext(Dispatchers.IO) {
-            interactor.signInWithPhone(phone)
-        }.doOnSuccess {
+        interactor.signInWithPhone(phone).doOnSuccess {
             _openConfirmScreenAction.send(CONFIRM_CODE_LENGTH)
         }.doOnError {
             _errorState.emit(exception.getMessage(resources.get))
@@ -94,9 +92,7 @@ class SignInWithPhoneViewModel @Inject constructor(
 
         _isLoadingState.emit(true)
 
-        withContext(Dispatchers.IO) {
-            interactor.verifyPhone(phoneNumber, code)
-        }.doOnSuccess {
+        interactor.verifyPhone(phoneNumber, code).doOnSuccess {
             _closeScreenAction.send(SimpleAction)
         }.doOnError {
             _codeConfirmMessageState.emit("Неверный код")

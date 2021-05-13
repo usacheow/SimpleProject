@@ -3,7 +3,7 @@ package com.usacheow.coreui.adapter
 import com.usacheow.coreui.adapter.base.TagViewType
 
 class SingleSelectionViewTypesAdapter(
-    private var entities: List<TagViewType> = emptyList()
+    entities: List<TagViewType> = emptyList()
 ) : BaseSelectionModeViewTypesAdapter(entities) {
 
     private var selectedItemPosition: Int? = null

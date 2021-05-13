@@ -52,9 +52,7 @@ class SignInViewModel @Inject constructor(
         }
         _isLoadingState.emit(true)
 
-        withContext(Dispatchers.IO) {
-            interactor.signInWithLoginAndPassword(login, password)
-        }.doOnSuccess {
+        interactor.signInWithLoginAndPassword(login, password).doOnSuccess {
             _closeScreenAction.send(SimpleAction)
         }.doOnError {
             _errorState.emit(exception.getMessage(resources.get))

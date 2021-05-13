@@ -15,7 +15,8 @@
         android:layout_height="32dp"
         android:layout_marginEnd="@dimen/left_right_margin"
         android:scaleType="centerCrop"
-        app:riv_corner_radius="16dp" />
+        app:riv_corner_radius="16dp"
+        tools:src="@tools:sample/avatars"/>
 
     <LinearLayout
         android:layout_width="0dp"
