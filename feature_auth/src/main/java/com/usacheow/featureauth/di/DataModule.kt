@@ -14,5 +14,5 @@ interface DataModule {
 
     @Binds
     @ViewModelScoped
-    fun provideRepository(repository: AuthRepositoryImpl): AuthRepository
+    fun authRepository(repository: AuthRepositoryImpl): AuthRepository
 }

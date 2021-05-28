@@ -35,14 +35,13 @@ android {
             versionNameSuffix ReleaseSuffix
 
             signingConfig signingConfigs.release
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
         }
         debug {
             versionNameSuffix DebugSuffix
 
-            buildConfigField("String", "APP_METRICA_KEY", '"SOME_VALUE"')
+            minifyEnabled false
         }
     }
 }

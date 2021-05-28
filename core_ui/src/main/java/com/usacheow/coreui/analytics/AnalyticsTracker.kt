@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class AnalyticsTracker
 @Inject constructor(
-    private val application: Application
+    private val application: Application,
 ) : Tracker {
 
     private val firebaseAnalytics by lazy {
@@ -22,8 +22,8 @@ class AnalyticsTracker
     }
 
     override fun trackEvent(event: Events, clazz: Class<*>, attributes: Map<String, String>) {
-        val bundle = bundleOf(*attributes.map { it.key to it.value }.toTypedArray())
-
+//        val bundle = bundleOf(*attributes.map { it.key to it.value }.toTypedArray())
+//
 //        firebaseAnalytics.logEvent("${event.value} ${clazz.simpleName}", bundle)
     }
 }

@@ -34,7 +34,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
             R.id.appContainerLayout,
             { HelloContainerFragment.newInstance() },
             { MockContainerFragment.newInstance() },
-            { MockContainerFragment.newInstance() }
+            { MockContainerFragment.newInstance() },
         )
     }
 
@@ -89,5 +89,5 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
 private val AppScreenSections = listOf(
     R.id.action_example_1,
     R.id.action_example_2,
-    R.id.action_example_3
+    R.id.action_example_3,
 )

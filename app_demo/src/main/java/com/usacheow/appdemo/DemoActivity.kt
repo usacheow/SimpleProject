@@ -1,21 +1,14 @@
 package com.usacheow.appdemo
 
 import android.os.Bundle
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.usacheow.coredata.database.Storage
-import com.usacheow.coredata.database.UiMode
 import com.usacheow.coreui.R
 import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.databinding.FragmentContainerBinding
 import com.usacheow.coreui.delegate.ContainerDelegate
-import com.usacheow.coreui.utils.textinput.isKeyboardEnabled
 import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.enableLightMode
-import com.usacheow.coreui.utils.view.enableNightMode
-import com.usacheow.coreui.utils.view.enableSystemMode
 import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,12 +30,6 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        when (Storage(this).uiMode) {
-            UiMode.LIGHT -> enableLightMode()
-            UiMode.NIGHT -> enableNightMode()
-            UiMode.SYSTEM -> enableSystemMode()
-        }
-
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 

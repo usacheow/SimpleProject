@@ -8,9 +8,8 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class AuthInteractor
-@Inject constructor(
-    private val repository: AuthRepository
+class AuthInteractor @Inject constructor(
+    private val repository: AuthRepository,
 ) {
 
     suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<Completable> {

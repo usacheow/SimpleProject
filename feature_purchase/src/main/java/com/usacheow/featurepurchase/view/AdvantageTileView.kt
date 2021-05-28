@@ -12,11 +12,10 @@ import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.apply
 import com.usacheow.coreui.utils.populate
 
-class AdvantageTileView
-@JvmOverloads constructor(
+class AdvantageTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleAttr), Populatable<AdvantageTileItem> {
 
     private val binding by lazy { ViewAdvantageTileBinding.bind(this) }

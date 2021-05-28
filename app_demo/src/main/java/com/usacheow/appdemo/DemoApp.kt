@@ -1,7 +1,7 @@
 package com.usacheow.appdemo
 
 import android.app.Application
-import com.usacheow.coreui.app.ApplicationCoroutineScopeHolder
+import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

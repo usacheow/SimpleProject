@@ -7,7 +7,7 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.base.BackListener
 
 class ContainerDelegate(
-    private val initFragmentTag: String
+    private val initFragmentTag: String,
 ) {
 
     fun showInitFragment(fragmentManager: FragmentManager, getInitFragment: () -> Fragment) {

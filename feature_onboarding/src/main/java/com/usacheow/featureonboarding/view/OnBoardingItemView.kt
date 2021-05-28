@@ -10,9 +10,10 @@ import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.featureonboarding.R
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
-class OnBoardingItemView
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
-    : LinearLayout(context, attrs), Populatable<OnBoardingItem> {
+class OnBoardingItemView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+) : LinearLayout(context, attrs), Populatable<OnBoardingItem> {
 
     override fun populate(model: OnBoardingItem) {
         val binding = OnBoardingItemViewBinding.bind(this)
@@ -26,5 +27,5 @@ class OnBoardingItemView
 data class OnBoardingItem(
     @DrawableRes val imageId: Int,
     @StringRes val titleId: Int,
-    @StringRes val descriptionId: Int
+    @StringRes val descriptionId: Int,
 ) : ViewType(R.layout.on_boarding_item_view)

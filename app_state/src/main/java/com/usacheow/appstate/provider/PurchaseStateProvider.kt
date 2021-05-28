@@ -1,13 +1,13 @@
 package com.usacheow.appstate.provider
 
 import com.usacheow.corebilling.billing.SimpleBilling
-import com.usacheow.coredata.database.Storage
+import com.usacheow.coredata.database.UserDataStorage
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class PurchaseStateProvider @Inject constructor(
-    private val storage: Storage,
+    storage: UserDataStorage,
     billingWrapper: SimpleBilling,
 ) {
 
@@ -21,5 +21,5 @@ class PurchaseStateProvider @Inject constructor(
 
     val purchasedSubscriptionsFlow = billingWrapper.purchasedSubscriptionsFlow
 
-    fun getPayedVersion() = storage.isPayedVersion
+    val isPayedVersionFlow = storage.isPayedVersionFlow
 }

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.usacheow.coreui.utils.system.ifSupportLollipop
 
 inline fun <reified ACTIVITY> Context.intentOf(noinline block: (Intent.() -> Unit)? = null): Intent {
     return Intent(this, ACTIVITY::class.java).apply {
@@ -21,8 +20,6 @@ inline fun <reified ACTIVITY> Context.start(noinline block: (Intent.() -> Unit)?
 fun Fragment.hashTag() = "${this.hashCode()}"
 
 fun FragmentTransaction.addSharedElements(vararg transitionViews: View): FragmentTransaction {
-    ifSupportLollipop {
-        transitionViews.forEach { addSharedElement(it, it.transitionName) }
-    }
+    transitionViews.forEach { addSharedElement(it, it.transitionName) }
     return this
 }

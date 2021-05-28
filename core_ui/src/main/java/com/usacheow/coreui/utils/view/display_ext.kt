@@ -1,25 +1,19 @@
 package com.usacheow.coreui.utils.view
 
 import android.app.Activity
-import android.content.Context
-import android.graphics.Point
+import android.os.Build
 import android.util.DisplayMetrics
-import android.view.WindowManager
-import androidx.fragment.app.Fragment
+import android.view.WindowInsets
 
 fun Activity.getDisplayWidthPixels(): Int {
-    val displayMetrics = DisplayMetrics()
-    val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    windowManager.defaultDisplay.getMetrics(displayMetrics)
-    return displayMetrics.widthPixels
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        val windowMetrics = windowManager.currentWindowMetrics
+        val insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+        windowMetrics.bounds.width() - insets.left - insets.right
+    } else {
+        val displayMetrics = DisplayMetrics()
+        @Suppress("DEPRECATION")
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        displayMetrics.widthPixels
+    }
 }
-
-fun Activity.getDisplayWidth(screenSize: Point = Point()): Int {
-    (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getSize(screenSize)
-    return screenSize.x
-}
-
-
-fun Fragment.getDisplayWidthPixels() = activity?.getDisplayWidthPixels() ?: 0
-
-fun Fragment.getDisplayWidth(screenSize: Point = Point()) = activity?.getDisplayWidth(screenSize) ?: 0

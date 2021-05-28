@@ -8,13 +8,11 @@ import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

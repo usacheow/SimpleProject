@@ -17,12 +17,12 @@ class SystemServiceModule {
     @Provides
     @Singleton
     fun connectivityManager(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ) = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     @Provides
     @Singleton
     fun sensorManager(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ) = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 }

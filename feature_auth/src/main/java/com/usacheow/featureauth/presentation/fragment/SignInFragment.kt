@@ -90,6 +90,9 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
 
     override fun subscribe() {
         viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
+        viewModel.errorState.observe(lifecycle) {
+            // todo: implement
+        }
         viewModel.submitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
         viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
         viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignIn() }

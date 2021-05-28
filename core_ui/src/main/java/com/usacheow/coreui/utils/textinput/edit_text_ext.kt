@@ -12,14 +12,14 @@ import com.google.android.material.textfield.TextInputEditText
 import java.math.BigDecimal
 
 fun EditText.onTextChanged(action: (String) -> Unit) = addTextChangedListener(object : EmptyTextWatcher() {
-    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-        action(s.toString())
+    override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
+        action(text.toString())
     }
 })
 
 fun EditText.afterTextChanged(action: (String) -> Unit) = addTextChangedListener(object : EmptyTextWatcher() {
-    override fun afterTextChanged(s: Editable) {
-        action(s.toString())
+    override fun afterTextChanged(editable: Editable) {
+        action(editable.toString())
     }
 })
 

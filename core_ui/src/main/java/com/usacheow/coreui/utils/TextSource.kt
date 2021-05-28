@@ -1,10 +1,10 @@
 package com.usacheow.coreui.utils
 
-import android.text.Html
 import android.text.SpannedString
 import android.widget.TextView
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
+import androidx.core.text.HtmlCompat
 import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.makeVisible
 import com.usacheow.coreui.utils.view.string
@@ -50,7 +50,7 @@ fun TextView.populate(source: TextSource?) {
         is TextSpanned -> populate(source.text)
 
         is TextHtml -> {
-            text = Html.fromHtml(source.html)
+            text = HtmlCompat.fromHtml(source.html, HtmlCompat.FROM_HTML_MODE_LEGACY)
             makeVisible()
         }
 

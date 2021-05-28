@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.usacheow.apptest">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:name=".TestApp"
         android:allowBackup="true"
@@ -22,13 +24,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ServiceImpl" />
-        <service android:name=".IntentServiceImpl" />
+        <service android:name=".notifications.ServiceImpl" />
+        <service android:name=".notifications.IntentServiceImpl" />
         <service
-            android:name=".JobIntentServiceImpl"
+            android:name=".notifications.JobIntentServiceImpl"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
-            android:name=".JobServiceImpl"
+            android:name=".notifications.JobServiceImpl"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 

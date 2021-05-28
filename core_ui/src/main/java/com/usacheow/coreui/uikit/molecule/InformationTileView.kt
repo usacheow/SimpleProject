@@ -24,10 +24,10 @@ class InformationTileView
     override fun populate(model: InformationTileItem) {
         binding.imageView.populate(model.imageSource)
 
-        binding.leftTopView.populate(model.topLeftText)
-        binding.rightTopView.populate(model.rightTopText)
-        binding.leftMainView.populate(model.leftMain)
-        binding.rightMainView.populate(model.rightMain)
+        binding.additionalLeftView.populate(model.additionalLeftText)
+        binding.additionalRightView.populate(model.additionalRightText)
+        binding.mainLeftView.populate(model.mainLeftText)
+        binding.mainRightView.populate(model.mainRightText)
 
         doOnClick(model.clickListener)
     }
@@ -35,9 +35,9 @@ class InformationTileView
 
 data class InformationTileItem(
     val imageSource: ImageSource? = null,
-    val topLeftText: TextSource,
-    val rightTopText: TextSource,
-    val leftMain: TextSource,
-    val rightMain: TextSource,
+    val additionalLeftText: TextSource,
+    val additionalRightText: TextSource,
+    val mainLeftText: TextSource,
+    val mainRightText: TextSource,
     val clickListener: (() -> Unit)? = null,
 ) : ViewType(R.layout.view_information_tile)

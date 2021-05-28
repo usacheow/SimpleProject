@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.usacheow.appstate.provider.PurchaseStateProvider
 import com.usacheow.corebilling.billing.Product
-import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.featurepurchase.mapper.ProductsMapper
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PurchaseViewModel @Inject constructor(
-    private val resources: ResourcesWrapper,
     private val mapper: ProductsMapper,
     private val purchaseStateProvider: PurchaseStateProvider,
 ) : ViewModel() {
@@ -46,10 +44,10 @@ class PurchaseViewModel @Inject constructor(
 
             val mappedProducts = mapper
                 .map(products, ::updateBuyButton)
-                .map { it.apply { isSelected = selectedProductIndex == 0 } }
+                .map { price -> price.apply { isSelected = selectedProductIndex == 0 } }
 
-            mappedProducts.getOrNull(selectedProductIndex)?.let {
-                updateBuyButton(it.buyButtonText.text, products[selectedProductIndex])
+            mappedProducts.getOrNull(selectedProductIndex)?.let { price ->
+                updateBuyButton(price.buyButtonText.text, products[selectedProductIndex])
             }
             _productsState.emit(PurchaseStateScreen(mappedProducts))
         }.launchIn(viewModelScope)

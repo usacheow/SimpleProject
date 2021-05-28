@@ -85,6 +85,9 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
 
     override fun subscribe() {
         viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
+        viewModel.errorState.observe(lifecycle) {
+            // todo: implement
+        }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signUpButton.isEnabled = it }
         viewModel.openMainScreenAction.observe(lifecycle) { appStateViewModel.onSignUp() }
     }

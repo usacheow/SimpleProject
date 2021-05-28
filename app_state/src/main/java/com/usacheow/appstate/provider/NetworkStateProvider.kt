@@ -3,7 +3,7 @@ package com.usacheow.appstate.provider
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
-import com.usacheow.coreui.di.ApplicationCoroutineScope
+import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -17,8 +17,8 @@ abstract class ContainerFragment : SimpleFragment<FragmentContainerBinding>(), C
 
     protected abstract fun getInitFragment(): Fragment
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         containerDelegate.showInitFragment(childFragmentManager, ::getInitFragment)
     }
 

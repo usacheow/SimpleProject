@@ -4,13 +4,13 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import com.usacheow.coredata.database.Storage
+import com.usacheow.coredata.database.SettingsStorage
 import java.util.Calendar
 
 private const val MILLIS_SECONDS_IN_DAY = 24 * 60 * 60 * 1000L
 
 class AlarmHelper(
-    private val storage: Storage
+    private val settingsStorage: SettingsStorage
 ) {
 
     fun startAlarm(context: Context) {

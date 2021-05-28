@@ -34,16 +34,11 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     }
 
     @CallSuper
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        dialog?.window?.attributes?.windowAnimations = R.style.ModalDialogTheme
-    }
-
-    @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_TITLE, R.style.ModalDialogTheme)
         setHasOptionsMenu(true)
+        dialog?.window?.attributes?.windowAnimations = R.style.ModalDialogTheme
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

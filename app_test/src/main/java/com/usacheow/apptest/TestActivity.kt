@@ -34,7 +34,7 @@ class TestActivity : SimpleActivity<FragmentContainerBinding>(), Container {
         super.onCreate(savedInstanceState)
 
         if (supportFragmentManager.backStackEntryCount == 0) {
-            navigateTo(TestFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
+            navigateTo(TestContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
         }
     }
 

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/SimpleToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbarTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceSubtitle1"
+            tools:text="@tools:sample/lorem"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            app:layoutDescription="@xml/fragment_product_details_scene">
+
+            <Space
+                android:id="@+id/toolbarStub"
+                style="@style/SimpleToolbar"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/toolbarBottomSpace"
+                app:layout_constraintVertical_chainStyle="spread"
+                tools:title="@tools:sample/lorem" />
+
+            <Space
+                android:id="@+id/toolbarBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.04"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarStub"
+                app:layout_constraintBottom_toTopOf="@id/balanceView" />
+
+            <TextView
+                android:id="@+id/balanceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="132 000 P"
+                android:textAppearance="?textAppearanceHeadline1"
+                android:includeFontPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarBottomSpace"
+                app:layout_constraintBottom_toTopOf="@id/balanceBottomSpace" />
+
+            <Space
+                android:id="@+id/balanceBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.02"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/balanceView"
+                app:layout_constraintBottom_toTopOf="@id/nameView" />
+
+            <TextView
+                android:id="@+id/nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Баланс"
+                android:alpha="@dimen/text_alpha"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/balanceBottomSpace"
+                app:layout_constraintBottom_toTopOf="@id/nameBottomSpace"/>
+
+            <Space
+                android:id="@+id/nameBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.04"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameView"
+                app:layout_constraintBottom_toTopOf="@id/imageView"  />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipChildren="false"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameBottomSpace"
+                app:layout_constraintBottom_toTopOf="@id/viewPagerBottomSpace"/>
+
+            <Space
+                android:id="@+id/viewPagerBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewPager"
+                app:layout_constraintBottom_toTopOf="@id/dotsView" />
+
+<!--            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
+<!--                android:id="@+id/dotsView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/viewPagerBottomSpace"-->
+<!--                app:layout_constraintBottom_toTopOf="@id/dotsBottomSpace"-->
+<!--                app:dotsColor="@color/black_30"-->
+<!--                app:dotsCornerRadius="4dp"-->
+<!--                app:dotsSize="8dp"-->
+<!--                app:dotsSpacing="4dp"-->
+<!--                app:dotsWidthFactor="2.5"-->
+<!--                app:ini="@color/black_50" />-->
+
+            <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                android:id="@+id/dotsView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewPagerBottomSpace"
+                app:layout_constraintBottom_toTopOf="@id/dotsBottomSpace" />
+
+            <Space
+                android:id="@+id/dotsBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.03"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dotsView"
+                app:layout_constraintBottom_toTopOf="@id/shortcutsView" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shortcutsView"
+                style="@style/SimpleButton"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                app:cardBackgroundColor="@color/disabled"
+                app:cardElevation="@dimen/elevation_0"
+                app:cardCornerRadius="@dimen/radius_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dotsBottomSpace"
+                app:layout_constraintBottom_toTopOf="@id/shortcutsBottomSpace" />
+
+            <Space
+                android:id="@+id/shortcutsBottomSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.035"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shortcutsView"
+                app:layout_constraintBottom_toTopOf="@id/bottomPartSpace" />
+
+            <Space
+                android:id="@+id/bottomPartSpace"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shortcutsBottomSpace"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <View
+                android:id="@+id/blurBackgroundView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0"
+                android:background="@color/black_50"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/warningsView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toTopOf="@id/operationsView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bottomPartSpace"
+                tools:itemCount="2"
+                tools:listitem="@layout/view_list_tile"/>
+
+            <FrameLayout
+                android:id="@+id/operationsView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/warningsView">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="12dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="@dimen/radius_16"
+                    app:cardElevation="@dimen/elevation_16">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/operationsListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/view_information_tile"/>
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/navigationBarStub"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:focusable="true"/>
+</FrameLayout>

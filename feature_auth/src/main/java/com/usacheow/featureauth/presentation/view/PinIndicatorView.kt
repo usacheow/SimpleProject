@@ -14,9 +14,11 @@ private const val DEFAULT_RADIUS_DP = 10
 private const val DOT_MARGIN = 16
 private const val PIN_CODE_LENGTH = 4
 
-class PinIndicatorView
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : View(context, attrs, defStyleAttr) {
+class PinIndicatorView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : View(context, attrs, defStyleAttr) {
 
     private val defaultPaint by lazy {
         Paint().apply {

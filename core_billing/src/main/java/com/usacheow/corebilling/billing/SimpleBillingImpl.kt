@@ -74,7 +74,7 @@ class SimpleBillingImpl @Inject constructor(
             // todo: Handle the success of the acknowledge operation.
         }
     }
-    private val consumeResponseListener = ConsumeResponseListener { billingResult, outToken ->
+    private val consumeResponseListener = ConsumeResponseListener { billingResult, _ ->
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
             // todo: Handle the success of the consume operation.
         }

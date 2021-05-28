@@ -8,7 +8,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.usacheow.appstate.AppStateViewModel
-import com.usacheow.appstate.otp.OtpViewModel
+import com.usacheow.appstate.otp.SmsCodeViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
@@ -41,7 +41,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
     lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInWithPhoneViewModel>()
-    private val smsCodeViewModel by viewModels<OtpViewModel>()
+    private val smsCodeViewModel by viewModels<SmsCodeViewModel>()
 
     companion object {
         fun newInstance() = SignInWithPhoneFragment()
@@ -84,10 +84,14 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
         viewModel.isLoadingState.observe(lifecycle) {
             binding.loaderView.root.isVisible = it
         }
+        viewModel.errorState.observe(lifecycle) {
+            // todo: implement
+        }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
         viewModel.codeConfirmMessageState.observe(lifecycle) { smsCodeViewModel.showMessage(it) }
         viewModel.openConfirmScreenAction.observe(lifecycle) { router.openConfirmScreen(it) }
         viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignIn() }
         smsCodeViewModel.processCodeAction.observe(lifecycle) { viewModel.onCodeInputted(it) }
+        smsCodeViewModel.onResendClickedAction.observe(lifecycle) { viewModel.onResendClicked() }
     }
 }

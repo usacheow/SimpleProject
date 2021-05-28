@@ -1,15 +1,5 @@
 package com.usacheow.coredata.network
 
-import com.google.gson.Gson
-import retrofit2.HttpException
-import retrofit2.Response
-import java.net.ConnectException
-import java.net.HttpURLConnection
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import java.util.concurrent.CancellationException
-import javax.net.ssl.SSLException
-
 object Completable
 
 sealed class Effect<out T : Any> {
@@ -49,6 +39,16 @@ inline fun <T : Any> Effect<T>.mapWhenError(block: Effect.Error.() -> Effect<T>)
     Effect.Error(ApiError.DataMappingException())
 }
 
+inline fun <T : Any, R : Any> Effect<T>.changeDataWhenSuccess(block: T.() -> R): Effect<R> = try {
+    when (this) {
+        is Effect.Success<T> -> Effect.Success(this.data.block())
+
+        is Effect.Error -> Effect.Error(exception)
+    }
+} catch (e: Exception) {
+    Effect.Error(ApiError.DataMappingException())
+}
+
 inline fun <T : Any> Effect<T>.doOnSuccess(block: Effect.Success<T>.() -> Unit): Effect<T> {
     if (this is Effect.Success<T>) {
         this.block()
@@ -65,50 +65,14 @@ inline fun <T : Any> Effect<T>.doOnError(block: Effect.Error.() -> Unit): Effect
     return this
 }
 
-inline fun <T : Any> apiCall(block: () -> Response<T>): Effect<T> = try {
-    block.invoke().process()
-} catch (t: Throwable) {
-    Effect.Error(t.toError())
-}
-
-fun <T : Any> Response<T>.process() = when {
-    isSuccessful -> body()?.let {
-        Effect.Success(it)
-    } ?: Effect.Error(ApiError.EmptyResponseException())
-
-    else -> {
-        val exception = errorBody()?.let { errorBody ->
-            val error = Gson().fromJson(errorBody.charStream(), ErrorMessage::class.java)
-            ApiError.ServerException(error.message)
-        } ?: ApiError.UnknownException()
-
-        Effect.Error(exception)
-    }
-}
-
-fun Throwable.toError() = when (this) {
-    is UnknownHostException -> ApiError.HostException()
-
-    is HttpException -> when (val code = response()?.code()) {
-        HttpURLConnection.HTTP_BAD_REQUEST,
-        HttpURLConnection.HTTP_FORBIDDEN,
-        HttpURLConnection.HTTP_NOT_FOUND -> ApiError.ApiException(responseCode = code, cause = this)
-
-        HttpURLConnection.HTTP_UNAVAILABLE,
-        HttpURLConnection.HTTP_UNAUTHORIZED -> ApiError.InvalidAccessTokenException()
-
-        HttpURLConnection.HTTP_INTERNAL_ERROR,
-        HttpURLConnection.HTTP_BAD_GATEWAY,
-        HttpURLConnection.HTTP_GATEWAY_TIMEOUT -> ApiError.HostException()
-
-        else -> ApiError.UnknownException()
+fun <T : Any> Effect<T>.getDataIfSuccess(): T? {
+    if (this is Effect.Success<T>) {
+        return data
     }
 
-    is SSLException,
-    is ConnectException,
-    is SocketTimeoutException -> ApiError.HostException()
+    return null
+}
 
-    is CancellationException -> ApiError.CoroutineException()
-
-    else -> ApiError.UnknownException()
+fun <T : Any> T.toSuccessEffect(): Effect.Success<T> {
+    return Effect.Success(this)
 }

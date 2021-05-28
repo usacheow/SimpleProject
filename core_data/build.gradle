@@ -16,6 +16,9 @@ dependencies {
 
     implementation firebaseDependencies.values()
 
+    implementation dataStoreDependency
+    implementation preferenceDependency
+
     implementation roomDependencies.values()
     kapt kaptRoomDependency
 }

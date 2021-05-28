@@ -6,8 +6,9 @@ import com.usacheow.coreui.base.Router
 import com.usacheow.featureauth.presentation.fragment.SignUpFragment
 import javax.inject.Inject
 
-class AuthorizationRouter
-@Inject constructor(fragment: Fragment) : Router(fragment) {
+class AuthorizationRouter @Inject constructor(
+    fragment: Fragment,
+) : Router(fragment) {
 
     fun openSignUpScreen() = simpleFragment?.getContainer {
         navigateTo(SignUpFragment.newInstance())

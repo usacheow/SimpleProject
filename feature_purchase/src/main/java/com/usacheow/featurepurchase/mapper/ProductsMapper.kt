@@ -26,8 +26,6 @@ class ProductsMapper @Inject constructor(
         clickListener = { onProductClicked(product.getBuyButtonText(), product) },
     )
 
-    private fun Product.getPeriod() = details.subscriptionPeriod
-
     private fun Product.getPrice(): String {
         if (details.price == null || details.priceCurrencyCode == null) {
             return ""

@@ -32,19 +32,19 @@ class DecimalFormatter : DecimalFormat(), IFormatter {
     override fun cleanText(formattedText: String): String {
         val decimal = formattedText.parseBigDecimal() ?: return ""
 
-        val formattedText = format(decimal)
-        return StringBuilder(formattedText).apply {
+        val newFormattedText = format(decimal)
+        return StringBuilder(newFormattedText).apply {
             // When decimal ends with '.' or '.0' or '.x0' symbols, DecimalFormat.format() cuts them off.
             // We don't want this, so if the original text contains them we revert the formatting.
-            if (endsWithSeparator(formattedText)) {
+            if (endsWithSeparator(newFormattedText)) {
                 append(SEPARATOR_DECIMAL)
             }
 
-            if (endsWithOneTrailingZero(formattedText)) {
+            if (endsWithOneTrailingZero(newFormattedText)) {
                 append(SEPARATOR_DECIMAL).append(ZERO)
             }
 
-            if (endsWithTrailingZero(formattedText, formattedText)) {
+            if (endsWithTrailingZero(newFormattedText, newFormattedText)) {
                 append(ZERO)
             }
         }.toString()

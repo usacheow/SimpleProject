@@ -1,13 +1,10 @@
 package com.usacheow.featureauth.domain
 
-import com.usacheow.coredata.database.Storage
+import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.featureauth.data.AuthRepository
-import com.usacheow.featureauth.data.models.AccessToken
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnit
 
 class AuthInteractorTest {
@@ -16,7 +13,7 @@ class AuthInteractorTest {
 //    @Rule @JvmField val rxRule = RxRule()
 
     private val repository = mock(AuthRepository::class.java)
-    private val storage = mock(Storage::class.java)
+    private val storage = mock(SettingsStorage::class.java)
     private val interactor = AuthInteractor(repository)
 
     @Test

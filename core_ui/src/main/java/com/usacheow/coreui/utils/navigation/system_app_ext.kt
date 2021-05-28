@@ -63,7 +63,8 @@ fun Fragment.openMaps(latitude: Double, longitude: Double) {
 
 fun Fragment.openShareDialog(url: String) {
     activity?.let {
-        ShareCompat.IntentBuilder.from(it).setText(url)
+        ShareCompat.IntentBuilder(it)
+            .setText(url)
             .setType("text/plain")
             .startChooser()
     }

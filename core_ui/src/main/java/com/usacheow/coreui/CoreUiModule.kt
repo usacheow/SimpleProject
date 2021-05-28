@@ -11,7 +11,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module
+@Module(
+    includes = [
+        SystemServiceModule::class,
+    ]
+)
 @InstallIn(SingletonComponent::class)
 class CoreUiModule {
 

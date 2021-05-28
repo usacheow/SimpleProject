@@ -14,9 +14,10 @@ import com.usacheow.coreui.utils.view.*
 private const val SELECTED_STROKE_WIDTH_DP = 2
 private const val UNSELECTED_STROKE_WIDTH_DP = 0
 
-class PriceTileView
-@JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+class PriceTileView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr), Populatable<PriceTileItem> {
 
     private val binding by lazy { ViewPriceTileBinding.bind(this) }

@@ -40,6 +40,7 @@ private const val RATIO_16_9_VALUE = 16.0 / 9.0
 
 typealias LumaListener = (luma: Double) -> Unit
 
+@Suppress("DEPRECATION")
 class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
     override val params = Params(
@@ -143,7 +144,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
                             context,
                             arrayOf(savedUri.toFile().absolutePath),
                             arrayOf(mimeType)
-                        ) { _, uri -> }
+                        ) { _, _ -> }
                     }
                 })
             }
@@ -199,7 +200,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 //                .setImageQueueDepth()
                 .build()
                 .also {
-                    it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma -> })
+                    it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { _ -> })
                 }
 
             cameraProvider.unbindAll()
@@ -232,8 +233,8 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
         val future = cameraControl?.startFocusAndMetering(action)
         future?.addListener(Runnable {
-            val result = future.get()
-            // process the result
+//            val result = future.get()
+             // process the result
         }, cameraExecutor)
     }
 

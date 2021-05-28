@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.transition.*
 
+private const val ANIMATION_DURATION = 100L
+
 fun Animator.withEndAction(action: () -> Unit): Animator {
     addListener(object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator?) {
@@ -25,28 +27,28 @@ fun Animator.withStartAction(action: () -> Unit): Animator {
     return this
 }
 
-fun Fragment.startParentFragmentTransition(duration: Long = 100, block: () -> Unit) {
+fun Fragment.startParentFragmentTransition(duration: Long = ANIMATION_DURATION, block: () -> Unit) {
     parentFragment?.startFragmentTransition(duration, block)
 }
 
-fun Fragment.startFragmentTransition(duration: Long = 100, block: () -> Unit) {
+fun Fragment.startFragmentTransition(duration: Long = ANIMATION_DURATION, block: () -> Unit) {
     val view = (view as? ViewGroup) ?: return
     TransitionManager.beginDelayedTransition(view, ScreenUpdateTransition(duration))
     block()
 }
 
 fun View.doWithTransition(
-    duration: Long = 100,
+    duration: Long = ANIMATION_DURATION,
     transition: Transition = ScreenUpdateTransition(duration),
-    block: () -> Unit
+    block: () -> Unit,
 ) {
     (this as? ViewGroup)?.doWithTransition(duration, transition, block)
 }
 
 fun ViewGroup.doWithTransition(
-    duration: Long = 100,
+    duration: Long = ANIMATION_DURATION,
     transition: Transition = ScreenUpdateTransition(duration),
-    block: () -> Unit
+    block: () -> Unit,
 ) {
     TransitionManager.beginDelayedTransition(this, transition)
     block()
@@ -64,6 +66,6 @@ class ScreenUpdateTransition(duration: Long) : TransitionSet() {
 
 class RoutingTransition : AutoTransition() {
     init {
-        duration = 100
+        duration = ANIMATION_DURATION
     }
 }

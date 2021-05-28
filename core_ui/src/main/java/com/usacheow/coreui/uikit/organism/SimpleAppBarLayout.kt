@@ -8,6 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
+import com.usacheow.coreui.R
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.updateMargins
@@ -33,8 +34,8 @@ class SimpleAppBarLayout
         setBackgroundColor(color(colorId))
     }
 
-    fun setNavigationAction(@DrawableRes iconResId: Int, action: () -> Unit) {
-        binding.toolbar.navigation(iconResId, action)
+    fun setNavigationAction(@DrawableRes iconResId: Int, @ColorRes colorId: Int = R.color.icon, action: () -> Unit) {
+        binding.toolbar.navigation(iconResId, colorId, action)
     }
 
     fun applyInsets(size: Int) {

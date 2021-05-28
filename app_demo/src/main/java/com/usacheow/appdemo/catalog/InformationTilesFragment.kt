@@ -52,10 +52,10 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
             InformationTileItem(
                 imageSource = ImageRes(R.drawable.demo_avatar),
-                topLeftText = TextString("City 17"),
-                rightTopText = TextString("00/00/0000"),
-                leftMain = TextString("Gordon"),
-                rightMain = TextString("(000) 000-00-00"),
+                additionalLeftText = TextString("City 17"),
+                additionalRightText = TextString("00/00/0000"),
+                mainLeftText = TextString("Gordon"),
+                mainRightText = TextString("(000) 000-00-00"),
             ),
 
             DividerTileItem.getSmallDivider(),

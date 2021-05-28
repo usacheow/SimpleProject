@@ -18,9 +18,7 @@ import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
-import com.usacheow.featureauth.presentation.viewmodels.SignInInput
-import com.usacheow.featureauth.presentation.viewmodels.SignInError
-import com.usacheow.featureauth.presentation.viewmodels.SignInSuccess
+import com.usacheow.featureauth.presentation.viewmodels.SignInResult
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -75,12 +73,12 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         }
         viewModel.changeAuthState.observe(lifecycle) {
             when (it) {
-                is SignInSuccess -> appStateViewModel.onPinCodeEntered()
-                is SignInError -> {
+                is SignInResult.SignInSuccess -> appStateViewModel.onPinCodeEntered()
+                is SignInResult.SignInError -> {
                     binding.pinCodeView.setHint(string(R.string.pin_view_code_error))
                     binding.pinCodeView.showError()
                 }
-                is SignInInput -> {
+                is SignInResult.SignInInput -> {
                     binding.pinCodeView.resetState()
                 }
             }

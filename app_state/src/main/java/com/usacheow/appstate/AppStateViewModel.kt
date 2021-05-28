@@ -1,7 +1,7 @@
 package com.usacheow.appstate
 
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coredata.database.Storage
+import com.usacheow.coredata.database.UserDataStorage
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppStateViewModel @Inject constructor(
-    private val storage: Storage,
+    private val storage: UserDataStorage,
 ) : SimpleViewModel() {
 
     private val _openOnBoardingScreenAction = Channel<SimpleAction>()
@@ -34,7 +34,7 @@ class AppStateViewModel @Inject constructor(
     }
 
     fun onOnBoardingFinished() = viewModelScope.launch {
-        storage.isFirstEntry = false
+        storage.setFirstEntry(false)
         _openAppScreenAction.send(SimpleAction)
     }
 
