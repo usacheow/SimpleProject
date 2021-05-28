@@ -1,7 +1,5 @@
 package com.usacheow.apptest
 
-import com.usacheow.apptest.details.ProductDetailsFragment
-import com.usacheow.apptest.notifications.NotificationsFragment
 import com.usacheow.coreui.fragment.ContainerFragment
 
 class TestContainerFragment : ContainerFragment() {

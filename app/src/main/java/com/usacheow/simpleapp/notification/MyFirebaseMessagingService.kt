@@ -1,4 +1,4 @@
-package  com.usacheow.simpleapp.notification
+package com.usacheow.simpleapp.notification
 
 import android.content.Intent
 import com.google.firebase.messaging.FirebaseMessagingService

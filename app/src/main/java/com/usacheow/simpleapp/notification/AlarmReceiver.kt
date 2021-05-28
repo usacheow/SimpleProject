@@ -1,4 +1,4 @@
-package  com.usacheow.simpleapp.notification
+package com.usacheow.simpleapp.notification
 
 import android.content.BroadcastReceiver
 import android.content.Context

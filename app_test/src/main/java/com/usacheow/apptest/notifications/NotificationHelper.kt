@@ -1,4 +1,4 @@
-package  com.usacheow.apptest.notifications
+package com.usacheow.apptest.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
