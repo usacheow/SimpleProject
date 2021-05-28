@@ -40,7 +40,8 @@ class NotificationHelper @Inject constructor(
         }
     }
 
-    private val notificationManager get() = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private val notificationManager
+        get() = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun startNotificationsSettingsScreen() {

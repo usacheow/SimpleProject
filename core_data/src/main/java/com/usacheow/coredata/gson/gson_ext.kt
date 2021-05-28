@@ -13,7 +13,6 @@ inline fun <reified TYPE> Gson.parseJsonFromAsset(resources: Resources, fileName
         reader = BufferedReader(InputStreamReader(resources.assets.open(fileName), "UTF-8"))
         value = fromJson<TYPE>(reader, TYPE::class.java)
     } catch (e: IOException) {
-
     } finally {
         reader?.close()
     }

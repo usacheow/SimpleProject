@@ -19,7 +19,7 @@ class DividerTileView
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr), Populatable<DividerTileItem> {
 
     private val binding by lazy { ViewDividerTileBinding.bind(this) }
@@ -47,6 +47,5 @@ data class DividerTileItem(
         fun getMediumDivider() = DividerTileItem(heightResId = R.dimen.divider_height_medium)
 
         fun getLargeDivider() = DividerTileItem(heightResId = R.dimen.divider_height_large)
-
     }
 }

@@ -23,7 +23,11 @@ class NotificationHelper(
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val appInfoChannel = NotificationChannel(APP_INFO_CHANEL_ID, "Channel Name", NotificationManager.IMPORTANCE_DEFAULT).apply {
+            val appInfoChannel = NotificationChannel(
+                APP_INFO_CHANEL_ID,
+                "Channel Name",
+                NotificationManager.IMPORTANCE_DEFAULT,
+            ).apply {
                 description = "Channel description"
                 setShowBadge(true)
             }
@@ -32,7 +36,8 @@ class NotificationHelper(
         }
     }
 
-    private val notificationManager get() = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private val notificationManager
+        get() = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun startNotificationsSettingsScreen() {

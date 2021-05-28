@@ -10,9 +10,11 @@ import com.usacheow.coreui.databinding.ViewHeaderTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
 
-class HeaderTileView
-@JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0)
-    : LinearLayout(context, attributeSet, defStyleAttr), Populatable<HeaderTileItem> {
+class HeaderTileView @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : LinearLayout(context, attributeSet, defStyleAttr), Populatable<HeaderTileItem> {
 
     private val binding by lazy { ViewHeaderTileBinding.bind(this) }
 

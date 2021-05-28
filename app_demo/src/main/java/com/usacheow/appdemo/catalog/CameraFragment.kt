@@ -12,21 +12,29 @@ import android.view.Surface
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
-import androidx.camera.core.*
+import androidx.camera.core.AspectRatio
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.FocusMeteringAction
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.ImageProxy
+import androidx.camera.core.Preview
+import androidx.camera.core.SurfaceOrientedMeteringPointFactory
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
+import com.usacheow.appdemo.databinding.FragmentCameraBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.system.arePermissionsGranted
 import com.usacheow.coreui.utils.view.doWithTransition
-import com.usacheow.appdemo.databinding.FragmentCameraBinding
 import java.io.File
 import java.nio.ByteBuffer
-import java.util.*
+import java.util.ArrayDeque
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -117,36 +125,39 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
                     .setMetadata(metadata)
                     .build()
 
-                imageCapture.takePicture(outputOptions, cameraExecutor, object : ImageCapture.OnImageSavedCallback {
-                    override fun onError(exception: ImageCaptureException) {
-                        val msg = "Photo capture failed: ${exception.message}"
-                        binding.viewFinder.post {
-                            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                        val savedUri = output.savedUri ?: Uri.fromFile(file)
-                        // Implicit broadcasts will be ignored for devices running API level >= 24
-                        // so if you only target API level 24+ you can remove this statement
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                            requireActivity().sendBroadcast(
-                                Intent(android.hardware.Camera.ACTION_NEW_PICTURE, savedUri)
-                            )
+                imageCapture.takePicture(
+                    outputOptions, cameraExecutor,
+                    object : ImageCapture.OnImageSavedCallback {
+                        override fun onError(exception: ImageCaptureException) {
+                            val msg = "Photo capture failed: ${exception.message}"
+                            binding.viewFinder.post {
+                                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                            }
                         }
 
-                        // If the folder selected is an external media directory, this is
-                        // unnecessary but otherwise other apps will not be able to access our
-                        // images unless we scan them using [MediaScannerConnection]
-                        val mimeType = MimeTypeMap.getSingleton()
-                            .getMimeTypeFromExtension(savedUri.toFile().extension)
-                        MediaScannerConnection.scanFile(
-                            context,
-                            arrayOf(savedUri.toFile().absolutePath),
-                            arrayOf(mimeType)
-                        ) { _, _ -> }
+                        override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                            val savedUri = output.savedUri ?: Uri.fromFile(file)
+                            // Implicit broadcasts will be ignored for devices running API level >= 24
+                            // so if you only target API level 24+ you can remove this statement
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                                requireActivity().sendBroadcast(
+                                    Intent(android.hardware.Camera.ACTION_NEW_PICTURE, savedUri)
+                                )
+                            }
+
+                            // If the folder selected is an external media directory, this is
+                            // unnecessary but otherwise other apps will not be able to access our
+                            // images unless we scan them using [MediaScannerConnection]
+                            val mimeType = MimeTypeMap.getSingleton()
+                                .getMimeTypeFromExtension(savedUri.toFile().extension)
+                            MediaScannerConnection.scanFile(
+                                context,
+                                arrayOf(savedUri.toFile().absolutePath),
+                                arrayOf(mimeType)
+                            ) { _, _ -> }
+                        }
                     }
-                })
+                )
             }
         }
 
@@ -166,52 +177,54 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
         val rotation = binding.viewFinder.display.rotation
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-        cameraProviderFuture.addListener(Runnable {
-            val cameraProvider = cameraProviderFuture.get()
+        cameraProviderFuture.addListener(
+            Runnable {
+                val cameraProvider = cameraProviderFuture.get()
 
-            val cameraSelector = CameraSelector.Builder()
-                .requireLensFacing(lensFacing)
-                .build()
+                val cameraSelector = CameraSelector.Builder()
+                    .requireLensFacing(lensFacing)
+                    .build()
 
-            preview = Preview.Builder()
-                .setTargetAspectRatio(screenAspectRatio)
-                .setTargetRotation(rotation)
+                preview = Preview.Builder()
+                    .setTargetAspectRatio(screenAspectRatio)
+                    .setTargetRotation(rotation)
 //                .setCaptureProcessor()
 //                .setImageInfoProcessor()
-                .build()
+                    .build()
 
-
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                .setTargetAspectRatio(screenAspectRatio)
-                .setTargetRotation(rotation)
+                imageCapture = ImageCapture.Builder()
+                    .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+                    .setTargetAspectRatio(screenAspectRatio)
+                    .setTargetRotation(rotation)
 //                .setCaptureMode()
 //                .setMaxCaptureStages()
 //                .setFlashMode()
 //                .setCaptureProcessor()
 //                .setCaptureBundle()
-                .build()
+                    .build()
 
-            imageAnalysis = ImageAnalysis.Builder()
-                .setTargetAspectRatio(screenAspectRatio)
-                .setTargetRotation(rotation)
+                imageAnalysis = ImageAnalysis.Builder()
+                    .setTargetAspectRatio(screenAspectRatio)
+                    .setTargetRotation(rotation)
 //                .setTargetResolution(Size())
 //                .setBackpressureStrategy()
 //                .setImageQueueDepth()
-                .build()
-                .also {
-                    it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { _ -> })
-                }
+                    .build()
+                    .also {
+                        it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { _ -> })
+                    }
 
-            cameraProvider.unbindAll()
-            try {
-                camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis)
-                addFocusControl()
-                val surfaceProvider = binding.viewFinder.createSurfaceProvider(camera?.cameraInfo)
-                preview?.setSurfaceProvider(surfaceProvider)
-            } catch (exc: Exception) {
-            }
-        }, ContextCompat.getMainExecutor(requireContext()))
+                cameraProvider.unbindAll()
+                try {
+                    camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis)
+                    addFocusControl()
+                    val surfaceProvider = binding.viewFinder.createSurfaceProvider(camera?.cameraInfo)
+                    preview?.setSurfaceProvider(surfaceProvider)
+                } catch (exc: Exception) {
+                }
+            },
+            ContextCompat.getMainExecutor(requireContext())
+        )
     }
 
     private fun aspectRatio(width: Int, height: Int): Int {
@@ -232,10 +245,13 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
             .build()
 
         val future = cameraControl?.startFocusAndMetering(action)
-        future?.addListener(Runnable {
+        future?.addListener(
+            Runnable {
 //            val result = future.get()
-             // process the result
-        }, cameraExecutor)
+                // process the result
+            },
+            cameraExecutor
+        )
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -262,9 +278,9 @@ class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyze
         private set
 
     private fun ByteBuffer.toByteArray(): ByteArray {
-        rewind()    // Rewind the buffer to zero
+        rewind() // Rewind the buffer to zero
         val data = ByteArray(remaining())
-        get(data)   // Copy the buffer into a byte array
+        get(data) // Copy the buffer into a byte array
         return data // Return the byte array
     }
 

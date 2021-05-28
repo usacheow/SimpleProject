@@ -8,9 +8,11 @@ import androidx.core.view.isInvisible
 import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.utils.view.doOnClick
 
-class NumPadView
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : GridLayout(context, attrs, defStyleAttr) {
+class NumPadView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : GridLayout(context, attrs, defStyleAttr) {
 
     var onBackspaceClickedAction: (() -> Unit)? = null
     var onBiometricClickedAction: (() -> Unit)? = null

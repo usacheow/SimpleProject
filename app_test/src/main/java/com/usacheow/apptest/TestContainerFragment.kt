@@ -9,6 +9,5 @@ class TestContainerFragment : ContainerFragment() {
     }
 
 //    override fun getInitFragment() = NotificationsFragment.newInstance()
-//    override fun getInitFragment() = ProductDetailsFragment.newInstance()
     override fun getInitFragment() = CoroutinesFragment.newInstance()
 }

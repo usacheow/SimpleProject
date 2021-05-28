@@ -70,5 +70,4 @@ class PhoneNumberFormatter(
             setCallback(formattedTextChangeListener)
         }
     }
-
 }

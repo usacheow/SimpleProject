@@ -14,21 +14,31 @@ import com.usacheow.coreui.utils.view.doOnClick
 
 class TagTileView
 @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : MaterialCardView(context, attrs, defStyleAttr), Populatable<TagTileItem> {
 
     private val binding by lazy { ViewTagTileBinding.bind(this) }
 
     override fun populate(model: TagTileItem) {
         binding.nameView.populate(model.name)
-        binding.nameView.setTextColor(color(when (model.isSelected) {
-            true -> model.selectedColor.text
-            false -> model.unselectedColor.text
-        }))
-        setCardBackgroundColor(color(when (model.isSelected) {
-            true -> model.selectedColor.background
-            false -> model.unselectedColor.background
-        }))
+        binding.nameView.setTextColor(
+            color(
+                when (model.isSelected) {
+                    true -> model.selectedColor.text
+                    false -> model.unselectedColor.text
+                }
+            )
+        )
+        setCardBackgroundColor(
+            color(
+                when (model.isSelected) {
+                    true -> model.selectedColor.background
+                    false -> model.unselectedColor.background
+                }
+            )
+        )
 
         doOnClick {
             if (!model.isSelected) {

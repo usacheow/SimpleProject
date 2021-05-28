@@ -8,7 +8,7 @@ import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.uikit.molecule.*
+import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.IconInfo
 import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.LogoInfo
@@ -42,46 +42,48 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         }
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
-            ListTileItem(
-                value = TextString("Title"),
-            ),
+        binding.widgetsListView.adapter = ViewTypesAdapter(
+            listOf(
+                ListTileItem(
+                    value = TextString("Title"),
+                ),
 
-            ListTileItem(
-                leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                value = TextString("Title"),
-            ),
+                ListTileItem(
+                    leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    value = TextString("Title"),
+                ),
 
-            ListTileItem(
-                leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                value = TextString("Title"),
-                topDescription = TextString("Top description"),
-            ),
+                ListTileItem(
+                    leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    value = TextString("Title"),
+                    topDescription = TextString("Top description"),
+                ),
 
-            ListTileItem(
-                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                value = TextString("Title"),
-                bottomDescription = TextString("Bottom description"),
-            ),
+                ListTileItem(
+                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    value = TextString("Title"),
+                    bottomDescription = TextString("Bottom description"),
+                ),
 
-            ListTileItem(
-                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                value = TextString("Title"),
-                topDescription = TextString("Top description"),
-                bottomDescription = TextString("Bottom description"),
-                clickListener = {},
-            ),
+                ListTileItem(
+                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    value = TextString("Title"),
+                    topDescription = TextString("Top description"),
+                    bottomDescription = TextString("Bottom description"),
+                    clickListener = {},
+                ),
 
-            ListTileItem(
-                leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_next)),
-                value = TextString("Title"),
-                topDescription = TextString("Top description"),
-                bottomDescription = TextString("Bottom description"),
-                clickListener = {},
-            ),
+                ListTileItem(
+                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_next)),
+                    value = TextString("Title"),
+                    topDescription = TextString("Top description"),
+                    bottomDescription = TextString("Bottom description"),
+                    clickListener = {},
+                ),
 
-            ListTileItem.shimmer(),
-        ))
+                ListTileItem.shimmer(),
+            )
+        )
     }
 }

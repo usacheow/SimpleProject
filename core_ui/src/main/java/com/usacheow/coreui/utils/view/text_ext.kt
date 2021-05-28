@@ -21,7 +21,7 @@ fun TextView.makeExpandable(
     dividerText: String = "... ",
     expandLinkText: String = "Ещё",
 ) {
-    container.get()?.doWithTransition (TEXT_ANIMATION_DURATION) {
+    container.get()?.doWithTransition(TEXT_ANIMATION_DURATION) {
         movementMethod = LinkMovementMethod.getInstance()
         highlightColor = Color.TRANSPARENT
 
@@ -34,7 +34,7 @@ fun TextView.makeExpandable(
             val click = SimpleClickableSpan {
                 when {
                     canCollapse -> makeCollapsable(value, container)
-                    else -> container.get()?.doWithTransition (200) { text = value }
+                    else -> container.get()?.doWithTransition(200) { text = value }
                 }
             }
             setSpan(click, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -48,7 +48,7 @@ private fun TextView.makeCollapsable(
     dividerText: String = " ",
     expandLinkText: String = string(R.string.collapse_text),
 ) {
-    container.get()?.doWithTransition (TEXT_ANIMATION_DURATION) {
+    container.get()?.doWithTransition(TEXT_ANIMATION_DURATION) {
         var finalText = value + dividerText
         val startIndex = finalText.length
         val endIndex = startIndex + expandLinkText.length

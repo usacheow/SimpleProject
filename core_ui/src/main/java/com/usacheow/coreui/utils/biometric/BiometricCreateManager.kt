@@ -5,8 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import com.usacheow.coreui.R
 import javax.inject.Inject
 
-class BiometricCreateManager
-@Inject constructor() : BiometricManagerWrapper() {
+class BiometricCreateManager @Inject constructor() : BiometricManagerWrapper() {
 
     var onSuccessAction: (BiometricPrompt.AuthenticationResult) -> Unit = {}
     var onErrorAction: () -> Unit = {}
@@ -44,5 +43,4 @@ class BiometricCreateManager
             onShowMessageAction.invoke()
         }
     }
-
 }

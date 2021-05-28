@@ -10,24 +10,26 @@ import com.usacheow.coreui.utils.view.makeVisible
 
 class StateView
 @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val binding by lazy { ViewListWithStatesViewBinding.bind(this) }
 
-    fun setHiddenState() = with (binding) {
+    fun setHiddenState() = with(binding) {
         errorMessageView.makeGone()
         emptyMessageView.makeGone()
         loaderView.root.makeGone()
     }
 
-    fun setLoadState() = with (binding) {
+    fun setLoadState() = with(binding) {
         errorMessageView.makeGone()
         emptyMessageView.makeGone()
         loaderView.root.makeVisible()
     }
 
-    fun setErrorState(message: MessageBannerItem) = with (binding) {
+    fun setErrorState(message: MessageBannerItem) = with(binding) {
         errorMessageView.populate(message)
 
         errorMessageView.makeVisible()
@@ -35,7 +37,7 @@ class StateView
         loaderView.root.makeGone()
     }
 
-    fun setEmptyState(message: MessageBannerItem) = with (binding) {
+    fun setEmptyState(message: MessageBannerItem) = with(binding) {
         emptyMessageView.populate(message)
 
         errorMessageView.makeGone()

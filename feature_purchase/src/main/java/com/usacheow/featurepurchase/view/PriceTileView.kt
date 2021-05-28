@@ -8,8 +8,12 @@ import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewType
-import com.usacheow.coreui.utils.*
-import com.usacheow.coreui.utils.view.*
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.populate
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.toPx
 
 private const val SELECTED_STROKE_WIDTH_DP = 2
 private const val UNSELECTED_STROKE_WIDTH_DP = 0

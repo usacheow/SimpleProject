@@ -29,9 +29,8 @@ interface ResourcesWrapper {
     fun getAssets(): AssetManager
 }
 
-class ResourcesWrapperImpl
-@Inject constructor(
-    @ApplicationContext private val context: Context
+class ResourcesWrapperImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
 ) : ResourcesWrapper {
 
     override val get: Resources get() = context.resources

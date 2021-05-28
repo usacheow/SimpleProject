@@ -1,4 +1,5 @@
 apply from: "$project.rootDir/dependencies.gradle"
+apply from: "$project.rootDir/build_script/ktlint.gradle"
 
 ext {
 

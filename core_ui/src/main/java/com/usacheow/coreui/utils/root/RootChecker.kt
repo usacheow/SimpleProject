@@ -56,5 +56,4 @@ class SimpleRootChecker : RootChecker {
             process?.destroy()
         }
     }
-
 }

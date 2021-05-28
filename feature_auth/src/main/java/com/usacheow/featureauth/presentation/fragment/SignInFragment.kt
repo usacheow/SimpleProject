@@ -36,8 +36,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
         viewBindingProvider = FragmentSignInBinding::inflate,
     )
 
-    @Inject
-    lateinit var router: AuthorizationRouter
+    @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInViewModel>()
 

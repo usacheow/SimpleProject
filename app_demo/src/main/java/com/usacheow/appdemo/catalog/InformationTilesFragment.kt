@@ -10,7 +10,11 @@ import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.atom.DividerTileItem
 import com.usacheow.coreui.uikit.container.ViewTypeHorizontalListItem
-import com.usacheow.coreui.uikit.molecule.*
+import com.usacheow.coreui.uikit.molecule.BadgeTileItem
+import com.usacheow.coreui.uikit.molecule.BannerTileItem
+import com.usacheow.coreui.uikit.molecule.HeaderTileItem
+import com.usacheow.coreui.uikit.molecule.InformationTileItem
+import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
 import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
@@ -42,35 +46,63 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
         }
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
-            HeaderTileItem(TextString("Header")),
-            HeaderTileItem.shimmer(),
-            SubtitleTileItem(TextString("Subtitle"), TextString("With action"), {}),
-            SubtitleTileItem.shimmer(),
+        binding.widgetsListView.adapter = ViewTypesAdapter(
+            listOf(
+                HeaderTileItem(TextString("Header")),
+                HeaderTileItem.shimmer(),
+                SubtitleTileItem(TextString("Subtitle"), TextString("With action"), {}),
+                SubtitleTileItem.shimmer(),
 
-            DividerTileItem.getSmallDivider(),
+                DividerTileItem.getSmallDivider(),
 
-            InformationTileItem(
-                imageSource = ImageRes(R.drawable.demo_avatar),
-                additionalLeftText = TextString("City 17"),
-                additionalRightText = TextString("00/00/0000"),
-                mainLeftText = TextString("Gordon"),
-                mainRightText = TextString("(000) 000-00-00"),
-            ),
+                InformationTileItem(
+                    imageSource = ImageRes(R.drawable.demo_avatar),
+                    additionalLeftText = TextString("City 17"),
+                    additionalRightText = TextString("00/00/0000"),
+                    mainLeftText = TextString("Gordon"),
+                    mainRightText = TextString("(000) 000-00-00"),
+                ),
 
-            DividerTileItem.getSmallDivider(),
+                DividerTileItem.getSmallDivider(),
 
-            ViewTypeHorizontalListItem(listOf(
-                BadgeTileItem.shimmer(),
-                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Clickable"), clickListener = {}),
-                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Non-clickable"), backgroundColorRes = R.color.colorPrimary, textColorRes = R.color.white),
-                BadgeTileItem(needAdaptWidth = true, header = TextString("Badge"), value = TextString("Clickable"), backgroundColorRes = R.color.error, textColorRes = R.color.white, clickListener = {}),
-            )),
+                ViewTypeHorizontalListItem(
+                    listOf(
+                        BadgeTileItem.shimmer(),
+                        BadgeTileItem(
+                            needAdaptWidth = true,
+                            header = TextString("Badge"),
+                            value = TextString("Clickable"),
+                            clickListener = {},
+                        ),
+                        BadgeTileItem(
+                            needAdaptWidth = true,
+                            header = TextString("Badge"),
+                            value = TextString("Non-clickable"),
+                            backgroundColorRes = R.color.colorPrimary,
+                            textColorRes = R.color.white,
+                        ),
+                        BadgeTileItem(
+                            needAdaptWidth = true,
+                            header = TextString("Badge"),
+                            value = TextString("Clickable"),
+                            backgroundColorRes = R.color.error,
+                            textColorRes = R.color.white,
+                            clickListener = {},
+                        ),
+                    )
+                ),
 
-            ViewTypeHorizontalListItem(listOf(
-                BannerTileItem.shimmer(),
-                BannerTileItem(text = TextString("Some text on two lines"), icon = ImageRes(R.drawable.demo_avatar), clickListener = {}),
-            )),
-        ))
+                ViewTypeHorizontalListItem(
+                    listOf(
+                        BannerTileItem.shimmer(),
+                        BannerTileItem(
+                            text = TextString("Some text on two lines"),
+                            icon = ImageRes(R.drawable.demo_avatar),
+                            clickListener = {},
+                        ),
+                    )
+                ),
+            )
+        )
     }
 }

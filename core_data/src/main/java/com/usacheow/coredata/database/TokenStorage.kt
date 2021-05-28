@@ -10,9 +10,8 @@ import javax.inject.Singleton
 private const val PREF_TOKEN = "PREF_TOKEN"
 
 @Singleton
-class TokenStorage
-@Inject constructor(
-    @ApplicationContext private val context: Context
+class TokenStorage @Inject constructor(
+    @ApplicationContext private val context: Context,
 ) {
 
     private val preferenceManager by lazy {

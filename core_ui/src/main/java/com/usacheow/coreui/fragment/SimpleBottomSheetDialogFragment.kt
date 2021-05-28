@@ -17,8 +17,8 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
+import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.utils.view.toPx
 
 abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :

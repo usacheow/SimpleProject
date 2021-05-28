@@ -1,6 +1,5 @@
 package com.usacheow.coredata
 
-import com.usacheow.coredata.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

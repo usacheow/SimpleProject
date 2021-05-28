@@ -10,8 +10,6 @@ import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
-import com.usacheow.coreui.utils.MarginTop
-import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.navigation
 
@@ -19,7 +17,7 @@ class SimpleAppBarLayout
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyle: Int = 0
+    defStyle: Int = 0,
 ) : AppBarLayout(context, attrs, defStyle) {
 
     var title: String

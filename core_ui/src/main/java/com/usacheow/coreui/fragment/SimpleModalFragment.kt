@@ -11,8 +11,8 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.ViewBindingDelegate
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
+import com.usacheow.coreui.delegate.ViewBindingDelegate
 
 abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     DialogFragment(),

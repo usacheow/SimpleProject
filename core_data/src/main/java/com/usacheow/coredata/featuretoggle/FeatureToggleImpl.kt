@@ -2,9 +2,8 @@ package com.usacheow.coredata.featuretoggle
 
 import javax.inject.Inject
 
-class FeatureToggleImpl
-@Inject constructor(
-    private val featureToggleStorage: FeatureToggleStorage
+class FeatureToggleImpl @Inject constructor(
+    private val featureToggleStorage: FeatureToggleStorage,
 ) : EditableFeatureToggle {
 
     override fun enable(features: List<Feature>) = save(Feature.values().toList(), features)

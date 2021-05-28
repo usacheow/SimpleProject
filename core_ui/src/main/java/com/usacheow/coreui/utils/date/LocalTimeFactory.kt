@@ -1,6 +1,5 @@
 package com.usacheow.coreui.utils.date
 
-import com.usacheow.coreui.utils.values.LOCALE
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException

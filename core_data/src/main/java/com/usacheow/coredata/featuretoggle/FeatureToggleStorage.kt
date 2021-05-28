@@ -7,9 +7,8 @@ import javax.inject.Inject
 
 private const val SETTINGS_NAME = "FeatureToggleImpl"
 
-class FeatureToggleStorage
-@Inject constructor(
-    @ApplicationContext context: Context
+class FeatureToggleStorage @Inject constructor(
+    @ApplicationContext context: Context,
 ) {
 
     private val preferences = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE)

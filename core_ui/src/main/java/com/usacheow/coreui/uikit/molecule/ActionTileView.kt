@@ -9,8 +9,15 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewActionTileBinding
-import com.usacheow.coreui.utils.*
-import com.usacheow.coreui.utils.view.*
+import com.usacheow.coreui.utils.EmptyInfo
+import com.usacheow.coreui.utils.IconInfo
+import com.usacheow.coreui.utils.ImageInfo
+import com.usacheow.coreui.utils.TextInfo
+import com.usacheow.coreui.utils.apply
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.makeGone
+import com.usacheow.coreui.utils.view.makeVisible
+import com.usacheow.coreui.utils.view.toPx
 
 private const val ICON_PADDING_DP = 4
 private const val DEFAULT_PADDING_DP = 0
@@ -19,7 +26,7 @@ class ActionTileView
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleAttr), Populatable<ActionTileItem> {
 
     private val binding by lazy { ViewActionTileBinding.bind(this) }
@@ -57,7 +64,7 @@ class ActionTileView
         }
     }
 
-    private  fun ImageView.updatePadding(imageInfo: ImageInfo) {
+    private fun ImageView.updatePadding(imageInfo: ImageInfo) {
         val padding = when (imageInfo) {
             is IconInfo -> ICON_PADDING_DP
             else -> DEFAULT_PADDING_DP

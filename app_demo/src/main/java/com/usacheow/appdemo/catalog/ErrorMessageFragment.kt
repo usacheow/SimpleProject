@@ -13,7 +13,6 @@ import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
-import com.usacheow.coreui.utils.view.toPx
 
 class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
@@ -39,27 +38,35 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
             }
         }
 
-        binding.errorMessageView1.showOrHideError(MessageBannerItem(
-            title = TextString("Error title"),
-            description = TextString("Error description"),
-        ))
-        binding.errorMessageView2.showOrHideError(MessageBannerItem(
-            title = TextString("Error title"),
-            description = TextString("Error description"),
-            button = TextRes(R.string.repeat),
-            clickListener = {},
-        ))
-        binding.errorMessageView3.showOrHideError(MessageBannerItem(
-            icon = ImageRes(R.drawable.demo_avatar),
-            title = TextString("Error title"),
-            description = TextString("Error description"),
-        ))
-        binding.errorMessageView4.showOrHideError(MessageBannerItem(
-            icon = ImageRes(R.drawable.demo_avatar),
-            title = TextString("Error title"),
-            description = TextString("Error description"),
-            button = TextRes(R.string.repeat),
-            clickListener = {},
-        ))
+        binding.errorMessageView1.showOrHideError(
+            MessageBannerItem(
+                title = TextString("Error title"),
+                description = TextString("Error description"),
+            )
+        )
+        binding.errorMessageView2.showOrHideError(
+            MessageBannerItem(
+                title = TextString("Error title"),
+                description = TextString("Error description"),
+                button = TextRes(R.string.repeat),
+                clickListener = {},
+            )
+        )
+        binding.errorMessageView3.showOrHideError(
+            MessageBannerItem(
+                icon = ImageRes(R.drawable.demo_avatar),
+                title = TextString("Error title"),
+                description = TextString("Error description"),
+            )
+        )
+        binding.errorMessageView4.showOrHideError(
+            MessageBannerItem(
+                icon = ImageRes(R.drawable.demo_avatar),
+                title = TextString("Error title"),
+                description = TextString("Error description"),
+                button = TextRes(R.string.repeat),
+                clickListener = {},
+            )
+        )
     }
 }

@@ -5,7 +5,12 @@ import android.animation.AnimatorListenerAdapter
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.transition.*
+import androidx.transition.AutoTransition
+import androidx.transition.ChangeBounds
+import androidx.transition.Fade
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 
 private const val ANIMATION_DURATION = 100L
 

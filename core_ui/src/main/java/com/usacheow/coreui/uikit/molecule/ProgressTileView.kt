@@ -12,9 +12,11 @@ import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.databinding.ViewProgressTileBinding
 import com.usacheow.coreui.utils.view.color
 
-class ProgressTileView
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr), Populatable<ProgressTileItem> {
+class ProgressTileView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : FrameLayout(context, attrs, defStyleAttr), Populatable<ProgressTileItem> {
 
     private val binding by lazy { ViewProgressTileBinding.inflate(LayoutInflater.from(context), this, true) }
 

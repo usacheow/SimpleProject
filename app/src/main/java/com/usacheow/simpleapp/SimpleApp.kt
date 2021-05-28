@@ -3,10 +3,10 @@ package com.usacheow.simpleapp
 import android.app.Application
 import com.usacheow.appstate.provider.NetworkStateProvider
 import com.usacheow.appstate.provider.PurchaseStateProvider
+import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Tracker
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

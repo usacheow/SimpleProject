@@ -12,9 +12,11 @@ import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.toPx
 
-class SimpleButton
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : MaterialButton(context, attrs, defStyleAttr), Populatable<SimpleButtonItem> {
+class SimpleButton @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : MaterialButton(context, attrs, defStyleAttr), Populatable<SimpleButtonItem> {
 
     override fun populate(model: SimpleButtonItem) {
         text = model.text

@@ -8,7 +8,7 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewShimmerTileBinding
-import com.usacheow.coreui.utils.view.*
+import com.usacheow.coreui.utils.view.setShimmer
 
 class ShimmerTileView
 @JvmOverloads constructor(

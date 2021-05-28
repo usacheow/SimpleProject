@@ -41,26 +41,30 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
         binding.radioListView.isNestedScrollingEnabled = false
         binding.radioListView.layoutManager = GridLayoutManager(context, 2)
-        binding.radioListView.adapter = SingleSelectionViewTypesAdapter(listOf(
-            TagTileItem(TextString("Radio tag 1")) {},
-            TagTileItem(TextString("Radio tag 2")) {},
-            TagTileItem(TextString("Radio tag 3")) {},
-            TagTileItem(TextString("Radio tag 4")) {},
-            TagTileItem(TextString("Radio tag 5")) {},
-            TagTileItem(TextString("Radio tag 6")) {},
-            TagTileItem(TextString("Radio tag 7")) {},
-        ))
+        binding.radioListView.adapter = SingleSelectionViewTypesAdapter(
+            listOf(
+                TagTileItem(TextString("Radio tag 1")) {},
+                TagTileItem(TextString("Radio tag 2")) {},
+                TagTileItem(TextString("Radio tag 3")) {},
+                TagTileItem(TextString("Radio tag 4")) {},
+                TagTileItem(TextString("Radio tag 5")) {},
+                TagTileItem(TextString("Radio tag 6")) {},
+                TagTileItem(TextString("Radio tag 7")) {},
+            )
+        )
 
         binding.chipListView.isNestedScrollingEnabled = false
         binding.chipListView.layoutManager = GridLayoutManager(context, 2)
-        binding.chipListView.adapter = MultipleSelectionViewTypesAdapter(listOf(
-            TagTileItem(TextString("Chip tag 1")) {},
-            TagTileItem(TextString("Chip tag 2")) {},
-            TagTileItem(TextString("Chip tag 3")) {},
-            TagTileItem(TextString("Chip tag 4")) {},
-            TagTileItem(TextString("Chip tag 5")) {},
-            TagTileItem(TextString("Chip tag 6")) {},
-            TagTileItem(TextString("Chip tag 7")) {},
-        ))
+        binding.chipListView.adapter = MultipleSelectionViewTypesAdapter(
+            listOf(
+                TagTileItem(TextString("Chip tag 1")) {},
+                TagTileItem(TextString("Chip tag 2")) {},
+                TagTileItem(TextString("Chip tag 3")) {},
+                TagTileItem(TextString("Chip tag 4")) {},
+                TagTileItem(TextString("Chip tag 5")) {},
+                TagTileItem(TextString("Chip tag 6")) {},
+                TagTileItem(TextString("Chip tag 7")) {},
+            )
+        )
     }
 }

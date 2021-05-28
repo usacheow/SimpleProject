@@ -32,7 +32,7 @@ class PinCodeViewModel @Inject constructor(
         )
     }
 
-    //TODO: stub
+    // TODO: stub
     private suspend fun verifyPinCode(inputtedPinCode: String) = inputtedPinCode == userDataStorage.pinCodeFlow.first()
 }
 

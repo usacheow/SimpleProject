@@ -2,8 +2,8 @@ package com.usacheow.appdemo.catalog
 
 import android.os.Bundle
 import com.usacheow.appdemo.R
-import com.usacheow.coreui.fragment.SimpleModalFragment
 import com.usacheow.appdemo.databinding.FragmentExampleModalBinding
+import com.usacheow.coreui.fragment.SimpleModalFragment
 import com.usacheow.coreui.utils.view.navigation
 
 class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {

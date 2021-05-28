@@ -1,6 +1,5 @@
 package com.usacheow.coreui.utils.date
 
-import com.usacheow.coreui.utils.values.LOCALE
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

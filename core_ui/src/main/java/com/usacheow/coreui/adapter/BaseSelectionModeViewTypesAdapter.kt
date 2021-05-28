@@ -8,7 +8,7 @@ import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewType
 
 abstract class BaseSelectionModeViewTypesAdapter(
-    protected var entities: List<TagViewType> = emptyList()
+    protected var entities: List<TagViewType> = emptyList(),
 ) : RecyclerView.Adapter<BaseSelectionModeViewTypesAdapter.BaseSelectionModeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSelectionModeViewHolder {
@@ -32,5 +32,4 @@ abstract class BaseSelectionModeViewTypesAdapter(
             (itemView as Populatable<TagViewType>).populate(model)
         }
     }
-
 }

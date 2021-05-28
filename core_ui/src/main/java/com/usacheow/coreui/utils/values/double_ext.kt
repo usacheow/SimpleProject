@@ -1,5 +1,6 @@
 package com.usacheow.coreui.utils.values
 
+import com.usacheow.coreui.utils.date.RU_LOCALE
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.NumberFormat

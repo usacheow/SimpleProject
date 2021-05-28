@@ -1,7 +1,6 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment

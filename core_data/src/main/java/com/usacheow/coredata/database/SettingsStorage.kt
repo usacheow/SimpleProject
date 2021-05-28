@@ -11,9 +11,8 @@ private const val PREF_UI_MODE = "PREF_UI_MODE"
 private const val PREF_ALLOW_FINGERPRINT = "PREF_ALLOW_FINGERPRINT"
 
 @Singleton
-class SettingsStorage
-@Inject constructor(
-    @ApplicationContext private val context: Context
+class SettingsStorage @Inject constructor(
+    @ApplicationContext private val context: Context,
 ) {
 
     private val preferenceManager by lazy {

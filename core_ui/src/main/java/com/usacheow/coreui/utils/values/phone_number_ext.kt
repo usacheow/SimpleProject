@@ -5,7 +5,7 @@ import android.telephony.PhoneNumberUtils
 private const val EXPECTED_PHONE_NUMBER_LENGTH = 11
 
 fun String.normalizedPhoneNumber(): String {
-    var phoneNumber = filter { it.isDigit() }/*.substringAfter("7")*/
+    var phoneNumber = filter { it.isDigit() } /*.substringAfter("7")*/
     phoneNumber = when {
         this.length == EXPECTED_PHONE_NUMBER_LENGTH && this.first() == '8' -> phoneNumber.replaceFirst('8', '7')
         else -> phoneNumber

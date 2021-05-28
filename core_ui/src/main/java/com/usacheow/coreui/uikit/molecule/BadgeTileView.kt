@@ -9,12 +9,17 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
-import com.usacheow.coreui.utils.*
-import com.usacheow.coreui.utils.view.*
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.populate
+import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.resize
 
 class BadgeTileView
 @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : MaterialCardView(context, attrs, defStyleAttr), Populatable<BadgeTileItem> {
 
     private val binding by lazy { ViewBadgeTileBinding.bind(this) }

@@ -3,7 +3,7 @@ package com.usacheow.coreui.adapter
 import com.usacheow.coreui.adapter.base.TagViewType
 
 class MultipleSelectionViewTypesAdapter(
-    entities: List<TagViewType> = emptyList()
+    entities: List<TagViewType> = emptyList(),
 ) : BaseSelectionModeViewTypesAdapter(entities) {
 
     init {
@@ -28,5 +28,4 @@ class MultipleSelectionViewTypesAdapter(
         prepareItems()
         notifyDataSetChanged()
     }
-
 }

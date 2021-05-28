@@ -12,7 +12,9 @@ import com.usacheow.coreui.databinding.ViewTypeHorizontalListViewBinding
 
 class ViewTypeHorizontalListView
 @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr), Populatable<ViewTypeHorizontalListItem> {
 
     private val binding by lazy { ViewTypeHorizontalListViewBinding.bind(this) }

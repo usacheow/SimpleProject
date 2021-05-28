@@ -8,8 +8,13 @@ import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.uikit.molecule.*
-import com.usacheow.coreui.utils.*
+import com.usacheow.coreui.uikit.molecule.ActionSelectionType
+import com.usacheow.coreui.uikit.molecule.ActionTileItem
+import com.usacheow.coreui.utils.IconInfo
+import com.usacheow.coreui.utils.ImageRes
+import com.usacheow.coreui.utils.LogoInfo
+import com.usacheow.coreui.utils.TextInfo
+import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -39,35 +44,37 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
         }
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewTypesAdapter(listOf(
-            ActionTileItem(
-                title = TextInfo(TextString("Title")),
-            ),
+        binding.widgetsListView.adapter = ViewTypesAdapter(
+            listOf(
+                ActionTileItem(
+                    title = TextInfo(TextString("Title")),
+                ),
 
-            ActionTileItem(
-                title = TextInfo(TextString("Title")),
-                subtitle = TextInfo(TextString("Subtitle")),
-                selectionType = ActionSelectionType.SWITCH,
-            ),
+                ActionTileItem(
+                    title = TextInfo(TextString("Title")),
+                    subtitle = TextInfo(TextString("Subtitle")),
+                    selectionType = ActionSelectionType.SWITCH,
+                ),
 
-            ActionTileItem(
-                image = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextInfo(TextString("Title")),
-                subtitle = TextInfo(TextString("Subtitle")),
-                selectionType = ActionSelectionType.CHECK_BOX,
-                clickListener = {},
-            ),
+                ActionTileItem(
+                    image = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    title = TextInfo(TextString("Title")),
+                    subtitle = TextInfo(TextString("Subtitle")),
+                    selectionType = ActionSelectionType.CHECK_BOX,
+                    clickListener = {},
+                ),
 
-            ActionTileItem(
-                image = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                title = TextInfo(TextString("Title")),
-                subtitle = TextInfo(TextString("Subtitle")),
-                selectionType = ActionSelectionType.SWITCH,
-                isChecked = true,
-                clickListener = {},
-            ),
+                ActionTileItem(
+                    image = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
+                    title = TextInfo(TextString("Title")),
+                    subtitle = TextInfo(TextString("Subtitle")),
+                    selectionType = ActionSelectionType.SWITCH,
+                    isChecked = true,
+                    clickListener = {},
+                ),
 
-            ActionTileItem.shimmer(),
-        ))
+                ActionTileItem.shimmer(),
+            )
+        )
     }
 }

@@ -6,7 +6,6 @@ import androidx.lifecycle.lifecycleScope
 import com.usacheow.apptest.databinding.FragmentCoroutinesBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 

@@ -37,8 +37,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInByPhoneBinding>() {
         viewBindingProvider = FragmentSignInByPhoneBinding::inflate,
     )
 
-    @Inject
-    lateinit var router: AuthorizationRouter
+    @Inject lateinit var router: AuthorizationRouter
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInWithPhoneViewModel>()
     private val smsCodeViewModel by viewModels<SmsCodeViewModel>()

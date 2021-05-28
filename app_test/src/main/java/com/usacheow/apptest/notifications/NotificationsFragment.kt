@@ -116,8 +116,8 @@ class ServiceImpl : Service() {
                 )
             }
 
-            //вызовется onDestroy
-            //stopSelf()
+            // вызовется onDestroy
+            // stopSelf()
         }
 
         return START_STICKY
@@ -138,11 +138,10 @@ class ServiceImpl : Service() {
         Log.d(LOG_TAG, "onBind")
         return null
     }
-
 }
 
-//не подразумевалось, что их можно остановить вручную
-//class IntentServiceImpl : IntentService("IntentServiceImpl") {
+// не подразумевалось, что их можно остановить вручную
+// class IntentServiceImpl : IntentService("IntentServiceImpl") {
 //
 //    private val notificationHelper by lazy { NotificationHelper(this) }
 //
@@ -176,7 +175,7 @@ class ServiceImpl : Service() {
 //        return null
 //    }
 //
-//}
+// }
 
 class JobServiceImpl : JobService() {
 
@@ -190,26 +189,25 @@ class JobServiceImpl : JobService() {
         super.onDestroy()
     }
 
-    //вызывается, когда настало условие для выполнения
+    // вызывается, когда настало условие для выполнения
     override fun onStartJob(params: JobParameters?): Boolean {
 
         val intent = Intent(this, ServiceImpl::class.java)
         startService(intent)
 
-        return true //true - если делегировали выполнение в другой поток
-        //false - если всю работу уже выполнили
+        return true // true - если делегировали выполнение в другой поток
+        // false - если всю работу уже выполнили
     }
 
-    //вызывается, когда условия перестали выполняться или время на выполнение истекло
+    // вызывается, когда условия перестали выполняться или время на выполнение истекло
     override fun onStopJob(params: JobParameters?): Boolean {
 
         val intent = Intent(this, ServiceImpl::class.java)
         stopService(intent)
 
-        return false //false - удалится из очереди, если не была периодической
-        //true - задача снова попадёт в очередь на выполнением
+        return false // false - удалится из очереди, если не была периодической
+        // true - задача снова попадёт в очередь на выполнением
     }
-
 }
 
 class JobIntentServiceImpl : JobIntentService() {
@@ -247,5 +245,4 @@ class JobIntentServiceImpl : JobIntentService() {
         Log.d(LOG_TAG, "onDestroy")
         super.onDestroy()
     }
-
 }

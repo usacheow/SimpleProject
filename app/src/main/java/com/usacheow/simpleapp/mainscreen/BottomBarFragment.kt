@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.max
 
 @AndroidEntryPoint
-class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>(),
+class BottomBarFragment :
+    SimpleFragment<FragmentBottomBarBinding>(),
     MultiStackHistoryManager.OnSectionChangedListener {
 
     override val params = Params(

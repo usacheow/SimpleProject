@@ -1,7 +1,6 @@
 package com.usacheow.appdemo.catalog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding

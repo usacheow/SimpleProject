@@ -1,0 +1,6 @@
+# http://editorconfig.org
+root = true
+
+[{*.kt, *.kts}]
+#Ktlint configuration
+insert_final_newline = false

@@ -11,9 +11,11 @@ import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.doOnClick
 
-class SubtitleTileView
-@JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0)
-    : LinearLayout(context, attributeSet, defStyleAttr), Populatable<SubtitleTileItem> {
+class SubtitleTileView @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : LinearLayout(context, attributeSet, defStyleAttr), Populatable<SubtitleTileItem> {
 
     private val binding by lazy { ViewSubtitleTileBinding.bind(this) }
 

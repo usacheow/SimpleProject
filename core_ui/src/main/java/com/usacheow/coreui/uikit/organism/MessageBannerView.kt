@@ -16,7 +16,9 @@ import com.usacheow.coreui.utils.view.string
 
 class MessageBannerView
 @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val binding by lazy { ViewErrorMessageBinding.inflate(LayoutInflater.from(context), this, true) }

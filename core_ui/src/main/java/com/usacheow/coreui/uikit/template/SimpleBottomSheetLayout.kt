@@ -15,7 +15,9 @@ import com.usacheow.coreui.utils.view.dimen
 import com.usacheow.coreui.utils.view.toPx
 
 class SimpleBottomSheetLayout @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     val isExpanded: Boolean
@@ -99,5 +101,4 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
         HALF_SIZE(0.5f),
         QUARTER_SIZE(0.25f)
     }
-
 }

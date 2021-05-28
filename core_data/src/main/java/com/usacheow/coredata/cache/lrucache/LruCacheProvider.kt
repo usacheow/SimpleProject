@@ -6,8 +6,7 @@ import javax.inject.Inject
 
 private const val DEFAULT_SIZE_CACHE = 16
 
-class LruCacheProvider
-@Inject constructor() : CacheProvider {
+class LruCacheProvider @Inject constructor() : CacheProvider {
 
     private val persisterMap = Collections.synchronizedMap(mutableMapOf<Class<*>, LruCachePersister<*>>())
 

@@ -2,7 +2,6 @@ package com.usacheow.coreui.utils.biometric
 
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
-import androidx.biometric.auth.AuthPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 
@@ -22,7 +21,7 @@ open class BiometricManagerWrapper {
     }
 
     companion object {
-        //from BiometricPrompt.BiometricError
+        // from BiometricPrompt.BiometricError
         const val ERROR_LOCKOUT = 7
         const val ERROR_LOCKOUT_PERMANENT = 9
     }
@@ -73,9 +72,7 @@ open class BiometricManagerWrapper {
             super.onAuthenticationFailed()
             onFailed()
         }
-
     }
-
 }
 
 data class BiometricData(

@@ -1,12 +1,10 @@
 package com.usacheow.coreui.analytics
 
 import android.app.Application
-import androidx.core.os.bundleOf
 import com.google.firebase.analytics.FirebaseAnalytics
 import javax.inject.Inject
 
-class AnalyticsTracker
-@Inject constructor(
+class AnalyticsTracker @Inject constructor(
     private val application: Application,
 ) : Tracker {
 

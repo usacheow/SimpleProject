@@ -5,8 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import com.usacheow.coreui.R
 import javax.inject.Inject
 
-open class BiometricEnterManager
-@Inject constructor() : BiometricManagerWrapper() {
+open class BiometricEnterManager @Inject constructor() : BiometricManagerWrapper() {
 
     var onSuccessAction: (List<Int>) -> Unit = {}
     var onUnavailableAction: () -> Unit = {}
@@ -49,5 +48,4 @@ open class BiometricEnterManager
             onUnavailableAction.invoke()
         }
     }
-
 }
