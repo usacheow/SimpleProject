@@ -19,6 +19,7 @@ ext {
     module.configure(module) {
       apply plugin: 'kotlin-android'
       apply plugin: 'kotlin-kapt'
+      apply plugin: "androidx.navigation.safeargs.kotlin"
 
       android {
 
@@ -71,7 +72,7 @@ ext {
       implementation daggerDependency
       kapt kaptDaggerDependency
 
-      implementation daggerViewModelDependency
+      implementation daggerJetpackDependency.values()
       kapt kaptDaggerViewModelDependency
       kaptAndroidTest kaptDaggerViewModelDependency
     }

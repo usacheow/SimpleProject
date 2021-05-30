@@ -27,7 +27,10 @@ ext {
 
     daggerDependency = "com.google.dagger:hilt-android:$hiltVersion"
     kaptDaggerDependency = "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    daggerViewModelDependency = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    daggerJetpackDependency = [
+//            viewModel:      "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion",
+            navigation:     "androidx.hilt:hilt-navigation-fragment:$hiltJetpackVersion",
+    ]
     kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
     coreLibraryDesugaringVersion = "1.1.1"
@@ -52,6 +55,11 @@ ext {
             viewmodel:      "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02",
     ]
 
+    navigationDependencies = [
+            navigation:     "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUi:   "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+    ]
+
     roundedImageVersion = '2.3.0'
     decoroVersion = '1.5.0'
     shimmerVersion = '0.5.0'
@@ -61,7 +69,7 @@ ext {
             decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
             pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
-    ]
+    ] << navigationDependencies
 
     fragmentVersion = '1.3.4'
     materialVersion = '1.3.0'
