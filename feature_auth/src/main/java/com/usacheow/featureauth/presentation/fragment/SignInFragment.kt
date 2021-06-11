@@ -40,10 +40,6 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInViewModel>()
 
-    companion object {
-        fun newInstance() = SignInFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         val topMargin = when (insets.isImeVisible()) {
             true -> 0

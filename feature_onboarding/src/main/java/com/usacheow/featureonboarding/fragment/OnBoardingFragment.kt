@@ -31,10 +31,6 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
     )
     private val adapter = ViewTypesAdapter(onBoardingData)
 
-    companion object {
-        fun newInstance() = OnBoardingFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.root.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset())
         return insets

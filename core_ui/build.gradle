@@ -15,5 +15,5 @@ dependencies {
     implementation browserDependency
 
     implementation glideDependency
-    kapt kaprGlideDependency
+    kapt kaptGlideDependency
 }

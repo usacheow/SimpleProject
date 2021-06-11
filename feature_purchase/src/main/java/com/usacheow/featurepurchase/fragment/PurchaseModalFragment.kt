@@ -48,10 +48,6 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
         )
     )
 
-    companion object {
-        fun newInstance() = PurchaseModalFragment()
-    }
-
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.closeButton.doOnClick { dismiss() }
 

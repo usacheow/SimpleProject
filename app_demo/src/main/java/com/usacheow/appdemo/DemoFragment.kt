@@ -3,23 +3,10 @@ package com.usacheow.appdemo
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.usacheow.appdemo.catalog.ActionTilesFragment
-import com.usacheow.appdemo.catalog.ButtonsFragment
-import com.usacheow.appdemo.catalog.ErrorMessageFragment
-import com.usacheow.appdemo.catalog.ExampleBottomDialogFragment
-import com.usacheow.appdemo.catalog.ExampleModalFragment
-import com.usacheow.appdemo.catalog.FontsFragment
-import com.usacheow.appdemo.catalog.InformationTilesFragment
-import com.usacheow.appdemo.catalog.ListTilesFragment
-import com.usacheow.appdemo.catalog.NumPadFragment
-import com.usacheow.appdemo.catalog.TagListFragment
-import com.usacheow.appdemo.catalog.TextInputsFragment
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
-import com.usacheow.appstate.otp.SmsCodeModalFragment
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
@@ -30,15 +17,15 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.toPx
-import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
-import com.usacheow.featureauth.presentation.fragment.SignInFragment
-import com.usacheow.featureauth.presentation.fragment.SignInWithPhoneFragment
-import com.usacheow.featureauth.presentation.fragment.SignUpFragment
-import com.usacheow.featureonboarding.fragment.OnBoardingFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
+@AndroidEntryPoint
 class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
+
+    @Inject lateinit var router: DemoRouter
 
     override val params = Params(
         viewBindingProvider = FragmentDemoBinding::inflate,
@@ -69,19 +56,19 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("atom"),
                     value = TextString("1. Fonts"),
-                    clickListener = { show(FontsFragment.newInstance()) },
+                    clickListener = { router.openFontsScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("atom"),
                     value = TextString("2. Buttons"),
-                    clickListener = { show(ButtonsFragment.newInstance()) },
+                    clickListener = { router.openButtonsScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("atom"),
                     value = TextString("3. Text Inputs"),
-                    clickListener = { show(TextInputsFragment.newInstance()) },
+                    clickListener = { router.openTextInputsScreen() },
                 ),
 
                 HeaderTileItem(TextString("Molecules")),
@@ -89,25 +76,25 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("molecule"),
                     value = TextString("1. Action Tiles"),
-                    clickListener = { show(ActionTilesFragment.newInstance()) },
+                    clickListener = { router.openActionTilesScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("molecule"),
                     value = TextString("2. List Tiles"),
-                    clickListener = { show(ListTilesFragment.newInstance()) },
+                    clickListener = { router.openListTilesScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("molecule"),
                     value = TextString("3. Tag Lists"),
-                    clickListener = { show(TagListFragment.newInstance()) },
+                    clickListener = { router.openTagListScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("molecule"),
                     value = TextString("4. Information Tiles"),
-                    clickListener = { show(InformationTilesFragment.newInstance()) },
+                    clickListener = { router.openInformationTilesScreen() },
                 ),
 
                 HeaderTileItem(TextString("Organisms")),
@@ -115,13 +102,13 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("organism"),
                     value = TextString("1. Error Message View"),
-                    clickListener = { show(ErrorMessageFragment.newInstance()) },
+                    clickListener = { router.openErrorMessageScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("organism"),
                     value = TextString("2. Num Pad View"),
-                    clickListener = { show(NumPadFragment.newInstance()) },
+                    clickListener = { router.openNumPadScreen() },
                 ),
 
                 HeaderTileItem(TextString("Templates")),
@@ -135,9 +122,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("template"),
                     value = TextString("2. Bottom Dialog"),
-                    clickListener = {
-                        ExampleBottomDialogFragment.newInstance().show(childFragmentManager, "BOTTOM_FRAGMENT")
-                    },
+                    clickListener = { router.openExampleBottomDialogScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
@@ -149,17 +134,13 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("template"),
                     value = TextString("4. Modal Fragment"),
-                    clickListener = { ExampleModalFragment.newInstance().show(childFragmentManager, "MODAL_FRAGMENT") },
+                    clickListener = { router.openExampleModalScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("template"),
                     value = TextString("5. Onboarding Fragment"),
-                    clickListener = {
-                        show(
-                            OnBoardingFragment.newInstance()
-                        )
-                    },
+                    clickListener = { router.openOnBoardingScreen() },
                 ),
 
                 HeaderTileItem(TextString("Pages")),
@@ -167,31 +148,31 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextString("page"),
                     value = TextString("1. SMS Code Fragment"),
-                    clickListener = { SmsCodeModalFragment.newInstance(4).show(childFragmentManager, "SMS_CODE") },
+                    clickListener = { router.openSmsCodeScreen(codeLength = 2) },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("page"),
                     value = TextString("2. Sign Up Fragment"),
-                    clickListener = { show(SignUpFragment.newInstance()) },
+                    clickListener = { router.openSignUpScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("page"),
                     value = TextString("3. Sign In Fragment"),
-                    clickListener = { show(SignInFragment.newInstance()) },
+                    clickListener = { router.openSignInScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("page"),
                     value = TextString("4. Sign In With Phone Fragment"),
-                    clickListener = { show(SignInWithPhoneFragment.newInstance()) },
+                    clickListener = { router.openSignInWithPhoneScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextString("page"),
                     value = TextString("5. Pin Code Fragment"),
-                    clickListener = { show(PinCodeFragment.newInstance()) },
+                    clickListener = { router.openPinCodeScreen() },
                 ),
             )
         )
@@ -232,10 +213,6 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 binding.listView.alpha = 1 - it
             }
         )
-    }
-
-    private fun show(fragment: Fragment) {
-        getContainer { navigateTo(fragment) }
     }
 
     private fun showMaterialDialog() {

@@ -3,6 +3,8 @@ package com.usacheow.featuremain.presentation.fragment
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
@@ -23,7 +25,7 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
         viewBindingProvider = FragmentBBinding::inflate,
     )
 
-    private val aViewModel by viewModels<AViewModel>({ requireParentFragment() })
+    private val aViewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
     private val bViewModel by viewModels<BViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -32,10 +34,9 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        bViewModel.x++
         binding.header.root.apply {
-            title = "B Fragment ${aViewModel.x} ${bViewModel.x}"
-            setNavigationAction(R.drawable.ic_back) { activity?.onBackPressed() }
+            title = "B Fragment ${aViewModel.x} ${bViewModel.itemNumber}"
+            setNavigationAction(R.drawable.ic_back) { requireActivity().onBackPressed() }
         }
 
         binding.listView.layoutManager = LinearLayoutManager(context)
@@ -64,6 +65,5 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     }
 
     private fun openNextScreen() {
-//        getContainer { show() }
     }
 }

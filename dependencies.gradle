@@ -10,8 +10,8 @@ ext {
             kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
             coroutinesAndroid:  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
             coroutinesCore:     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-//            fix:                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-//            guava:              "com.google.guava:guava:27.0.1-android",
+            fix:                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+            guava:              "com.google.guava:guava:27.0.1-android",
     ]
 
     androidxVersion = '1.3.0'
@@ -28,7 +28,6 @@ ext {
     daggerDependency = "com.google.dagger:hilt-android:$hiltVersion"
     kaptDaggerDependency = "com.google.dagger:hilt-android-compiler:$hiltVersion"
     daggerJetpackDependency = [
-//            viewModel:      "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion",
             navigation:     "androidx.hilt:hilt-navigation-fragment:$hiltJetpackVersion",
     ]
     kaptDaggerViewModelDependency = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
@@ -69,7 +68,7 @@ ext {
             decoro:          "ru.tinkoff.decoro:decoro:$decoroVersion",
             shimmer:         "com.facebook.shimmer:shimmer:$shimmerVersion",
             pageIndicator:   "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
-    ] << navigationDependencies
+    ]
 
     fragmentVersion = '1.3.4'
     materialVersion = '1.3.0'
@@ -129,7 +128,7 @@ ext {
 
     glideVersion = '4.12.0'
     glideDependency = "com.github.bumptech.glide:glide:$glideVersion"
-    kaprGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
+    kaptGlideDependency = "com.github.bumptech.glide:compiler:$glideVersion"
 
     dataStoreVersion = '1.0.0-beta01'
     dataStoreDependency = "androidx.datastore:datastore-preferences:$dataStoreVersion"
@@ -137,7 +136,7 @@ ext {
     preferenceVersion = '1.1.1'
     preferenceDependency = "androidx.preference:preference-ktx:$preferenceVersion"
 
-    roomVersion = '2.2.6'
+    roomVersion = '2.3.0'
     roomDependencies = [
             room:           "androidx.room:room-runtime:$roomVersion",
             roomKtx:        "androidx.room:room-ktx:$roomVersion",

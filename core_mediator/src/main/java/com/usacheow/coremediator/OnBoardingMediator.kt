@@ -1,8 +1,8 @@
 package com.usacheow.coremediator
 
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 
 interface OnBoardingMediator {
 
-    fun getOnBoardingScreen(): Fragment
+    fun getOnBoardingFlowDirection(): NavDirections
 }

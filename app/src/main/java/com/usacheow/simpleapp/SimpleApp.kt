@@ -11,6 +11,7 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 
 @HiltAndroidApp
 class SimpleApp : Application(), ApplicationCoroutineScopeHolder {
@@ -26,7 +27,7 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder {
 
     @Inject lateinit var networkStateProvider: NetworkStateProvider
 
-    override val applicationScope = CoroutineScope(SupervisorJob())
+    override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreate() {
         super.onCreate()

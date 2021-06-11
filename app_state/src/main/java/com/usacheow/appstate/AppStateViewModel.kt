@@ -9,6 +9,10 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @HiltViewModel
 class AppStateViewModel @Inject constructor(
@@ -29,7 +33,10 @@ class AppStateViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _openAppScreenAction.send(SimpleAction)
+            when (storage.isFirstEntryFlow.first()) {
+                true -> _openOnBoardingScreenAction.send(SimpleAction)
+                false -> _openAppScreenAction.send(SimpleAction)
+            }
         }
     }
 

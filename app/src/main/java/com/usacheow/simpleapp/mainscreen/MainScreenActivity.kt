@@ -1,35 +1,50 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.annotation.IdRes
+import androidx.annotation.NavigationRes
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import com.usacheow.appstate.AppStateViewModel
-import com.usacheow.coreui.R
+import com.usacheow.coremediator.FeatureNavDirection
 import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.base.Container
-import com.usacheow.coreui.databinding.FragmentContainerBinding
-import com.usacheow.coreui.delegate.ContainerDelegate
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
-import com.usacheow.featureauth.presentation.fragment.AuthContainerFragment
-import com.usacheow.featureauth.presentation.fragment.PinCodeFragment
-import com.usacheow.featureonboarding.fragment.OnBoardingFragment
+import com.usacheow.simpleapp.R
+import com.usacheow.simpleapp.databinding.ActivityHostBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container {
+class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
     override val params = Params(
-        viewBindingProvider = FragmentContainerBinding::inflate,
+        viewBindingProvider = ActivityHostBinding::inflate,
     )
 
     private val appStateViewModel by viewModels<AppStateViewModel>()
-    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
 
     private var isKeyboardVisible = false
+    private val resetNavigationOptions = NavOptions.Builder()
+        .setPopUpTo(R.id.main_nav_graph, true)
+        .setLaunchSingleTop(true)
+        .build()
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (isKeyboardVisible) {
+                windowInsetsController?.hideIme()
+            } else {
+                isEnabled = false
+                onBackPressed()
+                isEnabled = true
+            }
+        }
+    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.isImeVisible()
@@ -39,48 +54,27 @@ class MainScreenActivity : SimpleActivity<FragmentContainerBinding>(), Container
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     override fun subscribe() {
         appStateViewModel.openAuthScreenAction.observe(lifecycle) {
-            navigateTo(AuthContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
+            navigateTo(R.navigation.sign_in_with_phone_nav_graph)
         }
-
         appStateViewModel.openPinScreenAction.observe(lifecycle) {
-            navigateTo(PinCodeFragment.newInstance(), false)
+            navigateTo(R.navigation.pin_code_nav_graph)
         }
-
         appStateViewModel.openOnBoardingScreenAction.observe(lifecycle) {
-            navigateTo(OnBoardingFragment.newInstance(), false)
+            navigateTo(R.navigation.on_boarding_nav_graph)
         }
-
         appStateViewModel.openAppScreenAction.observe(lifecycle) {
-            navigateTo(BottomBarFragment.newInstance(), false)
+            navigateTo(R.navigation.main_nav_graph)
         }
     }
 
-    override fun navigateTo(
-        fragment: Fragment,
-        needAddToBackStack: Boolean,
-        needAnimate: Boolean,
-        needReplace: Boolean,
-    ) {
-        containerDelegate.navigateTo(supportFragmentManager, fragment, needAddToBackStack, needAnimate, needReplace)
-    }
-
-    override fun resetContainer() {
-        containerDelegate.resetContainer(supportFragmentManager)
-    }
-
-    override fun closeContainer() {
-        finish()
-    }
-
-    override fun onBackPressed() {
-        if (isKeyboardVisible) {
-            windowInsetsController?.hideIme()
-        } else if (!containerDelegate.onBackPressed(supportFragmentManager)) {
-            finish()
-        }
+    private fun navigateTo(@NavigationRes id: Int) {
+        findNavController(R.id.fragmentContainer).setGraph(id)
+//        findNavController(R.id.fragmentContainer).navigate(FeatureNavDirection(id), resetNavigationOptions)
     }
 }
