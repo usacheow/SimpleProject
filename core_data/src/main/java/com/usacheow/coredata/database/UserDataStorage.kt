@@ -18,7 +18,6 @@ private val PREF_NAME = stringPreferencesKey("PREF_NAME")
 private val PREF_PHONE = stringPreferencesKey("PREF_PHONE")
 private val PREF_PIN_CODE = stringPreferencesKey("PREF_PIN_CODE")
 private val PREF_IS_PAYED = booleanPreferencesKey("PREF_IS_PAYED")
-private val PREF_IS_FIRST_ENTRY = booleanPreferencesKey("PREF_IS_FIRST_ENTRY")
 
 @Singleton
 class UserDataStorage @Inject constructor(
@@ -45,11 +44,6 @@ class UserDataStorage @Inject constructor(
     val isPayedVersionFlow: Flow<Boolean?> get() = get(PREF_IS_PAYED)
     suspend fun setPayedVersion(value: Boolean) {
         set(PREF_IS_PAYED, value)
-    }
-
-    val isFirstEntryFlow: Flow<Boolean?> get() = get(PREF_IS_FIRST_ENTRY)
-    suspend fun setFirstEntry(value: Boolean) {
-        set(PREF_IS_FIRST_ENTRY, value)
     }
 
     private fun <T> get(key: Preferences.Key<T>) = context.dataStore.data.map { it[key] }

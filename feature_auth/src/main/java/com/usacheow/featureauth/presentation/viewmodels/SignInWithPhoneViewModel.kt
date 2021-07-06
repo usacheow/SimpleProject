@@ -5,6 +5,9 @@ import com.usacheow.coredata.network.doOnError
 import com.usacheow.coredata.network.doOnSuccess
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.SimpleAction
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.values.isPhoneNumberValid
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
@@ -16,7 +19,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val EXPECTED_PHONE_NUMBER_LENGTH = 10
 private const val CONFIRM_CODE_LENGTH = 4
 
 @HiltViewModel
@@ -25,7 +27,7 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
 ) : SimpleViewModel() {
 
-    private val _codeConfirmMessageState = MutableStateFlow("")
+    private val _codeConfirmMessageState = MutableStateFlow<TextSource?>(null)
     val codeConfirmMessageState = _codeConfirmMessageState.asStateFlow()
 
     private val _isSubmitButtonEnabledState = MutableStateFlow(false)
@@ -37,8 +39,11 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val _errorState = MutableStateFlow<String?>(null)
     val errorState = _errorState.asStateFlow()
 
-    private val _closeScreenAction = Channel<SimpleAction>()
-    val closeScreenAction = _closeScreenAction.receiveAsFlow()
+    private val _closeSmsCodeScreenAction = Channel<SimpleAction>()
+    val closeSmsCodeScreenAction = _closeSmsCodeScreenAction.receiveAsFlow()
+
+    private val _closeAuthFlowAction = Channel<SimpleAction>()
+    val closeAuthFlowAction = _closeAuthFlowAction.receiveAsFlow()
 
     private val _openSignUpScreenAction = Channel<SimpleAction>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
@@ -49,10 +54,8 @@ class SignInWithPhoneViewModel @Inject constructor(
     private var phoneNumber = ""
 
     fun onPhoneChanged(phone: String) {
-        _isSubmitButtonEnabledState.value = isValidPhoneNumber(phone.normalizedPhoneNumber())
+        _isSubmitButtonEnabledState.value = phone.isPhoneNumberValid()
     }
-
-    private fun isValidPhoneNumber(phone: String) = phone.length == EXPECTED_PHONE_NUMBER_LENGTH
 
     fun onSubmitClicked(phone: String) {
         sendPhoneNumberIfValid(phone)
@@ -64,7 +67,7 @@ class SignInWithPhoneViewModel @Inject constructor(
 
     private fun sendPhoneNumberIfValid(phone: String) = viewModelScope.launch {
         phoneNumber = phone.normalizedPhoneNumber()
-        if (!isValidPhoneNumber(phoneNumber)) {
+        if (!phoneNumber.isPhoneNumberValid()) {
             return@launch
         }
 
@@ -88,15 +91,12 @@ class SignInWithPhoneViewModel @Inject constructor(
             return@launch
         }
 
-        _isLoadingState.emit(true)
-
         interactor.verifyPhone(phoneNumber, code).doOnSuccess {
-            _closeScreenAction.send(SimpleAction)
+            _closeSmsCodeScreenAction.send(SimpleAction)
+            _closeAuthFlowAction.send(SimpleAction)
         }.doOnError {
-            _codeConfirmMessageState.emit("Неверный код")
+            _codeConfirmMessageState.emit(TextString("Неверный код"))
         }
-
-        _isLoadingState.emit(false)
     }
 
     fun onResendClicked() = viewModelScope.launch {

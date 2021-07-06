@@ -15,7 +15,6 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.BackListener
-import com.usacheow.coreui.base.Container
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.delegate.ViewBindingDelegate
@@ -26,7 +25,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     Fragment(),
     SimpleLifecycle,
     ApplyWindowInsets,
-    BackListener,
     ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
 
     protected abstract val params: Params<VIEW_BINDING>
@@ -69,7 +67,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        processArguments(arguments)
         view.doOnApplyWindowInsets(::onApplyWindowInsets)
         setupViews(savedInstanceState)
         subscribe()
@@ -80,13 +77,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
         clearViews()
         clearBinding()
         super.onDestroyView()
-    }
-
-    fun getContainer(action: Container.() -> Unit) {
-        val container = parentFragment ?: activity
-        if (container is Container) {
-            container.action()
-        }
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(

@@ -85,7 +85,6 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        processArguments(arguments)
         setupViews(savedInstanceState)
         subscribe()
     }

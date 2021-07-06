@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingHorizontal="8dp"
+        tools:listitem="@layout/view_list_tile"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout

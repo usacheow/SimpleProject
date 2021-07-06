@@ -32,7 +32,6 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
-        <item name="fontFamily">@font/custom_font</item>
         <item name="textAppearanceHeadline1">@style/TextH1</item>
         <item name="textAppearanceHeadline2">@style/TextH2</item>
         <item name="textAppearanceHeadline3">@style/TextH3</item>
@@ -91,7 +90,7 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
-        <item name="fontFamily">@font/custom_font</item>
+        <item name="fontFamily">@font/default_font_family</item>
         <item name="textAppearanceHeadline1">@style/TextH1</item>
         <item name="textAppearanceHeadline2">@style/TextH2</item>
         <item name="textAppearanceHeadline3">@style/TextH3</item>

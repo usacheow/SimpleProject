@@ -1,10 +1,14 @@
 package com.usacheow.coremediator
 
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 
 interface AuthorizationMediator {
 
-    fun getAuthContainerFragment(): Fragment
+    fun getPinCodeFlowDirection(): NavDirections
 
-    fun getPinCodeFragment(): Fragment
+    fun getSignInFlowDirection(): NavDirections
+
+    fun getSignInWithPhoneFlowDirection(): NavDirections
+
+    fun getSignUpFlowDirection(): NavDirections
 }

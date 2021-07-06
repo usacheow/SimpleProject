@@ -19,45 +19,44 @@ fun Effect<*>.toCompletableResult() = when (this) {
     }
 }
 
-inline fun <T : Any, R : Any> Effect<T>.mapWhenSuccess(block: Effect.Success<T>.() -> Effect<R>): Effect<R> = try {
-    when (this) {
-        is Effect.Success<T> -> this.block()
+inline fun <IN : Any, OUT : Any> Effect<IN>.mapEffect(
+    onSuccess: Effect.Success<IN>.() -> OUT,
+    noinline onError: Effect.Error.() -> OUT,
+): OUT = when (this) {
+    is Effect.Success<IN> -> this.onSuccess()
 
-        is Effect.Error -> Effect.Error(exception)
-    }
-} catch (e: Exception) {
-    Effect.Error(ApiError.DataMappingException())
+    is Effect.Error -> this.onError()
 }
 
-inline fun <T : Any> Effect<T>.mapWhenError(block: Effect.Error.() -> Effect<T>): Effect<T> = try {
-    when (this) {
-        is Effect.Error -> this.block()
+inline fun <IN : Any, OUT : Any> Effect<IN>.mapSuccessEffect(
+    block: Effect.Success<IN>.() -> Effect<OUT>,
+): Effect<OUT> = when (this) {
+    is Effect.Success<IN> -> this.block()
 
-        is Effect.Success<T> -> this
-    }
-} catch (e: Exception) {
-    Effect.Error(ApiError.DataMappingException())
+    is Effect.Error -> Effect.Error(exception)
 }
 
-inline fun <T : Any, R : Any> Effect<T>.changeDataWhenSuccess(block: T.() -> R): Effect<R> = try {
-    when (this) {
-        is Effect.Success<T> -> Effect.Success(this.data.block())
+inline fun <IN : Any> Effect<IN>.mapErrorEffect(block: Effect.Error.() -> Effect<IN>): Effect<IN> = when (this) {
+    is Effect.Error -> this.block()
 
-        is Effect.Error -> Effect.Error(exception)
-    }
-} catch (e: Exception) {
-    Effect.Error(ApiError.DataMappingException())
+    is Effect.Success<IN> -> this
 }
 
-inline fun <T : Any> Effect<T>.doOnSuccess(block: Effect.Success<T>.() -> Unit): Effect<T> {
-    if (this is Effect.Success<T>) {
+inline fun <IN : Any, OUT : Any> Effect<IN>.mapSuccessEffectData(block: IN.() -> OUT): Effect<OUT> = when (this) {
+    is Effect.Success<IN> -> Effect.Success(this.data.block())
+
+    is Effect.Error -> Effect.Error(exception)
+}
+
+inline fun <IN : Any> Effect<IN>.doOnSuccess(block: Effect.Success<IN>.() -> Unit): Effect<IN> {
+    if (this is Effect.Success<IN>) {
         this.block()
     }
 
     return this
 }
 
-inline fun <T : Any> Effect<T>.doOnError(block: Effect.Error.() -> Unit): Effect<T> {
+inline fun <IN : Any> Effect<IN>.doOnError(block: Effect.Error.() -> Unit): Effect<IN> {
     if (this is Effect.Error) {
         this.block()
     }
@@ -65,14 +64,14 @@ inline fun <T : Any> Effect<T>.doOnError(block: Effect.Error.() -> Unit): Effect
     return this
 }
 
-fun <T : Any> Effect<T>.getDataIfSuccess(): T? {
-    if (this is Effect.Success<T>) {
+fun <IN : Any> Effect<IN>.getDataIfSuccess(): IN? {
+    if (this is Effect.Success<IN>) {
         return data
     }
 
     return null
 }
 
-fun <T : Any> T.toSuccessEffect(): Effect.Success<T> {
+fun <IN : Any> IN.toSuccessEffect(): Effect.Success<IN> {
     return Effect.Success(this)
 }

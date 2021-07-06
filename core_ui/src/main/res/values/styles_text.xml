@@ -4,60 +4,70 @@
         <item name="android:textSize">@dimen/text_28sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextH2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextH3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextH4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textSize">@dimen/text_20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.025</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textSize">@dimen/text_20sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextH6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textSize">@dimen/text_18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.0075</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.009</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.007</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextBody1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.03125</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextBody2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.017</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextButton" parent="TextAppearance.MaterialComponents.Button">
@@ -65,12 +75,14 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.09</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextCaption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.03</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextOverline" parent="TextAppearance.MaterialComponents.Overline">
@@ -78,17 +90,20 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.15</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextDigital" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.015</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
     <style name="TextNumPad" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">@dimen/text_36sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/default_font_family</item>
     </style>
 
 </resources>

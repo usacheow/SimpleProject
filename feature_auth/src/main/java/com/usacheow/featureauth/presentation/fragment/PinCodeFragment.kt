@@ -34,10 +34,6 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<PinCodeViewModel>()
 
-    companion object {
-        fun newInstance() = PinCodeFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.pinCodeRootView.updatePadding(
             top = insets.getTopInset() + padding.top,

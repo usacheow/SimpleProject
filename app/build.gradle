@@ -56,6 +56,7 @@ dependencies {
     implementation project(':feature_auth')
     implementation project(':feature_onboarding')
     implementation project(':feature_purchase')
+    implementation project(':feature_otp')
 
     implementation firebaseDependencies.values()
 }

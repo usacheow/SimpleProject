@@ -19,7 +19,7 @@ ext {
     module.configure(module) {
       apply plugin: 'kotlin-android'
       apply plugin: 'kotlin-kapt'
-      apply plugin: "androidx.navigation.safeargs.kotlin"
+      apply plugin: 'androidx.navigation.safeargs.kotlin'
 
       android {
 
@@ -60,6 +60,8 @@ ext {
 
       implementation fileTree(include: ['*.jar'], dir: 'libs')
       implementation kotlinDependencies.values()
+
+      implementation navigationDependencies.values()
     }
   }
 
@@ -74,7 +76,6 @@ ext {
 
       implementation daggerJetpackDependency.values()
       kapt kaptDaggerViewModelDependency
-      kaptAndroidTest kaptDaggerViewModelDependency
     }
   }
 
@@ -99,5 +100,4 @@ ext {
       androidTestImplementation uiTestDependencies.values()
     }
   }
-
 }

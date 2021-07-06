@@ -1,8 +1,10 @@
 package com.usacheow.coremediator
 
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 
 interface MainMediator {
 
-    fun getHelloContainer(): Fragment
+    fun getAFlowDirection(): NavDirections
+
+    fun getMockFlowDirection(): NavDirections
 }

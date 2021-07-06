@@ -61,9 +61,6 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
         super.onDestroy()
     }
 
-    // do nothing
-    override fun processArguments(bundle: Bundle?) = Unit
-
     data class Params<VIEW_BINDING : ViewBinding>(
         var needTransparentBars: Boolean = false,
         val viewBindingProvider: (LayoutInflater) -> VIEW_BINDING,

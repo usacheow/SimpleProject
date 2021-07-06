@@ -40,10 +40,6 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignUpViewModel>()
 
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         val topMargin = when (insets.isImeVisible()) {
             true -> 0
@@ -88,7 +84,7 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
             // todo: implement
         }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signUpButton.isEnabled = it }
-        viewModel.openMainScreenAction.observe(lifecycle) { appStateViewModel.onSignUp() }
+        viewModel.openMainScreenAction.observe(lifecycle) { appStateViewModel.onSignedUp() }
     }
 
     private fun getLoginAndPassword() =

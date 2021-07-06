@@ -2,7 +2,7 @@
 
 Starter project with functional modules on the next stack:
 + kotlin, coroutines
-+ mvvm, hilt, view binding
++ mvvm, hilt, view binding, navigation component
 + retrofit 2, gson, glide, room
 + junit, espresso
 + gitlab ci
@@ -10,15 +10,11 @@ Starter project with functional modules on the next stack:
 ## Has the following features
 
 #### 1. Single Activity
-BottomBarHistoryManager is responsible for working with one or more stacks of fragments on a Single Activity. 
+BottomBarFragment is responsible for working with one or more stacks of fragments on a Single Activity. 
 Each stack contains a fragment that implements ContainerFragment.
 
-ContainerFragment is responsible for displaying fragments within itself. ContainerFragment.navigateTo(...) replaces 
-the current fragment with a new one.
-
 The remaining fragments are recommended to inherit from SimpleFragment, which provides a convenient way 
-to initialize the fragment. Through the SimpleFragment.getContainer(...) method, you can access the parent container 
-that contains the current one
+to initialize the fragment.
 
 #### 2. Custom views and screens and resources for light/night mode
 The project contains custom elements and screen templates. 
@@ -36,7 +32,7 @@ Based on FirebaseRemoteConfig
 + FeatureToggle check flag status
 
 #### 5. Billing
-Based on Checkout lib. 
+Based on Billing 3.0. 
 BillingWrapper encapsulates the interaction with the library and is responsible for working with purchases
 
 #### 6. Analytics

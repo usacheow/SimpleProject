@@ -1,7 +1,7 @@
 package com.usacheow.appstate
 
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coredata.database.UserDataStorage
+import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppStateViewModel @Inject constructor(
-    private val storage: UserDataStorage,
+    private val storage: SettingsStorage,
 ) : SimpleViewModel() {
 
     private val _openOnBoardingScreenAction = Channel<SimpleAction>()
@@ -29,12 +29,15 @@ class AppStateViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _openAppScreenAction.send(SimpleAction)
+            when {
+                storage.isFirstEntry -> _openOnBoardingScreenAction.send(SimpleAction)
+                else -> _openAppScreenAction.send(SimpleAction)
+            }
         }
     }
 
     fun onOnBoardingFinished() = viewModelScope.launch {
-        storage.setFirstEntry(false)
+        storage.isFirstEntry = false
         _openAppScreenAction.send(SimpleAction)
     }
 
@@ -42,15 +45,15 @@ class AppStateViewModel @Inject constructor(
         _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignIn() = viewModelScope.launch {
+    fun onSignedIn() = viewModelScope.launch {
         _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignUp() = viewModelScope.launch {
+    fun onSignedUp() = viewModelScope.launch {
         _openAppScreenAction.send(SimpleAction)
     }
 
-    fun onSignOut() = viewModelScope.launch {
+    fun onSignedOut() = viewModelScope.launch {
         _openAuthScreenAction.send(SimpleAction)
     }
 }

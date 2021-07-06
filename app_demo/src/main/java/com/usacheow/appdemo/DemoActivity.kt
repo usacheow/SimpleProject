@@ -1,28 +1,48 @@
 package com.usacheow.appdemo
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
+import androidx.annotation.IdRes
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import com.usacheow.coreui.R
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import com.usacheow.appdemo.databinding.ActivityHostBinding
+import com.usacheow.appstate.AppStateViewModel
+import com.usacheow.coremediator.FeatureNavDirection
 import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.base.Container
-import com.usacheow.coreui.databinding.FragmentContainerBinding
-import com.usacheow.coreui.delegate.ContainerDelegate
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
+class DemoActivity : SimpleActivity<ActivityHostBinding>() {
 
     override val params = Params(
-        viewBindingProvider = FragmentContainerBinding::inflate,
+        viewBindingProvider = ActivityHostBinding::inflate,
     )
 
-    private val containerDelegate by lazy { ContainerDelegate(javaClass.simpleName) }
+    private val appStateViewModel by viewModels<AppStateViewModel>()
 
     private var isKeyboardVisible = false
+    private val resetNavigationOptions = NavOptions.Builder()
+        .setPopUpTo(R.id.demo_app_nav_graph, true)
+        .setLaunchSingleTop(true)
+        .build()
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (isKeyboardVisible) {
+                windowInsetsController?.hideIme()
+            } else {
+                isEnabled = false
+                onBackPressed()
+                isEnabled = true
+            }
+        }
+    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.isImeVisible()
@@ -33,33 +53,25 @@ class DemoActivity : SimpleActivity<FragmentContainerBinding>(), Container {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-        if (supportFragmentManager.fragments.size == 0) {
-            navigateTo(DemoContainerFragment.newInstance(), needAddToBackStack = false, needAnimate = false)
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    override fun subscribe() {
+        appStateViewModel.openAuthScreenAction.observe(lifecycle) {
+            navigateTo(R.id.sign_in_with_phone_nav_graph)
+        }
+        appStateViewModel.openPinScreenAction.observe(lifecycle) {
+            navigateTo(R.id.pin_code_nav_graph)
+        }
+        appStateViewModel.openOnBoardingScreenAction.observe(lifecycle) {
+            navigateTo(R.id.on_boarding_nav_graph)
+        }
+        appStateViewModel.openAppScreenAction.observe(lifecycle) {
+            navigateTo(R.id.main_nav_graph)
         }
     }
 
-    override fun navigateTo(
-        fragment: Fragment,
-        needAddToBackStack: Boolean,
-        needAnimate: Boolean,
-        needReplace: Boolean,
-    ) {
-        containerDelegate.navigateTo(supportFragmentManager, fragment, needAddToBackStack, needAnimate, needReplace)
-    }
-
-    override fun resetContainer() {
-        containerDelegate.resetContainer(supportFragmentManager)
-    }
-
-    override fun closeContainer() {
-        finish()
-    }
-
-    override fun onBackPressed() {
-        if (isKeyboardVisible) {
-            windowInsetsController?.hideIme()
-        } else if (!containerDelegate.onBackPressed(supportFragmentManager)) {
-            finish()
-        }
+    private fun navigateTo(@IdRes id: Int) {
+        findNavController(R.id.fragmentContainer).navigate(FeatureNavDirection(id), resetNavigationOptions)
     }
 }
