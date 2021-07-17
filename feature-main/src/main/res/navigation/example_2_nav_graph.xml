@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/example_2_nav_graph"
+    app:startDestination="@id/mock2Fragment">
+
+    <fragment
+        android:id="@+id/mock2Fragment"
+        android:name="com.usacheow.featuremain.presentation.fragment.Mock2Fragment"
+        android:label="Mock2Fragment"
+        tools:layout="@layout/fragment_mock"/>
+</navigation>

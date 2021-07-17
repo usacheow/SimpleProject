@@ -9,7 +9,7 @@ Starter project with functional modules on the next stack:
 
 ## Has the following features
 
-#### 1. Single Activity
+#### 1. Single Activity with Navigation Component
 BottomBarFragment is responsible for working with one or more stacks of fragments on a Single Activity. 
 Each stack contains a fragment that implements ContainerFragment.
 

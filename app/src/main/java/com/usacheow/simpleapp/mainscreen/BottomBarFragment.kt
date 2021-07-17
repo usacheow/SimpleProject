@@ -1,10 +1,12 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
@@ -22,6 +24,16 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
         viewBindingProvider = FragmentBottomBarBinding::inflate,
     )
 
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            isEnabled = navController.popBackStack()
+        }
+    }
+
+    private val navController by lazy {
+        (childFragmentManager.findFragmentById(R.id.bottomBarContainerLayout) as NavHostFragment).navController
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.appBottomBar.updatePadding(bottom = insets.getBottomInset())
 
@@ -31,26 +43,17 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
             insets.getInsets(WindowInsetsCompat.Type.ime()).right,
             max(insets.getInsets(WindowInsetsCompat.Type.ime()).bottom - binding.appBottomBar.height, 0),
         )
-        return WindowInsetsCompat.Builder(insets)
-            .setInsets(WindowInsetsCompat.Type.ime(), imeInset)
-            .build()
+        return WindowInsetsCompat.Builder(insets).setInsets(WindowInsetsCompat.Type.ime(), imeInset).build()
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
+        binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
-        binding.appBottomBar.setOnNavigationItemReselectedListener {
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
             windowInsetsController?.hideIme()
-        }
-        binding.appBottomBar.setOnNavigationItemSelectedListener { menuItem ->
-            windowInsetsController?.hideIme()
-            val position = AppScreenSections.indexOf(menuItem.itemId)
-            true
+            onBackPressedCallback.isEnabled = binding.appBottomBar.selectedItemId != R.id.main_nav_graph
         }
     }
 }
-
-private val AppScreenSections = listOf(
-    R.id.action_example_1,
-    R.id.action_example_2,
-    R.id.action_example_3,
-)

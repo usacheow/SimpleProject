@@ -1,3 +1,0 @@
-include ':app', ':app_state', ':app_demo', ':app_test'
-include ':core_data', ':core_ui', ':core_mediator', ':core_unit_test', ':core_billing'
-include ':feature_auth', ':feature_main', ':feature_onboarding', ':feature_purchase', ':feature_otp'

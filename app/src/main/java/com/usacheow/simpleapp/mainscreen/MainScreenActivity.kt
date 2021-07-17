@@ -3,11 +3,8 @@ package com.usacheow.simpleapp.mainscreen
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.annotation.IdRes
-import androidx.annotation.NavigationRes
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavDirections
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coremediator.AuthorizationMediator
@@ -15,6 +12,7 @@ import com.usacheow.coremediator.FeatureNavDirection
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coreui.activity.SimpleActivity
+import com.usacheow.coreui.utils.navigation.resetNavOptions
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
@@ -38,10 +36,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
     private val appStateViewModel by viewModels<AppStateViewModel>()
 
     private var isKeyboardVisible = false
-    private val resetNavigationOptions = NavOptions.Builder()
-        .setPopUpTo(R.id.app_nav_graph, true)
-        .setLaunchSingleTop(true)
-        .build()
+    private val resetNavigationOptions = resetNavOptions(to = R.id.app_nav_graph)
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -78,7 +73,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
             navigateTo(onBoardingMediator.getOnBoardingFlowDirection())
         }
         appStateViewModel.openAppScreenAction.observe(lifecycle) {
-            navigateTo(mainMediator.getAFlowDirection())
+            navigateTo(FeatureNavDirection(R.id.bottomBarFragment))
         }
     }
 

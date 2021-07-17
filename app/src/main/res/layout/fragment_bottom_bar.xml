@@ -7,10 +7,13 @@
     android:orientation="vertical">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/appContainerLayout"
+        android:id="@+id/bottomBarContainerLayout"
+        android:name="com.usacheow.coreui.fragment.NavHostWithDefaultAnimationsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/bottom_bar_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/appBottomBar"

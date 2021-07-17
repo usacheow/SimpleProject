@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sms_code_nav_graph"
+    app:startDestination="@id/smsCodeModalFragment">
+    <action
+        android:id="@+id/action_to_smsCodeModalFragment"
+        app:destination="@id/smsCodeModalFragment"/>
+    <dialog
+        android:id="@+id/smsCodeModalFragment"
+        android:name="com.usacheow.featureotp.SmsCodeModalFragment"
+        android:label="SmsCodeModalFragment"
+        tools:layout="@layout/fragment_sms_code" >
+        <argument
+            android:name="codeLength"
+            app:argType="integer" />
+    </dialog>
+</navigation>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/thin"
+        app:fontStyle="normal"
+        app:fontWeight="100" />
+    <font
+        app:font="@font/thin_italic"
+        app:fontStyle="italic"
+        app:fontWeight="100" />
+
+
+    <font
+        app:font="@font/light"
+        app:fontStyle="normal"
+        app:fontWeight="200" />
+    <font
+        app:font="@font/light_italic"
+        app:fontStyle="italic"
+        app:fontWeight="200" />
+    <font
+        app:font="@font/light"
+        app:fontStyle="normal"
+        app:fontWeight="300" />
+    <font
+        app:font="@font/light_italic"
+        app:fontStyle="italic"
+        app:fontWeight="300" />
+
+
+    <font
+        app:font="@font/regular"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+    <font
+        app:font="@font/italic"
+        app:fontStyle="italic"
+        app:fontWeight="400" />
+
+
+    <font
+        app:font="@font/medium"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+    <font
+        app:font="@font/medium_italic"
+        app:fontStyle="italic"
+        app:fontWeight="500" />
+    <font
+        app:font="@font/medium"
+        app:fontStyle="normal"
+        app:fontWeight="600" />
+    <font
+        app:font="@font/medium_italic"
+        app:fontStyle="italic"
+        app:fontWeight="600" />
+
+
+    <font
+        app:font="@font/bold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+    <font
+        app:font="@font/bold_italic"
+        app:fontStyle="italic"
+        app:fontWeight="700" />
+
+
+    <font
+        app:font="@font/black"
+        app:fontStyle="normal"
+        app:fontWeight="800" />
+    <font
+        app:font="@font/black_italic"
+        app:fontStyle="italic"
+        app:fontWeight="800" />
+    <font
+        app:font="@font/black"
+        app:fontStyle="normal"
+        app:fontWeight="900" />
+    <font
+        app:font="@font/black_italic"
+        app:fontStyle="italic"
+        app:fontWeight="900" />
+</font-family>

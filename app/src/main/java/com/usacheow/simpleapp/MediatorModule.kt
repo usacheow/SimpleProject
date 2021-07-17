@@ -22,7 +22,7 @@ interface MediatorModule {
 
     @Binds
     @Singleton
-    fun helloMediator(mediator: MainMediatorImpl): MainMediator
+    fun mainMediator(mediator: MainMediatorImpl): MainMediator
 
     @Binds
     @Singleton

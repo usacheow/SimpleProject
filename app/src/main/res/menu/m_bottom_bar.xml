@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_example_1"
+        android:id="@+id/main_nav_graph"
         android:title="@string/example"
         android:icon="@drawable/ic_user" />
 
     <item
-        android:id="@+id/action_example_2"
+        android:id="@+id/example_1_nav_graph"
         android:title="@string/example"
         android:icon="@drawable/ic_user" />
 
     <item
-        android:id="@+id/action_example_3"
+        android:id="@+id/example_2_nav_graph"
         android:title="@string/example"
         android:icon="@drawable/ic_user" />
 </menu>
