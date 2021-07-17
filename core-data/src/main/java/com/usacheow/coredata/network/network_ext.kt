@@ -28,7 +28,7 @@ suspend inline fun <reified T : Any> cachedApiCall(
 
 suspend fun <T : Any> apiCall(
     dispatcher: CoroutineDispatcher,
-    block: suspend () -> Response<T>
+    block: suspend () -> Response<T>,
 ): Effect<T> = withContext(dispatcher) {
     try {
         block().handle()

@@ -2,26 +2,31 @@ package com.usacheow.coredata.network
 
 object Completable
 
-sealed class Effect<out T : Any> {
+sealed class State<out T : Any> {
+
+    data class Loading<out T : Any>(val data: T? = null) : State<T>()
+}
+
+sealed class Effect<out T : Any> : State<T>() {
 
     data class Success<out T : Any>(val data: T) : Effect<T>()
 
-    data class Error(val exception: ApiError) : Effect<Nothing>()
+    data class Error<out T : Any>(val exception: ApiError, val data: T? = null) : Effect<T>()
 }
 
 fun Effect<*>.toCompletableResult() = when (this) {
     is Effect.Success<*> -> Effect.Success(Completable)
 
-    is Effect.Error -> when (exception) {
+    is Effect.Error<*> -> when (exception) {
         is ApiError.EmptyResponseException -> Effect.Success(Completable)
 
-        else -> this
+        else -> Effect.Error(this.exception)
     }
 }
 
 inline fun <IN : Any, OUT : Any> Effect<IN>.mapEffect(
     onSuccess: Effect.Success<IN>.() -> OUT,
-    noinline onError: Effect.Error.() -> OUT,
+    onError: Effect.Error<IN>.() -> OUT,
 ): OUT = when (this) {
     is Effect.Success<IN> -> this.onSuccess()
 
@@ -36,7 +41,7 @@ inline fun <IN : Any, OUT : Any> Effect<IN>.mapSuccessEffect(
     is Effect.Error -> Effect.Error(exception)
 }
 
-inline fun <IN : Any> Effect<IN>.mapErrorEffect(block: Effect.Error.() -> Effect<IN>): Effect<IN> = when (this) {
+inline fun <IN : Any> Effect<IN>.mapErrorEffect(block: Effect.Error<IN>.() -> Effect<IN>): Effect<IN> = when (this) {
     is Effect.Error -> this.block()
 
     is Effect.Success<IN> -> this
@@ -56,7 +61,7 @@ inline fun <IN : Any> Effect<IN>.doOnSuccess(block: Effect.Success<IN>.() -> Uni
     return this
 }
 
-inline fun <IN : Any> Effect<IN>.doOnError(block: Effect.Error.() -> Unit): Effect<IN> {
+inline fun <IN : Any> Effect<IN>.doOnError(block: Effect.Error<IN>.() -> Unit): Effect<IN> {
     if (this is Effect.Error) {
         this.block()
     }
