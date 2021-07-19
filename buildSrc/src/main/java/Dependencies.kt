@@ -77,7 +77,7 @@ object Dependencies {
         }
 
         object Lifecycle {
-            private const val androidxLifecycleVersion = "2.4.0-alpha01"
+            private const val androidxLifecycleVersion = "2.4.0-alpha02"
             val impl = arrayOf("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion")
             const val kapt = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
         }
@@ -113,7 +113,6 @@ object Dependencies {
         }
 
         object Navigation {
-//            private const val navigationVersion = "2.3.5"
             private const val navigationVersion = "2.4.0-alpha04"
             val impl = arrayOf(
                 "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
@@ -139,8 +138,8 @@ object Dependencies {
         }
 
         object CameraX {
-            private const val cameraXVersion = "1.0.0-beta11"
-            private const val cameraXViewVersion = "1.0.0-alpha10"
+            private const val cameraXVersion = "1.0.0"
+            private const val cameraXViewVersion = "1.0.0-alpha26"
             val impl = arrayOf(
                 "androidx.camera:camera-core:$cameraXVersion",
                 "androidx.camera:camera-camera2:$cameraXVersion",
@@ -188,7 +187,7 @@ object Dependencies {
         }
 
         object DataStore {
-            private const val dataStoreVersion = "1.0.0-beta01"
+            private const val dataStoreVersion = "1.0.0-rc01"
             val impl = arrayOf("androidx.datastore:datastore-preferences:$dataStoreVersion")
         }
 
