@@ -3,12 +3,12 @@ object Dependencies {
     object General {
 
         object Gms {
-            private const val gmsVersion = "4.3.4"
-            const val path = "com.google.gms:google-services:$gmsVersion"
+            private const val version = "4.3.4"
+            const val path = "com.google.gms:google-services:$version"
         }
 
         object Gradle {
-            private const val buildToolsVersion = "7.0.0-beta05"
+            private const val buildToolsVersion = "7.0.0-rc01"
             val path = "com.android.tools.build:gradle:$buildToolsVersion"
 
             object Api {
@@ -17,21 +17,21 @@ object Dependencies {
         }
 
         object Kotlin {
-            private const val kotlinVersion = "1.5.21"
-            val impl = arrayOf("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-            const val path = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+            const val version = "1.5.21"
+            val impl = arrayOf("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version")
+            const val path = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
             object Coroutines {
-                private const val coroutinesVersion = "1.5.0"
+                private const val version = "1.5.0"
                 val impl = arrayOf(
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version",
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version",
                 )
             }
 
             object Lint {
-                private const val ktlintVersion = "3.4.5"
-                const val path = "org.jmailen.gradle:kotlinter-gradle:$ktlintVersion"
+                private const val version = "3.4.5"
+                const val path = "org.jmailen.gradle:kotlinter-gradle:$version"
                 const val plugin = "org.jmailen.kotlinter"
             }
 
@@ -112,6 +112,18 @@ object Dependencies {
             )
         }
 
+        object Compose {
+            const val version = "1.0.0-rc02"
+            val impl = arrayOf(
+                "androidx.compose.ui:ui:$version",
+                "androidx.compose.ui:ui-tooling:$version",
+                "androidx.compose.foundation:foundation:$version",
+                "androidx.compose.material:material:$version",
+                "androidx.compose.material:material-icons-core:$version",
+                "androidx.compose.material:material-icons-extended:$version",
+            )
+        }
+
         object Navigation {
             private const val navigationVersion = "2.4.0-alpha04"
             val impl = arrayOf(
@@ -123,7 +135,7 @@ object Dependencies {
         }
 
         object Billing {
-            private const val billingVersion = "3.0.0"
+            private const val billingVersion = "4.0.0"
             val impl = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         }
 

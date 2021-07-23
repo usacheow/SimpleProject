@@ -1,7 +1,7 @@
 package com.usacheow.featurepurchase.mapper
 
 import com.example.featurepurchase.R
-import com.usacheow.corebilling.billing.Product
+import com.usacheow.corebilling.model.Product
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.featurepurchase.view.PriceTileItem

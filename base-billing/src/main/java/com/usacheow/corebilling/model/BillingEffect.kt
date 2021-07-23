@@ -1,4 +1,4 @@
-package com.usacheow.corebilling.billing
+package com.usacheow.corebilling.model
 
 data class BillingEffect<T>(
     val status: BillingConnectionStatus,

@@ -1,4 +1,4 @@
-package com.usacheow.corebilling.billing
+package com.usacheow.corebilling.model
 
 import com.android.billingclient.api.BillingClient
 

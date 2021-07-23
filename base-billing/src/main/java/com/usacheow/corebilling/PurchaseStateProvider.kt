@@ -1,6 +1,5 @@
 package com.usacheow.corebilling
 
-import com.usacheow.corebilling.billing.SimpleBilling
 import com.usacheow.coredata.database.UserDataStorage
 import javax.inject.Inject
 import javax.inject.Singleton

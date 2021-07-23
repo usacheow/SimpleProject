@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.FragmentPurchaseBinding
-import com.usacheow.corebilling.billing.BillingRouter
+import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleModalFragment

@@ -31,6 +31,10 @@ gradlePlugin {
             id = "lifecycle-config"
             implementationClass = "plugin.LifecycleConfigPlugin"
         }
+        register("compose-config") {
+            id = "compose-config"
+            implementationClass = "plugin.ComposeConfigPlugin"
+        }
         register("room-config") {
             id = "room-config"
             implementationClass = "plugin.RoomConfigPlugin"
@@ -49,5 +53,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0-beta05")
+    implementation("com.android.tools.build:gradle:7.0.0-rc01")
 }

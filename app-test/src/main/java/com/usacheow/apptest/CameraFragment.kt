@@ -218,7 +218,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
                 try {
                     camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis)
                     addFocusControl()
-                    val surfaceProvider = binding.viewFinder.createSurfaceProvider(camera?.cameraInfo)
+                    val surfaceProvider = binding.viewFinder.surfaceProvider
                     preview?.setSurfaceProvider(surfaceProvider)
                 } catch (exc: Exception) {
                 }
