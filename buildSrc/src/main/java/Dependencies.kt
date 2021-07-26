@@ -3,25 +3,30 @@ object Dependencies {
     object General {
 
         object Gms {
+
             private const val version = "4.3.4"
             const val path = "com.google.gms:google-services:$version"
         }
 
         object Gradle {
+
             private const val buildToolsVersion = "7.0.0-rc01"
-            val path = "com.android.tools.build:gradle:$buildToolsVersion"
+            const val path = "com.android.tools.build:gradle:$buildToolsVersion"
 
             object Api {
-                val path = "com.android.tools.build:gradle-plugin.api:$buildToolsVersion"
+
+                const val path = "com.android.tools.build:gradle-plugin.api:$buildToolsVersion"
             }
         }
 
         object Kotlin {
+
             const val version = "1.5.21"
             val impl = arrayOf("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version")
             const val path = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
             object Coroutines {
+
                 private const val version = "1.5.0"
                 val impl = arrayOf(
                     "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version",
@@ -30,21 +35,25 @@ object Dependencies {
             }
 
             object Lint {
+
                 private const val version = "3.4.5"
                 const val path = "org.jmailen.gradle:kotlinter-gradle:$version"
                 const val plugin = "org.jmailen.kotlinter"
             }
 
             object Kapt {
+
                 const val plugin = "kotlin-kapt"
             }
 
             object Android {
+
                 const val plugin = "kotlin-android"
             }
         }
 
         object Guava {
+
             val impl = arrayOf(
                 "com.google.guava:guava:27.0.1-android",
                 "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
@@ -52,6 +61,7 @@ object Dependencies {
         }
 
         object Desugar {
+
             private const val coreLibraryDesugarVersion = "1.1.1"
             val impl = arrayOf("com.android.tools:desugar_jdk_libs:$coreLibraryDesugarVersion")
         }
@@ -60,14 +70,17 @@ object Dependencies {
     object Android {
 
         object App {
+
             const val plugin = "com.android.application"
         }
 
         object Library {
+
             const val plugin = "com.android.library"
         }
 
         object Core {
+
             private const val androidxVersion = "1.3.0"
             private const val androidxCoreVersion = "1.5.0"
             val impl = arrayOf(
@@ -77,12 +90,14 @@ object Dependencies {
         }
 
         object Lifecycle {
+
             private const val androidxLifecycleVersion = "2.4.0-alpha02"
             val impl = arrayOf("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion")
             const val kapt = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
         }
 
         object Ui {
+
             private const val fragmentVersion = "1.4.0-alpha04"
             private const val materialVersion = "1.3.0"
             private const val cardViewVersion = "1.0.0"
@@ -113,6 +128,7 @@ object Dependencies {
         }
 
         object Compose {
+
             const val version = "1.0.0-rc02"
             val impl = arrayOf(
                 "androidx.compose.ui:ui:$version",
@@ -125,7 +141,8 @@ object Dependencies {
         }
 
         object Navigation {
-            private const val navigationVersion = "2.4.0-alpha04"
+
+            private const val navigationVersion = "2.4.0-alpha05"
             val impl = arrayOf(
                 "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
                 "androidx.navigation:navigation-ui-ktx:$navigationVersion",
@@ -135,21 +152,25 @@ object Dependencies {
         }
 
         object Billing {
+
             private const val billingVersion = "4.0.0"
             val impl = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         }
 
         object Browser {
+
             private const val browserVersion = "1.0.0"
             val impl = arrayOf("androidx.browser:browser:$browserVersion")
         }
 
         object Biometric {
+
             private const val biometricVersion = "1.2.0-alpha03"
             val impl = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
         }
 
         object CameraX {
+
             private const val cameraXVersion = "1.0.0"
             private const val cameraXViewVersion = "1.0.0-alpha26"
             val impl = arrayOf(
@@ -163,6 +184,7 @@ object Dependencies {
     }
 
     object Dagger {
+
         private const val hiltVersion = "2.37"
         private const val hiltJetpackVersion = "1.0.0"
         val impl = arrayOf(
@@ -176,6 +198,7 @@ object Dependencies {
     }
 
     object Firebase {
+
         private const val crashlyticsGradleVersion = "2.5.2"
         private const val crashlyticsVersion = "17.4.0"
         private const val analyticsVersion = "18.0.2"
@@ -193,22 +216,26 @@ object Dependencies {
     object Data {
 
         object Glide {
+
             private const val glideVersion = "4.12.0"
             val impl = arrayOf("com.github.bumptech.glide:glide:$glideVersion")
             const val kapt = "com.github.bumptech.glide:compiler:$glideVersion"
         }
 
         object DataStore {
+
             private const val dataStoreVersion = "1.0.0-rc01"
             val impl = arrayOf("androidx.datastore:datastore-preferences:$dataStoreVersion")
         }
 
         object Preference {
+
             private const val preferenceVersion = "1.1.1"
             val impl = arrayOf("androidx.preference:preference-ktx:$preferenceVersion")
         }
 
         object Room {
+
             private const val roomVersion = "2.3.0"
             val impl = arrayOf(
                 "androidx.room:room-runtime:$roomVersion",
@@ -218,11 +245,13 @@ object Dependencies {
         }
 
         object Gson {
+
             private const val gsonVersion = "2.8.6"
             val impl = arrayOf("com.google.code.gson:gson:$gsonVersion")
         }
 
         object Requests {
+
             private const val retrofitVersion = "2.9.0"
             private const val okHttpVersion = "4.9.0"
             private const val chuckVersion = "1.1.0"
@@ -242,6 +271,7 @@ object Dependencies {
         private const val truthVersion = "0.34"
 
         object Unit {
+
             private const val junitVersion = "4.12"
             const val runner = "android.support.test.runner.AndroidJUnitRunner"
             val impl = arrayOf(
@@ -254,6 +284,7 @@ object Dependencies {
         }
 
         object Ui {
+
             private const val espressoVersion = "3.1.0"
             private const val runnerVersion = "1.1.0"
             val impl = arrayOf(

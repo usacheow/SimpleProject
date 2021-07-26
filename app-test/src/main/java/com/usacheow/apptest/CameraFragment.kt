@@ -246,7 +246,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
         val future = cameraControl?.startFocusAndMetering(action)
         future?.addListener(
-            Runnable {
+            {
 //            val result = future.get()
                 // process the result
             },
@@ -275,7 +275,6 @@ class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyze
     private val listeners = ArrayList<LumaListener>().apply { listener?.let { add(it) } }
     private var lastAnalyzedTimestamp = 0L
     private var framesPerSecond: Double = -1.0
-        private set
 
     private fun ByteBuffer.toByteArray(): ByteArray {
         rewind() // Rewind the buffer to zero

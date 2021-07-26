@@ -24,7 +24,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     Fragment(),
     SimpleLifecycle,
     ApplyWindowInsets,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
     protected abstract val params: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null

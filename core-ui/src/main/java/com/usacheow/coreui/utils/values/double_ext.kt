@@ -13,7 +13,7 @@ fun formatAmount(value: Double, currencySymbol: String) = SUM_FORMAT.format(
 )
 
 fun Double.formatDigits() = try {
-    NumberFormat.getNumberInstance(RU_LOCALE()).format(this.round())
+    NumberFormat.getNumberInstance(RU_LOCALE).format(this.round())
 } catch (ex: NumberFormatException) {
     this.toString()
 }

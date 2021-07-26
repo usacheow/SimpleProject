@@ -16,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 private const val APP_PACKAGE = "com.usacheow.simpleapp"
-private const val APP_INFO_CHANEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"
+private const val APP_INFO_CHANNEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"
 
 private const val SIMPLE_NOTIFICATION_ID = 221
 
@@ -28,7 +28,7 @@ class NotificationHelper @Inject constructor(
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val appInfoChannel = NotificationChannel(
-                APP_INFO_CHANEL_ID,
+                APP_INFO_CHANNEL_ID,
                 "Channel Name",
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
@@ -46,7 +46,7 @@ class NotificationHelper @Inject constructor(
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun startNotificationsSettingsScreen() {
         val citiesChannelIntent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
-            putExtra(Settings.EXTRA_CHANNEL_ID, APP_INFO_CHANEL_ID)
+            putExtra(Settings.EXTRA_CHANNEL_ID, APP_INFO_CHANNEL_ID)
             putExtra(Settings.EXTRA_APP_PACKAGE, APP_PACKAGE)
         }
         context.startActivity(citiesChannelIntent)
@@ -79,7 +79,7 @@ class NotificationHelper @Inject constructor(
 
     data class NotificationModel(
         val title: String? = null,
-        val channelId: String = APP_INFO_CHANEL_ID,
+        val channelId: String = APP_INFO_CHANNEL_ID,
         val smallIcon: Int = R.drawable.ic_user,
         val largeIcon: Int = R.mipmap.ic_launcher,
         val text: String? = null,

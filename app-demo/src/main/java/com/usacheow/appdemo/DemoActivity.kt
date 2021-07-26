@@ -5,7 +5,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.usacheow.appdemo.databinding.ActivityHostBinding
 import com.usacheow.appstate.AppStateViewModel

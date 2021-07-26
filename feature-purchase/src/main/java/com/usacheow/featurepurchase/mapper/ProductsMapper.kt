@@ -44,7 +44,7 @@ class ProductsMapper @Inject constructor(
     }
 
     private fun Product.getBuyButtonText(): String {
-        val period = details.freeTrialPeriod ?: details.subscriptionPeriod ?: return ""
+        val period = details.freeTrialPeriod
 
         return when (details.freeTrialPeriod) {
             null -> resources.getString(R.string.purchase_buy_button, getPrice(), period)

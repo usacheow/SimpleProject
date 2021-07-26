@@ -3,8 +3,6 @@ package plugin
 import Dependencies
 import com.android.build.gradle.BaseExtension
 import implementation
-import kapt
-import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 

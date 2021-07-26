@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <dimen name="ios_swipe_refresh_progress_height">32dp</dimen>
-    <dimen name="ios_swipe_refresh_progress_width">32dp</dimen>
-
-</resources>

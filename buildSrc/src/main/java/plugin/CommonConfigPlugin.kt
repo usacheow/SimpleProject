@@ -9,7 +9,6 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.PluginContainer
 import org.gradle.kotlin.dsl.DependencyHandlerScope
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.fileTree
 
 class LibraryConfigPlugin : CommonConfigPlugin() {

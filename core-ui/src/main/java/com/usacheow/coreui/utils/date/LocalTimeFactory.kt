@@ -24,10 +24,10 @@ object LocalTimeFactory {
      * @return the parsed local time, not null
      * @throws DateTimeParseException if the text cannot be parsed
      */
-    fun from(date: String, format: DateFormat) = from(date, format.code)
+    fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
     fun from(date: String, format: String): LocalTime {
-        val dateFormatter = DateTimeFormatter.ofPattern(format, LOCALE())
+        val dateFormatter = DateTimeFormatter.ofPattern(format, LOCALE)
         return LocalTime.parse(date, dateFormatter)
     }
 }

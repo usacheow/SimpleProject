@@ -3,7 +3,6 @@ package com.usacheow.coreui.fragment
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions

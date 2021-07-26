@@ -1,11 +1,14 @@
 package com.usacheow.simpleapp.notification
 
 import android.content.Intent
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 const val MESSAGE_KEY = "MESSAGE_KEY"
 
@@ -31,4 +34,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         notificationHelper.showSimpleNotification(model)
     }
+//    example
+//    private suspend fun getPushToken(): String = suspendCoroutine { continuation ->
+//        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult ->
+//            continuation.resume(instanceIdResult.token)
+//        }
+//    }
 }

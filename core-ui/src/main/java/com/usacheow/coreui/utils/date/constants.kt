@@ -7,9 +7,8 @@ import java.util.Locale
 
 const val DAYS_OF_WEEK = 7
 
-// fun LOCALE() = Locale.getDefault()
-fun LOCALE() = Locale("en")
-fun RU_LOCALE() = Locale("ru")
-fun TODAY() = LocalDate.now()
-fun NOW() = LocalDateTime.now()
-fun NOW_TIME() = LocalTime.now()
+// val LOCALE get() = Locale.getDefault()
+val LOCALE get() = Locale("en")
+val RU_LOCALE get() = Locale("ru")
+val TODAY get() = LocalDate.now()
+val NOW get() = LocalDateTime.now()

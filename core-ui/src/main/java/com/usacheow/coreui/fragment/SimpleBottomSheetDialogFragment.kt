@@ -24,7 +24,7 @@ import com.usacheow.coreui.utils.view.toPx
 abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     BottomSheetDialogFragment(),
     SimpleLifecycle,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
     protected abstract val params: Params<VIEW_BINDING>
 

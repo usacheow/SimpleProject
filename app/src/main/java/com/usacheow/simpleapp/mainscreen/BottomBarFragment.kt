@@ -1,10 +1,10 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
 import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.usacheow.coreui.fragment.SimpleFragment
@@ -15,6 +15,8 @@ import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlin.math.max
 
 @AndroidEntryPoint
@@ -23,12 +25,6 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     override val params = Params(
         viewBindingProvider = FragmentBottomBarBinding::inflate,
     )
-
-    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            isEnabled = navController.popBackStack()
-        }
-    }
 
     private val navController by lazy {
         (childFragmentManager.findFragmentById(R.id.bottomBarContainerLayout) as NavHostFragment).navController
@@ -47,13 +43,15 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
         binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
 
+        navController.currentBackStackEntryFlow.onEach {
+            val x = it
+        }.launchIn(lifecycleScope)
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             windowInsetsController?.hideIme()
-            onBackPressedCallback.isEnabled = binding.appBottomBar.selectedItemId != R.id.main_nav_graph
         }
     }
 }

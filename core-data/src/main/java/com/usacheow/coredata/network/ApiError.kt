@@ -52,7 +52,7 @@ sealed class ApiError(
         cause: Throwable? = null
     ) : ApiError(R.string.unknown_error_message, message, cause)
 
-    class CoroutineException() : ApiError(R.string.unknown_error_message)
+    class CoroutineException : ApiError(R.string.unknown_error_message)
 
     fun getMessage(resources: Resources): String {
         return message ?: resources.getString(defaultMessageId)

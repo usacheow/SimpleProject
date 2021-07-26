@@ -1,4 +1,4 @@
-package com.usacheow.coredata
+package com.usacheow.coredata.gson
 
 import android.content.res.Resources
 import com.google.gson.Gson
@@ -11,7 +11,7 @@ inline fun <reified TYPE> Gson.parseJsonFromAsset(resources: Resources, fileName
     var reader: BufferedReader? = null
     try {
         reader = BufferedReader(InputStreamReader(resources.assets.open(fileName), "UTF-8"))
-        value = fromJson<TYPE>(reader, TYPE::class.java)
+        value = fromJson(reader, TYPE::class.java)
     } catch (e: IOException) {
     } finally {
         reader?.close()

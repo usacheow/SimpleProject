@@ -3,13 +3,11 @@ package com.usacheow.corebilling
 import android.app.Activity
 import android.content.Context
 import com.android.billingclient.api.AcknowledgePurchaseParams
-import com.android.billingclient.api.AcknowledgePurchaseResponseListener
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ConsumeParams
-import com.android.billingclient.api.ConsumeResponseListener
 import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.SkuDetailsParams
@@ -91,10 +89,8 @@ class SimpleBillingImpl @Inject constructor(
         }
     }
 
-    private var billingClient = BillingClient.newBuilder(context)
-        .setListener(purchasesUpdatedListener)
-        .enablePendingPurchases()
-        .build()
+    private var billingClient =
+        BillingClient.newBuilder(context).setListener(purchasesUpdatedListener).enablePendingPurchases().build()
 
     init {
         billingClient.startConnection(object : BillingClientStateListener {
@@ -115,10 +111,7 @@ class SimpleBillingImpl @Inject constructor(
         }
 
         val skuList = Sku.byType(type).map { it.code }
-        val params = SkuDetailsParams.newBuilder()
-            .setSkusList(skuList)
-            .setType(type.code)
-            .build()
+        val params = SkuDetailsParams.newBuilder().setSkusList(skuList).setType(type.code).build()
 
         val result = withContext(Dispatchers.IO) {
             billingClient.querySkuDetails(params)
@@ -144,9 +137,7 @@ class SimpleBillingImpl @Inject constructor(
 
     private suspend fun handlePurchase(purchases: Purchase) {
         suspend fun handleConsumablePurchase(purchase: Purchase) = withContext(Dispatchers.IO) {
-            val params = ConsumeParams.newBuilder()
-                .setPurchaseToken(purchase.purchaseToken)
-                .build()
+            val params = ConsumeParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
             billingClient.consumePurchase(params)
         }
 
@@ -155,9 +146,7 @@ class SimpleBillingImpl @Inject constructor(
                 return@withContext null
             }
 
-            val params = AcknowledgePurchaseParams.newBuilder()
-                .setPurchaseToken(purchase.purchaseToken)
-                .build()
+            val params = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
             billingClient.acknowledgePurchase(params)
         }
 

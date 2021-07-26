@@ -2,14 +2,13 @@ package com.usacheow.coreui.utils.date
 
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
 object LocalDateTimeFactory {
 
     fun from(milliseconds: Long): LocalDateTime {
-        val dateFormat = SimpleDateFormat(DateFormat.yyyy__MM__dd_T_hh_mm_ss.code, LOCALE())
-        return LocalDateTime.parse(dateFormat.format(milliseconds))
+        val date = SimpleDateFormat(DateTimeFormat.ISO_LOCAL_DATE_TIME.code, LOCALE).format(milliseconds)
+        return LocalDateTime.parse(date)
     }
 
     /**
@@ -30,10 +29,9 @@ object LocalDateTimeFactory {
      * @return the parsed local date-time, not null
      * @throws DateTimeParseException if the text cannot be parsed
      */
-    fun from(date: String, format: DateFormat) = from(date, format.code)
+    fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
     fun from(date: String, format: String): LocalDateTime {
-        val dateFormatter = DateTimeFormatter.ofPattern(format, LOCALE())
-        return LocalDateTime.parse(date, dateFormatter)
+        return LocalDateTime.parse(date, format.toDateTimeFormat(LOCALE))
     }
 }

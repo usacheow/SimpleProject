@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.AssetManager
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
+import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -19,6 +20,8 @@ interface ResourcesWrapper {
     fun getString(@StringRes id: Int): String
 
     fun getString(@StringRes id: Int, vararg formatArgs: Any): String
+
+    fun getStringArray(@ArrayRes id: Int): Array<String>
 
     fun getColor(@ColorRes id: Int): Int
 
@@ -38,6 +41,8 @@ class ResourcesWrapperImpl @Inject constructor(
     override fun getString(@StringRes id: Int) = context.getString(id)
 
     override fun getString(@StringRes id: Int, vararg formatArgs: Any) = context.getString(id, *formatArgs)
+
+    override fun getStringArray(@ArrayRes id: Int) = context.resources.getStringArray(id)
 
     override fun getColor(@ColorRes id: Int) = ContextCompat.getColor(context, id)
 

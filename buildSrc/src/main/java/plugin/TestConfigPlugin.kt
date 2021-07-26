@@ -5,7 +5,6 @@ import com.android.build.gradle.BaseExtension
 import testImplementation
 import androidTestImplementation
 import org.gradle.api.Project
-import org.gradle.api.plugins.PluginContainer
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.project
 

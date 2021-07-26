@@ -17,7 +17,7 @@ import com.usacheow.coreui.delegate.ViewBindingDelegate
 abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     DialogFragment(),
     SimpleLifecycle,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate<VIEW_BINDING>() {
+    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
     protected abstract val params: Params<VIEW_BINDING>
 

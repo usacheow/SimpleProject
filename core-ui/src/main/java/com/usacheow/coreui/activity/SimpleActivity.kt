@@ -19,7 +19,7 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     AppCompatActivity(),
     SimpleLifecycle,
     ApplyWindowInsets,
-    ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate<VIEW_BINDING>() {
+    ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate() {
 
     protected abstract val params: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null
