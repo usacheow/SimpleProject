@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.usacheow.coreui.fragment.SimpleFragment
@@ -15,8 +14,6 @@ import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlin.math.max
 
 @AndroidEntryPoint
@@ -45,10 +42,6 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
-
-        navController.currentBackStackEntryFlow.onEach {
-            val x = it
-        }.launchIn(lifecycleScope)
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             windowInsetsController?.hideIme()

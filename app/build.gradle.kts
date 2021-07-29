@@ -54,4 +54,5 @@ dependencies {
     implementation(project(Modules.FEATURE_OTP.path))
 
     implementation(*Dependencies.Firebase.impl)
+    implementation(*Dependencies.Android.Biometric.impl)
 }

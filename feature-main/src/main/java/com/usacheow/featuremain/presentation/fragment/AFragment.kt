@@ -47,6 +47,6 @@ class AFragment : SimpleFragment<FragmentABinding>() {
 
     private fun openNextScreen(itemNumber: Int) {
         viewModel.x++
-        router.openBScreen(itemNumber)
+        router.fromAtoBScreen(itemNumber)
     }
 }

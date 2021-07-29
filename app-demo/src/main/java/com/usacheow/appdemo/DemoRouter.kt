@@ -14,71 +14,71 @@ class DemoRouter @Inject constructor(
     private val otpMediator: OtpMediator,
 ) : Router(fragment) {
 
-    fun openFontsScreen() {
+    fun fromDemoToFontsScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToFontsFragment())
     }
 
-    fun openButtonsScreen() {
+    fun fromDemoToButtonsScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToButtonsFragment())
     }
 
-    fun openTextInputsScreen() {
+    fun fromDemoToTextInputsScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToTextInputsFragment())
     }
 
-    fun openActionTilesScreen() {
+    fun fromDemoToActionTilesScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToActionTilesFragment())
     }
 
-    fun openListTilesScreen() {
+    fun fromDemoToListTilesScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToListTilesFragment())
     }
 
-    fun openTagListScreen() {
+    fun fromDemoToTagListScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToTagListFragment())
     }
 
-    fun openInformationTilesScreen() {
+    fun fromDemoToInformationTilesScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToInformationTilesFragment())
     }
 
-    fun openErrorMessageScreen() {
+    fun fromDemoToErrorMessageScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToErrorMessageFragment())
     }
 
-    fun openNumPadScreen() {
+    fun fromDemoToNumPadScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToNumPadFragment())
     }
 
-    fun openExampleBottomDialogScreen() {
+    fun fromDemoToExampleBottomDialogScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToExampleBottomDialogFragment())
     }
 
-    fun openExampleModalScreen() {
+    fun fromDemoToExampleModalScreen() {
         navigateTo(DemoFragmentDirections.actionDemoFragmentToExampleModalFragment())
     }
 
-    fun openOnBoardingScreen() {
+    fun toOnBoardingFlow() {
         navigateTo(onBoardingMediator.getOnBoardingFlowDirection())
     }
 
-    fun openSignUpScreen() {
+    fun toSignUpFlow() {
         navigateTo(authorizationMediator.getSignUpFlowDirection())
     }
 
-    fun openSignInScreen() {
+    fun toSignInFlow() {
         navigateTo(authorizationMediator.getSignInFlowDirection())
     }
 
-    fun openSignInWithPhoneScreen() {
+    fun toSignInWithPhoneFlow() {
         navigateTo(authorizationMediator.getSignInWithPhoneFlowDirection())
     }
 
-    fun openPinCodeScreen() {
+    fun toPinCodeFlow() {
         navigateTo(authorizationMediator.getPinCodeFlowDirection())
     }
 
-    fun openSmsCodeScreen(codeLength: Int) {
+    fun toSmsCodeFlow(codeLength: Int) {
         navigateTo(otpMediator.getOtpFlowDirection(codeLength))
     }
 }

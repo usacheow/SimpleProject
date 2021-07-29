@@ -26,7 +26,7 @@ class SettingsStorage @Inject constructor(
             putString(PREF_UI_MODE, value.name).apply()
         }
 
-    var isAllowFingerprint: Boolean
+    var isAllowBiometric: Boolean
         get() = preferenceManager.getBoolean(PREF_ALLOW_FINGERPRINT, true)
         set(value) = preferenceManager.edit {
             putBoolean(PREF_ALLOW_FINGERPRINT, value).apply()

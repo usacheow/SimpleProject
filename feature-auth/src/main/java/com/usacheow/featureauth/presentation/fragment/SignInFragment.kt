@@ -89,7 +89,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
             // todo: implement
         }
         viewModel.submitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
-        viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
+        viewModel.openSignUpScreenAction.observe(lifecycle) { router.toSignUpFlow() }
         viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignedIn() }
     }
 

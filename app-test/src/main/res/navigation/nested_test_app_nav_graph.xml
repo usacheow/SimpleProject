@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@+id/nested_navigation"
+    app:startDestination="@id/fragment4Fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <fragment
+        android:id="@+id/fragment4Fragment"
+        android:name="com.usacheow.apptest.Fragment4Fragment"
+        android:label="CoroutinesFragment"
+        tools:layout="@layout/fragment_4">
+        <action
+            android:id="@+id/action_fragment4Fragment_to_fragment5Fragment"
+            app:destination="@id/fragment5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment5Fragment"
+        android:name="com.usacheow.apptest.Fragment5Fragment"
+        android:label="CoroutinesFragment"
+        tools:layout="@layout/fragment_5"/>
+</navigation>

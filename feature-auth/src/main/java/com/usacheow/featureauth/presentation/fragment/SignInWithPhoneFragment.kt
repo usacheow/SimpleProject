@@ -81,8 +81,8 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
             // todo: implement
         }
         viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
-        viewModel.openConfirmScreenAction.observe(lifecycle) { router.openSmsCodeScreen(it) }
-        viewModel.openSignUpScreenAction.observe(lifecycle) { router.openSignUpScreen() }
+        viewModel.openConfirmScreenAction.observe(lifecycle) { router.toSmsCodeFlow(it) }
+        viewModel.openSignUpScreenAction.observe(lifecycle) { router.toSignUpFlow() }
         viewModel.closeAuthFlowAction.observe(lifecycle) { appStateViewModel.onSignedIn() }
         viewModel.closeSmsCodeScreenAction.observe(lifecycle) { otpStateViewModel.notifyAboutSuccess() }
         viewModel.codeConfirmMessageState.observe(lifecycle) { otpStateViewModel.notifyAboutError(it) }

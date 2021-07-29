@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
+import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.coreui.utils.view.string
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
@@ -28,7 +29,7 @@ class PinCodeView @JvmOverloads constructor(
         super.onFinishInflate()
         binding.numPadView.onNumberClickedAction = ::onNumberButtonClicked
         binding.numPadView.onBackspaceClickedAction = ::onBackspaceClicked
-        binding.numPadView.onBiometricClickedAction = { onBiometricButtonClickedAction?.invoke() }
+        binding.numPadView.onActionClickedAction = { onBiometricButtonClickedAction?.invoke() }
     }
 
     private fun onNumberButtonClicked(value: CharSequence?) {
@@ -89,7 +90,10 @@ class PinCodeView @JvmOverloads constructor(
         binding.hintTextView.text = string(R.string.pin_view_hint)
     }
 
-    fun setFingerprintEnabled(isEnabled: Boolean) {
-        binding.numPadView.isFingerprintEnabled = isEnabled
+    fun setBiometricEnabled(isEnabled: Boolean) {
+        binding.numPadView.setActionMode(when (isEnabled) {
+            true -> NumPadView.ActionMode.BIOMETRIC
+            false -> NumPadView.ActionMode.NONE
+        })
     }
 }

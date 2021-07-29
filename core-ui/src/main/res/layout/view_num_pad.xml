@@ -95,10 +95,10 @@
         android:text="@string/zero"
         app:layout_constraintTop_toBottomOf="@id/numPadButton8"
         app:layout_constraintStart_toEndOf="@id/backspaceButton"
-        app:layout_constraintEnd_toStartOf="@id/fingerprintButton" />
+        app:layout_constraintEnd_toStartOf="@id/actionButton" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fingerprintButton"
+        android:id="@+id/actionButton"
         style="@style/NumPadButton"
         android:padding="16dp"
         android:tint="@color/unselected"

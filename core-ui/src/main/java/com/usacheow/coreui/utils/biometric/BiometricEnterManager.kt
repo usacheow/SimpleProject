@@ -1,51 +1,62 @@
 package com.usacheow.coreui.utils.biometric
 
 import androidx.biometric.BiometricPrompt
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
 import com.usacheow.coreui.R
+import com.usacheow.coreui.resource.ResourcesWrapper
 import javax.inject.Inject
 
-open class BiometricEnterManager @Inject constructor() : BiometricManagerWrapper() {
+interface BiometricEnterManager {
 
-    var onSuccessAction: (List<Int>) -> Unit = {}
-    var onUnavailableAction: () -> Unit = {}
+    var onSuccessAction: (BiometricPrompt.CryptoObject?) -> Unit
 
-    fun init(activity: FragmentActivity) {
-        super.init(
-            activity,
-            activity.getString(R.string.biometric_enter_title),
-            activity.getString(R.string.biometric_enter_message),
-            activity.getString(R.string.biometric_enter_cancel)
-        )
-    }
+    var onUnavailableAction: () -> Unit
 
-    fun checkFingerprintState() {
-        if (!hasBiometricScanner()) {
-            onUnavailableAction.invoke()
-        }
-    }
+    fun tryShow(data: BiometricData)
 
-    fun tryShow(data: BiometricData?) {
-        if (hasBiometricScanner()) {
+    fun tryShow()
+
+    fun hide()
+
+    fun isBiometricAvailable(): Boolean
+}
+
+class BiometricEnterManagerImpl @Inject constructor(
+    resources: ResourcesWrapper,
+    fragment: Fragment,
+) : BiometricManagerWrapper(
+    activity = fragment.requireActivity(),
+    title = resources.getString(R.string.biometric_enter_title),
+    description = resources.getString(R.string.biometric_enter_message),
+    buttonText = resources.getString(R.string.biometric_enter_cancel),
+), BiometricEnterManager {
+
+    override var onSuccessAction: (BiometricPrompt.CryptoObject?) -> Unit = {}
+    override var onUnavailableAction: () -> Unit = {}
+
+    override fun tryShow(data: BiometricData) {
+        if (isBiometricAvailable()) {
             show(data)
+        } else {
+            onUnavailableAction()
         }
     }
 
-    fun tryShow() {
-        if (hasBiometricScanner()) {
+    override fun tryShow() {
+        if (isBiometricAvailable()) {
             show()
+        } else {
+            onUnavailableAction()
         }
     }
 
-    override fun onSuccess(result: BiometricPrompt.AuthenticationResult) {
-        super.onSuccess(result)
-
-        onSuccessAction.invoke(emptyList())
+    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+        onSuccessAction(result.cryptoObject)
     }
 
-    override fun onError(errorMsg: String, errorCode: Int) {
-        if (errorCode in arrayOf(ERROR_LOCKOUT, ERROR_LOCKOUT_PERMANENT)) {
-            onUnavailableAction.invoke()
+    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+        if (errorCode in arrayOf(BiometricPrompt.ERROR_LOCKOUT, BiometricPrompt.ERROR_LOCKOUT_PERMANENT)) {
+            onUnavailableAction()
         }
     }
 }

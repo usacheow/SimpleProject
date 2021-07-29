@@ -20,4 +20,8 @@
     <string name="pin_view_code_error">Неверный PIN-код, попробуйте снова</string>
     <string name="pin_view_code_forgot">Забыл пароль</string>
 
+    <string name="create_pin_view_hint">Задайте PIN-код для вход в приложение</string>
+    <string name="create_pin_view_code_error">Неверный PIN-код, попробуйте снова</string>
+    <string name="create_pin_view_code_forgot">Забыл пароль</string>
+
 </resources>

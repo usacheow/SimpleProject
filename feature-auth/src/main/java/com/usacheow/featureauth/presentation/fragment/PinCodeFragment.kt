@@ -29,51 +29,56 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         viewBindingProvider = FragmentPinCodeBinding::inflate,
     )
 
-    @Inject lateinit var biometricDelegate: BiometricEnterManager
     @Inject lateinit var router: AuthorizationRouter
+    @Inject lateinit var biometricDelegate: BiometricEnterManager
     private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<PinCodeViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.pinCodeRootView.updatePadding(
             top = insets.getTopInset() + padding.top,
-            bottom = insets.getBottomInset() + padding.bottom
+            bottom = insets.getBottomInset() + padding.bottom,
         )
         return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        biometricDelegate.init(requireActivity())
-        biometricDelegate.onSuccessAction = {
-            appStateViewModel.onPinCodeEntered()
-        }
-        biometricDelegate.onUnavailableAction = {
-            binding.pinCodeView.setFingerprintEnabled(false)
-        }
-
         binding.pinCodeView.setHint(string(R.string.pin_view_hint))
-        binding.pinCodeView.onBiometricButtonClickedAction = { biometricDelegate.tryShow() }
+        binding.pinCodeView.onBiometricButtonClickedAction = { viewModel.onBiometricClicked() }
         binding.pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
         binding.pinCodeForgotButton.doOnClick {
             // todo: implement
         }
+
+        biometricDelegate.run {
+            onSuccessAction = { viewModel.onBiometricSucceeded(it) }
+            onUnavailableAction = { binding.pinCodeView.setBiometricEnabled(false) }
+        }
     }
 
     override fun subscribe() {
-        viewModel.isFingerprintAllowState.observe(lifecycle) { isAllow ->
-            val isEnabled = isAllow && biometricDelegate.hasBiometricScanner()
-            binding.pinCodeView.setFingerprintEnabled(isEnabled)
-            if (isEnabled) {
-                binding.root.post { biometricDelegate.tryShow() }
+        viewModel.isBiometricAllowState.observe(lifecycle) { isAllow ->
+            binding.pinCodeView.setBiometricEnabled(isAllow && biometricDelegate.isBiometricAvailable())
+            if (isAllow) {
+                requireView().post {
+                    viewModel.onBiometricClicked()
+                }
             }
         }
-        viewModel.changeAuthState.observe(lifecycle) {
+        viewModel.openBiometricScreenAction.observe(lifecycle) {
+            biometricDelegate.tryShow()
+        }
+        viewModel.authState.observe(lifecycle) {
             when (it) {
-                is SignInResult.SignInSuccess -> appStateViewModel.onPinCodeEntered()
+                is SignInResult.SignInSuccess -> {
+                    appStateViewModel.onPinCodeEntered()
+                }
+
                 is SignInResult.SignInError -> {
                     binding.pinCodeView.setHint(string(R.string.pin_view_code_error))
                     binding.pinCodeView.showError()
                 }
+
                 is SignInResult.SignInInput -> {
                     binding.pinCodeView.resetState()
                 }

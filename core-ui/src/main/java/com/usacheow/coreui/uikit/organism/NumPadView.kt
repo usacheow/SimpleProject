@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
+import androidx.annotation.DrawableRes
 import androidx.core.view.isInvisible
+import com.usacheow.coreui.R
 import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.utils.view.doOnClick
 
@@ -15,13 +17,8 @@ class NumPadView @JvmOverloads constructor(
 ) : GridLayout(context, attrs, defStyleAttr) {
 
     var onBackspaceClickedAction: (() -> Unit)? = null
-    var onBiometricClickedAction: (() -> Unit)? = null
+    var onActionClickedAction: (() -> Unit)? = null
     var onNumberClickedAction: ((String) -> Unit)? = null
-    var isFingerprintEnabled = false
-        set(value) {
-            field = value
-            binding.fingerprintButton.isInvisible = !value
-        }
 
     private val numberButtons by lazy {
         arrayOf(
@@ -45,11 +42,25 @@ class NumPadView @JvmOverloads constructor(
         numberButtons.forEach { button ->
             button.setOnClickListener { onNumberClickedAction?.invoke(button.text.toString()) }
         }
-        binding.fingerprintButton.doOnClick { onBiometricClickedAction?.invoke() }
+        binding.actionButton.doOnClick { onActionClickedAction?.invoke() }
         binding.backspaceButton.setOnClickListener { onBackspaceClickedAction?.invoke() }
     }
 
     fun setBackspaceButtonsVisibility(isVisible: Boolean) {
         binding.backspaceButton.isInvisible = !isVisible
+    }
+
+    fun setActionMode(mode: ActionMode) {
+        binding.actionButton.isInvisible = mode == ActionMode.NONE
+        if (mode != ActionMode.NONE) {
+            binding.actionButton.setImageResource(mode.iconRes)
+        }
+    }
+
+    enum class ActionMode(@DrawableRes val iconRes: Int) {
+        BIOMETRIC(R.drawable.ic_fingerprint),
+        NEXT(R.drawable.ic_next),
+        ACCEPT(R.drawable.ic_accept),
+        NONE(-1),
     }
 }

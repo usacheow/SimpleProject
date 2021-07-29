@@ -75,7 +75,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
 
                 ListTileItem(
                     leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_next)),
+                    rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_go)),
                     value = TextString("Title"),
                     topDescription = TextString("Top description"),
                     bottomDescription = TextString("Bottom description"),

@@ -7,11 +7,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.fragment.SimpleModalFragment
+import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.makeVisible
+import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.featureotp.databinding.FragmentSmsCodeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +32,7 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.smsCodeNumPadView.apply {
-            isFingerprintEnabled = false
+            setActionMode(NumPadView.ActionMode.NONE)
             onBackspaceClickedAction = { viewModel.onDigitRemoved() }
             onNumberClickedAction = { viewModel.onDigitAdded(it) }
         }

@@ -12,11 +12,11 @@ class AuthorizationRouter @Inject constructor(
     private val otpMediator: OtpMediator,
 ) : Router(fragment) {
 
-    fun openSignUpScreen() {
+    fun toSignUpFlow() {
         navigateTo(authorizationMediator.getSignUpFlowDirection())
     }
 
-    fun openSmsCodeScreen(codeLength: Int) {
+    fun toSmsCodeFlow(codeLength: Int) {
         navigateTo(otpMediator.getOtpFlowDirection(codeLength))
     }
 }
