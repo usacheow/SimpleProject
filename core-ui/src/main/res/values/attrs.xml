@@ -12,4 +12,8 @@
         <attr name="swipe_right_enabled" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="IosSwipeRefreshLayout">
+        <attr name="android:icon" format="reference" />
+    </declare-styleable>
+
 </resources>
