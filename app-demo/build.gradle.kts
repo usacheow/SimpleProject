@@ -2,7 +2,6 @@ plugins {
     id("app-config")
     id("navigation-config")
     id("dagger-config")
-    id("lifecycle-config")
 }
 
 android {

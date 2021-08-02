@@ -3,12 +3,12 @@ plugins {
     id("navigation-config")
     id("glide-config")
     id("dagger-config")
-    id("lifecycle-config")
 }
 
 dependencies {
-    api(*Dependencies.Android.Core.impl)
     api(*Dependencies.Android.Ui.impl)
+    api(*Dependencies.Android.Lifecycle.impl)
+    kapt(Dependencies.Android.Lifecycle.kapt)
 
     implementation(*Dependencies.Android.Biometric.impl)
     implementation(*Dependencies.Android.Browser.impl)

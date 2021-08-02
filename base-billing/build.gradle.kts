@@ -1,7 +1,6 @@
 plugins {
     id("library-config")
     id("dagger-config")
-    id("lifecycle-config")
 }
 
 dependencies {

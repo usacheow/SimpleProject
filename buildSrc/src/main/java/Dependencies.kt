@@ -10,7 +10,7 @@ object Dependencies {
 
         object Gradle {
 
-            private const val buildToolsVersion = "7.0.0-rc01"
+            private const val buildToolsVersion = "7.0.0"
             const val path = "com.android.tools.build:gradle:$buildToolsVersion"
 
             object Api {
@@ -79,16 +79,6 @@ object Dependencies {
             const val plugin = "com.android.library"
         }
 
-        object Core {
-
-            private const val androidxVersion = "1.3.0"
-            private const val androidxCoreVersion = "1.5.0"
-            val impl = arrayOf(
-                "androidx.appcompat:appcompat:$androidxVersion",
-                "androidx.core:core-ktx:$androidxCoreVersion",
-            )
-        }
-
         object Lifecycle {
 
             private const val androidxLifecycleVersion = "2.4.0-alpha02"
@@ -98,6 +88,8 @@ object Dependencies {
 
         object Ui {
 
+            private const val androidxVersion = "1.3.0"
+            private const val androidxCoreVersion = "1.5.0"
             private const val fragmentVersion = "1.4.0-alpha04"
             private const val materialVersion = "1.3.0"
             private const val cardViewVersion = "1.0.0"
@@ -110,6 +102,9 @@ object Dependencies {
             private const val shimmerVersion = "0.5.0"
             private const val pageIndicatorVersion = "1.2.1"
             val impl = arrayOf(
+                "androidx.appcompat:appcompat:$androidxVersion",
+                "androidx.core:core-ktx:$androidxCoreVersion",
+
                 "androidx.fragment:fragment:$fragmentVersion",
                 "androidx.fragment:fragment-ktx:$fragmentVersion",
 
@@ -124,19 +119,6 @@ object Dependencies {
                 "ru.tinkoff.decoro:decoro:$decoroVersion",
                 "com.facebook.shimmer:shimmer:$shimmerVersion",
                 "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion",
-            )
-        }
-
-        object Compose {
-
-            const val version = "1.0.0-rc02"
-            val impl = arrayOf(
-                "androidx.compose.ui:ui:$version",
-                "androidx.compose.ui:ui-tooling:$version",
-                "androidx.compose.foundation:foundation:$version",
-                "androidx.compose.material:material:$version",
-                "androidx.compose.material:material-icons-core:$version",
-                "androidx.compose.material:material-icons-extended:$version",
             )
         }
 
