@@ -52,14 +52,6 @@ object Dependencies {
             }
         }
 
-        object Guava {
-
-            val impl = arrayOf(
-                "com.google.guava:guava:27.0.1-android",
-                "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-            )
-        }
-
         object Desugar {
 
             private const val coreLibraryDesugarVersion = "1.1.1"
@@ -82,14 +74,22 @@ object Dependencies {
         object Lifecycle {
 
             private const val androidxLifecycleVersion = "2.4.0-alpha02"
-            val impl = arrayOf("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion")
+            private const val viewmodelComposeVersion = "1.0.0-alpha07"
+            val impl = arrayOf(
+                "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion",
+                "androidx.lifecycle:lifecycle-viewmodel-compose:$viewmodelComposeVersion",
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidxLifecycleVersion",
+            )
             const val kapt = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"
         }
 
         object Ui {
 
-            private const val androidxVersion = "1.3.0"
-            private const val androidxCoreVersion = "1.5.0"
+            const val composeVersion = "1.1.0-alpha01"
+            private const val androidxVersion = "1.3.1"
+            private const val androidxCoreVersion = "1.6.0"
+            private const val insetVersion = "0.15.0"
+            private const val activityVersion = "1.3.0"
             private const val fragmentVersion = "1.4.0-alpha04"
             private const val materialVersion = "1.3.0"
             private const val cardViewVersion = "1.0.0"
@@ -104,6 +104,19 @@ object Dependencies {
             val impl = arrayOf(
                 "androidx.appcompat:appcompat:$androidxVersion",
                 "androidx.core:core-ktx:$androidxCoreVersion",
+
+                "androidx.compose.compiler:compiler:$composeVersion",
+                "androidx.compose.runtime:runtime:$composeVersion",
+//                "androidx.compose.animation:animation:$composeVersion",
+                "androidx.compose.ui:ui:$composeVersion",
+                "androidx.compose.ui:ui-tooling:$composeVersion",
+                "androidx.compose.ui:ui-tooling-preview:$composeVersion",
+                "androidx.compose.foundation:foundation:$composeVersion",
+                "androidx.compose.foundation:foundation-layout:$composeVersion",
+                "androidx.compose.material:material:$composeVersion",
+                "androidx.activity:activity-compose:$activityVersion",
+
+                "com.google.accompanist:accompanist-insets:$insetVersion",
 
                 "androidx.fragment:fragment:$fragmentVersion",
                 "androidx.fragment:fragment-ktx:$fragmentVersion",
@@ -128,6 +141,7 @@ object Dependencies {
             val impl = arrayOf(
                 "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
                 "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+                "androidx.navigation:navigation-compose:$navigationVersion",
             )
             const val path = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
             const val plugin = "androidx.navigation.safeargs.kotlin"
@@ -269,7 +283,7 @@ object Dependencies {
 
             private const val espressoVersion = "3.1.0"
             private const val runnerVersion = "1.1.0"
-            val impl = arrayOf(
+            val androidTestImpl = arrayOf(
                 "androidx.test.espresso:espresso-core:$espressoVersion",
                 "androidx.test.espresso:espresso-intents:$espressoVersion",
                 "androidx.test:runner:$runnerVersion",

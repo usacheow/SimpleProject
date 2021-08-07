@@ -5,6 +5,7 @@ import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import com.usacheow.coredata.coroutine.DefaultDispatcher
 import com.usacheow.coredata.coroutine.IoDispatcher
+import com.usacheow.coredata.coroutine.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,4 +34,9 @@ class CoroutineModule {
     @Singleton
     @DefaultDispatcher
     fun defaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
+
+    @Provides
+    @Singleton
+    @MainDispatcher
+    fun mainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 }

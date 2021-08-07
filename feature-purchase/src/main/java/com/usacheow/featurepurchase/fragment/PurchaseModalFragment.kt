@@ -68,5 +68,8 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
         viewModel.openPurchaseScreenAction.observe(lifecycle) {
             router.openBillingScreen(it, requireActivity())
         }
+        viewModel.closeScreenAction.observe(lifecycle) {
+            requireActivity().onBackPressed()
+        }
     }
 }

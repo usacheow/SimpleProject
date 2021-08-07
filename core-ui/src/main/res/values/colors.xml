@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#0336FF</color>a
+    <color name="colorPrimary">#0336FF</color>
     <color name="colorPrimaryVariant">#0336FF</color>
     <color name="colorOnPrimary">#FFFFFF</color>
 
     <color name="colorSecondary">#FFDE03</color>
     <color name="colorSecondaryVariant">#FFDE03</color>
     <color name="colorOnSecondary">#FFFFFF</color>
-
-    <color name="colorStatusBar">#4D000000</color>
-    <color name="colorNavigationBar">#4D000000</color>
-    <color name="colorStatusBarForModal">#4D000000</color>
-    <color name="colorNavigationBarForModal">@color/background</color>
 
     <color name="background">#FFFFFF</color>
     <color name="backgroundBlurred">#CCFFFFFF</color>
@@ -25,6 +20,11 @@
 
     <color name="error">#B00020</color>
     <color name="onError">#FFFFFF</color>
+
+    <color name="colorStatusBar">#4D000000</color>
+    <color name="colorNavigationBar">#4D000000</color>
+    <color name="colorStatusBarForModal">#4D000000</color>
+    <color name="colorNavigationBarForModal">@color/background</color>
 
     <color name="symbol">#212121</color>
     <color name="symbolInverse">#FFFFFF</color>

@@ -21,14 +21,15 @@ import com.usacheow.corebilling.model.Product
 import com.usacheow.corebilling.model.ProductType
 import com.usacheow.corebilling.model.Sku
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
+import com.usacheow.coredata.coroutine.IoDispatcher
+import com.usacheow.coredata.coroutine.MainDispatcher
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -39,13 +40,13 @@ interface SimpleBilling : BillingRouter {
 
     val newPurchasesFlow: SharedFlow<List<Purchase>>
 
-    val inAppProductsFlow: Flow<BillingEffect<List<Product>>>
+    suspend fun getInAppProducts(): BillingEffect<List<Product>>
 
-    val subscriptionsFlow: Flow<BillingEffect<List<Product>>>
+    suspend fun getSubscribeProducts(): BillingEffect<List<Product>>
 
-    val purchasedInAppProductsFlow: Flow<BillingEffect<List<Purchase>>>
+    suspend fun getInAppPurchases(): BillingEffect<List<Purchase>>
 
-    val purchasedSubscriptionsFlow: Flow<BillingEffect<List<Purchase>>>
+    suspend fun getSubscribePurchases(): BillingEffect<List<Purchase>>
 }
 
 interface BillingRouter {
@@ -55,42 +56,25 @@ interface BillingRouter {
 
 class SimpleBillingImpl @Inject constructor(
     @ApplicationContext context: Context,
-    @ApplicationCoroutineScope scope: CoroutineScope,
-) : SimpleBilling {
+    @ApplicationCoroutineScope private val scope: CoroutineScope,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+) : SimpleBilling, BillingRouter {
 
-    override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
-
-    override val inAppProductsFlow = flow {
-        emit(fetchProducts(ProductType.IN_APP))
-    }
-
-    override val subscriptionsFlow = flow {
-        emit(fetchProducts(ProductType.SUBSCRIPTIONS))
-    }
-
-    override val purchasedInAppProductsFlow = flow {
-        emit(fetchPurchases(ProductType.IN_APP))
-    }
-
-    override val purchasedSubscriptionsFlow = flow {
-        emit(fetchPurchases(ProductType.SUBSCRIPTIONS))
-    }
+    override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(replay = 1)
 
     private val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
             scope.launch {
-                purchases.forEach { handlePurchase(it) }
+                handlePurchases(purchases)
             }
             newPurchasesFlow.tryEmit(purchases)
         }
     }
 
-    private var billingClient =
-        BillingClient.newBuilder(context).setListener(purchasesUpdatedListener).enablePendingPurchases().build()
+    private var billingClient = BillingClient.newBuilder(context)
+        .setListener(purchasesUpdatedListener)
+        .enablePendingPurchases()
+        .build()
 
     init {
         billingClient.startConnection(object : BillingClientStateListener {
@@ -100,73 +84,97 @@ class SimpleBillingImpl @Inject constructor(
     }
 
     override fun openBillingScreen(product: Product, activity: Activity) {
-        val flowParams = BillingFlowParams.newBuilder().setSkuDetails(product.details).build()
+        val flowParams = BillingFlowParams.newBuilder()
+            .setSkuDetails(product.details)
+            .build()
         billingClient.launchBillingFlow(activity, flowParams)
     }
 
-    private suspend fun fetchProducts(type: ProductType): BillingEffect<List<Product>> {
-        val status = tryConnectToBillingClient()
-        if (status != BillingConnectionStatus.SUCCESS) {
-            return BillingEffect(status, emptyList())
-        }
+    override suspend fun getInAppProducts(): BillingEffect<List<Product>> = fetchProducts(ProductType.IN_APP)
 
-        val skuList = Sku.byType(type).map { it.code }
-        val params = SkuDetailsParams.newBuilder().setSkusList(skuList).setType(type.code).build()
+    override suspend fun getSubscribeProducts() = fetchProducts(ProductType.SUBSCRIBE)
 
-        val result = withContext(Dispatchers.IO) {
-            billingClient.querySkuDetails(params)
-        }
-        val products = when (result.billingResult.responseCode) {
-            BillingClient.BillingResponseCode.OK -> result.skuDetailsList?.map { Product(it) }.orEmpty()
-            else -> emptyList()
-        }
+    override suspend fun getInAppPurchases() = fetchPurchases(ProductType.IN_APP)
 
-        return BillingEffect(status = status, data = products)
+    override suspend fun getSubscribePurchases() = fetchPurchases(ProductType.SUBSCRIBE)
+
+    private suspend fun fetchProducts(type: ProductType): BillingEffect<List<Product>> = billingCall {
+        val params = SkuDetailsParams.newBuilder()
+            .setSkusList(Sku.byType(type))
+            .setType(type.code)
+            .build()
+        val result = billingClient.querySkuDetails(params)
+
+        return@billingCall when (result.billingResult.responseCode) {
+            BillingClient.BillingResponseCode.OK -> result.skuDetailsList
+                ?.map { Product(it) }
+                .orEmpty()
+
+            else -> null
+        }
     }
 
-    private suspend fun fetchPurchases(type: ProductType): BillingEffect<List<Purchase>> {
-        val status = tryConnectToBillingClient()
-        if (status != BillingConnectionStatus.SUCCESS) {
-            return BillingEffect(status, emptyList())
-        }
-
+    private suspend fun fetchPurchases(type: ProductType): BillingEffect<List<Purchase>> = billingCall {
         val purchases = billingClient.queryPurchasesAsync(type.code).purchasesList
-        purchases.forEach { handlePurchase(it) }
-        return BillingEffect(status = status, data = purchases)
+        handlePurchases(purchases)
+        return@billingCall purchases
     }
 
-    private suspend fun handlePurchase(purchases: Purchase) {
-        suspend fun handleConsumablePurchase(purchase: Purchase) = withContext(Dispatchers.IO) {
-            val params = ConsumeParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
+    private suspend fun handlePurchases(purchases: List<Purchase>) = purchases.forEach {
+        handlePurchase(it)
+    }
+
+    private suspend fun handlePurchase(purchase: Purchase) {
+        suspend fun handleConsumablePurchase(purchase: Purchase) = withContext(ioDispatcher) {
+            val params = ConsumeParams.newBuilder()
+                .setPurchaseToken(purchase.purchaseToken)
+                .build()
             billingClient.consumePurchase(params)
         }
 
-        suspend fun handleNonConsumablePurchase(purchase: Purchase) = withContext(Dispatchers.IO) {
+        suspend fun handleNonConsumablePurchase(purchase: Purchase) = withContext(ioDispatcher) {
             if (purchase.purchaseState != Purchase.PurchaseState.PURCHASED || purchase.isAcknowledged) {
                 return@withContext null
             }
 
-            val params = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
+            val params = AcknowledgePurchaseParams.newBuilder()
+                .setPurchaseToken(purchase.purchaseToken)
+                .build()
             billingClient.acknowledgePurchase(params)
         }
 
-        val sku = Sku.byCode(purchases.skus.firstOrNull().orEmpty()) ?: return
-
-        when (sku.isConsumable) {
-            true -> handleConsumablePurchase(purchases)
-            false -> handleNonConsumablePurchase(purchases)
+        val isConsumableSku = purchase.skus
+            .firstOrNull()
+            .orEmpty()
+            .run(Sku::byCode)
+            ?.isConsumable
+        when (isConsumableSku) {
+            true -> handleConsumablePurchase(purchase)
+            false -> handleNonConsumablePurchase(purchase)
         }
     }
 
-    private suspend fun tryConnectToBillingClient(): BillingConnectionStatus {
-        return (0 until 3).map { getConnectionStatus() }.last()
+    private suspend inline fun <T : Any> billingCall(
+        crossinline block: suspend () -> T?,
+    ): BillingEffect<T> = withContext(ioDispatcher) {
+        var status = BillingConnectionStatus.UNKNOWN
+        (0..2).firstOrNull {
+            status = getConnectionStatus()
+            if (status != BillingConnectionStatus.SUCCESS) {
+                delay(300)
+                return@firstOrNull false
+            }
+            return@firstOrNull true
+        } ?: return@withContext BillingEffect(status, null)
+
+        return@withContext BillingEffect(status, block())
     }
 
     private suspend fun getConnectionStatus(): BillingConnectionStatus {
-        val code = if (billingClient.isReady) {
-            BillingClient.BillingResponseCode.OK
-        } else {
-            suspendCoroutine {
+        val code = when {
+            billingClient.isReady -> BillingClient.BillingResponseCode.OK
+
+            else -> suspendCoroutine {
                 billingClient.startConnection(object : BillingClientStateListener {
                     override fun onBillingSetupFinished(billingResult: BillingResult) =
                         it.resume(billingResult.responseCode)

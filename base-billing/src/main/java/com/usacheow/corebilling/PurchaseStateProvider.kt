@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 class PurchaseStateProvider @Inject constructor(
     storage: UserDataStorage,
-    billingWrapper: SimpleBilling,
+    private val billingWrapper: SimpleBilling,
 ) {
 
     /*
@@ -16,27 +16,15 @@ class PurchaseStateProvider @Inject constructor(
     val newPurchasesFlow = billingWrapper.newPurchasesFlow
 
     /*
-    * all in-app products
-    * */
-    val inAppProductsFlow = billingWrapper.inAppProductsFlow
-
-    /*
-    * all subscription products
-    * */
-    val subscriptionsFlow = billingWrapper.subscriptionsFlow
-
-    /*
-    * all in-app products purchases
-    * */
-    val purchasedInAppProductsFlow = billingWrapper.purchasedInAppProductsFlow
-
-    /*
-    * all subscriptions
-    * */
-    val purchasedSubscriptionsFlow = billingWrapper.purchasedSubscriptionsFlow
-
-    /*
     * paid app status
     * */
     val isPayedVersionFlow = storage.isPayedVersionFlow
+
+    suspend fun getInAppProducts() = billingWrapper.getInAppProducts()
+
+    suspend fun getSubscribeProducts() = billingWrapper.getSubscribeProducts()
+
+    suspend fun getInAppPurchases() = billingWrapper.getInAppPurchases()
+
+    suspend fun getSubscribePurchases() = billingWrapper.getSubscribePurchases()
 }

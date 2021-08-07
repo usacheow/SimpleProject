@@ -3,6 +3,7 @@ package com.usacheow.corebilling.model
 import com.android.billingclient.api.BillingClient
 
 enum class BillingConnectionStatus(private vararg val codes: Int) {
+
     SUCCESS(
         BillingClient.BillingResponseCode.OK
     ),
@@ -22,6 +23,7 @@ enum class BillingConnectionStatus(private vararg val codes: Int) {
     UNKNOWN;
 
     companion object {
+
         fun get(code: Int) = values().firstOrNull { it.codes.contains(code) } ?: ERROR
     }
 }

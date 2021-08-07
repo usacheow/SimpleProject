@@ -11,17 +11,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class NetworkStateProvider @Inject constructor(
     @ApplicationCoroutineScope private val scope: CoroutineScope,
-    connectivityManager:  ConnectivityManager,
+    connectivityManager: ConnectivityManager,
 ) {
 
     private val _state = MutableStateFlow(true)
     val state = _state.asStateFlow()
-
-
 
     private val networkStateCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
@@ -40,6 +37,8 @@ class NetworkStateProvider @Inject constructor(
     }
 
     init {
-        connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkStateCallback)
+        val request = NetworkRequest.Builder()
+            .build()
+        connectivityManager.registerNetworkCallback(request, networkStateCallback)
     }
 }

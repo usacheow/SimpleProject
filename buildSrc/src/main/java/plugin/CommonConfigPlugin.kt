@@ -42,6 +42,11 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
         }
 
         buildFeatures.viewBinding = true
+        buildFeatures.compose = true
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = Dependencies.Android.Ui.composeVersion
+        }
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
