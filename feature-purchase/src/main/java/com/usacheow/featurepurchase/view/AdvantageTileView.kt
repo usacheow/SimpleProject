@@ -7,9 +7,8 @@ import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewType
-import com.usacheow.coreui.utils.ImageInfo
+import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.apply
 import com.usacheow.coreui.utils.populate
 
 class AdvantageTileView @JvmOverloads constructor(
@@ -21,14 +20,14 @@ class AdvantageTileView @JvmOverloads constructor(
     private val binding by lazy { ViewAdvantageTileBinding.bind(this) }
 
     override fun populate(model: AdvantageTileItem) {
-        binding.imageView.apply(model.image)
+        binding.imageView.populate(model.image)
         binding.titleView.populate(model.title)
         binding.infoView.populate(model.info)
     }
 }
 
 data class AdvantageTileItem(
-    val image: ImageInfo,
+    val image: ImageSource,
     val title: TextSource,
     val info: TextSource?,
 ) : ViewType(R.layout.view_advantage_tile)

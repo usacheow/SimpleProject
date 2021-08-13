@@ -1,12 +1,8 @@
 package com.usacheow.coreui.utils.textinput
 
-import android.app.Activity
-import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
 import java.math.BigDecimal
@@ -30,24 +26,6 @@ fun EditText.doOnActionClick(imeActionId: Int, action: () -> Unit = {}) {
         }
         actionId != EditorInfo.IME_ACTION_DONE
     }
-}
-
-fun EditText.showKeyboard() {
-    post {
-        requestFocus()
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
-    }
-}
-
-fun View.hideKeyboard() {
-    val inputMethodManger = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
-    inputMethodManger!!.hideSoftInputFromWindow(windowToken, 0)
-}
-
-fun Context.isKeyboardEnabled(): Boolean {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    return imm.enabledInputMethodList.any { it.packageName == packageName }
 }
 
 fun TextInputEditText.addCurrencyFormatter(defaultHint: String? = null): TextWatcher {

@@ -8,9 +8,8 @@ import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleModalFragment
-import com.usacheow.coreui.utils.IconInfo
-import com.usacheow.coreui.utils.ImageRes
-import com.usacheow.coreui.utils.TextRes
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.featurepurchase.view.AdvantageTileItem
@@ -31,19 +30,19 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
     private val advantagesAdapter = ViewTypesAdapter(
         listOf(
             AdvantageTileItem(
-                image = IconInfo(ImageRes(R.drawable.ic_money)),
-                title = TextRes(R.string.purchase_advantage_1_title),
-                info = TextRes(R.string.purchase_advantage_1_info),
+                image = ImageSource.Res(R.drawable.ic_money),
+                title = TextSource.Res(R.string.purchase_advantage_1_title),
+                info = TextSource.Res(R.string.purchase_advantage_1_info),
             ),
             AdvantageTileItem(
-                image = IconInfo(ImageRes(R.drawable.ic_money)),
-                title = TextRes(R.string.purchase_advantage_2_title),
-                info = TextRes(R.string.purchase_advantage_2_info),
+                image = ImageSource.Res(R.drawable.ic_money),
+                title = TextSource.Res(R.string.purchase_advantage_2_title),
+                info = TextSource.Res(R.string.purchase_advantage_2_info),
             ),
             AdvantageTileItem(
-                image = IconInfo(ImageRes(R.drawable.ic_money)),
-                title = TextRes(R.string.purchase_advantage_3_title),
-                info = TextRes(R.string.purchase_advantage_3_info),
+                image = ImageSource.Res(R.drawable.ic_money),
+                title = TextSource.Res(R.string.purchase_advantage_3_title),
+                info = TextSource.Res(R.string.purchase_advantage_3_info),
             ),
         )
     )

@@ -8,8 +8,8 @@ import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.organism.MessageBannerItem
 import com.usacheow.coreui.utils.ImageRes
-import com.usacheow.coreui.utils.TextRes
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -40,31 +40,31 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
         binding.errorMessageView1.showOrHideError(
             MessageBannerItem(
-                title = TextString("Error title"),
-                description = TextString("Error description"),
+                title = TextSource.Simple("Error title"),
+                description = TextSource.Simple("Error description"),
             )
         )
         binding.errorMessageView2.showOrHideError(
             MessageBannerItem(
-                title = TextString("Error title"),
-                description = TextString("Error description"),
-                button = TextRes(R.string.repeat),
+                title = TextSource.Simple("Error title"),
+                description = TextSource.Simple("Error description"),
+                button = TextSource.Res(R.string.repeat),
                 clickListener = {},
             )
         )
         binding.errorMessageView3.showOrHideError(
             MessageBannerItem(
-                icon = ImageRes(R.drawable.demo_avatar),
-                title = TextString("Error title"),
-                description = TextString("Error description"),
+                icon = ImageSource.Res(R.drawable.demo_avatar),
+                title = TextSource.Simple("Error title"),
+                description = TextSource.Simple("Error description"),
             )
         )
         binding.errorMessageView4.showOrHideError(
             MessageBannerItem(
-                icon = ImageRes(R.drawable.demo_avatar),
-                title = TextString("Error title"),
-                description = TextString("Error description"),
-                button = TextRes(R.string.repeat),
+                icon = ImageSource.Res(R.drawable.demo_avatar),
+                title = TextSource.Simple("Error title"),
+                description = TextSource.Simple("Error description"),
+                button = TextSource.Res(R.string.repeat),
                 clickListener = {},
             )
         )

@@ -95,7 +95,7 @@ class SignInWithPhoneViewModel @Inject constructor(
             _closeSmsCodeScreenAction.send(SimpleAction)
             _closeAuthFlowAction.send(SimpleAction)
         }.doOnError {
-            _codeConfirmMessageState.emit(TextString("Неверный код"))
+            _codeConfirmMessageState.emit(TextSource.Simple("Неверный код"))
         }
     }
 

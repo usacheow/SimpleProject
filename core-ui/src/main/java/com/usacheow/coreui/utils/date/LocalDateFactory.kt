@@ -1,7 +1,6 @@
 package com.usacheow.coreui.utils.date
 
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
 object LocalDateFactory {
@@ -12,9 +11,10 @@ object LocalDateFactory {
      *
      * @param date  the text to parse such as "2007-12-03", not null
      * @return the parsed local date, not null
-     * @throws DateTimeParseException if the text cannot be parsed
      */
-    fun from(date: String) = LocalDate.parse(date)
+    fun from(date: String) = runCatching {
+        LocalDate.parse(date)
+    }.getOrNull()
 
     /**
      * Obtains an instance of {@code LocalDate} from a text string in a specified format.
@@ -22,12 +22,10 @@ object LocalDateFactory {
      * @param date the text to parse, not null
      * @param format  the format of date, not null
      * @return the parsed local date, not null
-     * @throws DateTimeParseException if the text cannot be parsed
      */
     fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
-    fun from(date: String, format: String): LocalDate {
-        val dateFormatter = DateTimeFormatter.ofPattern(format, LOCALE)
-        return LocalDate.parse(date, dateFormatter)
-    }
+    fun from(date: String, format: String) = runCatching {
+        LocalDate.parse(date, format.toDateTimeFormat(LOCALE))
+    }.getOrNull()
 }

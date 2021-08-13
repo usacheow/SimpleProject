@@ -10,11 +10,8 @@ import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ActionSelectionType
 import com.usacheow.coreui.uikit.molecule.ActionTileItem
-import com.usacheow.coreui.utils.IconInfo
-import com.usacheow.coreui.utils.ImageRes
-import com.usacheow.coreui.utils.LogoInfo
-import com.usacheow.coreui.utils.TextInfo
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -47,27 +44,27 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.adapter = ViewTypesAdapter(
             listOf(
                 ActionTileItem(
-                    title = TextInfo(TextString("Title")),
+                    title = TextSource.Simple("Title"),
                 ),
 
                 ActionTileItem(
-                    title = TextInfo(TextString("Title")),
-                    subtitle = TextInfo(TextString("Subtitle")),
+                    title = TextSource.Simple("Title"),
+                    subtitle = TextSource.Simple("Subtitle"),
                     selectionType = ActionSelectionType.SWITCH,
                 ),
 
                 ActionTileItem(
-                    image = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    title = TextInfo(TextString("Title")),
-                    subtitle = TextInfo(TextString("Subtitle")),
+                    image = ImageSource.Res(R.drawable.demo_avatar),
+                    title = TextSource.Simple("Title"),
+                    subtitle = TextSource.Simple("Subtitle"),
                     selectionType = ActionSelectionType.CHECK_BOX,
                     clickListener = {},
                 ),
 
                 ActionTileItem(
-                    image = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    title = TextInfo(TextString("Title")),
-                    subtitle = TextInfo(TextString("Subtitle")),
+                    image = ImageSource.Res(R.drawable.demo_avatar),
+                    title = TextSource.Simple("Title"),
+                    subtitle = TextSource.Simple("Subtitle"),
                     selectionType = ActionSelectionType.SWITCH,
                     isChecked = true,
                     clickListener = {},

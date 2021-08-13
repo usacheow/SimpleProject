@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getTopInset
@@ -40,7 +41,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
         binding.listView.layoutManager = LinearLayoutManager(context)
         binding.listView.adapter = ViewTypesAdapter(
             List(20) {
-                ListTileItem(value = TextString("$it Go to next screen"), clickListener = { openNextScreen(it) })
+                ListTileItem(value = TextSource.Simple("$it Go to next screen"), clickListener = { openNextScreen(it) })
             }
         )
     }

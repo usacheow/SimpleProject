@@ -7,25 +7,26 @@ import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.usacheow.coreui.utils.view.makeGone
 
-sealed class ImageSource
+sealed class ImageSource {
 
-data class ImageUrl(
-    val url: String,
-) : ImageSource()
+    data class Url(
+        val url: String,
+    ) : ImageSource()
 
-data class ImageDrawable(
-    val drawable: Drawable,
-) : ImageSource()
+    data class Vector(
+        val drawable: Drawable,
+    ) : ImageSource()
 
-data class ImageBitmap(
-    val bitmap: Bitmap,
-) : ImageSource()
+    data class Image(
+        val bitmap: Bitmap,
+    ) : ImageSource()
 
-data class ImageRes(
-    @DrawableRes val res: Int,
-) : ImageSource()
+    data class Res(
+        @DrawableRes val res: Int,
+    ) : ImageSource()
 
-object ImageEmpty : ImageSource()
+    object Empty : ImageSource()
+}
 
 fun ImageView.populate(source: ImageSource?) {
     fun ImageView.load(url: String?) {
@@ -36,14 +37,14 @@ fun ImageView.populate(source: ImageSource?) {
     when (source) {
         null -> makeGone()
 
-        is ImageUrl -> load(source.url)
+        is ImageSource.Url -> load(source.url)
 
-        is ImageDrawable -> setImageDrawable(source.drawable)
+        is ImageSource.Vector -> setImageDrawable(source.drawable)
 
-        is ImageBitmap -> setImageBitmap(source.bitmap)
+        is ImageSource.Image -> setImageBitmap(source.bitmap)
 
-        is ImageRes -> setImageResource(source.res)
+        is ImageSource.Res -> setImageResource(source.res)
 
-        is ImageEmpty -> setImageDrawable(null)
+        is ImageSource.Empty -> setImageDrawable(null)
     }
 }

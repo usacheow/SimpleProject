@@ -49,6 +49,6 @@ data class MessageBannerItem(
     val icon: ImageSource? = null,
     val title: TextSource?,
     val description: TextSource?,
-    val button: TextRes? = null,
+    val button: TextSource.Res? = null,
     val clickListener: (() -> Unit)? = null,
 )

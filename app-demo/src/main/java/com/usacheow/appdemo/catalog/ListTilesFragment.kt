@@ -9,10 +9,8 @@ import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
-import com.usacheow.coreui.utils.IconInfo
-import com.usacheow.coreui.utils.ImageRes
-import com.usacheow.coreui.utils.LogoInfo
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -45,40 +43,40 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.adapter = ViewTypesAdapter(
             listOf(
                 ListTileItem(
-                    value = TextString("Title"),
+                    value = TextSource.Simple("Title"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    value = TextString("Title"),
+                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    value = TextSource.Simple("Title"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = IconInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    value = TextString("Title"),
-                    topDescription = TextString("Top description"),
+                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    value = TextSource.Simple("Title"),
+                    topDescription = TextSource.Simple("Top description"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    value = TextString("Title"),
-                    bottomDescription = TextString("Bottom description"),
+                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    value = TextSource.Simple("Title"),
+                    bottomDescription = TextSource.Simple("Bottom description"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    value = TextString("Title"),
-                    topDescription = TextString("Top description"),
-                    bottomDescription = TextString("Bottom description"),
+                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    value = TextSource.Simple("Title"),
+                    topDescription = TextSource.Simple("Top description"),
+                    bottomDescription = TextSource.Simple("Bottom description"),
                     clickListener = {},
                 ),
 
                 ListTileItem(
-                    leftImageInfo = LogoInfo(source = ImageRes(R.drawable.demo_avatar)),
-                    rightImageInfo = IconInfo(source = ImageRes(R.drawable.ic_go)),
-                    value = TextString("Title"),
-                    topDescription = TextString("Top description"),
-                    bottomDescription = TextString("Bottom description"),
+                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    rightImageInfo = ImageSource.Res(R.drawable.ic_go),
+                    value = TextSource.Simple("Title"),
+                    topDescription = TextSource.Simple("Top description"),
+                    bottomDescription = TextSource.Simple("Bottom description"),
                     clickListener = {},
                 ),
 

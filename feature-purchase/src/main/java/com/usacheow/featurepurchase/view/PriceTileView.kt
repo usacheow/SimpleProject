@@ -60,6 +60,6 @@ data class PriceTileItem(
     val period: TextSource,
     val price: TextSource,
     val pricePerMonth: TextSource,
-    val buyButtonText: TextString,
+    val buyButtonText: TextSource,
     val clickListener: () -> Unit,
 ) : TagViewType(R.layout.view_price_tile)

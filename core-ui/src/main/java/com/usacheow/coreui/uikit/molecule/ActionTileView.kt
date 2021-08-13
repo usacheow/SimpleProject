@@ -2,25 +2,17 @@ package com.usacheow.coreui.uikit.molecule
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.view.updatePadding
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewType
 import com.usacheow.coreui.databinding.ViewActionTileBinding
-import com.usacheow.coreui.utils.EmptyInfo
-import com.usacheow.coreui.utils.IconInfo
-import com.usacheow.coreui.utils.ImageInfo
-import com.usacheow.coreui.utils.TextInfo
-import com.usacheow.coreui.utils.apply
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.toPx
-
-private const val ICON_PADDING_DP = 4
-private const val DEFAULT_PADDING_DP = 0
 
 class ActionTileView
 @JvmOverloads constructor(
@@ -32,12 +24,9 @@ class ActionTileView
     private val binding by lazy { ViewActionTileBinding.bind(this) }
 
     override fun populate(model: ActionTileItem) {
-        binding.imageView.apply {
-            apply(model.image)
-            updatePadding(model.image)
-        }
-        binding.titleView.apply(model.title)
-        binding.subtitleView.apply(model.subtitle)
+        binding.imageView.populate(model.image)
+        binding.titleView.populate(model.title)
+        binding.subtitleView.populate(model.subtitle)
         populateClickListener(model)
     }
 
@@ -63,20 +52,12 @@ class ActionTileView
             doOnClick { visibleControlButton.performClick() }
         }
     }
-
-    private fun ImageView.updatePadding(imageInfo: ImageInfo) {
-        val padding = when (imageInfo) {
-            is IconInfo -> ICON_PADDING_DP
-            else -> DEFAULT_PADDING_DP
-        }.toPx
-        updatePadding(padding, padding, padding, padding)
-    }
 }
 
 data class ActionTileItem(
-    val image: ImageInfo = EmptyInfo(),
-    val title: TextInfo,
-    val subtitle: TextInfo? = null,
+    val image: ImageSource = ImageSource.Empty,
+    val title: TextSource,
+    val subtitle: TextSource? = null,
     var isChecked: Boolean = false,
     val selectionType: ActionSelectionType = ActionSelectionType.CHECK_BOX,
     val clickListener: (Boolean) -> Unit = {},

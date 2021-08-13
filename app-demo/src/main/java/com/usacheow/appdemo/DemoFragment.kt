@@ -12,7 +12,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -51,127 +51,127 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
         binding.listView.adapter = ViewTypesAdapter(
             listOf(
-                HeaderTileItem(TextString("Atoms")),
+                HeaderTileItem(TextSource.Simple("Atoms")),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("atom"),
-                    value = TextString("1. Fonts"),
+                    header = TextSource.Simple("atom"),
+                    value = TextSource.Simple("1. Fonts"),
                     clickListener = { router.fromDemoToFontsScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("atom"),
-                    value = TextString("2. Buttons"),
+                    header = TextSource.Simple("atom"),
+                    value = TextSource.Simple("2. Buttons"),
                     clickListener = { router.fromDemoToButtonsScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("atom"),
-                    value = TextString("3. Text Inputs"),
+                    header = TextSource.Simple("atom"),
+                    value = TextSource.Simple("3. Text Inputs"),
                     clickListener = { router.fromDemoToTextInputsScreen() },
                 ),
 
-                HeaderTileItem(TextString("Molecules")),
+                HeaderTileItem(TextSource.Simple("Molecules")),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("molecule"),
-                    value = TextString("1. Action Tiles"),
+                    header = TextSource.Simple("molecule"),
+                    value = TextSource.Simple("1. Action Tiles"),
                     clickListener = { router.fromDemoToActionTilesScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("molecule"),
-                    value = TextString("2. List Tiles"),
+                    header = TextSource.Simple("molecule"),
+                    value = TextSource.Simple("2. List Tiles"),
                     clickListener = { router.fromDemoToListTilesScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("molecule"),
-                    value = TextString("3. Tag Lists"),
+                    header = TextSource.Simple("molecule"),
+                    value = TextSource.Simple("3. Tag Lists"),
                     clickListener = { router.fromDemoToTagListScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("molecule"),
-                    value = TextString("4. Information Tiles"),
+                    header = TextSource.Simple("molecule"),
+                    value = TextSource.Simple("4. Information Tiles"),
                     clickListener = { router.fromDemoToInformationTilesScreen() },
                 ),
 
-                HeaderTileItem(TextString("Organisms")),
+                HeaderTileItem(TextSource.Simple("Organisms")),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("organism"),
-                    value = TextString("1. Error Message View"),
+                    header = TextSource.Simple("organism"),
+                    value = TextSource.Simple("1. Error Message View"),
                     clickListener = { router.fromDemoToErrorMessageScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("organism"),
-                    value = TextString("2. Num Pad View"),
+                    header = TextSource.Simple("organism"),
+                    value = TextSource.Simple("2. Num Pad View"),
                     clickListener = { router.fromDemoToNumPadScreen() },
                 ),
 
-                HeaderTileItem(TextString("Templates")),
+                HeaderTileItem(TextSource.Simple("Templates")),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("template"),
-                    value = TextString("1. Material Dialog"),
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("1. Material Dialog"),
                     clickListener = { showMaterialDialog() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("template"),
-                    value = TextString("2. Bottom Dialog"),
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("2. Bottom Dialog"),
                     clickListener = { router.fromDemoToExampleBottomDialogScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("template"),
-                    value = TextString("3. Bottom sheet"),
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("3. Bottom sheet"),
                     clickListener = { showOrHideBottomSheet() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("template"),
-                    value = TextString("4. Modal Fragment"),
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("4. Modal Fragment"),
                     clickListener = { router.fromDemoToExampleModalScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("template"),
-                    value = TextString("5. Onboarding Fragment"),
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("5. Onboarding Fragment"),
                     clickListener = { router.toOnBoardingFlow() },
                 ),
 
-                HeaderTileItem(TextString("Pages")),
+                HeaderTileItem(TextSource.Simple("Pages")),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("page"),
-                    value = TextString("1. SMS Code Fragment"),
+                    header = TextSource.Simple("page"),
+                    value = TextSource.Simple("1. SMS Code Fragment"),
                     clickListener = { router.toSmsCodeFlow(codeLength = 2) },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("page"),
-                    value = TextString("2. Sign Up Fragment"),
+                    header = TextSource.Simple("page"),
+                    value = TextSource.Simple("2. Sign Up Fragment"),
                     clickListener = { router.toSignUpFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("page"),
-                    value = TextString("3. Sign In Fragment"),
+                    header = TextSource.Simple("page"),
+                    value = TextSource.Simple("3. Sign In Fragment"),
                     clickListener = { router.toSignInFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("page"),
-                    value = TextString("4. Sign In With Phone Fragment"),
+                    header = TextSource.Simple("page"),
+                    value = TextSource.Simple("4. Sign In With Phone Fragment"),
                     clickListener = { router.toSignInWithPhoneFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
-                    header = TextString("page"),
-                    value = TextString("5. Pin Code Fragment"),
+                    header = TextSource.Simple("page"),
+                    value = TextSource.Simple("5. Pin Code Fragment"),
                     clickListener = { router.toPinCodeFlow() },
                 ),
             )

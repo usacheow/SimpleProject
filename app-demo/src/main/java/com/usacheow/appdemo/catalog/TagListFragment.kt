@@ -10,7 +10,7 @@ import com.usacheow.coreui.adapter.MultipleSelectionViewTypesAdapter
 import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.TagTileItem
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -43,13 +43,13 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         binding.radioListView.layoutManager = GridLayoutManager(context, 2)
         binding.radioListView.adapter = SingleSelectionViewTypesAdapter(
             listOf(
-                TagTileItem(TextString("Radio tag 1")) {},
-                TagTileItem(TextString("Radio tag 2")) {},
-                TagTileItem(TextString("Radio tag 3")) {},
-                TagTileItem(TextString("Radio tag 4")) {},
-                TagTileItem(TextString("Radio tag 5")) {},
-                TagTileItem(TextString("Radio tag 6")) {},
-                TagTileItem(TextString("Radio tag 7")) {},
+                TagTileItem(TextSource.Simple("Radio tag 1")) {},
+                TagTileItem(TextSource.Simple("Radio tag 2")) {},
+                TagTileItem(TextSource.Simple("Radio tag 3")) {},
+                TagTileItem(TextSource.Simple("Radio tag 4")) {},
+                TagTileItem(TextSource.Simple("Radio tag 5")) {},
+                TagTileItem(TextSource.Simple("Radio tag 6")) {},
+                TagTileItem(TextSource.Simple("Radio tag 7")) {},
             )
         )
 
@@ -57,13 +57,13 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         binding.chipListView.layoutManager = GridLayoutManager(context, 2)
         binding.chipListView.adapter = MultipleSelectionViewTypesAdapter(
             listOf(
-                TagTileItem(TextString("Chip tag 1")) {},
-                TagTileItem(TextString("Chip tag 2")) {},
-                TagTileItem(TextString("Chip tag 3")) {},
-                TagTileItem(TextString("Chip tag 4")) {},
-                TagTileItem(TextString("Chip tag 5")) {},
-                TagTileItem(TextString("Chip tag 6")) {},
-                TagTileItem(TextString("Chip tag 7")) {},
+                TagTileItem(TextSource.Simple("Chip tag 1")) {},
+                TagTileItem(TextSource.Simple("Chip tag 2")) {},
+                TagTileItem(TextSource.Simple("Chip tag 3")) {},
+                TagTileItem(TextSource.Simple("Chip tag 4")) {},
+                TagTileItem(TextSource.Simple("Chip tag 5")) {},
+                TagTileItem(TextSource.Simple("Chip tag 6")) {},
+                TagTileItem(TextSource.Simple("Chip tag 7")) {},
             )
         )
     }

@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.TextSource.Simple
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.R
@@ -41,24 +42,24 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
         binding.listView.layoutManager = LinearLayoutManager(context)
         binding.listView.adapter = ViewTypesAdapter(
             listOf(
-                ListTileItem(value = TextString("1 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("2 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("3 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("4 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("5 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("6 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("7 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("8 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("9 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("10 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("11 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("12 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("13 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("14 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("15 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("16 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("17 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextString("18 Go to next screen"), clickListener = ::openNextScreen)
+                ListTileItem(value = TextSource.Simple("1 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("2 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("3 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("4 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("5 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("6 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("7 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("8 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("9 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("10 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("11 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("12 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("13 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("14 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("15 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("16 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("17 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("18 Go to next screen"), clickListener = ::openNextScreen)
             )
         )
     }

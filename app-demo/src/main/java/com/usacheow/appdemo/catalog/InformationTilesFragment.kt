@@ -15,8 +15,8 @@ import com.usacheow.coreui.uikit.molecule.BannerTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.molecule.InformationTileItem
 import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
-import com.usacheow.coreui.utils.ImageRes
-import com.usacheow.coreui.utils.TextString
+import com.usacheow.coreui.utils.ImageSource
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
@@ -48,19 +48,19 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewTypesAdapter(
             listOf(
-                HeaderTileItem(TextString("Header")),
+                HeaderTileItem(TextSource.Simple("Header")),
                 HeaderTileItem.shimmer(),
-                SubtitleTileItem(TextString("Subtitle"), TextString("With action"), {}),
+                SubtitleTileItem(TextSource.Simple("Subtitle"), TextSource.Simple("With action"), {}),
                 SubtitleTileItem.shimmer(),
 
                 DividerTileItem.getSmallDivider(),
 
                 InformationTileItem(
-                    imageSource = ImageRes(R.drawable.demo_avatar),
-                    additionalLeftText = TextString("City 17"),
-                    additionalRightText = TextString("00/00/0000"),
-                    mainLeftText = TextString("Gordon"),
-                    mainRightText = TextString("(000) 000-00-00"),
+                    imageSource = ImageSource.Res(R.drawable.demo_avatar),
+                    additionalLeftText = TextSource.Simple("City 17"),
+                    additionalRightText = TextSource.Simple("00/00/0000"),
+                    mainLeftText = TextSource.Simple("Gordon"),
+                    mainRightText = TextSource.Simple("(000) 000-00-00"),
                 ),
 
                 DividerTileItem.getSmallDivider(),
@@ -70,21 +70,21 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                         BadgeTileItem.shimmer(),
                         BadgeTileItem(
                             needAdaptWidth = true,
-                            header = TextString("Badge"),
-                            value = TextString("Clickable"),
+                            header = TextSource.Simple("Badge"),
+                            value = TextSource.Simple("Clickable"),
                             clickListener = {},
                         ),
                         BadgeTileItem(
                             needAdaptWidth = true,
-                            header = TextString("Badge"),
-                            value = TextString("Non-clickable"),
+                            header = TextSource.Simple("Badge"),
+                            value = TextSource.Simple("Non-clickable"),
                             backgroundColorRes = R.color.colorPrimary,
                             textColorRes = R.color.white,
                         ),
                         BadgeTileItem(
                             needAdaptWidth = true,
-                            header = TextString("Badge"),
-                            value = TextString("Clickable"),
+                            header = TextSource.Simple("Badge"),
+                            value = TextSource.Simple("Clickable"),
                             backgroundColorRes = R.color.error,
                             textColorRes = R.color.white,
                             clickListener = {},
@@ -96,8 +96,8 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                     listOf(
                         BannerTileItem.shimmer(),
                         BannerTileItem(
-                            text = TextString("Some text on two lines"),
-                            icon = ImageRes(R.drawable.demo_avatar),
+                            text = TextSource.Simple("Some text on two lines"),
+                            icon = ImageSource.Res(R.drawable.demo_avatar),
                             clickListener = {},
                         ),
                     )

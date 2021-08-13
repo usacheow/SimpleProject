@@ -3,6 +3,7 @@ package com.usacheow.featurepurchase.mapper
 import com.example.featurepurchase.R
 import com.usacheow.corebilling.model.Product
 import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.TextString
 import com.usacheow.featurepurchase.view.PriceTileItem
 import java.util.Currency
@@ -19,10 +20,10 @@ class ProductsMapper @Inject constructor(
 
     private fun map(product: Product, onProductClicked: (String, Product) -> Unit) = PriceTileItem(
         discount = null,
-        period = TextString(product.details.subscriptionPeriod),
-        price = TextString(product.getPrice()),
-        pricePerMonth = TextString(product.getPricePerMonth()),
-        buyButtonText = TextString(product.getBuyButtonText()),
+        period = TextSource.Simple(product.details.subscriptionPeriod),
+        price = TextSource.Simple(product.getPrice()),
+        pricePerMonth = TextSource.Simple(product.getPricePerMonth()),
+        buyButtonText = TextSource.Simple(product.getBuyButtonText()),
         clickListener = { onProductClicked(product.getBuyButtonText(), product) },
     )
 
