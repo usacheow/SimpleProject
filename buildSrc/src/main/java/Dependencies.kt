@@ -46,6 +46,11 @@ object Dependencies {
                 const val plugin = "kotlin-kapt"
             }
 
+            object Parcelize {
+
+                const val plugin = "kotlin-parcelize"
+            }
+
             object Android {
 
                 const val plugin = "kotlin-android"

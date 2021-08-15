@@ -28,6 +28,7 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
     override fun PluginContainer.applyPlugins(project: Project) {
         apply(mainPlugin)
         apply(Dependencies.General.Kotlin.Android.plugin)
+        apply(Dependencies.General.Kotlin.Parcelize.plugin)
         apply(Dependencies.General.Kotlin.Kapt.plugin)
     }
 
