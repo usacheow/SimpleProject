@@ -8,7 +8,6 @@ import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.R

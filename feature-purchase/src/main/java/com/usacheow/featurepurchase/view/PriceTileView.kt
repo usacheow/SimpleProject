@@ -9,7 +9,6 @@ import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewType
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.doOnClick
@@ -60,6 +59,6 @@ data class PriceTileItem(
     val period: TextSource,
     val price: TextSource,
     val pricePerMonth: TextSource,
-    val buyButtonText: TextSource,
+    val buyButtonText: TextSource.Simple,
     val clickListener: () -> Unit,
 ) : TagViewType(R.layout.view_price_tile)

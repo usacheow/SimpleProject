@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.usacheow.coreui.databinding.ViewErrorMessageBinding
 import com.usacheow.coreui.utils.ImageSource
-import com.usacheow.coreui.utils.TextRes
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.doOnClick

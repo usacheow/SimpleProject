@@ -6,7 +6,6 @@ import com.usacheow.coredata.network.doOnSuccess
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.TextString
 import com.usacheow.coreui.utils.values.isPhoneNumberValid
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.SimpleViewModel
