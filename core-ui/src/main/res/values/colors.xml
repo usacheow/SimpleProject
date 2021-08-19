@@ -21,8 +21,8 @@
     <color name="error">#B00020</color>
     <color name="onError">#FFFFFF</color>
 
-    <color name="colorStatusBar">#00000000</color>
-    <color name="colorNavigationBar">#00000000</color>
+    <color name="colorStatusBar">#4D000000</color>
+    <color name="colorNavigationBar">#4D000000</color>
     <color name="colorStatusBarForModal">#4D000000</color>
     <color name="colorNavigationBarForModal">#4D000000</color>
 
