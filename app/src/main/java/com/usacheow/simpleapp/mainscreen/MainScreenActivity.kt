@@ -1,5 +1,6 @@
 package com.usacheow.simpleapp.mainscreen
 
+import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -55,8 +56,11 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         return insets
     }
 
-    override fun onBeforeBinding() {
+    override fun initSplashScreen() {
         installSplashScreen()
+    }
+
+    override fun setupViews(savedInstanceState: Bundle?) {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 

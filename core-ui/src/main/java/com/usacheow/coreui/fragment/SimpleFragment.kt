@@ -32,9 +32,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
 
-    private val needTransparentBars get() = defaultParams.needTransparentBars
-    private val needWhiteIcons get() = defaultParams.needWhiteIcons
-
     @CallSuper
     override fun onStart() {
         super.onStart()
@@ -55,9 +52,9 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
 
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         windowInsetsController = WindowCompat.getInsetsController(requireActivity().window, binding.root).apply {
-            val needDarkIcons = needTransparentBars && !(isNightMode() || needWhiteIcons)
-            this?.isAppearanceLightStatusBars = needDarkIcons
-            this?.isAppearanceLightNavigationBars = needDarkIcons
+            val needWhiteIcons = isNightMode() || defaultParams.needWhiteIcons
+            this?.isAppearanceLightStatusBars = !needWhiteIcons
+            this?.isAppearanceLightNavigationBars = !needWhiteIcons
         }
 
         return binding.root
@@ -79,7 +76,6 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(
-        var needTransparentBars: Boolean = true,
         var needWhiteIcons: Boolean = false,
         val viewBindingProvider: (LayoutInflater, ViewGroup, Boolean) -> VIEW_BINDING,
     )

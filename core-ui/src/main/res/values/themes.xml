@@ -54,8 +54,12 @@
     <style name="AppThemeSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/surfaceSecondary</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="windowSplashScreenAnimationDuration">900</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+
         <item name="postSplashScreenTheme">@style/AppTheme</item>
+
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>
 
     <style name="ModalDialogTheme" parent="ModalDialogThemeBridge">

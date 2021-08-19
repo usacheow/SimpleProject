@@ -1,5 +1,6 @@
 package com.usacheow.appdemo
 
+import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
@@ -46,8 +47,11 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
         return insets
     }
 
-    override fun onBeforeBinding() {
+    override fun initSplashScreen() {
         installSplashScreen()
+    }
+
+    override fun setupViews(savedInstanceState: Bundle?) {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 

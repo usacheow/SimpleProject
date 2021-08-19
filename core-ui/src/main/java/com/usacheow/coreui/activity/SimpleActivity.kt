@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -22,11 +21,11 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
-    protected var windowInsetsController: WindowInsetsControllerCompat? = null
+    protected val windowInsetsController by lazy {
+        WindowCompat.getInsetsController(window, binding.root)
+    }
 
-    private val needTransparentBars get() = defaultParams.needTransparentBars
-
-    protected open fun onBeforeBinding() {}
+    protected open fun initSplashScreen() {}
 
     @CallSuper
     override fun onStart() {
@@ -43,16 +42,11 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        onBeforeBinding()
+        initSplashScreen()
 
         saveBinding(defaultParams.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
         binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
-
-        windowInsetsController = WindowCompat.getInsetsController(window, binding.root).apply {
-            this?.isAppearanceLightStatusBars = needTransparentBars
-            this?.isAppearanceLightNavigationBars = needTransparentBars
-        }
 
         setupViews(savedInstanceState)
         subscribe()
@@ -65,7 +59,6 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(
-        var needTransparentBars: Boolean = false,
         val viewBindingProvider: (LayoutInflater) -> VIEW_BINDING,
     )
 }
