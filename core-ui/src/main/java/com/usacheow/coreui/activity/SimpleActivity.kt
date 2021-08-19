@@ -21,10 +21,12 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     ApplyWindowInsets,
     ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate() {
 
-    protected abstract val params: Params<VIEW_BINDING>
+    protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null
 
-    private val needTransparentBars get() = params.needTransparentBars
+    private val needTransparentBars get() = defaultParams.needTransparentBars
+
+    protected open fun onBeforeBinding() {}
 
     @CallSuper
     override fun onStart() {
@@ -41,8 +43,9 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        onBeforeBinding()
 
-        saveBinding(params.viewBindingProvider(layoutInflater))
+        saveBinding(defaultParams.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
         binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
 

@@ -1,7 +1,6 @@
 package com.usacheow.featuremain.presentation.navigation
 
 import androidx.fragment.app.Fragment
-import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coreui.base.Router
 import com.usacheow.featuremain.presentation.fragment.AFragmentDirections
 import javax.inject.Inject

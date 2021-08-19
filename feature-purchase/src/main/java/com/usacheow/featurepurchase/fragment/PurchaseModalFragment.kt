@@ -20,7 +20,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentPurchaseBinding::inflate,
     )
 

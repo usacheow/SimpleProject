@@ -23,7 +23,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     @Inject
     lateinit var router: MainFeatureRouter
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentABinding::inflate,
     )
 

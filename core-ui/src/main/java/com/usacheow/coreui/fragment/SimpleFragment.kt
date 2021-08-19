@@ -26,14 +26,14 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     ApplyWindowInsets,
     ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
-    protected abstract val params: Params<VIEW_BINDING>
+    protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null
 
     protected var bottomDialog: BottomSheetDialog? = null
     protected var messageDialog: AlertDialog? = null
 
-    private val needTransparentBars get() = params.needTransparentBars
-    private val needWhiteIcons get() = params.needWhiteIcons
+    private val needTransparentBars get() = defaultParams.needTransparentBars
+    private val needWhiteIcons get() = defaultParams.needWhiteIcons
 
     @CallSuper
     override fun onStart() {
@@ -51,7 +51,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         container ?: return null
-        saveBinding(params.viewBindingProvider(inflater, container, false))
+        saveBinding(defaultParams.viewBindingProvider(inflater, container, false))
 
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         windowInsetsController = WindowCompat.getInsetsController(requireActivity().window, binding.root).apply {

@@ -23,7 +23,7 @@ import com.usacheow.coreui.utils.view.getTopInset
 
 class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentListBinding::inflate,
     )
 

@@ -16,7 +16,7 @@ import com.usacheow.coreui.utils.view.getTopInset
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentTextInputsBinding::inflate,
     )
 

@@ -1,9 +1,9 @@
 package com.usacheow.appdemo
 
-import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import com.usacheow.appdemo.databinding.ActivityHostBinding
@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DemoActivity : SimpleActivity<ActivityHostBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 
@@ -46,10 +46,8 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
         return insets
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
-        super.onCreate(savedInstanceState)
-
+    override fun onBeforeBinding() {
+        installSplashScreen()
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 

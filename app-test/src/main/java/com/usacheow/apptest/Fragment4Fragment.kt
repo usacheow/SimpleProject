@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class Fragment4Fragment : SimpleFragment<Fragment4Binding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = Fragment4Binding::inflate,
     )
 

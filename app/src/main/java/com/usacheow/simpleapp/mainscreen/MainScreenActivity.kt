@@ -1,8 +1,8 @@
 package com.usacheow.simpleapp.mainscreen
 
-import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
@@ -25,7 +25,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 
@@ -55,10 +55,8 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         return insets
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
-        super.onCreate(savedInstanceState)
-
+    override fun onBeforeBinding() {
+        installSplashScreen()
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 

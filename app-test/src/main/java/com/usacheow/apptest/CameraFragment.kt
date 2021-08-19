@@ -51,7 +51,7 @@ typealias LumaListener = (luma: Double) -> Unit
 @Suppress("DEPRECATION")
 class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentCameraBinding::inflate,
     )
 

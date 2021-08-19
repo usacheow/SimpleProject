@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 @Suppress("DEPRECATION")
 class NotificationsFragment : SimpleFragment<FragmentNotificationsBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentNotificationsBinding::inflate,
     )
 

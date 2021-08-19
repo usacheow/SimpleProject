@@ -5,7 +5,7 @@ import com.usacheow.coreui.fragment.SimpleBottomSheetDialogFragment
 
 class ExampleBottomDialogFragment : SimpleBottomSheetDialogFragment<DialogExampleBottomBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         canHide = true,
         needWrapContent = false,
         needExpand = false,

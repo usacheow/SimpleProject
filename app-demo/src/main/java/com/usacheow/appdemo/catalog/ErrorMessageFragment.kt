@@ -7,7 +7,6 @@ import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.organism.MessageBannerItem
-import com.usacheow.coreui.utils.ImageRes
 import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.view.PaddingValue
@@ -16,7 +15,7 @@ import com.usacheow.coreui.utils.view.getTopInset
 
 class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentErrorMessageBinding::inflate,
     )
 

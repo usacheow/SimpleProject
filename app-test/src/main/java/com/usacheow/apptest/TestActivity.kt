@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TestActivity : SimpleActivity<ActivityHostBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 

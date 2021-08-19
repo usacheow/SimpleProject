@@ -93,6 +93,7 @@ object Dependencies {
             const val composeVersion = "1.1.0-alpha01"
             private const val androidxVersion = "1.3.1"
             private const val androidxCoreVersion = "1.6.0"
+            private const val splashVersion = "1.0.0-alpha01"
             private const val insetVersion = "0.15.0"
             private const val activityVersion = "1.3.0"
             private const val fragmentVersion = "1.4.0-alpha04"
@@ -109,6 +110,7 @@ object Dependencies {
             val impl = arrayOf(
                 "androidx.appcompat:appcompat:$androidxVersion",
                 "androidx.core:core-ktx:$androidxCoreVersion",
+                "androidx.core:core-splashscreen:$splashVersion",
 
                 "androidx.compose.compiler:compiler:$composeVersion",
                 "androidx.compose.runtime:runtime:$composeVersion",

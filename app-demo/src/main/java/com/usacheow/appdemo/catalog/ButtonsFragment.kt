@@ -12,7 +12,7 @@ import com.usacheow.coreui.utils.view.getTopInset
 
 class ButtonsFragment : SimpleFragment<FragmentButtonsBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentButtonsBinding::inflate,
     )
 

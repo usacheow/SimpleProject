@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class Fragment3Fragment : SimpleFragment<Fragment3Binding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = Fragment3Binding::inflate,
     )
 

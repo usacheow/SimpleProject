@@ -8,7 +8,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 
 class Fragment5Fragment : SimpleFragment<Fragment5Binding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = Fragment5Binding::inflate,
     )
 

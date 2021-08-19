@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentSmsCodeBinding::inflate,
     )
 

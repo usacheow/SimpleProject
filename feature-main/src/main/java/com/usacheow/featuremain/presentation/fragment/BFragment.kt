@@ -14,16 +14,20 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.R
 import com.usacheow.featuremain.databinding.FragmentBBinding
+import com.usacheow.featuremain.presentation.navigation.MainFeatureRouter
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
 import com.usacheow.featuremain.presentation.viewmodels.BViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BFragment : SimpleFragment<FragmentBBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentBBinding::inflate,
     )
+
+    @Inject lateinit var router: MainFeatureRouter
 
     private val aViewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
     private val bViewModel by viewModels<BViewModel>()
@@ -36,7 +40,7 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "B Fragment ${aViewModel.x} ${bViewModel.itemNumber}"
-            setNavigationAction(R.drawable.ic_back) { requireActivity().onBackPressed() }
+            setNavigationAction(R.drawable.ic_back) { router.moveToBack() }
         }
 
         binding.listView.layoutManager = LinearLayoutManager(context)

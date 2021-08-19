@@ -8,7 +8,7 @@ import com.usacheow.coreui.utils.view.navigation
 
 class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentExampleModalBinding::inflate,
     )
 

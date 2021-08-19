@@ -26,16 +26,16 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     SimpleLifecycle,
     ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
-    protected abstract val params: Params<VIEW_BINDING>
+    protected abstract val defaultParams: Params<VIEW_BINDING>
 
-    private val canHide get() = params.canHide
-    private val needWrapContent get() = params.needWrapContent
-    private val needExpand get() = params.needExpand
+    private val canHide get() = defaultParams.canHide
+    private val needWrapContent get() = defaultParams.needWrapContent
+    private val needExpand get() = defaultParams.needExpand
 
-    private val middleStatePercent get() = params.middleStatePercent
-    private val needMiddleState get() = params.needMiddleState
+    private val middleStatePercent get() = defaultParams.middleStatePercent
+    private val needMiddleState get() = defaultParams.needMiddleState
 
-    private val startStatePercent get() = params.startStatePercent
+    private val startStatePercent get() = defaultParams.startStatePercent
 
     @CallSuper
     override fun onStart() {
@@ -78,7 +78,7 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     private fun getPeekHeight() = (startStatePercent.divisor * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        saveBinding(params.viewBindingProvider(inflater, container, false))
+        saveBinding(defaultParams.viewBindingProvider(inflater, container, false))
         return binding.root
     }
 

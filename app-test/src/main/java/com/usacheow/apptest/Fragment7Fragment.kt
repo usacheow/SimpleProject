@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class Fragment7Fragment : SimpleFragment<Fragment7Binding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = Fragment7Binding::inflate,
     )
 

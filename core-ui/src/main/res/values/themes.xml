@@ -51,12 +51,11 @@
         <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
     </style>
 
-    <style name="AppTheme.Splash">
-        <item name="android:statusBarColor">@color/transparent</item>
-        <item name="android:navigationBarColor">@color/transparent</item>
-
-        <item name="android:windowBackground">@drawable/bg_splash</item>
-        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    <style name="AppThemeSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/surfaceSecondary</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenAnimationDuration">900</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
     <style name="ModalDialogTheme" parent="ModalDialogThemeBridge">

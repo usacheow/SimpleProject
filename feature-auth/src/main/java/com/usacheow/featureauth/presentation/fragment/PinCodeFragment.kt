@@ -25,7 +25,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentPinCodeBinding::inflate,
     )
 

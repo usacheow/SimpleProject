@@ -10,7 +10,7 @@ import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.hideIme
+import com.usacheow.coreui.utils.view.isImeVisible
 import com.usacheow.simpleapp.R
 import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,16 +19,18 @@ import kotlin.math.max
 @AndroidEntryPoint
 class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentBottomBarBinding::inflate,
     )
 
+    private var isKeyboardVisible = false
     private val navController by lazy {
         (childFragmentManager.findFragmentById(R.id.bottomBarContainerLayout) as NavHostFragment).navController
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.appBottomBar.updatePadding(bottom = insets.getBottomInset())
+        isKeyboardVisible = insets.isImeVisible()
 
         val imeInset = Insets.of(
             insets.getInsets(WindowInsetsCompat.Type.ime()).left,
@@ -42,9 +44,5 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
-
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            windowInsetsController?.hideIme()
-        }
     }
 }

@@ -27,7 +27,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
     @Inject lateinit var router: DemoRouter
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentDemoBinding::inflate,
     )
 

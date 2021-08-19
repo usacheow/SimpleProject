@@ -32,7 +32,7 @@ private const val DEFAULT_HEADER_MARGIN_TOP_DP = 120
 @AndroidEntryPoint
 class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
 
-    override val params = Params(
+    override val defaultParams = Params(
         viewBindingProvider = FragmentSignInBinding::inflate,
     )
 

@@ -1,8 +1,8 @@
 object App {
 
     const val minSdk = 21
-    const val targetSdk = 30
-    const val compileSdk = 30
+    const val targetSdk = 31
+    const val compileSdk = 31
     const val packageName = "com.usacheow.simpleapp"
 
     val code

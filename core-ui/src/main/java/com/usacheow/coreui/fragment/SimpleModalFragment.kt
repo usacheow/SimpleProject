@@ -19,7 +19,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     SimpleLifecycle,
     ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
 
-    protected abstract val params: Params<VIEW_BINDING>
+    protected abstract val defaultParams: Params<VIEW_BINDING>
 
     @CallSuper
     override fun onStart() {
@@ -42,7 +42,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        saveBinding(params.viewBindingProvider(inflater, container, false))
+        saveBinding(defaultParams.viewBindingProvider(inflater, container, false))
         return binding.root
     }
 

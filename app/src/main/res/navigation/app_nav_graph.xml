@@ -10,8 +10,6 @@
         android:name="com.usacheow.simpleapp.mainscreen.BottomBarFragment"
         android:label="BottomBarFragment"
         tools:layout="@layout/fragment_bottom_bar"/>
-<!--    <include-->
-<!--        app:graph="@navigation/main_nav_graph"/>-->
     <include
         app:graph="@navigation/on_boarding_nav_graph"/>
     <include
