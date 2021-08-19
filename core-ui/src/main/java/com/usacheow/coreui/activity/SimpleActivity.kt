@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -21,9 +22,8 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
-    protected val windowInsetsController by lazy {
-        WindowCompat.getInsetsController(window, binding.root)
-    }
+    protected var windowInsetsController: WindowInsetsControllerCompat? = null
+
 
     protected open fun initSplashScreen() {}
 
@@ -47,6 +47,11 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
         saveBinding(defaultParams.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
         binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
+
+        windowInsetsController = WindowCompat.getInsetsController(window, binding.root).apply {
+            this?.isAppearanceLightStatusBars = true
+            this?.isAppearanceLightNavigationBars = true
+        }
 
         setupViews(savedInstanceState)
         subscribe()

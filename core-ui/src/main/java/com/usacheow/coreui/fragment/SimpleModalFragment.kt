@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.R
@@ -13,6 +14,7 @@ import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
 import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.utils.view.isNightMode
 
 abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     DialogFragment(),
