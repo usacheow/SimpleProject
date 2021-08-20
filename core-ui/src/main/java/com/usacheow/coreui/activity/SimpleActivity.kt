@@ -48,10 +48,7 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
         setContentView(binding.root)
         binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
 
-        windowInsetsController = WindowCompat.getInsetsController(window, binding.root).apply {
-            this?.isAppearanceLightStatusBars = true
-            this?.isAppearanceLightNavigationBars = true
-        }
+        windowInsetsController = WindowCompat.getInsetsController(window, binding.root)
 
         setupViews(savedInstanceState)
         subscribe()
