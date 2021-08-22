@@ -10,13 +10,8 @@ object Dependencies {
 
         object Gradle {
 
-            private const val buildToolsVersion = "7.0.0"
+            private const val buildToolsVersion = "7.0.1"
             const val path = "com.android.tools.build:gradle:$buildToolsVersion"
-
-            object Api {
-
-                const val path = "com.android.tools.build:gradle-plugin.api:$buildToolsVersion"
-            }
         }
 
         object Kotlin {
@@ -114,7 +109,7 @@ object Dependencies {
 
                 "androidx.compose.compiler:compiler:$composeVersion",
                 "androidx.compose.runtime:runtime:$composeVersion",
-//                "androidx.compose.animation:animation:$composeVersion",
+                "androidx.compose.animation:animation:$composeVersion",
                 "androidx.compose.ui:ui:$composeVersion",
                 "androidx.compose.ui:ui-tooling:$composeVersion",
                 "androidx.compose.ui:ui-tooling-preview:$composeVersion",

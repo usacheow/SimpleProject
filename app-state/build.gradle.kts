@@ -1,6 +1,7 @@
 plugins {
     id("library-config")
     id("navigation-config")
+    id("lifecycle-config")
     id("dagger-config")
 }
 

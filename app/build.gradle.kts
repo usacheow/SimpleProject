@@ -1,6 +1,7 @@
 plugins {
     id("app-config")
     id("navigation-config")
+    id("lifecycle-config")
     id("dagger-config")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")

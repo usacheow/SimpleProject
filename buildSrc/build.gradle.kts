@@ -19,6 +19,10 @@ gradlePlugin {
             id = "navigation-config"
             implementationClass = "plugin.NavigationConfigPlugin"
         }
+        register("lifecycle-config") {
+            id = "lifecycle-config"
+            implementationClass = "plugin.LifecycleConfigPlugin"
+        }
         register("glide-config") {
             id = "glide-config"
             implementationClass = "plugin.GlideConfigPlugin"
@@ -45,5 +49,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0")
+    implementation("com.android.tools.build:gradle:7.0.1")
 }
