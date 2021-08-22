@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.usacheow.appdemo">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <application
         android:name=".DemoApp"
         android:allowBackup="true"
