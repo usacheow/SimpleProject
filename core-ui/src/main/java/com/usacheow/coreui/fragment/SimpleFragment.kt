@@ -52,7 +52,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
 
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         windowInsetsController = WindowCompat.getInsetsController(requireActivity().window, binding.root).apply {
-            val needWhiteIcons = isNightMode() || defaultParams.needWhiteIcons
+            val needWhiteIcons = isNightMode() || defaultParams.needWhiteAllIcons
             this?.isAppearanceLightStatusBars = !needWhiteIcons
             this?.isAppearanceLightNavigationBars = !needWhiteIcons
         }
@@ -76,7 +76,9 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     }
 
     data class Params<VIEW_BINDING : ViewBinding>(
-        var needWhiteIcons: Boolean = false,
+        var needWhiteAllIcons: Boolean = false,
+        var needWhiteStatusIcons: Boolean = needWhiteAllIcons,
+        var needWhiteNavigationIcons: Boolean = needWhiteAllIcons,
         val viewBindingProvider: (LayoutInflater, ViewGroup, Boolean) -> VIEW_BINDING,
     )
 }

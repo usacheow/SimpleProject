@@ -13,6 +13,7 @@ class MockFragment : SimpleFragment<FragmentMockBinding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = FragmentMockBinding::inflate,
+        needWhiteAllIcons = true,
     )
 
     companion object {

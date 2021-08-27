@@ -25,6 +25,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = FragmentABinding::inflate,
+        needWhiteAllIcons = false,
     )
 
     private val viewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
