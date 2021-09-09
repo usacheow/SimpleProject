@@ -58,16 +58,16 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.productsState.observe(lifecycle) {
+        viewModel.productsState.observe(viewLifecycleOwner) {
             binding.priceListView.adapter = SingleSelectionViewTypesAdapter(it.prices)
         }
-        viewModel.buyButtonTextState.observe(lifecycle) {
+        viewModel.buyButtonTextState.observe(viewLifecycleOwner) {
             binding.buyButton.text = it
         }
-        viewModel.openPurchaseScreenAction.observe(lifecycle) {
+        viewModel.openPurchaseScreenAction.observe(viewLifecycleOwner) {
             router.openBillingScreen(it, requireActivity())
         }
-        viewModel.closeScreenAction.observe(lifecycle) {
+        viewModel.closeScreenAction.observe(viewLifecycleOwner) {
             requireActivity().onBackPressed()
         }
     }

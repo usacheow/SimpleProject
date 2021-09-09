@@ -2,13 +2,13 @@ package com.usacheow.coreui.adapter.base
 
 import androidx.annotation.LayoutRes
 
-abstract class ViewType(
+abstract class ViewState(
     @LayoutRes val layoutId: Int,
     var isShimmer: Boolean = false,
 )
 
-abstract class TagViewType(
+abstract class TagViewState(
     layoutId: Int,
     var isSelected: Boolean = false,
-    var onSelectAction: () -> Unit = {},
-) : ViewType(layoutId)
+    var clickListener: () -> Unit = {},
+) : ViewState(layoutId)

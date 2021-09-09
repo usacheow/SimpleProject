@@ -23,7 +23,7 @@ class ProductsMapper @Inject constructor(
         price = TextSource.Simple(product.getPrice()),
         pricePerMonth = TextSource.Simple(product.getPricePerMonth()),
         buyButtonText = TextSource.Simple(product.getBuyButtonText()),
-        clickListener = { onProductClicked(product.getBuyButtonText(), product) },
+        selectListener = { onProductClicked(product.getBuyButtonText(), product) },
     )
 
     private fun Product.getPrice(): String {

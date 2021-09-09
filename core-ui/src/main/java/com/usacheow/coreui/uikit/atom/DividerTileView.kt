@@ -8,7 +8,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
 import com.usacheow.coreui.utils.MarginHorizontal
 import com.usacheow.coreui.utils.updateMargins
@@ -38,7 +38,7 @@ data class DividerTileItem(
     val margin: MarginHorizontal = MarginHorizontal(0, 0),
     @DimenRes val heightResId: Int = R.dimen.divider_height_small,
     @ColorRes var colorResId: Int = R.color.divider,
-) : ViewType(R.layout.view_divider_tile) {
+) : ViewState(R.layout.view_divider_tile) {
 
     companion object {
 

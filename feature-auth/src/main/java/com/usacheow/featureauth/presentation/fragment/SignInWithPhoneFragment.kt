@@ -76,17 +76,17 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
-        viewModel.errorState.observe(lifecycle) {
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.root.isVisible = it }
+        viewModel.errorState.observe(viewLifecycleOwner) {
             // todo: implement
         }
-        viewModel.isSubmitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
-        viewModel.openConfirmScreenAction.observe(lifecycle) { router.toSmsCodeFlow(it) }
-        viewModel.openSignUpScreenAction.observe(lifecycle) { router.toSignUpFlow() }
-        viewModel.closeAuthFlowAction.observe(lifecycle) { appStateViewModel.onSignedIn() }
-        viewModel.closeSmsCodeScreenAction.observe(lifecycle) { otpStateViewModel.notifyAboutSuccess() }
-        viewModel.codeConfirmMessageState.observe(lifecycle) { otpStateViewModel.notifyAboutError(it) }
-        otpStateViewModel.updateCodeStateAction.observe(lifecycle) {
+        viewModel.isSubmitButtonEnabledState.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
+        viewModel.openConfirmScreenAction.observe(viewLifecycleOwner) { router.toSmsCodeFlow(it) }
+        viewModel.openSignUpScreenAction.observe(viewLifecycleOwner) { router.toSignUpFlow() }
+        viewModel.closeAuthFlowAction.observe(viewLifecycleOwner) { appStateViewModel.onSignedIn() }
+        viewModel.closeSmsCodeScreenAction.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutSuccess() }
+        viewModel.codeConfirmMessageState.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutError(it) }
+        otpStateViewModel.updateCodeStateAction.observe(viewLifecycleOwner) {
             when (it) {
                 is OtpCodeState.OtpCodeInputted -> viewModel.onCodeInputted(it.code)
                 is OtpCodeState.OtpCodeRequested -> viewModel.onResendClicked()

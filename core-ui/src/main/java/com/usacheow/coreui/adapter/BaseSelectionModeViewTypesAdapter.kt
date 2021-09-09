@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.TagViewType
+import com.usacheow.coreui.adapter.base.TagViewState
 
 abstract class BaseSelectionModeViewTypesAdapter(
-    protected var entities: List<TagViewType> = emptyList(),
+    protected var entities: List<TagViewState> = emptyList(),
 ) : RecyclerView.Adapter<BaseSelectionModeViewTypesAdapter.BaseSelectionModeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSelectionModeViewHolder {
@@ -28,8 +28,8 @@ abstract class BaseSelectionModeViewTypesAdapter(
 
     class BaseSelectionModeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun populate(model: TagViewType) {
-            (itemView as Populatable<TagViewType>).populate(model)
+        fun populate(model: TagViewState) {
+            (itemView as Populatable<TagViewState>).populate(model)
         }
     }
 }

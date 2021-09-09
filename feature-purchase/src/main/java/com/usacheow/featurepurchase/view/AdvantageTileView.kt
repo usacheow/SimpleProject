@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
@@ -30,4 +30,4 @@ data class AdvantageTileItem(
     val image: ImageSource,
     val title: TextSource,
     val info: TextSource?,
-) : ViewType(R.layout.view_advantage_tile)
+) : ViewState(R.layout.view_advantage_tile)

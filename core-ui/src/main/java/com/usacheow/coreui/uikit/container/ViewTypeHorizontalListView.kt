@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewTypeHorizontalListViewBinding
 
 class ViewTypeHorizontalListView
@@ -29,5 +29,5 @@ class ViewTypeHorizontalListView
 }
 
 data class ViewTypeHorizontalListItem(
-    val items: List<ViewType>
-) : ViewType(R.layout.view_type_horizontal_list_view)
+    val items: List<ViewState>
+) : ViewState(R.layout.view_type_horizontal_list_view)

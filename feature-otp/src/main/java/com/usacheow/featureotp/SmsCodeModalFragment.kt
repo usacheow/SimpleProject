@@ -41,18 +41,18 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.maxCodeLengthState.observe(lifecycle) {
+        viewModel.maxCodeLengthState.observe(viewLifecycleOwner) {
             binding.smsCodeInput.filters = arrayOf(InputFilter.LengthFilter(it))
         }
-        viewModel.inputtedCodeState.observe(lifecycle) {
+        viewModel.inputtedCodeState.observe(viewLifecycleOwner) {
             binding.smsCodeInput.setText(it)
             binding.smsCodeNumPadView.setBackspaceButtonsVisibility(it.isNotEmpty())
         }
-        viewModel.isResendButtonState.observe(lifecycle) {
+        viewModel.isResendButtonState.observe(viewLifecycleOwner) {
             binding.smsCodeResendButton.text = it.text
             binding.smsCodeResendButton.setEnabledTextButton(it.isEnable)
         }
-        viewModel.updateCodeStateAction.observe(lifecycle) {
+        viewModel.updateCodeStateAction.observe(viewLifecycleOwner) {
             when (it) {
                 is SmsCodeState.CodeInputted -> {
                     binding.loaderView.root.makeVisible()
@@ -63,11 +63,11 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
                 }
             }
         }
-        otpStateViewModel.closeDialogAction.observe(lifecycle) {
+        otpStateViewModel.closeDialogAction.observe(viewLifecycleOwner) {
             binding.loaderView.root.makeGone()
             dismiss()
         }
-        otpStateViewModel.showErrorMessageAction.observe(lifecycle) {
+        otpStateViewModel.showErrorMessageAction.observe(viewLifecycleOwner) {
             binding.loaderView.root.makeGone()
             binding.smsCodeMessageView.populate(it)
         }

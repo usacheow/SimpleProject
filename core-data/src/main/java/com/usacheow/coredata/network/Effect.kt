@@ -12,9 +12,16 @@ sealed class Effect<out T : Any> : State<T>() {
     data class Success<out T : Any>(val data: T) : Effect<T>()
 
     data class Error<out T : Any>(val exception: ApiError, val data: T? = null) : Effect<T>()
+
+    fun getDataIfSuccess(): T? {
+        if (this is Success<T>) {
+            return data
+        }
+        return null
+    }
 }
 
-fun Effect<*>.toCompletableResult() = when (this) {
+fun Effect<*>.toCompletableEffect() = when (this) {
     is Effect.Success<*> -> Effect.Success(Completable)
 
     is Effect.Error<*> -> when (exception) {
@@ -67,14 +74,6 @@ inline fun <IN : Any> Effect<IN>.doOnError(block: Effect.Error<IN>.() -> Unit): 
     }
 
     return this
-}
-
-fun <IN : Any> Effect<IN>.getDataIfSuccess(): IN? {
-    if (this is Effect.Success<IN>) {
-        return data
-    }
-
-    return null
 }
 
 fun <IN : Any> IN.toSuccessEffect(): Effect.Success<IN> {

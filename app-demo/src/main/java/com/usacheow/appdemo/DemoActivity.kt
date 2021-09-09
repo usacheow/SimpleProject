@@ -56,16 +56,16 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun subscribe() {
-        appStateViewModel.openAuthScreenAction.observe(lifecycle) {
+        appStateViewModel.openAuthScreenAction.observe(this) {
             navigateTo(R.id.sign_in_with_phone_nav_graph)
         }
-        appStateViewModel.openPinScreenAction.observe(lifecycle) {
+        appStateViewModel.openPinScreenAction.observe(this) {
             navigateTo(R.id.pin_code_nav_graph)
         }
-        appStateViewModel.openOnBoardingScreenAction.observe(lifecycle) {
+        appStateViewModel.openOnBoardingScreenAction.observe(this) {
             navigateTo(R.id.on_boarding_nav_graph)
         }
-        appStateViewModel.openAppScreenAction.observe(lifecycle) {
+        appStateViewModel.openAppScreenAction.observe(this) {
             navigateTo(R.id.main_nav_graph)
         }
     }

@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewActionTileBinding
 import com.usacheow.coreui.utils.ImageSource
 import com.usacheow.coreui.utils.TextSource
@@ -61,7 +61,7 @@ data class ActionTileItem(
     var isChecked: Boolean = false,
     val selectionType: ActionSelectionType = ActionSelectionType.CHECK_BOX,
     val clickListener: (Boolean) -> Unit = {},
-) : ViewType(R.layout.view_action_tile) {
+) : ViewState(R.layout.view_action_tile) {
 
     companion object {
         fun shimmer() = ShimmerTileItem(topLine = false, rightIcon = false)

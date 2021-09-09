@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.featureonboarding.R
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
@@ -28,4 +28,4 @@ data class OnBoardingItem(
     @DrawableRes val imageId: Int,
     @StringRes val titleId: Int,
     @StringRes val descriptionId: Int,
-) : ViewType(R.layout.on_boarding_item_view)
+) : ViewState(R.layout.on_boarding_item_view)

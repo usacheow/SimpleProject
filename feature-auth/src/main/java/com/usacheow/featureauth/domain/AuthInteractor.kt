@@ -2,7 +2,7 @@ package com.usacheow.featureauth.domain
 
 import com.usacheow.coredata.network.Completable
 import com.usacheow.coredata.network.Effect
-import com.usacheow.coredata.network.toCompletableResult
+import com.usacheow.coredata.network.toCompletableEffect
 import com.usacheow.featureauth.data.AuthRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
@@ -13,11 +13,11 @@ class AuthInteractor @Inject constructor(
 ) {
 
     suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<Completable> {
-        return repository.signInWithLoginAndPassword(login, password).toCompletableResult()
+        return repository.signInWithLoginAndPassword(login, password).toCompletableEffect()
     }
 
     suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect<Completable> {
-        return repository.signUpWithLoginAndPassword(login, password).toCompletableResult()
+        return repository.signUpWithLoginAndPassword(login, password).toCompletableEffect()
     }
 
     suspend fun signInWithPhone(phone: String): Effect<Completable> {
@@ -29,6 +29,6 @@ class AuthInteractor @Inject constructor(
     }
 
     suspend fun verifyPhone(phone: String, code: String): Effect<Completable> {
-        return repository.verifyPhone(phone, code).toCompletableResult()
+        return repository.verifyPhone(phone, code).toCompletableEffect()
     }
 }

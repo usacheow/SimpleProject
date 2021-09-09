@@ -1,9 +1,9 @@
 package com.usacheow.coreui.adapter
 
-import com.usacheow.coreui.adapter.base.TagViewType
+import com.usacheow.coreui.adapter.base.TagViewState
 
 class SingleSelectionViewTypesAdapter(
-    entities: List<TagViewType> = emptyList()
+    entities: List<TagViewState> = emptyList()
 ) : BaseSelectionModeViewTypesAdapter(entities) {
 
     private var selectedItemPosition: Int? = null
@@ -19,11 +19,11 @@ class SingleSelectionViewTypesAdapter(
             } else {
                 actionItem.isSelected = false
             }
-            actionItem.onSelectAction = { onSelected(index) }
+            actionItem.clickListener = { onClicked(index) }
         }
     }
 
-    private fun onSelected(position: Int) {
+    private fun onClicked(position: Int) {
         if (position == selectedItemPosition) {
             return
         }
@@ -36,7 +36,7 @@ class SingleSelectionViewTypesAdapter(
         notifyItemChanged(position)
     }
 
-    fun update(newItems: List<TagViewType>) {
+    fun update(newItems: List<TagViewState>) {
         entities = newItems
         selectedItemPosition = null
         prepareItems()

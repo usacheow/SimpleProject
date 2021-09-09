@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.utils.view.toPx
 
 class SpaceTileView @JvmOverloads constructor(
@@ -21,4 +21,4 @@ class SpaceTileView @JvmOverloads constructor(
 
 data class SpaceTileItem(
     val heightDp: Int,
-) : ViewType(R.layout.view_space_tile)
+) : ViewState(R.layout.view_space_tile)

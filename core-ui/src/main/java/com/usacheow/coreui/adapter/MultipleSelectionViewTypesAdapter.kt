@@ -1,9 +1,9 @@
 package com.usacheow.coreui.adapter
 
-import com.usacheow.coreui.adapter.base.TagViewType
+import com.usacheow.coreui.adapter.base.TagViewState
 
 class MultipleSelectionViewTypesAdapter(
-    entities: List<TagViewType> = emptyList(),
+    entities: List<TagViewState> = emptyList(),
 ) : BaseSelectionModeViewTypesAdapter(entities) {
 
     init {
@@ -12,18 +12,18 @@ class MultipleSelectionViewTypesAdapter(
 
     private fun prepareItems() {
         entities.forEachIndexed { index, actionItem ->
-            actionItem.onSelectAction = { onSelected(index) }
+            actionItem.clickListener = { onClicked(index) }
         }
     }
 
-    private fun onSelected(position: Int) {
+    private fun onClicked(position: Int) {
         entities[position].apply {
             isSelected = !isSelected
         }
         notifyItemChanged(position)
     }
 
-    fun update(newItems: List<TagViewType>) {
+    fun update(newItems: List<TagViewState>) {
         entities = newItems
         prepareItems()
         notifyDataSetChanged()

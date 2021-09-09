@@ -8,7 +8,7 @@ import androidx.core.view.updateMargins
 import com.google.android.material.button.MaterialButton
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.toPx
 
@@ -38,4 +38,4 @@ data class SimpleButtonItem(
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
     val clickListener: () -> Unit,
-) : ViewType(R.layout.view_simple_button_item)
+) : ViewState(R.layout.view_simple_button_item)

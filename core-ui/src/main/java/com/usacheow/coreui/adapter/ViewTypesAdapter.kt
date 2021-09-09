@@ -5,18 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 
 open class ViewTypesAdapter(
-    private var entities: List<ViewType> = emptyList()
-) : RecyclerView.Adapter<ViewTypesAdapter.ViewTypesViewHolder>() {
+    private var entities: List<ViewState> = emptyList()
+) : RecyclerView.Adapter<ViewTypesViewHolder<ViewState>>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypesViewHolder<ViewState> {
         val itemView = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return ViewTypesViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewTypesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewTypesViewHolder<ViewState>, position: Int) {
         holder.populate(entities[getIndexByPosition(position)])
     }
 
@@ -26,19 +26,24 @@ open class ViewTypesAdapter(
 
     override fun getItemViewType(position: Int) = entities[getIndexByPosition(position)].layoutId
 
-    fun update(list: List<ViewType>) {
-        entities = list
+    fun update(list: List<ViewState>) {
+        entities = list.toMutableList()
         notifyDataSetChanged()
     }
 
-    fun getData() = entities
+    fun update(item: ViewState, position: Int) {
+        entities = entities.toMutableList().apply { this[position] = item }
+        notifyItemChanged(position)
+    }
+
+    fun getData() = entities.toList()
 
     protected open fun getIndexByPosition(position: Int) = position
+}
 
-    class ViewTypesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Populatable<ViewType> {
+class ViewTypesViewHolder<MODEL>(itemView: View) : RecyclerView.ViewHolder(itemView), Populatable<MODEL> {
 
-        override fun populate(model: ViewType) {
-            (itemView as? Populatable<ViewType>)?.populate(model)
-        }
+    override fun populate(model: MODEL) {
+        (itemView as? Populatable<MODEL>)?.populate(model)
     }
 }

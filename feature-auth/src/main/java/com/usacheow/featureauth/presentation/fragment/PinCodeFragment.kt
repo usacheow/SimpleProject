@@ -57,7 +57,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isBiometricAllowState.observe(lifecycle) { isAllow ->
+        viewModel.isBiometricAllowState.observe(viewLifecycleOwner) { isAllow ->
             binding.pinCodeView.setBiometricEnabled(isAllow && biometricDelegate.isBiometricAvailable())
             if (isAllow) {
                 requireView().post {
@@ -65,10 +65,10 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
                 }
             }
         }
-        viewModel.openBiometricScreenAction.observe(lifecycle) {
+        viewModel.openBiometricScreenAction.observe(viewLifecycleOwner) {
             biometricDelegate.tryShow()
         }
-        viewModel.authState.observe(lifecycle) {
+        viewModel.authState.observe(viewLifecycleOwner) {
             when (it) {
                 is SignInResult.SignInSuccess -> {
                     appStateViewModel.onPinCodeEntered()

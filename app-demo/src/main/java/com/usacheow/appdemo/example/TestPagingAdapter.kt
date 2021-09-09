@@ -5,16 +5,17 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.usacheow.coreui.adapter.ViewTypesAdapter
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.ViewTypesViewHolder
+import com.usacheow.coreui.adapter.base.ViewState
 
-class TestPagingAdapter : PagingDataAdapter<TestModel, ViewTypesAdapter.ViewTypesViewHolder>(TestModelDiffUtil) {
+class TestPagingAdapter : PagingDataAdapter<TestModel, ViewTypesViewHolder<ViewState>>(TestModelDiffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypesAdapter.ViewTypesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypesViewHolder<ViewState> {
         val itemView = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-        return ViewTypesAdapter.ViewTypesViewHolder(itemView)
+        return ViewTypesViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewTypesAdapter.ViewTypesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewTypesViewHolder<ViewState>, position: Int) {
         getItem(position)?.let(holder::populate)
     }
 
@@ -38,4 +39,4 @@ class TestPagingAdapter : PagingDataAdapter<TestModel, ViewTypesAdapter.ViewType
 data class TestModel(
     val name: String,
     val surname: String,
-) : ViewType(0)
+) : ViewState(0)

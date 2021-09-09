@@ -65,16 +65,16 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun subscribe() {
-        appStateViewModel.openAuthScreenAction.observe(lifecycle) {
+        appStateViewModel.openAuthScreenAction.observe(this) {
             navigateTo(authorizationMediator.getSignInWithPhoneFlowDirection())
         }
-        appStateViewModel.openPinScreenAction.observe(lifecycle) {
+        appStateViewModel.openPinScreenAction.observe(this) {
             navigateTo(authorizationMediator.getPinCodeFlowDirection())
         }
-        appStateViewModel.openOnBoardingScreenAction.observe(lifecycle) {
+        appStateViewModel.openOnBoardingScreenAction.observe(this) {
             navigateTo(onBoardingMediator.getOnBoardingFlowDirection())
         }
-        appStateViewModel.openAppScreenAction.observe(lifecycle) {
+        appStateViewModel.openAppScreenAction.observe(this) {
             navigateTo(FeatureNavDirection(R.id.bottomBarFragment))
         }
     }

@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
@@ -84,13 +85,13 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(lifecycle) { binding.loaderView.root.isVisible = it }
-        viewModel.errorState.observe(lifecycle) {
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.root.isVisible = it }
+        viewModel.errorState.observe(viewLifecycleOwner) {
             // todo: implement
         }
-        viewModel.submitButtonEnabledState.observe(lifecycle) { binding.signInButton.isEnabled = it }
-        viewModel.openSignUpScreenAction.observe(lifecycle) { router.toSignUpFlow() }
-        viewModel.closeScreenAction.observe(lifecycle) { appStateViewModel.onSignedIn() }
+        viewModel.submitButtonEnabledState.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
+        viewModel.openSignUpScreenAction.observe(viewLifecycleOwner) { router.toSignUpFlow() }
+        viewModel.closeScreenAction.observe(viewLifecycleOwner) { appStateViewModel.onSignedIn() }
     }
 
     private fun getLoginAndPassword() =

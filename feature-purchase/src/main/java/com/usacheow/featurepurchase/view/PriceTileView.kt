@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.TagViewType
+import com.usacheow.coreui.adapter.base.TagViewState
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.color
@@ -28,9 +28,9 @@ class PriceTileView @JvmOverloads constructor(
     override fun populate(model: PriceTileItem) {
         binding.clickableView.doOnClick {
             if (!model.isSelected) {
-                model.clickListener()
+                model.selectListener()
             }
-            model.onSelectAction()
+            model.clickListener()
         }
 
         binding.cardView.setCardBackgroundColor(
@@ -60,5 +60,5 @@ data class PriceTileItem(
     val price: TextSource,
     val pricePerMonth: TextSource,
     val buyButtonText: TextSource.Simple,
-    val clickListener: () -> Unit,
-) : TagViewType(R.layout.view_price_tile)
+    val selectListener: () -> Unit,
+) : TagViewState(R.layout.view_price_tile)

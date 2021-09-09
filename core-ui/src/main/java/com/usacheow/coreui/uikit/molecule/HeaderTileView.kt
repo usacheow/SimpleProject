@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewType
+import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewHeaderTileBinding
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.populate
@@ -25,7 +25,7 @@ class HeaderTileView @JvmOverloads constructor(
 
 data class HeaderTileItem(
     val title: TextSource,
-) : ViewType(R.layout.view_header_tile) {
+) : ViewState(R.layout.view_header_tile) {
 
     companion object {
         fun shimmer() = ShimmerTileItem(topLine = false, bottomLine = false, leftIcon = false, rightIcon = false)
