@@ -1,12 +1,5 @@
 package com.usacheow.coredata.network
 
-object Completable
-
-sealed class State<out T : Any> {
-
-    data class Loading<out T : Any>(val data: T? = null) : State<T>()
-}
-
 sealed class Effect<out T : Any> : State<T>() {
 
     data class Success<out T : Any>(val data: T) : Effect<T>()

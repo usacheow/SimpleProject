@@ -1,11 +1,14 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
 import androidx.lifecycle.viewModelScope
+import com.usacheow.coredata.network.ApiError
 import com.usacheow.coredata.network.doOnError
 import com.usacheow.coredata.network.doOnSuccess
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.SimpleAction
+import com.usacheow.coreui.utils.sendTo
 import com.usacheow.coreui.viewmodel.SimpleViewModel
+import com.usacheow.featureauth.R
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -50,8 +53,11 @@ class SignUpViewModel @Inject constructor(
 
         interactor.signUpWithLoginAndPassword(login, password).doOnSuccess {
             _openMainScreenAction.send(SimpleAction)
-        }.doOnError {
-            _errorState.emit(exception.getMessage(resources.get))
+        }.doOnError { exception, data ->
+            when (exception) {
+                is ApiError -> exception.getMessage(resources.get)
+                else -> resources.getString(R.string.unknown_error_message)
+            }.sendTo(_errorState)
         }
 
         _isLoadingState.emit(false)

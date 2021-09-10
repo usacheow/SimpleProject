@@ -17,30 +17,37 @@ suspend inline fun <reified T : Any> cachedApiCall(
     key: String,
     cacheProvider: CacheProvider,
     dispatcher: CoroutineDispatcher,
+    needActualData: Boolean = false,
     timeInMillis: Long = 1 * 60 * 1000,
     noinline request: suspend () -> Response<T>,
-) = cacheProvider
-    .get(T::class.java, key, timeInMillis)
-    ?.let { Effect.Success(it) }
-    ?: apiCall(dispatcher, request)
-        .doOnSuccess { cacheProvider.save(data, key) }
-        .doOnError { cacheProvider.clear(T::class.java, key) }
+): Effect2<T> {
+    return if (needActualData) {
+        apiCall(dispatcher, request)
+            .doOnSuccess { cacheProvider.save(it, key) }
+            .applyCacheData { cacheProvider.get(T::class.java, key, timeInMillis) }
+    } else {
+        cacheProvider.get(T::class.java, key, timeInMillis)
+            ?.let { Effect2.success(it) }
+            ?: apiCall(dispatcher, request)
+                .doOnSuccess { cacheProvider.save(it, key) }
+    }
+}
 
 suspend fun <T : Any> apiCall(
     dispatcher: CoroutineDispatcher,
     block: suspend () -> Response<T>,
-): Effect<T> = withContext(dispatcher) {
+): Effect2<T> = withContext(dispatcher) {
     try {
         block().handle()
     } catch (t: Throwable) {
-        Effect.Error(t.toError())
+        Effect2.error(t.toError())
     }
 }
 
 private fun <T : Any> Response<T>.handle() = when {
     isSuccessful -> body()?.let {
-        Effect.Success(it)
-    } ?: Effect.Error(ApiError.EmptyResponseException())
+        Effect2.success(it)
+    } ?: Effect2.error(ApiError.EmptyResponseException())
 
     else -> {
         val exception = errorBody()?.let { errorBody ->
@@ -48,7 +55,7 @@ private fun <T : Any> Response<T>.handle() = when {
             ApiError.ServerException(error.message)
         } ?: ApiError.UnknownException()
 
-        Effect.Error(exception)
+        Effect2.error(exception)
     }
 }
 

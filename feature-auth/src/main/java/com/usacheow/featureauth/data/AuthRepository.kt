@@ -4,8 +4,7 @@ import com.usacheow.coredata.coroutine.IoDispatcher
 import com.usacheow.coredata.database.TokenStorage
 import com.usacheow.coredata.database.UserDataStorage
 import com.usacheow.coredata.network.Completable
-import com.usacheow.coredata.network.Effect
-import com.usacheow.coredata.network.doOnSuccess
+import com.usacheow.coredata.network.Effect2
 import com.usacheow.featureauth.data.models.AccessToken
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
@@ -14,15 +13,15 @@ import javax.inject.Inject
 
 interface AuthRepository {
 
-    suspend fun signInWithLoginAndPassword(login: String, password: String): Effect<AccessToken>
+    suspend fun signInWithLoginAndPassword(login: String, password: String): Effect2<AccessToken>
 
-    suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect<AccessToken>
+    suspend fun signUpWithLoginAndPassword(login: String, password: String): Effect2<AccessToken>
 
-    suspend fun signInWithPhone(phone: String): Effect<Completable>
+    suspend fun signInWithPhone(phone: String): Effect2<Completable>
 
-    suspend fun resendCode(phone: String): Effect<Completable>
+    suspend fun resendCode(phone: String): Effect2<Completable>
 
-    suspend fun verifyPhone(phone: String, code: String): Effect<AccessToken>
+    suspend fun verifyPhone(phone: String, code: String): Effect2<AccessToken>
 }
 
 class AuthRepositoryImpl @Inject constructor(
@@ -34,34 +33,34 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun signInWithLoginAndPassword(login: String, password: String) = withContext(dispatcher) {
         delay(2000)
 //        apiCall
-        Effect.Success(AccessToken("token")).doOnSuccess {
-            tokenStorage.token = data.token
+        Effect2.success(AccessToken("token")).doOnSuccess {
+            tokenStorage.token = it.token
         }
     }
 
     override suspend fun signUpWithLoginAndPassword(login: String, password: String) = withContext(dispatcher) {
         delay(2000)
 //        apiCall
-        Effect.Success(AccessToken("token")).doOnSuccess {
-            tokenStorage.token = data.token
+        Effect2.success(AccessToken("token")).doOnSuccess {
+            tokenStorage.token = it.token
         }
     }
 
     override suspend fun signInWithPhone(phone: String) = withContext(dispatcher) {
         delay(2000)
-        Effect.Success(Completable)
+        Effect2.success(Completable)
     }
 
     override suspend fun resendCode(phone: String) = withContext(dispatcher) {
         delay(2000)
-        Effect.Success(Completable)
+        Effect2.success(Completable)
     }
 
     override suspend fun verifyPhone(phone: String, code: String) = withContext(dispatcher) {
         delay(2000)
 //        apiCall
-        Effect.Success(AccessToken("token")).doOnSuccess {
-            tokenStorage.token = data.token
+        Effect2.success(AccessToken("token")).doOnSuccess {
+            tokenStorage.token = it.token
             userDataStorage.setPhoneNumber(phone)
         }
     }
