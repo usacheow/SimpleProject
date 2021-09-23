@@ -139,7 +139,7 @@ object Dependencies {
 
         object Navigation {
 
-            private const val navigationVersion = "2.4.0-alpha05"
+            private const val navigationVersion = "2.4.0-alpha09"
             val impl = arrayOf(
                 "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
                 "androidx.navigation:navigation-ui-ktx:$navigationVersion",

@@ -33,9 +33,18 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backButton"
+            style="@style/SimpleButtonGrey"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:text="Back" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backToRootButton"
+            style="@style/SimpleButtonGrey"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="12dp"
+            android:text="Back to root" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,19 +1,24 @@
 package com.usacheow.coreui.base
 
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.navigation.defaultNavOptions
+import com.usacheow.coreui.utils.navigation.from
+import com.usacheow.coreui.utils.navigation.popBackStack
 
 abstract class Router(protected val fragment: Fragment) {
 
-    protected val simpleFragment get() = fragment as? SimpleFragment<*>
+    protected val navController get() = fragment.findNavController()
 
-    protected fun navigateTo(direction: NavDirections) = fragment.findNavController()
-        .navigate(direction, defaultNavOptions())
-
-    fun moveToBack() {
+    fun back() {
         fragment.requireActivity().onBackPressed()
+    }
+
+    fun backTo(@IdRes id: Int) {
+        popBackStack(id, inclusive = false).from(navController)
+    }
+
+    fun backToRoot() {
+        popBackStack(navController.graph.startDestinationId, inclusive = false).from(navController)
     }
 }

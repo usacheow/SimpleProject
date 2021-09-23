@@ -1,30 +1,26 @@
 package com.usacheow.apptest
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.usacheow.apptest.databinding.Fragment1Binding
 import com.usacheow.apptest.databinding.Fragment7Binding
-import com.usacheow.apptest.databinding.FragmentCoroutinesBinding
 import com.usacheow.coreui.fragment.SimpleFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.usacheow.coreui.utils.view.doOnClick
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class Fragment7Fragment : SimpleFragment<Fragment7Binding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = Fragment7Binding::inflate,
     )
 
-    companion object {
-        fun newInstance() = Fragment7Fragment()
-    }
+    @Inject lateinit var router: TestRouter
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.backButton.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
+        binding.backButton.doOnClick(router::back)
+        binding.backToFragment2Button.doOnClick(router::backTo2Screen)
+        binding.backToFragment4Button.doOnClick(router::backTo4Screen)
+        binding.backToFragment6Button.doOnClick(router::backTo6Screen)
+        binding.backToRootButton.doOnClick(router::backToRoot)
     }
 }

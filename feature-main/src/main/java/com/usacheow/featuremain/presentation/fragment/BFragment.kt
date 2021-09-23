@@ -1,6 +1,7 @@
 package com.usacheow.featuremain.presentation.fragment
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
@@ -9,7 +10,6 @@ import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.TextSource.Simple
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.featuremain.R
@@ -32,6 +32,10 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     private val aViewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
     private val bViewModel by viewModels<BViewModel>()
 
+    companion object {
+        fun bundle(itemNumber: Int) = bundleOf(BViewModel.ITEM_NUMBER_KEY to itemNumber)
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         return insets
@@ -40,7 +44,7 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "B Fragment ${aViewModel.x} ${bViewModel.itemNumber}"
-            setNavigationAction(R.drawable.ic_back) { router.moveToBack() }
+            setNavigationAction(R.drawable.ic_back) { router.back() }
         }
 
         binding.listView.layoutManager = LinearLayoutManager(context)

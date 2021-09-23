@@ -1,36 +1,24 @@
 package com.usacheow.apptest
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.usacheow.apptest.databinding.Fragment1Binding
 import com.usacheow.apptest.databinding.Fragment3Binding
-import com.usacheow.apptest.databinding.FragmentCoroutinesBinding
 import com.usacheow.coreui.fragment.SimpleFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.usacheow.coreui.utils.view.doOnClick
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class Fragment3Fragment : SimpleFragment<Fragment3Binding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = Fragment3Binding::inflate,
     )
 
-    companion object {
-        fun newInstance() = Fragment3Fragment()
-    }
+    @Inject lateinit var router: TestRouter
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.go4Button.setOnClickListener {
-            findNavController().navigate(Fragment3FragmentDirections.actionFragment3FragmentToFragment4Fragment())
-        }
-        binding.go6Button.setOnClickListener {
-            findNavController().navigate(Fragment3FragmentDirections.actionFragment3FragmentToFragment6Fragment())
-        }
-        binding.backButton.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
+        binding.go4Button.doOnClick(router::from3To4Screen)
+        binding.go6Button.doOnClick(router::from3To6Screen)
+        binding.backButton.doOnClick(router::back)
     }
 }

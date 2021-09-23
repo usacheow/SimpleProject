@@ -9,9 +9,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import com.usacheow.appdemo.databinding.ActivityHostBinding
 import com.usacheow.appstate.AppStateViewModel
-import com.usacheow.coremediator.FeatureNavDirection
 import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.utils.navigation.resetNavOptions
+import com.usacheow.coreui.utils.navigation.openIn
+import com.usacheow.coreui.utils.navigation.replaceAllTo
+import com.usacheow.coreui.utils.navigation.screen
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
@@ -28,7 +29,6 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     private val appStateViewModel by viewModels<AppStateViewModel>()
 
     private var isKeyboardVisible = false
-    private val resetNavigationOptions = resetNavOptions(to = R.id.demo_app_nav_graph)
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -71,6 +71,8 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     private fun navigateTo(@IdRes id: Int) {
-        findNavController(R.id.fragmentContainer).navigate(FeatureNavDirection(id), resetNavigationOptions)
+        screen(id)
+            .replaceAllTo(R.id.demo_app_nav_graph)
+            .openIn(findNavController(R.id.fragmentContainer))
     }
 }

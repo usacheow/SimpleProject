@@ -5,6 +5,7 @@ import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coremediator.OtpMediator
 import com.usacheow.coreui.base.Router
+import com.usacheow.coreui.utils.navigation.openIn
 import javax.inject.Inject
 
 class DemoRouter @Inject constructor(
@@ -15,70 +16,70 @@ class DemoRouter @Inject constructor(
 ) : Router(fragment) {
 
     fun fromDemoToFontsScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToFontsFragment())
+        DemoFragmentDirections.actionDemoFragmentToFontsFragment().openIn(navController)
     }
 
     fun fromDemoToButtonsScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToButtonsFragment())
+        DemoFragmentDirections.actionDemoFragmentToButtonsFragment().openIn(navController)
     }
 
     fun fromDemoToTextInputsScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToTextInputsFragment())
+        DemoFragmentDirections.actionDemoFragmentToTextInputsFragment().openIn(navController)
     }
 
     fun fromDemoToActionTilesScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToActionTilesFragment())
+        DemoFragmentDirections.actionDemoFragmentToActionTilesFragment().openIn(navController)
     }
 
     fun fromDemoToListTilesScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToListTilesFragment())
+        DemoFragmentDirections.actionDemoFragmentToListTilesFragment().openIn(navController)
     }
 
     fun fromDemoToTagListScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToTagListFragment())
+        DemoFragmentDirections.actionDemoFragmentToTagListFragment().openIn(navController)
     }
 
     fun fromDemoToInformationTilesScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToInformationTilesFragment())
+        DemoFragmentDirections.actionDemoFragmentToInformationTilesFragment().openIn(navController)
     }
 
     fun fromDemoToErrorMessageScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToErrorMessageFragment())
+        DemoFragmentDirections.actionDemoFragmentToErrorMessageFragment().openIn(navController)
     }
 
     fun fromDemoToNumPadScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToNumPadFragment())
+        DemoFragmentDirections.actionDemoFragmentToNumPadFragment().openIn(navController)
     }
 
     fun fromDemoToExampleBottomDialogScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToExampleBottomDialogFragment())
+        DemoFragmentDirections.actionDemoFragmentToExampleBottomDialogFragment().openIn(navController)
     }
 
     fun fromDemoToExampleModalScreen() {
-        navigateTo(DemoFragmentDirections.actionDemoFragmentToExampleModalFragment())
+        DemoFragmentDirections.actionDemoFragmentToExampleModalFragment().openIn(navController)
     }
 
     fun toOnBoardingFlow() {
-        navigateTo(onBoardingMediator.getOnBoardingFlowDirection())
+        onBoardingMediator.getOnBoardingFlowDirection().openIn(navController)
     }
 
     fun toSignUpFlow() {
-        navigateTo(authorizationMediator.getSignUpFlowDirection())
+        authorizationMediator.getSignUpFlowDirection().openIn(navController)
     }
 
     fun toSignInFlow() {
-        navigateTo(authorizationMediator.getSignInFlowDirection())
+        authorizationMediator.getSignInFlowDirection().openIn(navController)
     }
 
     fun toSignInWithPhoneFlow() {
-        navigateTo(authorizationMediator.getSignInWithPhoneFlowDirection())
+        authorizationMediator.getSignInWithPhoneFlowDirection().openIn(navController)
     }
 
     fun toPinCodeFlow() {
-        navigateTo(authorizationMediator.getPinCodeFlowDirection())
+        authorizationMediator.getPinCodeFlowDirection().openIn(navController)
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        navigateTo(otpMediator.getOtpFlowDirection(codeLength))
+        otpMediator.getOtpFlowDirection(codeLength).openIn(navController)
     }
 }

@@ -15,10 +15,6 @@ class Mock2Fragment : SimpleFragment<FragmentMockBinding>() {
         viewBindingProvider = FragmentMockBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = Mock2Fragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         return insets

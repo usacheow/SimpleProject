@@ -8,16 +8,16 @@ import com.usacheow.coreui.R
 fun defaultNavOptions(block: NavOptionsBuilder.() -> Unit = {}) = navOptions {
     block()
     anim {
-        enter = R.animator.nav_default_enter_anim
-        exit = R.animator.nav_default_exit_anim
-        popEnter = R.animator.nav_default_pop_enter_anim
-        popExit = R.animator.nav_default_pop_exit_anim
+        enter = R.anim.anim_enter_from_right
+        exit = R.anim.anim_exit_to_left
+        popEnter = R.anim.anim_enter_from_left
+        popExit = R.anim.anim_exit_to_right
     }
 }
 
-fun resetNavOptions(@IdRes to: Int) = defaultNavOptions {
+fun resetNavOptions(@IdRes to: Int, inclusive: Boolean = true) = defaultNavOptions {
     popUpTo(to) {
-        inclusive = true
+        this.inclusive = inclusive
     }
     launchSingleTop = true
 }

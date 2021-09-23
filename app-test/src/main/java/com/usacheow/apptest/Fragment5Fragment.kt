@@ -1,28 +1,24 @@
 package com.usacheow.apptest
 
 import android.os.Bundle
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.fragment.findNavController
 import com.usacheow.apptest.databinding.Fragment5Binding
 import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.utils.view.doOnClick
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class Fragment5Fragment : SimpleFragment<Fragment5Binding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = Fragment5Binding::inflate,
     )
 
-    companion object {
-        fun newInstance() = Fragment5Fragment()
-    }
+    @Inject lateinit var router: TestRouter
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.goButton.setOnClickListener {
-            findNavController().popBackStack(R.id.fragment4Fragment, inclusive = true)
-            findNavController().navigate(ActionOnlyNavDirections(R.id.fragment7Fragment))
-        }
-        binding.backButton.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
+        binding.goButton.doOnClick(router::from5To7Screen)
+        binding.backButton.doOnClick(router::back)
+        binding.backToRootButton.doOnClick(router::backToRoot)
     }
 }

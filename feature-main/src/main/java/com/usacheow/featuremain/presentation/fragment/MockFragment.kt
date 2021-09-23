@@ -13,12 +13,7 @@ class MockFragment : SimpleFragment<FragmentMockBinding>() {
 
     override val defaultParams = Params(
         viewBindingProvider = FragmentMockBinding::inflate,
-        needWhiteAllIcons = true,
     )
-
-    companion object {
-        fun newInstance() = MockFragment()
-    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
