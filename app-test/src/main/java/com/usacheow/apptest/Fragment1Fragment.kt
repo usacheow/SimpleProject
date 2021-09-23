@@ -7,6 +7,9 @@ import androidx.navigation.fragment.findNavController
 import com.usacheow.apptest.databinding.Fragment1Binding
 import com.usacheow.apptest.databinding.FragmentCoroutinesBinding
 import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.utils.navigation.from
+import com.usacheow.coreui.utils.navigation.openIn
+import com.usacheow.coreui.utils.navigation.popBackStack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,10 +26,11 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.goButton.setOnClickListener {
-            findNavController().navigate(Fragment1FragmentDirections.actionFragment1FragmentToFragment2Fragment())
+            Fragment1FragmentDirections.actionFragment1FragmentToFragment2Fragment()
+                .openIn(findNavController())
         }
         binding.backButton.setOnClickListener {
-            requireActivity().onBackPressed()
+            popBackStack().from(findNavController())
         }
     }
 }

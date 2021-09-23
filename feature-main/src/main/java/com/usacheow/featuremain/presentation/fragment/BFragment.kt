@@ -1,6 +1,7 @@
 package com.usacheow.featuremain.presentation.fragment
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
@@ -31,6 +32,10 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
 
     private val aViewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
     private val bViewModel by viewModels<BViewModel>()
+
+    companion object {
+        fun bundle(itemNumber: Int) = bundleOf(BViewModel.ITEM_NUMBER_KEY to itemNumber)
+    }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())

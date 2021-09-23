@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.OtpMediator
 import com.usacheow.coreui.base.Router
+import com.usacheow.coreui.utils.navigation.openIn
 import javax.inject.Inject
 
 class AuthorizationRouter @Inject constructor(
@@ -13,10 +14,10 @@ class AuthorizationRouter @Inject constructor(
 ) : Router(fragment) {
 
     fun toSignUpFlow() {
-        navigateTo(authorizationMediator.getSignUpFlowDirection())
+        authorizationMediator.getSignUpFlowDirection().openIn(navController)
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        navigateTo(otpMediator.getOtpFlowDirection(codeLength))
+        otpMediator.getOtpFlowDirection(codeLength).openIn(navController)
     }
 }

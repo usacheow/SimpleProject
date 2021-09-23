@@ -1,74 +1,105 @@
 package com.usacheow.coredata.network
 
-sealed class Effect<out T : Any> : State<T>() {
+object Completable
 
-    data class Success<out T : Any>(val data: T) : Effect<T>()
+sealed class State<out T : Any>
 
-    data class Error<out T : Any>(val exception: ApiError, val data: T? = null) : Effect<T>()
+class Loading<T : Any>(val data: T? = null) : State<T>()
 
-    fun getDataIfSuccess(): T? {
-        if (this is Success<T>) {
-            return data
+class Effect2<DATA : Any> private constructor(
+    private val value: Data<DATA>,
+) : State<DATA>() {
+
+    companion object {
+
+        fun <T : Any> success(data: T) = Effect2(Success(data))
+
+        fun <T : Any> error(
+            exception: Throwable,
+            cachedData: T? = null,
+        ) = Effect2(Error(exception, cachedData))
+    }
+
+    val isSuccess: Boolean get() = value is Success<DATA>
+
+    val isError: Boolean get() = value is Error<DATA>
+
+    val dataIfSuccess
+        get() = when (value) {
+            is Success<DATA> -> value.data
+            else -> null
         }
-        return null
-    }
-}
 
-fun Effect<*>.toCompletableEffect() = when (this) {
-    is Effect.Success<*> -> Effect.Success(Completable)
+    val dataOrNull
+        get() = when (value) {
+            is Success<DATA> -> value.data
+            is Error<DATA> -> value.data
+        }
 
-    is Effect.Error<*> -> when (exception) {
-        is ApiError.EmptyResponseException -> Effect.Success(Completable)
+    val exceptionOrNull
+        get() = when (value) {
+            is Error<DATA> -> value.exception
+            else -> null
+        }
 
-        else -> Effect.Error(this.exception)
-    }
-}
-
-inline fun <IN : Any, OUT : Any> Effect<IN>.mapEffect(
-    onSuccess: Effect.Success<IN>.() -> OUT,
-    onError: Effect.Error<IN>.() -> OUT,
-): OUT = when (this) {
-    is Effect.Success<IN> -> this.onSuccess()
-
-    is Effect.Error -> this.onError()
-}
-
-inline fun <IN : Any, OUT : Any> Effect<IN>.mapSuccessEffect(
-    block: Effect.Success<IN>.() -> Effect<OUT>,
-): Effect<OUT> = when (this) {
-    is Effect.Success<IN> -> this.block()
-
-    is Effect.Error -> Effect.Error(exception)
-}
-
-inline fun <IN : Any> Effect<IN>.mapErrorEffect(block: Effect.Error<IN>.() -> Effect<IN>): Effect<IN> = when (this) {
-    is Effect.Error -> this.block()
-
-    is Effect.Success<IN> -> this
-}
-
-inline fun <IN : Any, OUT : Any> Effect<IN>.mapSuccessEffectData(block: IN.() -> OUT): Effect<OUT> = when (this) {
-    is Effect.Success<IN> -> Effect.Success(this.data.block())
-
-    is Effect.Error -> Effect.Error(exception)
-}
-
-inline fun <IN : Any> Effect<IN>.doOnSuccess(block: Effect.Success<IN>.() -> Unit): Effect<IN> {
-    if (this is Effect.Success<IN>) {
-        this.block()
+    suspend fun doOnSuccess(
+        block: suspend (data: DATA) -> Unit,
+    ): Effect2<DATA> {
+        if (value is Success<DATA>) {
+            block(value.data)
+        }
+        return this
     }
 
-    return this
-}
-
-inline fun <IN : Any> Effect<IN>.doOnError(block: Effect.Error<IN>.() -> Unit): Effect<IN> {
-    if (this is Effect.Error) {
-        this.block()
+    suspend fun doOnError(
+        block: suspend (exception: Throwable, data: DATA?) -> Unit,
+    ): Effect2<DATA> {
+        if (value is Error<DATA>) {
+            block(value.exception, value.data)
+        }
+        return this
     }
 
-    return this
+    suspend fun applyCacheData(
+        cachedDataProvider: suspend () -> DATA?,
+    ): Effect2<DATA> = when (value) {
+        is Success<DATA> -> this
+        is Error<DATA> -> error(value.exception, cachedDataProvider())
+    }
+
+    suspend fun <OUT : Any> map(
+        transform: suspend (value: DATA) -> OUT,
+    ): Effect2<OUT> = when (value) {
+        is Success<DATA> -> success(transform(value.data))
+        is Error<DATA> -> error(value.exception, value.data?.let { transform(it) })
+    }
+
+    fun toCompletable() = when (value) {
+        is Success<DATA> -> success(Completable)
+
+        is Error<DATA> -> when (value.exception) {
+            is ApiError.EmptyResponseException -> success(Completable)
+
+            else -> error(value.exception)
+        }
+    }
+
+    internal sealed class Data<DATA : Any>
+
+    internal data class Success<DATA : Any>(
+        val data: DATA,
+    ) : Data<DATA>()
+
+    internal data class Error<DATA : Any>(
+        val exception: Throwable,
+        val data: DATA? = null,
+    ) : Data<DATA>()
 }
 
-fun <IN : Any> IN.toSuccessEffect(): Effect.Success<IN> {
-    return Effect.Success(this)
+inline fun <IN, OUT : Any> IN.tryRun(block: IN.() -> OUT): Effect2<OUT> {
+    return try {
+        Effect2.success(block())
+    } catch (e: Throwable) {
+        Effect2.error(e)
+    }
 }

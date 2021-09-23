@@ -10,5 +10,9 @@ class BViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
-    var itemNumber = savedStateHandle.get<Int>("itemNumber")
+    var itemNumber = savedStateHandle.get<Int>(ITEM_NUMBER_KEY)
+
+    companion object {
+        const val ITEM_NUMBER_KEY = "itemNumber"
+    }
 }

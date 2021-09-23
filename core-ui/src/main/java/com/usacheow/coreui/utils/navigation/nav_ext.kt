@@ -15,9 +15,9 @@ fun defaultNavOptions(block: NavOptionsBuilder.() -> Unit = {}) = navOptions {
     }
 }
 
-fun resetNavOptions(@IdRes to: Int) = defaultNavOptions {
+fun resetNavOptions(@IdRes to: Int, inclusive: Boolean = true) = defaultNavOptions {
     popUpTo(to) {
-        inclusive = true
+        this.inclusive = inclusive
     }
     launchSingleTop = true
 }
