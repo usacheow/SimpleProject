@@ -13,6 +13,9 @@
     <color name="backgroundBlurred">#CC000000</color>
     <color name="backgroundSecondary">#292929</color>
     <color name="backgroundToolbar">@color/background</color>
+    <color name="backgroundBottomBarGradientStart">@color/black</color>
+    <color name="backgroundBottomBarGradientCenter">@color/black_40</color>
+    <color name="backgroundBottomBarGradientEnd">@color/transparent</color>
 
     <color name="surface">#0E0E0E</color>
     <color name="surfaceSecondary">#191919</color>
@@ -34,7 +37,7 @@
     <color name="iconInverse">@color/symbolInverse</color>
 
     <color name="stroke">#222222</color>
-    <color name="unselected">#55565A</color>
+    <color name="unselected">#A8A8A8</color>
     <color name="shimmer">#55565A</color>
     <color name="divider">#292929</color>
     <color name="disabled">#B3B3B3</color>

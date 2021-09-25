@@ -1,20 +1,24 @@
 package com.usacheow.featuremain.presentation.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.whenCreated
 import androidx.lifecycle.withCreated
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
+import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.makeGone
 import com.usacheow.coreui.utils.view.makeVisible
@@ -33,6 +37,8 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.lang.Thread.sleep
 import javax.inject.Inject
+import android.widget.EdgeEffect
+import androidx.core.widget.EdgeEffectCompat
 
 @AndroidEntryPoint
 class AFragment : SimpleFragment<FragmentABinding>() {
@@ -50,6 +56,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
+        binding.listView.updatePadding(bottom = insets.getBottomInset())
         return insets
     }
 
@@ -64,9 +71,9 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     }
 
     override fun subscribe() {
-        cViewModel.results.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        }
+//        cViewModel.results.observe(viewLifecycleOwner) {
+//            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+//        }
     }
 
     private fun openNextScreen(itemNumber: Int) {

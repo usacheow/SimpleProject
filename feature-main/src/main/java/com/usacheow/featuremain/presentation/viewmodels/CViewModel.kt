@@ -32,7 +32,7 @@ class CViewModel @Inject constructor(
     fun setQuery(query: String) = viewModelScope.launch {
 //        _results.emit(query)
 //        _results.value = query
-        trigger.value = query
+//        trigger.value = query
 //        trigger.emit(query)
     }
 
@@ -46,13 +46,13 @@ class CViewModel @Inject constructor(
 //        initialValue = ""
 //    )
 
-    private val trigger = MutableLiveData<String>("")
-    val results: LiveData<String> = trigger.switchMap { query ->
-        liveData {
-            Log.d("stupid_article", "again? $query")
-            emit(query)
-        }
-    }
+//    private val trigger = MutableLiveData<String>("")
+//    val results: LiveData<String> = trigger.switchMap { query ->
+//        liveData {
+//            Log.d("stupid_article", "again? $query")
+//            emit(query)
+//        }
+//    }
 
 //    private val _results = MutableSharedFlow<String>(replay = 1)
 //    val results = _results.asSharedFlow()

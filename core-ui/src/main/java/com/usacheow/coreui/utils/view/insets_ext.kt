@@ -2,6 +2,7 @@ package com.usacheow.coreui.utils.view
 
 import android.graphics.Rect
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -24,11 +25,11 @@ fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme 
 
 fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> WindowInsetsCompat) {
     val initialPadding = Rect(paddingLeft, paddingTop, paddingRight, paddingBottom)
-    ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
-        block(insets, initialPadding)
+    ViewCompat.setOnApplyWindowInsetsListener(this) { insets, x ->
+        block(x, initialPadding)
     }
-//    requestApplyInsetsWhenAttached()
-    ViewCompat.requestApplyInsets(this)
+    requestApplyInsetsWhenAttached()
+//    ViewCompat.requestApplyInsets(this)
 }
 
 fun View.requestApplyInsetsWhenAttached() {
