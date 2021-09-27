@@ -1,7 +1,6 @@
 package com.usacheow.apptest
 
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.usacheow.coreui.base.Router
 import com.usacheow.coreui.utils.navigation.openIn
 import com.usacheow.coreui.utils.navigation.replaceAllTo

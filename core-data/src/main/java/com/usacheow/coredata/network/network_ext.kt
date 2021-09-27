@@ -2,6 +2,7 @@ package com.usacheow.coredata.network
 
 import com.google.gson.Gson
 import com.usacheow.coredata.cache.base.CacheProvider
+import com.usacheow.coredata.gson.fromJson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -51,37 +52,36 @@ private fun <T : Any> Response<T>.handle() = when {
 
     else -> {
         val exception = errorBody()?.let { errorBody ->
-            val error = Gson().fromJson(errorBody.charStream(), ErrorMessage::class.java)
+            val error = Gson().fromJson<ErrorDto>(errorBody.charStream())
             ApiError.ServerException(error.message)
-        } ?: ApiError.UnknownException()
+        } ?: ApiError.ServerException()
 
         Effect2.error(exception)
     }
 }
 
 private fun Throwable.toError() = when (this) {
-    is UnknownHostException -> ApiError.HostException()
+    is UnknownHostException,
+    is SSLException,
+    is ConnectException,
+    is SocketTimeoutException -> ApiError.HostException()
+
+    is CancellationException -> ApiError.CoroutineException()
 
     is HttpException -> when (val code = response()?.code()) {
         HttpURLConnection.HTTP_BAD_REQUEST,
         HttpURLConnection.HTTP_FORBIDDEN,
-        HttpURLConnection.HTTP_NOT_FOUND -> ApiError.ApiException(responseCode = code, cause = this)
+        HttpURLConnection.HTTP_NOT_FOUND -> ApiError.HostException(cause = this)
 
         HttpURLConnection.HTTP_UNAVAILABLE,
         HttpURLConnection.HTTP_UNAUTHORIZED -> ApiError.InvalidAccessTokenException()
 
         HttpURLConnection.HTTP_INTERNAL_ERROR,
         HttpURLConnection.HTTP_BAD_GATEWAY,
-        HttpURLConnection.HTTP_GATEWAY_TIMEOUT -> ApiError.HostException()
+        HttpURLConnection.HTTP_GATEWAY_TIMEOUT -> ApiError.ServerException()
 
         else -> ApiError.UnknownException()
     }
-
-    is SSLException,
-    is ConnectException,
-    is SocketTimeoutException -> ApiError.HostException()
-
-    is CancellationException -> ApiError.CoroutineException()
 
     else -> ApiError.UnknownException()
 }

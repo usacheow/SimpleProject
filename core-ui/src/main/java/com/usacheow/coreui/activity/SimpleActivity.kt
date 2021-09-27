@@ -11,15 +11,15 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.ActivityViewBindingDelegate
-import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.ActivityViewBindingHolder
+import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 
 abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     AppCompatActivity(),
     SimpleLifecycle,
     ApplyWindowInsets,
-    ViewBindingDelegate<VIEW_BINDING> by ActivityViewBindingDelegate() {
+    ViewBindingHolder<VIEW_BINDING> by ActivityViewBindingHolder() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null

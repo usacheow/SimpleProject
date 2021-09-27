@@ -17,14 +17,14 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
-import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingHolder
+import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.toPx
 
 abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     BottomSheetDialogFragment(),
     SimpleLifecycle,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
+    ViewBindingHolder<VIEW_BINDING> by FragmentViewBindingHolder() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
 

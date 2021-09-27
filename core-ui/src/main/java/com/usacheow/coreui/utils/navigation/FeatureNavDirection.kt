@@ -22,14 +22,14 @@ fun NavDirections.toFeatureNavDirection() = FeatureNavDirection(actionId, argume
 
 fun screen(@IdRes actionId: Int) = FeatureNavDirection(actionId = actionId)
 
-fun FeatureNavDirection.with(arguments: Bundle) = copy(arguments = arguments)
+infix fun FeatureNavDirection.with(arguments: Bundle) = copy(arguments = arguments)
 
 fun FeatureNavDirection.replaceAllTo(
     @IdRes destinationId: Int,
     inclusive: Boolean = true,
 ) = copy(resetTo = ResetTo(destinationId, inclusive))
 
-fun FeatureNavDirection.openIn(
+infix fun FeatureNavDirection.openIn(
     navController: NavController,
 ) = navController.navigate(
     this,
@@ -47,6 +47,43 @@ fun popBackStack(
     inclusive: Boolean = true,
 ) = destinationRes?.let { ResetTo(destinationRes, inclusive) }
 
-fun ResetTo?.from(
+infix fun ResetTo?.from(
     navController: NavController,
 ) = this?.let { navController.popBackStack(destinationId, inclusive) } ?: navController.popBackStack()
+
+/*
+* The screen ID with BUNDLE openIn navController
+* The screen ID with BUNDLE replacing ID openIn navController
+* The screen ID with BUNDLE replacing notInclusive(ID) openIn navController
+* The screen ID with BUNDLE openIn navController
+*
+* The popBackStack ID from navController
+* The popBackStack notInclusive(ID) from navController
+* The popBackStack currentScreen from navController
+* */
+
+typealias The = Unit
+
+val currentScreen: Int? = null
+
+fun notInclusive(
+    @IdRes destinationId: Int,
+) = ResetTo(destinationId, false)
+
+infix fun Unit.screen(@IdRes actionId: Int) = FeatureNavDirection(actionId = actionId)
+
+infix fun FeatureNavDirection.replacing(
+    @IdRes destinationId: Int,
+) = this replacing ResetTo(destinationId, true)
+
+infix fun FeatureNavDirection.replacing(
+    resetTo: ResetTo,
+) = copy(resetTo = resetTo)
+
+infix fun Unit.popBackStack(
+    @IdRes destinationRes: Int?,
+) = destinationRes?.let { ResetTo(destinationRes, true) }
+
+infix fun Unit.popBackStack(
+    resetTo: ResetTo,
+) = resetTo

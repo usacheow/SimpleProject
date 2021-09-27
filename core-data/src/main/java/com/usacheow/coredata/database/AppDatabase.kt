@@ -5,11 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.usacheow.coredata.database.dao.StubDao
-import com.usacheow.coredata.database.dto.StubDto
+import com.usacheow.coredata.database.entity.StubEntity
 
 private const val DATABASE_NAME = "simple.db"
 
-@Database(entities = [StubDto::class], version = 1, exportSchema = false)
+@Database(entities = [StubEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

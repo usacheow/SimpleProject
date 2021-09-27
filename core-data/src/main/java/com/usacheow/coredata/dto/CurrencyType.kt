@@ -1,4 +1,4 @@
-package com.usacheow.coredata.model
+package com.usacheow.coredata.dto
 
 import com.google.gson.annotations.SerializedName
 import java.util.Currency

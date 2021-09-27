@@ -15,8 +15,8 @@ import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
-import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingHolder
+import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.isNightMode
 
@@ -24,7 +24,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     Fragment(),
     SimpleLifecycle,
     ApplyWindowInsets,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
+    ViewBindingHolder<VIEW_BINDING> by FragmentViewBindingHolder() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null

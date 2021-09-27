@@ -5,21 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
-import androidx.core.view.WindowCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.usacheow.coreui.R
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
-import com.usacheow.coreui.delegate.FragmentViewBindingDelegate
-import com.usacheow.coreui.delegate.ViewBindingDelegate
+import com.usacheow.coreui.delegate.FragmentViewBindingHolder
+import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.isNightMode
 
 abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     DialogFragment(),
     SimpleLifecycle,
-    ViewBindingDelegate<VIEW_BINDING> by FragmentViewBindingDelegate() {
+    ViewBindingHolder<VIEW_BINDING> by FragmentViewBindingHolder() {
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
 

@@ -1,10 +1,10 @@
-package com.usacheow.coredata.database.dto
+package com.usacheow.coredata.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class StubDto(
+data class StubEntity(
     @PrimaryKey
     val id: Long,
     val stubFieldFirst: String,

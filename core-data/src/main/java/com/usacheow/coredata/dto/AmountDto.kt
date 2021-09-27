@@ -1,8 +1,8 @@
-package com.usacheow.coredata.model
+package com.usacheow.coredata.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class AmountData(
+data class AmountDto(
     @SerializedName("currency") val currency: CurrencyType,
     @SerializedName("value") val value: Double,
 )

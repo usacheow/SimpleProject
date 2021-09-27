@@ -2,7 +2,7 @@ package com.usacheow.coreui.delegate
 
 import androidx.viewbinding.ViewBinding
 
-interface ViewBindingDelegate<VIEW_BINDING : ViewBinding> {
+interface ViewBindingHolder<VIEW_BINDING : ViewBinding> {
 
     val binding: VIEW_BINDING
 
@@ -11,7 +11,7 @@ interface ViewBindingDelegate<VIEW_BINDING : ViewBinding> {
     fun clearBinding()
 }
 
-class FragmentViewBindingDelegate<VIEW_BINDING : ViewBinding> : ViewBindingDelegate<VIEW_BINDING> {
+class FragmentViewBindingHolder<VIEW_BINDING : ViewBinding> : ViewBindingHolder<VIEW_BINDING> {
 
     private var _binding: VIEW_BINDING? = null
     override val binding get() = _binding!!
@@ -25,7 +25,7 @@ class FragmentViewBindingDelegate<VIEW_BINDING : ViewBinding> : ViewBindingDeleg
     }
 }
 
-class ActivityViewBindingDelegate<VIEW_BINDING : ViewBinding> : ViewBindingDelegate<VIEW_BINDING> {
+class ActivityViewBindingHolder<VIEW_BINDING : ViewBinding> : ViewBindingHolder<VIEW_BINDING> {
 
     private var _binding: VIEW_BINDING? = null
     override val binding get() = _binding!!

@@ -53,7 +53,7 @@ class SignUpViewModel @Inject constructor(
             _openMainScreenAction.send(SimpleAction)
         }.doOnError { exception, data ->
             when (exception) {
-                is ApiError -> exception.getMessage(resources.get)
+                is ApiError -> exception.message ?: resources.getString(exception.defaultMessageRes)
                 else -> resources.getString(R.string.unknown_error_message)
             }.sendTo(_errorState)
         }

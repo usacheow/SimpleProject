@@ -35,7 +35,7 @@ class AViewModel @Inject constructor() : SimpleViewModel() {
     private fun makeSome(value: Int, cache: Int? = null): Effect2<Int> {
         return when (value % 2) {
             0 -> Effect2.success(5)
-            else -> Effect2.error(ApiError.ApiException(), cache)
+            else -> Effect2.error(ApiError.UnknownException(), cache)
         }
     }
 }

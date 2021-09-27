@@ -1,8 +1,8 @@
-package com.usacheow.featureauth.data.models
+package com.usacheow.featureauth.data
 
 import com.google.gson.annotations.SerializedName
 
-data class AccessToken(
+data class AccessTokenDto(
     @SerializedName("access_token")
     val token: String,
 )
