@@ -73,7 +73,7 @@ object Dependencies {
 
         object Lifecycle {
 
-            private const val androidxLifecycleVersion = "2.4.0-alpha02"
+            private const val androidxLifecycleVersion = "2.4.0-rc01"
             private const val viewmodelComposeVersion = "1.0.0-alpha07"
             val impl = arrayOf(
                 "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion",
@@ -87,11 +87,11 @@ object Dependencies {
 
             const val composeVersion = "1.1.0-alpha01"
             private const val androidxVersion = "1.3.1"
-            private const val androidxCoreVersion = "1.6.0"
-            private const val splashVersion = "1.0.0-alpha01"
+            private const val androidxCoreVersion = "1.7.0-beta02"
+            private const val splashVersion = "1.0.0-alpha02"
             private const val insetVersion = "0.15.0"
             private const val activityVersion = "1.3.0"
-            private const val fragmentVersion = "1.4.0-alpha09"
+            private const val fragmentVersion = "1.4.0-alpha10"
             private const val materialVersion = "1.3.0"
             private const val cardViewVersion = "1.0.0"
             private const val viewPagerVersion = "1.0.0"
@@ -139,7 +139,7 @@ object Dependencies {
 
         object Navigation {
 
-            private const val navigationVersion = "2.4.0-alpha09"
+            private const val navigationVersion = "2.4.0-alpha10"
             val impl = arrayOf(
                 "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
                 "androidx.navigation:navigation-ui-ktx:$navigationVersion",

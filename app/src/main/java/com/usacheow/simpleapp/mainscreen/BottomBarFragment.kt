@@ -31,17 +31,23 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.appBottomBar.updatePadding(bottom = insets.getBottomInset())
+        val newBottomBarBottomPaddingPx = insets.getBottomInset()
+        val appBottomBarHeight = binding.appBottomBar.height + when (binding.appBottomBar.paddingBottom) {
+            0 -> newBottomBarBottomPaddingPx
+            else -> 0
+        }
+
+        binding.appBottomBar.updatePadding(bottom = newBottomBarBottomPaddingPx)
         isKeyboardVisible = insets.isImeVisible()
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            getNewInsetsForApi30(insets)
+            getNewInsetsForApi30(insets, appBottomBarHeight)
         } else {
-            getNewInsets(insets)
+            getNewInsets(insets, appBottomBarHeight)
         }
     }
 
-    private fun getNewInsets(insets: WindowInsetsCompat): WindowInsetsCompat {
+    private fun getNewInsets(insets: WindowInsetsCompat, appBottomBarHeight: Int): WindowInsetsCompat {
         val sbInset = Insets.of(
             insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
             insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
@@ -52,7 +58,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
             insets.getInsets(WindowInsetsCompat.Type.ime()).left,
             insets.getInsets(WindowInsetsCompat.Type.ime()).top,
             insets.getInsets(WindowInsetsCompat.Type.ime()).right,
-            max(insets.getInsets(WindowInsetsCompat.Type.ime()).bottom - binding.appBottomBar.height, 0),
+            max(insets.getInsets(WindowInsetsCompat.Type.ime()).bottom - appBottomBarHeight, 0),
         )
         return WindowInsetsCompat.Builder(insets)
             .setInsets(WindowInsetsCompat.Type.systemBars(), sbInset)
@@ -61,18 +67,18 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    private fun getNewInsetsForApi30(insets: WindowInsetsCompat): WindowInsetsCompat {
+    private fun getNewInsetsForApi30(insets: WindowInsetsCompat, appBottomBarHeight: Int): WindowInsetsCompat {
         val systemBarsInset = Insets.of(
             insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
             insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
             insets.getInsets(WindowInsetsCompat.Type.systemBars()).right,
-            binding.appBottomBar.height,
+            appBottomBarHeight,
         )
         val imeInset = Insets.of(
             insets.getInsets(WindowInsetsCompat.Type.ime()).left,
             insets.getInsets(WindowInsetsCompat.Type.ime()).top,
             insets.getInsets(WindowInsetsCompat.Type.ime()).right,
-            max(binding.appBottomBar.height, insets.getInsets(WindowInsetsCompat.Type.ime()).bottom),
+            max(appBottomBarHeight, insets.getInsets(WindowInsetsCompat.Type.ime()).bottom),
         )
 
         return WindowInsetsCompat.Builder(insets)

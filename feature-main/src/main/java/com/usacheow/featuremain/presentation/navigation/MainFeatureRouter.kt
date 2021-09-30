@@ -16,8 +16,5 @@ class MainFeatureRouter @Inject constructor(
 
     fun fromAtoBScreen(itemNumber: Int) {
         screen(R.id.action_aFragment_to_bFragment).with(BFragment.bundle(itemNumber)).openIn(navController)
-
-
-        The screen R.id.action_aFragment_to_bFragment with BFragment.bundle(itemNumber) openIn navController
     }
 }
