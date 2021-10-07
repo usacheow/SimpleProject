@@ -3,16 +3,18 @@ package com.usacheow.featureauth.presentation.viewmodels
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ApiError
 import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.sendTo
+import com.usacheow.coreui.utils.trigger
+import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.utils.values.isPhoneNumberValid
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -39,16 +41,16 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val _errorState = MutableStateFlow<String?>(null)
     val errorState = _errorState.asStateFlow()
 
-    private val _closeSmsCodeScreenAction = Channel<SimpleAction>()
+    private val _closeSmsCodeScreenAction = EventChannel<SimpleAction>()
     val closeSmsCodeScreenAction = _closeSmsCodeScreenAction.receiveAsFlow()
 
-    private val _closeAuthFlowAction = Channel<SimpleAction>()
+    private val _closeAuthFlowAction = EventChannel<SimpleAction>()
     val closeAuthFlowAction = _closeAuthFlowAction.receiveAsFlow()
 
-    private val _openSignUpScreenAction = Channel<SimpleAction>()
+    private val _openSignUpScreenAction = EventChannel<SimpleAction>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
 
-    private val _openConfirmScreenAction = Channel<Int>()
+    private val _openConfirmScreenAction = EventChannel<Int>()
     val openConfirmScreenAction = _openConfirmScreenAction.receiveAsFlow()
 
     private var phoneNumber = ""
@@ -71,22 +73,22 @@ class SignInWithPhoneViewModel @Inject constructor(
             return@launch
         }
 
-        _isLoadingState.emit(true)
+        _isLoadingState tryPublish true
 
         interactor.signInWithPhone(phone).doOnSuccess {
-            _openConfirmScreenAction.send(CONFIRM_CODE_LENGTH)
+            _openConfirmScreenAction triggerBy CONFIRM_CODE_LENGTH
         }.doOnError { exception, data ->
-            when (exception) {
+            _errorState tryPublish when (exception) {
                 is ApiError -> exception.message ?: resources.getString(exception.defaultMessageRes)
                 else -> resources.getString(R.string.unknown_error_message)
-            }.sendTo(_errorState)
+            }
         }
 
-        _isLoadingState.emit(false)
+        _isLoadingState tryPublish false
     }
 
     fun onSignUpClicked() = viewModelScope.launch {
-        _openSignUpScreenAction.send(SimpleAction)
+        _openSignUpScreenAction.trigger()
     }
 
     fun onCodeInputted(code: String) = viewModelScope.launch {
@@ -95,10 +97,10 @@ class SignInWithPhoneViewModel @Inject constructor(
         }
 
         interactor.verifyPhone(phoneNumber, code).doOnSuccess {
-            _closeSmsCodeScreenAction.send(SimpleAction)
-            _closeAuthFlowAction.send(SimpleAction)
+            _closeSmsCodeScreenAction.trigger()
+            _closeAuthFlowAction.trigger()
         }.doOnError { exception, data ->
-            _codeConfirmMessageState.emit(TextSource.Simple("Неверный код"))
+            _codeConfirmMessageState tryPublish TextSource.Simple("Неверный код")
         }
     }
 

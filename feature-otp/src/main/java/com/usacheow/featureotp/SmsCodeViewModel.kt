@@ -3,11 +3,13 @@ package com.usacheow.featureotp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.coreui.utils.EventChannel
+import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,7 +39,7 @@ class SmsCodeViewModel @Inject constructor(
     private val _maxCodeLengthState = MutableStateFlow(0)
     val maxCodeLengthState = _maxCodeLengthState.asStateFlow()
 
-    private val _updateCodeStateAction = Channel<SmsCodeState>()
+    private val _updateCodeStateAction = EventChannel<SmsCodeState>()
     val updateCodeStateAction = _updateCodeStateAction.receiveAsFlow()
 
     private var timerJob: Job? = null
@@ -49,7 +51,7 @@ class SmsCodeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val codeLength = savedStateHandle.get<Int>(CODE_LENGTH_KEY) ?: CODE_LENGTH_DEFAULT_VALUE
-            _maxCodeLengthState.emit(codeLength)
+            _maxCodeLengthState tryPublish codeLength
             onDigitAdded("")
             if (timerJob == null) {
                 timerJob = startTimer()
@@ -59,16 +61,16 @@ class SmsCodeViewModel @Inject constructor(
 
     fun onResendClicked() = viewModelScope.launch {
         timerJob = startTimer()
-        _updateCodeStateAction.send(SmsCodeState.CodeRequested)
+        _updateCodeStateAction triggerBy SmsCodeState.CodeRequested
     }
 
     private fun startTimer() = viewModelScope.launch(Dispatchers.IO) {
         repeat(SMS_CODE_TIMEOUT_SECONDS) {
             val text = resources.getString(R.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS - it)
-            _isResendButtonState.emit(CodeResendButtonState(text, false))
+            _isResendButtonState tryPublish CodeResendButtonState(text, false)
             delay(SECOND_IN_MILLISECONDS)
         }
-        _isResendButtonState.emit(defaultResendButtonState)
+        _isResendButtonState tryPublish defaultResendButtonState
 
         timerJob = null
     }
@@ -94,7 +96,7 @@ class SmsCodeViewModel @Inject constructor(
     }
 
     private fun onCodeInputted() = viewModelScope.launch {
-        _updateCodeStateAction.send(SmsCodeState.CodeInputted(_inputtedCodeState.value))
+        _updateCodeStateAction triggerBy SmsCodeState.CodeInputted(_inputtedCodeState.value)
     }
 }
 

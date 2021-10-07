@@ -3,13 +3,14 @@ package com.usacheow.featureauth.presentation.viewmodels
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ApiError
 import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.sendTo
+import com.usacheow.coreui.utils.trigger
+import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.R
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -31,10 +32,10 @@ class SignInViewModel @Inject constructor(
     private val _errorState = MutableStateFlow<String?>(null)
     val errorState = _errorState.asStateFlow()
 
-    private val _closeScreenAction = Channel<SimpleAction>()
+    private val _closeScreenAction = EventChannel<SimpleAction>()
     val closeScreenAction = _closeScreenAction.receiveAsFlow()
 
-    private val _openSignUpScreenAction = Channel<SimpleAction>()
+    private val _openSignUpScreenAction = EventChannel<SimpleAction>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
 
     fun onDataChanged(loginAndPassword: Pair<String, String>) {
@@ -49,21 +50,21 @@ class SignInViewModel @Inject constructor(
         if (!isLoginValid(login) || !isPasswordValid(password)) {
             return@launch
         }
-        _isLoadingState.emit(true)
+        _isLoadingState tryPublish true
 
         interactor.signInWithLoginAndPassword(login, password).doOnSuccess {
-            _closeScreenAction.send(SimpleAction)
+            _closeScreenAction.trigger()
         }.doOnError { exception, data ->
-            when (exception) {
+            _errorState tryPublish when (exception) {
                 is ApiError -> exception.message ?: resources.getString(exception.defaultMessageRes)
                 else -> resources.getString(R.string.unknown_error_message)
-            }.sendTo(_errorState)
+            }
         }
 
-        _isLoadingState.emit(false)
+        _isLoadingState tryPublish false
     }
 
     fun onSignUpClicked() = viewModelScope.launch {
-        _openSignUpScreenAction.send(SimpleAction)
+        _openSignUpScreenAction.trigger()
     }
 }

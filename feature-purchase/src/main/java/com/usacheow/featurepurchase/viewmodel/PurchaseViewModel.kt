@@ -4,11 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.usacheow.corebilling.PurchaseStateProvider
 import com.usacheow.corebilling.model.Product
+import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
+import com.usacheow.coreui.utils.trigger
+import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.featurepurchase.mapper.ProductsMapper
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -27,10 +30,10 @@ class PurchaseViewModel @Inject constructor(
     private val _buyButtonTextState = MutableStateFlow("")
     val buyButtonTextState = _buyButtonTextState.asStateFlow()
 
-    private val _openPurchaseScreenAction = Channel<Product>()
+    private val _openPurchaseScreenAction = EventChannel<Product>()
     val openPurchaseScreenAction = _openPurchaseScreenAction.receiveAsFlow()
 
-    private val _closeScreenAction = Channel<SimpleAction>()
+    private val _closeScreenAction = EventChannel<SimpleAction>()
     val closeScreenAction = _closeScreenAction.receiveAsFlow()
 
     private var selectedProduct: Product? = null
@@ -43,7 +46,7 @@ class PurchaseViewModel @Inject constructor(
         val selectedProductIndex = 0
         val products = purchaseStateProvider.getSubscribeProducts().data
         if (products == null) {
-            _closeScreenAction.send(SimpleAction)
+            _closeScreenAction.trigger()
             return@launch
         }
 
@@ -54,17 +57,17 @@ class PurchaseViewModel @Inject constructor(
         mappedProducts.getOrNull(selectedProductIndex)?.let { price ->
             updateBuyButton(price.buyButtonText.text, products[selectedProductIndex])
         }
-        _productsState.emit(PurchaseStateScreen(mappedProducts))
+        _productsState tryPublish PurchaseStateScreen(mappedProducts)
     }
 
     private fun updateBuyButton(buttonText: String, product: Product) = viewModelScope.launch {
         selectedProduct = product
-        _buyButtonTextState.emit(buttonText)
+        _buyButtonTextState tryPublish buttonText
     }
 
     fun onBuyClicked() = viewModelScope.launch {
         selectedProduct?.let {
-            _openPurchaseScreenAction.send(it)
+            _openPurchaseScreenAction triggerBy it
         }
     }
 }
