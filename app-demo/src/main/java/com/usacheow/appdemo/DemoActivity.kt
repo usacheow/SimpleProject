@@ -8,10 +8,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import com.usacheow.appdemo.databinding.ActivityHostBinding
-import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.utils.navigation.openIn
-import com.usacheow.coreui.utils.navigation.replaceAllTo
+import com.usacheow.coreui.utils.navigation.OPEN_IN
+import com.usacheow.coreui.utils.navigation.REPLACING
 import com.usacheow.coreui.utils.navigation.screen
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
@@ -26,7 +25,7 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 
-    private val appStateViewModel by viewModels<AppStateViewModel>()
+    private val viewModel by viewModels<DemoAppViewModel>()
 
     private var isKeyboardVisible = false
 
@@ -56,23 +55,21 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun subscribe() {
-        appStateViewModel.openAuthScreenAction.observe(this) {
+        viewModel.openAuthScreenAction.observe(this) {
             navigateTo(R.id.sign_in_with_phone_nav_graph)
         }
-        appStateViewModel.openPinScreenAction.observe(this) {
+        viewModel.openPinScreenAction.observe(this) {
             navigateTo(R.id.pin_code_nav_graph)
         }
-        appStateViewModel.openOnBoardingScreenAction.observe(this) {
+        viewModel.openOnBoardingScreenAction.observe(this) {
             navigateTo(R.id.on_boarding_nav_graph)
         }
-        appStateViewModel.openAppScreenAction.observe(this) {
+        viewModel.openAppScreenAction.observe(this) {
             navigateTo(R.id.main_nav_graph)
         }
     }
 
     private fun navigateTo(@IdRes id: Int) {
-        screen(id)
-            .replaceAllTo(R.id.demo_app_nav_graph)
-            .openIn(findNavController(R.id.fragmentContainer))
+        screen(id) REPLACING R.id.demo_app_nav_graph OPEN_IN (findNavController(R.id.fragmentContainer))
     }
 }

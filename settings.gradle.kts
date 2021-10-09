@@ -11,8 +11,6 @@ include(
     ":app-demo",
     ":app-test",
 
-    ":app-state",
-
     ":core-data",
     ":core-ui",
     ":core-mediator",

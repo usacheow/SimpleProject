@@ -13,7 +13,5 @@ dependencies {
 
     implementation(project(Modules.BASE_BILLING.path))
 
-    implementation(project(Modules.APP_STATE.path))
-
     implementation(*Dependencies.Firebase.impl)
 }

@@ -11,7 +11,5 @@ dependencies {
     implementation(project(Modules.CORE_UI.path))
     implementation(project(Modules.CORE_MEDIATOR.path))
 
-    implementation(project(Modules.APP_STATE.path))
-
     implementation(*Dependencies.Firebase.impl)
 }

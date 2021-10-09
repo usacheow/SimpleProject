@@ -22,7 +22,7 @@ object Dependencies {
 
             object Coroutines {
 
-                private const val version = "1.5.0"
+                private const val version = "1.5.1"
                 val impl = arrayOf(
                     "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version",
                     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version",
@@ -54,7 +54,7 @@ object Dependencies {
 
         object Desugar {
 
-            private const val coreLibraryDesugarVersion = "1.1.1"
+            private const val coreLibraryDesugarVersion = "1.1.5"
             val impl = arrayOf("com.android.tools:desugar_jdk_libs:$coreLibraryDesugarVersion")
         }
     }
@@ -74,10 +74,9 @@ object Dependencies {
         object Lifecycle {
 
             private const val androidxLifecycleVersion = "2.4.0-rc01"
-            private const val viewmodelComposeVersion = "1.0.0-alpha07"
             val impl = arrayOf(
                 "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleVersion",
-                "androidx.lifecycle:lifecycle-viewmodel-compose:$viewmodelComposeVersion",
+                "androidx.lifecycle:lifecycle-viewmodel-compose:$androidxLifecycleVersion",
                 "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidxLifecycleVersion",
             )
             const val kapt = "androidx.lifecycle:lifecycle-compiler:$androidxLifecycleVersion"

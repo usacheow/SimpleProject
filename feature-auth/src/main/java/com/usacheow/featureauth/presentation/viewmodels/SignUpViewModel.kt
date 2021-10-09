@@ -1,11 +1,13 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ApiError
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.trigger
+import com.usacheow.coreui.utils.navigation.FeatureNavDirection
+import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
+import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.R
@@ -21,6 +23,7 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
+    private val savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
     private val _isSubmitButtonEnabledState = MutableStateFlow(false)
@@ -32,8 +35,10 @@ class SignUpViewModel @Inject constructor(
     private val _errorState = MutableStateFlow<String?>(null)
     val errorState = _errorState.asStateFlow()
 
-    private val _openMainScreenAction = EventChannel<SimpleAction>()
-    val openMainScreenAction = _openMainScreenAction.receiveAsFlow()
+    private val _openNextScreenAction = EventChannel<FeatureNavDirection>()
+    val openNextScreenAction = _openNextScreenAction.receiveAsFlow()
+
+    private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
 
     fun onDataChanged(login: String, password: String) {
         _isSubmitButtonEnabledState.value = isLoginValid(login) && isPasswordValid(password)
@@ -51,7 +56,7 @@ class SignUpViewModel @Inject constructor(
         _isLoadingState tryPublish true
 
         interactor.signUpWithLoginAndPassword(login, password).doOnSuccess {
-            _openMainScreenAction.trigger()
+            _openNextScreenAction triggerBy nextScreenDirection
         }.doOnError { exception, data ->
             _errorState tryPublish when (exception) {
                 is ApiError -> exception.message ?: resources.getString(exception.defaultMessageRes)

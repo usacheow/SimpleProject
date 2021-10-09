@@ -3,17 +3,18 @@ package com.usacheow.featureonboarding.fragment
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.activityViewModels
-import com.usacheow.appstate.AppStateViewModel
+import androidx.fragment.app.viewModels
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
-import com.usacheow.featureonboarding.R
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
-import com.usacheow.featureonboarding.view.OnBoardingItem
+import com.usacheow.featureonboarding.navigation.OnBoardingRouter
+import com.usacheow.featureonboarding.viewmodel.OnBoardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
@@ -22,14 +23,11 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
         viewBindingProvider = FragmentOnboardingBinding::inflate,
     )
 
-    private val viewModel by activityViewModels<AppStateViewModel>()
+    @Inject lateinit var router: OnBoardingRouter
 
-    private val onBoardingData = mutableListOf(
-        OnBoardingItem(R.drawable.on_boarding_1, R.string.on_boarding_title_1, R.string.on_boarding_description_1),
-        OnBoardingItem(R.drawable.on_boarding_2, R.string.on_boarding_title_2, R.string.on_boarding_description_2),
-        OnBoardingItem(R.drawable.on_boarding_3, R.string.on_boarding_title_3, R.string.on_boarding_description_3)
-    )
-    private val adapter = ViewTypesAdapter(onBoardingData)
+    private val viewModel by viewModels<OnBoardingViewModel>()
+
+    private val adapter = ViewTypesAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.root.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset())
@@ -40,17 +38,18 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
         binding.viewPager.adapter = adapter
         binding.indicatorView.attachToPager(binding.viewPager)
 
-        binding.skipButton.setOnClickListener { startNextScreen() }
+        binding.skipButton.setOnClickListener { viewModel.onOnBoardingSkipped() }
         binding.nextButton.setOnClickListener {
-            if (binding.viewPager.currentItem < onBoardingData.size - 1) {
+            if (binding.viewPager.currentItem < adapter.itemCount - 1) {
                 binding.viewPager.currentItem += 1
             } else {
-                startNextScreen()
+                viewModel.onOnBoardingFinished()
             }
         }
     }
 
-    private fun startNextScreen() {
-        viewModel.onOnBoardingFinished()
+    override fun subscribe() {
+        viewModel.pagesState.observe(viewLifecycleOwner, adapter::update)
+        viewModel.openAppScreenAction.observe(viewLifecycleOwner, router::apply)
     }
 }

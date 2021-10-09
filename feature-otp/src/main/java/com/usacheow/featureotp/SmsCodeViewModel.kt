@@ -45,7 +45,7 @@ class SmsCodeViewModel @Inject constructor(
     private var timerJob: Job? = null
 
     companion object {
-        const val CODE_LENGTH_KEY = "codeLength"
+        const val CODE_LENGTH_KEY = "CODE_LENGTH_KEY"
     }
 
     init {

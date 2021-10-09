@@ -4,5 +4,5 @@ import androidx.navigation.NavDirections
 
 interface OnBoardingMediator {
 
-    fun getOnBoardingFlowDirection(): NavDirections
+    fun getOnBoardingFlowDirection(nextScreenDirection: NavDirections): NavDirections
 }

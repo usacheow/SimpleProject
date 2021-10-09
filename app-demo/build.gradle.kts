@@ -18,8 +18,6 @@ dependencies {
     implementation(project(Modules.CORE_UI.path))
     implementation(project(Modules.CORE_MEDIATOR.path))
 
-    implementation(project(Modules.APP_STATE.path))
-
     implementation(project(Modules.FEATURE_AUTH.path))
     implementation(project(Modules.FEATURE_ON_BOARDING.path))
     implementation(project(Modules.FEATURE_OTP.path))

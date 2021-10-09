@@ -1,4 +1,4 @@
-package com.usacheow.appstate
+package com.usacheow.appdemo
 
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.database.SettingsStorage
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AppStateViewModel @Inject constructor(
+class DemoAppViewModel @Inject constructor(
     private val storage: SettingsStorage,
 ) : SimpleViewModel() {
 
@@ -35,26 +35,5 @@ class AppStateViewModel @Inject constructor(
                 else -> _openAppScreenAction.trigger()
             }
         }
-    }
-
-    fun onOnBoardingFinished() = viewModelScope.launch {
-        storage.isFirstEntry = false
-        _openAppScreenAction.trigger()
-    }
-
-    fun onPinCodeEntered() = viewModelScope.launch {
-        _openAppScreenAction.trigger()
-    }
-
-    fun onSignedIn() = viewModelScope.launch {
-        _openAppScreenAction.trigger()
-    }
-
-    fun onSignedUp() = viewModelScope.launch {
-        _openAppScreenAction.trigger()
-    }
-
-    fun onSignedOut() = viewModelScope.launch {
-        _openAuthScreenAction.trigger()
     }
 }

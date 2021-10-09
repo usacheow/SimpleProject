@@ -7,13 +7,14 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.utils.navigation.openIn
-import com.usacheow.coreui.utils.navigation.replaceAllTo
+import com.usacheow.coreui.utils.navigation.FeatureNavDirection
+import com.usacheow.coreui.utils.navigation.OPEN_IN
+import com.usacheow.coreui.utils.navigation.REPLACING
+import com.usacheow.coreui.utils.navigation.ResetTo
 import com.usacheow.coreui.utils.navigation.screen
 import com.usacheow.coreui.utils.navigation.toFeatureNavDirection
 import com.usacheow.coreui.utils.observe
@@ -36,7 +37,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
     @Inject lateinit var onBoardingMediator: OnBoardingMediator
     @Inject lateinit var mainMediator: MainMediator
 
-    private val appStateViewModel by viewModels<AppStateViewModel>()
+    private val viewModel by viewModels<MainScreenViewModel>()
 
     private var isKeyboardVisible = false
 
@@ -52,6 +53,8 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         }
     }
 
+    override fun findNavController() = findNavController(R.id.fragmentContainer)
+
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.isImeVisible()
         return insets
@@ -66,23 +69,24 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun subscribe() {
-        appStateViewModel.openAuthScreenAction.observe(this) {
-            navigateTo(authorizationMediator.getSignInWithPhoneFlowDirection())
+        viewModel.openAuthScreenAction.observe(this) {
+            val nextDirection = FeatureNavDirection(R.id.bottomBarFragment, resetTo = ResetTo(R.id.app_nav_graph))
+            navigateTo(authorizationMediator.getSignInWithPhoneFlowDirection(nextDirection))
         }
-        appStateViewModel.openPinScreenAction.observe(this) {
-            navigateTo(authorizationMediator.getPinCodeFlowDirection())
+        viewModel.openPinScreenAction.observe(this) {
+            val nextDirection = FeatureNavDirection(R.id.bottomBarFragment, resetTo = ResetTo(R.id.app_nav_graph))
+            navigateTo(authorizationMediator.getPinCodeFlowDirection(nextDirection))
         }
-        appStateViewModel.openOnBoardingScreenAction.observe(this) {
-            navigateTo(onBoardingMediator.getOnBoardingFlowDirection())
+        viewModel.openOnBoardingScreenAction.observe(this) {
+            val nextDirection = FeatureNavDirection(R.id.bottomBarFragment, resetTo = ResetTo(R.id.app_nav_graph))
+            navigateTo(onBoardingMediator.getOnBoardingFlowDirection(nextDirection))
         }
-        appStateViewModel.openAppScreenAction.observe(this) {
+        viewModel.openAppScreenAction.observe(this) {
             navigateTo(screen(R.id.bottomBarFragment))
         }
     }
 
     private fun navigateTo(direction: NavDirections) {
-        direction.toFeatureNavDirection()
-            .replaceAllTo(R.id.app_nav_graph)
-            .openIn(findNavController(R.id.fragmentContainer))
+        direction.toFeatureNavDirection() REPLACING R.id.app_nav_graph OPEN_IN findNavController(R.id.fragmentContainer)
     }
 }

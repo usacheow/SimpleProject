@@ -29,7 +29,7 @@ android {
 
             signingConfig = signingConfigs.getByName(BuildTypes.release)
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         getByName(BuildTypes.debug) {
             versionNameSuffix = BuildTypes.debugSuffix
@@ -43,7 +43,6 @@ dependencies {
     implementation(project(Modules.CORE_DATA.path))
     implementation(project(Modules.CORE_UI.path))
     implementation(project(Modules.CORE_MEDIATOR.path))
-    implementation(project(Modules.APP_STATE.path))
 
     implementation(project(Modules.BASE_BILLING.path))
 

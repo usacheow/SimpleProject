@@ -4,11 +4,11 @@ import androidx.navigation.NavDirections
 
 interface AuthorizationMediator {
 
-    fun getPinCodeFlowDirection(): NavDirections
+    fun getPinCodeFlowDirection(nextScreenDirection: NavDirections): NavDirections
 
-    fun getSignInFlowDirection(): NavDirections
+    fun getSignInFlowDirection(nextScreenDirection: NavDirections): NavDirections
 
-    fun getSignInWithPhoneFlowDirection(): NavDirections
+    fun getSignInWithPhoneFlowDirection(nextScreenDirection: NavDirections): NavDirections
 
-    fun getSignUpFlowDirection(): NavDirections
+    fun getSignUpFlowDirection(nextScreenDirection: NavDirections): NavDirections
 }

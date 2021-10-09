@@ -3,7 +3,6 @@ enum class Modules(val path: String) {
     APP(":app"),
     APP_STATE(":app-state"),
     APP_DEMO(":app-demo"),
-    APP_TEST(":app-test"),
 
     CORE_DATA(":core-data"),
     CORE_UI(":core-ui"),

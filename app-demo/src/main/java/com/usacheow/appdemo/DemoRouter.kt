@@ -5,6 +5,8 @@ import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coremediator.OtpMediator
 import com.usacheow.coreui.base.Router
+import com.usacheow.coreui.utils.navigation.FeatureNavDirection
+import com.usacheow.coreui.utils.navigation.ResetTo
 import com.usacheow.coreui.utils.navigation.openIn
 import javax.inject.Inject
 
@@ -60,23 +62,28 @@ class DemoRouter @Inject constructor(
     }
 
     fun toOnBoardingFlow() {
-        onBoardingMediator.getOnBoardingFlowDirection().openIn(navController)
+        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        onBoardingMediator.getOnBoardingFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSignUpFlow() {
-        authorizationMediator.getSignUpFlowDirection().openIn(navController)
+        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        authorizationMediator.getSignUpFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSignInFlow() {
-        authorizationMediator.getSignInFlowDirection().openIn(navController)
+        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        authorizationMediator.getSignInFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSignInWithPhoneFlow() {
-        authorizationMediator.getSignInWithPhoneFlowDirection().openIn(navController)
+        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        authorizationMediator.getSignInWithPhoneFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toPinCodeFlow() {
-        authorizationMediator.getPinCodeFlowDirection().openIn(navController)
+        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        authorizationMediator.getPinCodeFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSmsCodeFlow(codeLength: Int) {

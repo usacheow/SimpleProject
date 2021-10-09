@@ -3,9 +3,7 @@ package com.usacheow.featureauth.presentation.fragment
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.biometric.BiometricEnterManager
 import com.usacheow.coreui.utils.observe
@@ -31,7 +29,6 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
 
     @Inject lateinit var router: AuthorizationRouter
     @Inject lateinit var biometricDelegate: BiometricEnterManager
-    private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<PinCodeViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -68,11 +65,10 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
         viewModel.openBiometricScreenAction.observe(viewLifecycleOwner) {
             biometricDelegate.tryShow()
         }
+        viewModel.openNextScreenAction.observe(viewLifecycleOwner, router::apply)
         viewModel.authState.observe(viewLifecycleOwner) {
             when (it) {
-                is SignInResult.SignInSuccess -> {
-                    appStateViewModel.onPinCodeEntered()
-                }
+                is SignInResult.SignInSuccess -> {}
 
                 is SignInResult.SignInError -> {
                     binding.pinCodeView.setHint(string(R.string.pin_view_code_error))

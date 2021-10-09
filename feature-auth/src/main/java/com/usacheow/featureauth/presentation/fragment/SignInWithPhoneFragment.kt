@@ -5,9 +5,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.baseotp.OtpCodeState
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.fragment.SimpleFragment
@@ -39,7 +37,6 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
     )
 
     @Inject lateinit var router: AuthorizationRouter
-    private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignInWithPhoneViewModel>()
     private val otpStateViewModel by viewModels<OtpFeatureConnector>({ requireParentFragment() })
 
@@ -81,9 +78,9 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
             // todo: implement
         }
         viewModel.isSubmitButtonEnabledState.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
-        viewModel.openConfirmScreenAction.observe(viewLifecycleOwner) { router.toSmsCodeFlow(it) }
-        viewModel.openSignUpScreenAction.observe(viewLifecycleOwner) { router.toSignUpFlow() }
-        viewModel.closeAuthFlowAction.observe(viewLifecycleOwner) { appStateViewModel.onSignedIn() }
+        viewModel.openConfirmScreenAction.observe(viewLifecycleOwner, router::toSmsCodeFlow)
+        viewModel.openSignUpScreenAction.observe(viewLifecycleOwner, router::toSignUpFlow)
+        viewModel.openNextScreenAction.observe(viewLifecycleOwner, router::apply)
         viewModel.closeSmsCodeScreenAction.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutSuccess() }
         viewModel.codeConfirmMessageState.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutError(it) }
         otpStateViewModel.updateCodeStateAction.observe(viewLifecycleOwner) {

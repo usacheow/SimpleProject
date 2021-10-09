@@ -1,11 +1,14 @@
 package com.usacheow.featureauth.presentation.viewmodels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.network.ApiError
 import com.usacheow.coreui.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
 import com.usacheow.coreui.utils.TextSource
+import com.usacheow.coreui.utils.navigation.FeatureNavDirection
+import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
 import com.usacheow.coreui.utils.trigger
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.utils.tryPublish
@@ -27,6 +30,7 @@ private const val CONFIRM_CODE_LENGTH = 4
 class SignInWithPhoneViewModel @Inject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
+    private val savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
     private val _codeConfirmMessageState = MutableStateFlow<TextSource?>(null)
@@ -44,14 +48,16 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val _closeSmsCodeScreenAction = EventChannel<SimpleAction>()
     val closeSmsCodeScreenAction = _closeSmsCodeScreenAction.receiveAsFlow()
 
-    private val _closeAuthFlowAction = EventChannel<SimpleAction>()
-    val closeAuthFlowAction = _closeAuthFlowAction.receiveAsFlow()
+    private val _openNextScreenAction = EventChannel<FeatureNavDirection>()
+    val openNextScreenAction = _openNextScreenAction.receiveAsFlow()
 
-    private val _openSignUpScreenAction = EventChannel<SimpleAction>()
+    private val _openSignUpScreenAction = EventChannel<FeatureNavDirection>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
 
     private val _openConfirmScreenAction = EventChannel<Int>()
     val openConfirmScreenAction = _openConfirmScreenAction.receiveAsFlow()
+
+    private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
 
     private var phoneNumber = ""
 
@@ -88,7 +94,7 @@ class SignInWithPhoneViewModel @Inject constructor(
     }
 
     fun onSignUpClicked() = viewModelScope.launch {
-        _openSignUpScreenAction.trigger()
+        _openSignUpScreenAction triggerBy nextScreenDirection
     }
 
     fun onCodeInputted(code: String) = viewModelScope.launch {
@@ -98,7 +104,7 @@ class SignInWithPhoneViewModel @Inject constructor(
 
         interactor.verifyPhone(phoneNumber, code).doOnSuccess {
             _closeSmsCodeScreenAction.trigger()
-            _closeAuthFlowAction.trigger()
+            _openNextScreenAction triggerBy nextScreenDirection
         }.doOnError { exception, data ->
             _codeConfirmMessageState tryPublish TextSource.Simple("Неверный код")
         }

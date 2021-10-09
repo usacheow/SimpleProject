@@ -11,8 +11,6 @@ dependencies {
     implementation(project(Modules.CORE_UI.path))
     implementation(project(Modules.CORE_MEDIATOR.path))
 
-    implementation(project(Modules.APP_STATE.path))
-
     implementation(project(Modules.BASE_OTP.path))
 
     implementation(*Dependencies.Android.Biometric.impl)

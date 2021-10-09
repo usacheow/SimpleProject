@@ -5,9 +5,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.usacheow.appstate.AppStateViewModel
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
 import com.usacheow.coreui.utils.observe
@@ -37,7 +35,6 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
     )
 
     @Inject lateinit var router: AuthorizationRouter
-    private val appStateViewModel by activityViewModels<AppStateViewModel>()
     private val viewModel by viewModels<SignUpViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -84,7 +81,7 @@ class SignUpFragment : SimpleFragment<FragmentSignUpBinding>() {
             // todo: implement
         }
         viewModel.isSubmitButtonEnabledState.observe(viewLifecycleOwner) { binding.signUpButton.isEnabled = it }
-        viewModel.openMainScreenAction.observe(viewLifecycleOwner) { appStateViewModel.onSignedUp() }
+        viewModel.openNextScreenAction.observe(viewLifecycleOwner, router::apply)
     }
 
     private fun getLoginAndPassword() =
