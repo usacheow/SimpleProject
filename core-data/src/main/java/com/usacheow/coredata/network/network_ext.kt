@@ -1,7 +1,9 @@
 package com.usacheow.coredata.network
 
 import com.google.gson.Gson
-import com.usacheow.coredata.cache.base.CacheProvider
+import com.usacheow.core.Completable
+import com.usacheow.core.Effect
+import com.usacheow.coredata.cache.CacheProvider
 import com.usacheow.coredata.gson.fromJson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -19,36 +21,41 @@ suspend inline fun <reified T : Any> cachedApiCall(
     cacheProvider: CacheProvider,
     dispatcher: CoroutineDispatcher,
     needActualData: Boolean = false,
-    timeInMillis: Long = 1 * 60 * 1000,
-    noinline request: suspend () -> Response<T>,
-): Effect2<T> {
+    timeInMinutes: Int = 5,
+    noinline request: () -> Response<T>,
+): Effect<T> {
+    val memoryCacheTimeInMilliseconds = timeInMinutes * 60 * 1000L
     return if (needActualData) {
         apiCall(dispatcher, request)
             .doOnSuccess { cacheProvider.save(it, key) }
-            .applyCacheData { cacheProvider.get(T::class.java, key, timeInMillis) }
+            .applyCacheData { cacheProvider.get(T::class.java, key, memoryCacheTimeInMilliseconds) }
     } else {
-        cacheProvider.get(T::class.java, key, timeInMillis)
-            ?.let { Effect2.success(it) }
+        cacheProvider.get(T::class.java, key, memoryCacheTimeInMilliseconds)
+            ?.let { Effect.success(it) }
             ?: apiCall(dispatcher, request)
                 .doOnSuccess { cacheProvider.save(it, key) }
     }
 }
 
-suspend fun <T : Any> apiCall(
+suspend inline fun <reified T : Any> apiCall(
     dispatcher: CoroutineDispatcher,
-    block: suspend () -> Response<T>,
-): Effect2<T> = withContext(dispatcher) {
+    noinline block: () -> Response<T>,
+): Effect<T> = withContext(dispatcher) {
     try {
-        block().handle()
+        block().toEffect()
     } catch (t: Throwable) {
-        Effect2.error(t.toError())
+        Effect.error(t.toApiError())
     }
 }
 
-private fun <T : Any> Response<T>.handle() = when {
-    isSuccessful -> body()?.let {
-        Effect2.success(it)
-    } ?: Effect2.error(ApiError.EmptyResponseException())
+inline fun <reified T : Any> Response<T>.toEffect() = when {
+    isSuccessful -> when (val body = body()) {
+        null -> when (T::class) {
+            Completable::class -> Effect.success(Completable as T)
+            else -> Effect.error(ApiError.EmptyResponseException())
+        }
+        else -> Effect.success(body)
+    }
 
     else -> {
         val exception = errorBody()?.let { errorBody ->
@@ -56,11 +63,11 @@ private fun <T : Any> Response<T>.handle() = when {
             ApiError.ServerException(error.message)
         } ?: ApiError.ServerException()
 
-        Effect2.error(exception)
+        Effect.error(exception)
     }
 }
 
-private fun Throwable.toError() = when (this) {
+fun Throwable.toApiError() = when (this) {
     is UnknownHostException,
     is SSLException,
     is ConnectException,
@@ -68,7 +75,7 @@ private fun Throwable.toError() = when (this) {
 
     is CancellationException -> ApiError.CoroutineException()
 
-    is HttpException -> when (val code = response()?.code()) {
+    is HttpException -> when (response()?.code()) {
         HttpURLConnection.HTTP_BAD_REQUEST,
         HttpURLConnection.HTTP_FORBIDDEN,
         HttpURLConnection.HTTP_NOT_FOUND -> ApiError.HostException(cause = this)

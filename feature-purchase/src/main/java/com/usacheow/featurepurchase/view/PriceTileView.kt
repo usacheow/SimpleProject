@@ -6,12 +6,12 @@ import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewPriceTileBinding
+import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
-import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.populate
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.utils.view.populate
 import com.usacheow.coreui.utils.view.toPx
 
 private const val SELECTED_STROKE_WIDTH_DP = 2

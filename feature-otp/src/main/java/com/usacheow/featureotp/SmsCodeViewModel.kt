@@ -2,7 +2,7 @@ package com.usacheow.featureotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.utils.tryPublish

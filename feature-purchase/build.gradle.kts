@@ -13,5 +13,5 @@ dependencies {
 
     implementation(project(Modules.BASE_BILLING.path))
 
-    implementation(*Dependencies.Firebase.impl)
+    implementation(*Dependencies.Firebase.bundle)
 }

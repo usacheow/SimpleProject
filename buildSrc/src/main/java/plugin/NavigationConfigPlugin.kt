@@ -13,6 +13,6 @@ class NavigationConfigPlugin : BaseConfigPlugin() {
     }
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Android.Navigation.impl)
+        implementation(*Dependencies.Android.Navigation.bundle)
     }
 }

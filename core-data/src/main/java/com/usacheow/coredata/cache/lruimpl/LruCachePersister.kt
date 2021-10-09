@@ -1,4 +1,4 @@
-package com.usacheow.coredata.cache.lrucache
+package com.usacheow.coredata.cache.lruimpl
 
 import androidx.collection.LruCache
 

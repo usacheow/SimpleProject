@@ -15,5 +15,5 @@ android {
 dependencies {
     implementation(project(Modules.CORE_UI.path))
 
-    implementation(*Dependencies.Android.CameraX.impl)
+    implementation(*Dependencies.Android.CameraX.bundle)
 }

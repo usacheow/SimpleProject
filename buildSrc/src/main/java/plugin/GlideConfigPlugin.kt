@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 class GlideConfigPlugin : BaseConfigPlugin() {
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Data.Glide.impl)
+        implementation(*Dependencies.Data.Glide.bundle)
         kapt(Dependencies.Data.Glide.kapt)
     }
 }

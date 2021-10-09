@@ -4,6 +4,7 @@ enum class Modules(val path: String) {
     APP_STATE(":app-state"),
     APP_DEMO(":app-demo"),
 
+    CORE(":core"),
     CORE_DATA(":core-data"),
     CORE_UI(":core-ui"),
     CORE_MEDIATOR(":core-mediator"),

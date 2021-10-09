@@ -1,8 +1,8 @@
 package com.usacheow.coremediator
 
-import androidx.navigation.NavDirections
+import com.usacheow.core.navigation.FeatureNavDirection
 
 interface OnBoardingMediator {
 
-    fun getOnBoardingFlowDirection(nextScreenDirection: NavDirections): NavDirections
+    fun getOnBoardingFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 }

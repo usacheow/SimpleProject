@@ -1,6 +1,6 @@
-package com.usacheow.coredata.cache.lrucache
+package com.usacheow.coredata.cache.lruimpl
 
-import com.usacheow.coredata.cache.base.CacheProvider
+import com.usacheow.coredata.cache.CacheProvider
 import java.util.Collections
 import javax.inject.Inject
 
@@ -15,8 +15,8 @@ class LruCacheProvider @Inject constructor() : CacheProvider {
         addPersister(Int::class.java, 1024)
     }
 
-    override fun <T> get(clazz: Class<T>, key: String, memoryCacheTime: Long): T? {
-        return getPersister(clazz).get(key, memoryCacheTime)
+    override fun <T> get(clazz: Class<T>, key: String, memoryCacheTimeInMilliseconds: Long): T? {
+        return getPersister(clazz).get(key, memoryCacheTimeInMilliseconds)
     }
 
     override fun <T : Any> save(data: T, key: String) {

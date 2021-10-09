@@ -14,7 +14,7 @@ class DaggerConfigPlugin : BaseConfigPlugin() {
     }
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Dagger.impl)
+        implementation(*Dependencies.Dagger.bundle)
         kapt(Dependencies.Dagger.kapt)
         kapt(Dependencies.Dagger.kaptViewModel)
     }

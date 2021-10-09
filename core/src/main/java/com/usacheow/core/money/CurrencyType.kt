@@ -1,4 +1,4 @@
-package com.usacheow.coredata.dto
+package com.usacheow.core.money
 
 import com.google.gson.annotations.SerializedName
 import java.util.Currency
@@ -18,15 +18,11 @@ enum class CurrencyType {
         val defaultCurrency get() = USD
     }
 
-    val symbol get() = try {
+    val symbol get() = runCatching {
         Currency.getInstance(name).symbol
-    } catch (e: Exception) {
-        ""
-    }
+    }.getOrNull().orEmpty()
 
-    val displayName get() = try {
+    val displayName get() = runCatching {
         Currency.getInstance(name).displayName
-    } catch (e: Exception) {
-        ""
-    }
+    }.getOrNull().orEmpty()
 }

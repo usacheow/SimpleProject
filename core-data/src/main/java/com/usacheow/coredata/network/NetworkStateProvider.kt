@@ -4,17 +4,22 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class NetworkStateProvider @Inject constructor(
+interface NetworkStateProvider {
+
+    val state: StateFlow<Boolean>
+}
+
+class NetworkStateProviderImpl @Inject constructor(
     connectivityManager: ConnectivityManager,
-) {
+) : NetworkStateProvider {
 
     private val _state = MutableStateFlow(true)
-    val state = _state.asStateFlow()
+    override val state = _state.asStateFlow()
 
     private val networkStateCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {

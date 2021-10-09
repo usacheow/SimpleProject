@@ -16,7 +16,6 @@ private const val DATA_STORE_NAME = "user_data"
 
 private val PREF_NAME = stringPreferencesKey("PREF_NAME")
 private val PREF_PHONE = stringPreferencesKey("PREF_PHONE")
-private val PREF_PIN_CODE = stringPreferencesKey("PREF_PIN_CODE")
 private val PREF_IS_PAYED = booleanPreferencesKey("PREF_IS_PAYED")
 
 @Singleton
@@ -34,11 +33,6 @@ class UserDataStorage @Inject constructor(
     val phoneNumberFlow: Flow<String?> get() = get(PREF_PHONE)
     suspend fun setPhoneNumber(value: String) {
         set(PREF_PHONE, value)
-    }
-
-    val pinCodeFlow: Flow<String?> get() = get(PREF_PIN_CODE)
-    suspend fun setPinCode(value: String) {
-        set(PREF_PIN_CODE, value)
     }
 
     val isPayedVersionFlow: Flow<Boolean?> get() = get(PREF_IS_PAYED)

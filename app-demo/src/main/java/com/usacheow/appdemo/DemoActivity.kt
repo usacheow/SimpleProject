@@ -24,9 +24,7 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     override val defaultParams = Params(
         viewBindingProvider = ActivityHostBinding::inflate,
     )
-
-    private val viewModel by viewModels<DemoAppViewModel>()
-
+    
     private var isKeyboardVisible = false
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -52,24 +50,5 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-    }
-
-    override fun subscribe() {
-        viewModel.openAuthScreenAction.observe(this) {
-            navigateTo(R.id.sign_in_with_phone_nav_graph)
-        }
-        viewModel.openPinScreenAction.observe(this) {
-            navigateTo(R.id.pin_code_nav_graph)
-        }
-        viewModel.openOnBoardingScreenAction.observe(this) {
-            navigateTo(R.id.on_boarding_nav_graph)
-        }
-        viewModel.openAppScreenAction.observe(this) {
-            navigateTo(R.id.main_nav_graph)
-        }
-    }
-
-    private fun navigateTo(@IdRes id: Int) {
-        screen(id) REPLACING R.id.demo_app_nav_graph OPEN_IN (findNavController(R.id.fragmentContainer))
     }
 }

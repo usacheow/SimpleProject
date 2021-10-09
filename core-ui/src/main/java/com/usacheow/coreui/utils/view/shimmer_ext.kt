@@ -4,9 +4,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.usacheow.core.ImageSource
 import com.usacheow.coreui.R
-import com.usacheow.coreui.utils.ImageSource
-import com.usacheow.coreui.utils.populate
 
 fun ImageView.showCircleShimmer() {
     setImageResource(R.drawable.bg_shimmer_circle)

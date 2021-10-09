@@ -1,10 +1,10 @@
 package com.usacheow.coremediator
 
-import androidx.navigation.NavDirections
+import com.usacheow.core.navigation.FeatureNavDirection
 
 interface MainMediator {
 
-    fun getAFlowDirection(): NavDirections
+    fun getAFlowDirection(): FeatureNavDirection
 
-    fun getMockFlowDirection(): NavDirections
+    fun getMockFlowDirection(): FeatureNavDirection
 }

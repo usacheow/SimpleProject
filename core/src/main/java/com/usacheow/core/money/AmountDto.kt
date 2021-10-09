@@ -1,4 +1,4 @@
-package com.usacheow.coredata.dto
+package com.usacheow.core.money
 
 import com.google.gson.annotations.SerializedName
 

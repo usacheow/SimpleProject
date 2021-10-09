@@ -1,14 +1,14 @@
 package com.usacheow.coremediator
 
-import androidx.navigation.NavDirections
+import com.usacheow.core.navigation.FeatureNavDirection
 
 interface AuthorizationMediator {
 
-    fun getPinCodeFlowDirection(nextScreenDirection: NavDirections): NavDirections
+    fun getPinCodeFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 
-    fun getSignInFlowDirection(nextScreenDirection: NavDirections): NavDirections
+    fun getSignInFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 
-    fun getSignInWithPhoneFlowDirection(nextScreenDirection: NavDirections): NavDirections
+    fun getSignInWithPhoneFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 
-    fun getSignUpFlowDirection(nextScreenDirection: NavDirections): NavDirections
+    fun getSignUpFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 }

@@ -1,4 +1,4 @@
-package com.usacheow.coredata.network
+package com.usacheow.core
 
 object Completable
 
@@ -6,18 +6,18 @@ sealed class State<out T : Any>
 
 class Loading<T : Any>(val data: T? = null) : State<T>()
 
-class Effect2<DATA : Any> private constructor(
+class Effect<DATA : Any> private constructor(
     private val value: Data<DATA>,
 ) : State<DATA>() {
 
     companion object {
 
-        fun <T : Any> success(data: T) = Effect2(Success(data))
+        fun <T : Any> success(data: T) = Effect(Success(data))
 
         fun <T : Any> error(
             exception: Throwable,
             cachedData: T? = null,
-        ) = Effect2(Error(exception, cachedData))
+        ) = Effect(Error(exception, cachedData))
     }
 
     val isSuccess: Boolean get() = value is Success<DATA>
@@ -44,7 +44,7 @@ class Effect2<DATA : Any> private constructor(
 
     suspend fun doOnSuccess(
         block: suspend (data: DATA) -> Unit,
-    ): Effect2<DATA> {
+    ): Effect<DATA> {
         if (value is Success<DATA>) {
             block(value.data)
         }
@@ -53,7 +53,7 @@ class Effect2<DATA : Any> private constructor(
 
     suspend fun doOnError(
         block: suspend (exception: Throwable, data: DATA?) -> Unit,
-    ): Effect2<DATA> {
+    ): Effect<DATA> {
         if (value is Error<DATA>) {
             block(value.exception, value.data)
         }
@@ -62,26 +62,21 @@ class Effect2<DATA : Any> private constructor(
 
     suspend fun applyCacheData(
         cachedDataProvider: suspend () -> DATA?,
-    ): Effect2<DATA> = when (value) {
+    ): Effect<DATA> = when (value) {
         is Success<DATA> -> this
         is Error<DATA> -> error(value.exception, cachedDataProvider())
     }
 
     suspend fun <OUT : Any> map(
         transform: suspend (value: DATA) -> OUT,
-    ): Effect2<OUT> = when (value) {
+    ): Effect<OUT> = when (value) {
         is Success<DATA> -> success(transform(value.data))
         is Error<DATA> -> error(value.exception, value.data?.let { transform(it) })
     }
 
     fun toCompletable() = when (value) {
         is Success<DATA> -> success(Completable)
-
-        is Error<DATA> -> when (value.exception) {
-            is ApiError.EmptyResponseException -> success(Completable)
-
-            else -> error(value.exception)
-        }
+        is Error<DATA> -> error(value.exception)
     }
 
     internal sealed class Data<DATA : Any>
@@ -96,10 +91,10 @@ class Effect2<DATA : Any> private constructor(
     ) : Data<DATA>()
 }
 
-inline fun <IN, OUT : Any> IN.tryRun(block: IN.() -> OUT): Effect2<OUT> {
+inline fun <IN, OUT : Any> IN.tryRun(block: IN.() -> OUT): Effect<OUT> {
     return try {
-        Effect2.success(block())
+        Effect.success(block())
     } catch (e: Throwable) {
-        Effect2.error(e)
+        Effect.error(e)
     }
 }

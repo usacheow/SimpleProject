@@ -1,4 +1,4 @@
-package com.usacheow.coreui.resource
+package com.usacheow.core.resource
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -8,6 +8,7 @@ import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -20,6 +21,8 @@ interface ResourcesWrapper {
     fun getString(@StringRes id: Int): String
 
     fun getString(@StringRes id: Int, vararg formatArgs: Any): String
+
+    fun getPluralString(@PluralsRes id: Int, quantity: Int): String
 
     fun getStringArray(@ArrayRes id: Int): Array<String>
 
@@ -41,6 +44,8 @@ class ResourcesWrapperImpl @Inject constructor(
     override fun getString(@StringRes id: Int) = context.getString(id)
 
     override fun getString(@StringRes id: Int, vararg formatArgs: Any) = context.getString(id, *formatArgs)
+
+    override fun getPluralString(id: Int, quantity: Int) = context.resources.getQuantityString(id, quantity)
 
     override fun getStringArray(@ArrayRes id: Int) = context.resources.getStringArray(id)
 

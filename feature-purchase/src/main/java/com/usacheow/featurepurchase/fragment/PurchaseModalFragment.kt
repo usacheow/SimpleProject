@@ -4,12 +4,12 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.FragmentPurchaseBinding
+import com.usacheow.core.ImageSource
+import com.usacheow.core.TextSource
 import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleModalFragment
-import com.usacheow.coreui.utils.ImageSource
-import com.usacheow.coreui.utils.TextSource
 import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.featurepurchase.view.AdvantageTileItem

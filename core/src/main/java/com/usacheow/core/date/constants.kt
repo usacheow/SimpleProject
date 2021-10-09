@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.date
+package com.usacheow.core.date
 
 import java.time.LocalDate
 import java.time.LocalDateTime

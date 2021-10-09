@@ -1,4 +1,4 @@
-package com.usacheow.coredata.cache.base
+package com.usacheow.coredata.cache
 
 interface CacheCleaner {
 

@@ -1,14 +1,17 @@
 package com.usacheow.coredata
 
 import android.content.Context
-import com.usacheow.coredata.cache.base.CacheCleaner
-import com.usacheow.coredata.cache.base.CacheProvider
-import com.usacheow.coredata.cache.lrucache.LruCacheProvider
+import com.usacheow.coredata.cache.CacheCleaner
+import com.usacheow.coredata.cache.CacheProvider
+import com.usacheow.coredata.cache.lruimpl.LruCacheProvider
 import com.usacheow.coredata.database.AppDatabase
 import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage
+import com.usacheow.coredata.network.NetworkStateProvider
+import com.usacheow.coredata.network.NetworkStateProviderImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,6 +24,7 @@ import javax.inject.Singleton
         GsonModule::class,
         RetrofitModule::class,
         CoroutineModule::class,
+        BindsModule::class,
     ]
 )
 @InstallIn(SingletonComponent::class)
@@ -47,4 +51,13 @@ class CoreDataModule {
     @Provides
     @Singleton
     fun cacheCleaner(cacheProvider: CacheProvider): CacheCleaner = cacheProvider
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface BindsModule {
+
+    @Binds
+    @Singleton
+    fun networkStateProvider(provider: NetworkStateProviderImpl): NetworkStateProvider
 }

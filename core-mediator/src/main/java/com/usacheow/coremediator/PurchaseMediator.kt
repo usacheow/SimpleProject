@@ -1,8 +1,8 @@
 package com.usacheow.coremediator
 
-import androidx.navigation.NavDirections
+import com.usacheow.core.navigation.FeatureNavDirection
 
 interface PurchaseMediator {
 
-    fun getPurchaseFlowDirection(): NavDirections
+    fun getPurchaseFlowDirection(): FeatureNavDirection
 }

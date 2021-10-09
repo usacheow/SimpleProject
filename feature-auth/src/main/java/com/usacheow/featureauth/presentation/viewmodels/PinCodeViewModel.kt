@@ -3,11 +3,11 @@ package com.usacheow.featureauth.presentation.viewmodels
 import androidx.biometric.BiometricPrompt
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coredata.database.UserDataStorage
 import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.navigation.FeatureNavDirection
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
 import com.usacheow.coreui.utils.trigger
 import com.usacheow.coreui.utils.triggerBy
@@ -16,7 +16,6 @@ import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -68,7 +67,7 @@ class PinCodeViewModel @Inject constructor(
     }
 
     // TODO: stub
-    private suspend fun verifyPinCode(inputtedPinCode: String) = inputtedPinCode == userDataStorage.pinCodeFlow.first()
+    private suspend fun verifyPinCode(inputtedPinCode: String) = true
 }
 
 sealed class SignInResult {

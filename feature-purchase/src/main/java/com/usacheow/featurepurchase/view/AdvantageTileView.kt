@@ -5,11 +5,11 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.example.featurepurchase.R
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
+import com.usacheow.core.ImageSource
+import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
-import com.usacheow.coreui.utils.ImageSource
-import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.populate
+import com.usacheow.coreui.utils.view.populate
 
 class AdvantageTileView @JvmOverloads constructor(
     context: Context,

@@ -2,12 +2,12 @@ package com.usacheow.featureauth.presentation.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coredata.network.ApiError
-import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.core.TextSource
+import com.usacheow.core.navigation.FeatureNavDirection
+import com.usacheow.core.resource.ResourcesWrapper
+import com.usacheow.coredata.network.getMessage
 import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.TextSource
-import com.usacheow.coreui.utils.navigation.FeatureNavDirection
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
 import com.usacheow.coreui.utils.trigger
 import com.usacheow.coreui.utils.triggerBy
@@ -15,7 +15,6 @@ import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.utils.values.isPhoneNumberValid
 import com.usacheow.coreui.utils.values.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.SimpleViewModel
-import com.usacheow.featureauth.R
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -84,10 +83,7 @@ class SignInWithPhoneViewModel @Inject constructor(
         interactor.signInWithPhone(phone).doOnSuccess {
             _openConfirmScreenAction triggerBy CONFIRM_CODE_LENGTH
         }.doOnError { exception, data ->
-            _errorState tryPublish when (exception) {
-                is ApiError -> exception.message ?: resources.getString(exception.defaultMessageRes)
-                else -> resources.getString(R.string.unknown_error_message)
-            }
+            _errorState tryPublish exception.getMessage(resources)
         }
 
         _isLoadingState tryPublish false

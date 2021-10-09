@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 class RoomConfigPlugin : BaseConfigPlugin() {
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Data.Room.impl)
+        implementation(*Dependencies.Data.Room.bundle)
         kapt(Dependencies.Data.Room.kapt)
     }
 }

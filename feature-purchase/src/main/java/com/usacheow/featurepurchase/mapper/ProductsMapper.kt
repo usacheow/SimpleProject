@@ -1,9 +1,9 @@
 package com.usacheow.featurepurchase.mapper
 
 import com.example.featurepurchase.R
+import com.usacheow.core.TextSource
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.corebilling.model.Product
-import com.usacheow.coreui.resource.ResourcesWrapper
-import com.usacheow.coreui.utils.TextSource
 import com.usacheow.featurepurchase.view.PriceTileItem
 import java.util.Currency
 import javax.inject.Inject

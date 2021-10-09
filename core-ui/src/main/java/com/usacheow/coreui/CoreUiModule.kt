@@ -3,8 +3,8 @@ package com.usacheow.coreui
 import android.app.Application
 import com.usacheow.coreui.analytics.AnalyticsTracker
 import com.usacheow.coreui.analytics.Tracker
-import com.usacheow.coreui.resource.ResourcesWrapper
-import com.usacheow.coreui.resource.ResourcesWrapperImpl
+import com.usacheow.core.resource.ResourcesWrapper
+import com.usacheow.core.resource.ResourcesWrapperImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

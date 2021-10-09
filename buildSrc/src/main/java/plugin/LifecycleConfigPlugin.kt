@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 class LifecycleConfigPlugin : BaseConfigPlugin() {
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Android.Lifecycle.impl)
+        implementation(*Dependencies.Android.Lifecycle.bundle)
         kapt(Dependencies.Android.Lifecycle.kapt)
     }
 }

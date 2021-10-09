@@ -27,7 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.apptest.databinding.FragmentCameraBinding
 import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.system.arePermissionsGranted
+import com.usacheow.coreui.utils.arePermissionsGranted
 import com.usacheow.coreui.utils.view.doWithTransition
 import java.io.File
 import java.nio.ByteBuffer

@@ -22,5 +22,5 @@ dependencies {
     implementation(project(Modules.FEATURE_ON_BOARDING.path))
     implementation(project(Modules.FEATURE_OTP.path))
 
-    implementation(*Dependencies.Android.Biometric.impl)
+    implementation(*Dependencies.Android.Biometric.bundle)
 }

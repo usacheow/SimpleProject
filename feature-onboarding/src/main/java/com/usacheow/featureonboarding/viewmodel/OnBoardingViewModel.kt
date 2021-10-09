@@ -4,10 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.navigation.FeatureNavDirection
+import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
-import com.usacheow.coreui.utils.trigger
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureonboarding.R

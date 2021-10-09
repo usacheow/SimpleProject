@@ -18,6 +18,6 @@ class TestConfigPlugin : BaseConfigPlugin() {
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
         testImplementation(project(Modules.CORE_UNIT_TEST.path))
-        androidTestImplementation(*Dependencies.Tests.Ui.androidTestImpl)
+        androidTestImplementation(*Dependencies.Tests.Ui.bundle)
     }
 }

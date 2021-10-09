@@ -4,7 +4,8 @@ plugins {
 }
 
 dependencies {
-    api(*Dependencies.Tests.Unit.impl)
+    api(project(Modules.CORE.path))
+    api(*Dependencies.Tests.Unit.bundle)
 
-    implementation(*Dependencies.Data.Gson.impl)
+    implementation(*Dependencies.Data.Gson.bundle)
 }

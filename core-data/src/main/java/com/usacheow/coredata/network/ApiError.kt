@@ -1,7 +1,10 @@
 package com.usacheow.coredata.network
 
+import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.google.gson.annotations.SerializedName
+import com.usacheow.core.TextSource
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coredata.R
 
 sealed class ApiError(
@@ -41,6 +44,24 @@ sealed class ApiError(
     ) : ApiError(R.string.unknown_error_message, message, cause)
 
     class CoroutineException : ApiError(R.string.unknown_error_message)
+
+    fun getMessage(resources: ResourcesWrapper): String {
+        return message ?: resources.getString(defaultMessageRes)
+    }
+
+    fun getMessage(): TextSource {
+        return message?.let { TextSource.Simple(it) } ?: TextSource.Res(defaultMessageRes)
+    }
+}
+
+fun Throwable.getMessage(resources: ResourcesWrapper): String = when (this) {
+    is ApiError -> getMessage(resources)
+    else -> resources.getString(R.string.unknown_error_message)
+}
+
+fun Throwable.getMessage(): TextSource = when (this) {
+    is ApiError -> getMessage()
+    else -> TextSource.Res(R.string.unknown_error_message)
 }
 
 data class ErrorDto(

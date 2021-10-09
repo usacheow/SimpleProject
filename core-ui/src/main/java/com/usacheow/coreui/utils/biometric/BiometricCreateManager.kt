@@ -3,7 +3,7 @@ package com.usacheow.coreui.utils.biometric
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.R
-import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.core.resource.ResourcesWrapper
 import javax.inject.Inject
 
 interface BiometricCreateManager {

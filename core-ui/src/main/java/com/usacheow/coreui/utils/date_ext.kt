@@ -1,7 +1,7 @@
-package com.usacheow.coreui.utils.date
+package com.usacheow.coreui.utils
 
 import com.usacheow.coreui.R
-import com.usacheow.coreui.resource.ResourcesWrapper
+import com.usacheow.core.resource.ResourcesWrapper
 import java.time.LocalDate
 import java.time.LocalDateTime
 

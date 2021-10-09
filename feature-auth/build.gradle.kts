@@ -13,5 +13,5 @@ dependencies {
 
     implementation(project(Modules.BASE_OTP.path))
 
-    implementation(*Dependencies.Android.Biometric.impl)
+    implementation(*Dependencies.Android.Biometric.bundle)
 }

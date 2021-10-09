@@ -58,10 +58,10 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
     }
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        coreLibraryDesugaring(*Dependencies.General.Desugar.impl)
+        coreLibraryDesugaring(*Dependencies.General.Desugar.bundle)
         implementation(project.fileTree("include" to "*.jar", "dir" to "libs"))
 
-        implementation(*Dependencies.General.Kotlin.impl)
-        implementation(*Dependencies.General.Kotlin.Coroutines.impl)
+        implementation(*Dependencies.General.Kotlin.bundle)
+        implementation(*Dependencies.General.Kotlin.Coroutines.bundle)
     }
 }

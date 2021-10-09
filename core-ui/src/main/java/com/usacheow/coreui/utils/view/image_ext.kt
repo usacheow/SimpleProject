@@ -1,32 +1,8 @@
-package com.usacheow.coreui.utils
+package com.usacheow.coreui.utils.view
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
-import com.usacheow.coreui.utils.view.makeGone
-
-sealed class ImageSource {
-
-    data class Url(
-        val url: String,
-    ) : ImageSource()
-
-    data class Vector(
-        val drawable: Drawable,
-    ) : ImageSource()
-
-    data class Image(
-        val bitmap: Bitmap,
-    ) : ImageSource()
-
-    data class Res(
-        @DrawableRes val res: Int,
-    ) : ImageSource()
-
-    object Empty : ImageSource()
-}
+import com.usacheow.core.ImageSource
 
 fun ImageView.populate(source: ImageSource?) {
     fun ImageView.load(url: String?) {

@@ -1,8 +1,8 @@
 package com.usacheow.coremediator
 
-import androidx.navigation.NavDirections
+import com.usacheow.core.navigation.FeatureNavDirection
 
 interface OtpMediator {
 
-    fun getOtpFlowDirection(codeLength: Int): NavDirections
+    fun getOtpFlowDirection(codeLength: Int): FeatureNavDirection
 }
