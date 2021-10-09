@@ -32,7 +32,7 @@ Based on FirebaseRemoteConfig
 + FeatureToggle check flag status
 
 #### 5. Billing
-Based on Billing 3.0. 
+Based on Billing 4.0. 
 BillingWrapper encapsulates the interaction with the library and is responsible for working with purchases
 
 #### 6. Analytics
