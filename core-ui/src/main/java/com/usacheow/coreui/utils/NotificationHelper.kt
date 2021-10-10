@@ -1,4 +1,4 @@
-package com.usacheow.simpleapp.notification
+package com.usacheow.coreui.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

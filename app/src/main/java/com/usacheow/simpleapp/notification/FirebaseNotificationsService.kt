@@ -4,6 +4,7 @@ import android.content.Intent
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.usacheow.coreui.utils.NotificationHelper
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -13,7 +14,7 @@ import kotlin.coroutines.suspendCoroutine
 const val MESSAGE_KEY = "MESSAGE_KEY"
 
 @AndroidEntryPoint
-class MyFirebaseMessagingService : FirebaseMessagingService() {
+class FirebaseNotificationsService : FirebaseMessagingService() {
 
     @Inject lateinit var notificationHelper: NotificationHelper
 

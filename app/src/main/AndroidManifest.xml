@@ -31,7 +31,7 @@
         </activity>
 
         <!--        <receiver-->
-        <!--            android:name=".notification.AlarmReceiver"-->
+        <!--            android:name=".notification.PeriodicNotificationsReceiver"-->
         <!--            android:exported="false" />-->
 
         <!--        <meta-data-->
@@ -43,7 +43,7 @@
         <!--            android:resource="@color/colorPrimary" />-->
 
         <!--        <service-->
-        <!--            android:name=".notification.MyFirebaseMessagingService"-->
+        <!--            android:name=".notification.FirebaseNotificationsService"-->
         <!--            android:exported="false">-->
         <!--            <intent-filter>-->
         <!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
