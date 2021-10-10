@@ -6,7 +6,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.usacheow.baseotp.OtpCodeState
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.MarginTop
@@ -83,10 +82,10 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
         viewModel.openNextScreenAction.observe(viewLifecycleOwner, router::apply)
         viewModel.closeSmsCodeScreenAction.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutSuccess() }
         viewModel.codeConfirmMessageState.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutError(it) }
-        otpStateViewModel.updateCodeStateAction.observe(viewLifecycleOwner) {
+        otpStateViewModel.featureEvent.observe(viewLifecycleOwner) {
             when (it) {
-                is OtpCodeState.OtpCodeInputted -> viewModel.onCodeInputted(it.code)
-                is OtpCodeState.OtpCodeRequested -> viewModel.onResendClicked()
+                is OtpFeatureConnector.Event.CodeInputted -> viewModel.onCodeInputted(it.code)
+                is OtpFeatureConnector.Event.CodeRequested -> viewModel.onResendClicked()
             }
         }
     }

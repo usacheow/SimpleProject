@@ -3,8 +3,6 @@ package com.usacheow.baseotp
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.trigger
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,36 +13,46 @@ import javax.inject.Inject
 @HiltViewModel
 class OtpFeatureConnector @Inject constructor() : SimpleViewModel() {
 
-    private val _updateCodeStateAction = EventChannel<OtpCodeState>()
-    val updateCodeStateAction = _updateCodeStateAction.receiveAsFlow()
+    private val _featureEvent = EventChannel<Event>()
+    val featureEvent = _featureEvent.receiveAsFlow()
 
-    private val _showErrorStateAction = EventChannel<TextSource>()
-    val showErrorMessageAction = _showErrorStateAction.receiveAsFlow()
-
-    private val _closeDialogAction = EventChannel<SimpleAction>()
-    val closeDialogAction = _closeDialogAction.receiveAsFlow()
+    private val _featureEffect = EventChannel<Effect>()
+    val featureEffect = _featureEffect.receiveAsFlow()
 
     fun onResendClicked() = viewModelScope.launch {
-        _updateCodeStateAction triggerBy OtpCodeState.OtpCodeRequested
+        _featureEvent triggerBy Event.CodeRequested
     }
 
     fun onCodeInputted(code: String) = viewModelScope.launch {
-        _updateCodeStateAction triggerBy OtpCodeState.OtpCodeInputted(code)
+        _featureEvent triggerBy Event.CodeInputted(code)
     }
 
     fun notifyAboutSuccess() = viewModelScope.launch {
-        _closeDialogAction.trigger()
+        _featureEffect triggerBy Effect.Success
     }
 
     fun notifyAboutError(message: TextSource?) = viewModelScope.launch {
         message ?: return@launch
-        _showErrorStateAction triggerBy message
+        _featureEffect triggerBy Effect.Error(message)
+    }
+
+    sealed class Event {
+        object CodeRequested : Event()
+        data class CodeInputted(val code: String) : Event()
+    }
+
+    sealed class Effect {
+        object Success : Effect()
+        data class Error(val message: TextSource) : Effect()
     }
 }
 
-sealed class OtpCodeState {
+/*
+class FeatureConnector<EVENT, EFFECT> : ViewModel() {
 
-    data class OtpCodeInputted(val code: String) : OtpCodeState()
+    private val _featureEvent = Channel<EVENT>()
+    val featureEvent = _featureEvent.receiveAsFlow()
 
-    object OtpCodeRequested : OtpCodeState()
-}
+    private val _featureEffect = Channel<EFFECT>()
+    val featureEffect = _featureEffect.receiveAsFlow()
+}*/

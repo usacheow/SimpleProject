@@ -3,7 +3,6 @@ package com.usacheow.featureotp
 import android.os.Bundle
 import android.text.InputFilter
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.fragment.SimpleModalFragment
@@ -59,13 +58,12 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
                 }
             }
         }
-        otpStateViewModel.closeDialogAction.observe(viewLifecycleOwner) {
+        otpStateViewModel.featureEffect.observe(viewLifecycleOwner) {
             binding.loaderView.root.makeGone()
-            dismiss()
-        }
-        otpStateViewModel.showErrorMessageAction.observe(viewLifecycleOwner) {
-            binding.loaderView.root.makeGone()
-            binding.smsCodeMessageView.populate(it)
+            when (it) {
+                OtpFeatureConnector.Effect.Success -> dismiss()
+                is OtpFeatureConnector.Effect.Error -> binding.smsCodeMessageView.populate(it.message)
+            }
         }
     }
 
