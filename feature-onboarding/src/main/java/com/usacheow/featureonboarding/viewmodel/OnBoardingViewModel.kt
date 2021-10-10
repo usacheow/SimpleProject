@@ -2,9 +2,14 @@ package com.usacheow.featureonboarding.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.usacheow.core.ImageSource
+import com.usacheow.core.TextSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coreui.utils.EventChannel
 import com.usacheow.core.navigation.FeatureNavDirection
+import com.usacheow.core.toImageSource
+import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coreui.utils.navigation.requireArgs
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
@@ -23,19 +28,14 @@ class OnBoardingViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
+    private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
+    private val pages by lazy { savedStateHandle.requireArgs<OnBoardingMediator.OnBoardingArgs>().pages }
+
     private val _openAppScreenAction = EventChannel<FeatureNavDirection>()
     val openAppScreenAction = _openAppScreenAction.receiveAsFlow()
 
-    private val _pagesState = MutableStateFlow(onBoardingData)
+    private val _pagesState = MutableStateFlow(pages.map(::mapToItem))
     val pagesState = _pagesState.asStateFlow()
-
-    private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
-
-    private val onBoardingData get() = mutableListOf(
-        OnBoardingItem(R.drawable.on_boarding_1, R.string.on_boarding_title_1, R.string.on_boarding_description_1),
-        OnBoardingItem(R.drawable.on_boarding_2, R.string.on_boarding_title_2, R.string.on_boarding_description_2),
-        OnBoardingItem(R.drawable.on_boarding_3, R.string.on_boarding_title_3, R.string.on_boarding_description_3)
-    )
 
     fun onOnBoardingFinished() = viewModelScope.launch {
         storage.isFirstEntry = false
@@ -46,4 +46,12 @@ class OnBoardingViewModel @Inject constructor(
         storage.isFirstEntry = false
         _openAppScreenAction triggerBy nextScreenDirection
     }
+
+    private fun mapToItem(item: OnBoardingMediator.OnBoardingArgs.Page) = OnBoardingItem(
+        image = item.imageUrl?.toImageSource()
+            ?: item.defaultImageRes?.toImageSource()
+            ?: ImageSource.Empty,
+        title = item.title,
+        description = item.description,
+    )
 }

@@ -24,3 +24,6 @@ sealed class ImageSource {
 
     object Empty : ImageSource()
 }
+
+fun String.toImageSource() = ImageSource.Url(this)
+fun Int.toImageSource() = ImageSource.Res(this)

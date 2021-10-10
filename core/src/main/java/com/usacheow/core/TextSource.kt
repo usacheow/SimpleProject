@@ -1,16 +1,19 @@
 package com.usacheow.core
 
+import android.os.Parcelable
 import android.text.SpannedString
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import com.usacheow.core.resource.ResourcesWrapper
+import kotlinx.parcelize.Parcelize
 
 sealed class TextSource {
 
+    @Parcelize
     data class Simple(
         val text: String,
-    ) : TextSource()
+    ) : TextSource(), Parcelable
 
     data class Spanned(
         val text: SpannedString,
@@ -43,3 +46,5 @@ sealed class TextSource {
         is Plural -> resources.getPluralString(res, quantity)
     }
 }
+
+fun String.toSource() = TextSource.Simple(this)

@@ -14,6 +14,7 @@ enum class Modules(val path: String) {
     BASE_BILLING(":base-billing"),
 
     FEATURE_AUTH(":feature-auth"),
+    FEATURE_BOTTOM_BAR(":feature-bottom-bar"),
     FEATURE_MAIN(":feature-main"),
     FEATURE_ON_BOARDING(":feature-onboarding"),
     FEATURE_PURCHASE(":feature-purchase"),

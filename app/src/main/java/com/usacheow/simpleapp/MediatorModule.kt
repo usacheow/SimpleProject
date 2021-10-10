@@ -1,11 +1,13 @@
 package com.usacheow.simpleapp
 
 import com.usacheow.coremediator.AuthorizationMediator
+import com.usacheow.coremediator.BottomBarMediator
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coremediator.OtpMediator
 import com.usacheow.coremediator.PurchaseMediator
 import com.usacheow.featureauth.presentation.navigation.AuthorizationMediatorImpl
+import com.usacheow.featurebottombar.BottomBarMediatorImpl
 import com.usacheow.featuremain.presentation.navigation.MainMediatorImpl
 import com.usacheow.featureonboarding.navigation.OnBoardingMediatorImpl
 import com.usacheow.featureotp.navigation.OtpMediatorImpl
@@ -19,6 +21,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 interface MediatorModule {
+
+    @Binds
+    @Singleton
+    fun bottomBarMediator(mediator: BottomBarMediatorImpl): BottomBarMediator
 
     @Binds
     @Singleton

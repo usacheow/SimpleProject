@@ -61,9 +61,9 @@ class DemoRouter @Inject constructor(
         DemoFragmentDirections.actionDemoFragmentToExampleModalFragment().openIn(navController)
     }
 
-    fun toOnBoardingFlow() {
+    fun toOnBoardingFlow(args: OnBoardingMediator.OnBoardingArgs) {
         val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
-        onBoardingMediator.getOnBoardingFlowDirection(nextDirection).openIn(navController)
+        onBoardingMediator.getOnBoardingFlowDirection(args, nextDirection).openIn(navController)
     }
 
     fun toSignUpFlow() {
@@ -87,6 +87,6 @@ class DemoRouter @Inject constructor(
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        otpMediator.getOtpFlowDirection(codeLength).openIn(navController)
+        otpMediator.getOtpFlowDirection(OtpMediator.OtpArgs(codeLength)).openIn(navController)
     }
 }

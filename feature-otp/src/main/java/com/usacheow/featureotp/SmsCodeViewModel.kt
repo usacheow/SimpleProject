@@ -3,7 +3,11 @@ package com.usacheow.featureotp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
+import com.usacheow.coremediator.OtpMediator
 import com.usacheow.coreui.utils.EventChannel
+import com.usacheow.coreui.utils.navigation.getArgs
+import com.usacheow.coreui.utils.navigation.requireArgs
+import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
 import com.usacheow.coreui.utils.triggerBy
 import com.usacheow.coreui.utils.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
@@ -44,13 +48,12 @@ class SmsCodeViewModel @Inject constructor(
 
     private var timerJob: Job? = null
 
-    companion object {
-        const val CODE_LENGTH_KEY = "CODE_LENGTH_KEY"
+    private val codeLength by lazy {
+        savedStateHandle.getArgs<OtpMediator.OtpArgs>()?.codeLength ?: CODE_LENGTH_DEFAULT_VALUE
     }
 
     init {
         viewModelScope.launch {
-            val codeLength = savedStateHandle.get<Int>(CODE_LENGTH_KEY) ?: CODE_LENGTH_DEFAULT_VALUE
             _maxCodeLengthState tryPublish codeLength
             onDigitAdded("")
             if (timerJob == null) {

@@ -8,6 +8,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.core.TextSource
+import com.usacheow.core.toSource
+import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coreui.adapter.ViewTypesAdapter
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
@@ -30,6 +32,23 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     override val defaultParams = Params(
         viewBindingProvider = FragmentDemoBinding::inflate,
     )
+
+    private val onBoardingArgs by lazy {
+        OnBoardingMediator.OnBoardingArgs(mutableListOf(
+            OnBoardingMediator.OnBoardingArgs.Page(
+                defaultImageRes = R.drawable.on_boarding_1,
+                title = resources.getString(R.string.on_boarding_title_1).toSource(),
+                description = resources.getString(R.string.on_boarding_description_1).toSource()),
+            OnBoardingMediator.OnBoardingArgs.Page(
+                defaultImageRes = R.drawable.on_boarding_2,
+                title = resources.getString(R.string.on_boarding_title_2).toSource(),
+                description = resources.getString(R.string.on_boarding_description_2).toSource()),
+            OnBoardingMediator.OnBoardingArgs.Page(
+                defaultImageRes = R.drawable.on_boarding_3,
+                title = resources.getString(R.string.on_boarding_title_3).toSource(),
+                description = resources.getString(R.string.on_boarding_description_3).toSource())
+        ))
+    }
 
     companion object {
         fun newInstance() = DemoFragment()
@@ -140,7 +159,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
                     value = TextSource.Simple("5. Onboarding Fragment"),
-                    clickListener = { router.toOnBoardingFlow() },
+                    clickListener = { router.toOnBoardingFlow(onBoardingArgs) },
                 ),
 
                 HeaderTileItem(TextSource.Simple("Pages")),

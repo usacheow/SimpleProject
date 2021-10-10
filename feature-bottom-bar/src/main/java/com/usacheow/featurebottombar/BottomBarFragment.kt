@@ -1,9 +1,14 @@
-package com.usacheow.simpleapp.mainscreen
+package com.usacheow.featurebottombar
 
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
+import androidx.annotation.IdRes
+import androidx.annotation.MenuRes
+import androidx.annotation.NavigationRes
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.Insets
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
@@ -13,10 +18,12 @@ import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.isImeVisible
-import com.usacheow.simpleapp.R
-import com.usacheow.simpleapp.databinding.FragmentBottomBarBinding
+import com.usacheow.featurebottombar.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.parcelize.Parcelize
 import kotlin.math.max
+
+private const val ARGS_KEY = "ARGS_KEY"
 
 @AndroidEntryPoint
 class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
@@ -28,6 +35,13 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     private var isKeyboardVisible = false
     private val navController by lazy {
         (childFragmentManager.findFragmentById(R.id.bottomBarContainerLayout) as NavHostFragment).navController
+    }
+
+    companion object {
+        fun bundle(
+            @MenuRes menuRes: Int,
+            @NavigationRes graphRes: Int,
+        ) = bundleOf(ARGS_KEY to BottomBarArgs(menuRes, graphRes))
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -88,7 +102,19 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
+        val args = arguments?.getParcelable<BottomBarArgs>(ARGS_KEY) ?: return
+
+        binding.appBottomBar.menu.clear()
+        binding.appBottomBar.inflateMenu(args.menuRes)
+        navController.graph = navController.navInflater.inflate(args.graphRes)
+
         binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }
     }
 }
+
+@Parcelize
+data class BottomBarArgs(
+    @MenuRes val menuRes: Int,
+    @NavigationRes val graphRes: Int,
+) : Parcelable

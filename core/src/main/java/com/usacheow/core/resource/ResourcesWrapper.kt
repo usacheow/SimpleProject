@@ -2,7 +2,6 @@ package com.usacheow.core.resource
 
 import android.content.Context
 import android.content.res.AssetManager
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
@@ -15,8 +14,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 interface ResourcesWrapper {
-
-    val get: Resources
 
     fun getString(@StringRes id: Int): String
 
@@ -38,8 +35,6 @@ interface ResourcesWrapper {
 class ResourcesWrapperImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : ResourcesWrapper {
-
-    override val get: Resources get() = context.resources
 
     override fun getString(@StringRes id: Int) = context.getString(id)
 

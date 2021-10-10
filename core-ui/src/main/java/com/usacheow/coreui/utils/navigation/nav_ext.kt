@@ -13,15 +13,23 @@ import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
 import com.usacheow.coreui.R
 
+private const val ARGS_KEY = "ARGS_KEY"
 private const val NEXT_SCREEN_DIRECTION_KEY = "NEXT_SCREEN_DIRECTION_KEY"
 
 fun Bundle.addNextScreenDirection(direction: NavDirections) = apply {
     putParcelable(NEXT_SCREEN_DIRECTION_KEY, direction as Parcelable)
 }
-
-fun SavedStateHandle.requireNextScreenDirection(): FeatureNavDirection {
-    return requireNotNull(get<FeatureNavDirection>(NEXT_SCREEN_DIRECTION_KEY))
+fun Bundle.addArgs(args: Parcelable) = apply {
+    putParcelable(ARGS_KEY, args)
 }
+
+fun SavedStateHandle.getNextScreenDirection(): FeatureNavDirection? =
+    get<FeatureNavDirection>(NEXT_SCREEN_DIRECTION_KEY)
+fun SavedStateHandle.requireNextScreenDirection(): FeatureNavDirection =
+    requireNotNull(getNextScreenDirection())
+
+fun <ARGS : Parcelable> SavedStateHandle.getArgs(): ARGS? = get<ARGS>(ARGS_KEY)
+fun <ARGS : Parcelable> SavedStateHandle.requireArgs(): ARGS = requireNotNull(getArgs())
 
 fun defaultNavOptions(block: NavOptionsBuilder.() -> Unit = {}) = navOptions {
     block()

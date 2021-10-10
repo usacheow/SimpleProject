@@ -19,8 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="8dp"
@@ -29,13 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/indicatorView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skipButton" >
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/skipButton" />
 
     <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
         android:id="@+id/indicatorView"
@@ -46,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@id/nextButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintTop_toBottomOf="@id/viewPager"
         app:spi_dotColor="@color/backgroundSecondary"
         app:spi_dotSelectedColor="@color/colorPrimary"
         app:spi_dotSelectedSize="8dp"

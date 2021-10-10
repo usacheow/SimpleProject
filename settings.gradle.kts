@@ -20,6 +20,7 @@ include(
     ":base-billing",
     ":base-otp",
 
+    ":feature-bottom-bar",
     ":feature-auth",
     ":feature-main",
     ":feature-onboarding",

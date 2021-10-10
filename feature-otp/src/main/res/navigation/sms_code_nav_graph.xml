@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sms_code_nav_graph"
     app:startDestination="@id/smsCodeModalFragment">
-    <action
-        android:id="@+id/action_to_smsCodeModalFragment"
-        app:destination="@id/smsCodeModalFragment"/>
     <dialog
         android:id="@+id/smsCodeModalFragment"
         android:name="com.usacheow.featureotp.SmsCodeModalFragment"

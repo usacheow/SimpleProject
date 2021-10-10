@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/bottomBarFragment">
+    app:startDestination="@id/bottom_bar_nav_graph">
 
-    <fragment
-        android:id="@+id/bottomBarFragment"
-        android:name="com.usacheow.simpleapp.mainscreen.BottomBarFragment"
-        android:label="BottomBarFragment"
-        tools:layout="@layout/fragment_bottom_bar"/>
+    <include
+        app:graph="@navigation/bottom_bar_nav_graph"/>
     <include
         app:graph="@navigation/on_boarding_nav_graph"/>
     <include

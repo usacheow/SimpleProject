@@ -26,10 +26,6 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
     private val viewModel by viewModels<SmsCodeViewModel>()
     private val otpStateViewModel by viewModels<OtpFeatureConnector>({ requireParentFragment() })
 
-    companion object {
-        fun bundle(codeLength: Int) = bundleOf(SmsCodeViewModel.CODE_LENGTH_KEY to codeLength)
-    }
-
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.smsCodeNumPadView.apply {
             setActionMode(NumPadView.ActionMode.NONE)

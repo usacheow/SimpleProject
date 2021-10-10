@@ -19,6 +19,6 @@ class AuthorizationRouter @Inject constructor(
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        otpMediator.getOtpFlowDirection(codeLength).openIn(navController)
+        otpMediator.getOtpFlowDirection(OtpMediator.OtpArgs(codeLength)).openIn(navController)
     }
 }

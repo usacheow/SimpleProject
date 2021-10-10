@@ -3,10 +3,11 @@ package com.usacheow.featureonboarding.view
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
+import com.usacheow.core.ImageSource
+import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
+import com.usacheow.coreui.utils.view.populate
 import com.usacheow.featureonboarding.R
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
@@ -18,14 +19,14 @@ class OnBoardingItemView @JvmOverloads constructor(
     override fun populate(model: OnBoardingItem) {
         val binding = OnBoardingItemViewBinding.bind(this)
 
-        binding.imageView.setImageResource(model.imageId)
-        binding.titleView.text = resources.getString(model.titleId)
-        binding.descriptionView.text = resources.getString(model.descriptionId)
+        binding.imageView.populate(model.image)
+        binding.titleView.populate(model.title)
+        binding.descriptionView.populate(model.description)
     }
 }
 
 data class OnBoardingItem(
-    @DrawableRes val imageId: Int,
-    @StringRes val titleId: Int,
-    @StringRes val descriptionId: Int,
+    val image: ImageSource,
+    val title: TextSource,
+    val description: TextSource,
 ) : ViewState(R.layout.on_boarding_item_view)

@@ -46,6 +46,7 @@ dependencies {
 
     implementation(project(Modules.BASE_BILLING.path))
 
+    implementation(project(Modules.FEATURE_BOTTOM_BAR.path))
     implementation(project(Modules.FEATURE_MAIN.path))
     implementation(project(Modules.FEATURE_AUTH.path))
     implementation(project(Modules.FEATURE_ON_BOARDING.path))
