@@ -6,24 +6,24 @@ import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coreui.utils.navigation.WITH
 import com.usacheow.coreui.utils.navigation.addNextScreenDirection
 import com.usacheow.coreui.utils.navigation.screen
-import com.usacheow.featureauth.R
+import com.usacheow.featureauth.R as FeatureR
 import javax.inject.Inject
 
 class AuthorizationMediatorImpl @Inject constructor() : AuthorizationMediator {
 
     override fun getPinCodeFlowDirection(
         nextScreenDirection: FeatureNavDirection,
-    ) = screen(R.id.pin_code_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
+    ) = screen(FeatureR.id.pin_code_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
 
     override fun getSignInFlowDirection(
         nextScreenDirection: FeatureNavDirection,
-    ) = screen(R.id.sign_in_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
+    ) = screen(FeatureR.id.sign_in_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
 
     override fun getSignInWithPhoneFlowDirection(
         nextScreenDirection: FeatureNavDirection,
-    ) = screen(R.id.sign_in_with_phone_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
+    ) = screen(FeatureR.id.sign_in_with_phone_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
 
     override fun getSignUpFlowDirection(
         nextScreenDirection: FeatureNavDirection,
-    ) = screen(R.id.sign_up_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
+    ) = screen(FeatureR.id.sign_up_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection)
 }

@@ -8,7 +8,7 @@ import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.utils.view.populate
-import com.usacheow.featureonboarding.R
+import com.usacheow.featureonboarding.R as FeatureR
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 
 class OnBoardingItemView @JvmOverloads constructor(
@@ -29,4 +29,4 @@ data class OnBoardingItem(
     val image: ImageSource,
     val title: TextSource,
     val description: TextSource,
-) : ViewState(R.layout.on_boarding_item_view)
+) : ViewState(FeatureR.layout.on_boarding_item_view)

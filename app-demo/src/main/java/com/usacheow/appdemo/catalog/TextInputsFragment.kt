@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
@@ -13,6 +12,7 @@ import com.usacheow.coreui.utils.textinput.doOnActionClick
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.R as CoreUiR
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
 
@@ -33,7 +33,7 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "Text inputs"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }

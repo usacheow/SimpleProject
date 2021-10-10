@@ -7,7 +7,7 @@ import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
@@ -53,14 +53,14 @@ data class BadgeTileItem(
     val header: TextSource? = null,
     val value: TextSource,
     val needAdaptWidth: Boolean = true,
-    @ColorRes val textColorRes: Int = R.color.text,
-    @ColorRes val backgroundColorRes: Int = R.color.surface,
+    @ColorRes val textColorRes: Int = CoreUiR.color.text,
+    @ColorRes val backgroundColorRes: Int = CoreUiR.color.surface,
     val clickListener: (() -> Unit)? = null,
-) : ViewState(R.layout.view_badge_tile) {
+) : ViewState(CoreUiR.layout.view_badge_tile) {
 
     companion object {
         fun shimmer() = BadgeShimmerItem()
     }
 }
 
-class BadgeShimmerItem : ViewState(R.layout.view_badge_shimmer)
+class BadgeShimmerItem : ViewState(CoreUiR.layout.view_badge_shimmer)

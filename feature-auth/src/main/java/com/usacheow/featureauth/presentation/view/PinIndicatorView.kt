@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.toPx
-import com.usacheow.featureauth.R
+import com.usacheow.coreui.R as CoreUiR
 import kotlin.math.min
 
 private const val DEFAULT_RADIUS_DP = 10
@@ -36,9 +36,9 @@ class PinIndicatorView @JvmOverloads constructor(
     }
 
     private val diameterWithMargin = DOT_MARGIN.toPx + DEFAULT_RADIUS_DP.toPx * 2
-    private val errorColor = R.color.error
-    private val defaultColor = R.color.black_10
-    private val selectedColor = R.color.colorPrimary
+    private val errorColor = CoreUiR.color.error
+    private val defaultColor = CoreUiR.color.black_10
+    private val selectedColor = CoreUiR.color.colorPrimary
 
     private var firstDotX = paddingLeft + DEFAULT_RADIUS_DP.toPx.toFloat()
     private var firstDotY = paddingTop + DEFAULT_RADIUS_DP.toPx.toFloat()

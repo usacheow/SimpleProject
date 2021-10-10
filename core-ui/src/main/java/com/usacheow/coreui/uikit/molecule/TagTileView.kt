@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
 import com.usacheow.coreui.databinding.ViewTagTileBinding
@@ -51,10 +51,10 @@ class TagTileView
 
 data class TagTileItem(
     val name: TextSource,
-    val unselectedColor: TagColor = TagColor(R.color.text, R.color.surfaceSecondary),
-    val selectedColor: TagColor = TagColor(R.color.textInverse, R.color.surfaceSecondaryVariant),
+    val unselectedColor: TagColor = TagColor(CoreUiR.color.text, CoreUiR.color.surfaceSecondary),
+    val selectedColor: TagColor = TagColor(CoreUiR.color.textInverse, CoreUiR.color.surfaceSecondaryVariant),
     val selectListener: () -> Unit,
-) : TagViewState(R.layout.view_tag_tile)
+) : TagViewState(CoreUiR.layout.view_tag_tile)
 
 data class TagColor(
     val text: Int,

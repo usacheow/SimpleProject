@@ -17,7 +17,7 @@ import com.usacheow.coreui.utils.observe
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
 import com.usacheow.coreui.utils.view.isImeVisible
-import com.usacheow.simpleapp.R
+import com.usacheow.simpleapp.R as AppR
 import com.usacheow.simpleapp.databinding.ActivityHostBinding
 import com.usacheow.simpleapp.mainscreen.MainScreenViewModel.Action
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +51,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         }
     }
 
-    override fun findNavController() = findNavController(R.id.fragmentContainer)
+    override fun findNavController() = findNavController(AppR.id.fragmentContainer)
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.isImeVisible()
@@ -68,10 +68,10 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
     override fun subscribe() {
         val mainAppFlowDirection = bottomBarMediator.getBottomBarFlowDirection(
-            R.menu.m_bottom_bar,
-            R.navigation.auth_zone_nav_graph,
+            AppR.menu.m_bottom_bar,
+            AppR.navigation.auth_zone_nav_graph,
         )
-        val nextDirection = mainAppFlowDirection REPLACING R.id.app_nav_graph
+        val nextDirection = mainAppFlowDirection REPLACING AppR.id.app_nav_graph
 
         viewModel.action.observe(this) {
             val direction = when (it) {
@@ -81,7 +81,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
                 is Action.OpenAppScreen -> mainAppFlowDirection
             }
 
-            direction REPLACING R.id.app_nav_graph OPEN_IN findNavController(R.id.fragmentContainer)
+            direction REPLACING AppR.id.app_nav_graph OPEN_IN findNavController(AppR.id.fragmentContainer)
         }
     }
 }

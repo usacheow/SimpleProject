@@ -12,7 +12,7 @@ import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
-import com.usacheow.featuremain.R
+import com.usacheow.featuremain.R as FeatureR
 import com.usacheow.featuremain.databinding.FragmentABinding
 import com.usacheow.featuremain.presentation.navigation.MainFeatureRouter
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
@@ -29,7 +29,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
         viewBindingProvider = FragmentABinding::inflate,
     )
 
-    private val viewModel by hiltNavGraphViewModels<AViewModel>(R.id.main_nav_graph)
+    private val viewModel by hiltNavGraphViewModels<AViewModel>(FeatureR.id.main_nav_graph)
     private val adapter = ViewTypesAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {

@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.fragment.SimpleModalFragment
 import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.coreui.utils.observe
@@ -71,8 +72,8 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
         this.isEnabled = isEnabled
         setTextColor(
             when (isEnabled) {
-                true -> R.color.colorPrimary
-                false -> R.color.disabled
+                true -> CoreUiR.color.colorPrimary
+                false -> CoreUiR.color.disabled
             }
         )
     }

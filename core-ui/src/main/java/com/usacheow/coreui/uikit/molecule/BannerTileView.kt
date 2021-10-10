@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBannerTileBinding
@@ -33,11 +33,11 @@ data class BannerTileItem(
     val icon: ImageSource,
     val text: TextSource,
     val clickListener: (() -> Unit)? = null,
-) : ViewState(R.layout.view_banner_tile) {
+) : ViewState(CoreUiR.layout.view_banner_tile) {
 
     companion object {
         fun shimmer() = BannerShimmerItem()
     }
 }
 
-class BannerShimmerItem : ViewState(R.layout.view_banner_shimmer)
+class BannerShimmerItem : ViewState(CoreUiR.layout.view_banner_shimmer)

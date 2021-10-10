@@ -10,7 +10,7 @@ import android.os.Build
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -84,8 +84,8 @@ class NotificationHelper @Inject constructor(
     data class NotificationModel(
         val title: String? = null,
         val channelId: String = APP_INFO_CHANNEL_ID,
-        val smallIcon: Int = R.drawable.ic_user,
-        val largeIcon: Int = R.mipmap.ic_launcher,
+        val smallIcon: Int = CoreUiR.drawable.ic_user,
+        val largeIcon: Int = CoreUiR.mipmap.ic_launcher,
         val text: String? = null,
         val intent: Intent
     )

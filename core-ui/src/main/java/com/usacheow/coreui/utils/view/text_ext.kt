@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import java.lang.ref.WeakReference
 
 private const val TEXT_ANIMATION_DURATION = 200L
@@ -83,7 +83,7 @@ private fun TextView.makeCollapsable(
     value: String,
     container: WeakReference<ViewGroup>,
     dividerText: String = " ",
-    expandLinkText: String = string(R.string.collapse_text),
+    expandLinkText: String = string(CoreUiR.string.collapse_text),
 ) {
     container.get()?.doWithTransition(TEXT_ANIMATION_DURATION) {
         var finalText = value + dividerText

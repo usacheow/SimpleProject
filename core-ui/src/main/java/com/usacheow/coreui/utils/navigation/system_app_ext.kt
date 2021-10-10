@@ -9,7 +9,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.utils.view.color
 
 fun Fragment.openDialer(phoneNumber: String) {
@@ -41,7 +41,7 @@ fun Fragment.openMail(mail: String, subject: String) {
 fun Fragment.openUrl(url: String) {
     CustomTabsIntent.Builder()
         .setShowTitle(true)
-        .setToolbarColor(color(R.color.backgroundToolbar))
+        .setToolbarColor(color(CoreUiR.color.backgroundToolbar))
         .build()
         .apply {
             intent.putExtra(Browser.EXTRA_HEADERS, bundleOf())

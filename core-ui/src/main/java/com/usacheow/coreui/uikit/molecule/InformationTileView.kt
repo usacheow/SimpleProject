@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewInformationTileBinding
@@ -40,4 +40,4 @@ data class InformationTileItem(
     val mainLeftText: TextSource,
     val mainRightText: TextSource,
     val clickListener: (() -> Unit)? = null,
-) : ViewState(R.layout.view_information_tile)
+) : ViewState(CoreUiR.layout.view_information_tile)

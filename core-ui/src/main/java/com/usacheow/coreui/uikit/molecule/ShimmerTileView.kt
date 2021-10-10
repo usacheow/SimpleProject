@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.core.view.isVisible
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewShimmerTileBinding
@@ -36,4 +36,4 @@ data class ShimmerTileItem(
     val topLine: Boolean = true,
     val middleLine: Boolean = true,
     val bottomLine: Boolean = true,
-) : ViewState(R.layout.view_shimmer_tile)
+) : ViewState(CoreUiR.layout.view_shimmer_tile)

@@ -22,6 +22,7 @@ import com.usacheow.featurebottombar.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.parcelize.Parcelize
 import kotlin.math.max
+import com.usacheow.featurebottombar.R as FeatureR
 
 private const val ARGS_KEY = "ARGS_KEY"
 
@@ -34,7 +35,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
 
     private var isKeyboardVisible = false
     private val navController by lazy {
-        (childFragmentManager.findFragmentById(R.id.bottomBarContainerLayout) as NavHostFragment).navController
+        (childFragmentManager.findFragmentById(FeatureR.id.bottomBarContainerLayout) as NavHostFragment).navController
     }
 
     companion object {

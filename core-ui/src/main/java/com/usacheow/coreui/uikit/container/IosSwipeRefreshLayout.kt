@@ -20,7 +20,7 @@ import androidx.core.view.ScrollingView
 import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import androidx.core.view.marginTop
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.utils.LinearFunction
 import com.usacheow.coreui.utils.view.EmptyAnimationListener
 import com.usacheow.coreui.utils.view.drawable
@@ -116,10 +116,10 @@ class IOSSwipeRefreshLayout @JvmOverloads constructor(
             it.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> updateRefreshIconPosition() }
         }
 
-        context.theme.obtainStyledAttributes(attrs, R.styleable.IosSwipeRefreshLayout, 0, 0)
+        context.theme.obtainStyledAttributes(attrs, CoreUiR.styleable.IosSwipeRefreshLayout, 0, 0)
             .apply {
-                val refreshIcon = getDrawable(R.styleable.IosSwipeRefreshLayout_android_icon)
-                    ?: drawable(R.drawable.ic_refresh_default)
+                val refreshIcon = getDrawable(CoreUiR.styleable.IosSwipeRefreshLayout_android_icon)
+                    ?: drawable(CoreUiR.drawable.ic_refresh_default)
                 refreshIconView.setImageDrawable(refreshIcon)
             }
             .recycle()

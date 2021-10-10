@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewListTileBinding
@@ -38,7 +38,7 @@ data class ListTileItem(
     val topDescription: TextSource? = null,
     val bottomDescription: TextSource? = null,
     val clickListener: (() -> Unit)? = null,
-) : ViewState(R.layout.view_list_tile) {
+) : ViewState(CoreUiR.layout.view_list_tile) {
 
     companion object {
         fun shimmer() = ShimmerTileItem(bottomLine = false, rightIcon = false)

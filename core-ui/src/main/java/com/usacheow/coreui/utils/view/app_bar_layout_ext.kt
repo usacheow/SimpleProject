@@ -7,7 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 
 private const val SMALL_ANIMATION_DURATION_IN_MILLIS = 200L
 private const val APP_BAR_ELEVATION = 4
@@ -31,7 +31,7 @@ fun AppBarLayout.animateElevation(
         }
 }
 
-fun Toolbar.navigation(@DrawableRes iconId: Int, @ColorRes colorId: Int = R.color.icon, listener: () -> Unit) {
+fun Toolbar.navigation(@DrawableRes iconId: Int, @ColorRes colorId: Int = CoreUiR.color.icon, listener: () -> Unit) {
     setNavigationIcon(iconId)
     setNavigationIconColor(colorId)
     setNavigationOnClickListener { listener() }

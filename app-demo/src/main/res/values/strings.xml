@@ -2,4 +2,11 @@
     <string name="app_name">Simple UiKit</string>
 
     <string name="repeat">Повторить</string>
+
+    <string name="on_boarding_title_1">Title 1</string>
+    <string name="on_boarding_description_1">Description 1</string>
+    <string name="on_boarding_title_2">Title 2</string>
+    <string name="on_boarding_description_2">Description 2</string>
+    <string name="on_boarding_title_3">Title 3</string>
+    <string name="on_boarding_description_3">Description 3</string>
 </resources>

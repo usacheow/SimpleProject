@@ -2,7 +2,8 @@ package com.usacheow.featurepurchase.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import com.example.featurepurchase.R
+import com.example.featurepurchase.R as FeatureR
+import com.usacheow.coreui.R as CoreUiR
 import com.example.featurepurchase.databinding.FragmentPurchaseBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -30,19 +31,19 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
     private val advantagesAdapter = ViewTypesAdapter(
         listOf(
             AdvantageTileItem(
-                image = ImageSource.Res(R.drawable.ic_money),
-                title = TextSource.Res(R.string.purchase_advantage_1_title),
-                info = TextSource.Res(R.string.purchase_advantage_1_info),
+                image = ImageSource.Res(CoreUiR.drawable.ic_money),
+                title = TextSource.Res(FeatureR.string.purchase_advantage_1_title),
+                info = TextSource.Res(FeatureR.string.purchase_advantage_1_info),
             ),
             AdvantageTileItem(
-                image = ImageSource.Res(R.drawable.ic_money),
-                title = TextSource.Res(R.string.purchase_advantage_2_title),
-                info = TextSource.Res(R.string.purchase_advantage_2_info),
+                image = ImageSource.Res(CoreUiR.drawable.ic_money),
+                title = TextSource.Res(FeatureR.string.purchase_advantage_2_title),
+                info = TextSource.Res(FeatureR.string.purchase_advantage_2_info),
             ),
             AdvantageTileItem(
-                image = ImageSource.Res(R.drawable.ic_money),
-                title = TextSource.Res(R.string.purchase_advantage_3_title),
-                info = TextSource.Res(R.string.purchase_advantage_3_info),
+                image = ImageSource.Res(CoreUiR.drawable.ic_money),
+                title = TextSource.Res(FeatureR.string.purchase_advantage_3_title),
+                info = TextSource.Res(FeatureR.string.purchase_advantage_3_info),
             ),
         )
     )

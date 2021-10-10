@@ -8,7 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.navigation
@@ -32,7 +32,11 @@ class SimpleAppBarLayout
         setBackgroundColor(color(colorId))
     }
 
-    fun setNavigationAction(@DrawableRes iconResId: Int, @ColorRes colorId: Int = R.color.icon, action: () -> Unit) {
+    fun setNavigationAction(
+        @DrawableRes iconResId: Int,
+        @ColorRes colorId: Int = CoreUiR.color.icon,
+        action: () -> Unit,
+    ) {
         binding.toolbar.navigation(iconResId, colorId, action)
     }
 

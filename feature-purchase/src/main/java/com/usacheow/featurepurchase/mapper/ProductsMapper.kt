@@ -1,6 +1,6 @@
 package com.usacheow.featurepurchase.mapper
 
-import com.example.featurepurchase.R
+import com.example.featurepurchase.R as FeatureR
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.corebilling.model.Product
@@ -40,15 +40,15 @@ class ProductsMapper @Inject constructor(
         }
 
         val price = "${details.price}${Currency.getInstance(details.priceCurrencyCode)}"
-        return resources.getString(R.string.price_per_month_format, price)
+        return resources.getString(FeatureR.string.price_per_month_format, price)
     }
 
     private fun Product.getBuyButtonText(): String {
         val period = details.freeTrialPeriod
 
         return when (details.freeTrialPeriod) {
-            null -> resources.getString(R.string.purchase_buy_button, getPrice(), period)
-            else -> resources.getString(R.string.purchase_try_button, period)
+            null -> resources.getString(FeatureR.string.purchase_buy_button, getPrice(), period)
+            else -> resources.getString(FeatureR.string.purchase_try_button, period)
         }
     }
 }

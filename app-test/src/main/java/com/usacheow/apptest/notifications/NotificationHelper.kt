@@ -10,7 +10,8 @@ import android.os.Build
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.usacheow.apptest.R
+import com.usacheow.apptest.R as TestAppR
+import com.usacheow.coreui.R as CoreUiR
 
 private const val APP_PACKAGE = "com.example.myapplication"
 private const val APP_INFO_CHANNEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"
@@ -76,8 +77,8 @@ class NotificationHelper(
     data class NotificationModel(
         val title: String? = null,
         val channelId: String = APP_INFO_CHANNEL_ID,
-        val smallIcon: Int = R.drawable.ic_android,
-        val largeIcon: Int = R.mipmap.ic_launcher,
+        val smallIcon: Int = TestAppR.drawable.ic_android,
+        val largeIcon: Int = CoreUiR.mipmap.ic_launcher,
         val text: String? = null,
         val intent: Intent
     )

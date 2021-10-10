@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.GridLayout
 import androidx.annotation.DrawableRes
 import androidx.core.view.isInvisible
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.utils.view.doOnClick
 
@@ -58,9 +58,9 @@ class NumPadView @JvmOverloads constructor(
     }
 
     enum class ActionMode(@DrawableRes val iconRes: Int) {
-        BIOMETRIC(R.drawable.ic_fingerprint),
-        NEXT(R.drawable.ic_next),
-        ACCEPT(R.drawable.ic_accept),
+        BIOMETRIC(CoreUiR.drawable.ic_fingerprint),
+        NEXT(CoreUiR.drawable.ic_next),
+        ACCEPT(CoreUiR.drawable.ic_accept),
         NONE(-1),
     }
 }

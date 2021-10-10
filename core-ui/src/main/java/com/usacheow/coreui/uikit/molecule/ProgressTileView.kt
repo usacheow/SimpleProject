@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.databinding.ViewProgressTileBinding
 import com.usacheow.coreui.utils.view.color
@@ -31,5 +31,5 @@ class ProgressTileView @JvmOverloads constructor(
 data class ProgressTileItem(
     val maxValue: Int,
     val currentValue: Int,
-    @ColorRes val colorResId: Int = R.color.success,
+    @ColorRes val colorResId: Int = CoreUiR.color.success,
 )

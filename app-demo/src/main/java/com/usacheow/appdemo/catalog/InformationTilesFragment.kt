@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.appdemo.R
+import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -20,6 +20,7 @@ import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.R as CoreUiR
 
 class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
@@ -40,7 +41,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "Information tiles"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }
@@ -56,7 +57,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                 DividerTileItem.getSmallDivider(),
 
                 InformationTileItem(
-                    imageSource = ImageSource.Res(R.drawable.demo_avatar),
+                    imageSource = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     additionalLeftText = TextSource.Simple("City 17"),
                     additionalRightText = TextSource.Simple("00/00/0000"),
                     mainLeftText = TextSource.Simple("Gordon"),
@@ -78,15 +79,15 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                             needAdaptWidth = true,
                             header = TextSource.Simple("Badge"),
                             value = TextSource.Simple("Non-clickable"),
-                            backgroundColorRes = R.color.colorPrimary,
-                            textColorRes = R.color.white,
+                            backgroundColorRes = CoreUiR.color.colorPrimary,
+                            textColorRes = CoreUiR.color.white,
                         ),
                         BadgeTileItem(
                             needAdaptWidth = true,
                             header = TextSource.Simple("Badge"),
                             value = TextSource.Simple("Clickable"),
-                            backgroundColorRes = R.color.error,
-                            textColorRes = R.color.white,
+                            backgroundColorRes = CoreUiR.color.error,
+                            textColorRes = CoreUiR.color.white,
                             clickListener = {},
                         ),
                     )
@@ -97,7 +98,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                         BannerTileItem.shimmer(),
                         BannerTileItem(
                             text = TextSource.Simple("Some text on two lines"),
-                            icon = ImageSource.Res(R.drawable.demo_avatar),
+                            icon = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                             clickListener = {},
                         ),
                     )

@@ -12,7 +12,7 @@ import com.usacheow.coreui.utils.view.doOnClick
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.string
-import com.usacheow.featureauth.R
+import com.usacheow.featureauth.R as FeatureR
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
@@ -40,7 +40,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.pinCodeView.setHint(string(R.string.pin_view_hint))
+        binding.pinCodeView.setHint(string(FeatureR.string.pin_view_hint))
         binding.pinCodeView.onBiometricButtonClickedAction = { viewModel.onBiometricClicked() }
         binding.pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
         binding.pinCodeForgotButton.doOnClick {
@@ -71,7 +71,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
                 is SignInResult.SignInSuccess -> {}
 
                 is SignInResult.SignInError -> {
-                    binding.pinCodeView.setHint(string(R.string.pin_view_code_error))
+                    binding.pinCodeView.setHint(string(FeatureR.string.pin_view_code_error))
                     binding.pinCodeView.showError()
                 }
 

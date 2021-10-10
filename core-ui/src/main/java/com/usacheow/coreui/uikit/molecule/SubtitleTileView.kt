@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewSubtitleTileBinding
@@ -30,7 +30,7 @@ data class SubtitleTileItem(
     val title: TextSource,
     val actionTitle: TextSource? = null,
     val clickListener: (() -> Unit)? = null,
-) : ViewState(R.layout.view_subtitle_tile) {
+) : ViewState(CoreUiR.layout.view_subtitle_tile) {
 
     companion object {
         fun shimmer() = ShimmerTileItem(topLine = false, bottomLine = false, leftIcon = false, rightIcon = false)

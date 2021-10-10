@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
@@ -36,16 +36,16 @@ class DividerTileView
 
 data class DividerTileItem(
     val margin: MarginHorizontal = MarginHorizontal(0, 0),
-    @DimenRes val heightResId: Int = R.dimen.divider_height_small,
-    @ColorRes var colorResId: Int = R.color.divider,
-) : ViewState(R.layout.view_divider_tile) {
+    @DimenRes val heightResId: Int = CoreUiR.dimen.divider_height_small,
+    @ColorRes var colorResId: Int = CoreUiR.color.divider,
+) : ViewState(CoreUiR.layout.view_divider_tile) {
 
     companion object {
 
         fun getSmallDivider() = DividerTileItem()
 
-        fun getMediumDivider() = DividerTileItem(heightResId = R.dimen.divider_height_medium)
+        fun getMediumDivider() = DividerTileItem(heightResId = CoreUiR.dimen.divider_height_medium)
 
-        fun getLargeDivider() = DividerTileItem(heightResId = R.dimen.divider_height_large)
+        fun getLargeDivider() = DividerTileItem(heightResId = CoreUiR.dimen.divider_height_large)
     }
 }

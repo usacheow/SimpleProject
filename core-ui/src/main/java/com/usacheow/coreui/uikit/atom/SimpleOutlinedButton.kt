@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import com.google.android.material.button.MaterialButton
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.utils.view.doOnClick
@@ -38,4 +38,4 @@ data class SimpleOutlinedButtonItem(
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
     val clickListener: () -> Unit,
-) : ViewState(R.layout.view_simple_outlined_button_item)
+) : ViewState(CoreUiR.layout.view_simple_outlined_button_item)

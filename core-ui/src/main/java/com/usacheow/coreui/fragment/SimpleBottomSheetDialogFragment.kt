@@ -13,7 +13,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.usacheow.coreui.R
+import com.google.android.material.R as MaterialR
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.SimpleLifecycle
@@ -53,7 +53,7 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
         val bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
 
         bottomSheetDialog.setOnShowListener { dialog ->
-            val bottomSheet = (dialog as BottomSheetDialog).findViewById<FrameLayout>(R.id.design_bottom_sheet)
+            val bottomSheet = (dialog as BottomSheetDialog).findViewById<FrameLayout>(MaterialR.id.design_bottom_sheet)
             bottomSheet?.updateLayoutParams<ViewGroup.LayoutParams> { height = ViewGroup.LayoutParams.MATCH_PARENT }
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet!!)
 

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.utils.view.color
 import com.usacheow.coreui.utils.view.dimen
 import com.usacheow.coreui.utils.view.toPx
@@ -29,14 +29,14 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
             state != BottomSheetBehavior.STATE_HIDDEN
         }
 
-    private val cornerRadiusPx by lazy { dimen(R.dimen.radius_large) }
+    private val cornerRadiusPx by lazy { dimen(CoreUiR.dimen.radius_large) }
 
     private var percent = BottomSheetHeight.QUARTER_SIZE.divisor
     private var canSwipeToHide = false
     private val bottomSheetBehavior by lazy { BottomSheetBehavior.from<View>(this) }
 
     init {
-        setBackgroundColor(color(R.color.background))
+        setBackgroundColor(color(CoreUiR.color.background))
         isClickable = true
     }
 

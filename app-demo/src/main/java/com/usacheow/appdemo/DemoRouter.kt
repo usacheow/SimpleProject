@@ -8,6 +8,7 @@ import com.usacheow.coreui.base.Router
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
 import com.usacheow.coreui.utils.navigation.openIn
+import com.usacheow.appdemo.R as DemoAppR
 import javax.inject.Inject
 
 class DemoRouter @Inject constructor(
@@ -62,27 +63,42 @@ class DemoRouter @Inject constructor(
     }
 
     fun toOnBoardingFlow(args: OnBoardingMediator.OnBoardingArgs) {
-        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        val nextDirection = FeatureNavDirection(
+            DemoAppR.id.main_nav_graph,
+            resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
+        )
         onBoardingMediator.getOnBoardingFlowDirection(args, nextDirection).openIn(navController)
     }
 
     fun toSignUpFlow() {
-        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        val nextDirection = FeatureNavDirection(
+            DemoAppR.id.main_nav_graph,
+            resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
+        )
         authorizationMediator.getSignUpFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSignInFlow() {
-        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        val nextDirection = FeatureNavDirection(
+            DemoAppR.id.main_nav_graph,
+            resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
+        )
         authorizationMediator.getSignInFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toSignInWithPhoneFlow() {
-        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        val nextDirection = FeatureNavDirection(
+            DemoAppR.id.main_nav_graph,
+            resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
+        )
         authorizationMediator.getSignInWithPhoneFlowDirection(nextDirection).openIn(navController)
     }
 
     fun toPinCodeFlow() {
-        val nextDirection = FeatureNavDirection(R.id.main_nav_graph, resetTo = ResetTo(R.id.demo_app_nav_graph))
+        val nextDirection = FeatureNavDirection(
+            DemoAppR.id.main_nav_graph,
+            resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
+        )
         authorizationMediator.getPinCodeFlowDirection(nextDirection).openIn(navController)
     }
 

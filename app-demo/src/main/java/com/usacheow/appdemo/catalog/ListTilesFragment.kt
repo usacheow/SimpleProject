@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.appdemo.R
+import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -14,6 +14,7 @@ import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.R as CoreUiR
 
 class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
 
@@ -34,7 +35,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "List tiles"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }
@@ -47,24 +48,24 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
                 ),
 
                 ListTileItem(
-                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    leftImageInfo = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     value = TextSource.Simple("Title"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    leftImageInfo = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     value = TextSource.Simple("Title"),
                     topDescription = TextSource.Simple("Top description"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    leftImageInfo = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     value = TextSource.Simple("Title"),
                     bottomDescription = TextSource.Simple("Bottom description"),
                 ),
 
                 ListTileItem(
-                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
+                    leftImageInfo = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     value = TextSource.Simple("Title"),
                     topDescription = TextSource.Simple("Top description"),
                     bottomDescription = TextSource.Simple("Bottom description"),
@@ -72,8 +73,8 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
                 ),
 
                 ListTileItem(
-                    leftImageInfo = ImageSource.Res(R.drawable.demo_avatar),
-                    rightImageInfo = ImageSource.Res(R.drawable.ic_go),
+                    leftImageInfo = ImageSource.Res(DemoAppR.drawable.demo_avatar),
+                    rightImageInfo = ImageSource.Res(DemoAppR.drawable.ic_go),
                     value = TextSource.Simple("Title"),
                     topDescription = TextSource.Simple("Top description"),
                     bottomDescription = TextSource.Simple("Bottom description"),

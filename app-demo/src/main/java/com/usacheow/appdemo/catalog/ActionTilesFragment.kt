@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.appdemo.R
+import com.usacheow.appdemo.R as DemoAppR
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -35,7 +36,7 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "Action tiles"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }
@@ -54,7 +55,7 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
                 ),
 
                 ActionTileItem(
-                    image = ImageSource.Res(R.drawable.demo_avatar),
+                    image = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     title = TextSource.Simple("Title"),
                     subtitle = TextSource.Simple("Subtitle"),
                     selectionType = ActionSelectionType.CHECK_BOX,
@@ -62,7 +63,7 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
                 ),
 
                 ActionTileItem(
-                    image = ImageSource.Res(R.drawable.demo_avatar),
+                    image = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                     title = TextSource.Simple("Title"),
                     subtitle = TextSource.Simple("Subtitle"),
                     selectionType = ActionSelectionType.SWITCH,

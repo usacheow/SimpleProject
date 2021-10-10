@@ -20,6 +20,8 @@ import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
 import com.usacheow.coreui.utils.view.toPx
 import dagger.hilt.android.AndroidEntryPoint
+import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.appdemo.R as DemoAppR
 import javax.inject.Inject
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
@@ -36,17 +38,17 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     private val onBoardingArgs by lazy {
         OnBoardingMediator.OnBoardingArgs(mutableListOf(
             OnBoardingMediator.OnBoardingArgs.Page(
-                defaultImageRes = R.drawable.on_boarding_1,
-                title = resources.getString(R.string.on_boarding_title_1).toSource(),
-                description = resources.getString(R.string.on_boarding_description_1).toSource()),
+                defaultImageRes = CoreUiR.drawable.ic_user,
+                title = resources.getString(DemoAppR.string.on_boarding_title_1).toSource(),
+                description = resources.getString(DemoAppR.string.on_boarding_description_1).toSource()),
             OnBoardingMediator.OnBoardingArgs.Page(
-                defaultImageRes = R.drawable.on_boarding_2,
-                title = resources.getString(R.string.on_boarding_title_2).toSource(),
-                description = resources.getString(R.string.on_boarding_description_2).toSource()),
+                defaultImageRes = CoreUiR.drawable.ic_user,
+                title = resources.getString(DemoAppR.string.on_boarding_title_2).toSource(),
+                description = resources.getString(DemoAppR.string.on_boarding_description_2).toSource()),
             OnBoardingMediator.OnBoardingArgs.Page(
-                defaultImageRes = R.drawable.on_boarding_3,
-                title = resources.getString(R.string.on_boarding_title_3).toSource(),
-                description = resources.getString(R.string.on_boarding_description_3).toSource())
+                defaultImageRes = CoreUiR.drawable.ic_user,
+                title = resources.getString(DemoAppR.string.on_boarding_title_3).toSource(),
+                description = resources.getString(DemoAppR.string.on_boarding_description_3).toSource())
         ))
     }
 

@@ -7,7 +7,7 @@ import com.usacheow.coreui.utils.navigation.WITH
 import com.usacheow.coreui.utils.navigation.addArgs
 import com.usacheow.coreui.utils.navigation.addNextScreenDirection
 import com.usacheow.coreui.utils.navigation.screen
-import com.usacheow.featureonboarding.R
+import com.usacheow.featureonboarding.R as FeatureR
 import javax.inject.Inject
 
 class OnBoardingMediatorImpl @Inject constructor() : OnBoardingMediator {
@@ -15,5 +15,6 @@ class OnBoardingMediatorImpl @Inject constructor() : OnBoardingMediator {
     override fun getOnBoardingFlowDirection(
         args: OnBoardingMediator.OnBoardingArgs,
         nextScreenDirection: FeatureNavDirection,
-    ) = screen(R.id.on_boarding_nav_graph) WITH Bundle().addNextScreenDirection(nextScreenDirection).addArgs(args)
+    ) = screen(FeatureR.id.on_boarding_nav_graph) WITH
+            Bundle().addNextScreenDirection(nextScreenDirection).addArgs(args)
 }

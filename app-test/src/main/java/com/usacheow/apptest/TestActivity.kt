@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.apptest.databinding.ActivityHostBinding
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as TestAppR
 import com.usacheow.coreui.activity.SimpleActivity
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.hideIme
@@ -38,7 +38,7 @@ class TestActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
+        setTheme(TestAppR.style.AppTheme)
         super.onCreate(savedInstanceState)
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)

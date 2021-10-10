@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 
 open class StringSpinnerAdapter(
-    private val layoutResId: Int = R.layout.view_string_spinner_item,
+    private val layoutResId: Int = CoreUiR.layout.view_string_spinner_item,
     private val models: MutableList<String> = mutableListOf()
 ) : BaseAdapter() {
 
@@ -26,7 +26,7 @@ open class StringSpinnerAdapter(
 
     protected open fun processView(index: Int, originalView: View?, viewGroup: ViewGroup): View {
         return originalView ?: LayoutInflater.from(viewGroup.context).inflate(layoutResId, viewGroup, false).apply {
-            findViewById<TextView>(R.id.spinnerTitle).text = models[index]
+            findViewById<TextView>(CoreUiR.id.spinnerTitle).text = models[index]
         }
     }
 }

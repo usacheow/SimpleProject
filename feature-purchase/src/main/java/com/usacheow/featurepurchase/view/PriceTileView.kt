@@ -4,7 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.example.featurepurchase.R
+import com.example.featurepurchase.R as FeatureR
+import com.usacheow.coreui.R as CoreUiR
 import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
@@ -36,8 +37,8 @@ class PriceTileView @JvmOverloads constructor(
         binding.cardView.setCardBackgroundColor(
             color(
                 when (model.isSelected) {
-                    true -> R.color.surface
-                    false -> R.color.surfaceSecondaryVariant
+                    true -> CoreUiR.color.surface
+                    false -> CoreUiR.color.surfaceSecondaryVariant
                 }
             )
         )
@@ -61,4 +62,4 @@ data class PriceTileItem(
     val pricePerMonth: TextSource,
     val buyButtonText: TextSource.Simple,
     val selectListener: () -> Unit,
-) : TagViewState(R.layout.view_price_tile)
+) : TagViewState(FeatureR.layout.view_price_tile)

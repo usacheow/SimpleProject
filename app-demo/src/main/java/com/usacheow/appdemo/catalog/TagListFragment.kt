@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
-import com.usacheow.appdemo.R
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.MultipleSelectionViewTypesAdapter
@@ -14,6 +13,7 @@ import com.usacheow.coreui.uikit.molecule.TagTileItem
 import com.usacheow.coreui.utils.view.PaddingValue
 import com.usacheow.coreui.utils.view.getBottomInset
 import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.R as CoreUiR
 
 class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
@@ -34,7 +34,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "Tag list"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }

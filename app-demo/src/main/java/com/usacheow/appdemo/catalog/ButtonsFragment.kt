@@ -3,7 +3,7 @@ package com.usacheow.appdemo.catalog
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.usacheow.appdemo.R
+import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.databinding.FragmentButtonsBinding
 import com.usacheow.coreui.fragment.SimpleFragment
 import com.usacheow.coreui.utils.view.PaddingValue
@@ -29,7 +29,7 @@ class ButtonsFragment : SimpleFragment<FragmentButtonsBinding>() {
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.root.apply {
             title = "Buttons"
-            setNavigationAction(R.drawable.ic_back) {
+            setNavigationAction(CoreUiR.drawable.ic_back) {
                 requireActivity().onBackPressed()
             }
         }

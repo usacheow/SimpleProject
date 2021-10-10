@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.usacheow.featureotp.R as FeatureR
 
 private const val EMPTY_CODE = ""
 private const val SMS_CODE_TIMEOUT_SECONDS = 60
@@ -32,7 +33,10 @@ class SmsCodeViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
-    private val defaultResendButtonState = CodeResendButtonState(resources.getString(R.string.sms_code_resend), true)
+    private val defaultResendButtonState = CodeResendButtonState(
+        resources.getString(FeatureR.string.sms_code_resend),
+        true,
+    )
 
     private val _isResendButtonState = MutableStateFlow(defaultResendButtonState)
     val isResendButtonState = _isResendButtonState.asStateFlow()
@@ -69,7 +73,7 @@ class SmsCodeViewModel @Inject constructor(
 
     private fun startTimer() = viewModelScope.launch(Dispatchers.IO) {
         repeat(SMS_CODE_TIMEOUT_SECONDS) {
-            val text = resources.getString(R.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS - it)
+            val text = resources.getString(FeatureR.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS - it)
             _isResendButtonState tryPublish CodeResendButtonState(text, false)
             delay(SECOND_IN_MILLISECONDS)
         }

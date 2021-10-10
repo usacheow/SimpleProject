@@ -5,10 +5,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.core.ImageSource
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 
 fun ImageView.showCircleShimmer() {
-    setImageResource(R.drawable.bg_shimmer_circle)
+    setImageResource(CoreUiR.drawable.bg_shimmer_circle)
 }
 
 fun ImageView.hideShimmer(source: ImageSource) {
@@ -17,7 +17,7 @@ fun ImageView.hideShimmer(source: ImageSource) {
 
 fun TextView.showShimmer(widthPx: Int) {
     text = null
-    background = drawable(R.drawable.bg_shimmer_line)
+    background = drawable(CoreUiR.drawable.bg_shimmer_line)
     resize(widthPx = widthPx, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 }
 

@@ -3,7 +3,7 @@ package com.usacheow.featurepurchase.view
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import com.example.featurepurchase.R
+import com.example.featurepurchase.R as FeatureR
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -30,4 +30,4 @@ data class AdvantageTileItem(
     val image: ImageSource,
     val title: TextSource,
     val info: TextSource?,
-) : ViewState(R.layout.view_advantage_tile)
+) : ViewState(FeatureR.layout.view_advantage_tile)

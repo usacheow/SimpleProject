@@ -11,7 +11,7 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.navOptions
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
-import com.usacheow.coreui.R
+import com.usacheow.coreui.R as CoreUiR
 
 private const val ARGS_KEY = "ARGS_KEY"
 private const val NEXT_SCREEN_DIRECTION_KEY = "NEXT_SCREEN_DIRECTION_KEY"
@@ -34,10 +34,10 @@ fun <ARGS : Parcelable> SavedStateHandle.requireArgs(): ARGS = requireNotNull(ge
 fun defaultNavOptions(block: NavOptionsBuilder.() -> Unit = {}) = navOptions {
     block()
     anim {
-        enter = R.anim.anim_enter_from_right
-        exit = R.anim.anim_exit_to_left
-        popEnter = R.anim.anim_enter_from_left
-        popExit = R.anim.anim_exit_to_right
+        enter = CoreUiR.anim.anim_enter_from_right
+        exit = CoreUiR.anim.anim_exit_to_left
+        popEnter = CoreUiR.anim.anim_enter_from_left
+        popExit = CoreUiR.anim.anim_exit_to_right
     }
 }
 
