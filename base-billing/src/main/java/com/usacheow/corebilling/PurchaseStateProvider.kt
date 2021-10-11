@@ -1,30 +1,45 @@
 package com.usacheow.corebilling
 
+import com.android.billingclient.api.Purchase
+import com.usacheow.corebilling.model.BillingEffect
+import com.usacheow.corebilling.model.Product
 import com.usacheow.coredata.database.UserDataStorage
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class PurchaseStateProvider @Inject constructor(
+interface PurchaseStateProvider {
+
+    val newPurchasesFlow: Flow<List<Purchase>>
+
+    val isPayedVersionFlow: Flow<Boolean?>
+
+    suspend fun getInAppProducts(): BillingEffect<List<Product>>
+    suspend fun getSubscribeProducts(): BillingEffect<List<Product>>
+    suspend fun getInAppPurchases(): BillingEffect<List<Purchase>>
+    suspend fun getSubscribePurchases(): BillingEffect<List<Purchase>>
+}
+
+class PurchaseStateProviderImpl @Inject constructor(
     storage: UserDataStorage,
     private val billingWrapper: SimpleBilling,
-) {
+) : PurchaseStateProvider {
 
     /*
     * stream of new purchases
     * */
-    val newPurchasesFlow = billingWrapper.newPurchasesFlow
+    override val newPurchasesFlow = billingWrapper.newPurchasesFlow
 
     /*
     * paid app status
     * */
-    val isPayedVersionFlow = storage.isPayedVersionFlow
+    override val isPayedVersionFlow = storage.isPayedVersionFlow
 
-    suspend fun getInAppProducts() = billingWrapper.getInAppProducts()
+    override suspend fun getInAppProducts() = billingWrapper.getInAppProducts()
 
-    suspend fun getSubscribeProducts() = billingWrapper.getSubscribeProducts()
+    override suspend fun getSubscribeProducts() = billingWrapper.getSubscribeProducts()
 
-    suspend fun getInAppPurchases() = billingWrapper.getInAppPurchases()
+    override suspend fun getInAppPurchases() = billingWrapper.getInAppPurchases()
 
-    suspend fun getSubscribePurchases() = billingWrapper.getSubscribePurchases()
+    override suspend fun getSubscribePurchases() = billingWrapper.getSubscribePurchases()
 }

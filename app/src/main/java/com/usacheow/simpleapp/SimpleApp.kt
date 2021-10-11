@@ -5,8 +5,8 @@ import com.usacheow.corebilling.PurchaseStateProvider
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
 import com.usacheow.coredata.network.NetworkStateProvider
+import com.usacheow.coreui.analytics.AnalyticsTracker
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
-import com.usacheow.coreui.analytics.Tracker
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder {
     // move to another place (e.g. start activity)
     // when yandex metrica is enabled
     // https://github.com/yandexmobile/metrica-sdk-android/issues/76
-    @Inject lateinit var tracker: Tracker
+    @Inject lateinit var tracker: AnalyticsTracker
 
     @Inject lateinit var featureToggleUpdater: FeatureToggleUpdater
 

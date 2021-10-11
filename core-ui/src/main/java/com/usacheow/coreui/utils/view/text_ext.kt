@@ -45,7 +45,7 @@ fun TextView.populate(source: TextSource?) {
         }
 
         is TextSource.Plural -> {
-            text = resources.getQuantityText(source.res, source.quantity)
+            text = pluralString(source.res, source.quantity)
             makeVisible()
         }
     }

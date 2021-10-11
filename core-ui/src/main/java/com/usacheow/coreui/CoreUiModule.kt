@@ -1,12 +1,13 @@
 package com.usacheow.coreui
 
-import android.app.Application
-import com.usacheow.coreui.analytics.AnalyticsTracker
-import com.usacheow.coreui.analytics.Tracker
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.resource.ResourcesWrapperImpl
+import com.usacheow.coreui.analytics.AnalyticsTracker
+import com.usacheow.coreui.analytics.AnalyticsTrackerImpl
+import com.usacheow.coreui.utils.NotificationHelper
+import com.usacheow.coreui.utils.NotificationHelperImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -15,13 +16,17 @@ import javax.inject.Singleton
     SystemServiceModule::class,
 ])
 @InstallIn(SingletonComponent::class)
-class CoreUiModule {
+interface CoreUiModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun resources(application: Application): ResourcesWrapper = ResourcesWrapperImpl(application)
+    fun resources(resources: ResourcesWrapperImpl): ResourcesWrapper
 
-    @Provides
+    @Binds
     @Singleton
-    fun analyticsTracker(application: Application): Tracker = AnalyticsTracker(application)
+    fun analyticsTracker(tracker: AnalyticsTrackerImpl): AnalyticsTracker
+
+    @Binds
+    @Singleton
+    fun notificationHelper(helper: NotificationHelperImpl): NotificationHelper
 }

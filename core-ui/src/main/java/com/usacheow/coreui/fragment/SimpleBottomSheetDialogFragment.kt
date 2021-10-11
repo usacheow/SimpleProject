@@ -13,6 +13,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.usacheow.core.resource.ResourcesWrapper
 import com.google.android.material.R as MaterialR
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
@@ -20,11 +21,14 @@ import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.FragmentViewBindingHolder
 import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.toPx
+import javax.inject.Inject
 
 abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     BottomSheetDialogFragment(),
     SimpleLifecycle,
     ViewBindingHolder<VIEW_BINDING> by FragmentViewBindingHolder() {
+
+    @Inject lateinit var res: ResourcesWrapper
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
 

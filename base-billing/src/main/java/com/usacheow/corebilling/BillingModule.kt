@@ -17,4 +17,8 @@ interface BillingModule {
     @Binds
     @Singleton
     fun billingMediator(simpleBilling: SimpleBilling): BillingRouter
+
+    @Binds
+    @Singleton
+    fun purchaseStateProvider(provider: PurchaseStateProviderImpl): PurchaseStateProvider
 }

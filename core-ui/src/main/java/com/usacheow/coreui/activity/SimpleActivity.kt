@@ -2,12 +2,15 @@ package com.usacheow.coreui.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.ComponentActivity
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.viewbinding.ViewBinding
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
@@ -15,12 +18,15 @@ import com.usacheow.coreui.base.SimpleLifecycle
 import com.usacheow.coreui.delegate.ActivityViewBindingHolder
 import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
+import javax.inject.Inject
 
 abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     AppCompatActivity(),
     SimpleLifecycle,
     ApplyWindowInsets,
     ViewBindingHolder<VIEW_BINDING> by ActivityViewBindingHolder() {
+
+    @Inject lateinit var res: ResourcesWrapper
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null

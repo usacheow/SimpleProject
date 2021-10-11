@@ -13,6 +13,7 @@ import com.usacheow.coreui.databinding.ViewDividerTileBinding
 import com.usacheow.coreui.utils.MarginHorizontal
 import com.usacheow.coreui.utils.updateMargins
 import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.utils.view.dimen
 import com.usacheow.coreui.utils.view.resize
 
 class DividerTileView
@@ -28,7 +29,7 @@ class DividerTileView
         binding.dividerBackgroundView.setBackgroundColor(color(model.colorResId))
         binding.dividerBackgroundView.resize(
             widthPx = ViewGroup.LayoutParams.MATCH_PARENT,
-            heightPx = resources.getDimension(model.heightResId).toInt()
+            heightPx = dimen(model.heightResId).toInt()
         )
         binding.dividerBackgroundView.updateMargins(model.margin)
     }

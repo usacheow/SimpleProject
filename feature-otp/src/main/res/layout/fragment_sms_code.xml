@@ -50,7 +50,6 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/smsCodeInput"
-                    style="@style/TextDigital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="5"
@@ -58,6 +57,7 @@
                     android:gravity="center"
                     android:letterSpacing="0.3"
                     android:maxLength="4"
+                    android:textAppearance="@style/TextDigital"
                     tools:text="0000" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +84,8 @@
                 android:background="?selectableItemBackground"
                 android:padding="8dp"
                 android:textAppearance="?textAppearanceBody2"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                tools:text="@string/sms_code_resend" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

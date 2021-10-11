@@ -22,7 +22,7 @@ interface AccelerationDelegate {
     }
 }
 
-class SimpleAccelerationDelegate @Inject constructor(
+class AccelerationDelegateImpl @Inject constructor(
     private val sensorManager: SensorManager,
 ) : AccelerationDelegate {
 

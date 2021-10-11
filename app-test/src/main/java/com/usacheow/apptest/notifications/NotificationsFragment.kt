@@ -14,11 +14,14 @@ import android.util.Log
 import androidx.core.app.JobIntentService
 import com.usacheow.apptest.databinding.FragmentNotificationsBinding
 import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.utils.NotificationHelper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @Suppress("DEPRECATION")
 class NotificationsFragment : SimpleFragment<FragmentNotificationsBinding>() {
@@ -95,9 +98,11 @@ fun doOtherWork(arg: () -> Int): Int {
 
 const val LOG_TAG = "myLogs"
 
+@AndroidEntryPoint
 class ServiceImpl : Service() {
 
-    private val notificationHelper by lazy { NotificationHelper(this) }
+    @Inject lateinit var notificationHelper: NotificationHelper
+
     private var job: Job? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -108,7 +113,7 @@ class ServiceImpl : Service() {
                 Log.d(LOG_TAG, "ServiceImpl step")
 
                 notificationHelper.showSimpleNotification(
-                    NotificationHelper.NotificationModel(
+                    NotificationHelper.Model(
                         title = "ServiceImpl",
                         text = "next step $it",
                         intent = Intent()
@@ -210,9 +215,10 @@ class JobServiceImpl : JobService() {
     }
 }
 
+@AndroidEntryPoint
 class JobIntentServiceImpl : JobIntentService() {
 
-    private val notificationHelper by lazy { NotificationHelper(this) }
+    @Inject lateinit var notificationHelper: NotificationHelper
 
     companion object {
         fun start(context: Context, intent: Intent) {
@@ -227,7 +233,7 @@ class JobIntentServiceImpl : JobIntentService() {
             Log.d(LOG_TAG, "JobIntentServiceImpl step")
 
             notificationHelper.showSimpleNotification(
-                NotificationHelper.NotificationModel(
+                NotificationHelper.Model(
                     title = "JobIntentServiceImpl",
                     text = "next step $it",
                     intent = Intent()

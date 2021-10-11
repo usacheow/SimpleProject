@@ -1,15 +1,21 @@
 package com.usacheow.coreui.analytics
 
-import android.app.Application
+import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class AnalyticsTracker @Inject constructor(
-    private val application: Application,
-) : Tracker {
+interface AnalyticsTracker {
+
+    fun trackEvent(event: Events, clazz: Class<*>, attributes: Map<String, String> = emptyMap())
+}
+
+class AnalyticsTrackerImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
+) : AnalyticsTracker {
 
     private val firebaseAnalytics by lazy {
-        FirebaseAnalytics.getInstance(application)
+        FirebaseAnalytics.getInstance(context)
     }
 
     init {
@@ -24,4 +30,9 @@ class AnalyticsTracker @Inject constructor(
 //
 //        firebaseAnalytics.logEvent("${event.value} ${clazz.simpleName}", bundle)
     }
+}
+
+enum class Events(val value: String) {
+    START_SCREEN("START_SCREEN"),
+    STOP_SCREEN("STOP_SCREEN")
 }

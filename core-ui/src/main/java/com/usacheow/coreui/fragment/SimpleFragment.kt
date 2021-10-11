@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.base.ApplyWindowInsets
@@ -19,12 +20,15 @@ import com.usacheow.coreui.delegate.FragmentViewBindingHolder
 import com.usacheow.coreui.delegate.ViewBindingHolder
 import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
 import com.usacheow.coreui.utils.view.isNightMode
+import javax.inject.Inject
 
 abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     Fragment(),
     SimpleLifecycle,
     ApplyWindowInsets,
     ViewBindingHolder<VIEW_BINDING> by FragmentViewBindingHolder() {
+
+    @Inject lateinit var res: ResourcesWrapper
 
     protected abstract val defaultParams: Params<VIEW_BINDING>
     protected var windowInsetsController: WindowInsetsControllerCompat? = null

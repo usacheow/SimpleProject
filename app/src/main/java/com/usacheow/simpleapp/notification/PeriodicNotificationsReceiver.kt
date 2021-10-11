@@ -7,11 +7,16 @@ import android.content.Context
 import android.content.Intent
 import com.usacheow.coreui.utils.NotificationHelper
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import javax.inject.Inject
 
 private const val MILLIS_SECONDS_IN_DAY = 24 * 60 * 60 * 1000L
 
+@AndroidEntryPoint
 class PeriodicNotificationsReceiver : BroadcastReceiver() {
+
+    @Inject lateinit var notificationHelper: NotificationHelper
 
     companion object {
         fun startPeriodicNotifications(context: Context) {
@@ -26,12 +31,12 @@ class PeriodicNotificationsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val notificationIntent = Intent(context, MainScreenActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        val model = NotificationHelper.NotificationModel(
+        val model = NotificationHelper.Model(
             title = "Title",
             text = "Message",
             intent = notificationIntent
         )
 
-        NotificationHelper(context).showSimpleNotification(model)
+        notificationHelper.showSimpleNotification(model)
     }
 }

@@ -39,16 +39,16 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         OnBoardingMediator.OnBoardingArgs(mutableListOf(
             OnBoardingMediator.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(DemoAppR.string.on_boarding_title_1).toSource(),
-                description = resources.getString(DemoAppR.string.on_boarding_description_1).toSource()),
+                title = res.getString(DemoAppR.string.on_boarding_title_1).toSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_1).toSource()),
             OnBoardingMediator.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(DemoAppR.string.on_boarding_title_2).toSource(),
-                description = resources.getString(DemoAppR.string.on_boarding_description_2).toSource()),
+                title = res.getString(DemoAppR.string.on_boarding_title_2).toSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_2).toSource()),
             OnBoardingMediator.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(DemoAppR.string.on_boarding_title_3).toSource(),
-                description = resources.getString(DemoAppR.string.on_boarding_description_3).toSource())
+                title = res.getString(DemoAppR.string.on_boarding_title_3).toSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_3).toSource())
         ))
     }
 

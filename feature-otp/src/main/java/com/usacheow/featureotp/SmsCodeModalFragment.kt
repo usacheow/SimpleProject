@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
+import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.fragment.SimpleModalFragment
 import com.usacheow.coreui.uikit.organism.NumPadView
@@ -15,6 +16,7 @@ import com.usacheow.coreui.utils.view.makeVisible
 import com.usacheow.coreui.utils.view.populate
 import com.usacheow.featureotp.databinding.FragmentSmsCodeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
@@ -70,11 +72,10 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
     private fun TextView.setEnabledTextButton(isEnabled: Boolean) {
         this.isEnabled = isEnabled
-        setTextColor(
-            when (isEnabled) {
-                true -> CoreUiR.color.colorPrimary
-                false -> CoreUiR.color.disabled
-            }
-        )
+        val colorRes = when (isEnabled) {
+            true -> CoreUiR.color.colorPrimary
+            false -> CoreUiR.color.disabled
+        }
+        setTextColor(res.getColor(colorRes))
     }
 }

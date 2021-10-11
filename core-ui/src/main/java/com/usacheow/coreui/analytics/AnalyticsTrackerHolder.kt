@@ -2,11 +2,11 @@ package com.usacheow.coreui.analytics
 
 object AnalyticsTrackerHolder {
 
-    private var tracker: Tracker? = null
+    private var tracker: AnalyticsTracker? = null
 
-    fun init(tracker: Tracker) {
+    fun init(tracker: AnalyticsTracker) {
         AnalyticsTrackerHolder.tracker = tracker
     }
 
-    fun getInstance(): Tracker? = tracker
+    fun getInstance(): AnalyticsTracker? = tracker
 }

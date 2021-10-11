@@ -23,7 +23,7 @@ import javax.inject.Inject
 import com.usacheow.featureotp.R as FeatureR
 
 private const val EMPTY_CODE = ""
-private const val SMS_CODE_TIMEOUT_SECONDS = 60
+private const val SMS_CODE_TIMEOUT_SECONDS = 6
 private const val SECOND_IN_MILLISECONDS = 1000L
 private const val CODE_LENGTH_DEFAULT_VALUE = 4
 

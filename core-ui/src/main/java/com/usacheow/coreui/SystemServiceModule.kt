@@ -1,5 +1,6 @@
 package com.usacheow.coreui
 
+import android.app.NotificationManager
 import android.content.Context
 import android.hardware.SensorManager
 import android.net.ConnectivityManager
@@ -25,4 +26,10 @@ class SystemServiceModule {
     fun sensorManager(
         @ApplicationContext context: Context,
     ) = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+    @Provides
+    @Singleton
+    fun notificationManager(
+        @ApplicationContext context: Context,
+    ) = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 }

@@ -2,6 +2,8 @@ package com.usacheow.core.resource
 
 import android.content.Context
 import android.content.res.AssetManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
@@ -27,6 +29,8 @@ interface ResourcesWrapper {
 
     fun getDrawable(@DrawableRes id: Int): Drawable?
 
+    fun getBitmap(@DrawableRes id: Int): Bitmap?
+
     fun getDimen(@DimenRes id: Int): Float
 
     fun getAssets(): AssetManager
@@ -40,13 +44,15 @@ class ResourcesWrapperImpl @Inject constructor(
 
     override fun getString(@StringRes id: Int, vararg formatArgs: Any) = context.getString(id, *formatArgs)
 
-    override fun getPluralString(id: Int, quantity: Int) = context.resources.getQuantityString(id, quantity)
+    override fun getPluralString(@PluralsRes id: Int, quantity: Int) = context.resources.getQuantityString(id, quantity)
 
     override fun getStringArray(@ArrayRes id: Int) = context.resources.getStringArray(id)
 
     override fun getColor(@ColorRes id: Int) = ContextCompat.getColor(context, id)
 
     override fun getDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
+
+    override fun getBitmap(id: Int): Bitmap? = BitmapFactory.decodeResource(context.resources, id)
 
     override fun getDimen(@DimenRes id: Int) = context.resources.getDimension(id)
 

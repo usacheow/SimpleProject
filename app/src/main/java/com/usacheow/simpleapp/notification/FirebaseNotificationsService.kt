@@ -1,15 +1,12 @@
 package com.usacheow.simpleapp.notification
 
 import android.content.Intent
-import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.usacheow.coreui.utils.NotificationHelper
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 const val MESSAGE_KEY = "MESSAGE_KEY"
 
@@ -27,7 +24,7 @@ class FirebaseNotificationsService : FirebaseMessagingService() {
 
         val notificationIntent = Intent(this, MainScreenActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        val model = NotificationHelper.NotificationModel(
+        val model = NotificationHelper.Model(
             title = remoteMessage.notification?.title ?: "",
             text = remoteMessage.notification?.body ?: "",
             intent = notificationIntent
