@@ -8,7 +8,7 @@ import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -41,7 +41,7 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         }
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewTypesAdapter(
+        binding.widgetsListView.adapter = ViewStateAdapter(
             listOf(
                 ListTileItem(
                     value = TextSource.Simple("Title"),

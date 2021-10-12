@@ -8,7 +8,7 @@ import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.atom.DividerTileItem
 import com.usacheow.coreui.uikit.container.ViewTypeHorizontalListItem
@@ -47,7 +47,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
         }
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewTypesAdapter(
+        binding.widgetsListView.adapter = ViewStateAdapter(
             listOf(
                 HeaderTileItem(TextSource.Simple("Header")),
                 HeaderTileItem.shimmer(),

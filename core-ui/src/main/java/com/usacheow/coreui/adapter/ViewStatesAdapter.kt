@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 
-open class ViewTypesAdapter(
+open class ViewStateAdapter(
     private var entities: List<ViewState> = emptyList()
 ) : RecyclerView.Adapter<ViewTypesViewHolder<ViewState>>() {
 

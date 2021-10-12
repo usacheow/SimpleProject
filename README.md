@@ -10,20 +10,20 @@ Starter project with functional modules on the next stack:
 ## Has the following features
 
 #### 1. Single Activity with Navigation Component
-BottomBarFragment is responsible for working with one or more stacks of fragments on a Single Activity. 
-Each stack contains a fragment that implements ContainerFragment.
+There is the single MainScreen activity, which contains navigation graph with nested feature graph from feature modules.
+BottomBarFragment from feature-bottom-bar is responsible for working with one or more stacks of fragments, it can be launched by BottomBarMediator.
 
-The remaining fragments are recommended to inherit from SimpleFragment, which provides a convenient way 
-to initialize the fragment.
+The remaining fragments are recommended to inherit from SimpleFragment/SimpleModalFragment/SimpleBottomSheetDialogFragment,
+which provides a convenient way to initialize the fragment.
 
 #### 2. Custom views and screens and resources for light/night mode
 The project contains custom elements and screen templates. 
-For more information, see the app_demo
+For more information, see the app_demo. It is the module which demonstrates different opportunity of this template.
 
 #### 3. Universal Lists
-Each list item inherits from Populatable and has a view object that inherits a ViewType. 
-The adapter uses the ViewTypesAdapter class, which takes a List<ViewType>. 
-An example of work can be seen on the WidgetsFragment screen
+Each list item inherits from Populatable and has a view object that inherits a ViewState. 
+The adapter uses the ViewStatesAdapter class, which takes a List<ViewState>. 
+An example of work can be seen in the app_demo.
 
 #### 4. Feature Toggle
 Based on FirebaseRemoteConfig
@@ -32,10 +32,10 @@ Based on FirebaseRemoteConfig
 + FeatureToggle check flag status
 
 #### 5. Billing
-Based on Billing 4.0. 
-BillingWrapper encapsulates the interaction with the library and is responsible for working with purchases
+Based on Billing 4.0.
+SimpleBilling encapsulates the interaction with the library and is responsible for working with purchases.
 
 #### 6. Analytics
 Tracker implementation can work with one system for analytics, or with a group of systems. 
 The project has an example wrapper for FirebaseAnalytics (FirebaseTracker). 
-Access to the Tracker object is through AnalyticsTrackerHolder
+Access to the Tracker object is through AnalyticsTrackerHolder.

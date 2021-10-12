@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -27,7 +27,7 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
 
     private val viewModel by viewModels<OnBoardingViewModel>()
 
-    private val adapter = ViewTypesAdapter()
+    private val adapter = ViewStateAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.root.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset())

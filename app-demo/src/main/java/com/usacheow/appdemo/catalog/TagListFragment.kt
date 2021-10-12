@@ -6,8 +6,8 @@ import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.adapter.MultipleSelectionViewTypesAdapter
-import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
+import com.usacheow.coreui.adapter.MultipleSelectionViewStatesAdapter
+import com.usacheow.coreui.adapter.SingleSelectionViewStatesAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.TagTileItem
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -41,7 +41,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
         binding.radioListView.isNestedScrollingEnabled = false
         binding.radioListView.layoutManager = GridLayoutManager(context, 2)
-        binding.radioListView.adapter = SingleSelectionViewTypesAdapter(
+        binding.radioListView.adapter = SingleSelectionViewStatesAdapter(
             listOf(
                 TagTileItem(TextSource.Simple("Radio tag 1")) {},
                 TagTileItem(TextSource.Simple("Radio tag 2")) {},
@@ -55,7 +55,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
         binding.chipListView.isNestedScrollingEnabled = false
         binding.chipListView.layoutManager = GridLayoutManager(context, 2)
-        binding.chipListView.adapter = MultipleSelectionViewTypesAdapter(
+        binding.chipListView.adapter = MultipleSelectionViewStatesAdapter(
             listOf(
                 TagTileItem(TextSource.Simple("Chip tag 1")) {},
                 TagTileItem(TextSource.Simple("Chip tag 2")) {},

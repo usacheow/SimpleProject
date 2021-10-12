@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -52,7 +52,7 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
         }
 
         binding.listView.layoutManager = LinearLayoutManager(context)
-        binding.listView.adapter = ViewTypesAdapter(
+        binding.listView.adapter = ViewStateAdapter(
             listOf(
                 ListTileItem(value = TextSource.Simple("1 Go to next screen"), clickListener = ::openNextScreen),
                 ListTileItem(value = TextSource.Simple("2 Go to next screen"), clickListener = ::openNextScreen),

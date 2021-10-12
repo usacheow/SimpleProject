@@ -10,7 +10,7 @@ import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.core.TextSource
 import com.usacheow.core.toSource
 import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
@@ -70,7 +70,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
             title = "Demo UIkit"
         }
 
-        binding.listView.adapter = ViewTypesAdapter(
+        binding.listView.adapter = ViewStateAdapter(
             listOf(
                 HeaderTileItem(TextSource.Simple("Atoms")),
                 BadgeTileItem(
@@ -200,7 +200,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         binding.listView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int = when {
-                    (binding.listView.adapter as ViewTypesAdapter).getData()[position] is BadgeTileItem -> 1
+                    (binding.listView.adapter as ViewStateAdapter).getData()[position] is BadgeTileItem -> 1
 
                     else -> 2
                 }

@@ -2,9 +2,9 @@ package com.usacheow.coreui.adapter
 
 import com.usacheow.coreui.adapter.base.ViewState
 
-class InfinityViewTypesAdapter(
+class InfinityViewStateAdapter(
     entities: List<ViewState> = emptyList()
-) : ViewTypesAdapter(entities) {
+) : ViewStateAdapter(entities) {
 
     override fun getIndexByPosition(position: Int) = position % getData().size
 

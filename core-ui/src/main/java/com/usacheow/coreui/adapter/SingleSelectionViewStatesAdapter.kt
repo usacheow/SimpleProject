@@ -2,9 +2,9 @@ package com.usacheow.coreui.adapter
 
 import com.usacheow.coreui.adapter.base.TagViewState
 
-class SingleSelectionViewTypesAdapter(
+class SingleSelectionViewStatesAdapter(
     entities: List<TagViewState> = emptyList()
-) : BaseSelectionModeViewTypesAdapter(entities) {
+) : BaseSelectionModeViewStatesAdapter(entities) {
 
     private var selectedItemPosition: Int? = null
 

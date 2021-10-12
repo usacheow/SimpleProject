@@ -8,8 +8,8 @@ import com.example.featurepurchase.databinding.FragmentPurchaseBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.corebilling.BillingRouter
-import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.SingleSelectionViewStatesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleModalFragment
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.doOnClick
@@ -28,7 +28,7 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
     @Inject lateinit var router: BillingRouter
 
     private val viewModel by viewModels<PurchaseViewModel>()
-    private val advantagesAdapter = ViewTypesAdapter(
+    private val advantagesAdapter = ViewStateAdapter(
         listOf(
             AdvantageTileItem(
                 image = ImageSource.Res(CoreUiR.drawable.ic_money),
@@ -60,7 +60,7 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
 
     override fun subscribe() {
         viewModel.productsState.observe(viewLifecycleOwner) {
-            binding.priceListView.adapter = SingleSelectionViewTypesAdapter(it.prices)
+            binding.priceListView.adapter = SingleSelectionViewStatesAdapter(it.prices)
         }
         viewModel.buyButtonTextState.observe(viewLifecycleOwner) {
             binding.buyButton.text = it

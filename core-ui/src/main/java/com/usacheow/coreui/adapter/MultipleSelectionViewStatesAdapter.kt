@@ -2,9 +2,9 @@ package com.usacheow.coreui.adapter
 
 import com.usacheow.coreui.adapter.base.TagViewState
 
-class MultipleSelectionViewTypesAdapter(
+class MultipleSelectionViewStatesAdapter(
     entities: List<TagViewState> = emptyList(),
-) : BaseSelectionModeViewTypesAdapter(entities) {
+) : BaseSelectionModeViewStatesAdapter(entities) {
 
     init {
         prepareItems()

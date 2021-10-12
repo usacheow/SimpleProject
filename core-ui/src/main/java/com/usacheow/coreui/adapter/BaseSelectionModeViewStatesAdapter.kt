@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
 
-abstract class BaseSelectionModeViewTypesAdapter(
+abstract class BaseSelectionModeViewStatesAdapter(
     protected var entities: List<TagViewState> = emptyList(),
-) : RecyclerView.Adapter<BaseSelectionModeViewTypesAdapter.BaseSelectionModeViewHolder>() {
+) : RecyclerView.Adapter<BaseSelectionModeViewStatesAdapter.BaseSelectionModeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSelectionModeViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(viewType, parent, false)

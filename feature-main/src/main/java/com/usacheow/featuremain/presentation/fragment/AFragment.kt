@@ -6,7 +6,7 @@ import androidx.core.view.updatePadding
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.adapter.ViewTypesAdapter
+import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -30,7 +30,7 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     )
 
     private val viewModel by hiltNavGraphViewModels<AViewModel>(FeatureR.id.main_nav_graph)
-    private val adapter = ViewTypesAdapter()
+    private val adapter = ViewStateAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
