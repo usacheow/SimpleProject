@@ -1,7 +1,9 @@
 package com.usacheow.apptest
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
@@ -26,9 +28,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.apptest.databinding.FragmentCameraBinding
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.arePermissionsGranted
-import com.usacheow.coreui.utils.view.doWithTransition
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.doWithTransition
 import java.io.File
 import java.nio.ByteBuffer
 import java.util.ArrayDeque
@@ -341,4 +342,8 @@ class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyze
 
         image.close()
     }
+}
+
+private fun Context.arePermissionsGranted(permissions: Array<String>) = permissions.all {
+    ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
 }

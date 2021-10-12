@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.biometric.BiometricEnterManager
-import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
-import com.usacheow.coreui.utils.view.string
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.helper.biometric.BiometricEnterManager
+import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.uikit.helper.string
 import com.usacheow.featureauth.R as FeatureR
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter

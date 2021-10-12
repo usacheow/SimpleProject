@@ -6,12 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coredata.database.UserDataStorage
-import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.SimpleAction
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.SimpleAction
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
-import com.usacheow.coreui.utils.trigger
-import com.usacheow.coreui.utils.triggerBy
-import com.usacheow.coreui.utils.tryPublish
+import com.usacheow.coreui.viewmodel.trigger
+import com.usacheow.coreui.viewmodel.triggerBy
+import com.usacheow.coreui.viewmodel.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

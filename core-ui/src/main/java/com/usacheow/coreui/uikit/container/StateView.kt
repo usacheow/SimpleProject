@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.usacheow.coreui.databinding.ViewListWithStatesViewBinding
 import com.usacheow.coreui.uikit.organism.MessageBannerItem
-import com.usacheow.coreui.utils.view.makeGone
-import com.usacheow.coreui.utils.view.makeVisible
+import com.usacheow.coreui.uikit.helper.makeGone
+import com.usacheow.coreui.uikit.helper.makeVisible
 
 class StateView
 @JvmOverloads constructor(

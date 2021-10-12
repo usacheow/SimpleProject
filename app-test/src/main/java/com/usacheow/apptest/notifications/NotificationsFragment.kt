@@ -13,8 +13,8 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.JobIntentService
 import com.usacheow.apptest.databinding.FragmentNotificationsBinding
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.NotificationHelper
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.helper.NotificationHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

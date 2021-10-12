@@ -5,7 +5,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.usacheow.coreui.utils.NotificationHelper
+import com.usacheow.coreui.helper.NotificationHelper
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar

@@ -3,7 +3,6 @@ package com.usacheow.featurebottombar
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
-import androidx.annotation.IdRes
 import androidx.annotation.MenuRes
 import androidx.annotation.NavigationRes
 import androidx.annotation.RequiresApi
@@ -13,11 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.doOnApplyWindowInsets
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.isImeVisible
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.isImeVisible
 import com.usacheow.featurebottombar.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.parcelize.Parcelize

@@ -3,7 +3,7 @@ package com.usacheow.simpleapp.notification
 import android.content.Intent
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.usacheow.coreui.utils.NotificationHelper
+import com.usacheow.coreui.helper.NotificationHelper
 import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

@@ -9,7 +9,7 @@ import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
-import com.usacheow.coreui.utils.view.populate
+import com.usacheow.coreui.uikit.helper.populate
 
 class AdvantageTileView @JvmOverloads constructor(
     context: Context,

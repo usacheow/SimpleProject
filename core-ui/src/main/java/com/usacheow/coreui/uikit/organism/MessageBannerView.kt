@@ -7,11 +7,11 @@ import android.widget.FrameLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.databinding.ViewErrorMessageBinding
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.makeGone
-import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.string
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.makeGone
+import com.usacheow.coreui.uikit.helper.makeVisible
+import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.uikit.helper.string
 
 class MessageBannerView
 @JvmOverloads constructor(

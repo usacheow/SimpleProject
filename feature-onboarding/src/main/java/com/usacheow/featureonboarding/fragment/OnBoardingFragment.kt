@@ -5,11 +5,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.usacheow.coreui.adapter.ViewTypesAdapter
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import com.usacheow.featureonboarding.navigation.OnBoardingRouter
 import com.usacheow.featureonboarding.viewmodel.OnBoardingViewModel

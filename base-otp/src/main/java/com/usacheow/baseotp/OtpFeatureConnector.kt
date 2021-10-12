@@ -2,8 +2,8 @@ package com.usacheow.baseotp
 
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.receiveAsFlow

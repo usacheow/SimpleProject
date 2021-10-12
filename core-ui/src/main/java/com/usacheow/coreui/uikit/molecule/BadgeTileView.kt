@@ -6,17 +6,14 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.TextSource
-import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.resize
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.uikit.helper.resize
 
 class BadgeTileView
 @JvmOverloads constructor(

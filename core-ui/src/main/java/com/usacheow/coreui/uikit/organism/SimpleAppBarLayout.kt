@@ -10,8 +10,8 @@ import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.navigation
+import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.navigation
 
 class SimpleAppBarLayout
 @JvmOverloads constructor(

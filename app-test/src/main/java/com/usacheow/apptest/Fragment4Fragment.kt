@@ -2,8 +2,8 @@ package com.usacheow.apptest
 
 import android.os.Bundle
 import com.usacheow.apptest.databinding.Fragment4Binding
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

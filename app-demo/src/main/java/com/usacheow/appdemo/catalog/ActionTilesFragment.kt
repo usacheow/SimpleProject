@@ -10,12 +10,12 @@ import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.ViewTypesAdapter
-import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.ActionSelectionType
 import com.usacheow.coreui.uikit.molecule.ActionTileItem
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
 
 class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
 

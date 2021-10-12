@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.usacheow.corebilling.PurchaseStateProvider
 import com.usacheow.corebilling.model.Product
-import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.SimpleAction
-import com.usacheow.coreui.utils.trigger
-import com.usacheow.coreui.utils.triggerBy
-import com.usacheow.coreui.utils.tryPublish
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.SimpleAction
+import com.usacheow.coreui.viewmodel.trigger
+import com.usacheow.coreui.viewmodel.triggerBy
+import com.usacheow.coreui.viewmodel.tryPublish
 import com.usacheow.featurepurchase.mapper.ProductsMapper
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -8,8 +8,8 @@ import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewSubtitleTileBinding
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.populate
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.populate
 
 class SubtitleTileView @JvmOverloads constructor(
     context: Context,

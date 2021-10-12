@@ -11,14 +11,14 @@ import com.usacheow.core.TextSource
 import com.usacheow.core.toSource
 import com.usacheow.coremediator.OnBoardingMediator
 import com.usacheow.coreui.adapter.ViewTypesAdapter
-import com.usacheow.coreui.fragment.SimpleFragment
+import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
-import com.usacheow.coreui.utils.view.toPx
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.uikit.helper.toPx
 import dagger.hilt.android.AndroidEntryPoint
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.R as DemoAppR

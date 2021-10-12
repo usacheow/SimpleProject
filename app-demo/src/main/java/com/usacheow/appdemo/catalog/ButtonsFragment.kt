@@ -5,10 +5,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.databinding.FragmentButtonsBinding
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
 
 class ButtonsFragment : SimpleFragment<FragmentButtonsBinding>() {
 

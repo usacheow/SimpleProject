@@ -5,13 +5,13 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
-import com.usacheow.coreui.fragment.SimpleFragment
-import com.usacheow.coreui.utils.textinput.addCurrencyFormatter
-import com.usacheow.coreui.utils.textinput.addPhoneNumberFormatter
-import com.usacheow.coreui.utils.textinput.doOnActionClick
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.getBottomInset
-import com.usacheow.coreui.utils.view.getTopInset
+import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.addCurrencyFormatter
+import com.usacheow.coreui.uikit.helper.addPhoneNumberFormatter
+import com.usacheow.coreui.uikit.helper.doOnActionClick
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.R as CoreUiR
 
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {

@@ -10,7 +10,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.databinding.ViewProgressTileBinding
-import com.usacheow.coreui.utils.view.color
+import com.usacheow.coreui.uikit.helper.color
 
 class ProgressTileView @JvmOverloads constructor(
     context: Context,

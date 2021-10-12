@@ -7,10 +7,10 @@ import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.toImageSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coreui.utils.EventChannel
+import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.requireArgs
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
-import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureonboarding.view.OnBoardingItem
 import dagger.hilt.android.lifecycle.HiltViewModel

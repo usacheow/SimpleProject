@@ -4,12 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coremediator.OtpMediator
-import com.usacheow.coreui.utils.EventChannel
+import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.getArgs
-import com.usacheow.coreui.utils.navigation.requireArgs
-import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
-import com.usacheow.coreui.utils.triggerBy
-import com.usacheow.coreui.utils.tryPublish
+import com.usacheow.coreui.viewmodel.triggerBy
+import com.usacheow.coreui.viewmodel.tryPublish
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

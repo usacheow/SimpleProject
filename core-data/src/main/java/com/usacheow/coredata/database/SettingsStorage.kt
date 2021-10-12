@@ -10,6 +10,7 @@ import javax.inject.Singleton
 private const val PREF_UI_MODE = "PREF_UI_MODE"
 private const val PREF_ALLOW_FINGERPRINT = "PREF_ALLOW_FINGERPRINT"
 private const val PREF_IS_FIRST_ENTRY = "PREF_IS_FIRST_ENTRY"
+private const val PREF_LAST_CHECKED_AVAILABLE_VERSION_CODE = "PREF_LAST_CHECKED_AVAILABLE_VERSION_CODE"
 
 @Singleton
 class SettingsStorage @Inject constructor(
@@ -36,6 +37,12 @@ class SettingsStorage @Inject constructor(
         get() = preferenceManager.getBoolean(PREF_IS_FIRST_ENTRY, true)
         set(value) = preferenceManager.edit {
             putBoolean(PREF_IS_FIRST_ENTRY, value).apply()
+        }
+
+    var lastCheckedAvailableVersionCode: Int
+        get() = preferenceManager.getInt(PREF_LAST_CHECKED_AVAILABLE_VERSION_CODE, 0)
+        set(value) = preferenceManager.edit {
+            putInt(PREF_LAST_CHECKED_AVAILABLE_VERSION_CODE, value).apply()
         }
 }
 

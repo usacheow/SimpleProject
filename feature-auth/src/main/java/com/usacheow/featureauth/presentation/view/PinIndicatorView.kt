@@ -5,8 +5,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.toPx
+import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.toPx
 import com.usacheow.coreui.R as CoreUiR
 import kotlin.math.min
 

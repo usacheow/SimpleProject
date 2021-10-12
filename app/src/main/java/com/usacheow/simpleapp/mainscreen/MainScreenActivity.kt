@@ -10,18 +10,18 @@ import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.BottomBarMediator
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coreui.activity.SimpleActivity
+import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.utils.navigation.OPEN_IN
 import com.usacheow.coreui.utils.navigation.REPLACING
-import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.hideIme
-import com.usacheow.coreui.utils.view.isImeVisible
-import com.usacheow.simpleapp.R as AppR
+import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.hideIme
+import com.usacheow.coreui.uikit.helper.isImeVisible
 import com.usacheow.simpleapp.databinding.ActivityHostBinding
 import com.usacheow.simpleapp.mainscreen.MainScreenViewModel.Action
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.usacheow.simpleapp.R as AppR
 
 @AndroidEntryPoint
 class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {

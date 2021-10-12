@@ -10,10 +10,10 @@ import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.populate
-import com.usacheow.coreui.utils.view.toPx
+import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.uikit.helper.toPx
 
 private const val SELECTED_STROKE_WIDTH_DP = 2
 private const val UNSELECTED_STROKE_WIDTH_DP = 0

@@ -1,7 +1,7 @@
 package com.usacheow.apptest
 
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.base.Router
+import com.usacheow.coreui.navigation.Router
 import com.usacheow.coreui.utils.navigation.OPEN_IN
 import com.usacheow.coreui.utils.navigation.REPLACING
 import com.usacheow.coreui.utils.navigation.notInclusive

@@ -10,11 +10,11 @@ import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
-import com.usacheow.coreui.utils.MarginHorizontal
-import com.usacheow.coreui.utils.updateMargins
-import com.usacheow.coreui.utils.view.color
-import com.usacheow.coreui.utils.view.dimen
-import com.usacheow.coreui.utils.view.resize
+import com.usacheow.coreui.uikit.helper.MarginHorizontal
+import com.usacheow.coreui.uikit.helper.updateMargins
+import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.dimen
+import com.usacheow.coreui.uikit.helper.resize
 
 class DividerTileView
 @JvmOverloads constructor(

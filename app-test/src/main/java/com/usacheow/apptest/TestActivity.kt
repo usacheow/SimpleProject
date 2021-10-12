@@ -5,10 +5,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.apptest.databinding.ActivityHostBinding
 import com.usacheow.coreui.R as TestAppR
-import com.usacheow.coreui.activity.SimpleActivity
-import com.usacheow.coreui.utils.view.PaddingValue
-import com.usacheow.coreui.utils.view.hideIme
-import com.usacheow.coreui.utils.view.isImeVisible
+import com.usacheow.coreui.screen.SimpleActivity
+import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.hideIme
+import com.usacheow.coreui.uikit.helper.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

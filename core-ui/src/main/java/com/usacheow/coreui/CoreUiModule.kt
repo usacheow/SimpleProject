@@ -4,8 +4,8 @@ import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.resource.ResourcesWrapperImpl
 import com.usacheow.coreui.analytics.AnalyticsTracker
 import com.usacheow.coreui.analytics.AnalyticsTrackerImpl
-import com.usacheow.coreui.utils.NotificationHelper
-import com.usacheow.coreui.utils.NotificationHelperImpl
+import com.usacheow.coreui.helper.NotificationHelper
+import com.usacheow.coreui.helper.NotificationHelperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

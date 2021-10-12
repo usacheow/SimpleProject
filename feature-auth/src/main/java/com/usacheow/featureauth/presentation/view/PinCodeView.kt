@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
 import com.usacheow.coreui.uikit.organism.NumPadView
-import com.usacheow.coreui.utils.view.string
+import com.usacheow.coreui.uikit.helper.string
 import com.usacheow.featureauth.R as FeatureR
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
 

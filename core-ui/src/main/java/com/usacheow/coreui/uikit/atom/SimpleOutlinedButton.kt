@@ -9,8 +9,8 @@ import com.google.android.material.button.MaterialButton
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.toPx
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.toPx
 
 class SimpleOutlinedButton @JvmOverloads constructor(
     context: Context,

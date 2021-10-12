@@ -5,18 +5,16 @@ import android.text.InputFilter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
-import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.R as CoreUiR
-import com.usacheow.coreui.fragment.SimpleModalFragment
+import com.usacheow.coreui.screen.SimpleModalFragment
 import com.usacheow.coreui.uikit.organism.NumPadView
-import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.view.doOnClick
-import com.usacheow.coreui.utils.view.makeGone
-import com.usacheow.coreui.utils.view.makeVisible
-import com.usacheow.coreui.utils.view.populate
+import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.makeGone
+import com.usacheow.coreui.uikit.helper.makeVisible
+import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.featureotp.databinding.FragmentSmsCodeBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {

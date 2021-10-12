@@ -5,8 +5,8 @@ import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.toSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coreui.utils.EventChannel
-import com.usacheow.coreui.utils.triggerBy
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.simpleapp.R as AppR
 import com.usacheow.coreui.R as CoreUiR

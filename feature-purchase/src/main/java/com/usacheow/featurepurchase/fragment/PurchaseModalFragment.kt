@@ -10,9 +10,9 @@ import com.usacheow.core.TextSource
 import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreui.adapter.SingleSelectionViewTypesAdapter
 import com.usacheow.coreui.adapter.ViewTypesAdapter
-import com.usacheow.coreui.fragment.SimpleModalFragment
-import com.usacheow.coreui.utils.observe
-import com.usacheow.coreui.utils.view.doOnClick
+import com.usacheow.coreui.screen.SimpleModalFragment
+import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.featurepurchase.view.AdvantageTileItem
 import com.usacheow.featurepurchase.viewmodel.PurchaseViewModel
 import dagger.hilt.android.AndroidEntryPoint

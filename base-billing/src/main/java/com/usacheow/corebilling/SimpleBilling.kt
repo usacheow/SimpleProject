@@ -58,7 +58,7 @@ class SimpleBillingImpl @Inject constructor(
     @ApplicationContext context: Context,
     @ApplicationCoroutineScope private val scope: CoroutineScope,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-) : SimpleBilling, BillingRouter {
+) : SimpleBilling {
 
     override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(replay = 1)
 
