@@ -53,6 +53,7 @@ dependencies {
     implementation(project(Modules.FEATURE_PURCHASE.path))
     implementation(project(Modules.FEATURE_OTP.path))
 
+    implementation(*Dependencies.Android.AppUpdater.bundle)
     implementation(*Dependencies.Firebase.bundle)
     implementation(*Dependencies.Android.Biometric.bundle)
 }

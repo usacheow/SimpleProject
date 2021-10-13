@@ -87,7 +87,6 @@ object Dependencies {
             const val composeVersion = "1.1.0-alpha01"
             private const val androidxVersion = "1.3.1"
             private const val androidxCoreVersion = "1.7.0-beta02"
-            private const val playCoreVersion = "1.8.1"
             private const val splashVersion = "1.0.0-alpha02"
             private const val insetVersion = "0.15.0"
             private const val activityVersion = "1.3.0"
@@ -105,7 +104,6 @@ object Dependencies {
             val bundle = arrayOf(
                 "androidx.appcompat:appcompat:$androidxVersion",
                 "androidx.core:core-ktx:$androidxCoreVersion",
-                "com.google.android.play:core-ktx:$playCoreVersion",
                 "androidx.core:core-splashscreen:$splashVersion",
 
                 "androidx.compose.compiler:compiler:$composeVersion",
@@ -148,6 +146,12 @@ object Dependencies {
             )
             const val path = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
             const val plugin = "androidx.navigation.safeargs.kotlin"
+        }
+
+        object AppUpdater {
+
+            private const val version = "1.8.1"
+            val bundle = arrayOf("com.google.android.play:core-ktx:$version")
         }
 
         object Billing {

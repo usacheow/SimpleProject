@@ -9,6 +9,8 @@ import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
 import com.usacheow.coredata.featuretoggle.FeatureToggleStorage
+import com.usacheow.coredata.location.LocationProvider
+import com.usacheow.coredata.location.LocationProviderImpl
 import com.usacheow.coredata.network.NetworkStateProvider
 import com.usacheow.coredata.network.NetworkStateProviderImpl
 import dagger.Binds
@@ -60,4 +62,8 @@ interface BindsModule {
     @Binds
     @Singleton
     fun networkStateProvider(provider: NetworkStateProviderImpl): NetworkStateProvider
+
+    @Binds
+    @Singleton
+    fun locationProvider(provider: LocationProviderImpl): LocationProvider
 }

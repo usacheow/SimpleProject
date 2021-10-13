@@ -3,6 +3,7 @@ package com.usacheow.coreui
 import android.app.NotificationManager
 import android.content.Context
 import android.hardware.SensorManager
+import android.location.LocationManager
 import android.net.ConnectivityManager
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,12 @@ class SystemServiceModule {
     fun connectivityManager(
         @ApplicationContext context: Context,
     ) = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+    @Provides
+    @Singleton
+    fun locationManager(
+        @ApplicationContext context: Context,
+    ) = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
     @Provides
     @Singleton

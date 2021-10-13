@@ -44,6 +44,8 @@ sealed class ApiError(
 
     class CoroutineException : ApiError(CoreDataR.string.unknown_error_message)
 
+    class SecurityException : ApiError(CoreDataR.string.unknown_error_message)
+
     fun getMessage(resources: ResourcesWrapper): String {
         return message ?: resources.getString(defaultMessageRes)
     }
