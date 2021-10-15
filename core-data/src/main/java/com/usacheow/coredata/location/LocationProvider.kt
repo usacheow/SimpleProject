@@ -6,9 +6,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import com.usacheow.core.Effect
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import com.usacheow.coredata.network.ApiError
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -29,7 +27,6 @@ interface LocationProvider {
 @OptIn(ExperimentalCoroutinesApi::class)
 class LocationProviderImpl @Inject constructor(
     private val locationManager: LocationManager,
-    @ApplicationCoroutineScope private val scope: CoroutineScope,
 ) : LocationProvider {
 
     override val state = locationManager.currentLocationFlow()
