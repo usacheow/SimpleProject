@@ -3,15 +3,17 @@ plugins {
     id("navigation-config")
     id("lifecycle-config")
     id("dagger-config")
-    id("test-config")
 }
 
 dependencies {
-    implementation(project(Modules.CORE_DATA.path))
-    implementation(project(Modules.CORE_UI.path))
-    implementation(project(Modules.CORE_MEDIATOR.path))
+    implementation(projects.coreData)
+    implementation(projects.coreUi)
+    implementation(projects.coreMediator)
 
-    implementation(project(Modules.BASE_OTP.path))
+    implementation(projects.baseOtp)
 
-    implementation(*Dependencies.Android.Biometric.bundle)
+    implementation(*Libs.bundle.biometric)
+
+    testImplementation(projects.coreUnitTest)
+    androidTestImplementation(*Libs.bundle.uiTests)
 }

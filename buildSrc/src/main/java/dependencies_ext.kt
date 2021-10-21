@@ -12,12 +12,6 @@ fun DependencyHandler.implementation(vararg list: Any) {
     }
 }
 
-fun DependencyHandler.debugImplementation(vararg list: Any) {
-    list.forEach { dependency ->
-        add("debugImplementation", dependency)
-    }
-}
-
 fun DependencyHandler.api(vararg list: String) {
     list.forEach { dependency ->
         add("api", dependency)

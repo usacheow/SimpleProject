@@ -42,7 +42,7 @@ class LocationProviderImpl @Inject constructor(
         }
     }
 
-    private fun LocationManager.currentLocationFlow() = callbackFlow {
+    private fun LocationManager.currentLocationFlow() = callbackFlow<Effect<SimpleLocation>> {
         val listener = EmptyLocationListener { location ->
             location?.toSimpleLocation()
                 ?.let { Effect.success(it) }

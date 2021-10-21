@@ -5,10 +5,10 @@ plugins {
 }
 
 dependencies {
-    api(*Dependencies.Android.Billing.bundle)
+    api(*Libs.bundle.billing)
 
-    implementation(project(Modules.CORE_DATA.path))
-    implementation(project(Modules.CORE_UI.path))
+    implementation(projects.coreData)
+    implementation(projects.coreUi)
 
-    implementation(*Dependencies.Firebase.bundle)
+    implementation(*Libs.bundle.firebase)
 }

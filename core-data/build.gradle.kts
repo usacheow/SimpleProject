@@ -11,11 +11,11 @@ android {
 }
 
 dependencies {
-    api(project(Modules.CORE.path))
-    api(*Dependencies.Data.Requests.bundle)
-    api(*Dependencies.Data.Gson.bundle)
+    api(projects.core)
+    api(*Libs.bundle.requests)
+    api(*Libs.bundle.gson)
 
-    implementation(*Dependencies.Firebase.bundle)
-    implementation(*Dependencies.Data.DataStore.bundle)
-    implementation(*Dependencies.Data.Preference.bundle)
+    implementation(*Libs.bundle.firebase)
+    implementation(*Libs.bundle.datastore)
+    implementation(*Libs.bundle.preference)
 }

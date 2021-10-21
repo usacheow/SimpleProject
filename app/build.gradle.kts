@@ -40,20 +40,21 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.CORE_DATA.path))
-    implementation(project(Modules.CORE_UI.path))
-    implementation(project(Modules.CORE_MEDIATOR.path))
+    implementation(projects.coreData)
+    implementation(projects.coreUi)
+    implementation(projects.coreMediator)
 
-    implementation(project(Modules.BASE_BILLING.path))
+    implementation(projects.baseBilling)
 
-    implementation(project(Modules.FEATURE_BOTTOM_BAR.path))
-    implementation(project(Modules.FEATURE_MAIN.path))
-    implementation(project(Modules.FEATURE_AUTH.path))
-    implementation(project(Modules.FEATURE_ON_BOARDING.path))
-    implementation(project(Modules.FEATURE_PURCHASE.path))
-    implementation(project(Modules.FEATURE_OTP.path))
+    implementation(projects.featureBottomBar)
+    implementation(projects.featureMain)
+    implementation(projects.featureAuth)
+    implementation(projects.featureOnboarding)
+    implementation(projects.featurePurchase)
+    implementation(projects.featureOtp)
 
-    implementation(*Dependencies.Android.AppUpdater.bundle)
-    implementation(*Dependencies.Firebase.bundle)
-    implementation(*Dependencies.Android.Biometric.bundle)
+    implementation(*Libs.bundle.splashscreen)
+    implementation(*Libs.bundle.appUpdater)
+    implementation(*Libs.bundle.firebase)
+    implementation(*Libs.bundle.biometric)
 }

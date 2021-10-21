@@ -14,13 +14,15 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.CORE_DATA.path))
-    implementation(project(Modules.CORE_UI.path))
-    implementation(project(Modules.CORE_MEDIATOR.path))
+    implementation(projects.coreData)
+    implementation(projects.coreUi)
+    implementation(projects.coreMediator)
 
-    implementation(project(Modules.FEATURE_AUTH.path))
-    implementation(project(Modules.FEATURE_ON_BOARDING.path))
-    implementation(project(Modules.FEATURE_OTP.path))
+    implementation(projects.featureAuth)
+    implementation(projects.featureOnboarding)
+    implementation(projects.featureOtp)
 
-    implementation(*Dependencies.Android.Biometric.bundle)
+    implementation(*Libs.bundle.splashscreen)
+    implementation(*Libs.bundle.paging)
+    implementation(*Libs.bundle.biometric)
 }

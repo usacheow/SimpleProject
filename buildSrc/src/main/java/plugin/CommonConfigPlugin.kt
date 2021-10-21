@@ -1,11 +1,10 @@
 package plugin
 
 import App
-import Dependencies
+import Libs
 import com.android.build.gradle.BaseExtension
 import coreLibraryDesugaring
 import implementation
-import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.PluginContainer
 import org.gradle.kotlin.dsl.DependencyHandlerScope
@@ -13,12 +12,12 @@ import org.gradle.kotlin.dsl.fileTree
 
 class LibraryConfigPlugin : CommonConfigPlugin() {
 
-    override val mainPlugin = Dependencies.Android.Library.plugin
+    override val mainPlugin = Libs.plugin.library
 }
 
 class AppConfigPlugin : CommonConfigPlugin() {
 
-    override val mainPlugin = Dependencies.Android.App.plugin
+    override val mainPlugin = Libs.plugin.application
 }
 
 abstract class CommonConfigPlugin : BaseConfigPlugin() {
@@ -27,9 +26,9 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
 
     override fun PluginContainer.applyPlugins(project: Project) {
         apply(mainPlugin)
-        apply(Dependencies.General.Kotlin.Android.plugin)
-        apply(Dependencies.General.Kotlin.Parcelize.plugin)
-        apply(Dependencies.General.Kotlin.Kapt.plugin)
+        apply(Libs.plugin.kotlin_android)
+        apply(Libs.plugin.kotlin_parcelize)
+        apply(Libs.plugin.kotlin_kapt)
     }
 
     override fun BaseExtension.configAndroid(project: Project) {
@@ -40,28 +39,21 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
             targetSdk = App.targetSdk
 
             vectorDrawables.useSupportLibrary = true
+            testInstrumentationRunner = Libs.bundle.unitTestsRunner
         }
 
         buildFeatures.viewBinding = true
-        buildFeatures.compose = true
-
-        composeOptions {
-            kotlinCompilerExtensionVersion = Dependencies.Android.Ui.composeVersion
-        }
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
-
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
         }
     }
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        coreLibraryDesugaring(*Dependencies.General.Desugar.bundle)
+        coreLibraryDesugaring(*Libs.bundle.desugar)
         implementation(project.fileTree("include" to "*.jar", "dir" to "libs"))
 
-        implementation(*Dependencies.General.Kotlin.bundle)
-        implementation(*Dependencies.General.Kotlin.Coroutines.bundle)
+        implementation(*Libs.bundle.kotlin)
+        implementation(*Libs.bundle.coroutines)
     }
 }

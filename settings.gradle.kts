@@ -1,3 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 dependencyResolutionManagement {
     repositories {
         google()
@@ -5,7 +9,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Simple project"
+rootProject.name = "SimpleProject"
 include(
     ":app",
     ":app-demo",

@@ -1,6 +1,6 @@
 package plugin
 
-import Dependencies
+import Libs
 import implementation
 import kapt
 import org.gradle.api.Project
@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 class GlideConfigPlugin : BaseConfigPlugin() {
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Data.Glide.bundle)
-        kapt(Dependencies.Data.Glide.kapt)
+        implementation(*Libs.bundle.glide)
+        kapt(Libs.bundle.glideKapt)
     }
 }

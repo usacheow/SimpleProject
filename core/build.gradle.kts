@@ -5,5 +5,5 @@ plugins {
 }
 
 dependencies {
-    implementation(*Dependencies.Data.Gson.bundle)
+    implementation(*Libs.bundle.gson)
 }

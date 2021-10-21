@@ -1,6 +1,6 @@
 package plugin
 
-import Dependencies
+import Libs
 import implementation
 import kapt
 import org.gradle.api.Project
@@ -10,12 +10,12 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 class DaggerConfigPlugin : BaseConfigPlugin() {
 
     override fun PluginContainer.applyPlugins(project: Project) {
-        apply(Dependencies.Dagger.plugin)
+        apply(Libs.plugin.hilt)
     }
 
     override fun DependencyHandlerScope.addDependencies(project: Project) {
-        implementation(*Dependencies.Dagger.bundle)
-        kapt(Dependencies.Dagger.kapt)
-        kapt(Dependencies.Dagger.kaptViewModel)
+        implementation(*Libs.bundle.hilt)
+        kapt(Libs.bundle.hiltKapt)
+        kapt(Libs.bundle.hiltKaptViewModel)
     }
 }

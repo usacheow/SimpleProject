@@ -7,10 +7,11 @@ plugins {
 }
 
 dependencies {
-    api(project(Modules.CORE.path))
-    api(*Dependencies.Android.Ui.bundle)
+    api(projects.core)
+    api(*Libs.bundle.uiCore)
+    api(*Libs.bundle.uiView)
 
-    implementation(*Dependencies.Android.Biometric.bundle)
-    implementation(*Dependencies.Android.Browser.bundle)
-    implementation(*Dependencies.Firebase.bundle)
+    implementation(*Libs.bundle.biometric)
+    implementation(*Libs.bundle.browser)
+    implementation(*Libs.bundle.firebase)
 }

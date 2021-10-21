@@ -5,5 +5,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(Modules.CORE_UI.path))
+    implementation(projects.coreUi)
 }

@@ -4,5 +4,5 @@ plugins {
 }
 
 dependencies {
-    api(project(Modules.CORE.path))
+    api(projects.core)
 }

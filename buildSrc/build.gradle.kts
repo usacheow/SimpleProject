@@ -35,10 +35,6 @@ gradlePlugin {
             id = "room-config"
             implementationClass = "plugin.RoomConfigPlugin"
         }
-        register("test-config") {
-            id = "test-config"
-            implementationClass = "plugin.TestConfigPlugin"
-        }
     }
 }
 
@@ -49,5 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.1")
+    implementation("com.android.tools.build:gradle:7.0.2")
+//    implementation(gradleApi())
+//    implementation(localGroovy())
 }

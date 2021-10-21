@@ -13,7 +13,8 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.CORE_UI.path))
+    implementation(projects.coreUi)
 
-    implementation(*Dependencies.Android.CameraX.bundle)
+    implementation(*Libs.bundle.splashscreen)
+    implementation(*Libs.bundle.camerax)
 }
