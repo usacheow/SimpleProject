@@ -2,11 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="?attr/materialCardViewFilledStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/surfaceSecondary"
-    app:cardElevation="@dimen/elevation_0">
+    android:layout_margin="8dp">
 
     <com.facebook.shimmer.ShimmerFrameLayout
         style="@style/SimpleShimmerLayout"
@@ -20,20 +19,20 @@
             android:orientation="vertical"
             android:padding="@dimen/left_right_margin">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="48dp"
                 android:layout_marginBottom="4dp"
-                android:background="@drawable/bg_shimmer_line"
+                android:background="@drawable/bg_shimmer_line_on_surface_variant"
                 android:lines="2"
-                android:textAppearance="?textAppearanceHeadline6" />
+                android:textAppearance="?textAppearanceHeadlineSmall" />
 
             <View
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="end"
-                android:background="@drawable/bg_shimmer_circle" />
+                android:background="@drawable/bg_shimmer_line_on_surface_variant" />
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 </com.google.android.material.card.MaterialCardView>

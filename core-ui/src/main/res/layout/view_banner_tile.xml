@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.molecule.BannerTileView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="?attr/materialCardViewFilledStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/surfaceSecondary"
-    app:cardCornerRadius="@dimen/radius_medium"
-    app:cardElevation="@dimen/elevation_0">
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:id="@+id/bannerClickableView"
@@ -17,7 +14,7 @@
         android:orientation="vertical"
         android:padding="@dimen/left_right_margin">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bannerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +24,7 @@
             android:gravity="center_vertical"
             android:lines="2"
             android:maxWidth="144dp"
-            android:textAppearance="?textAppearanceHeadline6"
+            android:textAppearance="?textAppearanceHeadlineSmall"
             tools:text="@tools:sample/full_names" />
 
         <androidx.appcompat.widget.AppCompatImageView

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/pinCodeForgotButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:background="?selectableItemBackground"
             android:padding="8dp"
             android:text="@string/pin_view_code_forgot"
-            android:textAppearance="?textAppearanceButton"
-            android:textColor="@color/colorPrimary" />
+            android:textAppearance="?textAppearanceLabelLarge"
+            android:textColor="@color/primary" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

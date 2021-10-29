@@ -18,13 +18,13 @@
             android:orientation="vertical"
             android:padding="@dimen/left_right_margin">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/headerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
                 android:text="@string/sign_up_header"
-                android:textAppearance="?textAppearanceHeadline5" />
+                android:textAppearance="?textAppearanceHeadlineMedium" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/loginInputLayout"
@@ -43,7 +43,7 @@
                     android:imeOptions="actionNext"
                     android:lines="1"
                     android:inputType="textShortMessage"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +64,7 @@
                     android:inputType="textPassword"
                     android:imeOptions="actionDone"
                     android:lines="1"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space

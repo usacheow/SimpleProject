@@ -7,7 +7,7 @@
     android:layout_margin="16dp"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/surfaceSecondary"
+    app:cardBackgroundColor="@color/surfaceVariant"
     app:cardCornerRadius="@dimen/radius_large"
     app:cardElevation="0dp"
     app:strokeWidth="0dp">
@@ -27,28 +27,28 @@
             android:layout_marginBottom="8dp"
             tools:src="@tools:sample/avatars" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/left_right_margin"
             android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
-            android:textAppearance="?textAppearanceHeadline4"
+            android:textAppearance="?textAppearanceHeadlineLarge"
             tools:text="@tools:sample/lorem" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/descriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/left_right_margin"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="16dp"
-            android:alpha="@dimen/text_alpha"
+            android:textColor="@color/textSecondary"
             android:ellipsize="end"
             android:gravity="center_horizontal"
             android:maxLines="3"
-            android:textAppearance="?textAppearanceBody2"
+            android:textAppearance="?textAppearanceBodyMedium"
             tools:text="@tools:sample/lorem/random" />
 
         <com.google.android.material.button.MaterialButton

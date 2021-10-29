@@ -50,7 +50,7 @@ data class BadgeTileItem(
     val header: TextSource? = null,
     val value: TextSource,
     val needAdaptWidth: Boolean = true,
-    @ColorRes val textColorRes: Int = CoreUiR.color.text,
+    @ColorRes val textColorRes: Int = CoreUiR.color.textPrimary,
     @ColorRes val backgroundColorRes: Int = CoreUiR.color.surface,
     val clickListener: (() -> Unit)? = null,
 ) : ViewState(CoreUiR.layout.view_badge_tile) {

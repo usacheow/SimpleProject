@@ -71,8 +71,8 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
     private fun TextView.setEnabledTextButton(isEnabled: Boolean) {
         this.isEnabled = isEnabled
         val colorRes = when (isEnabled) {
-            true -> CoreUiR.color.colorPrimary
-            false -> CoreUiR.color.disabled
+            true -> CoreUiR.color.primary
+            false -> CoreUiR.color.textTertiary
         }
         setTextColor(res.getColor(colorRes))
     }

@@ -34,23 +34,23 @@
             android:orientation="vertical"
             android:padding="@dimen/left_right_margin">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bottom"
-                android:textAppearance="?textAppearanceHeadline1" />
+                android:textAppearance="?textAppearanceDisplayLarge" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sheet"
-                android:textAppearance="?textAppearanceHeadline1" />
+                android:textAppearance="?textAppearanceDisplayLarge" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="example"
-                android:textAppearance="?textAppearanceHeadline1" />
+                android:textAppearance="?textAppearanceDisplayLarge" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

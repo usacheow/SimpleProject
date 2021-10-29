@@ -38,7 +38,7 @@ class PinIndicatorView @JvmOverloads constructor(
     private val diameterWithMargin = DOT_MARGIN.toPx + DEFAULT_RADIUS_DP.toPx * 2
     private val errorColor = CoreUiR.color.error
     private val defaultColor = CoreUiR.color.black_10
-    private val selectedColor = CoreUiR.color.colorPrimary
+    private val selectedColor = CoreUiR.color.primary
 
     private var firstDotX = paddingLeft + DEFAULT_RADIUS_DP.toPx.toFloat()
     private var firstDotY = paddingTop + DEFAULT_RADIUS_DP.toPx.toFloat()

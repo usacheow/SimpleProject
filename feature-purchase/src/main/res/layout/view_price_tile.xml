@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:strokeColor="@color/colorPrimary"
-        app:cardBackgroundColor="@color/surfaceSecondary"
+        app:strokeColor="@color/primary"
+        app:cardBackgroundColor="@color/surfaceVariant"
         app:cardCornerRadius="@dimen/radius_8"
         app:cardElevation="@dimen/elevation_0">
 
@@ -28,11 +28,11 @@
                 android:id="@+id/discountLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/primary"
                 android:layout_gravity="end"
                 app:shapeAppearance="@style/DiscountShapeAppearance">
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/discountView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,9 +40,9 @@
                     android:paddingVertical="4dp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:textColor="@color/colorOnPrimary"
-                    android:background="@color/colorPrimary"
-                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@color/onPrimary"
+                    android:background="@color/primary"
+                    android:textAppearance="?textAppearanceLabelMedium"
                     tools:text="Скидка 56%" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -60,33 +60,33 @@
                     android:orientation="vertical"
                     android:gravity="center_vertical">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/periodView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:alpha="@dimen/text_alpha"
-                        android:textAppearance="?textAppearanceSubtitle1"
+                        android:textColor="@color/textSecondary"
+                        android:textAppearance="?textAppearanceTitleLarge"
                         tools:text="799₽ / год" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/priceView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:textAppearance="?textAppearanceSubtitle2"
+                        android:textAppearance="?textAppearanceTitleMedium"
                         tools:text="66,58₽ / месяц" />
                 </LinearLayout>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/pricePerMonthView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:textAppearance="?textAppearanceHeadline6"
+                    android:textAppearance="?textAppearanceHeadlineSmall"
                     tools:text="66,58₽ / месяц" />
             </LinearLayout>
         </FrameLayout>

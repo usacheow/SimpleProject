@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appBarLayout"
-    style="@style/SimpleAppBarLayout">
+    style="?attr/appBarLayoutStyle">
 
-    <View
-        android:id="@+id/insetView"
-        style="@style/SimpleAppBarLayoutContent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_scrollFlags="scroll|enterAlways" />
-
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        style="@style/SimpleToolbar"
+        style="?attr/toolbarStyle"
         tools:title="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.organism.SimpleAppBarLayout>

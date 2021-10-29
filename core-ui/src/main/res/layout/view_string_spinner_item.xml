@@ -10,14 +10,14 @@
     android:paddingEnd="@dimen/left_right_margin"
     android:paddingBottom="4dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/spinnerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:lines="1"
         android:textAllCaps="true"
-        android:textAppearance="?textAppearanceOverline"
+        android:textAppearance="?textAppearanceLabelSmall"
         android:visibility="gone"
         tools:text="@tools:sample/lorem"
         tools:visibility="visible" />

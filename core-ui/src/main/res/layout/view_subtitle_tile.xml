@@ -10,7 +10,7 @@
     android:paddingTop="8dp"
     android:paddingEnd="8dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/headerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,30 +18,18 @@
         android:ellipsize="end"
         android:lines="1"
         android:padding="8dp"
-        android:textAppearance="?textAppearanceSubtitle1"
+        android:textAppearance="?textAppearanceTitleLarge"
         tools:text="@tools:sample/lorem" />
 
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/actionButton"
+        style="@style/SimpleButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/background"
-        app:cardElevation="@dimen/elevation_0"
-        app:shapeAppearance="?shapeAppearanceSmallComponent">
-
-        <TextView
-            android:id="@+id/actionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:background="?selectableItemBackground"
-            android:ellipsize="end"
-            android:lines="1"
-            android:maxWidth="88dp"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
-            android:textAppearance="?textAppearanceCaption"
-            tools:text="@tools:sample/lorem" />
-    </com.google.android.material.card.MaterialCardView>
+        android:layout_gravity="end|center_vertical"
+        android:maxWidth="88dp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textAppearance="?textAppearanceLabelMedium"
+        tools:text="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.molecule.SubtitleTileView>

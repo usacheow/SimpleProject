@@ -28,7 +28,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/simpleServiceTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Stop" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/intentServiceTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:enabled="false"
             android:text="Stop" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/jobServiceTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:text="Stop" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/jobIntentServiceTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

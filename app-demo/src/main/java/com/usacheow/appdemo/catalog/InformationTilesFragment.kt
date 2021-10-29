@@ -79,7 +79,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                             needAdaptWidth = true,
                             header = TextSource.Simple("Badge"),
                             value = TextSource.Simple("Non-clickable"),
-                            backgroundColorRes = CoreUiR.color.colorPrimary,
+                            backgroundColorRes = CoreUiR.color.primary,
                             textColorRes = CoreUiR.color.white,
                         ),
                         BadgeTileItem(

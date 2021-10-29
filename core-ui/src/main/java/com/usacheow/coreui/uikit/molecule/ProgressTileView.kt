@@ -31,5 +31,5 @@ class ProgressTileView @JvmOverloads constructor(
 data class ProgressTileItem(
     val maxValue: Int,
     val currentValue: Int,
-    @ColorRes val colorResId: Int = CoreUiR.color.success,
+    @ColorRes val colorResId: Int = CoreUiR.color.primary,
 )

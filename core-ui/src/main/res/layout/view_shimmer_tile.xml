@@ -25,28 +25,28 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/topLineView"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_shimmer_line"
-                android:textAppearance="?textAppearanceBody2" />
+                android:textAppearance="?textAppearanceBodyMedium" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/middleLineView"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bg_shimmer_line"
-                android:textAppearance="?textAppearanceBody1" />
+                android:textAppearance="?textAppearanceBodyLarge" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/bottomLineView"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_shimmer_line"
-                android:textAppearance="?textAppearanceBody2" />
+                android:textAppearance="?textAppearanceBodyMedium" />
         </LinearLayout>
 
         <com.makeramen.roundedimageview.RoundedImageView

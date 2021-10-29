@@ -8,9 +8,9 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="@dimen/radius_small"
     app:cardElevation="@dimen/elevation_0"
-    tools:cardBackgroundColor="@color/surfaceSecondary">
+    tools:cardBackgroundColor="@color/surface">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -21,6 +21,6 @@
         android:maxWidth="156dp"
         android:minWidth="112dp"
         android:padding="20dp"
-        android:textAppearance="?textAppearanceBody2"
+        android:textAppearance="?textAppearanceBodyMedium"
         tools:text="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.molecule.TagTileView>

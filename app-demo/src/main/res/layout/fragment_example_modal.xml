@@ -12,21 +12,21 @@
         app:navigationIcon="@drawable/ic_close"
         app:title="Modal fragment" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Modal"
-        android:textAppearance="?textAppearanceHeadline1" />
+        android:textAppearance="?textAppearanceDisplayLarge" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fragment"
-        android:textAppearance="?textAppearanceHeadline1" />
+        android:textAppearance="?textAppearanceDisplayLarge" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="example"
-        android:textAppearance="?textAppearanceHeadline1" />
+        android:textAppearance="?textAppearanceDisplayLarge" />
 </androidx.appcompat.widget.LinearLayoutCompat>

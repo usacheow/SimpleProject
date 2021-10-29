@@ -15,20 +15,20 @@
         android:layout_marginBottom="20dp"
         tools:src="@tools:sample/avatars"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="52dp"
-        android:textAppearance="?textAppearanceHeadline6"
+        android:textAppearance="?textAppearanceHeadlineSmall"
         tools:text="@tools:sample/lorem" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/infoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="52dp"
         android:layout_marginTop="4dp"
-        android:textAppearance="?textAppearanceBody1"
+        android:textAppearance="?textAppearanceBodyLarge"
         tools:text="@tools:sample/lorem" />
 </com.usacheow.featurepurchase.view.AdvantageTileView>

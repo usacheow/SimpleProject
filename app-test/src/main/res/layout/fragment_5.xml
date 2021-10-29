@@ -16,8 +16,8 @@
         android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <TextView
-            android:textAppearance="?textAppearanceHeadline1"
+        <com.google.android.material.textview.MaterialTextView
+            android:textAppearance="?textAppearanceDisplayLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -33,7 +33,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backButton"
-            style="@style/SimpleButtonGrey"
+            style="@style/SimpleButtonTonal"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="40dp"
@@ -41,7 +41,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backToRootButton"
-            style="@style/SimpleButtonGrey"
+            style="@style/SimpleButtonTonal"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="12dp"

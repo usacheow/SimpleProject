@@ -11,6 +11,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@drawable/bg_progress_tile"
-        android:backgroundTint="@color/success"
+        android:backgroundTint="@color/primary"
         tools:layout_weight="18" />
 </androidx.appcompat.widget.LinearLayoutCompat>

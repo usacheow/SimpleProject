@@ -18,7 +18,6 @@
         android:id="@+id/appBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/surface"
         app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/color_bottom_bar_item"
         app:itemIconTint="@color/color_bottom_bar_item" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton1"
         style="@style/NumPadButton"
         android:text="@string/one"
@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numPadButton2" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton2"
         style="@style/NumPadButton"
         android:text="@string/two"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toEndOf="@id/numPadButton1"
         app:layout_constraintEnd_toStartOf="@id/numPadButton3" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton3"
         style="@style/NumPadButton"
         android:text="@string/three"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/numPadButton2" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton4"
         style="@style/NumPadButton"
         android:text="@string/four"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numPadButton5" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton5"
         style="@style/NumPadButton"
         android:text="@string/five"
@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@id/numPadButton4"
         app:layout_constraintEnd_toStartOf="@id/numPadButton6" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton6"
         style="@style/NumPadButton"
         android:text="@string/six"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toEndOf="@id/numPadButton5"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton7"
         style="@style/NumPadButton"
         android:text="@string/seven"
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numPadButton8" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton8"
         style="@style/NumPadButton"
         android:text="@string/eight"
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toEndOf="@id/numPadButton7"
         app:layout_constraintEnd_toStartOf="@id/numPadButton9" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton9"
         style="@style/NumPadButton"
         android:text="@string/nine"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toStartOf="@id/numPadButton0"
         tools:visibility="visible" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton0"
         style="@style/NumPadButton"
         android:text="@string/zero"

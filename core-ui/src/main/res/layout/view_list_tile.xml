@@ -29,10 +29,10 @@
             android:id="@+id/topDescriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="@dimen/text_alpha"
+            android:textColor="@color/textSecondary"
             android:ellipsize="end"
             android:lines="1"
-            android:textAppearance="?textAppearanceBody2"
+            android:textAppearance="?textAppearanceBodyMedium"
             tools:text="Subtitle" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -42,17 +42,17 @@
             android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textAppearance="?textAppearanceBody1"
+            android:textAppearance="?textAppearanceBodyLarge"
             tools:text="Title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bottomDescriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="@dimen/text_alpha"
+            android:textColor="@color/textSecondary"
             android:ellipsize="end"
             android:lines="1"
-            android:textAppearance="?textAppearanceBody2"
+            android:textAppearance="?textAppearanceBodyMedium"
             tools:text="Description" />
     </LinearLayout>
 

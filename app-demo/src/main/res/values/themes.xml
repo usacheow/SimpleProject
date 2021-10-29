@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppThemeSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/surfaceSecondary</item>
+        <item name="windowSplashScreenBackground">@color/surface</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_demo</item>
         <item name="windowSplashScreenAnimationDuration">900</item>
 

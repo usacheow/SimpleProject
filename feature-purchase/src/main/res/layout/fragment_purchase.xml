@@ -34,8 +34,8 @@
             android:layout_gravity="center_horizontal"
             app:spi_dotSize="8dp"
             app:spi_dotSelectedSize="8dp"
-            app:spi_dotColor="@color/backgroundSecondary"
-            app:spi_dotSelectedColor="@color/colorPrimary" />
+            app:spi_dotColor="@color/primaryContainer"
+            app:spi_dotSelectedColor="@color/primary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/priceListView"

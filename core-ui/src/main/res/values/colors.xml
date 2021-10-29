@@ -1,46 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#0336FF</color>
-    <color name="colorPrimaryVariant">#0336FF</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="primary">#ff6750a4</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#ffeaddff</color>
+    <color name="onPrimaryContainer">#ff21005d</color>
+    <color name="primaryInverse">#ffd0bcff</color>
 
-    <color name="colorSecondary">#FFDE03</color>
-    <color name="colorSecondaryVariant">#FFDE03</color>
-    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="secondary">#ff625b71</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#ffe8def8</color>
+    <color name="onSecondaryContainer">#ff1d192b</color>
 
-    <color name="background">#FFFFFF</color>
-    <color name="backgroundBlurred">#CCFFFFFF</color>
-    <color name="backgroundSecondary">#F2F3F4</color>
-    <color name="backgroundToolbar">@color/background</color>
-    <color name="backgroundBottomBarGradientStart">@color/white</color>
-    <color name="backgroundBottomBarGradientCenter">@color/white_60</color>
-    <color name="backgroundBottomBarGradientEnd">@color/transparent</color>
+    <color name="tertiary">#ff7d5260</color>
+    <color name="onTertiary">#FFFFFF</color>
+    <color name="tertiaryContainer">#ffffd8e4</color>
+    <color name="onTertiaryContainer">#ff31111d</color>
 
-    <color name="surface">#FFFFFF</color>
-    <color name="surfaceSecondary">#F2F3F4</color>
-    <color name="surfaceSecondaryVariant">#DBDEE6</color>
-
-    <color name="error">#B00020</color>
+    <color name="error">#ffb3261e</color>
     <color name="onError">#FFFFFF</color>
+    <color name="errorContainer">#fff9dedc</color>
+    <color name="onErrorContainer">#ff410e0b</color>
+
+    <color name="outline">#ff79747e</color>
+
+    <color name="background">#fffffbfe</color>
+    <color name="onBackground">#ff1c1b1f</color>
+
+    <color name="surface">#fffffbfe</color>
+    <color name="onSurface">#ff1c1b1f</color>
+    <color name="surfaceVariant">#ffe7e0ec</color>
+    <color name="onSurfaceVariant">#ff49454f</color>
+    <color name="surfaceInverse">#ff313033</color>
+    <color name="onSurfaceInverse">#fff4eff4</color>
 
     <color name="colorStatusBar">#4D000000</color>
     <color name="colorNavigationBar">#4D000000</color>
     <color name="colorStatusBarForModal">#4D000000</color>
     <color name="colorNavigationBarForModal">#4D000000</color>
 
-    <color name="symbol">#212121</color>
-    <color name="symbolInverse">#FFFFFF</color>
-    <color name="text">@color/symbol</color>
-    <color name="textInverse">@color/symbolInverse</color>
-    <color name="icon">@color/symbol</color>
-    <color name="iconInverse">@color/symbolInverse</color>
+    <color name="textPrimary">#ff1c1b1f</color>
+    <color name="textPrimaryInverse">#FFFFFF</color>
+    <color name="textSecondary">#9A1C1B1F</color>
+    <color name="textSecondaryInverse">#9AFFFFFF</color>
+    <color name="textTertiary">#651C1B1F</color>
+    <color name="textTertiaryInverse">#65FFFFFF</color>
+    <color name="icon">#ff1c1b1f</color>
+    <color name="iconInverse">#FFFFFF</color>
 
-    <color name="stroke">#E6E9EC</color>
-    <color name="unselected">#6D6D6D</color>
     <color name="shimmer">#DBDEE6</color>
-    <color name="divider">#F2F3F4</color>
-    <color name="disabled">#DBDEE6</color>
-    <color name="success">#388E3C</color>
+
+
+    <color name="backgroundBlurred">#ccfffbfe</color>
+    <color name="backgroundBottomBarGradientStart">@color/white</color>
+    <color name="backgroundBottomBarGradientCenter">@color/white_60</color>
+    <color name="backgroundBottomBarGradientEnd">@color/transparent</color>
 
 </resources>

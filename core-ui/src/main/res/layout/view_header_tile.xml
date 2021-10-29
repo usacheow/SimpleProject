@@ -6,7 +6,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/headerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +15,6 @@
         android:paddingHorizontal="@dimen/left_right_margin"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        android:textAppearance="?textAppearanceHeadline1"
+        android:textAppearance="?textAppearanceHeadlineLarge"
         tools:text="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.molecule.HeaderTileView>

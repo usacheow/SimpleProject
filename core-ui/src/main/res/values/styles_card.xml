@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ElevatedCardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardElevation">@dimen/elevation_16</item>
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <style name="FilledCardView" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surfaceVariant</item>
+        <item name="cardElevation">@dimen/elevation_0</item>
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <style name="OutlinedCardView" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardElevation">@dimen/elevation_0</item>
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+    </style>
+
+</resources>

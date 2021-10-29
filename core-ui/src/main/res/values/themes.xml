@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="AppThemeBridge">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/onPrimaryContainer</item>
 
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/onTertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
 
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
+        <item name="colorErrorContainer">@color/errorContainer</item>
+        <item name="colorOnErrorContainer">@color/onErrorContainer</item>
+
+        <item name="colorOutline">@color/outline</item>
 
         <item name="android:colorBackground">@color/background</item>
-        <item name="colorOnBackground">@color/symbol</item>
+        <item name="colorOnBackground">@color/onBackground</item>
 
-        <item name="elevationOverlayColor">@color/surface</item>
         <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/symbol</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/surfaceInverse</item>
+        <item name="colorOnSurfaceInverse">@color/onSurfaceInverse</item>
 
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:textColorPrimaryInverse">@color/textInverse</item>
-        <item name="android:textColorSecondary">@color/text</item>
-        <item name="android:textColorSecondaryInverse">@color/textInverse</item>
+        <item name="elevationOverlayEnabled">true</item>
+        <item name="elevationOverlayColor">@color/primary</item>
+
         <item name="iconTint">@color/icon</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorPrimaryInverse">@color/textPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorSecondaryInverse">@color/textSecondaryInverse</item>
+        <item name="android:textColorTertiary">@color/textTertiary</item>
+        <item name="android:textColorTertiaryInverse">@color/textTertiaryInverse</item>
+
+        <item name="textAppearanceDisplayLarge">@style/TextDL</item>
+        <item name="textAppearanceDisplayMedium">@style/TextDM</item>
+        <item name="textAppearanceDisplaySmall">@style/TextDS</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextHL</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextHM</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextHS</item>
+        <item name="textAppearanceTitleLarge">@style/TextTL</item>
+        <item name="textAppearanceTitleMedium">@style/TextTM</item>
+        <item name="textAppearanceTitleSmall">@style/TextTM</item>
+        <item name="textAppearanceBodyLarge">@style/TextBL</item>
+        <item name="textAppearanceBodyMedium">@style/TextBM</item>
+        <item name="textAppearanceBodySmall">@style/TextBS</item>
+        <item name="textAppearanceLabelLarge">@style/TextLL</item>
+        <item name="textAppearanceLabelMedium">@style/TextLM</item>
+        <item name="textAppearanceLabelSmall">@style/TextLS</item>
 
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
@@ -32,27 +68,20 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
-        <item name="textAppearanceHeadline1">@style/TextH1</item>
-        <item name="textAppearanceHeadline2">@style/TextH2</item>
-        <item name="textAppearanceHeadline3">@style/TextH3</item>
-        <item name="textAppearanceHeadline4">@style/TextH4</item>
-        <item name="textAppearanceHeadline5">@style/TextH5</item>
-        <item name="textAppearanceHeadline6">@style/TextH6</item>
-        <item name="textAppearanceSubtitle1">@style/TextSubtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextSubtitle2</item>
-        <item name="textAppearanceBody1">@style/TextBody1</item>
-        <item name="textAppearanceBody2">@style/TextBody2</item>
-        <item name="textAppearanceButton">@style/TextButton</item>
-        <item name="textAppearanceCaption">@style/TextCaption</item>
-        <item name="textAppearanceOverline">@style/TextOverline</item>
-
         <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
         <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>
         <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
+
+        <item name="appBarLayoutStyle">@style/SimpleAppBarLayout</item>
+        <item name="toolbarStyle">@style/SimpleToolbar</item>
+        <item name="toolbarSurfaceStyle">@style/SimpleToolbar</item>
+        <item name="materialCardViewFilledStyle">@style/FilledCardView</item>
+        <item name="materialCardViewElevatedStyle">@style/ElevatedCardView</item>
+        <item name="materialCardViewOutlinedStyle">@style/OutlinedCardView</item>
     </style>
 
     <style name="AppThemeSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/surfaceSecondary</item>
+        <item name="windowSplashScreenBackground">@color/surfaceVariant</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
         <item name="windowSplashScreenAnimationDuration">500</item>
 
@@ -62,51 +91,72 @@
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>
 
-    <style name="ModalDialogTheme" parent="ModalDialogThemeBridge">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    <style name="ModalDialogTheme" parent="Theme.Material3.DayNight.Dialog">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/onPrimaryContainer</item>
 
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/onTertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
 
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
+        <item name="colorErrorContainer">@color/errorContainer</item>
+        <item name="colorOnErrorContainer">@color/onErrorContainer</item>
+
+        <item name="colorOutline">@color/outline</item>
 
         <item name="android:colorBackground">@color/background</item>
-        <item name="colorOnBackground">@color/symbol</item>
+        <item name="colorOnBackground">@color/onBackground</item>
 
-        <item name="elevationOverlayColor">@color/surface</item>
         <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/symbol</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/surfaceInverse</item>
+        <item name="colorOnSurfaceInverse">@color/onSurfaceInverse</item>
 
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:textColorPrimaryInverse">@color/textInverse</item>
-        <item name="android:textColorSecondary">@color/text</item>
-        <item name="android:textColorSecondaryInverse">@color/textInverse</item>
+        <item name="elevationOverlayEnabled">true</item>
+        <item name="elevationOverlayColor">@color/primary</item>
+
         <item name="iconTint">@color/icon</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorPrimaryInverse">@color/textPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorSecondaryInverse">@color/textSecondaryInverse</item>
+        <item name="android:textColorTertiary">@color/textTertiary</item>
+        <item name="android:textColorTertiaryInverse">@color/textTertiaryInverse</item>
 
-        <item name="android:statusBarColor">@color/colorStatusBarForModal</item>
-        <item name="android:navigationBarColor">@color/colorNavigationBarForModal</item>
+        <item name="textAppearanceDisplayLarge">@style/TextDL</item>
+        <item name="textAppearanceDisplayMedium">@style/TextDM</item>
+        <item name="textAppearanceDisplaySmall">@style/TextDS</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextHL</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextHM</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextHS</item>
+        <item name="textAppearanceTitleLarge">@style/TextTL</item>
+        <item name="textAppearanceTitleMedium">@style/TextTM</item>
+        <item name="textAppearanceTitleSmall">@style/TextTM</item>
+        <item name="textAppearanceBodyLarge">@style/TextBL</item>
+        <item name="textAppearanceBodyMedium">@style/TextBM</item>
+        <item name="textAppearanceBodySmall">@style/TextBS</item>
+        <item name="textAppearanceLabelLarge">@style/TextLL</item>
+        <item name="textAppearanceLabelMedium">@style/TextLM</item>
+        <item name="textAppearanceLabelSmall">@style/TextLS</item>
+
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
 
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
-
-        <item name="fontFamily">@font/default_font_family</item>
-        <item name="textAppearanceHeadline1">@style/TextH1</item>
-        <item name="textAppearanceHeadline2">@style/TextH2</item>
-        <item name="textAppearanceHeadline3">@style/TextH3</item>
-        <item name="textAppearanceHeadline4">@style/TextH4</item>
-        <item name="textAppearanceHeadline5">@style/TextH5</item>
-        <item name="textAppearanceHeadline6">@style/TextH6</item>
-        <item name="textAppearanceSubtitle1">@style/TextSubtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextSubtitle2</item>
-        <item name="textAppearanceBody1">@style/TextBody1</item>
-        <item name="textAppearanceBody2">@style/TextBody2</item>
-        <item name="textAppearanceButton">@style/TextButton</item>
-        <item name="textAppearanceCaption">@style/TextCaption</item>
-        <item name="textAppearanceOverline">@style/TextOverline</item>
 
         <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
         <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>

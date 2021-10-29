@@ -27,13 +27,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/left_right_margin"
                     android:text="Simple"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/SimpleButton"
@@ -49,13 +49,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/left_right_margin"
                     android:text="Elevation"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/SimpleButtonElevation"
@@ -71,13 +71,35 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/left_right_margin"
+                    android:text="Tonal"
+                    android:textAppearance="?textAppearanceBodyLarge" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/SimpleButtonTonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/left_right_margin"
+                    android:text="Button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/left_right_margin"
                     android:text="Outlined"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/SimpleButtonOutlined"
@@ -93,13 +115,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/left_right_margin"
                     android:text="Text"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/SimpleButtonText"
@@ -115,13 +137,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingHorizontal="@dimen/left_right_margin"
                     android:text="Toggle"
-                    android:textAppearance="?textAppearanceBody1" />
+                    android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButtonToggleGroup
                     android:layout_width="wrap_content"

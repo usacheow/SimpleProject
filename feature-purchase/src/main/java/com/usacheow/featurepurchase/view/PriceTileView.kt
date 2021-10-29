@@ -38,7 +38,7 @@ class PriceTileView @JvmOverloads constructor(
             color(
                 when (model.isSelected) {
                     true -> CoreUiR.color.surface
-                    false -> CoreUiR.color.surfaceSecondaryVariant
+                    false -> CoreUiR.color.surfaceVariant
                 }
             )
         )

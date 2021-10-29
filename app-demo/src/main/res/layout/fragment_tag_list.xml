@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
                 android:text="Single selection mode"
-                android:textAppearance="?textAppearanceButton" />
+                android:textAppearance="?textAppearanceLabelLarge" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/radioListView"
@@ -36,14 +36,14 @@
                 android:clipToPadding="false"
                 android:paddingHorizontal="12dp" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="16dp"
                 android:text="Multiple selection mode"
-                android:textAppearance="?textAppearanceButton" />
+                android:textAppearance="?textAppearanceLabelLarge" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chipListView"

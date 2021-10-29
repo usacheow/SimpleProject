@@ -26,14 +26,14 @@
                 android:padding="8dp"
                 app:srcCompat="@drawable/ic_close" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/signInHeaderView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/left_right_margin"
                 android:layout_marginEnd="@dimen/left_right_margin"
                 android:text="@string/sms_code_header"
-                android:textAppearance="?textAppearanceHeadline5"
+                android:textAppearance="?textAppearanceHeadlineMedium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,13 +61,13 @@
                     tools:text="0000" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/smsCodeMessageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:padding="8dp"
-                android:textAppearance="?textAppearanceBody2"
+                android:textAppearance="?textAppearanceBodyMedium"
                 android:textColor="@color/error"
                 tools:text="Message" />
 
@@ -76,15 +76,15 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/smsCodeResendButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/left_right_margin"
                 android:background="?selectableItemBackground"
                 android:padding="8dp"
-                android:textAppearance="?textAppearanceBody2"
-                android:textColor="@color/colorPrimary"
+                android:textAppearance="?textAppearanceBodyMedium"
+                android:textColor="@color/primary"
                 tools:text="@string/sms_code_resend" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

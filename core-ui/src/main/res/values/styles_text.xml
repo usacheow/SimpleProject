@@ -1,106 +1,119 @@
 <resources>
 
-    <style name="TextH1" parent="TextAppearance.MaterialComponents.Headline1">
+    <style name="TextDL" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textSize">@dimen/text_57sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextDM" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:textSize">@dimen/text_45sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextDS" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:textSize">@dimen/text_36sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextHL" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/text_32sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextHM" parent="TextAppearance.Material3.HeadlineMedium">
         <item name="android:textSize">@dimen/text_28sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextH2" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:textSize">@dimen/text_24sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextH3" parent="TextAppearance.MaterialComponents.Headline3">
+    <style name="TextHS" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextH4" parent="TextAppearance.MaterialComponents.Headline4">
-        <item name="android:textSize">@dimen/text_20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0.025</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="android:textSize">@dimen/text_20sp</item>
+    <style name="TextTL" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_22sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextH6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textSize">@dimen/text_18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0.0075</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+    <style name="TextTM" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.009</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+    <style name="TextTS" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.007</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextBody1" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextBL" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:letterSpacing">0.03125</item>
+        <item name="android:letterSpacing">0.009</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextBody2" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="TextBM" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:letterSpacing">0.017</item>
+        <item name="android:letterSpacing">0.0178</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextButton" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textSize">@dimen/text_14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:letterSpacing">0.09</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextCaption" parent="TextAppearance.MaterialComponents.Caption">
+    <style name="TextBS" parent="TextAppearance.Material3.BodySmall">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextOverline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="android:textSize">@dimen/text_12sp</item>
-        <item name="android:textStyle">normal</item>
+    <style name="TextLL" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:letterSpacing">0.15</item>
+        <item name="android:letterSpacing">0.007</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextDigital" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextLM" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">@dimen/text_12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.0416</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextLS" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">@dimen/text_11sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.045</item>
+        <item name="fontFamily">@font/default_font_family</item>
+    </style>
+
+    <style name="TextDigital" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.015</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
-    <style name="TextNumPad" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextNumPad" parent="TextAppearance.AppCompat.Large">
         <item name="android:textSize">@dimen/text_36sp</item>
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/default_font_family</item>

@@ -13,7 +13,7 @@ object Libs {
     private const val insetVersion = "0.15.0"
     private const val activityVersion = "1.4.0-rc01"
     private const val fragmentVersion = "1.4.0-alpha10"
-    private const val materialVersion = "1.3.0"
+    private const val materialVersion = "1.5.0-alpha05"
     private const val cardViewVersion = "1.0.0"
     private const val viewPagerVersion = "1.0.0"
     private const val recyclerVersion = "1.3.0-alpha01"

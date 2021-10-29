@@ -7,5 +7,5 @@
         android:id="@+id/dividerBackgroundView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height_large"
-        android:background="@color/divider" />
+        android:background="@color/outline" />
 </com.usacheow.coreui.uikit.atom.DividerTileView>

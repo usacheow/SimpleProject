@@ -23,104 +23,118 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Text H1 Dark"
-                android:textAppearance="?textAppearanceHeadline1" />
+                android:text="Display Large"
+                android:textAppearance="?textAppearanceDisplayLarge" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Text H2 Dark"
-                android:textAppearance="?textAppearanceHeadline2" />
-
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H3 Dark"
-                android:textAppearance="?textAppearanceHeadline3" />
+                android:text="Display Medium"
+                android:textAppearance="?textAppearanceDisplayMedium" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text H4 Dark"
-                android:textAppearance="?textAppearanceHeadline4" />
+                android:text="Display Small"
+                android:textAppearance="?textAppearanceDisplaySmall" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Text H5 Dark"
-                android:textAppearance="?textAppearanceHeadline5" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Text H6 Dark"
-                android:textAppearance="?textAppearanceHeadline6" />
-
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Subtitle1 Dark"
-                android:textAppearance="?textAppearanceSubtitle1" />
+                android:text="Headline Large"
+                android:textAppearance="?textAppearanceHeadlineLarge" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Subtitle2 Dark"
-                android:textAppearance="?textAppearanceSubtitle2" />
+                android:text="Headline Medium"
+                android:textAppearance="?textAppearanceHeadlineMedium" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Text Body1 Dark"
-                android:textAppearance="?textAppearanceBody1" />
-
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Body2 Dark"
-                android:textAppearance="?textAppearanceBody2" />
+                android:text="Headline Small"
+                android:textAppearance="?textAppearanceHeadlineSmall" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Text Button Dark"
-                android:textAppearance="?textAppearanceButton" />
+                android:text="Title Large"
+                android:textAppearance="?textAppearanceTitleLarge" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Text Caption Dark"
-                android:textAppearance="?textAppearanceCaption" />
-
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Text Overline Dark"
-                android:textAppearance="?textAppearanceOverline" />
+                android:text="Title Medium"
+                android:textAppearance="?textAppearanceTitleMedium" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Title Small"
+                android:textAppearance="?textAppearanceTitleSmall" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Body Large"
+                android:textAppearance="?textAppearanceBodyLarge" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Body Medium"
+                android:textAppearance="?textAppearanceBodyMedium" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Body Small"
+                android:textAppearance="?textAppearanceBodySmall" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Label Large"
+                android:textAppearance="?textAppearanceLabelLarge" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Label Medium"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Label Small"
+                android:textAppearance="?textAppearanceLabelSmall" />
+
+            <com.google.android.material.textview.MaterialTextView
                 style="@style/TextDigital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Text Digital Dark" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 style="@style/TextNumPad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

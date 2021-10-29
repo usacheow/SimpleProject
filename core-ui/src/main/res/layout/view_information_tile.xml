@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="1"
-        android:textAppearance="?textAppearanceBody1"
+        android:textAppearance="?textAppearanceBodyLarge"
         tools:text="@tools:sample/full_names" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -43,7 +43,7 @@
         android:layout_marginStart="8dp"
         android:gravity="end"
         android:lines="1"
-        android:textAppearance="?textAppearanceBody1"
+        android:textAppearance="?textAppearanceBodyLarge"
         tools:text="@tools:sample/date/ddmmyy" />
 
     <androidx.constraintlayout.helper.widget.Flow
@@ -61,10 +61,10 @@
         android:id="@+id/additionalLeftView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:alpha="@dimen/text_alpha"
+        android:textColor="@color/textSecondary"
         android:ellipsize="end"
         android:lines="1"
-        android:textAppearance="?textAppearanceOverline"
+        android:textAppearance="?textAppearanceLabelSmall"
         tools:text="@tools:sample/cities" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -72,9 +72,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:alpha="@dimen/text_alpha"
+        android:textColor="@color/textSecondary"
         android:gravity="end"
         android:lines="1"
-        android:textAppearance="?textAppearanceOverline"
+        android:textAppearance="?textAppearanceLabelSmall"
         tools:text="@tools:sample/date/day_of_week" />
 </com.usacheow.coreui.uikit.molecule.InformationTileView>
