@@ -28,9 +28,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/loginInputLayout"
-                style="@style/SimpleInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?textInputStyle"
                 android:layout_marginTop="32dp"
                 app:hintEnabled="true"
                 app:startIconDrawable="@drawable/ic_user">
@@ -48,9 +46,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordInputLayout"
-                style="@style/SimpleInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?textInputStyle"
                 android:layout_marginTop="8dp"
                 app:endIconMode="password_toggle"
                 app:hintEnabled="true"
@@ -74,7 +70,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpButton"
-                style="@style/SimpleButton"
+                style="@style/SimpleButtonUnelevated"
                 android:text="@string/sign_in_button" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

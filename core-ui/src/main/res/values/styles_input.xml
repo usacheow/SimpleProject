@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SimpleInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+    <!--?textInputStyle-->
+    <!--?textInputOutlinedStyle-->
+    <style name="SimpleInputLayoutOutlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+    <!--?textInputStyle-->
+    <style name="SimpleInputLayoutFilled" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">56dp</item>

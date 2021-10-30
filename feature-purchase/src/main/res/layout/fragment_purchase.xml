@@ -13,10 +13,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/closeButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="start"
-            android:padding="12dp"
+            style="@style/SimpleButtonToolbar"
             app:srcCompat="@drawable/ic_close" />
 
         <androidx.viewpager2.widget.ViewPager2
@@ -34,8 +31,8 @@
             android:layout_gravity="center_horizontal"
             app:spi_dotSize="8dp"
             app:spi_dotSelectedSize="8dp"
-            app:spi_dotColor="@color/primaryContainer"
-            app:spi_dotSelectedColor="@color/primary" />
+            app:spi_dotColor="?colorPrimaryContainer"
+            app:spi_dotSelectedColor="?colorPrimary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/priceListView"
@@ -48,7 +45,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buyButton"
-            style="@style/SimpleButton"
+            style="@style/SimpleButtonUnelevated"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="4dp"

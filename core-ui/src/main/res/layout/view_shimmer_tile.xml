@@ -49,7 +49,7 @@
                 android:textAppearance="?textAppearanceBodyMedium" />
         </LinearLayout>
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <View
             android:id="@+id/rightIconView"
             android:layout_width="32dp"
             android:layout_height="32dp"

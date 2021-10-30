@@ -1,5 +1,6 @@
 <resources>
 
+    <!--?textAppearanceDisplayLarge-->
     <style name="TextDL" parent="TextAppearance.Material3.DisplayLarge">
         <item name="android:textSize">@dimen/text_57sp</item>
         <item name="android:textStyle">normal</item>
@@ -7,6 +8,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceDisplayMedium-->
     <style name="TextDM" parent="TextAppearance.Material3.DisplayMedium">
         <item name="android:textSize">@dimen/text_45sp</item>
         <item name="android:textStyle">normal</item>
@@ -14,6 +16,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceDisplaySmall-->
     <style name="TextDS" parent="TextAppearance.Material3.DisplaySmall">
         <item name="android:textSize">@dimen/text_36sp</item>
         <item name="android:textStyle">normal</item>
@@ -21,6 +24,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceHeadlineLarge-->
     <style name="TextHL" parent="TextAppearance.Material3.HeadlineLarge">
         <item name="android:textSize">@dimen/text_32sp</item>
         <item name="android:textStyle">normal</item>
@@ -28,6 +32,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceHeadlineMedium-->
     <style name="TextHM" parent="TextAppearance.Material3.HeadlineMedium">
         <item name="android:textSize">@dimen/text_28sp</item>
         <item name="android:textStyle">normal</item>
@@ -35,6 +40,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceHeadlineSmall-->
     <style name="TextHS" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
@@ -42,6 +48,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceTitleLarge-->
     <style name="TextTL" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textSize">@dimen/text_22sp</item>
         <item name="android:textStyle">normal</item>
@@ -49,6 +56,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceTitleMedium-->
     <style name="TextTM" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">bold</item>
@@ -56,6 +64,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceTitleSmall-->
     <style name="TextTS" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">bold</item>
@@ -63,6 +72,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceBodyLarge-->
     <style name="TextBL" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">normal</item>
@@ -70,6 +80,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceBodyMedium-->
     <style name="TextBM" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">normal</item>
@@ -77,6 +88,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceBodySmall-->
     <style name="TextBS" parent="TextAppearance.Material3.BodySmall">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
@@ -84,6 +96,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceLabelLarge-->
     <style name="TextLL" parent="TextAppearance.Material3.LabelLarge">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">bold</item>
@@ -92,6 +105,7 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceLabelMedium-->
     <style name="TextLM" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
@@ -99,23 +113,11 @@
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 
+    <!--?textAppearanceLabelSmall-->
     <style name="TextLS" parent="TextAppearance.Material3.LabelSmall">
         <item name="android:textSize">@dimen/text_11sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.045</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextDigital" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textSize">@dimen/text_24sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:letterSpacing">0.015</item>
-        <item name="fontFamily">@font/default_font_family</item>
-    </style>
-
-    <style name="TextNumPad" parent="TextAppearance.AppCompat.Large">
-        <item name="android:textSize">@dimen/text_36sp</item>
-        <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>
 

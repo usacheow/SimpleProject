@@ -24,13 +24,15 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_shimmer_line_on_surface"
+                android:background="@drawable/bg_shimmer_line"
+                android:backgroundTint="?colorOnSurface"
                 android:textAppearance="?textAppearanceBodyMedium" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_shimmer_line_on_surface"
+                android:background="@drawable/bg_shimmer_line"
+                android:backgroundTint="?colorOnSurface"
                 android:lines="2"
                 android:textAppearance="?textAppearanceBodyLarge" />
         </LinearLayout>

@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--?attr/appBarLayoutStyle-->
     <style name="SimpleAppBarLayout" parent="Widget.Material3.AppBarLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="liftOnScroll">true</item>
     </style>
 
-<!--    <style name="SimpleCollapsingToolbar" parent="Widget.Design.CollapsingToolbar">-->
-<!--        <item name="android:layout_width">match_parent</item>-->
-<!--        <item name="android:layout_height">wrap_content</item>-->
-<!--        <item name="collapsedTitleGravity">start</item>-->
-<!--        <item name="expandedTitleGravity">bottom</item>-->
-<!--        <item name="collapsedTitleTextAppearance">@style/TextToolbarSmall</item>-->
-<!--        <item name="expandedTitleTextAppearance">@style/TextToolbarBig</item>-->
-<!--        <item name="expandedTitleMarginStart">20dp</item>-->
-<!--        <item name="expandedTitleMarginBottom">20dp</item>-->
-<!--        <item name="contentScrim">@color/transparent</item>-->
-<!--        <item name="statusBarScrim">@color/transparent</item>-->
-<!--        <item name="scrimAnimationDuration">250</item>-->
-<!--    </style>-->
-
+    <!--?attr/toolbarStyle-->
+    <!--?attr/toolbarSurfaceStyle-->
     <style name="SimpleToolbar" parent="Widget.Material3.Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

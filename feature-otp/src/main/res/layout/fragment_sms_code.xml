@@ -16,14 +16,10 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/smsCodeCloseButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                style="@style/SimpleButtonToolbar"
                 android:layout_gravity="start"
-                android:layout_margin="8dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="8dp"
                 app:srcCompat="@drawable/ic_close" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -43,7 +39,7 @@
                 android:layout_weight="1" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/SimpleInputLayout"
+                style="@style/SimpleInputLayoutOutlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false">
@@ -57,7 +53,7 @@
                     android:gravity="center"
                     android:letterSpacing="0.3"
                     android:maxLength="4"
-                    android:textAppearance="@style/TextDigital"
+                    android:textAppearance="?textAppearanceHeadlineSmall"
                     tools:text="0000" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +64,7 @@
                 android:gravity="center_horizontal"
                 android:padding="8dp"
                 android:textAppearance="?textAppearanceBodyMedium"
-                android:textColor="@color/error"
+                android:textColor="?colorError"
                 tools:text="Message" />
 
             <com.usacheow.coreui.uikit.organism.NumPadView
@@ -76,15 +72,12 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/smsCodeResendButton"
+                style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/left_right_margin"
-                android:background="?selectableItemBackground"
-                android:padding="8dp"
-                android:textAppearance="?textAppearanceBodyMedium"
-                android:textColor="@color/primary"
                 tools:text="@string/sms_code_resend" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

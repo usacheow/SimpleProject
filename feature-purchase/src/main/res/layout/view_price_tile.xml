@@ -7,58 +7,53 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
+        style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:strokeColor="@color/primary"
-        app:cardBackgroundColor="@color/surfaceVariant"
-        app:cardCornerRadius="@dimen/radius_8"
-        app:cardElevation="@dimen/elevation_0">
+        app:strokeColor="?colorPrimary">
 
         <FrameLayout
             android:id="@+id/clickableView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:minWidth="152dp"
-            android:maxWidth="200dp"
             android:background="?selectableItemBackground"
             android:orientation="vertical">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/discountLayout"
+                style="?attr/materialCardViewFilledStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/primary"
                 android:layout_gravity="end"
-                app:shapeAppearance="@style/DiscountShapeAppearance">
+                app:cardBackgroundColor="?colorPrimary">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/discountView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:textColor="@color/onPrimary"
-                    android:background="@color/primary"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
                     android:textAppearance="?textAppearanceLabelMedium"
+                    android:textColor="?colorOnPrimary"
                     tools:text="Скидка 56%" />
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="20dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/periodView"
@@ -66,9 +61,9 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:textColor="@color/textSecondary"
                         android:textAppearance="?textAppearanceTitleLarge"
-                        tools:text="799₽ / год" />
+                        android:textColor="?android:textColorSecondary"
+                        tools:text="799₽" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/priceView"
@@ -77,7 +72,7 @@
                         android:ellipsize="end"
                         android:lines="1"
                         android:textAppearance="?textAppearanceTitleMedium"
-                        tools:text="66,58₽ / месяц" />
+                        tools:text="Подписка на год" />
                 </LinearLayout>
 
                 <com.google.android.material.textview.MaterialTextView

@@ -27,7 +27,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneInputLayout"
-                style="@style/SimpleInputLayout"
+                style="?textInputStyle"
                 android:layout_marginTop="24dp"
                 android:hint="@string/sign_in_by_phone_hint"
                 app:endIconMode="clear_text">
@@ -49,7 +49,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signInButton"
-                style="@style/SimpleButton"
+                style="@style/SimpleButtonUnelevated"
                 android:text="@string/sign_in_by_phone_button" />
 
             <com.google.android.material.button.MaterialButton

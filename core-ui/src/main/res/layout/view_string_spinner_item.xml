@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:lines="1"
-        android:textAllCaps="true"
-        android:textAppearance="?textAppearanceLabelSmall"
+        android:textAppearance="?textAppearanceLabelMedium"
         android:visibility="gone"
         tools:text="@tools:sample/lorem"
         tools:visibility="visible" />

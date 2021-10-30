@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="ImageShapeCircle" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--?shapeAppearanceSmallComponent-->
     <style name="SmallComponentShape" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_small</item>
     </style>
 
+    <!--?shapeAppearanceMediumComponent-->
     <style name="MediumComponentShape" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_medium</item>
     </style>
 
+    <!--?shapeAppearanceLargeComponent-->
     <style name="LargeComponentShape" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_large</item>
-    </style>
-
-    <style name="DiscountShapeAppearance">
-        <item name="cornerSizeBottomLeft">@dimen/radius_8</item>
-        <item name="cornerSizeTopRight">@dimen/radius_8</item>
     </style>
 
 </resources>

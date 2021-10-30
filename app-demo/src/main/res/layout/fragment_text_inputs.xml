@@ -31,7 +31,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewPasswordInputLayout"
-                style="@style/SimpleInputLayout"
+                style="@style/SimpleInputLayoutOutlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"
@@ -59,7 +59,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewAmountInputLayout"
-                style="@style/SimpleInputLayout"
+                style="@style/SimpleInputLayoutOutlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"
@@ -86,7 +86,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewPhoneNumberInputLayout"
-                style="@style/SimpleInputLayout"
+                style="@style/SimpleInputLayoutOutlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"

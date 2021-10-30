@@ -6,7 +6,7 @@
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryContainer">@color/primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
-        <item name="colorPrimaryInverse">@color/onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/primaryInverse</item>
 
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/onSecondary</item>
@@ -73,11 +73,21 @@
         <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
 
         <item name="appBarLayoutStyle">@style/SimpleAppBarLayout</item>
+
         <item name="toolbarStyle">@style/SimpleToolbar</item>
         <item name="toolbarSurfaceStyle">@style/SimpleToolbar</item>
+
         <item name="materialCardViewFilledStyle">@style/FilledCardView</item>
         <item name="materialCardViewElevatedStyle">@style/ElevatedCardView</item>
         <item name="materialCardViewOutlinedStyle">@style/OutlinedCardView</item>
+
+        <item name="materialButtonOutlinedStyle">@style/SimpleButtonOutlined</item>
+        <item name="materialButtonStyle">@style/SimpleButtonElevation</item>
+        <item name="borderlessButtonStyle">@style/SimpleButtonText</item>
+
+        <item name="textInputStyle">@style/SimpleInputLayoutOutlined</item>
+        <item name="textInputOutlinedStyle">@style/SimpleInputLayoutOutlined</item>
+        <item name="textInputFilledStyle">@style/SimpleInputLayoutFilled</item>
     </style>
 
     <style name="AppThemeSplash" parent="Theme.SplashScreen">
@@ -158,9 +168,18 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/SmallComponentShape</item>
-        <item name="shapeAppearanceMediumComponent">@style/MediumComponentShape</item>
-        <item name="shapeAppearanceLargeComponent">@style/LargeComponentShape</item>
+        <item name="appBarLayoutStyle">@style/SimpleAppBarLayout</item>
+
+        <item name="toolbarStyle">@style/SimpleToolbar</item>
+        <item name="toolbarSurfaceStyle">@style/SimpleToolbar</item>
+
+        <item name="materialCardViewFilledStyle">@style/FilledCardView</item>
+        <item name="materialCardViewElevatedStyle">@style/ElevatedCardView</item>
+        <item name="materialCardViewOutlinedStyle">@style/OutlinedCardView</item>
+
+        <item name="materialButtonOutlinedStyle">@style/SimpleButtonOutlined</item>
+        <item name="materialButtonStyle">@style/SimpleButtonElevation</item>
+        <item name="borderlessButtonStyle">@style/SimpleButtonText</item>
 
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>

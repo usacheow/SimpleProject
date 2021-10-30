@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="52dp"
-        android:textAppearance="?textAppearanceHeadlineSmall"
+        android:textAppearance="?textAppearanceTitleLarge"
         tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.textview.MaterialTextView

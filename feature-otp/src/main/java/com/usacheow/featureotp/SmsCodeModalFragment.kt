@@ -46,7 +46,7 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
         }
         viewModel.isResendButtonState.observe(viewLifecycleOwner) {
             binding.smsCodeResendButton.text = it.text
-            binding.smsCodeResendButton.setEnabledTextButton(it.isEnable)
+            binding.smsCodeResendButton.isEnabled = it.isEnable
         }
         viewModel.updateCodeStateAction.observe(viewLifecycleOwner) {
             when (it) {
@@ -66,14 +66,5 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
                 is OtpFeatureConnector.Effect.Error -> binding.smsCodeMessageView.populate(it.message)
             }
         }
-    }
-
-    private fun TextView.setEnabledTextButton(isEnabled: Boolean) {
-        this.isEnabled = isEnabled
-        val colorRes = when (isEnabled) {
-            true -> CoreUiR.color.primary
-            false -> CoreUiR.color.textTertiary
-        }
-        setTextColor(res.getColor(colorRes))
     }
 }

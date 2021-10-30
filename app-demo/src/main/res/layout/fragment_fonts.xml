@@ -126,20 +126,6 @@
                 android:layout_marginTop="8dp"
                 android:text="Label Small"
                 android:textAppearance="?textAppearanceLabelSmall" />
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/TextDigital"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Text Digital Dark" />
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/TextNumPad"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Text Num Pad Dark" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

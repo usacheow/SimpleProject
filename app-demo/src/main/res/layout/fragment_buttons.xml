@@ -36,7 +36,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButton"
+                    style="@style/SimpleButtonUnelevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"

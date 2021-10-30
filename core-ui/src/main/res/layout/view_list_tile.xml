@@ -9,13 +9,13 @@
     android:orientation="horizontal"
     android:padding="@dimen/left_right_margin">
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/leftIconView"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="@dimen/left_right_margin"
         android:scaleType="centerCrop"
-        app:riv_corner_radius="16dp"
+        app:shapeAppearance="@style/ImageShapeCircle"
         tools:src="@tools:sample/avatars"/>
 
     <LinearLayout
@@ -29,7 +29,7 @@
             android:id="@+id/topDescriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textSecondary"
+            android:textColor="?android:textColorSecondary"
             android:ellipsize="end"
             android:lines="1"
             android:textAppearance="?textAppearanceBodyMedium"
@@ -49,14 +49,14 @@
             android:id="@+id/bottomDescriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textSecondary"
+            android:textColor="?android:textColorSecondary"
             android:ellipsize="end"
             android:lines="1"
             android:textAppearance="?textAppearanceBodyMedium"
             tools:text="Description" />
     </LinearLayout>
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/rightIconView"
         android:layout_width="32dp"
         android:layout_height="32dp"

@@ -77,7 +77,7 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
         (percent * (Resources.getSystem().displayMetrics.heightPixels - 0.toPx)).toInt()
 
     fun setExpandOffset(heightPx: Int) = with(bottomSheetBehavior) {
-        expandedOffset = heightPx - cornerRadiusPx.toInt()
+        expandedOffset = heightPx
     }
 
     fun setExpandState() = with(bottomSheetBehavior) {

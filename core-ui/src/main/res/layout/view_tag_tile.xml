@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView"
+    style="?attr/materialCardViewFilledStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="@dimen/radius_small"
-    app:cardElevation="@dimen/elevation_0"
-    tools:cardBackgroundColor="@color/surface">
+    tools:cardBackgroundColor="?colorSurface">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/nameView"

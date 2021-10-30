@@ -50,7 +50,6 @@
 
     <color name="shimmer">#DBDEE6</color>
 
-
     <color name="backgroundBlurred">#ccfffbfe</color>
     <color name="backgroundBottomBarGradientStart">@color/white</color>
     <color name="backgroundBottomBarGradientCenter">@color/white_60</color>

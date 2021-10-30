@@ -17,15 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/pinCodeForgotButton"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="?selectableItemBackground"
-            android:padding="8dp"
-            android:text="@string/pin_view_code_forgot"
-            android:textAppearance="?textAppearanceLabelLarge"
-            android:textColor="@color/primary" />
+            android:text="@string/pin_view_code_forgot" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

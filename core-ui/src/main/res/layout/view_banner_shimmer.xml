@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="48dp"
                 android:layout_marginBottom="4dp"
-                android:background="@drawable/bg_shimmer_line_on_surface_variant"
+                android:background="@drawable/bg_shimmer_line"
+                android:backgroundTint="?colorOnSurfaceVariant"
                 android:lines="2"
                 android:textAppearance="?textAppearanceHeadlineSmall" />
 
@@ -32,7 +33,8 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="end"
-                android:background="@drawable/bg_shimmer_line_on_surface_variant" />
+                android:background="@drawable/bg_shimmer_line"
+                android:backgroundTint="?colorOnSurfaceVariant" />
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 </com.google.android.material.card.MaterialCardView>

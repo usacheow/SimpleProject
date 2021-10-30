@@ -4,13 +4,13 @@
     android:id="@+id/progressLayout"
     android:layout_width="match_parent"
     android:layout_height="16dp"
+    android:background="@drawable/bg_progress_tile"
     tools:weightSum="20">
 
     <View
         android:id="@+id/progressView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_progress_tile"
-        android:backgroundTint="@color/primary"
+        android:background="@drawable/bg_on_progress_tile"
         tools:layout_weight="18" />
 </androidx.appcompat.widget.LinearLayoutCompat>
