@@ -16,10 +16,6 @@ class ButtonsFragment : SimpleFragment<FragmentButtonsBinding>() {
         viewBindingProvider = FragmentButtonsBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = ButtonsFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.viewsScrollView.updatePadding(bottom = insets.getBottomInset())

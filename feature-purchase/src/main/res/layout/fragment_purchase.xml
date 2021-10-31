@@ -1,54 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <include
+        android:id="@+id/header"
+        layout="@layout/simple_app_bar_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/closeButton"
-            style="@style/SimpleButtonToolbar"
-            app:srcCompat="@drawable/ic_close" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/advantagesListView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:paddingHorizontal="20dp"
-            android:clipToPadding="false" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
-            android:id="@+id/indicatorView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:layout_gravity="center_horizontal"
-            app:spi_dotSize="8dp"
-            app:spi_dotSelectedSize="8dp"
-            app:spi_dotColor="?colorPrimaryContainer"
-            app:spi_dotSelectedColor="?colorPrimary" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/advantagesListView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:paddingHorizontal="20dp"
+                android:clipToPadding="false" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/priceListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="28dp"
-            android:clipToPadding="false"
-            tools:itemCount="2"
-            tools:listitem="@layout/view_price_tile" />
+            <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                android:id="@+id/indicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:layout_gravity="center_horizontal"
+                app:spi_dotSize="8dp"
+                app:spi_dotSelectedSize="8dp"
+                app:spi_dotColor="?colorPrimaryContainer"
+                app:spi_dotSelectedColor="?colorPrimary" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buyButton"
-            style="@style/SimpleButtonUnelevated"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="4dp"
-            tools:text="Buy" />
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/priceListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="28dp"
+                android:clipToPadding="false"
+                tools:itemCount="2"
+                tools:listitem="@layout/view_price_tile" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buyButton"
+                style="@style/SimpleButtonUnelevated"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="4dp"
+                tools:text="Buy" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

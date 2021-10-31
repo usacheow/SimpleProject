@@ -21,6 +21,7 @@
 
     <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
         android:id="@+id/bottomSheetLayout"
+        style="?attr/bottomSheetStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="@dimen/elevation_4"

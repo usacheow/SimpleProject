@@ -16,10 +16,6 @@ class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
         viewBindingProvider = FragmentFontsBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = FontsFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.fontsListView.updatePadding(bottom = insets.getBottomInset())

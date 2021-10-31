@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppThemeSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/surfaceVariant</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/onPrimary</item>
-        <item name="colorPrimaryContainer">@color/primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
-        <item name="colorPrimaryInverse">@color/primaryInverse</item>
+<!--        <item name="colorPrimary">@color/primary</item>-->
+<!--        <item name="colorOnPrimary">@color/onPrimary</item>-->
+<!--        <item name="colorPrimaryContainer">@color/primaryContainer</item>-->
+<!--        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>-->
+<!--        <item name="colorPrimaryInverse">@color/primaryInverse</item>-->
 
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorOnSecondary">@color/onSecondary</item>
-        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+<!--        <item name="colorSecondary">@color/secondary</item>-->
+<!--        <item name="colorOnSecondary">@color/onSecondary</item>-->
+<!--        <item name="colorSecondaryContainer">@color/secondaryContainer</item>-->
+<!--        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>-->
 
-        <item name="colorTertiary">@color/tertiary</item>
-        <item name="colorOnTertiary">@color/onTertiary</item>
-        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
-        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
+<!--        <item name="colorTertiary">@color/tertiary</item>-->
+<!--        <item name="colorOnTertiary">@color/onTertiary</item>-->
+<!--        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>-->
+<!--        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>-->
 
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
@@ -75,7 +86,7 @@
         <item name="appBarLayoutStyle">@style/SimpleAppBarLayout</item>
 
         <item name="toolbarStyle">@style/SimpleToolbar</item>
-        <item name="toolbarSurfaceStyle">@style/SimpleToolbar</item>
+        <item name="toolbarSurfaceStyle">@style/SimpleToolbarSurface</item>
 
         <item name="materialCardViewFilledStyle">@style/FilledCardView</item>
         <item name="materialCardViewElevatedStyle">@style/ElevatedCardView</item>
@@ -88,104 +99,6 @@
         <item name="textInputStyle">@style/SimpleInputLayoutOutlined</item>
         <item name="textInputOutlinedStyle">@style/SimpleInputLayoutOutlined</item>
         <item name="textInputFilledStyle">@style/SimpleInputLayoutFilled</item>
-    </style>
-
-    <style name="AppThemeSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/surfaceVariant</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="windowSplashScreenAnimationDuration">500</item>
-
-        <item name="postSplashScreenTheme">@style/AppTheme</item>
-
-        <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
-    </style>
-
-    <style name="ModalDialogTheme" parent="Theme.Material3.DayNight.Dialog">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/onPrimary</item>
-        <item name="colorPrimaryContainer">@color/primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
-        <item name="colorPrimaryInverse">@color/onPrimaryContainer</item>
-
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorOnSecondary">@color/onSecondary</item>
-        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
-
-        <item name="colorTertiary">@color/tertiary</item>
-        <item name="colorOnTertiary">@color/onTertiary</item>
-        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
-        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
-
-        <item name="colorError">@color/error</item>
-        <item name="colorOnError">@color/onError</item>
-        <item name="colorErrorContainer">@color/errorContainer</item>
-        <item name="colorOnErrorContainer">@color/onErrorContainer</item>
-
-        <item name="colorOutline">@color/outline</item>
-
-        <item name="android:colorBackground">@color/background</item>
-        <item name="colorOnBackground">@color/onBackground</item>
-
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/onSurface</item>
-        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
-        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
-        <item name="colorSurfaceInverse">@color/surfaceInverse</item>
-        <item name="colorOnSurfaceInverse">@color/onSurfaceInverse</item>
-
-        <item name="elevationOverlayEnabled">true</item>
-        <item name="elevationOverlayColor">@color/primary</item>
-
-        <item name="iconTint">@color/icon</item>
-        <item name="android:textColorPrimary">@color/textPrimary</item>
-        <item name="android:textColorPrimaryInverse">@color/textPrimaryInverse</item>
-        <item name="android:textColorSecondary">@color/textSecondary</item>
-        <item name="android:textColorSecondaryInverse">@color/textSecondaryInverse</item>
-        <item name="android:textColorTertiary">@color/textTertiary</item>
-        <item name="android:textColorTertiaryInverse">@color/textTertiaryInverse</item>
-
-        <item name="textAppearanceDisplayLarge">@style/TextDL</item>
-        <item name="textAppearanceDisplayMedium">@style/TextDM</item>
-        <item name="textAppearanceDisplaySmall">@style/TextDS</item>
-        <item name="textAppearanceHeadlineLarge">@style/TextHL</item>
-        <item name="textAppearanceHeadlineMedium">@style/TextHM</item>
-        <item name="textAppearanceHeadlineSmall">@style/TextHS</item>
-        <item name="textAppearanceTitleLarge">@style/TextTL</item>
-        <item name="textAppearanceTitleMedium">@style/TextTM</item>
-        <item name="textAppearanceTitleSmall">@style/TextTM</item>
-        <item name="textAppearanceBodyLarge">@style/TextBL</item>
-        <item name="textAppearanceBodyMedium">@style/TextBM</item>
-        <item name="textAppearanceBodySmall">@style/TextBS</item>
-        <item name="textAppearanceLabelLarge">@style/TextLL</item>
-        <item name="textAppearanceLabelMedium">@style/TextLM</item>
-        <item name="textAppearanceLabelSmall">@style/TextLS</item>
-
-        <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
-
-        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
-        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
-
-        <item name="appBarLayoutStyle">@style/SimpleAppBarLayout</item>
-
-        <item name="toolbarStyle">@style/SimpleToolbar</item>
-        <item name="toolbarSurfaceStyle">@style/SimpleToolbar</item>
-
-        <item name="materialCardViewFilledStyle">@style/FilledCardView</item>
-        <item name="materialCardViewElevatedStyle">@style/ElevatedCardView</item>
-        <item name="materialCardViewOutlinedStyle">@style/OutlinedCardView</item>
-
-        <item name="materialButtonOutlinedStyle">@style/SimpleButtonOutlined</item>
-        <item name="materialButtonStyle">@style/SimpleButtonElevation</item>
-        <item name="borderlessButtonStyle">@style/SimpleButtonText</item>
-
-        <item name="android:windowBackground">@color/background</item>
-        <item name="android:windowEnterAnimation">@anim/slide_up</item>
-        <item name="android:windowExitAnimation">@anim/slide_down</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowNoTitle">true</item>
     </style>
 
 </resources>

@@ -20,10 +20,6 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
         viewBindingProvider = FragmentTextInputsBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = TextInputsFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.viewsScrollView.updatePadding(bottom = insets.getBottomInset(needIme = true))

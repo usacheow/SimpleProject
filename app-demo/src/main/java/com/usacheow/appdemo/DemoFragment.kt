@@ -52,10 +52,6 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         ))
     }
 
-    companion object {
-        fun newInstance() = DemoFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.toolbar.post {
             binding.bottomSheetLayout.setExpandOffset(binding.header.toolbar.height + insets.getTopInset())
@@ -142,20 +138,20 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("2. Bottom Dialog"),
+                    value = TextSource.Simple("2. Modal Fragment"),
+                    clickListener = { router.fromDemoToExampleModalScreen() },
+                ),
+                BadgeTileItem(
+                    needAdaptWidth = false,
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("3. Bottom Dialog"),
                     clickListener = { router.fromDemoToExampleBottomDialogScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("3. Bottom sheet"),
+                    value = TextSource.Simple("4. Bottom sheet"),
                     clickListener = { showOrHideBottomSheet() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("4. Modal Fragment"),
-                    clickListener = { router.fromDemoToExampleModalScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,

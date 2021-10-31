@@ -20,10 +20,6 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
         viewBindingProvider = FragmentErrorMessageBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = ErrorMessageFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.viewsScrollView.updatePadding(bottom = insets.getBottomInset())

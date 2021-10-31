@@ -22,10 +22,6 @@ class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
         viewBindingProvider = FragmentListBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = ListTilesFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())

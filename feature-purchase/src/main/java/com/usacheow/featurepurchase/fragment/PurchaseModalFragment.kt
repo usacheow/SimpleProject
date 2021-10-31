@@ -1,6 +1,8 @@
 package com.usacheow.featurepurchase.fragment
 
 import android.os.Bundle
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.example.featurepurchase.R as FeatureR
 import com.usacheow.coreui.R as CoreUiR
@@ -11,12 +13,16 @@ import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreui.adapter.SingleSelectionViewStatesAdapter
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleModalFragment
+import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.getBottomInset
+import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.featurepurchase.view.AdvantageTileItem
 import com.usacheow.featurepurchase.viewmodel.PurchaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import androidx.core.view.updatePadding
 
 @AndroidEntryPoint
 class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
@@ -48,8 +54,16 @@ class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {
         )
     )
 
+    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
+        binding.header.root.applyInsets(insets.getTopInset())
+        binding.scrollView.updatePadding(bottom = insets.getBottomInset())
+        return insets
+    }
+
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.closeButton.doOnClick { dismiss() }
+        binding.header.root.apply {
+            setNavigationAction(CoreUiR.drawable.ic_close) { dismiss() }
+        }
 
         binding.advantagesListView.adapter = advantagesAdapter
         binding.indicatorView.attachToPager(binding.advantagesListView)

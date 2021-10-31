@@ -14,8 +14,4 @@ class ExampleBottomDialogFragment : SimpleBottomSheetDialogFragment<DialogExampl
         startStatePercent = BottomDialogHeight.QUARTER_SIZE,
         viewBindingProvider = DialogExampleBottomBinding::inflate,
     )
-
-    companion object {
-        fun newInstance() = ExampleBottomDialogFragment()
-    }
 }

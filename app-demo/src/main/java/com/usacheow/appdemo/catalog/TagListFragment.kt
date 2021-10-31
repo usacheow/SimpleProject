@@ -21,10 +21,6 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
         viewBindingProvider = FragmentTagListBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = TagListFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())

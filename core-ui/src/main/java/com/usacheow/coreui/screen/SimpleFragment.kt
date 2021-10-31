@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
@@ -14,10 +13,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
-import com.usacheow.coreui.screen.base.FragmentViewBindingHolder
-import com.usacheow.coreui.screen.base.ViewBindingHolder
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
+import com.usacheow.coreui.screen.base.FragmentViewBindingHolder
 import com.usacheow.coreui.screen.base.SimpleLifecycle
+import com.usacheow.coreui.screen.base.ViewBindingHolder
+import com.usacheow.coreui.uikit.helper.createWindowInsetsControllerCompat
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import com.usacheow.coreui.uikit.helper.isNightMode
 import javax.inject.Inject
@@ -50,16 +50,17 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
         super.onStop()
     }
 
+    @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         container ?: return null
         saveBinding(defaultParams.viewBindingProvider(inflater, container, false))
 
-        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
-        windowInsetsController = WindowCompat.getInsetsController(requireActivity().window, binding.root).apply {
-            val needWhiteIcons = isNightMode() || defaultParams.needWhiteAllIcons
-            this?.isAppearanceLightStatusBars = !needWhiteIcons
-            this?.isAppearanceLightNavigationBars = !needWhiteIcons
-        }
+        windowInsetsController = createWindowInsetsControllerCompat(
+            requireActivity().window,
+            binding.root,
+            isNightMode() || defaultParams.needWhiteStatusIcons,
+            isNightMode() || defaultParams.needWhiteNavigationIcons,
+        )
 
         return binding.root
     }
@@ -67,7 +68,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
+        view.doOnApplyWindowInsets(::onApplyWindowInsets)
         setupViews(savedInstanceState)
         subscribe()
     }

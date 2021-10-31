@@ -16,10 +16,6 @@ class NumPadFragment : SimpleFragment<FragmentNumPadBinding>() {
         viewBindingProvider = FragmentNumPadBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = NumPadFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.numPadView.updatePadding(bottom = insets.getBottomInset())

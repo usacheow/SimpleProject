@@ -23,10 +23,6 @@ class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
         viewBindingProvider = FragmentListBinding::inflate,
     )
 
-    companion object {
-        fun newInstance() = ActionTilesFragment()
-    }
-
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.root.applyInsets(insets.getTopInset())
         binding.widgetsListView.updatePadding(bottom = insets.getBottomInset())
