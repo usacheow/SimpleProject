@@ -51,8 +51,8 @@ class TagTileView
 
 data class TagTileItem(
     val name: TextSource,
-    val unselectedColor: TagColor = TagColor(CoreUiR.color.textPrimary, CoreUiR.color.surface),
-    val selectedColor: TagColor = TagColor(CoreUiR.color.textPrimaryInverse, CoreUiR.color.surfaceVariant),
+    val unselectedColor: TagColor = TagColor(CoreUiR.color.onSurface, CoreUiR.color.surface),
+    val selectedColor: TagColor = TagColor(CoreUiR.color.onSurfaceVariant, CoreUiR.color.surfaceVariant),
     val selectListener: () -> Unit,
 ) : TagViewState(CoreUiR.layout.view_tag_tile)
 

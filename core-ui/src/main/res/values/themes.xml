@@ -13,21 +13,21 @@
     </style>
 
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-<!--        <item name="colorPrimary">@color/primary</item>-->
-<!--        <item name="colorOnPrimary">@color/onPrimary</item>-->
-<!--        <item name="colorPrimaryContainer">@color/primaryContainer</item>-->
-<!--        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>-->
-<!--        <item name="colorPrimaryInverse">@color/primaryInverse</item>-->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/primaryInverse</item>
 
-<!--        <item name="colorSecondary">@color/secondary</item>-->
-<!--        <item name="colorOnSecondary">@color/onSecondary</item>-->
-<!--        <item name="colorSecondaryContainer">@color/secondaryContainer</item>-->
-<!--        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>-->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
 
-<!--        <item name="colorTertiary">@color/tertiary</item>-->
-<!--        <item name="colorOnTertiary">@color/onTertiary</item>-->
-<!--        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>-->
-<!--        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>-->
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/onTertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
 
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
