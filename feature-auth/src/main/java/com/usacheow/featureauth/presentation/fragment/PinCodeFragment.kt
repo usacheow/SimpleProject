@@ -8,6 +8,7 @@ import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.helper.biometric.BiometricEnterManager
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
@@ -32,7 +33,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     private val viewModel by viewModels<PinCodeViewModel>()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.pinCodeRootView.updatePadding(
+        binding.pinCodeRootView.applyInsets(
             top = insets.getTopInset() + padding.top,
             bottom = insets.getBottomInset() + padding.bottom,
         )

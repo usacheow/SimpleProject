@@ -13,6 +13,7 @@ import com.usacheow.coreui.uikit.helper.doOnActionClick
 import com.usacheow.coreui.uikit.helper.onTextChanged
 import com.usacheow.coreui.uikit.helper.updateMargins
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
@@ -45,7 +46,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
 
         binding.signUpButton.isVisible = !insets.isImeVisible()
         binding.headerView.updateMargins(MarginTop(topMargin))
-        binding.scrollView.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
+        binding.scrollView.applyInsets(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
 
         return insets
     }
@@ -81,7 +82,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
     }
 
     override fun subscribe() {
-        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.root.isVisible = it }
+        viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.isVisible = it }
         viewModel.errorState.observe(viewLifecycleOwner) {
             // todo: implement
         }

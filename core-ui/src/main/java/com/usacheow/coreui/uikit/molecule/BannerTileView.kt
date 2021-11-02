@@ -12,12 +12,10 @@ import com.usacheow.coreui.databinding.ViewBannerTileBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 
-class BannerTileView
-@JvmOverloads constructor(
+class BannerTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MaterialCardView(context, attrs, defStyleAttr), Populatable<BannerTileItem> {
+) : MaterialCardView(context, attrs), Populatable<BannerTileItem> {
 
     private val binding by lazy { ViewBannerTileBinding.bind(this) }
 

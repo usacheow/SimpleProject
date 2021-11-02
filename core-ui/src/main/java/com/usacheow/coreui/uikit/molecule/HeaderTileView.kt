@@ -13,8 +13,7 @@ import com.usacheow.coreui.uikit.helper.populate
 class HeaderTileView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : LinearLayout(context, attributeSet, defStyleAttr), Populatable<HeaderTileItem> {
+) : LinearLayout(context, attributeSet), Populatable<HeaderTileItem> {
 
     private val binding by lazy { ViewHeaderTileBinding.bind(this) }
 

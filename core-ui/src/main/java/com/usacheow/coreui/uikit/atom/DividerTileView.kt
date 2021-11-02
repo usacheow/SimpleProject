@@ -16,12 +16,10 @@ import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.dimen
 import com.usacheow.coreui.uikit.helper.resize
 
-class DividerTileView
-@JvmOverloads constructor(
+class DividerTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr), Populatable<DividerTileItem> {
+) : FrameLayout(context, attrs), Populatable<DividerTileItem> {
 
     private val binding by lazy { ViewDividerTileBinding.bind(this) }
 

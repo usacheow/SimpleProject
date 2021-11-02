@@ -14,6 +14,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.applyBottomInset
+import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.isImeVisible
@@ -51,7 +53,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
             else -> 0
         }
 
-        binding.appBottomBar.updatePadding(bottom = newBottomBarBottomPaddingPx)
+        binding.appBottomBar.applyBottomInset(newBottomBarBottomPaddingPx)
         isKeyboardVisible = insets.isImeVisible()
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

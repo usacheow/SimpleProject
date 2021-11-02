@@ -14,12 +14,10 @@ import com.usacheow.coreui.uikit.helper.makeGone
 import com.usacheow.coreui.uikit.helper.makeVisible
 import com.usacheow.coreui.uikit.helper.populate
 
-class ActionTileView
-@JvmOverloads constructor(
+class ActionTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : LinearLayout(context, attrs, defStyleAttr), Populatable<ActionTileItem> {
+) : LinearLayout(context, attrs), Populatable<ActionTileItem> {
 
     private val binding by lazy { ViewActionTileBinding.bind(this) }
 

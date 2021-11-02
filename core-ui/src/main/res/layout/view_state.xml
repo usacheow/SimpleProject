@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <include
+    <com.usacheow.coreui.uikit.organism.FullScreenLoaderView
         android:id="@+id/loaderView"
-        layout="@layout/view_fullscreen_loader"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 </com.usacheow.coreui.uikit.container.StateView>

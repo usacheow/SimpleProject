@@ -15,8 +15,7 @@ import com.usacheow.coreui.uikit.helper.color
 class ProgressTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr), Populatable<ProgressTileItem> {
+) : FrameLayout(context, attrs), Populatable<ProgressTileItem> {
 
     private val binding by lazy { ViewProgressTileBinding.inflate(LayoutInflater.from(context), this, true) }
 

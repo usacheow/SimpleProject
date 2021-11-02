@@ -12,12 +12,10 @@ import com.usacheow.coreui.databinding.ViewListTileBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 
-class ListTileView
-@JvmOverloads constructor(
+class ListTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), Populatable<ListTileItem> {
+) : LinearLayout(context, attrs), Populatable<ListTileItem> {
 
     private val binding by lazy { ViewListTileBinding.bind(this) }
 

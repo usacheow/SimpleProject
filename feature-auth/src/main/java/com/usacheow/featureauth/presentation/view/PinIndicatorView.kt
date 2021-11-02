@@ -17,8 +17,7 @@ private const val PIN_CODE_LENGTH = 4
 class PinIndicatorView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : View(context, attrs, defStyleAttr) {
+) : View(context, attrs) {
 
     private val defaultPaint by lazy {
         Paint().apply {

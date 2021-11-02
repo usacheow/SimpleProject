@@ -16,6 +16,8 @@ import com.usacheow.coreui.uikit.molecule.BadgeTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.applyBottomInset
+import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.helper.toPx
@@ -53,16 +55,16 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.header.toolbar.post {
-            binding.bottomSheetLayout.setExpandOffset(binding.header.toolbar.height + insets.getTopInset())
+        binding.header.post {
+            binding.bottomSheetLayout.setExpandOffset(binding.header.height)
         }
-        binding.header.root.applyInsets(insets.getTopInset())
-        binding.listView.updatePadding(bottom = insets.getBottomInset())
+        binding.header.applyTopInset(insets.getTopInset())
+        binding.listView.applyBottomInset(insets.getBottomInset())
         return insets
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.root.apply {
+        binding.header.apply {
             title = "Demo UIkit"
         }
 
@@ -217,7 +219,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                     }
 
                     BottomSheetBehavior.STATE_COLLAPSED -> {
-                        binding.header.root.setExpanded(false)
+                        binding.header.setExpanded(false)
                     }
 
                     BottomSheetBehavior.STATE_EXPANDED -> Unit

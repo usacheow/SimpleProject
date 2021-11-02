@@ -14,8 +14,7 @@ private const val PIN_CODE_LENGTH = 4
 class PinCodeView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : GridLayout(context, attrs, defStyleAttr) {
+) : GridLayout(context, attrs) {
 
     var onBiometricButtonClickedAction: (() -> Unit)? = null
     var onCodeEnteredAction: ((String) -> Unit)? = null

@@ -13,12 +13,10 @@ import com.usacheow.coreui.uikit.helper.makeVisible
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.string
 
-class MessageBannerView
-@JvmOverloads constructor(
+class MessageBannerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs) {
 
     private val binding by lazy { ViewErrorMessageBinding.inflate(LayoutInflater.from(context), this, true) }
 

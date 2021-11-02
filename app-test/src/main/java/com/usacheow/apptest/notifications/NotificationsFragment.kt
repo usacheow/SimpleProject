@@ -35,7 +35,7 @@ class NotificationsFragment : SimpleFragment<FragmentNotificationsBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.root.apply {
+        binding.header.apply {
             title = "Test Screen"
         }
 

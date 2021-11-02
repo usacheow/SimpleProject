@@ -8,6 +8,7 @@ import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
@@ -30,7 +31,7 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
     private val adapter = ViewStateAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.root.updatePadding(top = insets.getTopInset(), bottom = insets.getBottomInset())
+        binding.root.applyInsets(top = insets.getTopInset(), bottom = insets.getBottomInset())
         return insets
     }
 

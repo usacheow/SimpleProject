@@ -11,8 +11,7 @@ import com.usacheow.coreui.uikit.helper.toPx
 class SpaceTileView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : View(context, attributeSet, defStyleAttr), Populatable<SpaceTileItem> {
+) : View(context, attributeSet), Populatable<SpaceTileItem> {
 
     override fun populate(model: SpaceTileItem) {
         layoutParams = layoutParams.apply { height = model.heightDp.toPx }

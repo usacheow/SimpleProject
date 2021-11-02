@@ -12,12 +12,10 @@ import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 
-class TagTileView
-@JvmOverloads constructor(
+class TagTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MaterialCardView(context, attrs, defStyleAttr), Populatable<TagTileItem> {
+) : MaterialCardView(context, attrs), Populatable<TagTileItem> {
 
     private val binding by lazy { ViewTagTileBinding.bind(this) }
 

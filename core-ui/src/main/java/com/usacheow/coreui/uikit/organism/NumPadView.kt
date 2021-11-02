@@ -13,8 +13,7 @@ import com.usacheow.coreui.uikit.helper.doOnClick
 class NumPadView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : GridLayout(context, attrs, defStyleAttr) {
+) : GridLayout(context, attrs) {
 
     var onBackspaceClickedAction: (() -> Unit)? = null
     var onActionClickedAction: (() -> Unit)? = null

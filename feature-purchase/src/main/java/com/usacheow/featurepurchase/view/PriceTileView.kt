@@ -21,8 +21,7 @@ private const val UNSELECTED_STROKE_WIDTH_DP = 0
 class PriceTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr), Populatable<PriceTileItem> {
+) : FrameLayout(context, attrs), Populatable<PriceTileItem> {
 
     private val binding by lazy { ViewPriceTileBinding.bind(this) }
 

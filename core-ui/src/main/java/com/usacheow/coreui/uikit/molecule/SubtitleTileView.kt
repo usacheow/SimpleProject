@@ -14,8 +14,7 @@ import com.usacheow.coreui.uikit.helper.populate
 class SubtitleTileView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : LinearLayout(context, attributeSet, defStyleAttr), Populatable<SubtitleTileItem> {
+) : LinearLayout(context, attributeSet), Populatable<SubtitleTileItem> {
 
     private val binding by lazy { ViewSubtitleTileBinding.bind(this) }
 

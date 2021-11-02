@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
+    <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout
         android:id="@+id/header"
-        layout="@layout/simple_app_bar_layout" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -83,8 +84,9 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include
+    <com.usacheow.coreui.uikit.organism.FullScreenLoaderView
         android:id="@+id/loaderView"
-        layout="@layout/view_fullscreen_loader"
-        android:visibility="gone" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

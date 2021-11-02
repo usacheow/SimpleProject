@@ -15,12 +15,10 @@ import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.resize
 
-class BadgeTileView
-@JvmOverloads constructor(
+class BadgeTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MaterialCardView(context, attrs, defStyleAttr), Populatable<BadgeTileItem> {
+) : MaterialCardView(context, attrs), Populatable<BadgeTileItem> {
 
     private val binding by lazy { ViewBadgeTileBinding.bind(this) }
 

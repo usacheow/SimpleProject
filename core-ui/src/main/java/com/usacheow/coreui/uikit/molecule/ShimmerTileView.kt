@@ -10,12 +10,10 @@ import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewShimmerTileBinding
 import com.usacheow.coreui.uikit.helper.setShimmer
 
-class ShimmerTileView
-@JvmOverloads constructor(
+class ShimmerTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : ShimmerFrameLayout(context, attrs, defStyleAttr), Populatable<ShimmerTileItem> {
+) : ShimmerFrameLayout(context, attrs), Populatable<ShimmerTileItem> {
 
     private val binding by lazy { ViewShimmerTileBinding.bind(this) }
 

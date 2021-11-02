@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.updatePadding
 
 typealias PaddingValue = Rect
 
@@ -37,6 +38,25 @@ fun WindowInsetsCompat.getTopInset() = getStatusBarHeight()
 fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme && isImeVisible()) {
     true -> getImeHeight()
     false -> getNavigationBarHeight()
+}
+
+fun View.applyTopInset(size: Int, needAddToPadding: Boolean = true) {
+    when {
+        needAddToPadding -> updatePadding(top = size)
+        else -> updateMargins(MarginTop(size))
+    }
+}
+fun View.applyBottomInset(size: Int, needAddToPadding: Boolean = true) {
+    when {
+        needAddToPadding -> updatePadding(bottom = size)
+        else -> updateMargins(MarginBottom(size))
+    }
+}
+fun View.applyInsets(top: Int, bottom: Int, needAddToPadding: Boolean = true) {
+    when {
+        needAddToPadding -> updatePadding(top = top, bottom = bottom)
+        else -> updateMargins(MarginVertical(top = top, bottom = bottom))
+    }
 }
 
 fun View.doOnApplyWindowInsets(block: (insets: WindowInsetsCompat, padding: PaddingValue) -> WindowInsetsCompat) {

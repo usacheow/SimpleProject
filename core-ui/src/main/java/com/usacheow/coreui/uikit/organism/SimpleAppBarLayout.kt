@@ -2,23 +2,21 @@ package com.usacheow.coreui.uikit.organism
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
-import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.navigation
+import com.usacheow.coreui.R as CoreUiR
 
-class SimpleAppBarLayout
-@JvmOverloads constructor(
+class SimpleAppBarLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyle: Int = 0,
-) : AppBarLayout(context, attrs, defStyle) {
+) : AppBarLayout(context, attrs) {
 
     var title: String
         get() = binding.toolbar.title.toString()
@@ -26,7 +24,7 @@ class SimpleAppBarLayout
             binding.toolbar.title = value
         }
 
-    private val binding by lazy { SimpleAppBarLayoutBinding.bind(this) }
+    private val binding by lazy { SimpleAppBarLayoutBinding.inflate(LayoutInflater.from(context), this) }
 
     fun setBackground(@ColorRes colorId: Int) {
         setBackgroundColor(color(colorId))
@@ -38,10 +36,6 @@ class SimpleAppBarLayout
         action: () -> Unit,
     ) {
         binding.toolbar.navigation(iconResId, colorId, action)
-    }
-
-    fun applyInsets(size: Int) {
-        updatePadding(top = size)
     }
 
     fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {

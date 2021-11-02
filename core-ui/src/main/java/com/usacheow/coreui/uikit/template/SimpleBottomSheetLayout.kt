@@ -17,8 +17,7 @@ import com.usacheow.coreui.uikit.helper.toPx
 class SimpleBottomSheetLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs) {
 
     val isExpanded: Boolean
         get() = with(bottomSheetBehavior) {

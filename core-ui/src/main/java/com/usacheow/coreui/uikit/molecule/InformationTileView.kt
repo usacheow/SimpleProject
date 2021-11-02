@@ -12,12 +12,10 @@ import com.usacheow.coreui.databinding.ViewInformationTileBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 
-class InformationTileView
-@JvmOverloads constructor(
+class InformationTileView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr), Populatable<InformationTileItem> {
+) : ConstraintLayout(context, attrs), Populatable<InformationTileItem> {
 
     private val binding by lazy { ViewInformationTileBinding.bind(this) }
 

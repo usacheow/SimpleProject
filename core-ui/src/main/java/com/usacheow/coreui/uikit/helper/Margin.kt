@@ -6,65 +6,65 @@ import android.view.ViewGroup
 sealed class Margin
 
 data class Margin2(
-    val verticalPx: Int? = null,
-    val horizontalPx: Int? = null,
+    val vertical: Int? = null,
+    val horizontal: Int? = null,
 ) : Margin()
 
 data class MarginVertical(
-    val topPx: Int? = null,
-    val bottomPx: Int? = null,
+    val top: Int? = null,
+    val bottom: Int? = null,
 ) : Margin()
 
 data class MarginHorizontal(
-    val leftPx: Int? = null,
-    val rightPx: Int? = null,
+    val left: Int? = null,
+    val right: Int? = null,
 ) : Margin()
 
 data class Margin4(
-    val topPx: Int? = null,
-    val bottomPx: Int? = null,
-    val leftPx: Int? = null,
-    val rightPx: Int? = null,
+    val top: Int? = null,
+    val bottom: Int? = null,
+    val left: Int? = null,
+    val right: Int? = null,
 ) : Margin()
 
 data class MarginTop(
-    val topPx: Int? = null,
+    val top: Int? = null,
 ) : Margin()
 
 data class MarginBottom(
-    val bottomPx: Int? = null,
+    val bottom: Int? = null,
 ) : Margin()
 
 data class MarginLeft(
-    val leftPx: Int? = null,
+    val left: Int? = null,
 ) : Margin()
 
 data class MarginRight(
-    val rightPx: Int? = null,
+    val right: Int? = null,
 ) : Margin()
 
 fun View.updateMargins(margin: Margin) {
     val (leftPx, rightPx) = when (margin) {
-        is Margin2 -> margin.horizontalPx to margin.horizontalPx
-        is Margin4 -> margin.leftPx to margin.rightPx
+        is Margin2 -> margin.horizontal to margin.horizontal
+        is Margin4 -> margin.left to margin.right
 
         is MarginVertical -> null to null
-        is MarginHorizontal -> margin.leftPx to margin.rightPx
+        is MarginHorizontal -> margin.left to margin.right
 
         is MarginTop -> null to null
         is MarginBottom -> null to null
-        is MarginLeft -> margin.leftPx to null
-        is MarginRight -> null to margin.rightPx
+        is MarginLeft -> margin.left to null
+        is MarginRight -> null to margin.right
     }
     val (topPx, bottomPx) = when (margin) {
-        is Margin2 -> margin.verticalPx to margin.verticalPx
-        is Margin4 -> margin.topPx to margin.bottomPx
+        is Margin2 -> margin.vertical to margin.vertical
+        is Margin4 -> margin.top to margin.bottom
 
-        is MarginVertical -> margin.topPx to margin.bottomPx
+        is MarginVertical -> margin.top to margin.bottom
         is MarginHorizontal -> null to null
 
-        is MarginTop -> margin.topPx to null
-        is MarginBottom -> null to margin.bottomPx
+        is MarginTop -> margin.top to null
+        is MarginBottom -> null to margin.bottom
         is MarginLeft -> null to null
         is MarginRight -> null to null
     }

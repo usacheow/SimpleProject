@@ -15,8 +15,7 @@ import com.usacheow.coreui.uikit.helper.toPx
 class SimpleTextButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MaterialButton(context, attrs, defStyleAttr), Populatable<SimpleTextButtonItem> {
+) : MaterialButton(context, attrs), Populatable<SimpleTextButtonItem> {
 
     override fun populate(model: SimpleTextButtonItem) {
         text = model.text
@@ -38,4 +37,4 @@ data class SimpleTextButtonItem(
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
     val clickListener: () -> Unit,
-) : ViewState(CoreUiR.layout.view_simple_text_button_item)
+) : ViewState(CoreUiR.layout.view_simple_text_button_tile)

@@ -20,7 +20,7 @@ class CoroutinesFragment : SimpleFragment<FragmentCoroutinesBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.root.apply {
+        binding.header.apply {
             title = "Test Screen"
         }
 

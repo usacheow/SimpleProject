@@ -15,8 +15,7 @@ import com.usacheow.coreui.uikit.helper.toPx
 class SimpleOutlinedButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MaterialButton(context, attrs, defStyleAttr), Populatable<SimpleOutlinedButtonItem> {
+) : MaterialButton(context, attrs), Populatable<SimpleOutlinedButtonItem> {
 
     override fun populate(model: SimpleOutlinedButtonItem) {
         text = model.text
@@ -38,4 +37,4 @@ data class SimpleOutlinedButtonItem(
     val verticalMarginDp: Int = 4,
     val horizontalMarginDp: Int = 16,
     val clickListener: () -> Unit,
-) : ViewState(CoreUiR.layout.view_simple_outlined_button_item)
+) : ViewState(CoreUiR.layout.view_simple_outlined_button_tile)
