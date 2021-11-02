@@ -11,7 +11,7 @@ private const val PREF_TOKEN = "PREF_TOKEN"
 
 @Singleton
 class TokenStorage @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @ApplicationContext context: Context,
 ) {
 
     private val preferenceManager by lazy {

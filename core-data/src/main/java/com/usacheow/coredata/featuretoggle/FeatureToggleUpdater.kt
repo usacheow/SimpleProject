@@ -15,21 +15,29 @@ class FeatureToggleUpdater @Inject constructor(
     private val firebaseRemoteConfig by lazy { FirebaseRemoteConfig.getInstance() }
 
     init {
-        val defaultValues = Feature.values().map { it.key to it.defaultValue }.toMap()
-        firebaseRemoteConfig.setDefaultsAsync(defaultValues)
+        initDefaultValues()
+        saveRemoteValues()
+    }
 
-        val remoteConfigFetchTask = firebaseRemoteConfig.fetch(
+    private fun initDefaultValues() {
+        Feature.values()
+            .map { it.key to it.defaultValue }
+            .toMap()
+            .also { firebaseRemoteConfig.setDefaultsAsync(it) }
+    }
+
+    private fun saveRemoteValues() {
+        firebaseRemoteConfig.activate()
+        firebaseRemoteConfig.fetch(
             when {
                 BuildConfig.DEBUG -> FETCH_TIME_HOURS_DEBUG
                 else -> TimeUnit.HOURS.toSeconds(FETCH_TIME_HOURS_RELEASE)
             }
-        )
-        remoteConfigFetchTask.addOnSuccessListener {
-            firebaseRemoteConfig.activate()
-
-            val enabledFeatures = Feature.values()
-                .filter { firebaseRemoteConfig.getBoolean(it.key) }
-            featureToggle.enable(enabledFeatures)
+        ).addOnSuccessListener {
+            featureToggle.clearRemoteValues()
+            Feature.values().forEach {
+                featureToggle.setRemoteValue(it, firebaseRemoteConfig.getBoolean(it.key))
+            }
         }
     }
 }

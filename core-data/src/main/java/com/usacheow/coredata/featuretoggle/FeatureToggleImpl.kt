@@ -1,26 +1,30 @@
 package com.usacheow.coredata.featuretoggle
 
+import com.usacheow.coredata.BuildConfig
 import javax.inject.Inject
 
 class FeatureToggleImpl @Inject constructor(
-    private val featureToggleStorage: FeatureToggleStorage,
+    private val remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
+    private val manualFeatureToggleStorage: ManualFeatureToggleStorage,
 ) : EditableFeatureToggle {
 
-    override fun enable(features: List<Feature>) = save(Feature.values().toList(), features)
+    override fun isEnabled(feature: Feature): Boolean {
+        return when (val isManualToggleEnabled = isManualEnabled(feature)) {
+            BuildConfig.DEBUG && isManualToggleEnabled != null -> isManualToggleEnabled
 
-    private fun save(allFeatures: List<Feature>, enabledFeatures: List<Feature>) {
-        val (enableFeatures, disableFeatures) = allFeatures.partition { it in enabledFeatures }
-        enableFeatures.forEach { enable(it) }
-        disableFeatures.forEach { disable(it) }
+            else -> isRemoteEnabled(feature)
+        }
     }
 
-    override fun isEnabled(feature: Feature) = featureToggleStorage.isEnabled(feature)
+    override fun isRemoteEnabled(feature: Feature): Boolean = remoteFeatureToggleStorage.isEnabled(feature)
 
-    override fun enable(feature: Feature) = featureToggleStorage.set(feature, true)
+    override fun isManualEnabled(feature: Feature): Boolean? = manualFeatureToggleStorage.isEnabled(feature)
 
-    override fun disable(feature: Feature) = featureToggleStorage.set(feature, false)
+    override fun setRemoteValue(feature: Feature, value: Boolean) = remoteFeatureToggleStorage.set(feature, value)
 
-    override fun clear(feature: Feature) = featureToggleStorage.clear(feature)
+    override fun setManualValue(feature: Feature, value: Boolean?) = manualFeatureToggleStorage.set(feature, value)
 
-    override fun clear() = Feature.values().toList().forEach { clear(it) }
+    override fun clearRemoteValues() {
+        remoteFeatureToggleStorage.clear(Feature.values().toList())
+    }
 }

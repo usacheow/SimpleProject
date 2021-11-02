@@ -2,13 +2,9 @@ package com.usacheow.coredata.featuretoggle
 
 interface EditableFeatureToggle : FeatureToggle {
 
-    fun enable(features: List<Feature>)
+    fun setRemoteValue(feature: Feature, value: Boolean)
 
-    fun enable(feature: Feature)
+    fun setManualValue(feature: Feature, value: Boolean?)
 
-    fun disable(feature: Feature)
-
-    fun clear(feature: Feature)
-
-    fun clear()
+    fun clearRemoteValues()
 }

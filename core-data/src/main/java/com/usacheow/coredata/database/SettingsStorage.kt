@@ -14,7 +14,7 @@ private const val PREF_LAST_CHECKED_AVAILABLE_VERSION_CODE = "PREF_LAST_CHECKED_
 
 @Singleton
 class SettingsStorage @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @ApplicationContext context: Context,
 ) {
 
     private val preferenceManager by lazy {
