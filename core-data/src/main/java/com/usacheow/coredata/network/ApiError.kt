@@ -1,9 +1,10 @@
 package com.usacheow.coredata.network
 
 import androidx.annotation.StringRes
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
+import kotlinx.serialization.SerialName
 import com.usacheow.coredata.R as CoreDataR
 
 sealed class ApiError(
@@ -65,7 +66,8 @@ fun Throwable.getMessage(): TextSource = when (this) {
     else -> TextSource.Res(CoreDataR.string.unknown_error_message)
 }
 
+@Serializable
 data class ErrorDto(
-    @SerializedName("type") val type: String?,
-    @SerializedName("message") val message: String?
+    @SerialName("type") val type: String?,
+    @SerialName("message") val message: String?
 )

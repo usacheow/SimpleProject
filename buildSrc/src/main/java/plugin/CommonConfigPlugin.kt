@@ -28,6 +28,7 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
         apply(mainPlugin)
         apply(Libs.plugin.kotlin_android)
         apply(Libs.plugin.kotlin_parcelize)
+        apply(Libs.plugin.kotlin_serialization)
         apply(Libs.plugin.kotlin_kapt)
     }
 

@@ -5,5 +5,5 @@ plugins {
 }
 
 dependencies {
-    implementation(*Libs.bundle.gson)
+    implementation(*Libs.bundle.kotlinSerialization)
 }

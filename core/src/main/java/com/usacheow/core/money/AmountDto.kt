@@ -1,8 +1,10 @@
 package com.usacheow.core.money
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
+@Serializable
 data class AmountDto(
-    @SerializedName("currency") val currency: CurrencyType,
-    @SerializedName("value") val value: Double,
+    @SerialName("currency") val currency: CurrencyType,
+    @SerialName("value") val value: Double,
 )

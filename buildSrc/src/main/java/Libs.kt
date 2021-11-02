@@ -1,16 +1,15 @@
 object Libs {
 
     private const val gmsVersion = "4.3.4"
-    private const val gradleVersion = "7.0.2"
+    private const val gradleVersion = "7.0.3"
     private const val desugarVersion = "1.1.5"
-    private const val kotlinVersion = "1.5.21"
+    private const val kotlinVersion = "1.5.31"
+    private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.5.1"
 
-    const val composeVersion = "1.1.0-alpha01"
     private const val androidxVersion = "1.3.1"
     private const val androidxCoreVersion = "1.7.0-beta02"
     private const val splashVersion = "1.0.0-alpha02"
-    private const val insetVersion = "0.15.0"
     private const val activityVersion = "1.4.0-rc01"
     private const val fragmentVersion = "1.4.0-alpha10"
     private const val materialVersion = "1.5.0-alpha05"
@@ -62,6 +61,7 @@ object Libs {
         const val library = "com.android.library"
         const val kotlin_kapt = "kotlin-kapt"
         const val kotlin_parcelize = "kotlin-parcelize"
+        const val kotlin_serialization = "kotlinx-serialization"
         const val kotlin_android = "kotlin-android"
         const val hilt = "dagger.hilt.android.plugin"
         const val navigation = "androidx.navigation.safeargs.kotlin"
@@ -71,6 +71,7 @@ object Libs {
         const val google_services = "com.google.gms:google-services:$gmsVersion"
         const val android_gradle = "com.android.tools.build:gradle:$gradleVersion"
         const val kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        const val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
         const val crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsGradleVersion"
         const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         const val navigation_safeArgs_gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
@@ -81,6 +82,9 @@ object Libs {
         val coroutines = arrayOf(
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+        val kotlinSerialization = arrayOf(
+            "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinSerializationVersion",
+            "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion")
 
         val desugar = arrayOf("com.android.tools:desugar_jdk_libs:$desugarVersion")
 
@@ -114,18 +118,6 @@ object Libs {
             "com.makeramen:roundedimageview:$roundedImageVersion",
             "ru.tinkoff.decoro:decoro:$decoroVersion",
             "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion")
-        val uiCompose = arrayOf(
-            "androidx.compose.compiler:compiler:$composeVersion",
-            "androidx.compose.runtime:runtime:$composeVersion",
-            "androidx.compose.animation:animation:$composeVersion",
-            "androidx.compose.ui:ui:$composeVersion",
-            "androidx.compose.ui:ui-tooling:$composeVersion",
-            "androidx.compose.ui:ui-tooling-preview:$composeVersion",
-            "androidx.compose.foundation:foundation:$composeVersion",
-            "androidx.compose.foundation:foundation-layout:$composeVersion",
-            "androidx.compose.material:material:$composeVersion",
-            "androidx.activity:activity-compose:$activityVersion",
-            "com.google.accompanist:accompanist-insets:$insetVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")
         val paging = arrayOf("androidx.paging:paging-runtime:$pagingVersion")

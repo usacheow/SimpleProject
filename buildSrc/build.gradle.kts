@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.2")
+    implementation("com.android.tools.build:gradle:7.0.3")
 //    implementation(gradleApi())
 //    implementation(localGroovy())
 }

@@ -1,18 +1,20 @@
 package com.usacheow.core.money
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.util.Currency
 
+@Serializable
 enum class CurrencyType {
-    @SerializedName("RUB") RUB,
-    @SerializedName("USD") USD,
-    @SerializedName("EUR") EUR,
-    @SerializedName("GBP") GBP,
-    @SerializedName("HKD") HKD,
-    @SerializedName("CHF") CHF,
-    @SerializedName("JPY") JPY,
-    @SerializedName("CNY") CNY,
-    @SerializedName("TRY") TRY;
+    @SerialName("RUB") RUB,
+    @SerialName("USD") USD,
+    @SerialName("EUR") EUR,
+    @SerialName("GBP") GBP,
+    @SerialName("HKD") HKD,
+    @SerialName("CHF") CHF,
+    @SerialName("JPY") JPY,
+    @SerialName("CNY") CNY,
+    @SerialName("TRY") TRY;
 
     companion object {
         val defaultCurrency get() = USD
