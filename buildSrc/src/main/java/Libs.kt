@@ -10,8 +10,8 @@ object Libs {
     private const val androidxVersion = "1.3.1"
     private const val androidxCoreVersion = "1.7.0-beta02"
     private const val splashVersion = "1.0.0-alpha02"
-    private const val activityVersion = "1.4.0-rc01"
-    private const val fragmentVersion = "1.4.0-alpha10"
+    private const val activityVersion = "1.4.0"
+    private const val fragmentVersion = "1.4.0-rc01"
     private const val materialVersion = "1.5.0-alpha05"
     private const val cardViewVersion = "1.0.0"
     private const val viewPagerVersion = "1.0.0"
@@ -23,8 +23,8 @@ object Libs {
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
 
-    private const val lifecycleVersion = "2.4.0-rc01"
-    private const val navigationVersion = "2.4.0-alpha10"
+    private const val lifecycleVersion = "2.4.0"
+    private const val navigationVersion = "2.4.0-beta02"
     private const val appUpdaterVersion = "1.8.1"
     private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.0.0"
@@ -178,5 +178,4 @@ object Libs {
             "org.mockito:mockito-android:$mockitoVersion",
             "com.google.truth:truth:$truthVersion")
     }
-
 }
