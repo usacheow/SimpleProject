@@ -7,6 +7,8 @@ object Libs {
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.5.1"
 
+    const val composeVersion = "1.1.0-beta01"
+    private const val composeMaterialVersion = "1.0.0-alpha01"
     private const val androidxVersion = "1.3.1"
     private const val androidxCoreVersion = "1.7.0-beta02"
     private const val splashVersion = "1.0.0-alpha02"
@@ -22,6 +24,7 @@ object Libs {
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
+    private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0-beta02"
@@ -118,6 +121,21 @@ object Libs {
             "com.makeramen:roundedimageview:$roundedImageVersion",
             "ru.tinkoff.decoro:decoro:$decoroVersion",
             "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion")
+        val uiComposeCompiler = arrayOf("androidx.compose.compiler:compiler:$composeVersion")
+        val uiComposeRuntime = arrayOf("androidx.compose.runtime:runtime:$composeVersion")
+        val uiCompose = arrayOf(
+            "androidx.compose.animation:animation:$composeVersion",
+            "androidx.compose.ui:ui:$composeVersion",
+            "androidx.compose.ui:ui-tooling:$composeVersion",
+            "androidx.compose.ui:ui-tooling-preview:$composeVersion",
+            "androidx.compose.foundation:foundation:$composeVersion",
+            "androidx.compose.foundation:foundation-layout:$composeVersion",
+            "androidx.compose.material:material:$composeVersion",
+            "androidx.compose.material3:material3:$composeMaterialVersion",
+            "androidx.compose.material:material-icons-extended:$composeVersion",
+            "androidx.activity:activity-compose:$activityVersion",
+//            "com.google.accompanist:accompanist-insets:$insetVersion",
+            "io.coil-kt:coil-compose:$coilVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")
         val paging = arrayOf("androidx.paging:paging-runtime:$pagingVersion")

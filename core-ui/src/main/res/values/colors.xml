@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary">#ff6750a4</color>
-    <color name="onPrimary">#FFFFFF</color>
-    <color name="primaryContainer">#ffeaddff</color>
-    <color name="onPrimaryContainer">#ff21005d</color>
-    <color name="primaryInverse">#ffd0bcff</color>
+    <color name="primary">#FF6750A4</color>
+    <color name="onPrimary">#FFFFFFFF</color>
+    <color name="primaryContainer">#FFEADDFF</color>
+    <color name="onPrimaryContainer">#FF21005D</color>
+    <color name="primaryInverse">#FFD0BCFF</color>
 
-    <color name="secondary">#ff625b71</color>
-    <color name="onSecondary">#FFFFFF</color>
-    <color name="secondaryContainer">#ffe8def8</color>
-    <color name="onSecondaryContainer">#ff1d192b</color>
+    <color name="secondary">#FF625B71</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="secondaryContainer">#FFE8DEF8</color>
+    <color name="onSecondaryContainer">#FF1D192B</color>
 
-    <color name="tertiary">#ff7d5260</color>
-    <color name="onTertiary">#FFFFFF</color>
-    <color name="tertiaryContainer">#ffffd8e4</color>
-    <color name="onTertiaryContainer">#ff31111d</color>
+    <color name="tertiary">#FF7D5260</color>
+    <color name="onTertiary">#FFFFFFFF</color>
+    <color name="tertiaryContainer">#FFFFD8E4</color>
+    <color name="onTertiaryContainer">#FF31111D</color>
 
-    <color name="error">#ffb3261e</color>
-    <color name="onError">#FFFFFF</color>
-    <color name="errorContainer">#fff9dedc</color>
-    <color name="onErrorContainer">#ff410e0b</color>
+    <color name="error">#FFB3261E</color>
+    <color name="onError">#FFFFFFFF</color>
+    <color name="errorContainer">#FFF9DEDC</color>
+    <color name="onErrorContainer">#FF410E0B</color>
 
-    <color name="outline">#ff79747e</color>
+    <color name="outline">#FF79747E</color>
 
-    <color name="background">#fffffbfe</color>
-    <color name="onBackground">#ff1c1b1f</color>
+    <color name="background">#FFFFFBFE</color>
+    <color name="onBackground">#FF1C1B1F</color>
 
-    <color name="surface">#fffffbfe</color>
-    <color name="onSurface">#ff1c1b1f</color>
-    <color name="surfaceVariant">#ffe7e0ec</color>
-    <color name="onSurfaceVariant">#ff49454f</color>
-    <color name="surfaceInverse">#ff313033</color>
-    <color name="onSurfaceInverse">#fff4eff4</color>
+    <color name="surface">#FFFFFBFE</color>
+    <color name="onSurface">#FF1C1B1F</color>
+    <color name="surfaceVariant">#FFE7E0EC</color>
+    <color name="onSurfaceVariant">#FF49454F</color>
+    <color name="surfaceInverse">#FF313033</color>
+    <color name="onSurfaceInverse">#FFF4EFF4</color>
 
     <color name="colorStatusBar">#4D000000</color>
     <color name="colorNavigationBar">#4D000000</color>
     <color name="colorStatusBarForModal">#4D000000</color>
     <color name="colorNavigationBarForModal">#4D000000</color>
 
-    <color name="textPrimary">#ff1c1b1f</color>
-    <color name="textPrimaryInverse">#FFFFFF</color>
+    <color name="textPrimary">#FF1C1B1F</color>
+    <color name="textPrimaryInverse">#FFFFFFFF</color>
     <color name="textSecondary">#9A1C1B1F</color>
     <color name="textSecondaryInverse">#9AFFFFFF</color>
     <color name="textTertiary">#651C1B1F</color>
     <color name="textTertiaryInverse">#65FFFFFF</color>
-    <color name="icon">#ff1c1b1f</color>
-    <color name="iconInverse">#FFFFFF</color>
+    <color name="icon">#FF1C1B1F</color>
+    <color name="iconInverse">#FFFFFFFF</color>
 
-    <color name="shimmer">#DBDEE6</color>
+    <color name="shimmer">#FFDBDEE6</color>
 
     <color name="backgroundBottomBarGradientStart">@color/white</color>
     <color name="backgroundBottomBarGradientCenter">@color/white_60</color>

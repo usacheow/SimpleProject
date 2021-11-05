@@ -44,6 +44,11 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
         }
 
         buildFeatures.viewBinding = true
+        buildFeatures.compose = true
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = Libs.composeVersion
+        }
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
@@ -56,5 +61,7 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
 
         implementation(*Libs.bundle.kotlin)
         implementation(*Libs.bundle.coroutines)
+        implementation(*Libs.bundle.uiComposeCompiler)
+        implementation(*Libs.bundle.uiComposeRuntime)
     }
 }

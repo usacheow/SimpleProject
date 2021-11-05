@@ -100,7 +100,6 @@
     <style name="TextLL" parent="TextAppearance.Material3.LabelLarge">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.007</item>
         <item name="fontFamily">@font/default_font_family</item>
     </style>

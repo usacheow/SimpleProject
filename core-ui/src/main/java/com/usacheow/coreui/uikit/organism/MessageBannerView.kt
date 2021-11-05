@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.databinding.ViewErrorMessageBinding
+import com.usacheow.coreui.databinding.ViewMessageBannerBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.makeGone
 import com.usacheow.coreui.uikit.helper.makeVisible
@@ -18,7 +18,7 @@ class MessageBannerView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
 ) : FrameLayout(context, attrs) {
 
-    private val binding by lazy { ViewErrorMessageBinding.inflate(LayoutInflater.from(context), this, true) }
+    private val binding by lazy { ViewMessageBannerBinding.inflate(LayoutInflater.from(context), this, true) }
 
     fun populate(state: MessageBannerItem) {
         binding.iconView.populate(state.icon)
