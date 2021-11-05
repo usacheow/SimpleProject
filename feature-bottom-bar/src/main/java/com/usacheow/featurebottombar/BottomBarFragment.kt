@@ -3,29 +3,32 @@ package com.usacheow.featurebottombar
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.MenuRes
 import androidx.annotation.NavigationRes
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.Insets
-import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.usacheow.coreui.navigation.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.isImeVisible
+import com.usacheow.coreui.utils.navigation.addArgs
+import com.usacheow.coreui.utils.navigation.getArgs
 import com.usacheow.featurebottombar.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.parcelize.Parcelize
 import kotlin.math.max
 import com.usacheow.featurebottombar.R as FeatureR
 
-private const val ARGS_KEY = "ARGS_KEY"
+private const val ROOT_DESTINATIONS_COUNT = 1
 
 @AndroidEntryPoint
 class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
@@ -33,6 +36,31 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     override val defaultParams = Params(
         viewBindingProvider = FragmentBottomBarBinding::inflate,
     )
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            val destinationList = navController.currentDestination?.hierarchy
+                ?.toList()
+                ?.asReversed()
+                ?.drop(ROOT_DESTINATIONS_COUNT)
+            val startDestinationInSelectedTab = destinationList?.first() as? NavGraph?
+            val currentDestinationInSelectedTab = destinationList?.last()
+            val selectedTabId = binding.appBottomBar.selectedItemId
+            val firstTabId = binding.appBottomBar.menu.getItem(0).itemId
+
+            val isCurrentDestinationSameAsStart = startDestinationInSelectedTab == currentDestinationInSelectedTab
+            val isCurrentDestinationStartInNestedGraph =
+                startDestinationInSelectedTab?.startDestinationId == currentDestinationInSelectedTab?.id
+            val needSelectFirstTab = (isCurrentDestinationSameAsStart || isCurrentDestinationStartInNestedGraph)
+                    && selectedTabId != firstTabId
+                    && startDestinationInSelectedTab?.id == selectedTabId
+
+            when {
+                needSelectFirstTab -> binding.appBottomBar.selectedItemId = firstTabId
+                !navController.navigateUp() -> passBackPressedTo(requireActivity())
+            }
+        }
+    }
 
     private var isKeyboardVisible = false
     private val navController by lazy {
@@ -43,7 +71,7 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
         fun bundle(
             @MenuRes menuRes: Int,
             @NavigationRes graphRes: Int,
-        ) = bundleOf(ARGS_KEY to BottomBarArgs(menuRes, graphRes))
+        ) = Bundle().addArgs(BottomBarArgs(menuRes, graphRes))
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -104,11 +132,13 @@ class BottomBarFragment : SimpleFragment<FragmentBottomBarBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        val args = arguments?.getParcelable<BottomBarArgs>(ARGS_KEY) ?: return
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
 
-        binding.appBottomBar.menu.clear()
-        binding.appBottomBar.inflateMenu(args.menuRes)
-        navController.graph = navController.navInflater.inflate(args.graphRes)
+        arguments?.getArgs<BottomBarArgs>()?.let {
+            binding.appBottomBar.menu.clear()
+            binding.appBottomBar.inflateMenu(it.menuRes)
+            navController.graph = navController.navInflater.inflate(it.graphRes)
+        }
 
         binding.appBottomBar.setupWithNavController(navController)
         binding.appBottomBar.doOnApplyWindowInsets { insets, _ -> insets }

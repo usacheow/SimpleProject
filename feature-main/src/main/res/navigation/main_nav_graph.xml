@@ -18,9 +18,5 @@
         android:id="@+id/bFragment"
         android:name="com.usacheow.featuremain.presentation.fragment.BFragment"
         android:label="BFragment"
-        tools:layout="@layout/fragment_b" >
-        <argument
-            android:name="itemNumber"
-            app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_b" />
 </navigation>

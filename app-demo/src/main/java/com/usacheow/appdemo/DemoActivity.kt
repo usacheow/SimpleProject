@@ -5,6 +5,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.databinding.ActivityHostBinding
+import com.usacheow.coreui.navigation.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.hideIme
@@ -22,12 +23,9 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (isKeyboardVisible) {
-                windowInsetsController?.hideIme()
-            } else {
-                isEnabled = false
-                onBackPressed()
-                isEnabled = true
+            when {
+                isKeyboardVisible -> windowInsetsController?.hideIme()
+                else -> passBackPressedTo(this@DemoActivity)
             }
         }
     }

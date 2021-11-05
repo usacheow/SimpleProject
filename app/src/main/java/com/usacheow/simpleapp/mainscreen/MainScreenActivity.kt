@@ -10,6 +10,7 @@ import com.usacheow.coremediator.AuthorizationMediator
 import com.usacheow.coremediator.BottomBarMediator
 import com.usacheow.coremediator.MainMediator
 import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coreui.navigation.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.utils.navigation.OPEN_IN
 import com.usacheow.coreui.utils.navigation.REPLACING
@@ -41,12 +42,9 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (isKeyboardVisible) {
-                windowInsetsController?.hideIme()
-            } else {
-                isEnabled = false
-                onBackPressed()
-                isEnabled = true
+            when {
+                isKeyboardVisible -> windowInsetsController?.hideIme()
+                else -> passBackPressedTo(this@MainScreenActivity)
             }
         }
     }
@@ -81,7 +79,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
                 is Action.OpenAppScreen -> mainAppFlowDirection
             }
 
-            direction REPLACING AppR.id.app_nav_graph OPEN_IN findNavController(AppR.id.fragmentContainer)
+            direction REPLACING AppR.id.app_nav_graph OPEN_IN findNavController()
         }
     }
 }

@@ -15,6 +15,7 @@ import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.molecule.ListTileItem
+import com.usacheow.coreui.utils.navigation.addArgs
 import com.usacheow.featuremain.databinding.FragmentBBinding
 import com.usacheow.featuremain.presentation.navigation.MainFeatureRouter
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
@@ -37,7 +38,7 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
     private val bViewModel by viewModels<BViewModel>()
 
     companion object {
-        fun bundle(itemNumber: Int) = bundleOf(BViewModel.ITEM_NUMBER_KEY to itemNumber)
+        fun bundle(itemNumber: Int) = Bundle().addArgs(BViewModel.Args(itemNumber))
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {

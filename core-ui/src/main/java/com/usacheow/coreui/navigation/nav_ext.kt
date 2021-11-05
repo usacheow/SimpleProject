@@ -28,6 +28,8 @@ fun SavedStateHandle.getNextScreenDirection(): FeatureNavDirection? =
 fun SavedStateHandle.requireNextScreenDirection(): FeatureNavDirection =
     requireNotNull(getNextScreenDirection())
 
+fun <ARGS : Parcelable> Bundle.getArgs(): ARGS? = getParcelable(ARGS_KEY)
+fun <ARGS : Parcelable> Bundle.requireArgs(): ARGS = requireNotNull(getArgs())
 fun <ARGS : Parcelable> SavedStateHandle.getArgs(): ARGS? = get<ARGS>(ARGS_KEY)
 fun <ARGS : Parcelable> SavedStateHandle.requireArgs(): ARGS = requireNotNull(getArgs())
 
