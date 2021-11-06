@@ -6,15 +6,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -38,15 +38,16 @@ data class ListTileItem(
     val topDescription: TextValue = TextValue.Empty,
     val bottomDescription: TextValue = TextValue.Empty,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState({
-    ListTile(leftImageInfo, rightImageInfo, value, topDescription, bottomDescription, clickListener)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        ListTile(leftImageInfo, rightImageInfo, value, topDescription, bottomDescription, clickListener)
+    }
 
     companion object {
         fun shimmer() = ShimmerTileItem(
             needTopLine = false,
-            needRightIcon = false
-        )
+            needRightIcon = false)
     }
 }
 
@@ -65,7 +66,9 @@ fun ListTile(
         onClick = clickListener ?: {},
         indication = rememberRipple(),
     ) {
-        Row(modifier = Modifier.fillMaxWidth().padding(CommonDimens.default_screen_margin)) {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(CommonDimens.default_screen_margin)) {
             Icon(
                 icon = leftImageInfo,
                 modifier = Modifier.padding(end = iconPaddingHorizontal))
@@ -82,7 +85,9 @@ fun ListTile(
             }
             Icon(
                 icon = rightImageInfo,
-                modifier = Modifier.align(Alignment.CenterVertically).padding(start = iconPaddingHorizontal))
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(start = iconPaddingHorizontal))
         }
     }
 }

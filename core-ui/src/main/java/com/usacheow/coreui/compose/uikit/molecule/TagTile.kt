@@ -31,15 +31,16 @@ data class TagTileItem(
     val unselectedColor: DataColor? = null,
     val selectedColor: DataColor? = null,
     val clickListener: () -> Unit,
-) : WidgetState({
-    TagTile(
-        text = text,
-        isSelected = isSelected,
-        unselectedColor = unselectedColor,
-        selectedColor = selectedColor,
-        clickListener = clickListener,
-    )
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        TagTile(
+            text = text,
+            isSelected = isSelected,
+            unselectedColor = unselectedColor,
+            selectedColor = selectedColor,
+            clickListener = clickListener)
+    }
 
     companion object {
         fun shimmer() = ShimmerState { TagTileShimmer() }
@@ -103,7 +104,9 @@ private fun TagCard(
     content: @Composable () -> Unit,
 ) {
     Card(
-        modifier = Modifier.wrapContentWidth().padding(8.dp),
+        modifier = Modifier
+            .wrapContentWidth()
+            .padding(8.dp),
         backgroundColor = color.background,
         contentColor = color.content,
         elevation = CommonDimens.elevation_0,

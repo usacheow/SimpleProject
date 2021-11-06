@@ -21,10 +21,12 @@ import com.usacheow.coreui.uikit.molecule.BannerTileItem
 import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.molecule.InformationTileItem
 import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.coreui.R as CoreUiR
 
+@AndroidEntryPoint
 class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
     @Inject lateinit var router: DemoRouter

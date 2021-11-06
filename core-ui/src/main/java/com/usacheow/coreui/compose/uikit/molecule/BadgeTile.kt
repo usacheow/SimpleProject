@@ -40,9 +40,11 @@ data class BadgeTileItem(
     val contentColor: Color,
     val color: Color,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState({
-    BadgeTile(header, value, needAdaptWidth, contentColor, color, clickListener)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        BadgeTile(header, value, needAdaptWidth, contentColor, color, clickListener)
+    }
 
     companion object {
         fun shimmer(needAdaptWidth: Boolean = true) = ShimmerState {

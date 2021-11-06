@@ -15,10 +15,12 @@ import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.molecule.ListTileItem
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.coreui.R as CoreUiR
 
+@AndroidEntryPoint
 class ListTilesFragment : SimpleFragment<FragmentListBinding>() {
 
     @Inject lateinit var router: DemoRouter

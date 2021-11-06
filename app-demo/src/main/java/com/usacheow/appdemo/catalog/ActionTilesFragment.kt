@@ -19,8 +19,10 @@ import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ActionTilesFragment : SimpleFragment<FragmentListBinding>() {
 
     @Inject lateinit var router: DemoRouter

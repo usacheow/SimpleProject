@@ -37,9 +37,11 @@ data class MessageBannerItem(
     val button: TextValue = TextValue.Empty,
     val modifier: Modifier = Modifier,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState({
-    MessageBannerTile(modifier, icon, title, description, button, clickListener)
-})
+) : WidgetState() {
+    override val content = @Composable {
+        MessageBannerTile(modifier, icon, title, description, button, clickListener)
+    }
+}
 
 @Composable
 fun MessageBannerTile(

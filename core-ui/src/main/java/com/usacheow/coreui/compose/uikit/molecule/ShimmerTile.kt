@@ -27,15 +27,16 @@ data class ShimmerTileItem(
     val needTopLine: Boolean = true,
     val needMiddleLine: Boolean = true,
     val needBottomLine: Boolean = true,
-) : WidgetState({
-    ShimmerTile(
-        needLeftIcon = needLeftIcon,
-        needRightIcon = needRightIcon,
-        needTopLine = needTopLine,
-        needMiddleLine = needMiddleLine,
-        needBottomLine = needBottomLine,
-    )
-})
+) : WidgetState() {
+    override val content = @Composable {
+        ShimmerTile(
+            needLeftIcon = needLeftIcon,
+            needRightIcon = needRightIcon,
+            needTopLine = needTopLine,
+            needMiddleLine = needMiddleLine,
+            needBottomLine = needBottomLine)
+    }
+}
 
 object ShimmerTileDefaults {
 
@@ -59,11 +60,15 @@ fun ShimmerTile(
         else -> 0.dp
     }
 
-    Row(modifier = Modifier.fillMaxWidth().padding(CommonDimens.default_screen_margin)) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(CommonDimens.default_screen_margin)) {
         if (needLeftIcon) {
             ShimmerTileCircle()
         }
-        Column(modifier = Modifier.weight(1f).padding(start = startLinesPadding, end = endLinesPadding)) {
+        Column(modifier = Modifier
+            .weight(1f)
+            .padding(start = startLinesPadding, end = endLinesPadding)) {
             if (needTopLine) {
                 ShimmerTileLine(width = 100.dp)
                 SpaceTile(height = 4.dp)
@@ -92,7 +97,9 @@ fun ShimmerTileLine(
         color = LocalCommonColors.current.shimmer,
         shape = RoundedCornerShape(percent = 50),
         content = {},
-        modifier = modifier.height(height).width(width))
+        modifier = modifier
+            .height(height)
+            .width(width))
 }
 
 @Composable

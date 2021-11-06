@@ -7,8 +7,10 @@ import com.usacheow.coreui.screen.SimpleModalFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import dagger.hilt.android.AndroidEntryPoint
 import com.usacheow.coreui.R as CoreUiR
 
+@AndroidEntryPoint
 class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {
 
     override val defaultParams = Params(

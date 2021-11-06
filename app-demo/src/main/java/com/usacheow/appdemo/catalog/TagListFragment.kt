@@ -15,9 +15,11 @@ import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.molecule.TagTileItem
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.coreui.R as CoreUiR
 
+@AndroidEntryPoint
 class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
 
     @Inject lateinit var router: DemoRouter

@@ -40,9 +40,11 @@ data class BannerTileItem(
     val icon: ImageValue,
     val text: TextValue,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState({
-    BannerTile(icon, text, clickListener)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        BannerTile(icon, text, clickListener)
+    }
 
     companion object {
         fun shimmer() = ShimmerState { BannerTileShimmer() }
@@ -100,9 +102,13 @@ private fun BannerCard(
         elevation = CommonDimens.elevation_0,
         shape = Shapes.medium,
         onClick = clickListener ?: {},
-        modifier = Modifier.wrapContentWidth().padding(8.dp),
+        modifier = Modifier
+            .wrapContentWidth()
+            .padding(8.dp),
     ) {
-        Column(modifier = Modifier.padding(CommonDimens.default_screen_margin).fillMaxWidth()) {
+        Column(modifier = Modifier
+            .padding(CommonDimens.default_screen_margin)
+            .fillMaxWidth()) {
             content()
         }
     }

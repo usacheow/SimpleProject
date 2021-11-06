@@ -35,16 +35,18 @@ data class SimpleButtonItem(
     val type: Type = Type.SIMPLE,
     val modifier: Modifier = Modifier,
     val clickListener: () -> Unit,
-) : WidgetState({
-    when (type) {
-        Type.SIMPLE -> SimpleButtonUnelevated(text, modifier, icon, clickListener)
-        Type.TONAL -> SimpleButtonTonal(text, modifier, icon, clickListener)
-        Type.OUTLINED -> SimpleButtonOutlined(text, modifier, icon, clickListener)
-        Type.TEXT -> SimpleButtonText(text, modifier, icon, clickListener)
-        Type.ELEVATION -> SimpleButtonElevated(text, modifier, icon, clickListener)
-        Type.TOOLBAR -> SimpleButtonToolbar(icon, clickListener)
+) : WidgetState() {
+
+    override val content = @Composable {
+        when (type) {
+            Type.SIMPLE -> SimpleButtonUnelevated(text, modifier, icon, clickListener)
+            Type.TONAL -> SimpleButtonTonal(text, modifier, icon, clickListener)
+            Type.OUTLINED -> SimpleButtonOutlined(text, modifier, icon, clickListener)
+            Type.TEXT -> SimpleButtonText(text, modifier, icon, clickListener)
+            Type.ELEVATION -> SimpleButtonElevated(text, modifier, icon, clickListener)
+            Type.TOOLBAR -> SimpleButtonToolbar(icon, clickListener)
+        }
     }
-}) {
 
     enum class Type {
         SIMPLE, TONAL, OUTLINED, TEXT, ELEVATION, TOOLBAR

@@ -18,13 +18,17 @@ data class DividerTileItem(
     val height: Dp,
     val modifier: Modifier = Modifier,
     var color: Color? = null,
-) : WidgetState({
-    DividerTile(modifier, height, color)
-})
+) : WidgetState() {
+    override val content = @Composable {
+        DividerTile(modifier, height, color)
+    }
+}
 
-data class SpaceTileItem(val height: Dp) : WidgetState({
-    SpaceTile(height = height)
-})
+data class SpaceTileItem(val height: Dp) : WidgetState() {
+    override val content = @Composable {
+        SpaceTile(height = height)
+    }
+}
 
 object DividerDefaults {
 

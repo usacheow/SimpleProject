@@ -24,6 +24,7 @@ object Libs {
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
+    private const val accompanistVersion = "0.20.2"
     private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"
@@ -134,7 +135,8 @@ object Libs {
             "androidx.compose.material3:material3:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
             "androidx.activity:activity-compose:$activityVersion",
-//            "com.google.accompanist:accompanist-insets:$insetVersion",
+            "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion",
+            "com.google.accompanist:accompanist-insets:$accompanistVersion",
             "io.coil-kt:coil-compose:$coilVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")

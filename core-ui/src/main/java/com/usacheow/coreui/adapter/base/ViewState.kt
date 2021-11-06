@@ -14,8 +14,11 @@ abstract class TagViewState(
     var clickListener: () -> Unit = {},
 ) : ViewState(layoutId)
 
-abstract class WidgetState(
-    val Draw: @Composable () -> Unit,
-)
+abstract class WidgetState() {
 
-data class ShimmerState(private val content: @Composable () -> Unit) : WidgetState(content)
+    abstract val content: @Composable () -> Unit
+}
+
+data class ShimmerState(private val block: @Composable () -> Unit) : WidgetState() {
+    override val content = block
+}

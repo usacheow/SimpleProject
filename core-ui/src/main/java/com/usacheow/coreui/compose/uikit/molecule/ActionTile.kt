@@ -10,13 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Checkbox
+import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.Switch
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VerifiedUser
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -43,9 +42,11 @@ data class ActionTileItem(
     val isChecked: Boolean = false,
     val selectorType: SelectorType = SelectorType.CheckBox,
     val clickListener: (Boolean) -> Unit = {},
-) : WidgetState({
-    ActionTile(image, title, subtitle, isChecked, selectorType, clickListener)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        ActionTile(image, title, subtitle, isChecked, selectorType, clickListener)
+    }
 
     companion object {
         fun shimmer() = ShimmerTileItem(
@@ -160,7 +161,7 @@ private fun ActionTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewActionTiles(): List<WidgetState> = listOf(
+fun generatePreviewActionTiles(): List<WidgetState> = listOf(
     ActionTileItem.shimmer(),
     ActionTileItem(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),

@@ -22,17 +22,18 @@ data class ProgressTileItem(
     val maxValue: Float,
     val currentValue: Float,
     val color: Color,
-) : WidgetState({
-    ProgressTile(maxValue, currentValue, color)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        ProgressTile(maxValue, currentValue, color)
+    }
 
     companion object {
         fun shimmer() = ShimmerTileItem(
             needTopLine = false,
             needRightIcon = false,
             needBottomLine = false,
-            needLeftIcon = false,
-        )
+            needLeftIcon = false)
     }
 }
 
@@ -42,7 +43,9 @@ fun ProgressTile(
     currentValue: Float,
     color: Color,
 ) {
-    Row(modifier = Modifier.fillMaxWidth().padding(CommonDimens.default_screen_margin)) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(CommonDimens.default_screen_margin)) {
         if (currentValue != 0f) {
             Line(color, currentValue)
         }
@@ -59,7 +62,9 @@ private fun RowScope.Line(color: Color, weight: Float) {
         shape = RoundedCornerShape(50),
         color = color,
         content = {},
-        modifier = Modifier.weight(weight).height(16.dp))
+        modifier = Modifier
+            .weight(weight)
+            .height(16.dp))
 }
 
 @Preview(showBackground = true)

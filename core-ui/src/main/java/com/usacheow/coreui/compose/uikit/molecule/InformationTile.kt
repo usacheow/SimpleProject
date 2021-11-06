@@ -7,14 +7,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.Icon
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -37,15 +37,16 @@ data class InformationTileItem(
     val mainLeftText: TextValue = TextValue.Empty,
     val mainRightText: TextValue = TextValue.Empty,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState({
-    InformationTile(image, additionalLeftText, additionalRightText, mainLeftText, mainRightText, clickListener)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        InformationTile(image, additionalLeftText, additionalRightText, mainLeftText, mainRightText, clickListener)
+    }
 
     companion object {
         fun shimmer() = ShimmerTileItem(
             needTopLine = false,
-            needRightIcon = false
-        )
+            needRightIcon = false)
     }
 }
 
@@ -66,7 +67,9 @@ fun InformationTile(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().padding(CommonDimens.default_screen_margin),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(CommonDimens.default_screen_margin),
         ) {
             Icon(icon = image)
             Column(modifier = Modifier.fillMaxWidth()) {
@@ -90,7 +93,9 @@ private fun Icon(icon: ImageValue) {
         Icon(
             painter = it,
             contentDescription = "Action tile icon",
-            modifier = Modifier.padding(end = CommonDimens.default_screen_margin).size(44.dp))
+            modifier = Modifier
+                .padding(end = CommonDimens.default_screen_margin)
+                .size(44.dp))
     }
 }
 

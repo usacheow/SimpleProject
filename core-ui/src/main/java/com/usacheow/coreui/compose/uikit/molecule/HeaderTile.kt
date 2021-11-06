@@ -23,9 +23,11 @@ data class HeaderTileItem(
     val button: TextValue = TextValue.Empty,
     val clickListener: (() -> Unit)? = null,
     val type: Type = Type.Title,
-) : WidgetState({
-    HeaderTile(value, button, clickListener, type)
-}) {
+) : WidgetState() {
+
+    override val content = @Composable {
+        HeaderTile(value, button, clickListener, type)
+    }
 
     companion object {
         fun shimmer(type: Type = Type.Title) = ShimmerTileItem(
@@ -33,8 +35,7 @@ data class HeaderTileItem(
             needBottomLine = type == Type.Subtitle,
             needMiddleLine = false,
             needRightIcon = false,
-            needLeftIcon = false,
-        )
+            needLeftIcon = false)
     }
 
     enum class Type {
@@ -53,7 +54,9 @@ fun HeaderTile(
         color = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.onBackground,
     ) {
-        Row(modifier = Modifier.fillMaxWidth().padding(start = 8.dp, end = 8.dp, top = 8.dp)) {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 8.dp, end = 8.dp, top = 8.dp)) {
             Text(
                 text = value.get(),
                 style = when (type) {
@@ -61,7 +64,9 @@ fun HeaderTile(
                     HeaderTileItem.Type.Subtitle -> MaterialTheme.typography.titleLarge
                 },
                 maxLines = 1,
-                modifier = Modifier.weight(1f).padding(8.dp))
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(8.dp))
             if (button != TextValue.Empty) {
                 ClickableText(
                     text = button.get(),
