@@ -71,7 +71,9 @@ class BFragment : SimpleFragment<FragmentBBinding>() {
                 ListTileItem(value = TextSource.Simple("15 Go to next screen"), clickListener = ::openNextScreen),
                 ListTileItem(value = TextSource.Simple("16 Go to next screen"), clickListener = ::openNextScreen),
                 ListTileItem(value = TextSource.Simple("17 Go to next screen"), clickListener = ::openNextScreen),
-                ListTileItem(value = TextSource.Simple("18 Go to next screen"), clickListener = ::openNextScreen)
+                ListTileItem(value = TextSource.Simple("18 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("19 Go to next screen"), clickListener = ::openNextScreen),
+                ListTileItem(value = TextSource.Simple("20 Go to next screen"), clickListener = ::openNextScreen)
             )
         )
     }

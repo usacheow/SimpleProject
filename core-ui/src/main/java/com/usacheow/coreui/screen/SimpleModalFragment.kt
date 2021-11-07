@@ -69,7 +69,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
             isNightMode() || defaultParams.needWhiteNavigationIcons,
         )
 
-        view.doOnApplyWindowInsets(::onApplyWindowInsets)
+        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
         setupViews(savedInstanceState)
         subscribe()
     }

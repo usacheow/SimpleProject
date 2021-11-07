@@ -68,7 +68,7 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.doOnApplyWindowInsets(::onApplyWindowInsets)
+        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
         setupViews(savedInstanceState)
         subscribe()
     }
