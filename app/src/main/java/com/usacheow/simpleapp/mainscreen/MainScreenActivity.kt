@@ -6,10 +6,10 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
-import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.BottomBarMediator
-import com.usacheow.coremediator.MainMediator
-import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coremediator.AuthorizationFeatureProvider
+import com.usacheow.coremediator.BottomBarFeatureProvider
+import com.usacheow.coremediator.MainFeatureProvider
+import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.navigation.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.utils.navigation.OPEN_IN
@@ -31,10 +31,10 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 
-    @Inject lateinit var authMediator: AuthorizationMediator
-    @Inject lateinit var onBoardingMediator: OnBoardingMediator
-    @Inject lateinit var mainMediator: MainMediator
-    @Inject lateinit var bottomBarMediator: BottomBarMediator
+    @Inject lateinit var authFeatureProvider: AuthorizationFeatureProvider
+    @Inject lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
+    @Inject lateinit var mainFeatureProvider: MainFeatureProvider
+    @Inject lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
     private val viewModel by viewModels<MainScreenViewModel>()
 
@@ -65,7 +65,7 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun subscribe() {
-        val mainAppFlowDirection = bottomBarMediator.getBottomBarFlowDirection(
+        val mainAppFlowDirection = bottomBarFeatureProvider.getBottomBarFlowDirection(
             AppR.menu.m_bottom_bar,
             AppR.navigation.auth_zone_nav_graph,
         )
@@ -73,9 +73,9 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
         viewModel.action.observe(this) {
             val direction = when (it) {
-                is Action.OpenOnBoardingScreen -> onBoardingMediator.getOnBoardingFlowDirection(it.args, nextDirection)
-                is Action.OpenAuthScreen -> authMediator.getSignInWithPhoneFlowDirection(nextDirection)
-                is Action.OpenPinScreen -> authMediator.getPinCodeFlowDirection(nextDirection)
+                is Action.OpenOnBoardingScreen -> onBoardingFeatureProvider.getOnBoardingFlowDirection(it.args, nextDirection)
+                is Action.OpenAuthScreen -> authFeatureProvider.getSignInWithPhoneFlowDirection(nextDirection)
+                is Action.OpenPinScreen -> authFeatureProvider.getPinCodeFlowDirection(nextDirection)
                 is Action.OpenAppScreen -> mainAppFlowDirection
             }
 

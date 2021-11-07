@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.screen.SimpleFragment

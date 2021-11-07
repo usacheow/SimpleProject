@@ -6,7 +6,7 @@ import com.usacheow.core.ImageSource
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.toImageSource
 import com.usacheow.coredata.database.SettingsStorage
-import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.requireArgs
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
@@ -27,7 +27,7 @@ class OnBoardingViewModel @Inject constructor(
 ) : SimpleViewModel() {
 
     private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
-    private val pages by lazy { savedStateHandle.requireArgs<OnBoardingMediator.OnBoardingArgs>().pages }
+    private val pages by lazy { savedStateHandle.requireArgs<OnBoardingFeatureProvider.OnBoardingArgs>().pages }
 
     private val _openAppScreenAction = EventChannel<FeatureNavDirection>()
     val openAppScreenAction = _openAppScreenAction.receiveAsFlow()
@@ -45,7 +45,7 @@ class OnBoardingViewModel @Inject constructor(
         _openAppScreenAction triggerBy nextScreenDirection
     }
 
-    private fun mapToItem(item: OnBoardingMediator.OnBoardingArgs.Page) = OnBoardingItem(
+    private fun mapToItem(item: OnBoardingFeatureProvider.OnBoardingArgs.Page) = OnBoardingItem(
         image = item.imageUrl?.toImageSource()
             ?: item.defaultImageRes?.toImageSource()
             ?: ImageSource.Empty,

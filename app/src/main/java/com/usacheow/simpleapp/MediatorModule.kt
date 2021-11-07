@@ -1,17 +1,17 @@
 package com.usacheow.simpleapp
 
-import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.BottomBarMediator
-import com.usacheow.coremediator.MainMediator
-import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coremediator.OtpMediator
-import com.usacheow.coremediator.PurchaseMediator
-import com.usacheow.featureauth.presentation.navigation.AuthorizationMediatorImpl
-import com.usacheow.featurebottombar.BottomBarMediatorImpl
-import com.usacheow.featuremain.presentation.navigation.MainMediatorImpl
-import com.usacheow.featureonboarding.navigation.OnBoardingMediatorImpl
-import com.usacheow.featureotp.navigation.OtpMediatorImpl
-import com.usacheow.featurepurchase.navigation.PurchaseMediatorImpl
+import com.usacheow.coremediator.AuthorizationFeatureProvider
+import com.usacheow.coremediator.BottomBarFeatureProvider
+import com.usacheow.coremediator.MainFeatureProvider
+import com.usacheow.coremediator.OnBoardingFeatureProvider
+import com.usacheow.coremediator.OtpFeatureProvider
+import com.usacheow.coremediator.PurchaseFeatureProvider
+import com.usacheow.featureauth.presentation.navigation.AuthorizationFeatureProviderImpl
+import com.usacheow.featurebottombar.BottomBarFeatureProviderImpl
+import com.usacheow.featuremain.presentation.navigation.MainFeatureProviderImpl
+import com.usacheow.featureonboarding.navigation.OnBoardingFeatureProviderImpl
+import com.usacheow.featureotp.navigation.OtpFeatureProviderImpl
+import com.usacheow.featurepurchase.navigation.PurchaseFeatureProviderImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -24,25 +24,25 @@ interface MediatorModule {
 
     @Binds
     @Singleton
-    fun bottomBarMediator(mediator: BottomBarMediatorImpl): BottomBarMediator
+    fun bottomBarMediator(mediator: BottomBarFeatureProviderImpl): BottomBarFeatureProvider
 
     @Binds
     @Singleton
-    fun mainMediator(mediator: MainMediatorImpl): MainMediator
+    fun mainMediator(mediator: MainFeatureProviderImpl): MainFeatureProvider
 
     @Binds
     @Singleton
-    fun onBoardingMediator(mediator: OnBoardingMediatorImpl): OnBoardingMediator
+    fun onBoardingMediator(mediator: OnBoardingFeatureProviderImpl): OnBoardingFeatureProvider
 
     @Binds
     @Singleton
-    fun authorizationMediator(mediator: AuthorizationMediatorImpl): AuthorizationMediator
+    fun authorizationMediator(mediator: AuthorizationFeatureProviderImpl): AuthorizationFeatureProvider
 
     @Binds
     @Singleton
-    fun purchaseMediator(mediator: PurchaseMediatorImpl): PurchaseMediator
+    fun purchaseMediator(mediator: PurchaseFeatureProviderImpl): PurchaseFeatureProvider
 
     @Binds
     @Singleton
-    fun otpMediator(mediator: OtpMediatorImpl): OtpMediator
+    fun otpMediator(mediator: OtpFeatureProviderImpl): OtpFeatureProvider
 }

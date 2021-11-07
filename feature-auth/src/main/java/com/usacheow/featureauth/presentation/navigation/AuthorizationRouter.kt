@@ -1,24 +1,24 @@
 package com.usacheow.featureauth.presentation.navigation
 
 import androidx.fragment.app.Fragment
-import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.OtpMediator
-import com.usacheow.coreui.navigation.Router
 import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.coreui.utils.navigation.openIn
+import com.usacheow.coremediator.AuthorizationFeatureProvider
+import com.usacheow.coremediator.OtpFeatureProvider
+import com.usacheow.coreui.navigation.Router
+import com.usacheow.coreui.utils.navigation.OPEN_IN
 import javax.inject.Inject
 
 class AuthorizationRouter @Inject constructor(
     fragment: Fragment,
-    private val authorizationMediator: AuthorizationMediator,
-    private val otpMediator: OtpMediator,
+    private val authorizationFeatureProvider: AuthorizationFeatureProvider,
+    private val otpFeatureProvider: OtpFeatureProvider,
 ) : Router(fragment) {
 
     fun toSignUpFlow(nextScreenDirection: FeatureNavDirection) {
-        authorizationMediator.getSignUpFlowDirection(nextScreenDirection).openIn(navController)
+        authorizationFeatureProvider.getSignUpFlowDirection(nextScreenDirection) OPEN_IN navController
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        otpMediator.getOtpFlowDirection(OtpMediator.OtpArgs(codeLength)).openIn(navController)
+        otpFeatureProvider.getOtpFlowDirection(OtpFeatureProvider.OtpArgs(codeLength)) OPEN_IN navController
     }
 }

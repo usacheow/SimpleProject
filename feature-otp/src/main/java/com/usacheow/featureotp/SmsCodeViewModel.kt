@@ -3,7 +3,7 @@ package com.usacheow.featureotp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coremediator.OtpMediator
+import com.usacheow.coremediator.OtpFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.getArgs
 import com.usacheow.coreui.viewmodel.triggerBy
@@ -51,7 +51,7 @@ class SmsCodeViewModel @Inject constructor(
     private var timerJob: Job? = null
 
     private val codeLength by lazy {
-        savedStateHandle.getArgs<OtpMediator.OtpArgs>()?.codeLength ?: CODE_LENGTH_DEFAULT_VALUE
+        savedStateHandle.getArgs<OtpFeatureProvider.OtpArgs>()?.codeLength ?: CODE_LENGTH_DEFAULT_VALUE
     }
 
     init {

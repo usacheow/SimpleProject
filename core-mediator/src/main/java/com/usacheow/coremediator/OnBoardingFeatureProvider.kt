@@ -6,7 +6,7 @@ import com.usacheow.core.TextSource
 import com.usacheow.core.navigation.FeatureNavDirection
 import kotlinx.parcelize.Parcelize
 
-interface OnBoardingMediator {
+interface OnBoardingFeatureProvider {
 
     fun getOnBoardingFlowDirection(
         args: OnBoardingArgs,

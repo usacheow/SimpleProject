@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.usacheow.core.navigation.FeatureNavDirection
 import kotlinx.parcelize.Parcelize
 
-interface OtpMediator {
+interface OtpFeatureProvider {
 
     fun getOtpFlowDirection(args: OtpArgs): FeatureNavDirection
 

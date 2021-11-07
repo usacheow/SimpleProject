@@ -4,7 +4,7 @@ import androidx.annotation.MenuRes
 import androidx.annotation.NavigationRes
 import com.usacheow.core.navigation.FeatureNavDirection
 
-interface BottomBarMediator {
+interface BottomBarFeatureProvider {
 
     fun getBottomBarFlowDirection(
         @MenuRes menuRes: Int,

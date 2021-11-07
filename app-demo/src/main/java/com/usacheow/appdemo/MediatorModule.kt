@@ -1,11 +1,11 @@
 package com.usacheow.appdemo
 
-import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coremediator.OtpMediator
-import com.usacheow.featureauth.presentation.navigation.AuthorizationMediatorImpl
-import com.usacheow.featureonboarding.navigation.OnBoardingMediatorImpl
-import com.usacheow.featureotp.navigation.OtpMediatorImpl
+import com.usacheow.coremediator.AuthorizationFeatureProvider
+import com.usacheow.coremediator.OnBoardingFeatureProvider
+import com.usacheow.coremediator.OtpFeatureProvider
+import com.usacheow.featureauth.presentation.navigation.AuthorizationFeatureProviderImpl
+import com.usacheow.featureonboarding.navigation.OnBoardingFeatureProviderImpl
+import com.usacheow.featureotp.navigation.OtpFeatureProviderImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,13 +18,13 @@ interface MediatorModule {
 
     @Binds
     @Singleton
-    fun onBoardingMediator(mediator: OnBoardingMediatorImpl): OnBoardingMediator
+    fun onBoardingMediator(mediator: OnBoardingFeatureProviderImpl): OnBoardingFeatureProvider
 
     @Binds
     @Singleton
-    fun authorizationMediator(mediator: AuthorizationMediatorImpl): AuthorizationMediator
+    fun authorizationMediator(mediator: AuthorizationFeatureProviderImpl): AuthorizationFeatureProvider
 
     @Binds
     @Singleton
-    fun otpMediator(mediator: OtpMediatorImpl): OtpMediator
+    fun otpMediator(mediator: OtpFeatureProviderImpl): OtpFeatureProvider
 }

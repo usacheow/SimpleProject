@@ -1,21 +1,22 @@
 package com.usacheow.appdemo
 
 import androidx.fragment.app.Fragment
-import com.usacheow.coremediator.AuthorizationMediator
-import com.usacheow.coremediator.OnBoardingMediator
-import com.usacheow.coremediator.OtpMediator
+import com.usacheow.coremediator.AuthorizationFeatureProvider
+import com.usacheow.coremediator.OnBoardingFeatureProvider
+import com.usacheow.coremediator.OtpFeatureProvider
 import com.usacheow.coreui.navigation.Router
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
+import com.usacheow.coreui.utils.navigation.OPEN_IN
 import com.usacheow.coreui.utils.navigation.openIn
 import com.usacheow.appdemo.R as DemoAppR
 import javax.inject.Inject
 
 class DemoRouter @Inject constructor(
     fragment: Fragment,
-    private val authorizationMediator: AuthorizationMediator,
-    private val onBoardingMediator: OnBoardingMediator,
-    private val otpMediator: OtpMediator,
+    private val authorizationFeatureProvider: AuthorizationFeatureProvider,
+    private val onBoardingFeatureProvider: OnBoardingFeatureProvider,
+    private val otpFeatureProvider: OtpFeatureProvider,
 ) : Router(fragment) {
 
     fun fromDemoToFontsScreen() {
@@ -62,12 +63,12 @@ class DemoRouter @Inject constructor(
         DemoFragmentDirections.actionDemoFragmentToExampleModalFragment().openIn(navController)
     }
 
-    fun toOnBoardingFlow(args: OnBoardingMediator.OnBoardingArgs) {
+    fun toOnBoardingFlow(args: OnBoardingFeatureProvider.OnBoardingArgs) {
         val nextDirection = FeatureNavDirection(
             DemoAppR.id.main_nav_graph,
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
-        onBoardingMediator.getOnBoardingFlowDirection(args, nextDirection).openIn(navController)
+        onBoardingFeatureProvider.getOnBoardingFlowDirection(args, nextDirection) OPEN_IN navController
     }
 
     fun toSignUpFlow() {
@@ -75,7 +76,7 @@ class DemoRouter @Inject constructor(
             DemoAppR.id.main_nav_graph,
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
-        authorizationMediator.getSignUpFlowDirection(nextDirection).openIn(navController)
+        authorizationFeatureProvider.getSignUpFlowDirection(nextDirection) OPEN_IN navController
     }
 
     fun toSignInFlow() {
@@ -83,7 +84,7 @@ class DemoRouter @Inject constructor(
             DemoAppR.id.main_nav_graph,
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
-        authorizationMediator.getSignInFlowDirection(nextDirection).openIn(navController)
+        authorizationFeatureProvider.getSignInFlowDirection(nextDirection) OPEN_IN navController
     }
 
     fun toSignInWithPhoneFlow() {
@@ -91,7 +92,7 @@ class DemoRouter @Inject constructor(
             DemoAppR.id.main_nav_graph,
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
-        authorizationMediator.getSignInWithPhoneFlowDirection(nextDirection).openIn(navController)
+        authorizationFeatureProvider.getSignInWithPhoneFlowDirection(nextDirection) OPEN_IN navController
     }
 
     fun toPinCodeFlow() {
@@ -99,10 +100,10 @@ class DemoRouter @Inject constructor(
             DemoAppR.id.main_nav_graph,
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
-        authorizationMediator.getPinCodeFlowDirection(nextDirection).openIn(navController)
+        authorizationFeatureProvider.getPinCodeFlowDirection(nextDirection) OPEN_IN navController
     }
 
     fun toSmsCodeFlow(codeLength: Int) {
-        otpMediator.getOtpFlowDirection(OtpMediator.OtpArgs(codeLength)).openIn(navController)
+        otpFeatureProvider.getOtpFlowDirection(OtpFeatureProvider.OtpArgs(codeLength)) OPEN_IN navController
     }
 }

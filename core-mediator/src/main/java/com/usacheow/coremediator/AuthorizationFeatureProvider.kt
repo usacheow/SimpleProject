@@ -2,7 +2,7 @@ package com.usacheow.coremediator
 
 import com.usacheow.core.navigation.FeatureNavDirection
 
-interface AuthorizationMediator {
+interface AuthorizationFeatureProvider {
 
     fun getPinCodeFlowDirection(nextScreenDirection: FeatureNavDirection): FeatureNavDirection
 

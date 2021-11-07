@@ -2,14 +2,13 @@ package com.usacheow.appdemo
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.core.TextSource
 import com.usacheow.core.toSource
-import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.molecule.BadgeTileItem
@@ -38,16 +37,16 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     )
 
     private val onBoardingArgs by lazy {
-        OnBoardingMediator.OnBoardingArgs(mutableListOf(
-            OnBoardingMediator.OnBoardingArgs.Page(
+        OnBoardingFeatureProvider.OnBoardingArgs(mutableListOf(
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
                 title = res.getString(DemoAppR.string.on_boarding_title_1).toSource(),
                 description = res.getString(DemoAppR.string.on_boarding_description_1).toSource()),
-            OnBoardingMediator.OnBoardingArgs.Page(
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
                 title = res.getString(DemoAppR.string.on_boarding_title_2).toSource(),
                 description = res.getString(DemoAppR.string.on_boarding_description_2).toSource()),
-            OnBoardingMediator.OnBoardingArgs.Page(
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
                 title = res.getString(DemoAppR.string.on_boarding_title_3).toSource(),
                 description = res.getString(DemoAppR.string.on_boarding_description_3).toSource())

@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.toSource
 import com.usacheow.coredata.database.SettingsStorage
-import com.usacheow.coremediator.OnBoardingMediator
+import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.SimpleViewModel
@@ -24,16 +24,16 @@ class MainScreenViewModel @Inject constructor(
     private val _action = EventChannel<Action>()
     val action = _action.receiveAsFlow()
 
-    private val onBoardingArgs = OnBoardingMediator.OnBoardingArgs(mutableListOf(
-        OnBoardingMediator.OnBoardingArgs.Page(
+    private val onBoardingArgs = OnBoardingFeatureProvider.OnBoardingArgs(mutableListOf(
+        OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
             title = resources.getString(AppR.string.on_boarding_title_1).toSource(),
             description = resources.getString(AppR.string.on_boarding_description_1).toSource()),
-        OnBoardingMediator.OnBoardingArgs.Page(
+        OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
             title = resources.getString(AppR.string.on_boarding_title_2).toSource(),
             description = resources.getString(AppR.string.on_boarding_description_2).toSource()),
-        OnBoardingMediator.OnBoardingArgs.Page(
+        OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
             title = resources.getString(AppR.string.on_boarding_title_3).toSource(),
             description = resources.getString(AppR.string.on_boarding_description_3).toSource())
@@ -49,7 +49,7 @@ class MainScreenViewModel @Inject constructor(
     }
 
     sealed class Action {
-        data class OpenOnBoardingScreen(val args: OnBoardingMediator.OnBoardingArgs) : Action()
+        data class OpenOnBoardingScreen(val args: OnBoardingFeatureProvider.OnBoardingArgs) : Action()
         object OpenAuthScreen : Action()
         object OpenPinScreen : Action()
         object OpenAppScreen : Action()

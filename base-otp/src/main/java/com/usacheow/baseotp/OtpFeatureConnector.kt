@@ -1,23 +1,18 @@
 package com.usacheow.baseotp
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.triggerBy
-import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OtpFeatureConnector @Inject constructor() : SimpleViewModel() {
-
-    private val _featureEvent = EventChannel<Event>()
-    val featureEvent = _featureEvent.receiveAsFlow()
-
-    private val _featureEffect = EventChannel<Effect>()
-    val featureEffect = _featureEffect.receiveAsFlow()
+class OtpFeatureConnector @Inject constructor()
+    : FeatureConnector<OtpFeatureConnector.Event, OtpFeatureConnector.Effect>() {
 
     fun onResendClicked() = viewModelScope.launch {
         _featureEvent triggerBy Event.CodeRequested
@@ -47,12 +42,11 @@ class OtpFeatureConnector @Inject constructor() : SimpleViewModel() {
     }
 }
 
-/*
-class FeatureConnector<EVENT, EFFECT> : ViewModel() {
+abstract class FeatureConnector<EVENT, EFFECT> : ViewModel() {
 
-    private val _featureEvent = Channel<EVENT>()
+    protected val _featureEvent = Channel<EVENT>()
     val featureEvent = _featureEvent.receiveAsFlow()
 
-    private val _featureEffect = Channel<EFFECT>()
+    protected val _featureEffect = Channel<EFFECT>()
     val featureEffect = _featureEffect.receiveAsFlow()
-}*/
+}
