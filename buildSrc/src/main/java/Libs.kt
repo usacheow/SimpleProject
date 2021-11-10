@@ -47,6 +47,7 @@ object Libs {
 
     private const val glideVersion = "4.12.0"
     private const val datastoreVersion = "1.0.0-rc01"
+    private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
     private const val roomVersion = "2.3.0"
     private const val gsonVersion = "2.8.6"
@@ -168,6 +169,7 @@ object Libs {
         const val glideKapt = "com.github.bumptech.glide:compiler:$glideVersion"
 
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")
+        val cryptoPreference = arrayOf("androidx.security:security-crypto:$securityVersion")
         val preference = arrayOf("androidx.preference:preference-ktx:$preferenceVersion")
         val gson = arrayOf("com.google.code.gson:gson:$gsonVersion")
 

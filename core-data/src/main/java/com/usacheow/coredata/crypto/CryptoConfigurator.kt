@@ -1,4 +1,4 @@
-package com.usacheow.featureauth.presentation
+package com.usacheow.coredata.crypto
 
 import android.content.Context
 import android.os.Build

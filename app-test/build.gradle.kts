@@ -14,7 +14,9 @@ android {
 
 dependencies {
     implementation(projects.coreUi)
+    implementation(projects.coreData)
 
+    implementation(*Libs.bundle.biometric)
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.camerax)
 }

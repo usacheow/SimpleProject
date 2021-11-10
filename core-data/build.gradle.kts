@@ -19,4 +19,6 @@ dependencies {
     implementation(*Libs.bundle.firebase)
     implementation(*Libs.bundle.datastore)
     implementation(*Libs.bundle.preference)
+    implementation(*Libs.bundle.cryptoPreference)
+    implementation(*Libs.bundle.biometric)
 }
