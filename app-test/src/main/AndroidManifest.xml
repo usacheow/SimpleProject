@@ -25,14 +25,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name=".notifications.ServiceImpl" />
-        <service
-            android:name=".notifications.JobIntentServiceImpl"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service
-            android:name=".notifications.JobServiceImpl"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
-
 </manifest>

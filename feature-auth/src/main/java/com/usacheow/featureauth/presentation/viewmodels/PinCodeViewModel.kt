@@ -67,7 +67,7 @@ class PinCodeViewModel @Inject constructor(
     }
 
     // TODO: stub
-    private suspend fun verifyPinCode(inputtedPinCode: String) = true
+    private fun verifyPinCode(inputtedPinCode: String) = true
 }
 
 sealed class SignInResult {

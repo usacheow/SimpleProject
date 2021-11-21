@@ -7,7 +7,6 @@ import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import retrofit2.HttpException
 import retrofit2.Response
@@ -23,19 +22,19 @@ suspend inline fun <reified T : Any> cachedApiCall(
     cacheProvider: CacheProvider,
     dispatcher: CoroutineDispatcher,
     needActualData: Boolean = false,
-    timeInMinutes: Int = 5,
+    lifeTimeInMinutes: Int = 5,
     noinline request: suspend () -> Response<T>,
 ): Effect<T> {
-    val memoryCacheTimeInMilliseconds = timeInMinutes * 60 * 1000L
+    val lifeTimeInMillis = lifeTimeInMinutes * 60 * 1000L
     return if (needActualData) {
         apiCall(dispatcher, request)
-            .doOnSuccess { cacheProvider.save(it, key) }
-            .applyCacheData { cacheProvider.get(T::class.java, key, memoryCacheTimeInMilliseconds) }
+            .doOnSuccess { cacheProvider.save(key, it, lifeTimeInMillis) }
+            .applyCacheData { cacheProvider.get(T::class.java, key) }
     } else {
-        cacheProvider.get(T::class.java, key, memoryCacheTimeInMilliseconds)
+        cacheProvider.get(T::class.java, key)
             ?.let { Effect.success(it) }
             ?: apiCall(dispatcher, request)
-                .doOnSuccess { cacheProvider.save(it, key) }
+                .doOnSuccess { cacheProvider.save(key, it, lifeTimeInMillis) }
     }
 }
 

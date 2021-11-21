@@ -3,7 +3,7 @@ package com.usacheow.coredata
 import android.content.Context
 import com.usacheow.coredata.cache.CacheCleaner
 import com.usacheow.coredata.cache.CacheProvider
-import com.usacheow.coredata.cache.lruimpl.LruCacheProvider
+import com.usacheow.coredata.cache.LruCacheProvider
 import com.usacheow.coredata.database.AppDatabase
 import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle

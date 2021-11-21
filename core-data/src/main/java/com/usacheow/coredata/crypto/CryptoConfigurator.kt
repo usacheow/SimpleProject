@@ -1,16 +1,13 @@
 package com.usacheow.coredata.crypto
 
-import android.content.Context
 import android.os.Build
-import android.security.KeyPairGeneratorSpec
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricPrompt
-import dagger.hilt.android.qualifiers.ApplicationContext
-import java.math.BigInteger
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
 import java.security.KeyStore
@@ -18,20 +15,17 @@ import java.security.PrivateKey
 import java.security.spec.AlgorithmParameterSpec
 import java.security.spec.MGF1ParameterSpec
 import java.security.spec.X509EncodedKeySpec
-import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.OAEPParameterSpec
 import javax.crypto.spec.PSource
 import javax.inject.Inject
-import javax.security.auth.x500.X500Principal
 
 private const val KEY_FOR_BIOMETRIC = "KEY_FOR_BIOMETRIC"
 private const val KEY_STORE = "AndroidKeyStore"
 private const val TRANSFORMATION = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 
-class CryptoConfigurator @Inject constructor(
-    @ApplicationContext private val context: Context,
-) {
+@RequiresApi(Build.VERSION_CODES.M)
+class CryptoConfigurator @Inject constructor() {
 
     private lateinit var cipher: Cipher
     private lateinit var keyStore: KeyStore
@@ -85,7 +79,7 @@ class CryptoConfigurator @Inject constructor(
 
     @Throws
     private fun createKeyIfNotExist(keyTag: String) {
-        if(!keyStore.containsAlias(keyTag)) {
+        if (!keyStore.containsAlias(keyTag)) {
             val params = createAlgorithmParameterSpec(keyTag, isForBiometric = keyTag == KEY_FOR_BIOMETRIC)
             keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEY_STORE)
                 .apply {
@@ -96,23 +90,11 @@ class CryptoConfigurator @Inject constructor(
     }
 
     private fun createAlgorithmParameterSpec(keyTag: String, isForBiometric: Boolean): AlgorithmParameterSpec {
-        return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            KeyPairGeneratorSpec.Builder(context)
-                .setAlias(keyTag)
-                .setSubject(X500Principal("CN=$keyTag"))
-                .setSerialNumber(BigInteger.TEN)
-                .setStartDate(Calendar.getInstance().time)
-                .setEndDate(Calendar.getInstance()
-                    .apply { add(Calendar.YEAR, 1) }.time)
-                .setKeyType(KeyProperties.KEY_ALGORITHM_RSA)
-                .build()
-        } else {
-            KeyGenParameterSpec.Builder(keyTag, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
-                .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
-                .setUserAuthenticationRequired(isForBiometric)
-                .build()
-        }
+        return KeyGenParameterSpec.Builder(keyTag, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
+            .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
+            .setUserAuthenticationRequired(isForBiometric)
+            .build()
     }
 
     @Throws

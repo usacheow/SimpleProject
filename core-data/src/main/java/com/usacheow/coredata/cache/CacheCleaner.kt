@@ -2,9 +2,7 @@ package com.usacheow.coredata.cache
 
 interface CacheCleaner {
 
-    fun <T> clear(type: Class<T>)
+    suspend fun <T> clear(clazz: Class<T>, key: String)
 
-    fun <T> clear(type: Class<T>, cacheKey: String)
-
-    fun clearAll()
+    suspend fun clearAll()
 }

@@ -14,7 +14,7 @@ abstract class TagViewState(
     var clickListener: () -> Unit = {},
 ) : ViewState(layoutId)
 
-abstract class WidgetState() {
+abstract class WidgetState {
 
     abstract val content: @Composable () -> Unit
 }

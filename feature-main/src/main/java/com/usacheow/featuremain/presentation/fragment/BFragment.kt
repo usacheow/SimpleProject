@@ -1,7 +1,6 @@
 package com.usacheow.featuremain.presentation.fragment
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
@@ -9,11 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.uikit.helper.*
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.coreui.utils.navigation.addArgs
 import com.usacheow.featuremain.databinding.FragmentBBinding

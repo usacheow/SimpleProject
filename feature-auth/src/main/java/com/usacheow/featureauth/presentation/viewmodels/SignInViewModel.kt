@@ -58,7 +58,7 @@ class SignInViewModel @Inject constructor(
 
         interactor.signInWithLoginAndPassword(login, password).doOnSuccess {
             _openNextScreenAction triggerBy nextScreenDirection
-        }.doOnError { exception, data ->
+        }.doOnError { exception, _ ->
             _errorState tryPublish exception.getMessage(resources)
         }
 

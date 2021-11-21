@@ -96,10 +96,11 @@ class AppUpdateProviderImpl @Inject constructor(
         return suspendCoroutine { continuation ->
             addOnCompleteListener {
                 val e = exception
-                if (e == null) {
-                    continuation.resume(result as T)
-                } else {
-                    continuation.resumeWithException(e)
+                val result = result
+                when {
+                    e != null -> continuation.resumeWithException(e)
+                    result == null -> continuation.resumeWithException(NullPointerException())
+                    else -> continuation.resume(result)
                 }
             }
         }

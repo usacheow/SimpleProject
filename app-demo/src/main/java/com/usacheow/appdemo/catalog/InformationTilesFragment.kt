@@ -46,7 +46,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
             listOf(
                 HeaderTileItem(TextSource.Simple("Header")),
                 HeaderTileItem.shimmer(),
-                SubtitleTileItem(TextSource.Simple("Subtitle"), TextSource.Simple("With action"), {}),
+                SubtitleTileItem(TextSource.Simple("Subtitle"), TextSource.Simple("With action")) {},
                 SubtitleTileItem.shimmer(),
 
                 DividerTileItem.getSmallDivider(),

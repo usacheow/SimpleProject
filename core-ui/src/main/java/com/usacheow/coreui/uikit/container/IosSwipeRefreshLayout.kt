@@ -265,7 +265,7 @@ class IOSSwipeRefreshLayout @JvmOverloads constructor(
             }
 
             MotionEvent.ACTION_POINTER_DOWN -> {
-                pointerIndex = event.getActionIndex()
+                pointerIndex = event.actionIndex
                 if (pointerIndex < 0) {
                     return false
                 }

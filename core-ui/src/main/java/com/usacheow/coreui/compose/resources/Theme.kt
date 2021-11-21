@@ -66,7 +66,7 @@ private val LightColorPalette = lightColorScheme(
 )
 
 @Composable
-fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val commonColors = when {
         darkTheme -> DarkCommonColors
         else -> LightCommonColors

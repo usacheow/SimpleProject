@@ -82,7 +82,7 @@ class SignInWithPhoneViewModel @Inject constructor(
 
         interactor.signInWithPhone(phone).doOnSuccess {
             _openConfirmScreenAction triggerBy CONFIRM_CODE_LENGTH
-        }.doOnError { exception, data ->
+        }.doOnError { exception, _ ->
             _errorState tryPublish exception.getMessage(resources)
         }
 
@@ -101,7 +101,7 @@ class SignInWithPhoneViewModel @Inject constructor(
         interactor.verifyPhone(phoneNumber, code).doOnSuccess {
             _closeSmsCodeScreenAction.trigger()
             _openNextScreenAction triggerBy nextScreenDirection
-        }.doOnError { exception, data ->
+        }.doOnError { _, _ ->
             _codeConfirmMessageState tryPublish TextSource.Simple("Неверный код")
         }
     }

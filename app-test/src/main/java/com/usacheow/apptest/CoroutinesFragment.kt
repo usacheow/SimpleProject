@@ -33,7 +33,7 @@ class CoroutinesFragment : SimpleFragment<FragmentCoroutinesBinding>() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 var x = 1_000_000
-                (0..1_000_000_00).forEach {
+                repeat((0..1_000_000_00).count()) {
                     x--
                 }
             }

@@ -1,5 +1,6 @@
 package com.usacheow.apptest
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.biometric.BiometricPrompt
@@ -12,6 +13,7 @@ import com.usacheow.coreui.uikit.helper.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@SuppressLint("NewApi")
 @AndroidEntryPoint
 class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
 
@@ -22,7 +24,7 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
     @Inject lateinit var router: TestRouter
 
     @Inject lateinit var biometricDelegate: BiometricEnterManager
-    private val cryptoConfig by lazy { CryptoConfigurator(requireContext()) }
+    private val cryptoConfig by lazy { CryptoConfigurator() }
     var cryptoObject: BiometricPrompt.CryptoObject? = null
     private val secretWord = "Secret word"
     private var encoded = "nothing"
@@ -34,7 +36,7 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
         binding.encodeButton.doOnClick {
             cryptoObject = cryptoConfig.createCryptoObject()
             encoded = cryptoConfig.encode(secretWord) ?: "encode error"
-            Toast.makeText(requireContext(), "$encoded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), encoded, Toast.LENGTH_SHORT).show()
         }
         binding.decodeButton.doOnClick {
             biometricDelegate.tryShow(BiometricData(cryptoObject!!))
@@ -42,7 +44,7 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
 
         biometricDelegate.onSuccessAction = {
             val decoded = cryptoConfig.decode(encoded, it?.cipher!!) ?: "decode 1 error"
-            Toast.makeText(requireContext(), "$decoded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), decoded, Toast.LENGTH_SHORT).show()
         }
     }
 }

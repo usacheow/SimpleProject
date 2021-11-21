@@ -59,11 +59,6 @@
         android:name="com.usacheow.apptest.CoroutinesFragment"
         android:label="CoroutinesFragment"
         tools:layout="@layout/fragment_coroutines"/>
-    <fragment
-        android:id="@+id/notificationsFragment"
-        android:name="com.usacheow.apptest.notifications.NotificationsFragment"
-        android:label="NotificationsFragment"
-        tools:layout="@layout/fragment_notifications"/>
 
     <include
         app:graph="@navigation/nested_test_app_nav_graph"/>

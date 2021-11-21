@@ -179,7 +179,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener(
-            Runnable {
+            {
                 val cameraProvider = cameraProviderFuture.get()
 
                 val cameraSelector = CameraSelector.Builder()
@@ -212,7 +212,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
 //                .setImageQueueDepth()
                     .build()
                     .also {
-                        it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { _ -> })
+                        it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { })
                     }
 
                 cameraProvider.unbindAll()

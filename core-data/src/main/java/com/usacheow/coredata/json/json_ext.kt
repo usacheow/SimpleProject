@@ -8,7 +8,7 @@ import java.io.*
 
 inline fun <reified TYPE> Json.parseJsonFromAsset(resources: ResourcesWrapper, fileName: String): TYPE? {
     var value: TYPE? = null
-    var reader: BufferedReader? = null
+    val reader: BufferedReader? = null
     try {
         value = fromJson(resources.getAssets().open(fileName))
     } catch (e: IOException) {
