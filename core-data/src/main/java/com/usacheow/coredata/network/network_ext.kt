@@ -3,6 +3,7 @@ package com.usacheow.coredata.network
 import com.usacheow.core.Completable
 import com.usacheow.core.Effect
 import com.usacheow.coredata.cache.CacheProvider
+import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -61,7 +62,7 @@ inline fun <reified T : Any> Response<T>.toEffect() = when {
 
     else -> {
         val exception = errorBody()?.let { errorBody ->
-            val error = Json.decodeFromStream<ErrorDto>(errorBody.byteStream())
+            val error = KotlinxSerializationJsonProvider().get().decodeFromStream<ErrorDto>(errorBody.byteStream())
             ApiError.ServerException(error.message)
         } ?: ApiError.ServerException()
 
