@@ -10,14 +10,14 @@ import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewViewStateHorizontalListBinding
 
-class ViewTypeHorizontalListView @JvmOverloads constructor(
+class ViewStateHorizontalListView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-) : FrameLayout(context, attrs), Populatable<ViewTypeHorizontalListItem> {
+) : FrameLayout(context, attrs), Populatable<ViewStateHorizontalListItem> {
 
     private val binding by lazy { ViewViewStateHorizontalListBinding.bind(this) }
 
-    override fun populate(model: ViewTypeHorizontalListItem) {
+    override fun populate(model: ViewStateHorizontalListItem) {
         with(binding.listView) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             isNestedScrollingEnabled = false
@@ -26,6 +26,6 @@ class ViewTypeHorizontalListView @JvmOverloads constructor(
     }
 }
 
-data class ViewTypeHorizontalListItem(
+data class ViewStateHorizontalListItem(
     val items: List<ViewState>
 ) : ViewState(CoreUiR.layout.view_view_state_horizontal_list)

@@ -7,7 +7,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.core.TextSource
-import com.usacheow.core.toSource
+import com.usacheow.core.toTextSource
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
@@ -40,16 +40,16 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         OnBoardingFeatureProvider.OnBoardingArgs(mutableListOf(
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_1).toSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_1).toSource()),
+                title = res.getString(DemoAppR.string.on_boarding_title_1).toTextSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_1).toTextSource()),
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_2).toSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_2).toSource()),
+                title = res.getString(DemoAppR.string.on_boarding_title_2).toTextSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_2).toTextSource()),
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_3).toSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_3).toSource())
+                title = res.getString(DemoAppR.string.on_boarding_title_3).toTextSource(),
+                description = res.getString(DemoAppR.string.on_boarding_description_3).toTextSource())
         ))
     }
 

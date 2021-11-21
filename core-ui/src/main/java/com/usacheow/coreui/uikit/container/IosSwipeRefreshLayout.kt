@@ -118,7 +118,7 @@ class IOSSwipeRefreshLayout @JvmOverloads constructor(
         context.theme.obtainStyledAttributes(attrs, CoreUiR.styleable.IosSwipeRefreshLayout, 0, 0)
             .apply {
                 val refreshIcon = getDrawable(CoreUiR.styleable.IosSwipeRefreshLayout_android_icon)
-                    ?: drawable(CoreUiR.drawable.ic_refresh_default)
+                    ?: drawable(CoreUiR.drawable.ic_refresh_ios)
                 refreshIconView.setImageDrawable(refreshIcon)
             }
             .recycle()

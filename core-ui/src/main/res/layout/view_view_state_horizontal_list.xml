@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreui.uikit.container.ViewTypeHorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreui.uikit.container.ViewStateHorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,4 +13,4 @@
         android:paddingEnd="8dp"
         android:clipToPadding="false"
         tools:listitem="@layout/view_list_tile"/>
-</com.usacheow.coreui.uikit.container.ViewTypeHorizontalListView>
+</com.usacheow.coreui.uikit.container.ViewStateHorizontalListView>

@@ -7,11 +7,9 @@ import android.widget.FrameLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.databinding.ViewMessageBannerBinding
-import com.usacheow.coreui.uikit.helper.doOnClick
-import com.usacheow.coreui.uikit.helper.makeGone
-import com.usacheow.coreui.uikit.helper.makeVisible
-import com.usacheow.coreui.uikit.helper.populate
-import com.usacheow.coreui.uikit.helper.string
+import com.usacheow.coreui.uikit.helper.*
+import com.usacheow.coreui.uikit.molecule.ListTileItem
+import com.usacheow.coreui.R as CoreUiR
 
 class MessageBannerView @JvmOverloads constructor(
     context: Context,
@@ -48,4 +46,19 @@ data class MessageBannerItem(
     val description: TextSource?,
     val button: TextSource.Res? = null,
     val clickListener: (() -> Unit)? = null,
-)
+) {
+
+    companion object {
+
+        fun reloadTileItem(
+            message: TextSource,
+            description: TextSource?,
+            clickListener: () -> Unit,
+        ) = ListTileItem(
+            value = message,
+            bottomDescription = description,
+            rightImageInfo = ImageSource.Res(CoreUiR.drawable.ic_refresh),
+            clickListener = clickListener,
+        )
+    }
+}

@@ -27,3 +27,5 @@ sealed class ImageSource {
 
 fun String.toImageSource() = ImageSource.Url(this)
 fun Int.toImageSource() = ImageSource.Res(this)
+fun Bitmap.toImageSource() = ImageSource.Image(this)
+fun Drawable.toImageSource() = ImageSource.Vector(this)

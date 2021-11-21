@@ -2,7 +2,7 @@ package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.core.toSource
+import com.usacheow.core.toTextSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel
@@ -27,16 +27,16 @@ class MainScreenViewModel @Inject constructor(
     private val onBoardingArgs = OnBoardingFeatureProvider.OnBoardingArgs(mutableListOf(
         OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
-            title = resources.getString(AppR.string.on_boarding_title_1).toSource(),
-            description = resources.getString(AppR.string.on_boarding_description_1).toSource()),
+            title = resources.getString(AppR.string.on_boarding_title_1).toTextSource(),
+            description = resources.getString(AppR.string.on_boarding_description_1).toTextSource()),
         OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
-            title = resources.getString(AppR.string.on_boarding_title_2).toSource(),
-            description = resources.getString(AppR.string.on_boarding_description_2).toSource()),
+            title = resources.getString(AppR.string.on_boarding_title_2).toTextSource(),
+            description = resources.getString(AppR.string.on_boarding_description_2).toTextSource()),
         OnBoardingFeatureProvider.OnBoardingArgs.Page(
             defaultImageRes = CoreUiR.drawable.ic_user,
-            title = resources.getString(AppR.string.on_boarding_title_3).toSource(),
-            description = resources.getString(AppR.string.on_boarding_description_3).toSource())
+            title = resources.getString(AppR.string.on_boarding_title_3).toTextSource(),
+            description = resources.getString(AppR.string.on_boarding_description_3).toTextSource())
     ))
 
     init {
