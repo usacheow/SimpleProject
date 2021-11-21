@@ -3,8 +3,8 @@ package com.usacheow.coredata.cache.lruimpl
 import androidx.collection.LruCache
 
 class LruCachePersister<DATA_TYPE>(
-    maxSize: Int
-) : LruCache<String, CacheItem<DATA_TYPE>>(maxSize) {
+    maxSizeBytes: Int
+) : LruCache<String, CacheItem<DATA_TYPE>>(maxSizeBytes) {
 
     fun get(cacheKey: String, maxTimeInCache: Long): DATA_TYPE? {
         val cacheItem = get(cacheKey) ?: return null

@@ -4,7 +4,7 @@ import com.usacheow.coredata.cache.CacheProvider
 import java.util.Collections
 import javax.inject.Inject
 
-private const val DEFAULT_SIZE_CACHE = 16
+private const val DEFAULT_SIZE_CACHE_BYTES = 4 * 1024 * 1024
 
 class LruCacheProvider @Inject constructor() : CacheProvider {
 
@@ -39,12 +39,12 @@ class LruCacheProvider @Inject constructor() : CacheProvider {
 
     private fun <T> getPersister(clazz: Class<T>): LruCachePersister<T> {
         if (!persisterMap.containsKey(clazz)) {
-            addPersister(clazz, DEFAULT_SIZE_CACHE)
+            addPersister(clazz, DEFAULT_SIZE_CACHE_BYTES)
         }
         return persisterMap[clazz] as LruCachePersister<T>
     }
 
-    private fun <T> addPersister(clazz: Class<T>, maxSize: Int) {
-        persisterMap[clazz] = LruCachePersister<T>(maxSize)
+    private fun <T> addPersister(clazz: Class<T>, maxSizeBytes: Int) {
+        persisterMap[clazz] = LruCachePersister<T>(maxSizeBytes)
     }
 }
