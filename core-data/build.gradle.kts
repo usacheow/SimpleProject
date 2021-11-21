@@ -15,7 +15,6 @@ dependencies {
     api(*Libs.bundle.requests)
     api(*Libs.bundle.kotlinSerialization)
 
-    implementation(*Libs.bundle.gson)
     implementation(*Libs.bundle.firebase)
     implementation(*Libs.bundle.datastore)
     implementation(*Libs.bundle.preference)

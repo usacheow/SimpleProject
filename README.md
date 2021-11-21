@@ -3,7 +3,7 @@
 Starter project with functional modules on the next stack:
 + kotlin, coroutines
 + mvvm, hilt, view binding, navigation component
-+ retrofit 2, gson, glide, room
++ retrofit 2, kotlinx-serialization, glide, room
 + junit, espresso
 + gitlab ci
 

@@ -1,12 +1,13 @@
 package com.usacheow.coredata.network
 
-import com.google.gson.Gson
 import com.usacheow.core.Completable
 import com.usacheow.core.Effect
 import com.usacheow.coredata.cache.CacheProvider
-import com.usacheow.coredata.gson.fromJson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import retrofit2.HttpException
 import retrofit2.Response
 import java.net.ConnectException
@@ -48,6 +49,7 @@ suspend inline fun <reified T : Any> apiCall(
     }
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 inline fun <reified T : Any> Response<T>.toEffect() = when {
     isSuccessful -> when (val body = body()) {
         null -> when (T::class) {
@@ -59,7 +61,7 @@ inline fun <reified T : Any> Response<T>.toEffect() = when {
 
     else -> {
         val exception = errorBody()?.let { errorBody ->
-            val error = Gson().fromJson<ErrorDto>(errorBody.charStream())
+            val error = Json.decodeFromStream<ErrorDto>(errorBody.byteStream())
             ApiError.ServerException(error.message)
         } ?: ApiError.ServerException()
 

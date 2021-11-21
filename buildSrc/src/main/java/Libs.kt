@@ -50,7 +50,7 @@ object Libs {
     private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
     private const val roomVersion = "2.3.0"
-    private const val gsonVersion = "2.8.6"
+    private const val jsonConverterVersion = "0.8.0"
     private const val retrofitVersion = "2.9.0"
     private const val okHttpVersion = "4.9.0"
     private const val chuckVersion = "1.1.0"
@@ -171,7 +171,6 @@ object Libs {
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")
         val cryptoPreference = arrayOf("androidx.security:security-crypto:$securityVersion")
         val preference = arrayOf("androidx.preference:preference-ktx:$preferenceVersion")
-        val gson = arrayOf("com.google.code.gson:gson:$gsonVersion")
 
         val room = arrayOf(
             "androidx.room:room-runtime:$roomVersion",
@@ -179,8 +178,8 @@ object Libs {
         const val roomKapt = "androidx.room:room-compiler:$roomVersion"
 
         val requests = arrayOf(
-            "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$jsonConverterVersion",
             "com.squareup.okhttp3:okhttp:$okHttpVersion",
             "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             "com.readystatesoftware.chuck:library:$chuckVersion")

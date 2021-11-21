@@ -5,8 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -24,7 +24,7 @@ class RetrofitModule {
     fun retrofit(
         okHttp: OkHttpClient,
         @Named("ENDPOINT") host: String,
-        converter: GsonConverterFactory
+        converter: Converter.Factory,
     ): Retrofit = Retrofit.Builder()
         .addConverterFactory(converter)
         .client(okHttp)
