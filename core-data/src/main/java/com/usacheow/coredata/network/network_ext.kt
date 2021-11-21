@@ -22,7 +22,7 @@ suspend inline fun <reified T : Any> cachedApiCall(
     dispatcher: CoroutineDispatcher,
     needActualData: Boolean = false,
     timeInMinutes: Int = 5,
-    noinline request: () -> Response<T>,
+    noinline request: suspend () -> Response<T>,
 ): Effect<T> {
     val memoryCacheTimeInMilliseconds = timeInMinutes * 60 * 1000L
     return if (needActualData) {
@@ -39,7 +39,7 @@ suspend inline fun <reified T : Any> cachedApiCall(
 
 suspend inline fun <reified T : Any> apiCall(
     dispatcher: CoroutineDispatcher,
-    noinline block: () -> Response<T>,
+    noinline block: suspend () -> Response<T>,
 ): Effect<T> = withContext(dispatcher) {
     try {
         block().toEffect()
