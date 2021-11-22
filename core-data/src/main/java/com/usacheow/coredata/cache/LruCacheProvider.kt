@@ -3,36 +3,37 @@ package com.usacheow.coredata.cache
 import androidx.collection.LruCache
 import java.util.Collections
 import javax.inject.Inject
+import kotlin.reflect.KType
 
 private const val DEFAULT_SIZE_CACHE_BYTES = 4 * 1024 * 1024
 
 class LruCacheProvider @Inject constructor() : CacheProvider {
 
     private val persisterMap = Collections.synchronizedMap(
-        mutableMapOf<Class<*>, LruCachePersister<*>>()
+        mutableMapOf<KType, LruCachePersister<*>>()
     )
 
-    override suspend fun <T> get(clazz: Class<T>, key: String): T? {
-        return getPersister(clazz)
+    override suspend fun <T> get(type: KType, key: String): T? {
+        return getPersister<T>(type)
             .get(key)
-            ?.getOrClear { clear(clazz, key) }
+            ?.getOrClear { clear(type, key) }
             ?.data
     }
 
-    override suspend fun <T : Any> save(key: String, data: T, lifeTimeInMillis: Long) {
+    override suspend fun <T : Any> save(type: KType, key: String, data: T, lifeTimeInMillis: Long) {
         val cache = CacheElement(data, lifeTimeInMillis)
-        getPersister(data.javaClass).put(key, cache)
+        getPersister<T>(type).put(key, cache)
     }
 
-    override suspend fun <T> clear(clazz: Class<T>, key: String) {
-        persisterMap[clazz]?.remove(key)
+    override suspend fun clear(type: KType, key: String) {
+        persisterMap[type]?.remove(key)
     }
 
     override suspend fun clearAll() {
         persisterMap.entries.forEach { it.value.evictAll() }
     }
 
-    private fun <T> getPersister(clazz: Class<T>) = persisterMap.getOrPut(clazz) {
+    private fun <T> getPersister(type: KType) = persisterMap.getOrPut(type) {
         LruCachePersister<T>()
     } as LruCachePersister<T>
 }

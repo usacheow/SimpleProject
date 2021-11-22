@@ -12,11 +12,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.serializerOrNull
 import java.util.Collections
 import javax.inject.Inject
+import kotlin.reflect.KType
 
 private const val CACHE_STORE = "cache_data"
 
+@OptIn(ExperimentalStdlibApi::class)
 class PrefsCacheProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val jsonProvider: KotlinxSerializationJsonProvider,
@@ -24,35 +27,38 @@ class PrefsCacheProvider @Inject constructor(
 
     private val Context.dataStore by preferencesDataStore(name = CACHE_STORE)
     private val keysMap = Collections.synchronizedMap(
-        mutableMapOf<Class<*>, Preferences.Key<String>>()
+        mutableMapOf<KType, Preferences.Key<String>>()
     )
 
+    override suspend fun <T> get(type: KType, key: String): T? {
+        val dataSerializer = serializerOrNull(type) ?: return null
 
-    override suspend fun <T> get(clazz: Class<T>, key: String): T? {
         return context.dataStore
-            .get(getKey(clazz, key))
+            .get(getKey(type, key))
             .firstOrNull()
-            ?.let { json -> jsonProvider.get().decodeFromString(json) as CacheElement<T> }
-            ?.getOrClear { clear(clazz, key) }
+            ?.let { cacheItemJson -> jsonProvider.get().decodeFromString(cacheItemJson) as CacheElement<String> }
+            ?.getOrClear { clear(type, key) }
             ?.data
+            ?.let { dataJson -> jsonProvider.get().decodeFromString(dataSerializer, dataJson) as? T? }
     }
 
-    override suspend fun <T : Any> save(key: String, data: T, lifeTimeInMillis: Long) {
-        val cache = CacheElement(data, lifeTimeInMillis)
-        val json = jsonProvider.get().encodeToString(cache)
-        context.dataStore.set(stringPreferencesKey(key), json)
-
+    override suspend fun <T : Any> save(type: KType, key: String, data: T, lifeTimeInMillis: Long) {
+        val dataSerializer = serializerOrNull(type) ?: return
+        val dataJson = jsonProvider.get().encodeToString(dataSerializer, data)
+        val cacheItem = CacheElement(dataJson, lifeTimeInMillis)
+        val cacheItemJson = jsonProvider.get().encodeToString(cacheItem)
+        context.dataStore.set(stringPreferencesKey(key), cacheItemJson)
     }
 
-    override suspend fun <T> clear(clazz: Class<T>, key: String) {
-        context.dataStore.edit { it.remove(getKey(clazz, key)) }
+    override suspend fun clear(type: KType, key: String) {
+        context.dataStore.edit { it.remove(getKey(type, key)) }
     }
 
     override suspend fun clearAll() {
         context.dataStore.edit { it.clear() }
     }
 
-    private fun <T> getKey(clazz: Class<T>, key: String) = keysMap.getOrPut(clazz) {
+    private fun getKey(type: KType, key: String) = keysMap.getOrPut(type) {
         stringPreferencesKey(key)
     }
 }

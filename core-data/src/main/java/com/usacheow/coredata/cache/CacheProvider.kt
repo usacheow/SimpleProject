@@ -1,10 +1,19 @@
 package com.usacheow.coredata.cache
 
+import kotlin.reflect.KType
+
 interface CacheProvider : CacheCleaner {
 
-    suspend fun <T> get(clazz: Class<T>, key: String): T?
+    suspend fun <T> get(type: KType, key: String): T?
 
-    suspend fun <T : Any> save(key: String, data: T, lifeTimeInMillis: Long)
+    suspend fun <T : Any> save(type: KType, key: String, data: T, lifeTimeInMillis: Long)
+}
+
+interface CacheCleaner {
+
+    suspend fun clear(type: KType, key: String)
+
+    suspend fun clearAll()
 }
 
 class CacheElement<T>(

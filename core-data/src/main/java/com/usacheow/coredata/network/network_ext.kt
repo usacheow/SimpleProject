@@ -16,7 +16,9 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.CancellationException
 import javax.net.ssl.SSLException
+import kotlin.reflect.typeOf
 
+@OptIn(ExperimentalStdlibApi::class)
 suspend inline fun <reified T : Any> cachedApiCall(
     key: String,
     cacheProvider: CacheProvider,
@@ -28,13 +30,13 @@ suspend inline fun <reified T : Any> cachedApiCall(
     val lifeTimeInMillis = lifeTimeInMinutes * 60 * 1000L
     return if (needActualData) {
         apiCall(dispatcher, request)
-            .doOnSuccess { cacheProvider.save(key, it, lifeTimeInMillis) }
-            .applyCacheData { cacheProvider.get(T::class.java, key) }
+            .doOnSuccess { cacheProvider.save(typeOf<T>(),  key, it, lifeTimeInMillis) }
+            .applyCacheData { cacheProvider.get(typeOf<T>(), key) }
     } else {
-        cacheProvider.get(T::class.java, key)
+        cacheProvider.get<T>(typeOf<T>(), key)
             ?.let { Effect.success(it) }
             ?: apiCall(dispatcher, request)
-                .doOnSuccess { cacheProvider.save(key, it, lifeTimeInMillis) }
+                .doOnSuccess { cacheProvider.save(typeOf<T>(), key, it, lifeTimeInMillis) }
     }
 }
 
