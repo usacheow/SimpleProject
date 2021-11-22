@@ -36,8 +36,6 @@
 
     <color name="colorStatusBar">#4D000000</color>
     <color name="colorNavigationBar">#4D000000</color>
-    <color name="colorStatusBarForModal">#4D000000</color>
-    <color name="colorNavigationBarForModal">#4D000000</color>
 
     <color name="textPrimary">#FF1C1B1F</color>
     <color name="textPrimaryInverse">#FFFFFFFF</color>

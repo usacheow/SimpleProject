@@ -8,8 +8,6 @@ import com.usacheow.simpleapp.mainscreen.MainScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-const val MESSAGE_KEY = "MESSAGE_KEY"
-
 @AndroidEntryPoint
 class FirebaseNotificationsService : FirebaseMessagingService() {
 
@@ -20,13 +18,11 @@ class FirebaseNotificationsService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(remoteMessage: RemoteMessage) {
-        remoteMessage.data[MESSAGE_KEY]
-
         val notificationIntent = Intent(this, MainScreenActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         val model = NotificationHelper.Model(
-            title = remoteMessage.notification?.title ?: "",
-            text = remoteMessage.notification?.body ?: "",
+            title = remoteMessage.notification?.title.orEmpty(),
+            text = remoteMessage.notification?.body.orEmpty(),
             intent = notificationIntent
         )
 

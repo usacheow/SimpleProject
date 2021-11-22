@@ -1,7 +1,7 @@
 package com.usacheow.coredata
 
 import android.app.Application
-import com.readystatesoftware.chuck.ChuckInterceptor
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.usacheow.coredata.database.TokenStorage
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import dagger.Module
@@ -24,7 +24,7 @@ class OkHttpModule {
     @Provides
     @Singleton
     fun loggingInterceptor() = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = HttpLoggingInterceptor.Level.BASIC
     }
 
     @Provides
@@ -33,14 +33,14 @@ class OkHttpModule {
 
     @Provides
     @Singleton
-    fun chuckInterceptor(application: Application) = ChuckInterceptor(application)
+    fun chuckInterceptor(application: Application) = ChuckerInterceptor.Builder(application).build()
 
     @Provides
     @Singleton
     fun okHttpBuilderClient(
         logger: HttpLoggingInterceptor,
         authentication: AuthenticationInterceptor,
-        chuckInterceptor: ChuckInterceptor,
+        chuckerInterceptor: ChuckerInterceptor,
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .connectTimeout(TIMEOUT_CONNECTION_SECONDS, TimeUnit.SECONDS)
@@ -51,7 +51,7 @@ class OkHttpModule {
             .followRedirects(true)
 
         if (BuildConfig.DEBUG) {
-            builder.addInterceptor(chuckInterceptor)
+            builder.addInterceptor(chuckerInterceptor)
             builder.addInterceptor(logger)
         }
         return builder.build()

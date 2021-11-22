@@ -13,7 +13,7 @@ object Libs {
     private const val androidxCoreVersion = "1.7.0-beta02"
     private const val splashVersion = "1.0.0-alpha02"
     private const val activityVersion = "1.4.0"
-    private const val fragmentVersion = "1.4.0-rc01"
+    private const val fragmentVersion = "1.4.0"
     private const val materialVersion = "1.5.0-alpha05"
     private const val cardViewVersion = "1.0.0"
     private const val viewPagerVersion = "1.0.0"
@@ -53,7 +53,7 @@ object Libs {
     private const val jsonConverterVersion = "0.8.0"
     private const val retrofitVersion = "2.9.0"
     private const val okHttpVersion = "4.9.0"
-    private const val chuckVersion = "1.1.0"
+    private const val chuckVersion = "3.5.2"
 
     private const val mockitoVersion = "2.7.22"
     private const val truthVersion = "0.34"
@@ -182,7 +182,7 @@ object Libs {
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$jsonConverterVersion",
             "com.squareup.okhttp3:okhttp:$okHttpVersion",
             "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
-            "com.readystatesoftware.chuck:library:$chuckVersion")
+            "com.github.chuckerteam.chucker:library:$chuckVersion")
 
         const val unitTestsRunner = "android.support.test.runner.AndroidJUnitRunner"
         val unitTests = arrayOf(
