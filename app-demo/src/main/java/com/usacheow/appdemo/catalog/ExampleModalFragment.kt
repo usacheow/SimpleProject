@@ -23,7 +23,6 @@ class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() 
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Modal fragment"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_close, action = ::dismiss)
     }
 }

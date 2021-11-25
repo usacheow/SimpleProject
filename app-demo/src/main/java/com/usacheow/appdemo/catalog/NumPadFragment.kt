@@ -30,7 +30,6 @@ class NumPadFragment : SimpleFragment<FragmentNumPadBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Num pad view"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
     }
 }

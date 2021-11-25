@@ -34,7 +34,6 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Text inputs"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
 
         binding.viewAmountInput.addCurrencyFormatter("50000.00")

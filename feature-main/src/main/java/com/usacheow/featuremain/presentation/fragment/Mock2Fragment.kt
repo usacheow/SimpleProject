@@ -1,6 +1,5 @@
 package com.usacheow.featuremain.presentation.fragment
 
-import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -19,9 +18,5 @@ class Mock2Fragment : SimpleFragment<FragmentMockBinding>() {
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.applyTopInset(insets.getTopInset())
         return insets
-    }
-
-    override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Mock"
     }
 }

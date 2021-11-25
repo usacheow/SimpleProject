@@ -35,7 +35,6 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Tag list"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
 
         binding.radioListView.isNestedScrollingEnabled = false

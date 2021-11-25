@@ -9,7 +9,8 @@
     <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:headerText="Error message view"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/viewsScrollView"

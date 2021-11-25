@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SwipeLayout">
-        <attr name="swipe_gravity">
-            <enum name="left" value="-1" />
-            <enum name="right" value="1" />
-            <enum name="center" value="0" />
-        </attr>
-        <attr name="swipe_enabled" format="boolean" />
-        <attr name="swipe_left_enabled" format="boolean" />
-        <attr name="swipe_right_enabled" format="boolean" />
-    </declare-styleable>
-
     <declare-styleable name="IosSwipeRefreshLayout">
         <attr name="android:icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SimpleAppBarLayout">
+        <attr name="headerText" format="string" />
+        <attr name="headerNavIcon" format="reference" />
+        <attr name="headerNavIconColor" format="color" />
+        <attr name="headerColor" format="reference" />
     </declare-styleable>
 
 </resources>

@@ -63,10 +63,6 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.apply {
-            title = "Demo UIkit"
-        }
-
         binding.listView.adapter = ViewStateAdapter(
             listOf(
                 HeaderTileItem(TextSource.Simple("Atoms")),

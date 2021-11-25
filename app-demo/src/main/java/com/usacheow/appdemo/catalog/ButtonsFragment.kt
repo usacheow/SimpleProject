@@ -30,7 +30,6 @@ class ButtonsFragment : SimpleFragment<FragmentButtonsBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Buttons"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
     }
 }

@@ -30,7 +30,6 @@ class FontsFragment : SimpleFragment<FragmentFontsBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Fonts samples"
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
 
         binding.fontsListView.setOnClickListener {

@@ -10,6 +10,7 @@ import androidx.annotation.MenuRes
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.drawable
 import com.usacheow.coreui.uikit.helper.navigation
 import com.usacheow.coreui.R as CoreUiR
 
@@ -26,6 +27,21 @@ class SimpleAppBarLayout @JvmOverloads constructor(
 
     private val binding by lazy { SimpleAppBarLayoutBinding.inflate(LayoutInflater.from(context), this) }
 
+    init {
+        context.theme.obtainStyledAttributes(attrs, CoreUiR.styleable.SimpleAppBarLayout, 0, 0).apply {
+            title = getString(CoreUiR.styleable.SimpleAppBarLayout_headerText).orEmpty()
+            if (hasValue(CoreUiR.styleable.SimpleAppBarLayout_headerColor)) {
+                setBackground(getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerColor, 0))
+            }
+            if (hasValue(CoreUiR.styleable.SimpleAppBarLayout_headerNavIcon)) {
+                setNavigationAction(
+                    getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerNavIcon, 0),
+                    getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerNavIconColor, CoreUiR.color.icon),
+                ) {}
+            }
+        }.recycle()
+    }
+
     fun setBackground(@ColorRes colorId: Int) {
         setBackgroundColor(color(colorId))
     }
@@ -38,8 +54,7 @@ class SimpleAppBarLayout @JvmOverloads constructor(
         binding.toolbar.navigation(iconResId, colorId, action)
     }
 
-    fun inflateMenu(@MenuRes menuResId: Int, listener: (MenuItem) -> Boolean) {
-        binding.toolbar.inflateMenu(menuResId)
-        binding.toolbar.setOnMenuItemClickListener(listener)
+    fun setNavigationAction(action: () -> Unit) {
+        binding.toolbar.setNavigationOnClickListener { action() }
     }
 }

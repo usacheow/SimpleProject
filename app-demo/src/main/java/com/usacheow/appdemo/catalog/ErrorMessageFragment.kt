@@ -30,10 +30,7 @@ class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.apply {
-            title = "Error message view"
-            setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
-        }
+        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
 
         binding.errorMessageView1.showOrHideError(
             MessageBannerItem(
