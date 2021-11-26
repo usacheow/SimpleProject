@@ -42,7 +42,7 @@
                 android:layout_weight="1" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/SimpleInputLayoutOutlined"
+                style="?textInputStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false">

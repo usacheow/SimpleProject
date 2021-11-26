@@ -52,7 +52,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buyButton"
-                style="@style/SimpleButtonUnelevated"
+                style="@style/Simple.ButtonUnelevated"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="4dp"

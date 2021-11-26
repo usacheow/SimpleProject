@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ModalDialogAnimation">
+    <style name="Simple.ModalDialogAnimation">
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="Simple.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar"/>
+    <style name="Simple.DateRangePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar.Fullscreen"/>
+    <style name="Simple.TimePicker" parent="@style/ThemeOverlay.Material3.MaterialTimePicker"/>
+    <style name="Simple.AlertDialog" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog"/>
 
 </resources>

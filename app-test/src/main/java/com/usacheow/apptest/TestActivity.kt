@@ -36,7 +36,7 @@ class TestActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(TestAppR.style.AppTheme)
+        setTheme(TestAppR.style.Simple_AppTheme)
         super.onCreate(savedInstanceState)
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)

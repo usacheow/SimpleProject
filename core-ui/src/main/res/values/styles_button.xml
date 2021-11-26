@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SimpleButtonToolbar">
+    <style name="Simple.ButtonToolbar">
         <item name="android:layout_width">?actionBarSize</item>
         <item name="android:layout_height">?actionBarSize</item>
         <item name="android:padding">16dp</item>
@@ -9,30 +9,30 @@
         <item name="shapeAppearance">?shapeAppearanceSmallComponent</item>
     </style>
 
-    <style name="SimpleButtonUnelevated" parent="Widget.Material3.Button.UnelevatedButton">
+    <style name="Simple.ButtonUnelevated" parent="Widget.Material3.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
     </style>
 
-    <style name="SimpleButtonTonal" parent="Widget.Material3.Button.TonalButton">
+    <style name="Simple.ButtonTonal" parent="Widget.Material3.Button.TonalButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
     </style>
 
     <!--?attr/materialButtonOutlinedStyle-->
-    <style name="SimpleButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="Simple.ButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
     </style>
 
     <!--?attr/borderlessButtonStyle-->
-    <style name="SimpleButtonText" parent="Widget.Material3.Button.TextButton">
+    <style name="Simple.ButtonText" parent="Widget.Material3.Button.TextButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
     </style>
 
     <!--?attr/materialButtonStyle-->
-    <style name="SimpleButtonElevation" parent="Widget.Material3.Button">
+    <style name="Simple.ButtonElevation" parent="Widget.Material3.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
         <item name="elevation">@dimen/elevation_8</item>

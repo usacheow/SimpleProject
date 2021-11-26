@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary">#FFD0BCFF</color>
-    <color name="onPrimary">#FF381E72</color>
-    <color name="primaryContainer">#FF4F378B</color>
-    <color name="onPrimaryContainer">#FFEADDFF</color>
-    <color name="primaryInverse">#FF6750A4</color>
+    <color name="primary">#8FD17D</color>
+    <color name="onPrimary">#3B721E</color>
+    <color name="primaryContainer">#253022</color>
+    <color name="onPrimaryContainer">#9ABA90</color>
+    <color name="primaryInverse">#507844</color>
 
-    <color name="secondary">#FFCCC2DC</color>
-    <color name="onSecondary">#FF332D41</color>
-    <color name="secondaryContainer">#FF4A4458</color>
-    <color name="onSecondaryContainer">#FFE8DEF8</color>
+    <color name="secondary">#9C4D32</color>
+    <color name="onSecondary">#572818</color>
+    <color name="secondaryContainer">#4C332C</color>
+    <color name="onSecondaryContainer">#C3B6B2</color>
 
-    <color name="tertiary">#FFEFB8C8</color>
-    <color name="onTertiary">#FF492532</color>
-    <color name="tertiaryContainer">#FF633B48</color>
-    <color name="onTertiaryContainer">#FFFFD8E4</color>
+    <color name="tertiary">#656339</color>
+    <color name="onTertiary">#D1CE77</color>
+    <color name="tertiaryContainer">#4C401B</color>
+    <color name="onTertiaryContainer">#F4F3D1</color>
 
     <color name="error">#FFF2B8B5</color>
     <color name="onError">#FF601410</color>
     <color name="errorContainer">#FF8C1D18</color>
     <color name="onErrorContainer">#FFF2B8B5</color>
 
-    <color name="outline">#FF938F99</color>
+    <color name="outline">#8F9994</color>
 
-    <color name="background">#FF1C1B1F</color>
-    <color name="onBackground">#FFE6E1E5</color>
+    <color name="background">#1B1F1D</color>
+    <color name="onBackground">#E1E6E4</color>
 
-    <color name="surface">#FF1C1B1F</color>
-    <color name="onSurface">#FFE6E1E5</color>
-    <color name="surfaceVariant">#FF49454F</color>
-    <color name="onSurfaceVariant">#FFCAC4D0</color>
-    <color name="surfaceInverse">#FFE6E1E5</color>
-    <color name="onSurfaceInverse">#FF313033</color>
+    <color name="surface">@color/background</color>
+    <color name="onSurface">@color/onBackground</color>
+    <color name="surfaceVariant">#454F49</color>
+    <color name="onSurfaceVariant">#C4D0C8</color>
+    <color name="surfaceInverse">#E1E6E4</color>
+    <color name="onSurfaceInverse">#303331</color>
 
     <color name="colorStatusBar">#00000000</color>
     <color name="colorNavigationBar">#03000000</color>
 
-    <color name="textPrimary">#FFFFFFFF</color>
-    <color name="textPrimaryInverse">#FF212121</color>
+    <color name="symbolPrimary">#FFFFFFFF</color>
+    <color name="symbolPrimaryInverse">#FF212121</color>
+    <color name="icon">@color/symbolPrimary</color>
+    <color name="iconInverse">@color/symbolPrimaryInverse</color>
+    <color name="textPrimary">@color/symbolPrimary</color>
+    <color name="textPrimaryInverse">@color/symbolPrimaryInverse</color>
     <color name="textSecondary">#9AFFFFFF</color>
     <color name="textSecondaryInverse">#9A212121</color>
     <color name="textTertiary">#65FFFFFF</color>
     <color name="textTertiaryInverse">#65212121</color>
-    <color name="icon">#FFFFFFFF</color>
-    <color name="iconInverse">#FF212121</color>
 
     <color name="shimmer">#FF55565A</color>
 

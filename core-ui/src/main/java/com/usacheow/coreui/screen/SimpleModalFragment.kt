@@ -48,7 +48,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NO_TITLE, CoreUiR.style.AppTheme)
+        setStyle(STYLE_NO_TITLE, CoreUiR.style.Simple_AppTheme)
     }
 
     @CallSuper
@@ -60,7 +60,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.attributes?.windowAnimations = CoreUiR.style.ModalDialogAnimation
+        dialog?.window?.attributes?.windowAnimations = CoreUiR.style.Simple_ModalDialogAnimation
 
         windowInsetsController = createWindowInsetsControllerCompat(
             dialog?.window,

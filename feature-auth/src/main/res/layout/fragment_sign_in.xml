@@ -68,7 +68,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signInButton"
-                style="@style/SimpleButtonUnelevated"
+                style="@style/Simple.ButtonUnelevated"
                 android:text="@string/sign_in_button" />
 
             <com.google.android.material.button.MaterialButton

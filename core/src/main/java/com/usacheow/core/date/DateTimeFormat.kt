@@ -9,7 +9,9 @@ enum class DateTimeFormat(val code: String) {
 
     ISO_LOCAL_TIME("HH:mm:ss"),
 
-    ISO_LOCAL_DATE_TIME("yyyy-MM-dd'T'HH:mm[:ss][.SSS]"),
+    ISO_LOCAL_DATE_TIME("yyyy-MM-dd'T'HH:mm"),
+
+    ISO_LOCAL_DATE_TIME_FULL("yyyy-MM-dd'T'HH:mm[:ss][.SSS]"),
     //XXX - 03:00
     ISO_OFFSET_DATE_TIME("yyyy-MM-dd'T'HH:mm[:ss][.SSS][XXX]"),
     //Z - 0300

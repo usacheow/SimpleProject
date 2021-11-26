@@ -49,8 +49,8 @@ class TagTileView @JvmOverloads constructor(
 
 data class TagTileItem(
     val name: TextSource,
-    val unselectedColor: TagColor = TagColor(CoreUiR.color.onSurface, CoreUiR.color.surface),
-    val selectedColor: TagColor = TagColor(CoreUiR.color.onSurfaceVariant, CoreUiR.color.surfaceVariant),
+    val unselectedColor: TagColor = TagColor(CoreUiR.color.onSecondaryContainer, CoreUiR.color.secondaryContainer),
+    val selectedColor: TagColor = TagColor(CoreUiR.color.onSecondary, CoreUiR.color.secondary),
     val selectListener: () -> Unit,
 ) : TagViewState(CoreUiR.layout.view_tag_tile)
 

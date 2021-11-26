@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SimpleCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+    <style name="Simple.Checkbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="cornerRadius">20dp</item>
     </style>
 
-    <style name="SimpleShimmerLayout">
+    <style name="Simple.ShimmerLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="shimmer_shape">linear</item>

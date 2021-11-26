@@ -34,11 +34,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/left_right_margin"
-                    android:text="Simple"
+                    android:text="Unelevated"
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButtonUnelevated"
+                    style="@style/Simple.ButtonUnelevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -60,7 +60,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButtonElevation"
+                    style="?attr/materialButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -82,7 +82,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButtonTonal"
+                    style="@style/Simple.ButtonTonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -104,7 +104,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButtonOutlined"
+                    style="@style/Simple.ButtonOutlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -126,7 +126,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/SimpleButtonText"
+                    style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -154,19 +154,19 @@
                     app:singleSelection="true">
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
+                        style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="First" />
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
+                        style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Second" />
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/SimpleButtonOutlined"
+                        style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Third" />

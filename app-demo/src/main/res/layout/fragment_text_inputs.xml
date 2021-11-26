@@ -33,7 +33,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewPasswordInputLayout"
-                style="@style/SimpleInputLayoutOutlined"
+                style="?textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"
@@ -61,7 +61,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewAmountInputLayout"
-                style="@style/SimpleInputLayoutOutlined"
+                style="?textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"
@@ -88,7 +88,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewPhoneNumberInputLayout"
-                style="@style/SimpleInputLayoutOutlined"
+                style="?textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/left_right_margin"
@@ -105,6 +105,40 @@
                     android:lines="1"
                     android:textAppearance="?textAppearanceBodyLarge" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/viewDateInputHeaderView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/left_right_margin"
+                android:paddingVertical="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Select date"
+                android:textAppearance="?textAppearanceTitleLarge"
+                android:background="?selectableItemBackground"
+                app:drawableEndCompat="@drawable/ic_go" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/viewDateRangeInputHeaderView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/left_right_margin"
+                android:paddingVertical="8dp"
+                android:text="Select date range"
+                android:textAppearance="?textAppearanceTitleLarge"
+                android:background="?selectableItemBackground"
+                app:drawableEndCompat="@drawable/ic_go" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/viewTimeInputHeaderView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/left_right_margin"
+                android:paddingVertical="8dp"
+                android:text="Select time"
+                android:textAppearance="?textAppearanceTitleLarge"
+                android:background="?selectableItemBackground"
+                app:drawableEndCompat="@drawable/ic_go" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

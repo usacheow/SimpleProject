@@ -3,14 +3,14 @@
 
     <!--?textInputStyle-->
     <!--?textInputOutlinedStyle-->
-    <style name="SimpleInputLayoutOutlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+    <style name="Simple.InputLayoutOutlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">56dp</item>
     </style>
 
     <!--?textInputStyle-->
-    <style name="SimpleInputLayoutFilled" parent="Widget.Material3.TextInputLayout.FilledBox">
+    <style name="Simple.InputLayoutFilled" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">56dp</item>

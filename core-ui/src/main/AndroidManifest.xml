@@ -2,5 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.usacheow.coreui">
 
-    <application android:theme="@style/AppTheme" />
+    <application android:theme="@style/Simple.AppTheme" />
 </manifest>

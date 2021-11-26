@@ -7,19 +7,19 @@
     </style>
 
     <!--?shapeAppearanceSmallComponent-->
-    <style name="SmallComponentShape" parent="ShapeAppearance.Material3.SmallComponent">
+    <style name="Simple.SmallComponentShape" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_small</item>
     </style>
 
     <!--?shapeAppearanceMediumComponent-->
-    <style name="MediumComponentShape" parent="ShapeAppearance.Material3.MediumComponent">
+    <style name="Simple.MediumComponentShape" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_medium</item>
     </style>
 
     <!--?shapeAppearanceLargeComponent-->
-    <style name="LargeComponentShape" parent="ShapeAppearance.Material3.LargeComponent">
+    <style name="Simple.LargeComponentShape" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_large</item>
     </style>
