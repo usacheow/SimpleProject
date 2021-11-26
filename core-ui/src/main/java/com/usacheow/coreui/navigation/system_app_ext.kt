@@ -46,7 +46,7 @@ fun Fragment.openUrl(url: String) {
         .apply {
             intent.putExtra(Browser.EXTRA_HEADERS, bundleOf())
         }
-        .launchUrl(context, Uri.parse(url))
+        .launchUrl(requireContext(), Uri.parse(url))
 }
 
 fun Fragment.openMaps(address: String) {

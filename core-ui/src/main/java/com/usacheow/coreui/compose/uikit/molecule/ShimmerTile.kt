@@ -1,6 +1,7 @@
 package com.usacheow.coreui.compose.uikit.molecule
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -61,6 +63,7 @@ fun ShimmerTile(
     }
 
     Row(modifier = Modifier
+        .background(MaterialTheme.colorScheme.background)
         .fillMaxWidth()
         .padding(CommonDimens.default_screen_margin)) {
         if (needLeftIcon) {

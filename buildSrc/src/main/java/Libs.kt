@@ -7,32 +7,33 @@ object Libs {
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.5.1"
 
-    const val composeVersion = "1.1.0-beta01"
+    const val composeVersion = "1.1.0-beta03"
     private const val composeMaterialVersion = "1.0.0-alpha01"
-    private const val androidxVersion = "1.3.1"
-    private const val androidxCoreVersion = "1.7.0-beta02"
+    private const val androidxVersion = "1.4.0"
+    private const val androidxCoreVersion = "1.7.0"
     private const val splashVersion = "1.0.0-alpha02"
     private const val activityVersion = "1.4.0"
     private const val fragmentVersion = "1.4.0"
-    private const val materialVersion = "1.5.0-alpha05"
+    private const val materialVersion = "1.5.0-beta01"
     private const val cardViewVersion = "1.0.0"
-    private const val viewPagerVersion = "1.0.0"
+    private const val viewPagerVersion = "1.1.0-beta01"
     private const val recyclerVersion = "1.3.0-alpha01"
     private const val constraintVersion = "2.0.4"
-    private const val pagingVersion = "3.0.0"
+    private const val coordinatorVersion = "1.2.0-beta01"
+    private const val pagingVersion = "3.1.0"
     private const val roundedImageVersion = "2.3.0"
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
-    private const val accompanistVersion = "0.20.2"
+    private const val accompanistVersion = "0.21.3-beta"
     private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0-beta02"
     private const val appUpdaterVersion = "1.8.1"
     private const val billingVersion = "4.0.0"
-    private const val browserVersion = "1.0.0"
-    private const val biometricVersion = "1.2.0-alpha03"
+    private const val browserVersion = "1.4.0"
+    private const val biometricVersion = "1.2.0-alpha04"
     private const val cameraXVersion = "1.0.0"
     private const val cameraXViewVersion = "1.0.0-alpha26"
 
@@ -49,7 +50,7 @@ object Libs {
     private const val datastoreVersion = "1.0.0-rc01"
     private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
-    private const val roomVersion = "2.3.0"
+    private const val roomVersion = "2.4.0-beta02"
     private const val jsonConverterVersion = "0.8.0"
     private const val retrofitVersion = "2.9.0"
     private const val okHttpVersion = "4.9.0"
@@ -118,6 +119,7 @@ object Libs {
             "androidx.viewpager2:viewpager2:$viewPagerVersion",
             "androidx.recyclerview:recyclerview:$recyclerVersion",
             "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            "androidx.coordinatorlayout:coordinatorlayout:$coordinatorVersion",
 
             "com.facebook.shimmer:shimmer:$shimmerVersion",
             "com.makeramen:roundedimageview:$roundedImageVersion",
