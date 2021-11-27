@@ -23,15 +23,6 @@ fun EditText.afterTextChanged(action: (String) -> Unit) = addTextChangedListener
     }
 })
 
-fun EditText.doOnActionClick(imeActionId: Int, action: () -> Unit = {}) {
-    setOnEditorActionListener { _, actionId, _ ->
-        if (actionId == imeActionId) {
-            action()
-        }
-        actionId != EditorInfo.IME_ACTION_DONE
-    }
-}
-
 fun TextInputEditText.addCurrencyFormatter(defaultHint: String? = null): TextWatcher {
     val formatter = DecimalFormatter().apply {
         negativePrefix = ""

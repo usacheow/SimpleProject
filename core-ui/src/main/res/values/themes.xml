@@ -57,21 +57,21 @@
         <item name="android:textColorTertiary">@color/textTertiary</item>
         <item name="android:textColorTertiaryInverse">@color/textTertiaryInverse</item>
 
-        <item name="textAppearanceDisplayLarge">@style/TextDL</item>
-        <item name="textAppearanceDisplayMedium">@style/TextDM</item>
-        <item name="textAppearanceDisplaySmall">@style/TextDS</item>
-        <item name="textAppearanceHeadlineLarge">@style/TextHL</item>
-        <item name="textAppearanceHeadlineMedium">@style/TextHM</item>
-        <item name="textAppearanceHeadlineSmall">@style/TextHS</item>
-        <item name="textAppearanceTitleLarge">@style/TextTL</item>
-        <item name="textAppearanceTitleMedium">@style/TextTM</item>
-        <item name="textAppearanceTitleSmall">@style/TextTM</item>
-        <item name="textAppearanceBodyLarge">@style/TextBL</item>
-        <item name="textAppearanceBodyMedium">@style/TextBM</item>
-        <item name="textAppearanceBodySmall">@style/TextBS</item>
-        <item name="textAppearanceLabelLarge">@style/TextLL</item>
-        <item name="textAppearanceLabelMedium">@style/TextLM</item>
-        <item name="textAppearanceLabelSmall">@style/TextLS</item>
+        <item name="textAppearanceDisplayLarge">@style/Simple.Text.DL</item>
+        <item name="textAppearanceDisplayMedium">@style/Simple.Text.DM</item>
+        <item name="textAppearanceDisplaySmall">@style/Simple.Text.DS</item>
+        <item name="textAppearanceHeadlineLarge">@style/Simple.Text.HL</item>
+        <item name="textAppearanceHeadlineMedium">@style/Simple.Text.HM</item>
+        <item name="textAppearanceHeadlineSmall">@style/Simple.Text.HS</item>
+        <item name="textAppearanceTitleLarge">@style/Simple.Text.TL</item>
+        <item name="textAppearanceTitleMedium">@style/Simple.Text.TM</item>
+        <item name="textAppearanceTitleSmall">@style/Simple.Text.TS</item>
+        <item name="textAppearanceBodyLarge">@style/Simple.Text.BL</item>
+        <item name="textAppearanceBodyMedium">@style/Simple.Text.BM</item>
+        <item name="textAppearanceBodySmall">@style/Simple.Text.BS</item>
+        <item name="textAppearanceLabelLarge">@style/Simple.Text.LL</item>
+        <item name="textAppearanceLabelMedium">@style/Simple.Text.LM</item>
+        <item name="textAppearanceLabelSmall">@style/Simple.Text.LS</item>
 
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
@@ -95,9 +95,9 @@
         <item name="materialButtonStyle">@style/Simple.ButtonElevation</item>
         <item name="borderlessButtonStyle">@style/Simple.ButtonText</item>
 
-        <item name="textInputStyle">@style/Simple.InputLayoutOutlined</item>
-        <item name="textInputOutlinedStyle">@style/Simple.InputLayoutOutlined</item>
-        <item name="textInputFilledStyle">@style/Simple.InputLayoutFilled</item>
+        <item name="textInputStyle">@style/Simple.Input.Outlined</item>
+        <item name="textInputOutlinedStyle">@style/Simple.Input.Outlined</item>
+        <item name="textInputFilledStyle">@style/Simple.Input.Filled</item>
 
         <item name="materialCalendarTheme">@style/Simple.DatePicker</item>
         <item name="materialCalendarFullscreenTheme">@style/Simple.DateRangePicker</item>

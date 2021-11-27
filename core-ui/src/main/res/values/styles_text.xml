@@ -1,123 +1,139 @@
 <resources>
+    <style name="Simple.Text" />
 
     <!--?textAppearanceDisplayLarge-->
-    <style name="TextDL" parent="TextAppearance.Material3.DisplayLarge">
+    <style name="Simple.Text.DL" parent="TextAppearance.Material3.DisplayLarge">
         <item name="android:textSize">@dimen/text_57sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceDisplayMedium-->
-    <style name="TextDM" parent="TextAppearance.Material3.DisplayMedium">
+    <style name="Simple.Text.DM" parent="TextAppearance.Material3.DisplayMedium">
         <item name="android:textSize">@dimen/text_45sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceDisplaySmall-->
-    <style name="TextDS" parent="TextAppearance.Material3.DisplaySmall">
+    <style name="Simple.Text.DS" parent="TextAppearance.Material3.DisplaySmall">
         <item name="android:textSize">@dimen/text_36sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceHeadlineLarge-->
-    <style name="TextHL" parent="TextAppearance.Material3.HeadlineLarge">
+    <style name="Simple.Text.HL" parent="TextAppearance.Material3.HeadlineLarge">
         <item name="android:textSize">@dimen/text_32sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceHeadlineMedium-->
-    <style name="TextHM" parent="TextAppearance.Material3.HeadlineMedium">
+    <style name="Simple.Text.HM" parent="TextAppearance.Material3.HeadlineMedium">
         <item name="android:textSize">@dimen/text_28sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceHeadlineSmall-->
-    <style name="TextHS" parent="TextAppearance.Material3.HeadlineSmall">
+    <style name="Simple.Text.HS" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">@dimen/text_24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceTitleLarge-->
-    <style name="TextTL" parent="TextAppearance.Material3.TitleLarge">
+    <style name="Simple.Text.TL" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textSize">@dimen/text_22sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceTitleMedium-->
-    <style name="TextTM" parent="TextAppearance.Material3.TitleMedium">
+    <style name="Simple.Text.TM" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textSize">@dimen/text_16sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.009</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceTitleSmall-->
-    <style name="TextTS" parent="TextAppearance.Material3.TitleSmall">
+    <style name="Simple.Text.TS" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:textSize">@dimen/text_14sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.007</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceBodyLarge-->
-    <style name="TextBL" parent="TextAppearance.Material3.BodyLarge">
+    <style name="Simple.Text.BL" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.009</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceBodyMedium-->
-    <style name="TextBM" parent="TextAppearance.Material3.BodyMedium">
+    <style name="Simple.Text.BM" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0178</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceBodySmall-->
-    <style name="TextBS" parent="TextAppearance.Material3.BodySmall">
+    <style name="Simple.Text.BS" parent="TextAppearance.Material3.BodySmall">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.03</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceLabelLarge-->
-    <style name="TextLL" parent="TextAppearance.Material3.LabelLarge">
+    <style name="Simple.Text.LL" parent="TextAppearance.Material3.LabelLarge">
         <item name="android:textSize">@dimen/text_14sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.007</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceLabelMedium-->
-    <style name="TextLM" parent="TextAppearance.Material3.LabelMedium">
+    <style name="Simple.Text.LM" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">@dimen/text_12sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.0416</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!--?textAppearanceLabelSmall-->
-    <style name="TextLS" parent="TextAppearance.Material3.LabelSmall">
+    <style name="Simple.Text.LS" parent="TextAppearance.Material3.LabelSmall">
         <item name="android:textSize">@dimen/text_11sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.045</item>
-        <item name="fontFamily">@font/default_font_family</item>
+        <item name="fontFamily">@font/w500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
 </resources>

@@ -29,6 +29,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.usacheow.apptest.databinding.FragmentCameraBinding
 import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.doOnImmediateClick
 import com.usacheow.coreui.uikit.helper.doWithTransition
 import java.io.File
 import java.nio.ByteBuffer
@@ -116,7 +118,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
     }
 
     private fun updateCameraUi() {
-        binding.captureButton.setOnClickListener {
+        binding.captureButton.doOnImmediateClick {
             imageCapture?.let { imageCapture ->
                 val file = File(requireContext().externalMediaDirs.first(), "${System.currentTimeMillis()}.jpg")
                 val metadata = ImageCapture.Metadata().apply {
@@ -162,7 +164,7 @@ class CameraFragment : SimpleFragment<FragmentCameraBinding>() {
             }
         }
 
-        binding.switchButton.setOnClickListener {
+        binding.switchButton.doOnClick {
             lensFacing = if (CameraSelector.LENS_FACING_FRONT == lensFacing) {
                 CameraSelector.LENS_FACING_BACK
             } else {

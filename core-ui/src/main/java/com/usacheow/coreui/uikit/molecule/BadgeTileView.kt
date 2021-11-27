@@ -12,6 +12,7 @@ import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.ifFalse
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.resize
 
@@ -31,7 +32,7 @@ class BadgeTileView @JvmOverloads constructor(
         binding.clickableView.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
         binding.root.setCardBackgroundColor(color(model.backgroundColorRes))
-        binding.clickableView.doOnClick(model.isShimmer, model.clickListener)
+        binding.clickableView.doOnClick(model.clickListener.ifFalse(model.isShimmer))
 
         binding.headerView.apply {
             populate(model.header)

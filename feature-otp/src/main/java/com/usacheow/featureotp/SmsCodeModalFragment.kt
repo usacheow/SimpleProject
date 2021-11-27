@@ -21,6 +21,8 @@ import com.usacheow.featureotp.databinding.FragmentSmsCodeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.usacheow.coreui.R as CoreUiR
 
+private const val HINT_CHAR = "0"
+
 @AndroidEntryPoint
 class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
 
@@ -51,6 +53,7 @@ class SmsCodeModalFragment : SimpleModalFragment<FragmentSmsCodeBinding>() {
     override fun subscribe() {
         viewModel.maxCodeLengthState.observe(viewLifecycleOwner) {
             binding.smsCodeInput.filters = arrayOf(InputFilter.LengthFilter(it))
+            binding.smsCodeInput.hint = HINT_CHAR.repeat(it)
         }
         viewModel.inputtedCodeState.observe(viewLifecycleOwner) {
             binding.smsCodeInput.setText(it)

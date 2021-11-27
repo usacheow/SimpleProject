@@ -45,7 +45,8 @@
                 style="?textInputStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="false">
+                android:enabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/smsCodeInput"
@@ -57,7 +58,7 @@
                     android:letterSpacing="0.3"
                     android:maxLength="4"
                     android:textAppearance="?textAppearanceHeadlineSmall"
-                    tools:text="0000" />
+                    tools:hint="0000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView

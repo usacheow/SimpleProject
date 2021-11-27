@@ -9,6 +9,7 @@ import androidx.core.view.isInvisible
 import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.doOnImmediateClick
 
 class NumPadView @JvmOverloads constructor(
     context: Context,
@@ -39,10 +40,10 @@ class NumPadView @JvmOverloads constructor(
     override fun onFinishInflate() {
         super.onFinishInflate()
         numberButtons.forEach { button ->
-            button.setOnClickListener { onNumberClickedAction?.invoke(button.text.toString()) }
+            button.doOnImmediateClick { onNumberClickedAction?.invoke(button.text.toString()) }
         }
         binding.actionButton.doOnClick { onActionClickedAction?.invoke() }
-        binding.backspaceButton.setOnClickListener { onBackspaceClickedAction?.invoke() }
+        binding.backspaceButton.doOnImmediateClick { onBackspaceClickedAction?.invoke() }
     }
 
     fun setBackspaceButtonsVisibility(isVisible: Boolean) {

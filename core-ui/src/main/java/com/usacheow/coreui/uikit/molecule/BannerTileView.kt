@@ -10,6 +10,7 @@ import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBannerTileBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.ifFalse
 import com.usacheow.coreui.uikit.helper.populate
 
 class BannerTileView @JvmOverloads constructor(
@@ -20,7 +21,7 @@ class BannerTileView @JvmOverloads constructor(
     private val binding by lazy { ViewBannerTileBinding.bind(this) }
 
     override fun populate(model: BannerTileItem) {
-        binding.bannerClickableView.doOnClick(model.isShimmer, model.clickListener)
+        binding.bannerClickableView.doOnClick(model.clickListener.ifFalse(model.isShimmer))
 
         binding.bannerIconView.populate(model.icon)
         binding.bannerTextView.populate(model.text)

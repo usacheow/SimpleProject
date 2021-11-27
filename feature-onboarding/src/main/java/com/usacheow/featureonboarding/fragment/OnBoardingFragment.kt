@@ -9,6 +9,7 @@ import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyInsets
+import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
@@ -39,8 +40,8 @@ class OnBoardingFragment : SimpleFragment<FragmentOnboardingBinding>() {
         binding.viewPager.adapter = adapter
         binding.indicatorView.attachToPager(binding.viewPager)
 
-        binding.skipButton.setOnClickListener { viewModel.onOnBoardingSkipped() }
-        binding.nextButton.setOnClickListener {
+        binding.skipButton.doOnClick { viewModel.onOnBoardingSkipped() }
+        binding.nextButton.doOnClick {
             if (binding.viewPager.currentItem < adapter.itemCount - 1) {
                 binding.viewPager.currentItem += 1
             } else {

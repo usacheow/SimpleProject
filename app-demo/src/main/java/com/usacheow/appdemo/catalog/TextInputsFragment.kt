@@ -5,13 +5,10 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.core.date.DateTimeFormat
-import com.usacheow.core.date.LocalDateFactory
 import com.usacheow.core.date.LocalDateTimeFactory
-import com.usacheow.core.date.toDateTimeFormat
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.addCurrencyFormatter
@@ -22,9 +19,14 @@ import com.usacheow.coreui.uikit.helper.doOnActionClick
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.uikit.helper.showIfCan
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.coreui.R as CoreUiR
+
+private const val DATE_PICKER_TAG = "DATE_PICKER_TAG"
+private const val DATE_RANGE_PICKER_TAG = "DATE_RANGE_PICKER_TAG"
+private const val TIME_PICKER_TAG = "TIME_PICKER_TAG"
 
 @AndroidEntryPoint
 class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
@@ -99,14 +101,14 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
     }
 
     private fun showDatePicker() {
-        datePicker.show(childFragmentManager, null)
+        datePicker.showIfCan(childFragmentManager, DATE_PICKER_TAG)
     }
 
     private fun showDateRangePicker() {
-        dateRangePicker.show(childFragmentManager, null)
+        dateRangePicker.showIfCan(childFragmentManager, DATE_RANGE_PICKER_TAG)
     }
 
     private fun showTimePicker() {
-        timePicker.show(childFragmentManager, null)
+        timePicker.showIfCan(childFragmentManager, TIME_PICKER_TAG)
     }
 }

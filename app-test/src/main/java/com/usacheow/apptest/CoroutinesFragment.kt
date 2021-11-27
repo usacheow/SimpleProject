@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.usacheow.apptest.databinding.FragmentCoroutinesBinding
 import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreui.uikit.helper.doOnClick
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,7 +25,7 @@ class CoroutinesFragment : SimpleFragment<FragmentCoroutinesBinding>() {
             title = "Test Screen"
         }
 
-        binding.startButton.setOnClickListener {
+        binding.startButton.doOnClick {
             startBackgroundTask()
         }
     }
