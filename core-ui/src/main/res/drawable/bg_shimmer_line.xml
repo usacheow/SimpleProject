@@ -4,5 +4,5 @@
 
     <corners android:radius="@dimen/radius_medium" />
 
-    <solid android:color="@color/shimmer" />
+    <solid android:color="?colorShimmer" />
 </shape>

@@ -13,7 +13,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearance="@style/ImageShapeCircle"
+        app:shapeAppearance="?shapeAppearanceCircleComponent"
         tools:src="@tools:sample/avatars" />
 
     <androidx.constraintlayout.helper.widget.Flow

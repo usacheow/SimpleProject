@@ -15,7 +15,7 @@
         android:layout_height="32dp"
         android:layout_marginEnd="@dimen/left_right_margin"
         android:scaleType="centerCrop"
-        app:shapeAppearance="@style/ImageShapeCircle"
+        app:shapeAppearance="?shapeAppearanceCircleComponent"
         tools:src="@tools:sample/avatars"/>
 
     <LinearLayout

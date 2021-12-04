@@ -3,6 +3,7 @@ package com.usacheow.coreui.uikit.helper
 import android.app.Activity
 import android.content.res.Resources
 import android.view.View
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -10,6 +11,7 @@ import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.color.MaterialColors
 
 fun View.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
 fun Fragment.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(requireContext(), id)
@@ -23,6 +25,7 @@ fun View.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantit
 fun Fragment.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
 fun Activity.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
 
+fun View.colorByAttr(@AttrRes attrRes: Int) = MaterialColors.getColor(this, attrRes)
 fun View.color(@ColorRes id: Int) = ContextCompat.getColor(context, id)
 fun Fragment.color(@ColorRes id: Int) = ContextCompat.getColor(context!!, id)
 fun Activity.color(@ColorRes id: Int) = ContextCompat.getColor(this, id)

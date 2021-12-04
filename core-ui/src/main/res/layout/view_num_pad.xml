@@ -7,7 +7,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton1"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/one"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,7 +15,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton2"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/two"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/numPadButton1"
@@ -23,7 +23,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton3"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/three"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton4"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/four"
         app:layout_constraintTop_toBottomOf="@id/numPadButton1"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton5"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/five"
         app:layout_constraintTop_toBottomOf="@id/numPadButton2"
         app:layout_constraintStart_toEndOf="@id/numPadButton4"
@@ -47,7 +47,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton6"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/six"
         app:layout_constraintTop_toBottomOf="@id/numPadButton3"
         app:layout_constraintStart_toEndOf="@id/numPadButton5"
@@ -55,7 +55,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton7"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/seven"
         app:layout_constraintTop_toBottomOf="@id/numPadButton4"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton8"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/eight"
         app:layout_constraintTop_toBottomOf="@id/numPadButton5"
         app:layout_constraintStart_toEndOf="@id/numPadButton7"
@@ -71,7 +71,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton9"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/nine"
         app:layout_constraintTop_toBottomOf="@id/numPadButton6"
         app:layout_constraintStart_toEndOf="@id/numPadButton8"
@@ -79,7 +79,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/backspaceButton"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:padding="20dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_backspace"
@@ -90,7 +90,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numPadButton0"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:text="@string/zero"
         app:layout_constraintTop_toBottomOf="@id/numPadButton8"
         app:layout_constraintStart_toEndOf="@id/backspaceButton"
@@ -98,7 +98,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/actionButton"
-        style="@style/NumPadButton"
+        style="?materialButtonNumPadStyle"
         android:padding="16dp"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/numPadButton9"

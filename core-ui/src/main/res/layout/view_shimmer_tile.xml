@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.usacheow.coreui.uikit.molecule.ShimmerTileView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Simple.ShimmerLayout"
+    style="?shimmerLayoutStyle"
     android:padding="@dimen/left_right_margin"
     tools:shimmer_base_alpha="1">
 

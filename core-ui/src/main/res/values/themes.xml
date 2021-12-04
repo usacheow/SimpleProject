@@ -12,7 +12,22 @@
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>
 
-    <style name="Simple.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="ThemeWithDefaultAttributes" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:colorBackground">?colorBackground</item>
+        <item name="iconTint">?colorIconPrimary</item>
+        <item name="android:textColorPrimary">?colorTextPrimary</item>
+        <item name="android:textColorPrimaryInverse">?colorTextPrimaryInverse</item>
+        <item name="android:textColorSecondary">?colorTextSecondary</item>
+        <item name="android:textColorSecondaryInverse">?colorTextSecondaryInverse</item>
+        <item name="android:textColorTertiary">?colorTextTertiary</item>
+        <item name="android:textColorTertiaryInverse">?colorTextTertiaryInverse</item>
+
+        <item name="materialButtonStyle">?materialButtonElevationStyle</item>
+        <item name="borderlessButtonStyle">?materialButtonTextStyle</item>
+        <item name="textInputStyle">?textInputOutlinedStyle</item>
+    </style>
+
+    <style name="Simple.AppTheme" parent="ThemeWithDefaultAttributes">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryContainer">@color/primaryContainer</item>
@@ -35,10 +50,10 @@
         <item name="colorOnErrorContainer">@color/onErrorContainer</item>
 
         <item name="colorOutline">@color/outline</item>
+        <item name="colorShimmer">@color/shimmer</item>
 
-        <item name="android:colorBackground">@color/background</item>
+        <item name="colorBackground">@color/background</item>
         <item name="colorOnBackground">@color/onBackground</item>
-
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/onSurface</item>
         <item name="colorSurfaceVariant">@color/surfaceVariant</item>
@@ -49,13 +64,24 @@
         <item name="elevationOverlayEnabled">true</item>
         <item name="elevationOverlayColor">@color/primary</item>
 
-        <item name="iconTint">@color/icon</item>
-        <item name="android:textColorPrimary">@color/textPrimary</item>
-        <item name="android:textColorPrimaryInverse">@color/textPrimaryInverse</item>
-        <item name="android:textColorSecondary">@color/textSecondary</item>
-        <item name="android:textColorSecondaryInverse">@color/textSecondaryInverse</item>
-        <item name="android:textColorTertiary">@color/textTertiary</item>
-        <item name="android:textColorTertiaryInverse">@color/textTertiaryInverse</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
+
+        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
+        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+
+        <item name="colorIconPrimary">@color/symbolPrimary</item>
+        <item name="colorIconPrimaryInverse">@color/symbolPrimaryInverse</item>
+        <item name="colorIconSecondary">@color/symbolSecondary</item>
+        <item name="colorIconSecondaryInverse">@color/symbolSecondaryInverse</item>
+        <item name="colorIconTertiary">@color/symbolTertiary</item>
+        <item name="colorIconTertiaryInverse">@color/symbolTertiaryInverse</item>
+        <item name="colorTextPrimary">@color/symbolPrimary</item>
+        <item name="colorTextPrimaryInverse">@color/symbolPrimaryInverse</item>
+        <item name="colorTextSecondary">@color/symbolSecondary</item>
+        <item name="colorTextSecondaryInverse">@color/symbolSecondaryInverse</item>
+        <item name="colorTextTertiary">@color/symbolTertiary</item>
+        <item name="colorTextTertiaryInverse">@color/symbolTertiaryInverse</item>
 
         <item name="textAppearanceDisplayLarge">@style/Simple.Text.DL</item>
         <item name="textAppearanceDisplayMedium">@style/Simple.Text.DM</item>
@@ -73,36 +99,39 @@
         <item name="textAppearanceLabelMedium">@style/Simple.Text.LM</item>
         <item name="textAppearanceLabelSmall">@style/Simple.Text.LS</item>
 
-        <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
+        <item name="shapeAppearanceSmallComponent">@style/Simple.Shape.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/Simple.Shape.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/Simple.Shape.LargeComponent</item>
+        <item name="shapeAppearanceCircleComponent">@style/Simple.Shape.Circle</item>
 
-        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
-        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+        <item name="appBarLayoutStyle">@style/Simple.Header.AppBar</item>
+        <item name="toolbarStyle">@style/Simple.Header.Toolbar</item>
+        <item name="toolbarSurfaceStyle">@style/Simple.Header.ToolbarSurface</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/Simple.SmallComponentShape</item>
-        <item name="shapeAppearanceMediumComponent">@style/Simple.MediumComponentShape</item>
-        <item name="shapeAppearanceLargeComponent">@style/Simple.LargeComponentShape</item>
+        <item name="materialCardViewFilledStyle">@style/Simple.Card.Filled</item>
+        <item name="materialCardViewElevatedStyle">@style/Simple.Card.Elevated</item>
+        <item name="materialCardViewOutlinedStyle">@style/Simple.Card.Outlined</item>
 
-        <item name="appBarLayoutStyle">@style/Simple.AppBarLayout</item>
-        <item name="toolbarStyle">@style/Simple.Toolbar</item>
-        <item name="toolbarSurfaceStyle">@style/Simple.ToolbarSurface</item>
+        <item name="materialButtonOutlinedStyle">@style/Simple.Button.Outlined</item>
+        <item name="materialButtonUnelevatedStyle">@style/Simple.Button.Unelevated</item>
+        <item name="materialButtonTonalStyle">@style/Simple.Button.Tonal</item>
+        <item name="materialButtonToolbarStyle">@style/Simple.Button.Toolbar</item>
+        <item name="materialButtonElevationStyle">@style/Simple.Button.Elevation</item>
+        <item name="materialButtonTextStyle">@style/Simple.Button.Text</item>
+        <item name="materialButtonNumPadStyle">@style/Simple.Button.NumPad</item>
 
-        <item name="materialCardViewFilledStyle">@style/Simple.FilledCardView</item>
-        <item name="materialCardViewElevatedStyle">@style/Simple.ElevatedCardView</item>
-        <item name="materialCardViewOutlinedStyle">@style/Simple.OutlinedCardView</item>
-
-        <item name="materialButtonOutlinedStyle">@style/Simple.ButtonOutlined</item>
-        <item name="materialButtonStyle">@style/Simple.ButtonElevation</item>
-        <item name="borderlessButtonStyle">@style/Simple.ButtonText</item>
-
-        <item name="textInputStyle">@style/Simple.Input.Outlined</item>
         <item name="textInputOutlinedStyle">@style/Simple.Input.Outlined</item>
         <item name="textInputFilledStyle">@style/Simple.Input.Filled</item>
+        <item name="selectorStyle">@style/Simple.Selector</item>
+        <item name="selectorOutlinedStyle">@style/Simple.Selector.Outlined</item>
+        <item name="selectorFilledStyle">@style/Simple.Selector.Filled</item>
 
-        <item name="materialCalendarTheme">@style/Simple.DatePicker</item>
-        <item name="materialCalendarFullscreenTheme">@style/Simple.DateRangePicker</item>
-        <item name="materialTimePickerTheme">@style/Simple.TimePicker</item>
-        <item name="materialAlertDialogTheme">@style/Simple.AlertDialog</item>
+        <item name="materialCalendarTheme">@style/Simple.Dialog.DatePicker</item>
+        <item name="materialCalendarFullscreenTheme">@style/Simple.Dialog.DateRangePicker</item>
+        <item name="materialTimePickerTheme">@style/Simple.Dialog.TimePicker</item>
+        <item name="materialAlertDialogTheme">@style/Simple.Dialog.Alert</item>
+
+        <item name="shimmerLayoutStyle">@style/Simple.ShimmerLayout</item>
     </style>
 
 </resources>

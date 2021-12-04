@@ -38,7 +38,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Simple.ButtonUnelevated"
+                    style="?materialButtonUnelevatedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -60,7 +60,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonStyle"
+                    style="?materialButtonElevationStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -82,7 +82,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Simple.ButtonTonal"
+                    style="?materialButtonTonalStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -104,7 +104,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Simple.ButtonOutlined"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"
@@ -126,7 +126,7 @@
                     android:textAppearance="?textAppearanceBodyLarge" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
+                    style="?materialButtonTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/left_right_margin"

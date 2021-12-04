@@ -60,7 +60,7 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.attributes?.windowAnimations = CoreUiR.style.Simple_ModalDialogAnimation
+        dialog?.window?.attributes?.windowAnimations = CoreUiR.style.Simple_Dialog_ModalDialogAnimation
 
         windowInsetsController = createWindowInsetsControllerCompat(
             dialog?.window,

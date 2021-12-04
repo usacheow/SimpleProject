@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--?attr/appBarLayoutStyle-->
-    <style name="Simple.AppBarLayout" parent="Widget.Material3.AppBarLayout">
+    <style name="Simple.Header" />
+
+    <style name="Simple.Header.AppBar" parent="Widget.Material3.AppBarLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="liftOnScroll">true</item>
     </style>
 
-    <!--?attr/toolbarStyle-->
-    <style name="Simple.Toolbar" parent="Widget.Material3.Toolbar">
+    <style name="Simple.Header.Toolbar" parent="Widget.Material3.Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!--?attr/toolbarSurfaceStyle-->
-    <style name="Simple.ToolbarSurface" parent="Widget.Material3.Toolbar.Surface">
+    <style name="Simple.Header.ToolbarSurface" parent="Widget.Material3.Toolbar.Surface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

@@ -23,10 +23,10 @@
     <color name="onErrorContainer">#FF410E0B</color>
 
     <color name="outline">#747E79</color>
+    <color name="shimmer">#DBE6E0</color>
 
     <color name="background">#F1F8F5</color>
     <color name="onBackground">#FF1C1B1F</color>
-
     <color name="surface">@color/background</color>
     <color name="onSurface">@color/onBackground</color>
     <color name="surfaceVariant">#CBE4D9</color>
@@ -34,21 +34,15 @@
     <color name="surfaceInverse">#303331</color>
     <color name="onSurfaceInverse">#EFF4F1</color>
 
-    <color name="colorStatusBar">#4D000000</color>
+    <color name="colorStatusBar">#00FFFFFF</color>
     <color name="colorNavigationBar">#4D000000</color>
 
     <color name="symbolPrimary">#FF1C1B1F</color>
     <color name="symbolPrimaryInverse">#FFFFFFFF</color>
-    <color name="icon">@color/symbolPrimary</color>
-    <color name="iconInverse">@color/symbolPrimaryInverse</color>
-    <color name="textPrimary">@color/symbolPrimary</color>
-    <color name="textPrimaryInverse">@color/symbolPrimaryInverse</color>
-    <color name="textSecondary">#9A1C1B1F</color>
-    <color name="textSecondaryInverse">#9AFFFFFF</color>
-    <color name="textTertiary">#651C1B1F</color>
-    <color name="textTertiaryInverse">#65FFFFFF</color>
-
-    <color name="shimmer">#DBE6E0</color>
+    <color name="symbolSecondary">#9A1C1B1F</color>
+    <color name="symbolSecondaryInverse">#9AFFFFFF</color>
+    <color name="symbolTertiary">#651C1B1F</color>
+    <color name="symbolTertiaryInverse">#65FFFFFF</color>
 
     <color name="backgroundBottomBarGradientStart">@color/white</color>
     <color name="backgroundBottomBarGradientCenter">@color/white_60</color>

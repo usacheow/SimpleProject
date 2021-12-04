@@ -106,7 +106,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewDateInputHeaderView"
-                style="@style/Simple.Selector.Filled"
+                style="?selectorFilledStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select date"
@@ -115,7 +115,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewDateRangeInputHeaderView"
-                style="@style/Simple.Selector.Outlined"
+                style="?selectorOutlinedStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select date range"
@@ -124,7 +124,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewTimeInputHeaderView"
-                style="@style/Simple.Selector"
+                style="?selectorStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select time"

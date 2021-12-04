@@ -20,10 +20,10 @@
     <dimen name="radius_16">16dp</dimen>
     <dimen name="radius_24">24dp</dimen>
 
-    <dimen name="elevation_32">32dp</dimen>
-    <dimen name="elevation_16">16dp</dimen>
-    <dimen name="elevation_8">8dp</dimen>
-    <dimen name="elevation_4">4dp</dimen>
     <dimen name="elevation_0">0dp</dimen>
+    <dimen name="elevation_4">4dp</dimen>
+    <dimen name="elevation_8">8dp</dimen>
+    <dimen name="elevation_16">16dp</dimen>
+    <dimen name="elevation_32">32dp</dimen>
 
 </resources>

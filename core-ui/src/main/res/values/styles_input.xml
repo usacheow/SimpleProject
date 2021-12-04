@@ -11,11 +11,8 @@
         <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
     </style>
 
-    <!--?textInputStyle-->
-    <!--?textInputOutlinedStyle-->
     <style name="Simple.Input.Outlined"/>
 
-    <!--?textInputStyle-->
     <style name="Simple.Input.Filled" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>

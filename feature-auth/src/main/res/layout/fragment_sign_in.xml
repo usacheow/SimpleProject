@@ -68,12 +68,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signInButton"
-                style="@style/Simple.ButtonUnelevated"
+                style="?materialButtonUnelevatedStyle"
                 android:text="@string/sign_in_button" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpButton"
-                style="?attr/borderlessButtonStyle"
+                style="?materialButtonTextStyle"
                 android:text="@string/sign_in_sing_up" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

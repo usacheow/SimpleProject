@@ -6,7 +6,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/skipButton"
-        style="?attr/borderlessButtonStyle"
+        style="?materialButtonTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -44,7 +44,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextButton"
-        style="@style/Simple.ButtonUnelevated"
+        style="?materialButtonUnelevatedStyle"
         android:layout_width="wrap_content"
         android:minWidth="190dp"
         android:layout_marginBottom="16dp"

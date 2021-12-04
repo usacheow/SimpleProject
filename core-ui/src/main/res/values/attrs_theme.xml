@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorBackground" format="color"/>
+    <attr name="colorShimmer" format="color"/>
+    <attr name="colorIconPrimary" format="color"/>
+    <attr name="colorIconPrimaryInverse" format="color"/>
+    <attr name="colorIconSecondary" format="color"/>
+    <attr name="colorIconSecondaryInverse" format="color"/>
+    <attr name="colorIconTertiary" format="color"/>
+    <attr name="colorIconTertiaryInverse" format="color"/>
+    <attr name="colorTextPrimary" format="color"/>
+    <attr name="colorTextPrimaryInverse" format="color"/>
+    <attr name="colorTextSecondary" format="color"/>
+    <attr name="colorTextSecondaryInverse" format="color"/>
+    <attr name="colorTextTertiary" format="color"/>
+    <attr name="colorTextTertiaryInverse" format="color"/>
+
+    <attr name="shapeAppearanceCircleComponent" format="reference"/>
+    <attr name="materialButtonElevationStyle" format="reference"/>
+    <attr name="materialButtonTextStyle" format="reference"/>
+    <attr name="materialButtonUnelevatedStyle" format="reference"/>
+    <attr name="materialButtonTonalStyle" format="reference"/>
+    <attr name="materialButtonToolbarStyle" format="reference"/>
+    <attr name="materialButtonNumPadStyle" format="reference"/>
+    <attr name="selectorStyle" format="reference"/>
+    <attr name="selectorOutlinedStyle" format="reference"/>
+    <attr name="selectorFilledStyle" format="reference"/>
+    <attr name="shimmerLayoutStyle" format="reference"/>
+
+</resources>

@@ -9,7 +9,7 @@
     app:cardElevation="@dimen/elevation_8">
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        style="@style/Simple.ShimmerLayout"
+        style="?shimmerLayoutStyle"
         android:layout_width="wrap_content"
         app:shimmer_auto_start="true"
         tools:shimmer_base_alpha="1">

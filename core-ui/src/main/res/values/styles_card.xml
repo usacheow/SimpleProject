@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Simple.Card" />
+
     <!--?attr/materialCardViewElevatedStyle-->
-    <style name="Simple.ElevatedCardView" parent="Widget.Material3.CardView.Elevated">
+    <style name="Simple.Card.Elevated" parent="Widget.Material3.CardView.Elevated">
         <item name="cardBackgroundColor">?colorSurface</item>
         <item name="cardElevation">@dimen/elevation_16</item>
         <item name="cardCornerRadius">@dimen/radius_medium</item>
     </style>
 
     <!--?attr/materialCardViewFilledStyle-->
-    <style name="Simple.FilledCardView" parent="Widget.Material3.CardView.Filled">
+    <style name="Simple.Card.Filled" parent="Widget.Material3.CardView.Filled">
         <item name="cardBackgroundColor">?colorSurfaceVariant</item>
         <item name="cardElevation">@dimen/elevation_0</item>
         <item name="cardCornerRadius">@dimen/radius_medium</item>
     </style>
 
     <!--?attr/materialCardViewOutlinedStyle-->
-    <style name="Simple.OutlinedCardView" parent="Widget.Material3.CardView.Outlined">
+    <style name="Simple.Card.Outlined" parent="Widget.Material3.CardView.Outlined">
         <item name="cardBackgroundColor">?colorSurface</item>
         <item name="cardElevation">@dimen/elevation_0</item>
         <item name="cardCornerRadius">@dimen/radius_medium</item>

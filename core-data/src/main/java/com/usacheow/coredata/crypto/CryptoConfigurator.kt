@@ -24,7 +24,6 @@ private const val KEY_FOR_BIOMETRIC = "KEY_FOR_BIOMETRIC"
 private const val KEY_STORE = "AndroidKeyStore"
 private const val TRANSFORMATION = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 
-@RequiresApi(Build.VERSION_CODES.M)
 class CryptoConfigurator @Inject constructor() {
 
     private lateinit var cipher: Cipher
@@ -137,6 +136,7 @@ class CryptoConfigurator @Inject constructor() {
         return true
     }
 
-    private fun wasBiometricDataChanged(exception: Exception) =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && exception is KeyPermanentlyInvalidatedException
+    private fun wasBiometricDataChanged(
+        exception: Exception,
+    ) = exception is KeyPermanentlyInvalidatedException
 }

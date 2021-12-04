@@ -34,7 +34,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backButton"
-            style="@style/Simple.ButtonTonal"
+            style="?materialButtonTonalStyle"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="40dp"
@@ -42,7 +42,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backToRootButton"
-            style="@style/Simple.ButtonTonal"
+            style="?materialButtonTonalStyle"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="12dp"
