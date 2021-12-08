@@ -11,8 +11,11 @@
         android:label="DemoFragment"
         tools:layout="@layout/fragment_demo">
         <action
-            android:id="@+id/action_demoFragment_to_fontsFragment"
-            app:destination="@id/fontsFragment" />
+            android:id="@+id/action_demoFragment_to_typographyFragment"
+            app:destination="@id/typographyFragment" />
+        <action
+            android:id="@+id/action_demoFragment_to_paletteFragment"
+            app:destination="@id/paletteFragment" />
         <action
             android:id="@+id/action_demoFragment_to_buttonsFragment"
             app:destination="@id/buttonsFragment" />
@@ -49,10 +52,15 @@
             app:destination="@id/onBoardingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fontsFragment"
-        android:name="com.usacheow.appdemo.catalog.FontsFragment"
-        android:label="FontsFragment"
-        tools:layout="@layout/fragment_fonts"/>
+        android:id="@+id/typographyFragment"
+        android:name="com.usacheow.appdemo.catalog.TypographyFragment"
+        android:label="TypographyFragment"
+        tools:layout="@layout/fragment_list"/>
+    <fragment
+        android:id="@+id/paletteFragment"
+        android:name="com.usacheow.appdemo.catalog.PaletteFragment"
+        android:label="PaletteFragment"
+        tools:layout="@layout/fragment_list"/>
     <fragment
         android:id="@+id/buttonsFragment"
         android:name="com.usacheow.appdemo.catalog.ButtonsFragment"

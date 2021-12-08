@@ -69,19 +69,25 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("1. Fonts"),
-                    clickListener = { router.fromDemoToFontsScreen() },
+                    value = TextSource.Simple("1. Typography"),
+                    clickListener = { router.fromDemoToTypographyScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("2. Buttons"),
+                    value = TextSource.Simple("2. Palette"),
+                    clickListener = { router.fromDemoToPaletteScreen() },
+                ),
+                BadgeTileItem(
+                    needAdaptWidth = false,
+                    header = TextSource.Simple("atom"),
+                    value = TextSource.Simple("3. Buttons"),
                     clickListener = { router.fromDemoToButtonsScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("3. Text Inputs"),
+                    value = TextSource.Simple("4. Text Inputs"),
                     clickListener = { router.fromDemoToTextInputsScreen() },
                 ),
 
@@ -129,31 +135,43 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("1. Material Dialog"),
+                    value = TextSource.Simple("1. Alert Dialog"),
                     clickListener = { showMaterialDialog() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("2. Modal Fragment"),
+                    value = TextSource.Simple("2. Single Choice Dialog"),
+                    clickListener = { showMaterialDialogWithSingleChoice() },
+                ),
+                BadgeTileItem(
+                    needAdaptWidth = false,
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("3. Multi Choice Dialog"),
+                    clickListener = { showMaterialDialogWithMultiChoice() },
+                ),
+                BadgeTileItem(
+                    needAdaptWidth = false,
+                    header = TextSource.Simple("template"),
+                    value = TextSource.Simple("4. Modal Fragment"),
                     clickListener = { router.fromDemoToExampleModalScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("3. Bottom Dialog"),
+                    value = TextSource.Simple("5. Bottom Dialog"),
                     clickListener = { router.fromDemoToExampleBottomDialogScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("4. Bottom sheet"),
+                    value = TextSource.Simple("6. Bottom sheet"),
                     clickListener = { showOrHideBottomSheet() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("template"),
-                    value = TextSource.Simple("5. Onboarding Fragment"),
+                    value = TextSource.Simple("7. Onboarding Fragment"),
                     clickListener = { router.toOnBoardingFlow(onBoardingArgs) },
                 ),
 
@@ -231,12 +249,31 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
 
     private fun showMaterialDialog() {
         messageDialog = MaterialAlertDialogBuilder(requireContext())
-//                .setBackground(drawable(R.drawable.bg_alert_dialog))
             .setTitle("Material dialog")
             .setMessage("Material dialog example")
             .setPositiveButton("Agree") { _, _ -> }
             .setNegativeButton("Disagree") { _, _ -> }
             .setNeutralButton("Ok") { _, _ -> }
+            .create()
+            .also { it.show() }
+    }
+
+    private fun showMaterialDialogWithSingleChoice() {
+        messageDialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Single choice dialog")
+            .setSingleChoiceItems(arrayOf("Item 1", "Item 2", "Item 3"), 0) { _, _ -> }
+            .setPositiveButton("Agree") { _, _ -> }
+            .setNegativeButton("Disagree") { _, _ -> }
+            .create()
+            .also { it.show() }
+    }
+
+    private fun showMaterialDialogWithMultiChoice() {
+        messageDialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Multi choice dialog")
+            .setMultiChoiceItems(arrayOf("Item 1", "Item 2", "Item 3"), booleanArrayOf(true, false, false)) { _, _, _ -> }
+            .setPositiveButton("Agree") { _, _ -> }
+            .setNegativeButton("Disagree") { _, _ -> }
             .create()
             .also { it.show() }
     }

@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <stroke
-                android:width="@dimen/stroke_card"
+                android:width="1dp"
                 android:color="?colorOutline" />
             <corners
                 android:bottomLeftRadius="@dimen/radius_medium"

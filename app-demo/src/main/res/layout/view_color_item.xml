@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.appdemo.catalog.ColorItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="?materialCardViewFilledStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_margin="8dp"
+    app:strokeWidth="1dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceTitleMedium"
+            tools:text="@tools:sample/lorem" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/codeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="?textAppearanceBodyMedium"
+            tools:text="@tools:sample/lorem" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</com.usacheow.appdemo.catalog.ColorItemView>

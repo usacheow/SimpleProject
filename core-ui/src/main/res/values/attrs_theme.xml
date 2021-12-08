@@ -17,15 +17,28 @@
     <attr name="colorTextTertiaryInverse" format="color"/>
 
     <attr name="shapeAppearanceCircleComponent" format="reference"/>
+
+    <attr name="materialButtonOutlinedStyleLarge" format="reference"/>
     <attr name="materialButtonElevationStyle" format="reference"/>
+    <attr name="materialButtonElevationStyleLarge" format="reference"/>
     <attr name="materialButtonTextStyle" format="reference"/>
+    <attr name="materialButtonTextStyleLarge" format="reference"/>
     <attr name="materialButtonUnelevatedStyle" format="reference"/>
+    <attr name="materialButtonUnelevatedStyleLarge" format="reference"/>
     <attr name="materialButtonTonalStyle" format="reference"/>
+    <attr name="materialButtonTonalStyleLarge" format="reference"/>
     <attr name="materialButtonToolbarStyle" format="reference"/>
     <attr name="materialButtonNumPadStyle" format="reference"/>
-    <attr name="selectorStyle" format="reference"/>
-    <attr name="selectorOutlinedStyle" format="reference"/>
-    <attr name="selectorFilledStyle" format="reference"/>
-    <attr name="shimmerLayoutStyle" format="reference"/>
+
+    <attr name="materialSwitchStyle" format="reference"/>
+    <attr name="materialCheckBoxStyle" format="reference"/>
+
+    <attr name="materialTextInputOutlinedStyle" format="reference"/>
+    <attr name="materialTextInputFilledStyle" format="reference"/>
+    <attr name="materialSelectorStyle" format="reference"/>
+    <attr name="materialSelectorOutlinedStyle" format="reference"/>
+    <attr name="materialSelectorFilledStyle" format="reference"/>
+
+    <attr name="materialShimmerLayoutStyle" format="reference"/>
 
 </resources>

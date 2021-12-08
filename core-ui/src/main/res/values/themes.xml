@@ -22,9 +22,13 @@
         <item name="android:textColorTertiary">?colorTextTertiary</item>
         <item name="android:textColorTertiaryInverse">?colorTextTertiaryInverse</item>
 
+        <item name="switchStyle">?materialSwitchStyle</item>
+        <item name="checkboxStyle">?materialCheckBoxStyle</item>
         <item name="materialButtonStyle">?materialButtonElevationStyle</item>
         <item name="borderlessButtonStyle">?materialButtonTextStyle</item>
         <item name="textInputStyle">?textInputOutlinedStyle</item>
+        <item name="textInputOutlinedStyle">?materialTextInputOutlinedStyle</item>
+        <item name="textInputFilledStyle">?materialTextInputFilledStyle</item>
     </style>
 
     <style name="Simple.AppTheme" parent="ThemeWithDefaultAttributes">
@@ -83,21 +87,21 @@
         <item name="colorTextTertiary">@color/symbolTertiary</item>
         <item name="colorTextTertiaryInverse">@color/symbolTertiaryInverse</item>
 
-        <item name="textAppearanceDisplayLarge">@style/Simple.Text.DL</item>
-        <item name="textAppearanceDisplayMedium">@style/Simple.Text.DM</item>
-        <item name="textAppearanceDisplaySmall">@style/Simple.Text.DS</item>
-        <item name="textAppearanceHeadlineLarge">@style/Simple.Text.HL</item>
-        <item name="textAppearanceHeadlineMedium">@style/Simple.Text.HM</item>
-        <item name="textAppearanceHeadlineSmall">@style/Simple.Text.HS</item>
-        <item name="textAppearanceTitleLarge">@style/Simple.Text.TL</item>
-        <item name="textAppearanceTitleMedium">@style/Simple.Text.TM</item>
-        <item name="textAppearanceTitleSmall">@style/Simple.Text.TS</item>
-        <item name="textAppearanceBodyLarge">@style/Simple.Text.BL</item>
-        <item name="textAppearanceBodyMedium">@style/Simple.Text.BM</item>
-        <item name="textAppearanceBodySmall">@style/Simple.Text.BS</item>
-        <item name="textAppearanceLabelLarge">@style/Simple.Text.LL</item>
-        <item name="textAppearanceLabelMedium">@style/Simple.Text.LM</item>
-        <item name="textAppearanceLabelSmall">@style/Simple.Text.LS</item>
+        <item name="textAppearanceDisplayLarge">@style/Simple.Text.Display.L</item>
+        <item name="textAppearanceDisplayMedium">@style/Simple.Text.Display.M</item>
+        <item name="textAppearanceDisplaySmall">@style/Simple.Text.Display.S</item>
+        <item name="textAppearanceHeadlineLarge">@style/Simple.Text.Headline.L</item>
+        <item name="textAppearanceHeadlineMedium">@style/Simple.Text.Headline.M</item>
+        <item name="textAppearanceHeadlineSmall">@style/Simple.Text.Headline.S</item>
+        <item name="textAppearanceTitleLarge">@style/Simple.Text.Title.L</item>
+        <item name="textAppearanceTitleMedium">@style/Simple.Text.Title.M</item>
+        <item name="textAppearanceTitleSmall">@style/Simple.Text.Title.S</item>
+        <item name="textAppearanceBodyLarge">@style/Simple.Text.Body.L</item>
+        <item name="textAppearanceBodyMedium">@style/Simple.Text.Body.M</item>
+        <item name="textAppearanceBodySmall">@style/Simple.Text.Body.S</item>
+        <item name="textAppearanceLabelLarge">@style/Simple.Text.Label.L</item>
+        <item name="textAppearanceLabelMedium">@style/Simple.Text.Label.M</item>
+        <item name="textAppearanceLabelSmall">@style/Simple.Text.Label.S</item>
 
         <item name="shapeAppearanceSmallComponent">@style/Simple.Shape.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/Simple.Shape.MediumComponent</item>
@@ -112,26 +116,34 @@
         <item name="materialCardViewElevatedStyle">@style/Simple.Card.Elevated</item>
         <item name="materialCardViewOutlinedStyle">@style/Simple.Card.Outlined</item>
 
+        <item name="materialSwitchStyle">@style/Simple.Switch</item>
+        <item name="materialCheckBoxStyle">@style/Simple.CheckBox</item>
+
         <item name="materialButtonOutlinedStyle">@style/Simple.Button.Outlined</item>
+        <item name="materialButtonOutlinedStyleLarge">@style/Simple.Button.Outlined.Large</item>
         <item name="materialButtonUnelevatedStyle">@style/Simple.Button.Unelevated</item>
+        <item name="materialButtonUnelevatedStyleLarge">@style/Simple.Button.Unelevated.Large</item>
         <item name="materialButtonTonalStyle">@style/Simple.Button.Tonal</item>
-        <item name="materialButtonToolbarStyle">@style/Simple.Button.Toolbar</item>
-        <item name="materialButtonElevationStyle">@style/Simple.Button.Elevation</item>
+        <item name="materialButtonTonalStyleLarge">@style/Simple.Button.Tonal.Large</item>
         <item name="materialButtonTextStyle">@style/Simple.Button.Text</item>
+        <item name="materialButtonTextStyleLarge">@style/Simple.Button.Text.Large</item>
+        <item name="materialButtonElevationStyle">@style/Simple.Button.Elevation</item>
+        <item name="materialButtonElevationStyleLarge">@style/Simple.Button.Elevation.Large</item>
+        <item name="materialButtonToolbarStyle">@style/Simple.Button.Toolbar</item>
         <item name="materialButtonNumPadStyle">@style/Simple.Button.NumPad</item>
 
-        <item name="textInputOutlinedStyle">@style/Simple.Input.Outlined</item>
-        <item name="textInputFilledStyle">@style/Simple.Input.Filled</item>
-        <item name="selectorStyle">@style/Simple.Selector</item>
-        <item name="selectorOutlinedStyle">@style/Simple.Selector.Outlined</item>
-        <item name="selectorFilledStyle">@style/Simple.Selector.Filled</item>
+        <item name="materialTextInputOutlinedStyle">@style/Simple.Input.Outlined</item>
+        <item name="materialTextInputFilledStyle">@style/Simple.Input.Filled</item>
+        <item name="materialSelectorStyle">@style/Simple.Selector</item>
+        <item name="materialSelectorOutlinedStyle">@style/Simple.Selector.Outlined</item>
+        <item name="materialSelectorFilledStyle">@style/Simple.Selector.Filled</item>
 
         <item name="materialCalendarTheme">@style/Simple.Dialog.DatePicker</item>
         <item name="materialCalendarFullscreenTheme">@style/Simple.Dialog.DateRangePicker</item>
         <item name="materialTimePickerTheme">@style/Simple.Dialog.TimePicker</item>
         <item name="materialAlertDialogTheme">@style/Simple.Dialog.Alert</item>
 
-        <item name="shimmerLayoutStyle">@style/Simple.ShimmerLayout</item>
+        <item name="materialShimmerLayoutStyle">@style/Simple.ShimmerLayout</item>
     </style>
 
 </resources>

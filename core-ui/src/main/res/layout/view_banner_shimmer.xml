@@ -8,7 +8,7 @@
     android:layout_margin="8dp">
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        style="?shimmerLayoutStyle"
+        style="?materialShimmerLayoutStyle"
         android:layout_width="wrap_content"
         app:shimmer_auto_start="true"
         tools:shimmer_base_alpha="1">

@@ -69,11 +69,13 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signInButton"
                 style="?materialButtonUnelevatedStyle"
+                android:layout_width="match_parent"
                 android:text="@string/sign_in_button" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpButton"
                 style="?materialButtonTextStyle"
+                android:layout_width="match_parent"
                 android:text="@string/sign_in_sing_up" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

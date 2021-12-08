@@ -19,8 +19,12 @@ class DemoRouter @Inject constructor(
     private val otpFeatureProvider: OtpFeatureProvider,
 ) : Router(fragment) {
 
-    fun fromDemoToFontsScreen() {
-        DemoFragmentDirections.actionDemoFragmentToFontsFragment().openIn(navController)
+    fun fromDemoToTypographyScreen() {
+        DemoFragmentDirections.actionDemoFragmentToTypographyFragment().openIn(navController)
+    }
+
+    fun fromDemoToPaletteScreen() {
+        DemoFragmentDirections.actionDemoFragmentToPaletteFragment().openIn(navController)
     }
 
     fun fromDemoToButtonsScreen() {

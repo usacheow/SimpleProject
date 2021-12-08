@@ -12,29 +12,49 @@
     </style>
 
     <style name="Simple.Button.Unelevated" parent="Widget.Material3.Button.UnelevatedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Simple.Button.Unelevated.Large">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:minHeight">@dimen/button_min_height_large</item>
     </style>
 
     <style name="Simple.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Simple.Button.Tonal.Large">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:minHeight">@dimen/button_min_height_large</item>
     </style>
 
     <style name="Simple.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Simple.Button.Outlined.Large">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:minHeight">@dimen/button_min_height_large</item>
     </style>
 
     <style name="Simple.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Simple.Button.Text.Large">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:minHeight">@dimen/button_min_height_large</item>
     </style>
 
     <style name="Simple.Button.Elevation" parent="Widget.Material3.Button">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="elevation">@dimen/elevation_8</item>
+    </style>
+    <style name="Simple.Button.Elevation.Large">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/button_min_height_large</item>
     </style>
 
     <style name="Simple.Button.NumPad">
@@ -47,6 +67,16 @@
         <item name="android:background">?selectableItemBackgroundBorderless</item>
         <item name="android:textAppearance">?textAppearanceDisplaySmall</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Simple.Switch" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/bg_switch_thumb</item>
+        <item name="track">@drawable/bg_switch_track</item>
+        <item name="switchPadding">12dp</item>
+    </style>
+
+    <style name="Simple.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="cornerRadius">20dp</item>
     </style>
 
 </resources>

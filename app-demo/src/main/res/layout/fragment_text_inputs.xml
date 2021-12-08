@@ -34,7 +34,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/viewPasswordInputLayout"
-                style="?textInputFilledStyle"
+                style="?materialTextInputFilledStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -106,7 +106,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewDateInputHeaderView"
-                style="?selectorFilledStyle"
+                style="?materialSelectorFilledStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select date"
@@ -115,7 +115,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewDateRangeInputHeaderView"
-                style="?selectorOutlinedStyle"
+                style="?materialSelectorOutlinedStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select date range"
@@ -124,7 +124,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/viewTimeInputHeaderView"
-                style="?selectorStyle"
+                style="?materialSelectorStyle"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:text="Select time"

@@ -14,7 +14,7 @@
     <dimen name="text_32sp">32.0sp</dimen>
     <dimen name="text_36sp">36.0sp</dimen>
     <dimen name="text_38sp">38.0sp</dimen>
-    <dimen name="text_45sp">45.0sp</dimen>
-    <dimen name="text_57sp">57.0sp</dimen>
+    <dimen name="text_44sp">44.0sp</dimen>
+    <dimen name="text_52sp">52.0sp</dimen>
 
 </resources>

@@ -20,14 +20,14 @@ class SubtitleTileView @JvmOverloads constructor(
 
     override fun populate(model: SubtitleTileItem) {
         binding.headerView.populate(model.title)
-        binding.actionButton.populate(model.actionTitle)
+        binding.actionButton.populate(model.actionText)
         binding.actionButton.doOnClick(model.clickListener)
     }
 }
 
 data class SubtitleTileItem(
     val title: TextSource,
-    val actionTitle: TextSource? = null,
+    val actionText: TextSource? = null,
     val clickListener: (() -> Unit)? = null,
 ) : ViewState(CoreUiR.layout.view_subtitle_tile) {
 

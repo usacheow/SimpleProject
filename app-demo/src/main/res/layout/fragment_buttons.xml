@@ -157,21 +157,23 @@
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="First" />
+                        android:text="Left" />
 
                     <com.google.android.material.button.MaterialButton
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Second" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="?attr/materialButtonOutlinedStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Third" />
+                        android:text="Right" />
                 </com.google.android.material.button.MaterialButtonToggleGroup>
             </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Switch"
+                android:textAppearance="?textAppearanceBodyLarge"
+                app:switchPadding="8dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

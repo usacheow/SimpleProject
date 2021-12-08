@@ -17,7 +17,8 @@
         android:ellipsize="end"
         android:lines="1"
         android:padding="8dp"
-        android:textAppearance="?textAppearanceTitleLarge"
+        android:textAppearance="?textAppearanceTitleMedium"
+        android:textColor="?colorTextSecondary"
         tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.button.MaterialButton
@@ -26,9 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|center_vertical"
-        android:maxWidth="88dp"
-        android:lines="1"
         android:ellipsize="end"
+        android:lines="1"
+        android:maxWidth="88dp"
         android:textAppearance="?textAppearanceLabelMedium"
         tools:text="@tools:sample/lorem" />
 </com.usacheow.coreui.uikit.molecule.SubtitleTileView>

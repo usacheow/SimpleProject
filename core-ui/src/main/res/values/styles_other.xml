@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Simple.Checkbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="cornerRadius">20dp</item>
-    </style>
-
     <style name="Simple.ShimmerLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

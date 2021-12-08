@@ -8,19 +8,16 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <!--?shapeAppearanceSmallComponent-->
     <style name="Simple.Shape.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_small</item>
     </style>
 
-    <!--?shapeAppearanceMediumComponent-->
     <style name="Simple.Shape.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_medium</item>
     </style>
 
-    <!--?shapeAppearanceLargeComponent-->
     <style name="Simple.Shape.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_large</item>
