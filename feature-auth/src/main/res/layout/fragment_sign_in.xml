@@ -68,13 +68,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signInButton"
-                style="?materialButtonUnelevatedStyle"
+                style="?materialButtonUnelevatedStyleLarge"
                 android:layout_width="match_parent"
                 android:text="@string/sign_in_button" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpButton"
-                style="?materialButtonTextStyle"
+                style="?materialButtonTextStyleLarge"
                 android:layout_width="match_parent"
                 android:text="@string/sign_in_sing_up" />
         </LinearLayout>
