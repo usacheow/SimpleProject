@@ -1,12 +1,15 @@
 package com.usacheow.coredata.cache
 
 import kotlin.reflect.KType
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 interface CacheProvider : CacheCleaner {
 
     suspend fun <T> get(type: KType, key: String): T?
 
-    suspend fun <T : Any> save(type: KType, key: String, data: T, lifeTimeInMillis: Long)
+    suspend fun <T : Any> save(type: KType, key: String, data: T, lifeDuration: Duration)
 }
 
 interface CacheCleaner {
@@ -16,14 +19,15 @@ interface CacheCleaner {
     suspend fun clearAll()
 }
 
+@OptIn(ExperimentalTime::class)
 class CacheElement<T>(
     val data: T,
-    private val lifeTimeInMillis: Long,
+    private val lifeDuration: Duration,
     private val creationDate: Long = System.currentTimeMillis(),
 ) {
 
     suspend fun getOrClear(clearAction: suspend () -> Unit): CacheElement<T>? {
-        val isExpired = System.currentTimeMillis() - creationDate > lifeTimeInMillis
+        val isExpired = System.currentTimeMillis() - creationDate > lifeDuration.inWholeMilliseconds
         return if (isExpired) {
             clearAction()
             null

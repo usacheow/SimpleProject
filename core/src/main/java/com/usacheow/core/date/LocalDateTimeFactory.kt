@@ -5,8 +5,8 @@ import java.time.LocalDateTime
 
 object LocalDateTimeFactory {
 
-    fun from(milliseconds: Long) = runCatching {
-        val date = SimpleDateFormat(DateTimeFormat.ISO_LOCAL_DATE_TIME.code, LOCALE).format(milliseconds)
+    fun from(timeInMillis: Long) = runCatching {
+        val date = SimpleDateFormat(DateTimeFormat.ISO_LOCAL_DATE_TIME.code, LOCALE).format(timeInMillis)
         LocalDateTime.parse(date)
     }.getOrNull()
 

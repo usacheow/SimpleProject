@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -20,12 +19,11 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.CommonDimens
-import com.usacheow.coreui.compose.resources.LocalCommonColors
-import com.usacheow.coreui.compose.resources.Shapes
+import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
 
-data class TagTileItem(
+data class TagTileState(
     val text: TextValue,
     val isSelected: Boolean = false,
     val unselectedColor: DataColor? = null,
@@ -55,15 +53,15 @@ data class TagTileItem(
 object TagTileDefaults {
 
     @Composable
-    fun selectedColor() = TagTileItem.DataColor(
-        background = LocalCommonColors.current.surfaceVariant,
-        content = LocalCommonColors.current.onSurfaceVariant,
+    fun selectedColor() = TagTileState.DataColor(
+        background = AppTheme.commonColors.surfaceVariant,
+        content = AppTheme.commonColors.onSurfaceVariant,
     )
 
     @Composable
-    fun unselectedColor() = TagTileItem.DataColor(
-        background = LocalCommonColors.current.surface,
-        content = LocalCommonColors.current.onSurface,
+    fun unselectedColor() = TagTileState.DataColor(
+        background = AppTheme.commonColors.surface,
+        content = AppTheme.commonColors.onSurface,
     )
 }
 
@@ -72,8 +70,8 @@ object TagTileDefaults {
 fun TagTile(
     text: TextValue,
     isSelected: Boolean = false,
-    unselectedColor: TagTileItem.DataColor? = null,
-    selectedColor: TagTileItem.DataColor? = null,
+    unselectedColor: TagTileState.DataColor? = null,
+    selectedColor: TagTileState.DataColor? = null,
     clickListener: () -> Unit,
 ) {
     val color = when {
@@ -84,7 +82,8 @@ fun TagTile(
     TagCard(color = color, clickListener = clickListener) {
         Text(
             text = text.get(),
-            style = MaterialTheme.typography.bodyMedium,
+            color = AppTheme.commonColors.symbolPrimary,
+            style = AppTheme.typography.bodyMedium,
             textAlign = TextAlign.Center)
     }
 }
@@ -99,7 +98,7 @@ fun TagTileShimmer() {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun TagCard(
-    color: TagTileItem.DataColor,
+    color: TagTileState.DataColor,
     clickListener: (() -> Unit)?,
     content: @Composable () -> Unit,
 ) {
@@ -110,10 +109,10 @@ private fun TagCard(
         backgroundColor = color.background,
         contentColor = color.content,
         elevation = CommonDimens.elevation_0,
-        shape = Shapes.small,
+        shape = AppTheme.shapes.small,
         onClick = clickListener ?: {},
     ) {
-        Column(modifier = Modifier.padding(CommonDimens.default_screen_margin)) {
+        Column(modifier = Modifier.padding(CommonDimens.default_padding)) {
             content()
         }
     }
@@ -129,14 +128,14 @@ private fun TagTilePreview() {
 
 @Composable
 internal fun generatePreviewTagTiles(selectedTagIndex: MutableState<Int>): List<WidgetState> = listOf(
-    TagTileItem.shimmer(),
-    TagTileItem(
+    TagTileState.shimmer(),
+    TagTileState(
         text = TextValue.Simple("Tag text"),
         isSelected = selectedTagIndex.value == 0,
         unselectedColor = TagTileDefaults.unselectedColor(),
         selectedColor = TagTileDefaults.selectedColor(),
         clickListener = { selectedTagIndex.value = 0 }),
-    TagTileItem(
+    TagTileState(
         text = TextValue.Simple("Tag text"),
         isSelected = selectedTagIndex.value == 1,
         unselectedColor = TagTileDefaults.unselectedColor(),

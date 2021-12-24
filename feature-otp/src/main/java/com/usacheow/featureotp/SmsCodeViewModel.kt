@@ -2,14 +2,17 @@ package com.usacheow.featureotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.usacheow.core.DurationValue
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coremediator.OtpFeatureProvider
-import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.getArgs
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.tryPublish
-import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -17,15 +20,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 import com.usacheow.featureotp.R as FeatureR
 
 private const val EMPTY_CODE = ""
 private const val SMS_CODE_TIMEOUT_SECONDS = 6
-private const val SECOND_IN_MILLISECONDS = 1000L
 private const val CODE_LENGTH_DEFAULT_VALUE = 4
 
 @HiltViewModel
+@OptIn(ExperimentalTime::class)
 class SmsCodeViewModel @Inject constructor(
     private val resources: ResourcesWrapper,
     private val savedStateHandle: SavedStateHandle,
@@ -73,7 +75,7 @@ class SmsCodeViewModel @Inject constructor(
         repeat(SMS_CODE_TIMEOUT_SECONDS) {
             val text = resources.getString(FeatureR.string.sms_code_resend_timer, SMS_CODE_TIMEOUT_SECONDS - it)
             _isResendButtonState tryPublish CodeResendButtonState(text, false)
-            delay(SECOND_IN_MILLISECONDS)
+            delay(DurationValue.SECOND)
         }
         _isResendButtonState tryPublish defaultResendButtonState
 

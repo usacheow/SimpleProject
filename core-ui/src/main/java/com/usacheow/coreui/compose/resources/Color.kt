@@ -1,5 +1,6 @@
 package com.usacheow.coreui.compose.resources
 
+import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 
 val LightCommonColors = Colors(
@@ -25,7 +26,8 @@ val LightCommonColors = Colors(
     errorContainer = Color(0xFFF9DEDC),
     onErrorContainer = Color(0xFF410E0B),
 
-    outline = Color(0xFF79747E),
+    outline = Color(0x0F000000),
+    shimmer = Color(0xFFDBDEE6),
 
     background = Color(0xFFFFFBFE),
     onBackground = Color(0xFF1C1B1F),
@@ -37,12 +39,12 @@ val LightCommonColors = Colors(
     surfaceInverse = Color(0xFF313033),
     onSurfaceInverse = Color(0xFFF4EFF4),
 
-    colorStatusBar = Color(0x4D000000),
-    colorNavigationBar = Color(0x4D000000),
-    colorStatusBarForModal = Color(0x4D000000),
-    colorNavigationBarForModal = Color(0x4D000000),
-
-    shimmer = Color(0xFFDBDEE6),
+    symbolPrimary = Color(0xFF1C1B1F),
+    symbolPrimaryInverse = Color(0xFFFFFFFF),
+    symbolSecondary = Color(0x9A1C1B1F),
+    symbolSecondaryInverse = Color(0x9AFFFFFF),
+    symbolTertiary = Color(0x651C1B1F),
+    symbolTertiaryInverse = Color(0x65FFFFFF),
 )
 
 val DarkCommonColors = Colors(
@@ -68,7 +70,8 @@ val DarkCommonColors = Colors(
     errorContainer = Color(0xFF8C1D18),
     onErrorContainer = Color(0xFFF2B8B5),
 
-    outline = Color(0xFF938F99),
+    outline = Color(0x0FFFFFFF),
+    shimmer = Color(0xFF55565A),
 
     background = Color(0xFF1C1B1F),
     onBackground = Color(0xFFE6E1E5),
@@ -80,12 +83,12 @@ val DarkCommonColors = Colors(
     surfaceInverse = Color(0xFFE6E1E5),
     onSurfaceInverse = Color(0xFF313033),
 
-    colorStatusBar = Color(0x00000000),
-    colorNavigationBar = Color(0x03000000),
-    colorStatusBarForModal = Color(0x00000000),
-    colorNavigationBarForModal = Color(0x03000000),
-
-    shimmer = Color(0xFF55565A),
+    symbolPrimary = Color(0xFFFFFFFF),
+    symbolPrimaryInverse = Color(0xFF1C1B1F),
+    symbolSecondary = Color(0x9AFFFFFF),
+    symbolSecondaryInverse = Color(0x9A1C1B1F),
+    symbolTertiary = Color(0x65FFFFFF),
+    symbolTertiaryInverse = Color(0x651C1B1F),
 )
 
 data class Colors(
@@ -112,6 +115,7 @@ data class Colors(
     val onErrorContainer: Color,
 
     val outline: Color,
+    val shimmer: Color,
 
     val background: Color,
     val onBackground: Color,
@@ -123,12 +127,12 @@ data class Colors(
     val surfaceInverse: Color,
     val onSurfaceInverse: Color,
 
-    val colorStatusBar: Color,
-    val colorNavigationBar: Color,
-    val colorStatusBarForModal: Color,
-    val colorNavigationBarForModal: Color,
-
-    val shimmer: Color,
+    val symbolPrimary: Color,
+    val symbolPrimaryInverse: Color,
+    val symbolSecondary: Color,
+    val symbolSecondaryInverse: Color,
+    val symbolTertiary: Color,
+    val symbolTertiaryInverse: Color,
 
     val white_10: Color = Color(0x33FFFFFF),
     val white_20: Color = Color(0x33FFFFFF),
@@ -153,4 +157,34 @@ data class Colors(
     val black: Color = Color(0xFF000000),
 
     val transparent: Color = Color(0x00000000),
-)
+) {
+
+    fun toColorScheme() = ColorScheme(
+        primary = primary,
+        onPrimary = onPrimary,
+        primaryContainer = primaryContainer,
+        onPrimaryContainer = onPrimaryContainer,
+        inversePrimary = primaryInverse,
+        secondary = secondary,
+        onSecondary = onSecondary,
+        secondaryContainer = secondaryContainer,
+        onSecondaryContainer = onSecondaryContainer,
+        tertiary = tertiary,
+        onTertiary = onTertiary,
+        tertiaryContainer = tertiaryContainer,
+        onTertiaryContainer = onTertiaryContainer,
+        background = background,
+        onBackground = onBackground,
+        surface = surface,
+        onSurface = onSurface,
+        surfaceVariant = surfaceVariant,
+        onSurfaceVariant = onSurfaceVariant,
+        inverseSurface = surfaceInverse,
+        inverseOnSurface = onSurfaceInverse,
+        error = error,
+        onError = onError,
+        errorContainer = errorContainer,
+        onErrorContainer = onErrorContainer,
+        outline = outline,
+    )
+}

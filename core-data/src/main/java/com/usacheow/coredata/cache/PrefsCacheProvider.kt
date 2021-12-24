@@ -16,10 +16,12 @@ import kotlinx.serialization.serializerOrNull
 import java.util.Collections
 import javax.inject.Inject
 import kotlin.reflect.KType
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
 private const val CACHE_STORE = "cache_data"
 
-@OptIn(ExperimentalStdlibApi::class)
+@OptIn(ExperimentalStdlibApi::class, ExperimentalTime::class)
 class PrefsCacheProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val jsonProvider: KotlinxSerializationJsonProvider,
@@ -42,10 +44,10 @@ class PrefsCacheProvider @Inject constructor(
             ?.let { dataJson -> jsonProvider.get().decodeFromString(dataSerializer, dataJson) as? T? }
     }
 
-    override suspend fun <T : Any> save(type: KType, key: String, data: T, lifeTimeInMillis: Long) {
+    override suspend fun <T : Any> save(type: KType, key: String, data: T, lifeDuration: Duration) {
         val dataSerializer = serializerOrNull(type) ?: return
         val dataJson = jsonProvider.get().encodeToString(dataSerializer, data)
-        val cacheItem = CacheElement(dataJson, lifeTimeInMillis)
+        val cacheItem = CacheElement(dataJson, lifeDuration)
         val cacheItemJson = jsonProvider.get().encodeToString(cacheItem)
         context.dataStore.set(stringPreferencesKey(key), cacheItemJson)
     }

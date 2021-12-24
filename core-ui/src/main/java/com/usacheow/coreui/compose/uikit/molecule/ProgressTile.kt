@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,10 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.CommonDimens
-import com.usacheow.coreui.compose.resources.LocalCommonColors
+import com.usacheow.coreui.compose.resources.AppTheme
+import com.usacheow.coreui.compose.resources.CircleShape
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 
-data class ProgressTileItem(
+data class ProgressTileState(
     val maxValue: Float,
     val currentValue: Float,
     val color: Color,
@@ -29,7 +29,7 @@ data class ProgressTileItem(
     }
 
     companion object {
-        fun shimmer() = ShimmerTileItem(
+        fun shimmer() = ShimmerTileState(
             needTopLine = false,
             needRightIcon = false,
             needBottomLine = false,
@@ -45,13 +45,13 @@ fun ProgressTile(
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(CommonDimens.default_screen_margin)) {
+        .padding(CommonDimens.default_padding)) {
         if (currentValue != 0f) {
             Line(color, currentValue)
         }
         val nonActivePercent = maxValue - currentValue
         if (nonActivePercent != 0f) {
-            Line(LocalCommonColors.current.transparent, nonActivePercent)
+            Line(AppTheme.commonColors.transparent, nonActivePercent)
         }
     }
 }
@@ -59,7 +59,7 @@ fun ProgressTile(
 @Composable
 private fun RowScope.Line(color: Color, weight: Float) {
     Surface(
-        shape = RoundedCornerShape(50),
+        shape = CircleShape,
         color = color,
         content = {},
         modifier = Modifier
@@ -76,17 +76,17 @@ private fun ProgressTilePreview() {
 
 @Composable
 internal fun generatePreviewProgressTiles(): List<WidgetState> = listOf(
-    ProgressTileItem.shimmer(),
-    ProgressTileItem(
+    ProgressTileState.shimmer(),
+    ProgressTileState(
         maxValue = 100f,
         currentValue = 30f,
-        color = LocalCommonColors.current.primary),
-    ProgressTileItem(
+        color = AppTheme.commonColors.primary),
+    ProgressTileState(
         maxValue = 100f,
         currentValue = 70f,
-        color = LocalCommonColors.current.primary),
-    ProgressTileItem(
+        color = AppTheme.commonColors.primary),
+    ProgressTileState(
         maxValue = 100f,
         currentValue = 100f,
-        color = LocalCommonColors.current.primary),
+        color = AppTheme.commonColors.primary),
 )

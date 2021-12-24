@@ -17,26 +17,28 @@ import java.net.UnknownHostException
 import java.util.concurrent.CancellationException
 import javax.net.ssl.SSLException
 import kotlin.reflect.typeOf
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.ExperimentalTime
 
-@OptIn(ExperimentalStdlibApi::class)
+@OptIn(ExperimentalStdlibApi::class, ExperimentalTime::class)
 suspend inline fun <reified T : Any> cachedApiCall(
     key: String,
     cacheProvider: CacheProvider,
     dispatcher: CoroutineDispatcher,
     needActualData: Boolean = false,
-    lifeTimeInMinutes: Int = 5,
+    lifeDuration: Duration = 5.minutes,
     noinline request: suspend () -> Response<T>,
 ): Effect<T> {
-    val lifeTimeInMillis = lifeTimeInMinutes * 60 * 1000L
     return if (needActualData) {
         apiCall(dispatcher, request)
-            .doOnSuccess { cacheProvider.save(typeOf<T>(),  key, it, lifeTimeInMillis) }
+            .doOnSuccess { cacheProvider.save(typeOf<T>(),  key, it, lifeDuration) }
             .applyCacheData { cacheProvider.get(typeOf<T>(), key) }
     } else {
         cacheProvider.get<T>(typeOf<T>(), key)
             ?.let { Effect.success(it) }
             ?: apiCall(dispatcher, request)
-                .doOnSuccess { cacheProvider.save(typeOf<T>(), key, it, lifeTimeInMillis) }
+                .doOnSuccess { cacheProvider.save(typeOf<T>(), key, it, lifeDuration) }
     }
 }
 

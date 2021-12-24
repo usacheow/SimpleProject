@@ -13,7 +13,6 @@ buildscript {
         classpath(Libs.classpath.google_services)
         classpath(Libs.classpath.crashlytics_gradle)
         classpath(Libs.classpath.navigation_safeArgs_gradle)
-        classpath("com.android.tools.build:gradle:7.0.3")
     }
 }
 

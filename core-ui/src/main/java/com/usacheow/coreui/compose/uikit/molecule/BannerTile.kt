@@ -13,7 +13,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicVideo
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,8 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.CommonDimens
-import com.usacheow.coreui.compose.resources.LocalCommonColors
-import com.usacheow.coreui.compose.resources.Shapes
+import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -36,7 +34,7 @@ private val lineMaxWidth = 144.dp
 private val linePaddingEnd = 48.dp
 private val linePaddingBottom = 4.dp
 
-data class BannerTileItem(
+data class BannerTileState(
     val icon: ImageValue,
     val text: TextValue,
     val clickListener: (() -> Unit)? = null,
@@ -61,7 +59,7 @@ fun BannerTile(
     BannerCard(clickListener = clickListener) {
         Text(
             text = text.get().plus(AnnotatedString("\n")),
-            style = MaterialTheme.typography.headlineSmall,
+            style = AppTheme.typography.headlineSmall,
             maxLines = 2,
             modifier = Modifier
                 .widthIn(max = lineMaxWidth)
@@ -97,17 +95,17 @@ private fun BannerCard(
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Card(
-        backgroundColor = LocalCommonColors.current.surfaceVariant,
-        contentColor = LocalCommonColors.current.onSurfaceVariant,
+        backgroundColor = AppTheme.commonColors.surfaceVariant,
+        contentColor = AppTheme.commonColors.onSurfaceVariant,
         elevation = CommonDimens.elevation_0,
-        shape = Shapes.medium,
+        shape = AppTheme.shapes.medium,
         onClick = clickListener ?: {},
         modifier = Modifier
             .wrapContentWidth()
             .padding(8.dp),
     ) {
         Column(modifier = Modifier
-            .padding(CommonDimens.default_screen_margin)
+            .padding(CommonDimens.default_padding)
             .fillMaxWidth()) {
             content()
         }
@@ -123,8 +121,8 @@ private fun BannerTilePreview() {
 
 @Composable
 internal fun generatePreviewBannerTiles(): List<WidgetState> = listOf(
-    BannerTileItem.shimmer(),
-    BannerTileItem(
+    BannerTileState.shimmer(),
+    BannerTileState(
         icon = ImageValue.Vector(Icons.Default.MusicVideo),
         text = TextValue.Simple("Banner tile text"),
         clickListener = {}),

@@ -56,7 +56,7 @@ class SignUpViewModel @Inject constructor(
 
         interactor.signUpWithLoginAndPassword(login, password).doOnSuccess {
             _openNextScreenAction triggerBy nextScreenDirection
-        }.doOnError { exception, data ->
+        }.doOnError { exception, _ ->
             _errorState tryPublish exception.getMessage(resources)
         }
 

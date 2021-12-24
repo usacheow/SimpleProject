@@ -8,3 +8,5 @@ val Shapes = Shapes(
     medium = RoundedCornerShape(CommonDimens.radius_medium),
     large = RoundedCornerShape(CommonDimens.radius_large),
 )
+
+val CircleShape = RoundedCornerShape(percent = 50)

@@ -1,38 +1,43 @@
 package com.usacheow.coreui.compose.tools
 
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.unit.dp
+import com.usacheow.coreui.compose.resources.AppTheme
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-fun Modifier.margin(margin: Margin): Modifier {
-    val (left, right) = when (margin) {
-        is Margin.Acis -> margin.horizontal to margin.horizontal
-        is Margin.All -> margin.start to margin.end
+fun Modifier.defaultBorder() = composed {
+    border(
+        width = 1.dp,
+        color = AppTheme.commonColors.outline,
+        shape = MaterialTheme.shapes.medium,
+    )
+}
 
-        is Margin.Vertical -> null to null
-        is Margin.Horizontal -> margin.start to margin.end
-
-        is Margin.Top -> null to null
-        is Margin.Bottom -> null to null
-        is Margin.Left -> margin.start to null
-        is Margin.Right -> null to margin.end
-
-        is Margin.Empty -> null to null
+fun Modifier.doOnClick(
+    delay: Duration = 500.milliseconds,
+    onClick: (() -> Unit)?,
+): Modifier = composed {
+    val enable = remember { mutableStateOf(true) }
+    val coroutineScope = rememberCoroutineScope()
+    clickable(enabled = onClick != null) {
+        if (enable.value) {
+            onClick?.invoke()
+        }
+        enable.value = false
+        coroutineScope.launch {
+            delay(delay)
+            enable.value = true
+        }
     }
-    val (top, bottom) = when (margin) {
-        is Margin.Acis -> margin.vertical to margin.vertical
-        is Margin.All -> margin.top to margin.bottom
-
-        is Margin.Vertical -> margin.top to margin.bottom
-        is Margin.Horizontal -> null to null
-
-        is Margin.Top -> margin.top to null
-        is Margin.Bottom -> null to margin.bottom
-        is Margin.Left -> null to null
-        is Margin.Right -> null to null
-
-        is Margin.Empty -> null to null
-    }
-
-    return padding(start = left ?: 0.dp, end = right ?: 0.dp, top = top ?: 0.dp, bottom = bottom ?: 0.dp)
 }

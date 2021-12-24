@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 private const val TIMEOUT_CONNECTION_SECONDS = 20L
-private const val TIMEOUT_IO_OPERATION = 15L
+private const val TIMEOUT_IO_OPERATION_SECONDS = 15L
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -44,8 +44,8 @@ class OkHttpModule {
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .connectTimeout(TIMEOUT_CONNECTION_SECONDS, TimeUnit.SECONDS)
-            .writeTimeout(TIMEOUT_IO_OPERATION, TimeUnit.SECONDS)
-            .readTimeout(TIMEOUT_IO_OPERATION, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT_IO_OPERATION_SECONDS, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT_IO_OPERATION_SECONDS, TimeUnit.SECONDS)
             .protocols(listOf(Protocol.HTTP_1_1))
             .addInterceptor(authentication)
             .followRedirects(true)

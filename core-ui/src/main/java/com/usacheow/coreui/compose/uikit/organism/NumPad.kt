@@ -18,7 +18,6 @@ import androidx.compose.material.icons.filled.KeyboardBackspace
 import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -29,8 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreui.compose.resources.LocalCommonColors
-import com.usacheow.coreui.compose.resources.Shapes
+import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.tools.SimpleWidgetStatePreview
 
 private val buttonSize = 56.dp
@@ -79,7 +77,7 @@ fun NumPad(
 private fun NumPadButton(text: String, onClick: (String) -> Unit) {
     Text(
         text = text,
-        style = MaterialTheme.typography.displaySmall,
+        style = AppTheme.typography.displaySmall,
         maxLines = 1,
         textAlign = TextAlign.Center,
         modifier = Modifier
@@ -116,14 +114,14 @@ private fun NumPadPreview() {
             Box(
                 modifier = Modifier
                     .border(
-                        border = BorderStroke(2.dp, LocalCommonColors.current.outline),
-                        shape = Shapes.small,
+                        border = BorderStroke(2.dp, AppTheme.commonColors.outline),
+                        shape = AppTheme.shapes.small,
                     )
                     .padding(8.dp)
             ) {
                 Text(
                     text = enteredCode.value,
-                    style = MaterialTheme.typography.displayLarge,
+                    style = AppTheme.typography.displayLarge,
                 )
             }
             NumPad(

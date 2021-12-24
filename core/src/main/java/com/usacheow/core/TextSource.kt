@@ -32,9 +32,7 @@ sealed class TextSource {
         val quantity: Int,
     ) : TextSource()
 
-    fun toCharSequence(resources: ResourcesWrapper): CharSequence? = when (this) {
-        null -> null
-
+    fun toCharSequence(resources: ResourcesWrapper): CharSequence = when (this) {
         is Simple -> text
 
         is Spanned -> text

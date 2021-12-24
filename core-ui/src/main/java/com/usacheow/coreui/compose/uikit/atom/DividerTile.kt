@@ -1,8 +1,8 @@
 package com.usacheow.coreui.compose.uikit.atom
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -10,11 +10,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
+import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
-import com.usacheow.coreui.compose.tools.Margin
-import com.usacheow.coreui.compose.tools.margin
 
-data class DividerTileItem(
+data class DividerTileState(
     val height: Dp,
     val modifier: Modifier = Modifier,
     var color: Color? = null,
@@ -24,7 +23,7 @@ data class DividerTileItem(
     }
 }
 
-data class SpaceTileItem(val height: Dp) : WidgetState() {
+data class SimpleSpaceTileState(val height: Dp) : WidgetState() {
     override val content = @Composable {
         SpaceTile(height = height)
     }
@@ -51,29 +50,29 @@ fun DividerTile(
     Divider(
         modifier = modifier,
         thickness = height,
-        color = color ?: MaterialTheme.colorScheme.outline)
+        color = color ?: AppTheme.colorScheme.outline)
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun DividerPreview() {
+private fun Preview() {
     LazySimpleWidgetStatePreview { generatePreviewDividerTiles() }
 }
 
 @Composable
 internal fun generatePreviewDividerTiles(): List<WidgetState> = listOf(
-    SpaceTileItem(height = 32.dp),
-    DividerTileItem(
+    SimpleSpaceTileState(height = 32.dp),
+    DividerTileState(
         height = DividerDefaults.heightSmall,
-        modifier = Modifier.margin(Margin.All(start = 16.dp, end = 16.dp))),
-    SpaceTileItem(height = 32.dp),
-    DividerTileItem(
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+    SimpleSpaceTileState(height = 32.dp),
+    DividerTileState(
         height = DividerDefaults.heightMedium,
-        modifier = Modifier.margin(Margin.All(start = 16.dp, end = 16.dp))),
-    SpaceTileItem(height = 32.dp),
-    DividerTileItem(
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+    SimpleSpaceTileState(height = 32.dp),
+    DividerTileState(
         height = DividerDefaults.heightLarge,
-        modifier = Modifier.margin(Margin.All(start = 16.dp, end = 16.dp))),
-    SpaceTileItem(height = 32.dp),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+    SimpleSpaceTileState(height = 32.dp),
 )

@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,12 +16,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
+import com.usacheow.coreui.compose.resources.AppTheme
+import com.usacheow.coreui.compose.resources.CircleShape
 import com.usacheow.coreui.compose.resources.CommonDimens
-import com.usacheow.coreui.compose.resources.LocalCommonColors
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.uikit.atom.SpaceTile
 
-data class ShimmerTileItem(
+data class ShimmerTileState(
     val needLeftIcon: Boolean = true,
     val needRightIcon: Boolean = true,
     val needTopLine: Boolean = true,
@@ -54,18 +53,18 @@ fun ShimmerTile(
     needBottomLine: Boolean = true,
 ) {
     val startLinesPadding = when {
-        needLeftIcon -> CommonDimens.default_screen_margin
+        needLeftIcon -> CommonDimens.default_padding
         else -> 0.dp
     }
     val endLinesPadding = when {
-        needRightIcon -> CommonDimens.default_screen_margin
+        needRightIcon -> CommonDimens.default_padding
         else -> 0.dp
     }
 
     Row(modifier = Modifier
-        .background(MaterialTheme.colorScheme.background)
+        .background(AppTheme.colorScheme.background)
         .fillMaxWidth()
-        .padding(CommonDimens.default_screen_margin)) {
+        .padding(CommonDimens.default_padding)) {
         if (needLeftIcon) {
             ShimmerTileCircle()
         }
@@ -97,8 +96,8 @@ fun ShimmerTileLine(
     height: Dp = ShimmerTileDefaults.linesHeight,
 ) {
     Surface(
-        color = LocalCommonColors.current.shimmer,
-        shape = RoundedCornerShape(percent = 50),
+        color = AppTheme.commonColors.shimmer,
+        shape = CircleShape,
         content = {},
         modifier = modifier
             .height(height)
@@ -111,9 +110,9 @@ fun ShimmerTileCircle(
     size: Dp = 36.dp,
 ) {
     Surface(
-        color = LocalCommonColors.current.shimmer,
+        color = AppTheme.commonColors.shimmer,
         modifier = modifier.size(size),
-        shape = RoundedCornerShape(percent = 50),
+        shape = CircleShape,
         content = {})
 }
 
@@ -126,31 +125,31 @@ private fun ShimmerTilePreview() {
 
 @Composable
 internal fun generatePreviewShimmerTile(): List<WidgetState> = listOf(
-    ShimmerTileItem(
+    ShimmerTileState(
         needLeftIcon = false,
         needRightIcon = false,
         needTopLine = false,
         needMiddleLine = true,
         needBottomLine = false),
-    ShimmerTileItem(
+    ShimmerTileState(
         needLeftIcon = false,
         needRightIcon = false,
         needTopLine = false,
         needMiddleLine = true,
         needBottomLine = true),
-    ShimmerTileItem(
+    ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = false,
         needTopLine = true,
         needMiddleLine = true,
         needBottomLine = false),
-    ShimmerTileItem(
+    ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = true,
         needTopLine = true,
         needMiddleLine = true,
         needBottomLine = false),
-    ShimmerTileItem(
+    ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = true,
         needTopLine = true,

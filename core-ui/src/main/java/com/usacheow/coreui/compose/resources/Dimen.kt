@@ -2,15 +2,8 @@ package com.usacheow.coreui.compose.resources
 
 import androidx.compose.ui.unit.dp
 
-object LoaderDimens {
-    val size = 48.dp
-}
-
 object CommonDimens {
-    val default_screen_margin = 16.dp
-
-    val spot_shadow_alpha = 0.05.dp
-    val ambient_shadow_alpha = 0.05.dp
+    val default_padding = 16.dp
 
     val stroke_card = 1.dp
 
