@@ -5,12 +5,12 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewListTileBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.R as CoreUiR
 
 class ListTileView @JvmOverloads constructor(
     context: Context,

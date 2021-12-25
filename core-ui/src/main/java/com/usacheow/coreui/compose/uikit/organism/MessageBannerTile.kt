@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -19,9 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
-import com.usacheow.coreui.compose.resources.secondaryTextAlpha
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -54,12 +52,13 @@ fun MessageBannerTile(
         modifier = modifier.fillMaxWidth(),
         backgroundColor = AppTheme.commonColors.surfaceVariant,
         contentColor = AppTheme.commonColors.onSurfaceVariant,
-        elevation = CommonDimens.elevation_0,
+        elevation = Dimen.elevation_0,
         shape = AppTheme.shapes.medium,
     ) {
         Column(
             modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             val iconPainter = icon.get()
             val hasIcon = iconPainter != null
             val hasTitle = title !is TextValue.Empty
@@ -106,7 +105,8 @@ private fun Icon(icon: Painter) {
     Icon(
         painter = icon,
         contentDescription = "Message banner icon",
-        modifier = Modifier.size(52.dp))
+        modifier = Modifier.size(52.dp),
+    )
 }
 
 @Composable
@@ -116,7 +116,8 @@ private fun Title(title: TextValue) {
         color = AppTheme.commonColors.symbolPrimary,
         style = AppTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth())
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 @Composable
@@ -127,7 +128,8 @@ private fun Description(description: TextValue) {
         style = AppTheme.typography.bodyMedium,
         textAlign = TextAlign.Center,
         maxLines = 3,
-        modifier = Modifier.fillMaxWidth())
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 @Composable
@@ -135,7 +137,8 @@ private fun Button(button: TextValue, clickListener: (() -> Unit)?) {
     SimpleButtonOutlined(
         text = button,
         clickListener = clickListener ?: {},
-        modifier = Modifier.padding(horizontal = 16.dp))
+        modifier = Modifier.padding(horizontal = 16.dp),
+    )
 }
 
 @Preview(showBackground = true)
@@ -149,32 +152,38 @@ private fun MessageBannerTilePreview() {
 private fun generatePreviewMessageBanners(): List<WidgetState> = listOf(
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+    ),
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+    ),
     MessageBannerState(
         icon = ImageValue.Vector(Icons.Default.Error),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+    ),
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     MessageBannerState(
         icon = ImageValue.Vector(Icons.Default.Error),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

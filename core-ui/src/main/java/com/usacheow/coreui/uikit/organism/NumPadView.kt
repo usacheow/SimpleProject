@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.widget.GridLayout
 import androidx.annotation.DrawableRes
 import androidx.core.view.isInvisible
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.databinding.ViewNumPadBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.doOnImmediateClick
+import com.usacheow.coreui.R as CoreUiR
 
 class NumPadView @JvmOverloads constructor(
     context: Context,

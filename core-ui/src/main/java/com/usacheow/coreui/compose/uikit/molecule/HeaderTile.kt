@@ -34,7 +34,8 @@ data class HeaderTileState(
             needBottomLine = type == Type.Subtitle,
             needMiddleLine = false,
             needRightIcon = false,
-            needLeftIcon = false)
+            needLeftIcon = false,
+        )
     }
 
     enum class Type {
@@ -49,9 +50,11 @@ fun HeaderTile(
     clickListener: (() -> Unit)? = null,
     type: HeaderTileState.Type = HeaderTileState.Type.Title,
 ) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(start = 8.dp, end = 8.dp, top = 8.dp)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 8.dp, end = 8.dp, top = 8.dp),
+    ) {
         Text(
             text = value.get(),
             color = AppTheme.commonColors.symbolPrimary,
@@ -62,7 +65,8 @@ fun HeaderTile(
             maxLines = 1,
             modifier = Modifier
                 .weight(1f)
-                .padding(8.dp))
+                .padding(8.dp),
+        )
         if (button != TextValue.Empty) {
             ClickableText(
                 text = button.get(),
@@ -71,7 +75,8 @@ fun HeaderTile(
                 style = AppTheme.typography.labelMedium.copy(color = LocalContentColor.current),
                 modifier = Modifier
                     .padding(8.dp)
-                    .align(Alignment.CenterVertically))
+                    .align(Alignment.CenterVertically),
+            )
         }
     }
 }
@@ -88,19 +93,23 @@ private fun generatePreviewHeaderTiles(): List<WidgetState> = listOf(
     HeaderTileState.shimmer(HeaderTileState.Type.Title),
     HeaderTileState(
         value = TextValue.Simple("Title"),
-        type = HeaderTileState.Type.Title),
+        type = HeaderTileState.Type.Title,
+    ),
     HeaderTileState(
         value = TextValue.Simple("Title with button"),
         type = HeaderTileState.Type.Title,
         button = TextValue.Simple("button"),
-        clickListener = {}),
+        clickListener = {},
+    ),
     HeaderTileState.shimmer(HeaderTileState.Type.Subtitle),
     HeaderTileState(
         value = TextValue.Simple("Subtitle"),
-        type = HeaderTileState.Type.Subtitle),
+        type = HeaderTileState.Type.Subtitle,
+    ),
     HeaderTileState(
         value = TextValue.Simple("Subtitle with button"),
         type = HeaderTileState.Type.Subtitle,
         button = TextValue.Simple("button"),
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

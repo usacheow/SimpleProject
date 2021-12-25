@@ -20,11 +20,11 @@ import androidx.core.view.ScrollingView
 import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import androidx.core.view.marginTop
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.uikit.helper.EmptyAnimationListener
 import com.usacheow.coreui.uikit.helper.drawable
 import com.usacheow.coreui.uikit.helper.toPx
 import kotlin.math.min
+import com.usacheow.coreui.R as CoreUiR
 
 private const val REFRESH_FADE_IN_PROGRESS = 0.4F
 private const val REFRESH_APPLY_PROGRESS = 0.6F

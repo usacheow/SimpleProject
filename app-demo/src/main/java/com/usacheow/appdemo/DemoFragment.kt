@@ -11,19 +11,19 @@ import com.usacheow.core.toTextSource
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.molecule.BadgeTileItem
-import com.usacheow.coreui.uikit.molecule.HeaderTileItem
-import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.helper.toPx
+import com.usacheow.coreui.uikit.molecule.BadgeTileItem
+import com.usacheow.coreui.uikit.molecule.HeaderTileItem
+import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import dagger.hilt.android.AndroidEntryPoint
-import com.usacheow.coreui.R as CoreUiR
-import com.usacheow.appdemo.R as DemoAppR
 import javax.inject.Inject
+import com.usacheow.appdemo.R as DemoAppR
+import com.usacheow.coreui.R as CoreUiR
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
@@ -37,20 +37,25 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
     )
 
     private val onBoardingArgs by lazy {
-        OnBoardingFeatureProvider.OnBoardingArgs(mutableListOf(
-            OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_1).toTextSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_1).toTextSource()),
-            OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_2).toTextSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_2).toTextSource()),
-            OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                defaultImageRes = CoreUiR.drawable.ic_user,
-                title = res.getString(DemoAppR.string.on_boarding_title_3).toTextSource(),
-                description = res.getString(DemoAppR.string.on_boarding_description_3).toTextSource())
-        ))
+        OnBoardingFeatureProvider.OnBoardingArgs(
+            mutableListOf(
+                OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    title = res.getString(DemoAppR.string.on_boarding_title_1).toTextSource(),
+                    description = res.getString(DemoAppR.string.on_boarding_description_1).toTextSource()
+                ),
+                OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    title = res.getString(DemoAppR.string.on_boarding_title_2).toTextSource(),
+                    description = res.getString(DemoAppR.string.on_boarding_description_2).toTextSource()
+                ),
+                OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    title = res.getString(DemoAppR.string.on_boarding_title_3).toTextSource(),
+                    description = res.getString(DemoAppR.string.on_boarding_description_3).toTextSource()
+                )
+            )
+        )
     }
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {

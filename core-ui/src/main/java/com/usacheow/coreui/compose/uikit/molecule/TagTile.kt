@@ -18,8 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
 
@@ -37,7 +37,8 @@ data class TagTileState(
             isSelected = isSelected,
             unselectedColor = unselectedColor,
             selectedColor = selectedColor,
-            clickListener = clickListener)
+            clickListener = clickListener,
+        )
     }
 
     companion object {
@@ -84,7 +85,8 @@ fun TagTile(
             text = text.get(),
             color = AppTheme.commonColors.symbolPrimary,
             style = AppTheme.typography.bodyMedium,
-            textAlign = TextAlign.Center)
+            textAlign = TextAlign.Center,
+        )
     }
 }
 
@@ -108,11 +110,11 @@ private fun TagCard(
             .padding(8.dp),
         backgroundColor = color.background,
         contentColor = color.content,
-        elevation = CommonDimens.elevation_0,
+        elevation = Dimen.elevation_0,
         shape = AppTheme.shapes.small,
         onClick = clickListener ?: {},
     ) {
-        Column(modifier = Modifier.padding(CommonDimens.default_padding)) {
+        Column(modifier = Modifier.padding(Dimen.default_padding)) {
             content()
         }
     }
@@ -134,11 +136,13 @@ private fun generatePreviewTagTiles(selectedTagIndex: MutableState<Int>): List<W
         isSelected = selectedTagIndex.value == 0,
         unselectedColor = TagTileDefaults.unselectedColor(),
         selectedColor = TagTileDefaults.selectedColor(),
-        clickListener = { selectedTagIndex.value = 0 }),
+        clickListener = { selectedTagIndex.value = 0 },
+    ),
     TagTileState(
         text = TextValue.Simple("Tag text"),
         isSelected = selectedTagIndex.value == 1,
         unselectedColor = TagTileDefaults.unselectedColor(),
         selectedColor = TagTileDefaults.selectedColor(),
-        clickListener = { selectedTagIndex.value = 1 }),
+        clickListener = { selectedTagIndex.value = 1 },
+    ),
 )

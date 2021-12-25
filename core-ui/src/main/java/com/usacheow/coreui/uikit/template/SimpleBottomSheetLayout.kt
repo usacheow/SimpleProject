@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.dimen
 import com.usacheow.coreui.uikit.helper.toPx
+import com.usacheow.coreui.R as CoreUiR
 
 class SimpleBottomSheetLayout @JvmOverloads constructor(
     context: Context,

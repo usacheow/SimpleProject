@@ -2,7 +2,6 @@ package com.usacheow.coreui.uikit.helper
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
 import com.usacheow.coreui.uikit.helper.textinput.DecimalFormatter

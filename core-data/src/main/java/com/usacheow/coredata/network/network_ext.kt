@@ -32,7 +32,7 @@ suspend inline fun <reified T : Any> cachedApiCall(
 ): Effect<T> {
     return if (needActualData) {
         apiCall(dispatcher, request)
-            .doOnSuccess { cacheProvider.save(typeOf<T>(),  key, it, lifeDuration) }
+            .doOnSuccess { cacheProvider.save(typeOf<T>(), key, it, lifeDuration) }
             .applyCacheData { cacheProvider.get(typeOf<T>(), key) }
     } else {
         cacheProvider.get<T>(typeOf<T>(), key)

@@ -1,12 +1,12 @@
 package com.usacheow.featurepurchase.mapper
 
-import com.example.featurepurchase.R as FeatureR
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.corebilling.model.Product
 import com.usacheow.featurepurchase.view.PriceTileItem
 import java.util.Currency
 import javax.inject.Inject
+import com.example.featurepurchase.R as FeatureR
 
 class ProductsMapper @Inject constructor(
     private val resources: ResourcesWrapper,

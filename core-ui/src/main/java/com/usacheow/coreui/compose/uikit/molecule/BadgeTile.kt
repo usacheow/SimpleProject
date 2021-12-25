@@ -18,11 +18,10 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.AppTheme
-import com.usacheow.coreui.compose.resources.CommonDimens
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
 import com.usacheow.coreui.compose.uikit.atom.SpaceTile
-
 
 private val linesMinWidth = 120.dp
 private val linesMaxWidth = 156.dp
@@ -72,16 +71,16 @@ fun BadgeTile(
                 maxLines = 1,
                 modifier = Modifier
                     .padding(bottom = linesBetweenPadding)
-                    .widthIn(min = linesMinWidth, max = linesMaxWidth))
+                    .widthIn(min = linesMinWidth, max = linesMaxWidth),
+            )
         }
         Text(
             text = value.get().plus(AnnotatedString("\n")),
             color = AppTheme.commonColors.symbolPrimary,
             style = AppTheme.typography.bodyLarge,
             maxLines = 2,
-            modifier = Modifier.widthIn(
-                min = linesMinWidth,
-                max = linesMaxWidth))
+            modifier = Modifier.widthIn(min = linesMinWidth, max = linesMaxWidth),
+        )
     }
 }
 
@@ -116,10 +115,10 @@ private fun BadgeCard(
         shape = AppTheme.shapes.medium,
         backgroundColor = backgroundColor,
         contentColor = contentColor,
-        elevation = CommonDimens.elevation_32,
+        elevation = Dimen.elevation_32,
         onClick = clickListener ?: {},
     ) {
-        Column(modifier = Modifier.padding(CommonDimens.default_padding)) {
+        Column(modifier = Modifier.padding(Dimen.default_padding)) {
             content()
         }
     }
@@ -141,12 +140,14 @@ private fun generatePreviewBadgeTiles(): List<WidgetState> = listOf(
         needAdaptWidth = true,
         contentColor = AppTheme.colorScheme.onSurface,
         color = AppTheme.colorScheme.surface,
-        clickListener = {}),
+        clickListener = {}
+    ),
     BadgeTileState(
         header = TextValue.Simple("Badge tile header text"),
         value = TextValue.Simple("Badge tile text"),
         needAdaptWidth = true,
         contentColor = AppTheme.colorScheme.onSurface,
         color = AppTheme.colorScheme.surface,
-        clickListener = {}),
+        clickListener = {}
+    ),
 )

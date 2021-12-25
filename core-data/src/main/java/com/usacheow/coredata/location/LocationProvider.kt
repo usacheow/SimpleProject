@@ -52,7 +52,7 @@ class LocationProviderImpl @Inject constructor(
             registerListener(listener)
         } catch (e: Exception) {
             val exception = when (e) {
-                is SecurityException ->  ApiError.SecurityException()
+                is SecurityException -> ApiError.SecurityException()
                 else -> ApiError.UnknownException()
             }
             send(Effect.error(exception))

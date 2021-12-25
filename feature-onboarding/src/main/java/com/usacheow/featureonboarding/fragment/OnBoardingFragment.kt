@@ -2,16 +2,15 @@ package com.usacheow.featureonboarding.fragment
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.featureonboarding.databinding.FragmentOnboardingBinding
 import com.usacheow.featureonboarding.navigation.OnBoardingRouter
 import com.usacheow.featureonboarding.viewmodel.OnBoardingViewModel

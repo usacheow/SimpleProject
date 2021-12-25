@@ -2,7 +2,7 @@ package com.usacheow.core.date
 
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.util.*
+import java.util.Locale
 
 const val DAYS_OF_WEEK = 7
 

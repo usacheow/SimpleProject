@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.dp
 
 sealed class Margin {
 
-    object Empty: Margin()
+    object Empty : Margin()
 
     data class Acis(
         val vertical: Dp = 0.dp,

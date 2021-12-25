@@ -18,15 +18,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
 import com.usacheow.coreui.compose.tools.doOnClick
 import com.usacheow.coreui.compose.uikit.atom.SpaceTile
 
-private val iconPaddingHorizontal = CommonDimens.default_padding
+private val iconPaddingHorizontal = Dimen.default_padding
 
 data class ListTileState(
     val leftImageInfo: ImageValue = ImageValue.Empty,
@@ -44,7 +44,8 @@ data class ListTileState(
     companion object {
         fun shimmer() = ShimmerTileState(
             needTopLine = false,
-            needRightIcon = false)
+            needRightIcon = false,
+        )
     }
 }
 
@@ -58,15 +59,18 @@ fun ListTile(
     clickListener: (() -> Unit)? = null,
 ) {
     val ripplePadding = 8.dp
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(ripplePadding)
-        .clip(AppTheme.shapes.medium)
-        .doOnClick(onClick = clickListener)
-        .padding(CommonDimens.default_padding - ripplePadding)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(ripplePadding)
+            .clip(AppTheme.shapes.medium)
+            .doOnClick(onClick = clickListener)
+            .padding(Dimen.default_padding - ripplePadding),
+    ) {
         Icon(
             icon = leftImageInfo,
-            modifier = Modifier.padding(end = iconPaddingHorizontal))
+            modifier = Modifier.padding(end = iconPaddingHorizontal),
+        )
         Column(modifier = Modifier.weight(1f)) {
             if (topDescription !is TextValue.Empty) {
                 SecondaryText(topDescription)
@@ -82,7 +86,8 @@ fun ListTile(
             icon = rightImageInfo,
             modifier = Modifier
                 .align(Alignment.CenterVertically)
-                .padding(start = iconPaddingHorizontal))
+                .padding(start = iconPaddingHorizontal),
+        )
     }
 }
 
@@ -92,7 +97,8 @@ private fun Icon(icon: ImageValue, modifier: Modifier) {
         Icon(
             painter = it,
             contentDescription = "Item icon",
-            modifier = modifier.width(36.dp))
+            modifier = modifier.width(36.dp),
+        )
     }
 }
 
@@ -102,7 +108,8 @@ private fun PrimaryText(value: TextValue) {
         text = value.get(),
         color = AppTheme.commonColors.symbolPrimary,
         style = AppTheme.typography.bodyLarge,
-        modifier = Modifier.fillMaxWidth())
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 @Composable
@@ -111,7 +118,8 @@ private fun SecondaryText(value: TextValue) {
         text = value.get(),
         color = AppTheme.commonColors.symbolSecondary,
         style = AppTheme.typography.bodyMedium,
-        modifier = Modifier.fillMaxWidth())
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 @Preview(showBackground = true)
@@ -130,40 +138,46 @@ private fun generatePreviewListTiles(): List<WidgetState> = listOf(
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Empty,
         bottomDescription = TextValue.Empty,
-        clickListener = {}),
+        clickListener = {},
+    ),
     ListTileState(
         leftImageInfo = ImageValue.Empty,
         rightImageInfo = ImageValue.Empty,
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Empty,
         bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {}),
+        clickListener = {},
+    ),
     ListTileState(
         leftImageInfo = ImageValue.Empty,
         rightImageInfo = ImageValue.Empty,
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Simple("Top description"),
         bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {}),
+        clickListener = {},
+    ),
     ListTileState(
         leftImageInfo = ImageValue.Empty,
         rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Empty,
         bottomDescription = TextValue.Empty,
-        clickListener = {}),
+        clickListener = {},
+    ),
     ListTileState(
         leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
         rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Empty,
         bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {}),
+        clickListener = {},
+    ),
     ListTileState(
         leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
         rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
         value = TextValue.Simple("Main information"),
         topDescription = TextValue.Simple("Top description"),
         bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

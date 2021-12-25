@@ -57,7 +57,8 @@ fun NumPad(
             NumPadButton(
                 imageVector = Icons.Default.KeyboardBackspace,
                 contentDescription = "Backspace button",
-                onClick = onBackspaceClick)
+                onClick = onBackspaceClick,
+            )
         }
         item {
             NumPadButton(text = "0", onClick = onNumberClick)
@@ -67,7 +68,8 @@ fun NumPad(
                 NumPadButton(
                     imageVector = it,
                     contentDescription = "Action button",
-                    onClick = onActionClick)
+                    onClick = onActionClick,
+                )
             }
         }
     }
@@ -83,7 +85,8 @@ private fun NumPadButton(text: String, onClick: (String) -> Unit) {
         modifier = Modifier
             .padding(horizontal = buttonMarginHorizontal)
             .clickable { onClick(text) }
-            .size(buttonSize))
+            .size(buttonSize),
+    )
 }
 
 @Composable
@@ -99,7 +102,8 @@ private fun NumPadButton(imageVector: ImageVector, contentDescription: String, o
             contentDescription = contentDescription,
             modifier = Modifier
                 .size(buttonSize)
-                .padding(horizontal = buttonMarginHorizontal))
+                .padding(horizontal = buttonMarginHorizontal),
+        )
     }
 }
 

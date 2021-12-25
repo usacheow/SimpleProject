@@ -1,16 +1,12 @@
 package com.usacheow.appdemo.catalog
 
 import android.content.Context
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.AttributeSet
 import androidx.annotation.ColorRes
-import androidx.annotation.StyleRes
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors
 import com.usacheow.appdemo.DemoRouter
@@ -31,9 +27,8 @@ import com.usacheow.coreui.uikit.helper.toPx
 import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.math.roundToInt
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.R as AppDemoR
+import com.usacheow.coreui.R as CoreUiR
 
 @AndroidEntryPoint
 class PaletteFragment : SimpleFragment<FragmentListBinding>() {

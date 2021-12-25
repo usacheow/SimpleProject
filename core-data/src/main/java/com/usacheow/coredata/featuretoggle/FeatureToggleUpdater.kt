@@ -1,9 +1,7 @@
 package com.usacheow.coredata.featuretoggle
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.usacheow.core.DurationValue
 import com.usacheow.coredata.BuildConfig
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime

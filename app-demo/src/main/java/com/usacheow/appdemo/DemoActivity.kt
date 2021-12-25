@@ -18,7 +18,7 @@ class DemoActivity : SimpleActivity<ActivityHostBinding>() {
     override val defaultParams = Params(
         viewBindingProvider = ActivityHostBinding::inflate,
     )
-    
+
     private var isKeyboardVisible = false
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {

@@ -7,8 +7,8 @@ import android.util.AttributeSet
 import android.view.View
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.toPx
-import com.usacheow.coreui.R as CoreUiR
 import kotlin.math.min
+import com.usacheow.coreui.R as CoreUiR
 
 private const val DEFAULT_RADIUS_DP = 10
 private const val DOT_MARGIN = 16

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.resources.CircleShape
-import com.usacheow.coreui.compose.resources.CommonDimens
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.uikit.atom.SpaceTile
 
@@ -35,7 +35,8 @@ data class ShimmerTileState(
             needRightIcon = needRightIcon,
             needTopLine = needTopLine,
             needMiddleLine = needMiddleLine,
-            needBottomLine = needBottomLine)
+            needBottomLine = needBottomLine,
+        )
     }
 }
 
@@ -53,24 +54,28 @@ fun ShimmerTile(
     needBottomLine: Boolean = true,
 ) {
     val startLinesPadding = when {
-        needLeftIcon -> CommonDimens.default_padding
+        needLeftIcon -> Dimen.default_padding
         else -> 0.dp
     }
     val endLinesPadding = when {
-        needRightIcon -> CommonDimens.default_padding
+        needRightIcon -> Dimen.default_padding
         else -> 0.dp
     }
 
-    Row(modifier = Modifier
-        .background(AppTheme.colorScheme.background)
-        .fillMaxWidth()
-        .padding(CommonDimens.default_padding)) {
+    Row(
+        modifier = Modifier
+            .background(AppTheme.colorScheme.background)
+            .fillMaxWidth()
+            .padding(Dimen.default_padding),
+    ) {
         if (needLeftIcon) {
             ShimmerTileCircle()
         }
-        Column(modifier = Modifier
-            .weight(1f)
-            .padding(start = startLinesPadding, end = endLinesPadding)) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = startLinesPadding, end = endLinesPadding),
+        ) {
             if (needTopLine) {
                 ShimmerTileLine(width = 100.dp)
                 SpaceTile(height = 4.dp)
@@ -101,7 +106,8 @@ fun ShimmerTileLine(
         content = {},
         modifier = modifier
             .height(height)
-            .width(width))
+            .width(width),
+    )
 }
 
 @Composable
@@ -113,7 +119,8 @@ fun ShimmerTileCircle(
         color = AppTheme.commonColors.shimmer,
         modifier = modifier.size(size),
         shape = CircleShape,
-        content = {})
+        content = {},
+    )
 }
 
 @Preview(showBackground = true)
@@ -130,29 +137,34 @@ private fun generatePreviewShimmerTile(): List<WidgetState> = listOf(
         needRightIcon = false,
         needTopLine = false,
         needMiddleLine = true,
-        needBottomLine = false),
+        needBottomLine = false,
+    ),
     ShimmerTileState(
         needLeftIcon = false,
         needRightIcon = false,
         needTopLine = false,
         needMiddleLine = true,
-        needBottomLine = true),
+        needBottomLine = true,
+    ),
     ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = false,
         needTopLine = true,
         needMiddleLine = true,
-        needBottomLine = false),
+        needBottomLine = false,
+    ),
     ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = true,
         needTopLine = true,
         needMiddleLine = true,
-        needBottomLine = false),
+        needBottomLine = false,
+    ),
     ShimmerTileState(
         needLeftIcon = true,
         needRightIcon = true,
         needTopLine = true,
         needMiddleLine = true,
-        needBottomLine = true),
+        needBottomLine = true,
+    ),
 )

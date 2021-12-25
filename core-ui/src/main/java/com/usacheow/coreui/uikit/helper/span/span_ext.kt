@@ -27,7 +27,6 @@ fun CharSequence.replaceAnnotationsWithSpans(annotationToSpans: (Annotation) -> 
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-
     }
     return spannableString
 }

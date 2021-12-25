@@ -5,8 +5,8 @@ import com.usacheow.coremediator.OtpFeatureProvider
 import com.usacheow.coreui.utils.navigation.WITH
 import com.usacheow.coreui.utils.navigation.addArgs
 import com.usacheow.coreui.utils.navigation.screen
-import com.usacheow.featureotp.R as FeatureR
 import javax.inject.Inject
+import com.usacheow.featureotp.R as FeatureR
 
 class OtpFeatureProviderImpl @Inject constructor() : OtpFeatureProvider {
 

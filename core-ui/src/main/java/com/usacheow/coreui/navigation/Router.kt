@@ -4,8 +4,8 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.core.navigation.FeatureNavDirection
+import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.utils.navigation.OPEN_IN
 import com.usacheow.coreui.utils.navigation.POP_BACK_STACK
 import com.usacheow.coreui.utils.navigation.from

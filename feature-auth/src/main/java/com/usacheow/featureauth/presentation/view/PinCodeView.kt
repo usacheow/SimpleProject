@@ -4,10 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
-import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.coreui.uikit.helper.string
-import com.usacheow.featureauth.R as FeatureR
+import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
+import com.usacheow.featureauth.R as FeatureR
 
 private const val PIN_CODE_LENGTH = 4
 
@@ -90,9 +90,11 @@ class PinCodeView @JvmOverloads constructor(
     }
 
     fun setBiometricEnabled(isEnabled: Boolean) {
-        binding.numPadView.setActionMode(when (isEnabled) {
-            true -> NumPadView.ActionMode.BIOMETRIC
-            false -> NumPadView.ActionMode.NONE
-        })
+        binding.numPadView.setActionMode(
+            when (isEnabled) {
+                true -> NumPadView.ActionMode.BIOMETRIC
+                false -> NumPadView.ActionMode.NONE
+            }
+        )
     }
 }

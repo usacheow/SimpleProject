@@ -2,10 +2,7 @@ package com.usacheow.featurepurchase.fragment
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.example.featurepurchase.R as FeatureR
-import com.usacheow.coreui.R as CoreUiR
 import com.example.featurepurchase.databinding.FragmentPurchaseBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
@@ -16,14 +13,16 @@ import com.usacheow.coreui.screen.SimpleModalFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.featurepurchase.view.AdvantageTileItem
 import com.usacheow.featurepurchase.viewmodel.PurchaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.example.featurepurchase.R as FeatureR
+import com.usacheow.coreui.R as CoreUiR
 
 @AndroidEntryPoint
 class PurchaseModalFragment : SimpleModalFragment<FragmentPurchaseBinding>() {

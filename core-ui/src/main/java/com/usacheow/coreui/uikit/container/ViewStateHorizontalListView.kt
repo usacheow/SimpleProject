@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
-import com.usacheow.coreui.databinding.ViewViewStateHorizontalListBinding
 import com.usacheow.coreui.R as CoreUiR
 
 class ViewStateHorizontalListView @JvmOverloads constructor(

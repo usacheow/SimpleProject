@@ -16,17 +16,17 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.usacheow.core.resource.ResourcesWrapper
-import com.google.android.material.R as MaterialR
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.FragmentViewBindingHolder
-import com.usacheow.coreui.screen.base.ViewBindingHolder
 import com.usacheow.coreui.screen.base.SimpleLifecycle
+import com.usacheow.coreui.screen.base.ViewBindingHolder
 import com.usacheow.coreui.uikit.helper.createWindowInsetsControllerCompat
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import com.usacheow.coreui.uikit.helper.isNightMode
 import javax.inject.Inject
+import com.google.android.material.R as MaterialR
 
 abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     BottomSheetDialogFragment(),

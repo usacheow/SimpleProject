@@ -6,7 +6,6 @@ import com.usacheow.corebilling.model.Product
 import com.usacheow.coredata.database.UserDataStorage
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface PurchaseStateProvider {
 

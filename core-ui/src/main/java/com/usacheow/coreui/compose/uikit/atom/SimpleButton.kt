@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -71,8 +71,9 @@ fun SimpleButtonUnelevated(
         onClick = clickListener,
         modifier = modifier.applySize(size),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = CommonDimens.elevation_0,
-            pressedElevation = CommonDimens.elevation_0),
+            defaultElevation = Dimen.elevation_0,
+            pressedElevation = Dimen.elevation_0
+        ),
     ) { ButtonContent(text, icon) }
 }
 
@@ -102,8 +103,8 @@ fun SimpleButtonElevated(
         onClick = clickListener,
         modifier = modifier.applySize(size),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = CommonDimens.elevation_8,
-            pressedElevation = CommonDimens.elevation_4,
+            defaultElevation = Dimen.elevation_8,
+            pressedElevation = Dimen.elevation_4,
         ),
     ) { ButtonContent(text, icon) }
 }
@@ -169,11 +170,13 @@ private fun ButtonContent(
             painter = it,
             contentDescription = "Button icon",
             tint = LocalContentColor.current,
-            modifier = Modifier.padding(end = iconPaddingEnd))
+            modifier = Modifier.padding(end = iconPaddingEnd),
+        )
     }
     Text(
         text = textValue,
-        color = LocalContentColor.current)
+        color = LocalContentColor.current,
+    )
 }
 
 private fun Modifier.applySize(size: SimpleButtonItem.Size): Modifier {
@@ -197,7 +200,8 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
         icon = ImageValue.Empty,
         size = SimpleButtonItem.Size.Max,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     RowListItem(
         listOf(
             SimpleButtonItem(
@@ -205,12 +209,14 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
                 icon = ImageValue.Empty,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
             SimpleButtonItem(
                 icon = ImageValue.Vector(Icons.Default.Add),
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
         )
     ),
 
@@ -220,7 +226,8 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
         type = SimpleButtonItem.Type.Tonal,
         size = SimpleButtonItem.Size.Max,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     RowListItem(
         listOf(
             SimpleButtonItem(
@@ -229,13 +236,15 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
                 type = SimpleButtonItem.Type.Tonal,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
             SimpleButtonItem(
                 icon = ImageValue.Vector(Icons.Default.Add),
                 type = SimpleButtonItem.Type.Tonal,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
         )
     ),
 
@@ -245,7 +254,8 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
         type = SimpleButtonItem.Type.Elevation,
         size = SimpleButtonItem.Size.Max,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     RowListItem(
         listOf(
             SimpleButtonItem(
@@ -254,13 +264,15 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
                 type = SimpleButtonItem.Type.Elevation,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
             SimpleButtonItem(
                 icon = ImageValue.Vector(Icons.Default.Add),
                 type = SimpleButtonItem.Type.Elevation,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
         )
     ),
 
@@ -270,7 +282,8 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
         type = SimpleButtonItem.Type.Outlined,
         size = SimpleButtonItem.Size.Max,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     RowListItem(
         listOf(
             SimpleButtonItem(
@@ -279,13 +292,15 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
                 type = SimpleButtonItem.Type.Outlined,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
             SimpleButtonItem(
                 icon = ImageValue.Vector(Icons.Default.Add),
                 type = SimpleButtonItem.Type.Outlined,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
         )
     ),
 
@@ -295,7 +310,8 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
         type = SimpleButtonItem.Type.Text,
         size = SimpleButtonItem.Size.Max,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-        clickListener = {}),
+        clickListener = {},
+    ),
     RowListItem(
         listOf(
             SimpleButtonItem(
@@ -304,18 +320,21 @@ private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
                 type = SimpleButtonItem.Type.Text,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
             SimpleButtonItem(
                 icon = ImageValue.Vector(Icons.Default.Add),
                 type = SimpleButtonItem.Type.Text,
                 size = SimpleButtonItem.Size.Mini,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                clickListener = {}),
+                clickListener = {},
+            ),
         )
     ),
 
     SimpleButtonItem(
         icon = ImageValue.Vector(Icons.Default.Feed),
         type = SimpleButtonItem.Type.Icon,
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

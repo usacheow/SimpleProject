@@ -1,10 +1,10 @@
 package com.usacheow.featureauth.data
 
+import com.usacheow.core.Completable
+import com.usacheow.core.Effect
 import com.usacheow.coredata.coroutine.IoDispatcher
 import com.usacheow.coredata.database.TokenStorage
 import com.usacheow.coredata.database.UserDataStorage
-import com.usacheow.core.Completable
-import com.usacheow.core.Effect
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext

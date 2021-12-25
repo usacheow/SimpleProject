@@ -2,24 +2,23 @@ package com.usacheow.featureauth.presentation.fragment
 
 import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
-import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.helper.biometric.BiometricEnterManager
-import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.helper.string
-import com.usacheow.featureauth.R as FeatureR
+import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.featureauth.databinding.FragmentPinCodeBinding
 import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
 import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInResult
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.usacheow.featureauth.R as FeatureR
 
 @AndroidEntryPoint
 class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {

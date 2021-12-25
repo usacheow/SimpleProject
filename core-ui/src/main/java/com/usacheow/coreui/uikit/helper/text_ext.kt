@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import java.lang.ref.WeakReference
+import com.usacheow.coreui.R as CoreUiR
 
 private const val TEXT_ANIMATION_DURATION = 200L
 

@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VerifiedUser
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -27,8 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.AppTheme
-import com.usacheow.coreui.compose.resources.CommonDimens
-import com.usacheow.coreui.compose.resources.secondaryTextAlpha
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -50,7 +48,8 @@ data class ActionTileState(
     companion object {
         fun shimmer() = ShimmerTileState(
             needBottomLine = false,
-            needRightIcon = false)
+            needRightIcon = false,
+        )
     }
 
     enum class SelectorType {
@@ -84,7 +83,7 @@ fun ActionTile(
                 onClick(!isCheckedState)
                 clickListener(!isChecked)
             }
-            .padding(CommonDimens.default_padding - ripplePadding),
+            .padding(Dimen.default_padding - ripplePadding),
     ) {
         image.get()?.let { LeftIcon(it) }
         Column {
@@ -110,7 +109,8 @@ private fun LeftIcon(icon: Painter) {
         contentDescription = "Item icon",
         modifier = Modifier
             .width(36.dp)
-            .padding(end = CommonDimens.default_padding))
+            .padding(end = Dimen.default_padding),
+    )
 }
 
 @Composable
@@ -119,7 +119,8 @@ private fun RowScope.PrimaryText(value: TextValue) {
         text = value.get(),
         color = AppTheme.commonColors.symbolPrimary,
         style = AppTheme.typography.bodyLarge,
-        modifier = Modifier.weight(1f))
+        modifier = Modifier.weight(1f),
+    )
 }
 
 @Composable
@@ -128,14 +129,14 @@ private fun Selector(isChecked: Boolean, selectorType: ActionTileState.SelectorT
         ActionTileState.SelectorType.Switch -> Switch(
             checked = isChecked,
             onCheckedChange = null,
-            modifier = Modifier.height(24.dp))
+            modifier = Modifier.height(24.dp),
+        )
 
         ActionTileState.SelectorType.CheckBox -> Checkbox(
             checked = isChecked,
             onCheckedChange = null,
-            modifier = Modifier.size(
-                height = 24.dp,
-                width = 32.dp))
+            modifier = Modifier.size(height = 24.dp, width = 32.dp),
+        )
     }
 }
 
@@ -147,7 +148,8 @@ private fun SecondaryText(value: TextValue) {
         style = AppTheme.typography.bodyMedium,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 4.dp))
+            .padding(top = 4.dp),
+    )
 }
 
 @Preview(showBackground = true)
@@ -166,19 +168,22 @@ private fun generatePreviewActionTiles(): List<WidgetState> = listOf(
         subtitle = TextValue.Empty,
         isChecked = false,
         selectorType = ActionTileState.SelectorType.CheckBox,
-        clickListener = {}),
+        clickListener = {},
+    ),
     ActionTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),
         title = TextValue.Simple("Title"),
         subtitle = TextValue.Simple("Subtitle"),
         isChecked = false,
         selectorType = ActionTileState.SelectorType.CheckBox,
-        clickListener = {}),
+        clickListener = {},
+    ),
     ActionTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),
         title = TextValue.Simple("Title"),
         subtitle = TextValue.Simple("Subtitle"),
         isChecked = true,
         selectorType = ActionTileState.SelectorType.Switch,
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

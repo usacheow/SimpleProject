@@ -2,7 +2,7 @@ package com.usacheow.coreui.compose.resources
 
 import androidx.compose.ui.unit.dp
 
-object CommonDimens {
+object Dimen {
     val default_padding = 16.dp
 
     val stroke_card = 1.dp

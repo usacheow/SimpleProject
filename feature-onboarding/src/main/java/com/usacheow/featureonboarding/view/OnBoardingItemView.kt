@@ -8,8 +8,8 @@ import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.uikit.helper.populate
-import com.usacheow.featureonboarding.R as FeatureR
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
+import com.usacheow.featureonboarding.R as FeatureR
 
 class OnBoardingItemView @JvmOverloads constructor(
     context: Context,

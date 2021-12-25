@@ -13,9 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.resources.CircleShape
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 
 data class ProgressTileState(
@@ -33,7 +33,8 @@ data class ProgressTileState(
             needTopLine = false,
             needRightIcon = false,
             needBottomLine = false,
-            needLeftIcon = false)
+            needLeftIcon = false,
+        )
     }
 }
 
@@ -43,9 +44,11 @@ fun ProgressTile(
     currentValue: Float,
     color: Color,
 ) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(CommonDimens.default_padding)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(Dimen.default_padding),
+    ) {
         if (currentValue != 0f) {
             Line(color, currentValue)
         }
@@ -64,7 +67,8 @@ private fun RowScope.Line(color: Color, weight: Float) {
         content = {},
         modifier = Modifier
             .weight(weight)
-            .height(16.dp))
+            .height(16.dp),
+    )
 }
 
 @Preview(showBackground = true)
@@ -80,13 +84,16 @@ private fun generatePreviewProgressTiles(): List<WidgetState> = listOf(
     ProgressTileState(
         maxValue = 100f,
         currentValue = 30f,
-        color = AppTheme.commonColors.primary),
+        color = AppTheme.commonColors.primary,
+    ),
     ProgressTileState(
         maxValue = 100f,
         currentValue = 70f,
-        color = AppTheme.commonColors.primary),
+        color = AppTheme.commonColors.primary,
+    ),
     ProgressTileState(
         maxValue = 100f,
         currentValue = 100f,
-        color = AppTheme.commonColors.primary),
+        color = AppTheme.commonColors.primary,
+    ),
 )

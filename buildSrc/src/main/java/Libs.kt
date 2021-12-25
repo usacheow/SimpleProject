@@ -6,6 +6,7 @@ object Libs {
     private const val kotlinVersion = "1.6.10"
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.6.0"
+    private const val kotlinterVersion = "3.8.0"
 
     const val composeVersion = "1.1.0-rc01"
     private const val composeMaterialVersion = "1.0.0-alpha02"
@@ -71,6 +72,7 @@ object Libs {
         const val kotlin_android = "kotlin-android"
         const val hilt = "dagger.hilt.android.plugin"
         const val navigation = "androidx.navigation.safeargs.kotlin"
+        const val lint = "org.jmailen.kotlinter"
     }
 
     object classpath {
@@ -81,6 +83,7 @@ object Libs {
         const val crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsGradleVersion"
         const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         const val navigation_safeArgs_gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
     }
 
     object bundle {

@@ -4,11 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.core.view.isVisible
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewShimmerTileBinding
 import com.usacheow.coreui.uikit.helper.setShimmer
+import com.usacheow.coreui.R as CoreUiR
 
 class ShimmerTileView @JvmOverloads constructor(
     context: Context,

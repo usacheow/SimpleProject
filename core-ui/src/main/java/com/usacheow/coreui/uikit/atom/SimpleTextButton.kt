@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import com.google.android.material.button.MaterialButton
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.toPx
+import com.usacheow.coreui.R as CoreUiR
 
 class SimpleTextButton @JvmOverloads constructor(
     context: Context,

@@ -2,8 +2,8 @@ package com.usacheow.featuremain.presentation.navigation
 
 import com.usacheow.coremediator.MainFeatureProvider
 import com.usacheow.coreui.utils.navigation.screen
-import com.usacheow.featuremain.R as FeatureR
 import javax.inject.Inject
+import com.usacheow.featuremain.R as FeatureR
 
 class MainFeatureProviderImpl @Inject constructor() : MainFeatureProvider {
 

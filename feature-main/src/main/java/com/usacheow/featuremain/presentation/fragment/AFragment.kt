@@ -46,9 +46,11 @@ class AFragment : SimpleFragment<FragmentABinding>() {
 
         binding.listView.layoutManager = LinearLayoutManager(context)
         binding.listView.adapter = adapter
-        adapter.update(List(20) {
-            ListTileItem(value = TextSource.Simple("${it + 1} Go to next screen"), clickListener = { openNextScreen(it) })
-        })
+        adapter.update(
+            List(20) {
+                ListTileItem(value = TextSource.Simple("${it + 1} Go to next screen"), clickListener = { openNextScreen(it) })
+            }
+        )
     }
 
     private fun openNextScreen(itemNumber: Int) {

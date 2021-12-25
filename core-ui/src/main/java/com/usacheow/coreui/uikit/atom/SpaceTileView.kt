@@ -3,10 +3,10 @@ package com.usacheow.coreui.uikit.atom
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.uikit.helper.toPx
+import com.usacheow.coreui.R as CoreUiR
 
 class SpaceTileView @JvmOverloads constructor(
     context: Context,

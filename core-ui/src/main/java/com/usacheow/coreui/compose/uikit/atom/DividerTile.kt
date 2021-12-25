@@ -50,7 +50,8 @@ fun DividerTile(
     Divider(
         modifier = modifier,
         thickness = height,
-        color = color ?: AppTheme.colorScheme.outline)
+        color = color ?: AppTheme.colorScheme.outline,
+    )
 }
 
 @Preview(showBackground = true)
@@ -65,14 +66,17 @@ private fun generatePreviewDividerTiles(): List<WidgetState> = listOf(
     SimpleSpaceTileState(height = 32.dp),
     DividerTileState(
         height = DividerDefaults.heightSmall,
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+    ),
     SimpleSpaceTileState(height = 32.dp),
     DividerTileState(
         height = DividerDefaults.heightMedium,
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+    ),
     SimpleSpaceTileState(height = 32.dp),
     DividerTileState(
         height = DividerDefaults.heightLarge,
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp)),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+    ),
     SimpleSpaceTileState(height = 32.dp),
 )

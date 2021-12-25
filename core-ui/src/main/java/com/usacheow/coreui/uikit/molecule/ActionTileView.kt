@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewActionTileBinding
@@ -13,6 +12,7 @@ import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.makeGone
 import com.usacheow.coreui.uikit.helper.makeVisible
 import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.R as CoreUiR
 
 class ActionTileView @JvmOverloads constructor(
     context: Context,

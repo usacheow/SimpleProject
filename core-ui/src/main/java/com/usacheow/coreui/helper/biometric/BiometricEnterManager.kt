@@ -2,9 +2,9 @@ package com.usacheow.coreui.helper.biometric
 
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.core.resource.ResourcesWrapper
 import javax.inject.Inject
+import com.usacheow.coreui.R as CoreUiR
 
 interface BiometricEnterManager {
 

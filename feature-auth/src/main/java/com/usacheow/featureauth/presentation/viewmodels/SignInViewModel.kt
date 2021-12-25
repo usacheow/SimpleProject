@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coredata.network.getMessage
-import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
+import com.usacheow.coreui.viewmodel.EventChannel
+import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.tryPublish
-import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,12 +1,10 @@
 package com.usacheow.coredata.crypto
 
-import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricPrompt
 import java.security.KeyFactory
 import java.security.KeyPairGenerator

@@ -22,8 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -63,14 +63,16 @@ fun BannerTile(
             maxLines = 2,
             modifier = Modifier
                 .widthIn(max = lineMaxWidth)
-                .padding(bottom = linePaddingBottom, end = linePaddingEnd))
+                .padding(bottom = linePaddingBottom, end = linePaddingEnd),
+        )
         icon.get()?.let {
             Icon(
                 painter = it,
                 contentDescription = "Banner icon",
                 modifier = Modifier
                     .width(iconSize)
-                    .align(Alignment.End))
+                    .align(Alignment.End),
+            )
         }
     }
 }
@@ -80,11 +82,13 @@ fun BannerTileShimmer() {
     BannerCard(clickListener = null) {
         ShimmerTileLine(
             width = lineMaxWidth,
-            modifier = Modifier.padding(end = linePaddingEnd))
+            modifier = Modifier.padding(end = linePaddingEnd),
+        )
         SpaceTile(height = linePaddingBottom)
         ShimmerTileCircle(
             size = iconSize,
-            modifier = Modifier.align(Alignment.End))
+            modifier = Modifier.align(Alignment.End),
+        )
     }
 }
 
@@ -97,16 +101,18 @@ private fun BannerCard(
     Card(
         backgroundColor = AppTheme.commonColors.surfaceVariant,
         contentColor = AppTheme.commonColors.onSurfaceVariant,
-        elevation = CommonDimens.elevation_0,
+        elevation = Dimen.elevation_0,
         shape = AppTheme.shapes.medium,
         onClick = clickListener ?: {},
         modifier = Modifier
             .wrapContentWidth()
             .padding(8.dp),
     ) {
-        Column(modifier = Modifier
-            .padding(CommonDimens.default_padding)
-            .fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .padding(Dimen.default_padding)
+                .fillMaxWidth(),
+        ) {
             content()
         }
     }
@@ -125,5 +131,6 @@ private fun generatePreviewBannerTiles(): List<WidgetState> = listOf(
     BannerTileState(
         icon = ImageValue.Vector(Icons.Default.MusicVideo),
         text = TextValue.Simple("Banner tile text"),
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

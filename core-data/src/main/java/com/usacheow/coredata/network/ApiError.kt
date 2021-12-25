@@ -1,10 +1,10 @@
 package com.usacheow.coredata.network
 
 import androidx.annotation.StringRes
-import kotlinx.serialization.Serializable
 import com.usacheow.core.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import com.usacheow.coredata.R as CoreDataR
 
 sealed class ApiError(

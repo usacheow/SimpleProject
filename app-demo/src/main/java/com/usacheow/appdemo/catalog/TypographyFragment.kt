@@ -25,8 +25,8 @@ import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.math.roundToInt
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.appdemo.R as AppDemoR
+import com.usacheow.coreui.R as CoreUiR
 
 @AndroidEntryPoint
 class TypographyFragment : SimpleFragment<FragmentListBinding>() {
@@ -49,28 +49,30 @@ class TypographyFragment : SimpleFragment<FragmentListBinding>() {
         binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewStateAdapter(listOf(
-            SubtitleTileItem(TextSource.Simple("Display"), actionText = TextSource.Simple("Size")),
-            TextItem(CoreUiR.style.Simple_Text_Display_L),
-            TextItem(CoreUiR.style.Simple_Text_Display_M),
-            TextItem(CoreUiR.style.Simple_Text_Display_S),
-            SubtitleTileItem(TextSource.Simple("Headline")),
-            TextItem(CoreUiR.style.Simple_Text_Headline_L),
-            TextItem(CoreUiR.style.Simple_Text_Headline_M),
-            TextItem(CoreUiR.style.Simple_Text_Headline_S),
-            SubtitleTileItem(TextSource.Simple("Title")),
-            TextItem(CoreUiR.style.Simple_Text_Title_L),
-            TextItem(CoreUiR.style.Simple_Text_Title_M),
-            TextItem(CoreUiR.style.Simple_Text_Title_S),
-            SubtitleTileItem(TextSource.Simple("Body")),
-            TextItem(CoreUiR.style.Simple_Text_Body_L),
-            TextItem(CoreUiR.style.Simple_Text_Body_M),
-            TextItem(CoreUiR.style.Simple_Text_Body_S),
-            SubtitleTileItem(TextSource.Simple("Label")),
-            TextItem(CoreUiR.style.Simple_Text_Label_L),
-            TextItem(CoreUiR.style.Simple_Text_Label_M),
-            TextItem(CoreUiR.style.Simple_Text_Label_S),
-        ))
+        binding.widgetsListView.adapter = ViewStateAdapter(
+            listOf(
+                SubtitleTileItem(TextSource.Simple("Display"), actionText = TextSource.Simple("Size")),
+                TextItem(CoreUiR.style.Simple_Text_Display_L),
+                TextItem(CoreUiR.style.Simple_Text_Display_M),
+                TextItem(CoreUiR.style.Simple_Text_Display_S),
+                SubtitleTileItem(TextSource.Simple("Headline")),
+                TextItem(CoreUiR.style.Simple_Text_Headline_L),
+                TextItem(CoreUiR.style.Simple_Text_Headline_M),
+                TextItem(CoreUiR.style.Simple_Text_Headline_S),
+                SubtitleTileItem(TextSource.Simple("Title")),
+                TextItem(CoreUiR.style.Simple_Text_Title_L),
+                TextItem(CoreUiR.style.Simple_Text_Title_M),
+                TextItem(CoreUiR.style.Simple_Text_Title_S),
+                SubtitleTileItem(TextSource.Simple("Body")),
+                TextItem(CoreUiR.style.Simple_Text_Body_L),
+                TextItem(CoreUiR.style.Simple_Text_Body_M),
+                TextItem(CoreUiR.style.Simple_Text_Body_S),
+                SubtitleTileItem(TextSource.Simple("Label")),
+                TextItem(CoreUiR.style.Simple_Text_Label_L),
+                TextItem(CoreUiR.style.Simple_Text_Label_M),
+                TextItem(CoreUiR.style.Simple_Text_Label_S),
+            )
+        )
     }
 }
 

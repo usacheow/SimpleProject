@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,9 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
-import com.usacheow.coreui.compose.resources.CommonDimens
 import com.usacheow.coreui.compose.resources.AppTheme
-import com.usacheow.coreui.compose.resources.secondaryTextAlpha
+import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.coreui.compose.tools.TextValue
@@ -45,7 +43,8 @@ data class InformationTileState(
     companion object {
         fun shimmer() = ShimmerTileState(
             needTopLine = false,
-            needRightIcon = false)
+            needRightIcon = false,
+        )
     }
 }
 
@@ -66,7 +65,7 @@ fun InformationTile(
             .padding(ripplePadding)
             .clip(AppTheme.shapes.medium)
             .doOnClick(onClick = clickListener)
-            .padding(CommonDimens.default_padding - ripplePadding),
+            .padding(Dimen.default_padding - ripplePadding),
     ) {
         Icon(icon = image)
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -90,8 +89,9 @@ private fun Icon(icon: ImageValue) {
             painter = it,
             contentDescription = "Action tile icon",
             modifier = Modifier
-                .padding(end = CommonDimens.default_padding)
-                .size(44.dp))
+                .padding(end = Dimen.default_padding)
+                .size(44.dp),
+        )
     }
 }
 
@@ -103,7 +103,8 @@ private fun PrimaryText(value: TextValue, modifier: Modifier, textAlign: TextAli
         style = AppTheme.typography.bodyLarge,
         modifier = modifier,
         maxLines = 1,
-        textAlign = textAlign)
+        textAlign = textAlign,
+    )
 }
 
 @Composable
@@ -114,7 +115,8 @@ private fun SecondaryText(value: TextValue, modifier: Modifier, textAlign: TextA
         style = AppTheme.typography.labelSmall,
         modifier = modifier,
         maxLines = 1,
-        textAlign = textAlign)
+        textAlign = textAlign,
+    )
 }
 
 @Preview(showBackground = true)
@@ -133,12 +135,14 @@ private fun generatePreviewInformationTiles(): List<WidgetState> = listOf(
         additionalRightText = TextValue.Simple("SAT"),
         mainLeftText = TextValue.Simple("Steven Lang"),
         mainRightText = TextValue.Simple("19-03-2021"),
-        clickListener = {}),
+        clickListener = {},
+    ),
     InformationTileState(
         image = ImageValue.Vector(Icons.Default.AccountCircle),
         additionalLeftText = TextValue.Simple("SHANGHAI"),
         additionalRightText = TextValue.Simple("SAT"),
         mainLeftText = TextValue.Simple("Steven Lang"),
         mainRightText = TextValue.Simple("19-03-2021"),
-        clickListener = {}),
+        clickListener = {},
+    ),
 )

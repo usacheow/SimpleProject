@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
 import com.usacheow.coreui.uikit.helper.MarginHorizontal
-import com.usacheow.coreui.uikit.helper.updateMargins
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.dimen
 import com.usacheow.coreui.uikit.helper.resize
+import com.usacheow.coreui.uikit.helper.updateMargins
+import com.usacheow.coreui.R as CoreUiR
 
 class DividerTileView @JvmOverloads constructor(
     context: Context,

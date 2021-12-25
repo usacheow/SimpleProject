@@ -10,9 +10,9 @@ import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coreui.R as CoreUiR
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import com.usacheow.coreui.R as CoreUiR
 
 private const val APP_PACKAGE = "com.usacheow.simpleapp"
 private const val APP_INFO_CHANNEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"

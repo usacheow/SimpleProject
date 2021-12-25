@@ -4,11 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewHeaderTileBinding
 import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.R as CoreUiR
 
 class HeaderTileView @JvmOverloads constructor(
     context: Context,

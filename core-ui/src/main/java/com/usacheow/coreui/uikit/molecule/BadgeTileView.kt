@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
@@ -15,6 +14,7 @@ import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.ifFalse
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.resize
+import com.usacheow.coreui.R as CoreUiR
 
 class BadgeTileView @JvmOverloads constructor(
     context: Context,

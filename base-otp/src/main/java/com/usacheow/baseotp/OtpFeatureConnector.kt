@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OtpFeatureConnector @Inject constructor()
-    : FeatureConnector<OtpFeatureConnector.Event, OtpFeatureConnector.Effect>() {
+class OtpFeatureConnector @Inject constructor() :
+    FeatureConnector<OtpFeatureConnector.Event, OtpFeatureConnector.Effect>() {
 
     fun onResendClicked() = viewModelScope.launch {
         _featureEvent triggerBy Event.CodeRequested

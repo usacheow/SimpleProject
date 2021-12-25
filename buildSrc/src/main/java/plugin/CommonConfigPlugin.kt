@@ -30,6 +30,7 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
         apply(Libs.plugin.kotlin_parcelize)
         apply(Libs.plugin.kotlin_serialization)
         apply(Libs.plugin.kotlin_kapt)
+        apply(Libs.plugin.lint)
     }
 
     override fun BaseExtension.configAndroid(project: Project) {

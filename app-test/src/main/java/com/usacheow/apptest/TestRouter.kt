@@ -37,7 +37,7 @@ class TestRouter @Inject constructor(fragment: Fragment) : Router(fragment) {
 
     fun from6To7Screen() {
         screen(TestAppR.id.action_fragment6Fragment_to_fragment7Fragment) REPLACING
-                notInclusive(TestAppR.id.fragment3Fragment) OPEN_IN navController
+            notInclusive(TestAppR.id.fragment3Fragment) OPEN_IN navController
     }
 
     fun backTo2Screen() {

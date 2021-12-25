@@ -9,8 +9,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.R as CoreUiR
 
 fun Fragment.openDialer(phoneNumber: String) {
     val intent = Intent(Intent.ACTION_DIAL).apply {

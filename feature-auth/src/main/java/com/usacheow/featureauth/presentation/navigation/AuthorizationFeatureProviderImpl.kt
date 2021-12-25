@@ -6,8 +6,8 @@ import com.usacheow.coremediator.AuthorizationFeatureProvider
 import com.usacheow.coreui.utils.navigation.WITH
 import com.usacheow.coreui.utils.navigation.addNextScreenDirection
 import com.usacheow.coreui.utils.navigation.screen
-import com.usacheow.featureauth.R as FeatureR
 import javax.inject.Inject
+import com.usacheow.featureauth.R as FeatureR
 
 class AuthorizationFeatureProviderImpl @Inject constructor() : AuthorizationFeatureProvider {
 

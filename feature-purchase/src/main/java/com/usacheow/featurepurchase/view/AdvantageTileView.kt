@@ -3,13 +3,13 @@ package com.usacheow.featurepurchase.view
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import com.example.featurepurchase.R as FeatureR
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
 import com.usacheow.core.ImageSource
 import com.usacheow.core.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.uikit.helper.populate
+import com.example.featurepurchase.R as FeatureR
 
 class AdvantageTileView @JvmOverloads constructor(
     context: Context,

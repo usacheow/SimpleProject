@@ -12,9 +12,9 @@ import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import com.usacheow.coreui.analytics.Events
 import com.usacheow.coreui.screen.base.ActivityViewBindingHolder
-import com.usacheow.coreui.screen.base.ViewBindingHolder
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.SimpleLifecycle
+import com.usacheow.coreui.screen.base.ViewBindingHolder
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import javax.inject.Inject
 

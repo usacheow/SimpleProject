@@ -4,13 +4,13 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.TextSource
-import com.usacheow.coreui.R as CoreUiR
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
 import com.usacheow.coreui.databinding.ViewTagTileBinding
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
+import com.usacheow.coreui.R as CoreUiR
 
 class TagTileView @JvmOverloads constructor(
     context: Context,
