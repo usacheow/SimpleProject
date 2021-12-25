@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.usacheow.baseotp.OtpFeatureConnector
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.MarginTop
+import com.usacheow.coreui.uikit.helper.MarginValues
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.addPhoneNumberFormatter
 import com.usacheow.coreui.uikit.helper.applyInsets
@@ -46,7 +46,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
         }
 
         binding.signUpButton.isVisible = !insets.isImeVisible()
-        binding.headerView.updateMargins(MarginTop(topMargin))
+        binding.headerView.updateMargins(MarginValues.Top(topMargin))
         binding.scrollView.applyInsets(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
 
         return insets

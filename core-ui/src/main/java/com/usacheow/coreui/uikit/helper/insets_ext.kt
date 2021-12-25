@@ -43,19 +43,19 @@ fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme 
 fun View.applyTopInset(size: Int, needAddToPadding: Boolean = true) {
     when {
         needAddToPadding -> updatePadding(top = size)
-        else -> updateMargins(MarginTop(size))
+        else -> updateMargins(MarginValues.Top(size))
     }
 }
 fun View.applyBottomInset(size: Int, needAddToPadding: Boolean = true) {
     when {
         needAddToPadding -> updatePadding(bottom = size)
-        else -> updateMargins(MarginBottom(size))
+        else -> updateMargins(MarginValues.Bottom(size))
     }
 }
 fun View.applyInsets(top: Int, bottom: Int, needAddToPadding: Boolean = true) {
     when {
         needAddToPadding -> updatePadding(top = top, bottom = bottom)
-        else -> updateMargins(MarginVertical(top = top, bottom = bottom))
+        else -> updateMargins(MarginValues.Vertical(top = top, bottom = bottom))
     }
 }
 

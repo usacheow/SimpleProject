@@ -9,7 +9,7 @@ import androidx.annotation.DimenRes
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewDividerTileBinding
-import com.usacheow.coreui.uikit.helper.MarginHorizontal
+import com.usacheow.coreui.uikit.helper.MarginValues
 import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.dimen
 import com.usacheow.coreui.uikit.helper.resize
@@ -34,7 +34,7 @@ class DividerTileView @JvmOverloads constructor(
 }
 
 data class DividerTileItem(
-    val margin: MarginHorizontal = MarginHorizontal(0, 0),
+    val margin: MarginValues.Horizontal = MarginValues.Horizontal(0, 0),
     @DimenRes val heightResId: Int = CoreUiR.dimen.divider_height_small,
     @ColorRes var colorResId: Int = CoreUiR.color.outline,
 ) : ViewState(CoreUiR.layout.view_divider_tile) {

@@ -6,7 +6,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.MarginTop
+import com.usacheow.coreui.uikit.helper.MarginValues
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyInsets
 import com.usacheow.coreui.uikit.helper.doOnActionClick
@@ -44,7 +44,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
         }
 
         binding.signUpButton.isVisible = !insets.isImeVisible()
-        binding.headerView.updateMargins(MarginTop(topMargin))
+        binding.headerView.updateMargins(MarginValues.Top(topMargin))
         binding.scrollView.applyInsets(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
 
         return insets
