@@ -121,8 +121,8 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("organism"),
-                    value = TextSource.Simple("1. Error Message View"),
-                    clickListener = { router.fromDemoToErrorMessageScreen() },
+                    value = TextSource.Simple("1. Message Tiles"),
+                    clickListener = { router.fromDemoToMessageScreen() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,

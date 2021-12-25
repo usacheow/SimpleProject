@@ -133,7 +133,7 @@ private fun BadgeTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewBadgeTiles(): List<WidgetState> = listOf(
+private fun generatePreviewBadgeTiles(): List<WidgetState> = listOf(
     BadgeTileState.shimmer(),
     BadgeTileState(
         header = TextValue.Empty,

@@ -158,7 +158,7 @@ private fun ActionTilePreview() {
 }
 
 @Composable
-fun generatePreviewActionTiles(): List<WidgetState> = listOf(
+private fun generatePreviewActionTiles(): List<WidgetState> = listOf(
     ActionTileState.shimmer(),
     ActionTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),

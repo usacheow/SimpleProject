@@ -15,7 +15,7 @@ import com.usacheow.appdemo.R as DemoAppR
 import com.usacheow.coreui.R as CoreUiR
 
 @AndroidEntryPoint
-class ErrorMessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
+class MessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
 
     @Inject lateinit var router: DemoRouter
 

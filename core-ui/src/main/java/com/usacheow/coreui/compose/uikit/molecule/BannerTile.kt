@@ -120,7 +120,7 @@ private fun BannerTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewBannerTiles(): List<WidgetState> = listOf(
+private fun generatePreviewBannerTiles(): List<WidgetState> = listOf(
     BannerTileState.shimmer(),
     BannerTileState(
         icon = ImageValue.Vector(Icons.Default.MusicVideo),

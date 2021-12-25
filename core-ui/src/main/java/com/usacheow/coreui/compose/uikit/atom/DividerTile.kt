@@ -61,7 +61,7 @@ private fun Preview() {
 }
 
 @Composable
-internal fun generatePreviewDividerTiles(): List<WidgetState> = listOf(
+private fun generatePreviewDividerTiles(): List<WidgetState> = listOf(
     SimpleSpaceTileState(height = 32.dp),
     DividerTileState(
         height = DividerDefaults.heightSmall,

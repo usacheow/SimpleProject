@@ -124,7 +124,7 @@ private fun ShimmerTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewShimmerTile(): List<WidgetState> = listOf(
+private fun generatePreviewShimmerTile(): List<WidgetState> = listOf(
     ShimmerTileState(
         needLeftIcon = false,
         needRightIcon = false,

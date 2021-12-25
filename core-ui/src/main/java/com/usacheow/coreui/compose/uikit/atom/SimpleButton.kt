@@ -178,7 +178,7 @@ private fun ButtonContent(
 
 private fun Modifier.applySize(size: SimpleButtonItem.Size): Modifier {
     return when (size) {
-        SimpleButtonItem.Size.Max -> fillMaxWidth().defaultMinSize(minHeight = 56.dp)
+        SimpleButtonItem.Size.Max -> fillMaxWidth().defaultMinSize(minHeight = 48.dp)
         SimpleButtonItem.Size.Mini -> wrapContentWidth()
     }
 }
@@ -191,7 +191,7 @@ private fun SimpleButtonPreview() {
 }
 
 @Composable
-internal fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
+private fun generatePreviewSimpleButtons(): List<WidgetState> = listOf(
     SimpleButtonItem(
         text = TextValue.Simple("Simple button"),
         icon = ImageValue.Empty,

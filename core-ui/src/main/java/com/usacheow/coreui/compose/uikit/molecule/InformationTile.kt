@@ -125,7 +125,7 @@ private fun InformationTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewInformationTiles(): List<WidgetState> = listOf(
+private fun generatePreviewInformationTiles(): List<WidgetState> = listOf(
     InformationTileState.shimmer(),
     InformationTileState(
         image = ImageValue.Empty,

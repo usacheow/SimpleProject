@@ -75,7 +75,7 @@ private fun ProgressTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewProgressTiles(): List<WidgetState> = listOf(
+private fun generatePreviewProgressTiles(): List<WidgetState> = listOf(
     ProgressTileState.shimmer(),
     ProgressTileState(
         maxValue = 100f,

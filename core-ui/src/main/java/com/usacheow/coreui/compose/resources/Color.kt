@@ -5,21 +5,21 @@ import androidx.compose.ui.graphics.Color
 
 val LightCommonColors = Colors(
 
-    primary = Color(0xFF6750A4),
+    primary = Color(0xFF507844),
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFEADDFF),
-    onPrimaryContainer = Color(0xFF21005D),
-    primaryInverse = Color(0xFFD0BCFF),
+    primaryContainer = Color(0xFF9ABA90),
+    onPrimaryContainer = Color(0xFF253022),
+    primaryInverse = Color(0xFF8FD17D),
 
-    secondary = Color(0xFF625B71),
+    secondary = Color(0xFFAE4F2F),
     onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFE8DEF8),
-    onSecondaryContainer = Color(0xFF1D192B),
+    secondaryContainer = Color(0xFFC3B6B2),
+    onSecondaryContainer = Color(0xFF2B1D19),
 
-    tertiary = Color(0xFF7D5260),
+    tertiary = Color(0xFFFFFB91),
     onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFFFD8E4),
-    onTertiaryContainer = Color(0xFF31111D),
+    tertiaryContainer = Color(0xFFF4F3D1),
+    onTertiaryContainer = Color(0xFF312911),
 
     error = Color(0xFFB3261E),
     onError = Color(0xFFFFFFFF),
@@ -27,17 +27,14 @@ val LightCommonColors = Colors(
     onErrorContainer = Color(0xFF410E0B),
 
     outline = Color(0x0F000000),
-    shimmer = Color(0xFFDBDEE6),
+    shimmer = Color(0xFFDBE6E0),
 
-    background = Color(0xFFFFFBFE),
+    background = Color(0xFFF1F8F5),
     onBackground = Color(0xFF1C1B1F),
-
-    surface = Color(0xFFFFFBFE),
-    onSurface = Color(0xFF1C1B1F),
-    surfaceVariant = Color(0xFFE7E0EC),
-    onSurfaceVariant = Color(0xFF49454F),
-    surfaceInverse = Color(0xFF313033),
-    onSurfaceInverse = Color(0xFFF4EFF4),
+    surfaceVariant = Color(0xFFCBE4D9),
+    onSurfaceVariant = Color(0xFF454F4B),
+    surfaceInverse = Color(0xFF303331),
+    onSurfaceInverse = Color(0xFFEFF4F1),
 
     symbolPrimary = Color(0xFF1C1B1F),
     symbolPrimaryInverse = Color(0xFFFFFFFF),
@@ -49,21 +46,21 @@ val LightCommonColors = Colors(
 
 val DarkCommonColors = Colors(
 
-    primary = Color(0xFFD0BCFF),
-    onPrimary = Color(0xFF381E72),
-    primaryContainer = Color(0xFF4F378B),
-    onPrimaryContainer = Color(0xFFEADDFF),
-    primaryInverse = Color(0xFF6750A4),
+    primary = Color(0xFF8FD17D),
+    onPrimary = Color(0xFF3B721E),
+    primaryContainer = Color(0xFF253022),
+    onPrimaryContainer = Color(0xFF9ABA90),
+    primaryInverse = Color(0xFF507844),
 
-    secondary = Color(0xFFCCC2DC),
-    onSecondary = Color(0xFF332D41),
-    secondaryContainer = Color(0xFF4A4458),
-    onSecondaryContainer = Color(0xFFE8DEF8),
+    secondary = Color(0xFF9C4D32),
+    onSecondary = Color(0xFF572818),
+    secondaryContainer = Color(0xFF4C332C),
+    onSecondaryContainer = Color(0xFFC3B6B2),
 
-    tertiary = Color(0xFFEFB8C8),
-    onTertiary = Color(0xFF492532),
-    tertiaryContainer = Color(0xFF633B48),
-    onTertiaryContainer = Color(0xFFFFD8E4),
+    tertiary = Color(0xFF656339),
+    onTertiary = Color(0xFFD1CE77),
+    tertiaryContainer = Color(0xFF4C401B),
+    onTertiaryContainer = Color(0xFFF4F3D1),
 
     error = Color(0xFFF2B8B5),
     onError = Color(0xFF601410),
@@ -73,15 +70,12 @@ val DarkCommonColors = Colors(
     outline = Color(0x0FFFFFFF),
     shimmer = Color(0xFF55565A),
 
-    background = Color(0xFF1C1B1F),
-    onBackground = Color(0xFFE6E1E5),
-
-    surface = Color(0xFF1C1B1F),
-    onSurface = Color(0xFFE6E1E5),
-    surfaceVariant = Color(0xFF49454F),
-    onSurfaceVariant = Color(0xFFCAC4D0),
-    surfaceInverse = Color(0xFFE6E1E5),
-    onSurfaceInverse = Color(0xFF313033),
+    background = Color(0xFF1B1F1D),
+    onBackground = Color(0xFFE1E6E4),
+    surfaceVariant = Color(0xFF454F49),
+    onSurfaceVariant = Color(0xFFC4D0C8),
+    surfaceInverse = Color(0xFFE1E6E4),
+    onSurfaceInverse = Color(0xFF303331),
 
     symbolPrimary = Color(0xFFFFFFFF),
     symbolPrimaryInverse = Color(0xFF1C1B1F),
@@ -92,7 +86,6 @@ val DarkCommonColors = Colors(
 )
 
 data class Colors(
-
     val primary: Color,
     val onPrimary: Color,
     val primaryContainer: Color,
@@ -120,8 +113,8 @@ data class Colors(
     val background: Color,
     val onBackground: Color,
 
-    val surface: Color,
-    val onSurface: Color,
+    val surface: Color = background,
+    val onSurface: Color = onBackground,
     val surfaceVariant: Color,
     val onSurfaceVariant: Color,
     val surfaceInverse: Color,

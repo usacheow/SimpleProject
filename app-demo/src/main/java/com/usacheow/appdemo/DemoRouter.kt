@@ -51,8 +51,8 @@ class DemoRouter @Inject constructor(
         DemoFragmentDirections.actionDemoFragmentToInformationTilesFragment().openIn(navController)
     }
 
-    fun fromDemoToErrorMessageScreen() {
-        DemoFragmentDirections.actionDemoFragmentToErrorMessageFragment().openIn(navController)
+    fun fromDemoToMessageScreen() {
+        DemoFragmentDirections.actionDemoFragmentToMessageFragment().openIn(navController)
     }
 
     fun fromDemoToNumPadScreen() {

@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,39 +57,85 @@ fun MessageBannerTile(
         elevation = CommonDimens.elevation_0,
         shape = AppTheme.shapes.medium,
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            icon.get()?.let {
-                Icon(
-                    painter = it,
-                    contentDescription = "Message banner icon",
-                    modifier = Modifier.padding(top = 24.dp, bottom = 8.dp).size(52.dp))
+        Column(
+            modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            val iconPainter = icon.get()
+            val hasIcon = iconPainter != null
+            val hasTitle = title !is TextValue.Empty
+            val hasDescription = description !is TextValue.Empty
+            val hasButton = button !is TextValue.Empty
+
+            iconPainter?.let {
+                SpaceTile(height = 8.dp)
+                Icon(it)
+                SpaceTile(height = 8.dp)
             }
-            if (title !is TextValue.Empty) {
-                Text(
-                    text = title.get(),
-                    color = AppTheme.commonColors.symbolPrimary,
-                    style = AppTheme.typography.headlineLarge,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = 16.dp).fillMaxWidth())
+            if (hasTitle) {
+                when {
+                    hasIcon -> SpaceTile(height = 8.dp)
+                }
+                Title(title)
+                when {
+                    hasIcon && !hasDescription && !hasButton -> SpaceTile(height = 8.dp)
+                }
             }
-            if (description !is TextValue.Empty) {
-                SpaceTile(height = 4.dp)
-                Text(
-                    text = description.get(),
-                    color = AppTheme.commonColors.symbolSecondary,
-                    style = AppTheme.typography.bodyMedium,
-                    textAlign = TextAlign.Center,
-                    maxLines = 3,
-                    modifier = Modifier.padding(top = 4.dp, bottom = 16.dp).fillMaxWidth())
+            if (hasDescription) {
+                when {
+                    hasTitle -> SpaceTile(height = 4.dp)
+                    hasIcon -> SpaceTile(height = 8.dp)
+                }
+                Description(description)
+                when {
+                    hasIcon && !hasButton -> SpaceTile(height = 8.dp)
+                }
             }
-            if (button !is TextValue.Empty) {
-                SimpleButtonOutlined(
-                    text = button,
-                    clickListener = clickListener ?: {},
-                    modifier = Modifier.padding(bottom = 12.dp).fillMaxWidth())
+            if (hasButton) {
+                when {
+                    hasTitle || hasDescription -> SpaceTile(height = 16.dp)
+                    hasIcon -> SpaceTile(height = 8.dp)
+                }
+                Button(button, clickListener)
             }
         }
     }
+}
+
+@Composable
+private fun Icon(icon: Painter) {
+    Icon(
+        painter = icon,
+        contentDescription = "Message banner icon",
+        modifier = Modifier.size(52.dp))
+}
+
+@Composable
+private fun Title(title: TextValue) {
+    Text(
+        text = title.get(),
+        color = AppTheme.commonColors.symbolPrimary,
+        style = AppTheme.typography.headlineLarge,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth())
+}
+
+@Composable
+private fun Description(description: TextValue) {
+    Text(
+        text = description.get(),
+        color = AppTheme.commonColors.symbolSecondary,
+        style = AppTheme.typography.bodyMedium,
+        textAlign = TextAlign.Center,
+        maxLines = 3,
+        modifier = Modifier.fillMaxWidth())
+}
+
+@Composable
+private fun Button(button: TextValue, clickListener: (() -> Unit)?) {
+    SimpleButtonOutlined(
+        text = button,
+        clickListener = clickListener ?: {},
+        modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 @Preview(showBackground = true)
@@ -99,7 +146,7 @@ private fun MessageBannerTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewMessageBanners(): List<WidgetState> = listOf(
+private fun generatePreviewMessageBanners(): List<WidgetState> = listOf(
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)),

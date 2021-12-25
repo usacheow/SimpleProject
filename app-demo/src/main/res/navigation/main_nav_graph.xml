@@ -35,8 +35,8 @@
             android:id="@+id/action_demoFragment_to_informationTilesFragment"
             app:destination="@id/informationTilesFragment" />
         <action
-            android:id="@+id/action_demoFragment_to_errorMessageFragment"
-            app:destination="@id/errorMessageFragment" />
+            android:id="@+id/action_demoFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
         <action
             android:id="@+id/action_demoFragment_to_numPadFragment"
             app:destination="@id/numPadFragment" />
@@ -92,9 +92,9 @@
         android:label="InformationTilesFragment"
         tools:layout="@layout/fragment_list" />
     <fragment
-        android:id="@+id/errorMessageFragment"
-        android:name="com.usacheow.appdemo.catalog.ErrorMessageFragment"
-        android:label="ErrorMessageFragment"
+        android:id="@+id/messageFragment"
+        android:name="com.usacheow.appdemo.catalog.MessageFragment"
+        android:label="MessageFragment"
         tools:layout="@layout/fragment_error_message" />
     <fragment
         android:id="@+id/numPadFragment"

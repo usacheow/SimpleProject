@@ -7,12 +7,12 @@
     <color name="onPrimaryContainer">#253022</color>
     <color name="primaryInverse">#8FD17D</color>
 
-    <color name="secondary">#ae4f2f</color>
+    <color name="secondary">#AE4F2F</color>
     <color name="onSecondary">#FFFFFFFF</color>
     <color name="secondaryContainer">#C3B6B2</color>
     <color name="onSecondaryContainer">#2B1D19</color>
 
-    <color name="tertiary">#fffb91</color>
+    <color name="tertiary">#FFFB91</color>
     <color name="onTertiary">#FFFFFFFF</color>
     <color name="tertiaryContainer">#F4F3D1</color>
     <color name="onTertiaryContainer">#312911</color>
@@ -34,15 +34,15 @@
     <color name="surfaceInverse">#303331</color>
     <color name="onSurfaceInverse">#EFF4F1</color>
 
-    <color name="colorStatusBar">#00FFFFFF</color>
-    <color name="colorNavigationBar">#4D000000</color>
-
     <color name="symbolPrimary">#FF1C1B1F</color>
     <color name="symbolPrimaryInverse">#FFFFFFFF</color>
     <color name="symbolSecondary">#9A1C1B1F</color>
     <color name="symbolSecondaryInverse">#9AFFFFFF</color>
     <color name="symbolTertiary">#651C1B1F</color>
     <color name="symbolTertiaryInverse">#65FFFFFF</color>
+
+    <color name="colorStatusBar">#00FFFFFF</color>
+    <color name="colorNavigationBar">#4D000000</color>
 
     <color name="backgroundBottomBarGradientStart">@color/white</color>
     <color name="backgroundBottomBarGradientCenter">@color/white_60</color>

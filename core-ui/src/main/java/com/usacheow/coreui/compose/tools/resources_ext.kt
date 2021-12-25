@@ -43,8 +43,8 @@ fun plural(@PluralsRes id: Int, quantity: Int): String {
 
 @Composable
 @ReadOnlyComposable
-fun color(@ColorRes id: Int): Int {
-    return ContextCompat.getColor(LocalContext.current, id)
+fun color(@ColorRes id: Int): Color {
+    return colorResource(id)
 }
 
 @Composable

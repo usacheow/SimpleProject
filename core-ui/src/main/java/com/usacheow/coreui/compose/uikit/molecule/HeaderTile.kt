@@ -84,7 +84,7 @@ private fun HeaderTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewHeaderTiles(): List<WidgetState> = listOf(
+private fun generatePreviewHeaderTiles(): List<WidgetState> = listOf(
     HeaderTileState.shimmer(HeaderTileState.Type.Title),
     HeaderTileState(
         value = TextValue.Simple("Title"),

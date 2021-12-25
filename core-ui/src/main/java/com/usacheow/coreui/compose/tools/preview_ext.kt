@@ -28,7 +28,7 @@ fun LazySimpleWidgetStatePreview(itemsInitializer: @Composable () -> List<Widget
         ) {
             val items = itemsInitializer()
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items.forEach { item { it.content() } }
+                items(count = items.size) { items[it].content() }
             }
         }
     }

@@ -127,7 +127,7 @@ private fun TagTilePreview() {
 }
 
 @Composable
-internal fun generatePreviewTagTiles(selectedTagIndex: MutableState<Int>): List<WidgetState> = listOf(
+private fun generatePreviewTagTiles(selectedTagIndex: MutableState<Int>): List<WidgetState> = listOf(
     TagTileState.shimmer(),
     TagTileState(
         text = TextValue.Simple("Tag text"),

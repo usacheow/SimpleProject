@@ -34,9 +34,6 @@
     <color name="surfaceInverse">#E1E6E4</color>
     <color name="onSurfaceInverse">#303331</color>
 
-    <color name="colorStatusBar">#00000000</color>
-    <color name="colorNavigationBar">#03000000</color>
-
     <color name="symbolPrimary">#FFFFFFFF</color>
     <color name="symbolPrimaryInverse">#FF212121</color>
     <color name="symbolSecondary">#9AFFFFFF</color>
@@ -44,7 +41,8 @@
     <color name="symbolTertiary">#65FFFFFF</color>
     <color name="symbolTertiaryInverse">#65212121</color>
 
-    <color name="icon">@color/symbolPrimary</color>
+    <color name="colorStatusBar">#00000000</color>
+    <color name="colorNavigationBar">#03000000</color>
 
     <color name="backgroundBottomBarGradientStart">@color/black</color>
     <color name="backgroundBottomBarGradientCenter">@color/black_40</color>
