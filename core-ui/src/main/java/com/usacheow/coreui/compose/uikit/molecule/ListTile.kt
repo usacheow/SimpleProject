@@ -96,6 +96,7 @@ private fun Icon(icon: ImageValue, modifier: Modifier) {
     icon.get()?.let {
         Icon(
             painter = it,
+            tint = AppTheme.commonColors.symbolPrimary,
             contentDescription = "Item icon",
             modifier = modifier.width(36.dp),
         )

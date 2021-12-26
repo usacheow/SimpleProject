@@ -1,14 +1,23 @@
 package com.usacheow.coreui.compose.resources
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Shapes
+import androidx.compose.material.ripple.LocalRippleTheme
+import androidx.compose.material.ripple.RippleAlpha
+import androidx.compose.material.ripple.RippleTheme
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.ViewCompat
 
 val LocalCommonColors = staticCompositionLocalOf { LightCommonColors }
 val LocalShapes = staticCompositionLocalOf { Shapes }
@@ -30,12 +39,44 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
     CompositionLocalProvider(
         LocalCommonColors provides commonColors,
         LocalShapes provides Shapes,
+        LocalIndication provides rememberRipple(),
+        LocalRippleTheme provides AppRippleTheme,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,
             content = content,
         )
+    }
+}
+
+@Immutable
+private object AppRippleTheme : RippleTheme {
+
+    @Composable
+    override fun defaultColor() = AppTheme.commonColors.symbolPrimary
+
+    @Composable
+    override fun rippleAlpha() = RippleAlpha(
+        draggedAlpha = .16f,
+        focusedAlpha = .12f,
+        hoveredAlpha = .08f,
+        pressedAlpha = .12f,
+    )
+}
+
+@Composable
+fun SystemBarsIconsColor(
+    needWhiteAllIcons: Boolean = isSystemInDarkTheme(),
+    needWhiteStatusIcons: Boolean = needWhiteAllIcons,
+    needWhiteNavigationIcons: Boolean = needWhiteAllIcons,
+) {
+    val view = LocalView.current
+    SideEffect {
+        ViewCompat.getWindowInsetsController(view)?.apply {
+            isAppearanceLightStatusBars = !needWhiteStatusIcons
+            isAppearanceLightNavigationBars = !needWhiteNavigationIcons
+        }
     }
 }
 
