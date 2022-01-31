@@ -1,11 +1,13 @@
 package com.usacheow.core
 
+import android.content.Context
 import android.os.Parcelable
 import android.text.SpannedString
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import com.usacheow.core.resource.ResourcesWrapper
+import com.usacheow.core.resource.ResourcesWrapperImpl
 import kotlinx.parcelize.Parcelize
 
 sealed class TextSource {
@@ -43,6 +45,8 @@ sealed class TextSource {
 
         is Plural -> resources.getPluralString(res, quantity)
     }
+
+    fun toCharSequence(context: Context): CharSequence = toCharSequence(ResourcesWrapperImpl(context))
 }
 
 fun String.toTextSource() = TextSource.Simple(this)

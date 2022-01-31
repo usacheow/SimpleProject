@@ -1,6 +1,7 @@
 package com.usacheow.coreui.uikit.helper
 
 import android.app.Activity
+import android.content.Context
 import android.content.res.Resources
 import android.view.View
 import androidx.annotation.AttrRes
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.MaterialColors
 
+fun Context.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
 fun View.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
 fun Fragment.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(requireContext(), id)
 fun Activity.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)

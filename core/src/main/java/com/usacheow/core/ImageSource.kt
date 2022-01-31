@@ -1,17 +1,14 @@
 package com.usacheow.core
 
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
+import com.usacheow.core.resource.ColorSource
 
 sealed class ImageSource {
 
     data class Url(
         val url: String,
-    ) : ImageSource()
-
-    data class Vector(
-        val drawable: Drawable,
+        val defaultIcon: Res? = null,
     ) : ImageSource()
 
     data class Image(
@@ -20,12 +17,17 @@ sealed class ImageSource {
 
     data class Res(
         @DrawableRes val res: Int,
+        val color: ColorSource? = null,
     ) : ImageSource()
 
     object Empty : ImageSource()
 }
 
+data class CombineIcon(
+    val icon: ImageSource.Res,
+    val background: ImageSource.Res,
+)
+
 fun String.toImageSource() = ImageSource.Url(this)
 fun Int.toImageSource() = ImageSource.Res(this)
 fun Bitmap.toImageSource() = ImageSource.Image(this)
-fun Drawable.toImageSource() = ImageSource.Vector(this)
