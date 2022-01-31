@@ -18,5 +18,4 @@ dependencies {
 
     implementation(*Libs.bundle.biometric)
     implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.camerax)
 }

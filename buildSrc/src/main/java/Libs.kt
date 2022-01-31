@@ -34,8 +34,6 @@ object Libs {
     private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"
     private const val biometricVersion = "1.2.0-alpha04"
-    private const val cameraXVersion = "1.0.0"
-    private const val cameraXViewVersion = "1.0.0-alpha26"
 
     private const val hiltVersion = "2.37"
     private const val hiltJetpackVersion = "1.0.0"
@@ -161,12 +159,6 @@ object Libs {
         val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
         val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
-        val camerax = arrayOf(
-            "androidx.camera:camera-core:$cameraXVersion",
-            "androidx.camera:camera-camera2:$cameraXVersion",
-            "androidx.camera:camera-lifecycle:$cameraXVersion",
-            "androidx.camera:camera-view:$cameraXViewVersion",
-            "androidx.camera:camera-extensions:$cameraXViewVersion")
 
         val glide = arrayOf("com.github.bumptech.glide:glide:$glideVersion")
         const val glideKapt = "com.github.bumptech.glide:compiler:$glideVersion"
