@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Simple Sandbox</string>
-
-    <string name="switch_button_description">switch camera button</string>
-    <string name="capture_button_description">capture camera button</string>
 </resources>
