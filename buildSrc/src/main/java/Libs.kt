@@ -22,7 +22,6 @@ object Libs {
     private const val constraintVersion = "2.0.4"
     private const val coordinatorVersion = "1.2.0-beta01"
     private const val pagingVersion = "3.1.0"
-    private const val roundedImageVersion = "2.3.0"
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
@@ -125,7 +124,6 @@ object Libs {
             "androidx.coordinatorlayout:coordinatorlayout:$coordinatorVersion",
 
             "com.facebook.shimmer:shimmer:$shimmerVersion",
-            "com.makeramen:roundedimageview:$roundedImageVersion",
             "ru.tinkoff.decoro:decoro:$decoroVersion",
             "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion")
         val uiComposeCompiler = arrayOf("androidx.compose.compiler:compiler:$composeVersion")
