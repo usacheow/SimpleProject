@@ -24,9 +24,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.Dimen
-import com.usacheow.coreui.compose.tools.ImageValue
+import com.usacheow.core.resource.compose.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
-import com.usacheow.coreui.compose.tools.TextValue
+import com.usacheow.core.resource.compose.TextValue
+import com.usacheow.coreui.compose.tools.get
 import com.usacheow.coreui.compose.uikit.container.RowListItem
 
 data class SimpleButtonItem(

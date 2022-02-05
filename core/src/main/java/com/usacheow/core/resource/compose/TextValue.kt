@@ -1,8 +1,7 @@
-package com.usacheow.coreui.compose.tools
+package com.usacheow.core.resource.compose
 
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.AnnotatedString
 
 sealed class TextValue {
@@ -17,10 +16,6 @@ sealed class TextValue {
         val value: AnnotatedString,
     ) : TextValue()
 
-    data class Html(
-        val value: String,
-    ) : TextValue()
-
     data class Res(
         @StringRes val value: Int,
         val args: List<Any>,
@@ -30,19 +25,4 @@ sealed class TextValue {
         @PluralsRes val value: Int,
         val quantity: Int,
     ) : TextValue()
-
-    @Composable
-    fun get() = when (this) {
-        is Simple -> AnnotatedString(value)
-
-        is Annotated -> value
-
-        is Html -> value.parseHtml()
-
-        is Res -> AnnotatedString(string(value, *args.toTypedArray()))
-
-        is Plural -> AnnotatedString(plural(value, quantity))
-
-        is Empty -> AnnotatedString("")
-    }
 }

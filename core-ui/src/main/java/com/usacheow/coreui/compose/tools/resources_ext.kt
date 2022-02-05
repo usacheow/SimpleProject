@@ -9,12 +9,20 @@ import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import coil.compose.rememberImagePainter
+import com.usacheow.core.resource.compose.ImageValue
+import com.usacheow.core.resource.compose.TextValue
 
 @Composable
 @ReadOnlyComposable
@@ -50,4 +58,33 @@ fun color(@ColorRes id: Int): Color {
 @ReadOnlyComposable
 fun dimen(@DimenRes id: Int): Dp {
     return LocalContext.current.resources.getDimension(id).dp
+}
+
+@Composable
+fun ImageValue.get(): Painter? = when (this) {
+    is ImageValue.Url, is ImageValue.Image, is ImageValue.ResImage -> rememberImagePainter(
+        data = value,
+        builder = {
+            crossfade(true)
+        }
+    )
+
+    is ImageValue.ResVector -> rememberVectorPainter(image = ImageVector.vectorResource(id = value as Int))
+
+    is ImageValue.Vector -> rememberVectorPainter(image = value as ImageVector)
+
+    else -> null
+}
+
+@Composable
+fun TextValue.get(): AnnotatedString = when (this) {
+    is TextValue.Simple -> AnnotatedString(value)
+
+    is TextValue.Annotated -> value
+
+    is TextValue.Res -> AnnotatedString(string(value, *args.toTypedArray()))
+
+    is TextValue.Plural -> AnnotatedString(plural(value, quantity))
+
+    is TextValue.Empty -> AnnotatedString("")
 }

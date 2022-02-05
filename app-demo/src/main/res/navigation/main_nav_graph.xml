@@ -73,7 +73,7 @@
         tools:layout="@layout/fragment_text_inputs"/>
     <fragment
         android:id="@+id/actionTilesFragment"
-        android:name="com.usacheow.appdemo.catalog.ActionTilesFragment"
+        android:name="com.usacheow.appdemo.catalog.CellTilesFragment"
         android:label="ActionTilesFragment"
         tools:layout="@layout/fragment_list"/>
     <fragment

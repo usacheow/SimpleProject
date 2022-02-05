@@ -8,6 +8,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
 import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.resource.ColorSource
+import com.usacheow.core.resource.CombineIcon
 
 fun ImageView.populate(source: ImageSource?) {
     fun ImageView.load(url: String?, defaultIcon: Drawable? = null) {
@@ -29,6 +30,16 @@ fun ImageView.populate(source: ImageSource?) {
 
         is ImageSource.Empty -> setImageDrawable(null)
     }
+}
+
+fun ImageView.populate(icon: CombineIcon?) {
+    if (icon == null) {
+        makeGone()
+        return
+    }
+    makeVisible()
+    populate(icon.icon)
+    background = icon.background?.getDrawable(context)
 }
 
 fun ImageSource.Res.getDrawable(context: Context) = context.colorifyIcon(res, color)

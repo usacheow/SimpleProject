@@ -24,7 +24,7 @@ sealed class ImageSource {
 
 data class CombineIcon(
     val icon: ImageSource.Res,
-    val background: ImageSource.Res,
+    val background: ImageSource.Res?,
 )
 
 fun String.toImageSource() = ImageSource.Url(this)

@@ -100,7 +100,7 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("molecule"),
-                    value = TextSource.Simple("1. Action Tiles"),
+                    value = TextSource.Simple("1. Cell Tiles"),
                     clickListener = { router.fromDemoToActionTilesScreen() },
                 ),
                 BadgeTileItem(

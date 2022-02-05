@@ -24,9 +24,10 @@ import com.usacheow.coreui.adapter.base.ShimmerState
 import com.usacheow.coreui.adapter.base.WidgetState
 import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.resources.Dimen
-import com.usacheow.coreui.compose.tools.ImageValue
+import com.usacheow.core.resource.compose.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
-import com.usacheow.coreui.compose.tools.TextValue
+import com.usacheow.core.resource.compose.TextValue
+import com.usacheow.coreui.compose.tools.get
 import com.usacheow.coreui.compose.uikit.atom.SpaceTile
 
 private val iconSize = 36.dp
