@@ -14,6 +14,17 @@
     <style name="Simple.Dialog.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar"/>
     <style name="Simple.Dialog.DateRangePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar.Fullscreen"/>
     <style name="Simple.Dialog.TimePicker" parent="@style/ThemeOverlay.Material3.MaterialTimePicker"/>
-    <style name="Simple.Dialog.Alert" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog"/>
+    <style name="Simple.Dialog.Alert" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Simple.Dialog.Alert.PositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Simple.Dialog.Alert.NegativeButton</item>
+    </style>
+
+    <style name="Simple.Dialog.Alert.PositiveButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Simple.Dialog.Alert.NegativeButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primary</item>
+    </style>
 
 </resources>

@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
-import com.usacheow.core.ImageSource
+import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.resource.ColorSource
 
 fun ImageView.populate(source: ImageSource?) {

@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 object LocalDateTimeFactory {
 
     fun from(timeInMillis: Long) = runCatching {
-        val date = SimpleDateFormat(DateTimeFormat.ISO_LOCAL_DATE_TIME.code, LOCALE).format(timeInMillis)
+        val date = SimpleDateFormat(DateTimeFormat.ISO_LOCAL_DATE_TIME.code, EN_LOCALE).format(timeInMillis)
         LocalDateTime.parse(date)
     }.getOrNull()
 
@@ -31,6 +31,6 @@ object LocalDateTimeFactory {
     fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
     fun from(date: String, format: String) = runCatching {
-        LocalDateTime.parse(date, format.toDateTimeFormat(LOCALE))
+        LocalDateTime.parse(date, format.toDateTimeFormat(EN_LOCALE))
     }.getOrNull()
 }

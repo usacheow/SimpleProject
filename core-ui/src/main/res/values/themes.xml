@@ -111,6 +111,10 @@
         <item name="appBarLayoutStyle">@style/Simple.Header.AppBar</item>
         <item name="toolbarStyle">@style/Simple.Header.Toolbar</item>
         <item name="toolbarSurfaceStyle">@style/Simple.Header.ToolbarSurface</item>
+        <item name="actionMenuTextColor">@color/primary</item>
+        <item name="actionMenuTextAppearance">@style/Simple.Text.Body.L</item>
+
+        <item name="bottomNavigationStyle">@style/Simple.BottomBar</item>
 
         <item name="materialCardViewFilledStyle">@style/Simple.Card.Filled</item>
         <item name="materialCardViewElevatedStyle">@style/Simple.Card.Elevated</item>

@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding

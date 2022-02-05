@@ -1,7 +1,7 @@
 package com.usacheow.coredata.network
 
 import androidx.annotation.StringRes
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

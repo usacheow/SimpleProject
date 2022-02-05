@@ -25,6 +25,6 @@ object LocalDateFactory {
     fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
     fun from(date: String, format: String) = runCatching {
-        LocalDate.parse(date, format.toDateTimeFormat(LOCALE))
+        LocalDate.parse(date, format.toDateTimeFormat(EN_LOCALE))
     }.getOrNull()
 }

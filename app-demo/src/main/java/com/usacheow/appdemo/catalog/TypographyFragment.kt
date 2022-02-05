@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.appdemo.databinding.ViewTextItemBinding
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState

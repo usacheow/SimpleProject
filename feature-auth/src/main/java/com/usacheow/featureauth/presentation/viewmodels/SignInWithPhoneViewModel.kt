@@ -2,13 +2,13 @@ package com.usacheow.featureauth.presentation.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coredata.network.getMessage
-import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
-import com.usacheow.coreui.values_ext.isPhoneNumberValid
-import com.usacheow.coreui.values_ext.normalizedPhoneNumber
+import com.usacheow.coreui.navigation.requireNextScreenDirection
+import com.usacheow.core.isPhoneNumberValid
+import com.usacheow.core.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel

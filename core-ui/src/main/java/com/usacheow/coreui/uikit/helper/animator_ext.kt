@@ -38,6 +38,7 @@ fun Fragment.startParentFragmentTransition(duration: Long = ANIMATION_DURATION, 
 
 fun Fragment.startFragmentTransition(duration: Long = ANIMATION_DURATION, block: () -> Unit) {
     val view = (view as? ViewGroup) ?: return
+    TransitionManager.endTransitions(view)
     TransitionManager.beginDelayedTransition(view, ScreenUpdateTransition(duration))
     block()
 }
@@ -55,6 +56,7 @@ fun ViewGroup.doWithTransition(
     transition: Transition = ScreenUpdateTransition(duration),
     block: () -> Unit,
 ) {
+    TransitionManager.endTransitions(this)
     TransitionManager.beginDelayedTransition(this, transition)
     block()
 }

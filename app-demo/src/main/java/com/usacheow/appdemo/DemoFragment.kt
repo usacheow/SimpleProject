@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
-import com.usacheow.core.TextSource
-import com.usacheow.core.toTextSource
+import com.usacheow.core.resource.TextSource
+import com.usacheow.core.resource.toTextSource
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment

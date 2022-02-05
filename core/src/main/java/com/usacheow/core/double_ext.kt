@@ -1,4 +1,4 @@
-package com.usacheow.coreui.values_ext
+package com.usacheow.core
 
 import com.usacheow.core.date.RU_LOCALE
 import java.math.BigDecimal

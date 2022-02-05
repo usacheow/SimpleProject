@@ -1,4 +1,4 @@
-package com.usacheow.core
+package com.usacheow.core.resource
 
 import android.content.Context
 import android.os.Parcelable
@@ -6,8 +6,6 @@ import android.text.SpannedString
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
-import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.core.resource.ResourcesWrapperImpl
 import kotlinx.parcelize.Parcelize
 
 sealed class TextSource {
@@ -27,6 +25,7 @@ sealed class TextSource {
 
     data class Res(
         @StringRes val res: Int,
+        val args: List<Any> = emptyList(),
     ) : TextSource()
 
     data class Plural(
@@ -41,7 +40,7 @@ sealed class TextSource {
 
         is Html -> HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
-        is Res -> resources.getString(res)
+        is Res -> resources.getString(res, *args.toTypedArray())
 
         is Plural -> resources.getPluralString(res, quantity)
     }

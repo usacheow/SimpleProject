@@ -46,7 +46,7 @@ repositories {
 
 dependencies {
     implementation("com.android.tools.build:gradle:7.0.3")
-    api(kotlin("gradle-plugin:1.6.0"))
+    api(kotlin("gradle-plugin:1.6.10"))
 //    implementation(gradleApi())
 //    implementation(localGroovy())
 }

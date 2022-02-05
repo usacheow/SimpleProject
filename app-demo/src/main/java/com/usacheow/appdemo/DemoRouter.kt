@@ -7,8 +7,8 @@ import com.usacheow.coremediator.AuthorizationFeatureProvider
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coremediator.OtpFeatureProvider
 import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.utils.navigation.OPEN_IN
-import com.usacheow.coreui.utils.navigation.openIn
+import com.usacheow.coreui.navigation.OPEN_IN
+import com.usacheow.coreui.navigation.openIn
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
 

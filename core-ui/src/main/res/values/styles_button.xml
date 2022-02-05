@@ -79,4 +79,12 @@
         <item name="cornerRadius">20dp</item>
     </style>
 
+    <style name="Simple.BottomBar" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/Simple.BottomBar.ThemeOverlay</item>
+    </style>
+
+    <style name="Simple.BottomBar.ThemeOverlay" parent="">
+        <item name="colorSecondaryContainer">@color/transparent</item>
+    </style>
+
 </resources>

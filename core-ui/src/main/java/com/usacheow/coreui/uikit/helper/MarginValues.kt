@@ -5,6 +5,10 @@ import android.view.ViewGroup
 
 sealed class MarginValues {
 
+    data class One(
+        val value: Int? = null,
+    ) : MarginValues()
+
     data class Acis(
         val vertical: Int? = null,
         val horizontal: Int? = null,
@@ -46,6 +50,8 @@ sealed class MarginValues {
 
 fun View.updateMargins(margin: MarginValues) {
     val (leftPx, rightPx) = when (margin) {
+        is MarginValues.One -> margin.value to margin.value
+
         is MarginValues.Acis -> margin.horizontal to margin.horizontal
         is MarginValues.All -> margin.start to margin.end
 
@@ -58,6 +64,8 @@ fun View.updateMargins(margin: MarginValues) {
         is MarginValues.End -> null to margin.end
     }
     val (topPx, bottomPx) = when (margin) {
+        is MarginValues.One -> margin.value to margin.value
+
         is MarginValues.Acis -> margin.vertical to margin.vertical
         is MarginValues.All -> margin.top to margin.bottom
 

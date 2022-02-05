@@ -18,6 +18,8 @@ class SimpleAppBarLayout @JvmOverloads constructor(
     attrs: AttributeSet? = null,
 ) : AppBarLayout(context, attrs) {
 
+    val toolbar get() = binding.toolbar
+
     var title: String
         get() = binding.toolbar.title.toString()
         set(value) {

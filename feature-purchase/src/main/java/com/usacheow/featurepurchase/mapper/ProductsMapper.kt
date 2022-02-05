@@ -1,6 +1,6 @@
 package com.usacheow.featurepurchase.mapper
 
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.corebilling.model.Product
 import com.usacheow.featurepurchase.view.PriceTileItem

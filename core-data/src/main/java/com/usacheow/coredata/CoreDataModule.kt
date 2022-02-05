@@ -18,6 +18,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -35,7 +36,7 @@ class CoreDataModule {
 
     @Provides
     @Singleton
-    fun appDatabase(context: Context): AppDatabase = AppDatabase.newInstance(context.applicationContext)
+    fun appDatabase(@ApplicationContext context: Context): AppDatabase = AppDatabase.newInstance(context)
 
     @Provides
     @Singleton

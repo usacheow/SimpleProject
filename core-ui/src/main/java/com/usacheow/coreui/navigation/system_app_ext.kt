@@ -1,4 +1,4 @@
-package com.usacheow.coreui.utils.navigation
+package com.usacheow.coreui.navigation
 
 import android.content.ActivityNotFoundException
 import android.content.Intent

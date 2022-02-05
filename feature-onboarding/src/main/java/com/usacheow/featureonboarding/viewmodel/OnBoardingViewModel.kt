@@ -2,13 +2,13 @@ package com.usacheow.featureonboarding.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.core.ImageSource
+import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.core.toImageSource
+import com.usacheow.core.resource.toImageSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coreui.utils.navigation.requireArgs
-import com.usacheow.coreui.utils.navigation.requireNextScreenDirection
+import com.usacheow.coreui.navigation.requireArgs
+import com.usacheow.coreui.navigation.requireNextScreenDirection
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy

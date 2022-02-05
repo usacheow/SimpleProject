@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.TextView
 import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_FADE
 import com.google.android.material.snackbar.Snackbar
-import com.usacheow.core.ImageSource
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.ImageSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.core.resource.ColorSource
 import com.usacheow.coreui.R as CoreUiR
 import com.google.android.material.R as MaterialR

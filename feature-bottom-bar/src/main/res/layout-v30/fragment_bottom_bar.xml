@@ -13,19 +13,12 @@
         android:layout_height="match_parent"
         app:defaultNavHost="false" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/bg_bottom_bar_gradient"/>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/appBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"
+        android:background="@color/backgroundBottomBar"
         android:layout_gravity="bottom"
-        app:itemRippleColor="@color/transparent"
         app:elevation="0dp"
         app:labelVisibilityMode="selected"
         app:itemTextColor="@color/color_bottom_bar_item"

@@ -2,7 +2,7 @@ package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.core.toTextSource
+import com.usacheow.core.resource.toTextSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coremediator.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel

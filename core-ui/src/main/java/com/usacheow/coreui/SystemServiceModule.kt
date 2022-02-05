@@ -1,6 +1,7 @@
 package com.usacheow.coreui
 
 import android.app.NotificationManager
+import android.content.ClipboardManager
 import android.content.Context
 import android.hardware.SensorManager
 import android.location.LocationManager
@@ -39,4 +40,10 @@ class SystemServiceModule {
     fun notificationManager(
         @ApplicationContext context: Context,
     ) = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    @Provides
+    @Singleton
+    fun clipboardManager(
+        @ApplicationContext context: Context,
+    ) = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 }

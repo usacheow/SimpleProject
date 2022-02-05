@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.usacheow.core.ImageSource
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.ImageSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.databinding.ViewMessageBannerBinding
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.makeGone

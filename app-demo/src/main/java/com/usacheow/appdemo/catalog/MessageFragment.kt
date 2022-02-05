@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
-import com.usacheow.core.ImageSource
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.ImageSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.applyBottomInset

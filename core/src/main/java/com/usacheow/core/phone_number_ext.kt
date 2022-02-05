@@ -1,4 +1,4 @@
-package com.usacheow.coreui.values_ext
+package com.usacheow.core
 
 import android.telephony.PhoneNumberUtils
 

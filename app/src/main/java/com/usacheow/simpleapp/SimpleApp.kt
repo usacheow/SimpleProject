@@ -8,10 +8,10 @@ import com.usacheow.coredata.network.NetworkStateProvider
 import com.usacheow.coreui.analytics.AnalyticsTracker
 import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import javax.inject.Inject
 
 @HiltAndroidApp
 class SimpleApp : Application(), ApplicationCoroutineScopeHolder {

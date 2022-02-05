@@ -1,8 +1,7 @@
-package com.usacheow.core
+package com.usacheow.core.resource
 
 import android.graphics.Bitmap
 import androidx.annotation.DrawableRes
-import com.usacheow.core.resource.ColorSource
 
 sealed class ImageSource {
 

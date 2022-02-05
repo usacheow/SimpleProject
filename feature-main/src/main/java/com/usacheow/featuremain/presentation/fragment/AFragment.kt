@@ -5,7 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -13,6 +13,7 @@ import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreui.uikit.helper.startFragmentTransition
 import com.usacheow.coreui.uikit.molecule.ListTileItem
 import com.usacheow.featuremain.databinding.FragmentABinding
 import com.usacheow.featuremain.presentation.navigation.MainFeatureRouter
@@ -32,8 +33,6 @@ class AFragment : SimpleFragment<FragmentABinding>() {
     )
 
     private val viewModel by hiltNavGraphViewModels<AViewModel>(FeatureR.id.main_nav_graph)
-    private val cViewModel by viewModels<CViewModel>()
-    private val adapter = ViewStateAdapter()
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         binding.header.applyTopInset(insets.getTopInset())
@@ -45,20 +44,17 @@ class AFragment : SimpleFragment<FragmentABinding>() {
         binding.header.title = "A Fragment ${viewModel.x}"
 
         binding.listView.layoutManager = LinearLayoutManager(context)
-        binding.listView.adapter = adapter
-        adapter.update(
-            List(20) {
-                ListTileItem(value = TextSource.Simple("${it + 1} Go to next screen"), clickListener = { openNextScreen(it) })
-            }
-        )
+        startFragmentTransition {
+            binding.listView.adapter = ViewStateAdapter(
+                List(20) {
+                    ListTileItem(value = TextSource.Simple("${it + 1} Go to next screen"), clickListener = { openNextScreen(it) })
+                }
+            )
+        }
     }
 
     private fun openNextScreen(itemNumber: Int) {
         viewModel.x++
         router.fromAtoBScreen(itemNumber)
-//        adapter.update(
-//            ListTileItem(value = TextSource.Simple("New Element"), clickListener = { openNextScreen(itemNumber) }),
-//            itemNumber,
-//        )
     }
 }

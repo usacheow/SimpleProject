@@ -12,19 +12,4 @@
     <string name="biometric_enter_message">Используйте биометрию для входа в приложение</string>
     <string name="biometric_enter_cancel">Ввести пароль</string>
 
-    <string-array name="month_names">
-        <item>Январь</item>
-        <item>Февраль</item>
-        <item>Март</item>
-        <item>Апрель</item>
-        <item>Май</item>
-        <item>Июнь</item>
-        <item>Июль</item>
-        <item>Август</item>
-        <item>Сентябрь</item>
-        <item>Октябрь</item>
-        <item>Ноябрь</item>
-        <item>Декабрь</item>
-    </string-array>
-
 </resources>

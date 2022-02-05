@@ -1,4 +1,4 @@
-package com.usacheow.core
+package com.usacheow.core.date
 
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours

@@ -27,10 +27,12 @@
 
     <color name="background">#F1F8F5</color>
     <color name="onBackground">#FF1C1B1F</color>
+
     <color name="surface">@color/background</color>
     <color name="onSurface">@color/onBackground</color>
     <color name="surfaceVariant">#CBE4D9</color>
     <color name="onSurfaceVariant">#454F4B</color>
+
     <color name="surfaceInverse">#303331</color>
     <color name="onSurfaceInverse">#EFF4F1</color>
 
@@ -43,9 +45,6 @@
 
     <color name="colorStatusBar">#00FFFFFF</color>
     <color name="colorNavigationBar">#4D000000</color>
-
-    <color name="backgroundBottomBarGradientStart">@color/white</color>
-    <color name="backgroundBottomBarGradientCenter">@color/white_60</color>
-    <color name="backgroundBottomBarGradientEnd">@color/transparent</color>
+    <color name="backgroundBottomBar">@color/white_90</color>
 
 </resources>

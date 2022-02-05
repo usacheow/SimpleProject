@@ -17,9 +17,9 @@ enum class DateTimeFormat(val code: String) {
     // Z - 0300
     ISO_ZONED_DATE_TIME("yyyy-MM-dd'T'HH:mm[:ss][.SSS]Z");
 
-    fun toDateTimeFormat(locale: Locale = LOCALE) = code.toDateTimeFormat(locale)
+    fun toDateTimeFormat(locale: Locale = EN_LOCALE) = code.toDateTimeFormat(locale)
 }
 
-fun String.toDateTimeFormat(locale: Locale = LOCALE) = kotlin.runCatching {
+fun String.toDateTimeFormat(locale: Locale = EN_LOCALE) = kotlin.runCatching {
     DateTimeFormatter.ofPattern(this, locale)
 }.getOrNull()

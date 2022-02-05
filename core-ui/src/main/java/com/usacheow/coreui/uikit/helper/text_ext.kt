@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
-import com.usacheow.core.TextSource
+import com.usacheow.core.resource.TextSource
 import java.lang.ref.WeakReference
 import com.usacheow.coreui.R as CoreUiR
 

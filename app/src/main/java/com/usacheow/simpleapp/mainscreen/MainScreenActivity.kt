@@ -15,8 +15,8 @@ import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.hideIme
 import com.usacheow.coreui.uikit.helper.isImeVisible
-import com.usacheow.coreui.utils.navigation.OPEN_IN
-import com.usacheow.coreui.utils.navigation.REPLACING
+import com.usacheow.coreui.navigation.OPEN_IN
+import com.usacheow.coreui.navigation.REPLACING
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.simpleapp.databinding.ActivityHostBinding
 import com.usacheow.simpleapp.mainscreen.MainScreenViewModel.Action

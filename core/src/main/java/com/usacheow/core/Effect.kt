@@ -24,16 +24,18 @@ class Effect<DATA : Any> private constructor(
 
     val isError: Boolean get() = value is Error<DATA>
 
-    val dataIfSuccess
+    val requireData: DATA get() = requireNotNull(findData)
+    val findData: DATA?
         get() = when (value) {
             is Success<DATA> -> value.data
             else -> null
         }
 
-    val dataOrNull
+    val requireDataOrCache: DATA get() = requireNotNull(dataOrCache)
+    val dataOrCache: DATA?
         get() = when (value) {
             is Success<DATA> -> value.data
-            is Error<DATA> -> value.data
+            is Error<DATA> -> value.cache
         }
 
     val exceptionOrNull
@@ -55,7 +57,7 @@ class Effect<DATA : Any> private constructor(
         block: suspend (exception: Throwable, data: DATA?) -> Unit,
     ): Effect<DATA> {
         if (value is Error<DATA>) {
-            block(value.exception, value.data)
+            block(value.exception, value.cache)
         }
         return this
     }
@@ -71,7 +73,7 @@ class Effect<DATA : Any> private constructor(
         transform: suspend (value: DATA) -> OUT,
     ): Effect<OUT> = when (value) {
         is Success<DATA> -> success(transform(value.data))
-        is Error<DATA> -> error(value.exception, value.data?.let { transform(it) })
+        is Error<DATA> -> error(value.exception, value.cache?.let { transform(it) })
     }
 
     fun toCompletable() = when (value) {
@@ -87,7 +89,7 @@ class Effect<DATA : Any> private constructor(
 
     internal data class Error<DATA : Any>(
         val exception: Throwable,
-        val data: DATA? = null,
+        val cache: DATA? = null,
     ) : Data<DATA>()
 }
 

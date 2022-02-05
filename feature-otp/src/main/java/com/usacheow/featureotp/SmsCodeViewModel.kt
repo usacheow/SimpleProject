@@ -2,10 +2,10 @@ package com.usacheow.featureotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.core.DurationValue
+import com.usacheow.core.date.DurationValue
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coremediator.OtpFeatureProvider
-import com.usacheow.coreui.utils.navigation.getArgs
+import com.usacheow.coreui.navigation.getArgs
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy

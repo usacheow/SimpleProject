@@ -20,8 +20,8 @@ import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.doOnApplyWindowInsets
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.isImeVisible
-import com.usacheow.coreui.utils.navigation.addArgs
-import com.usacheow.coreui.utils.navigation.getArgs
+import com.usacheow.coreui.navigation.addArgs
+import com.usacheow.coreui.navigation.getArgs
 import com.usacheow.featurebottombar.databinding.FragmentBottomBarBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.parcelize.Parcelize

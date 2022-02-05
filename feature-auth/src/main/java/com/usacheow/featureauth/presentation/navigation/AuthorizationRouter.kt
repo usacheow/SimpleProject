@@ -5,7 +5,7 @@ import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.coremediator.AuthorizationFeatureProvider
 import com.usacheow.coremediator.OtpFeatureProvider
 import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.utils.navigation.OPEN_IN
+import com.usacheow.coreui.navigation.OPEN_IN
 import javax.inject.Inject
 
 class AuthorizationRouter @Inject constructor(

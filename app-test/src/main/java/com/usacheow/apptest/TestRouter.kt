@@ -2,10 +2,10 @@ package com.usacheow.apptest
 
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.utils.navigation.OPEN_IN
-import com.usacheow.coreui.utils.navigation.REPLACING
-import com.usacheow.coreui.utils.navigation.notInclusive
-import com.usacheow.coreui.utils.navigation.screen
+import com.usacheow.coreui.navigation.OPEN_IN
+import com.usacheow.coreui.navigation.REPLACING
+import com.usacheow.coreui.navigation.notInclusive
+import com.usacheow.coreui.navigation.screen
 import javax.inject.Inject
 import com.usacheow.apptest.R as TestAppR
 
