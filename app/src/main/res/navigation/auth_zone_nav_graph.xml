@@ -12,4 +12,7 @@
 
     <include
         app:graph="@navigation/example_2_nav_graph"/>
+
+    <include
+        app:graph="@navigation/purchase_nav_graph"/>
 </navigation>
