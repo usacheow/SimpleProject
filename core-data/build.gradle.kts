@@ -4,12 +4,6 @@ plugins {
     id("room-config")
 }
 
-android {
-    defaultConfig {
-        buildConfigField("String", "ENDPOINT", "\"https://stub.com/api/v1/\"")
-    }
-}
-
 dependencies {
     api(projects.core)
     api(*Libs.bundle.requests)
