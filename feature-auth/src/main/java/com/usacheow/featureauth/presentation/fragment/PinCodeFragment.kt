@@ -18,7 +18,7 @@ import com.usacheow.featureauth.presentation.viewmodels.PinCodeViewModel
 import com.usacheow.featureauth.presentation.viewmodels.SignInResult
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.featureauth.R as FeatureR
+import com.usacheow.core.R as CoreR
 
 @AndroidEntryPoint
 class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
@@ -40,7 +40,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.pinCodeView.setHint(string(FeatureR.string.pin_view_hint))
+        binding.pinCodeView.setHint(string(CoreR.string.pin_view_hint))
         binding.pinCodeView.onBiometricButtonClickedAction = { viewModel.onBiometricClicked() }
         binding.pinCodeView.onCodeEnteredAction = { viewModel.onPinCodeInputted(it) }
         binding.pinCodeForgotButton.doOnClick {
@@ -71,7 +71,7 @@ class PinCodeFragment : SimpleFragment<FragmentPinCodeBinding>() {
                 is SignInResult.SignInSuccess -> {}
 
                 is SignInResult.SignInError -> {
-                    binding.pinCodeView.setHint(string(FeatureR.string.pin_view_code_error))
+                    binding.pinCodeView.setHint(string(CoreR.string.pin_view_code_error))
                     binding.pinCodeView.showError()
                 }
 

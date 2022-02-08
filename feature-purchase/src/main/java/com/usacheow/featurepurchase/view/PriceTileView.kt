@@ -48,7 +48,6 @@ class PriceTileView @JvmOverloads constructor(
 
         binding.periodView.populate(model.period)
         binding.priceView.populate(model.price)
-        binding.pricePerMonthView.populate(model.pricePerMonth)
         binding.discountView.populate(model.discount)
         binding.discountLayout.isVisible = model.discount != null
     }
@@ -58,7 +57,6 @@ data class PriceTileItem(
     var discount: TextSource?,
     val period: TextSource,
     val price: TextSource,
-    val pricePerMonth: TextSource,
     val buyButtonText: TextSource.Simple,
     val selectListener: () -> Unit,
 ) : TagViewState(FeatureR.layout.view_price_tile)

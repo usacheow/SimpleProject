@@ -33,6 +33,12 @@ sealed class TextSource {
         val quantity: Int,
     ) : TextSource()
 
+    data class FormattedPlural(
+        @PluralsRes val res: Int,
+        val quantity: Int,
+        val args: List<Any> = listOf(quantity),
+    ) : TextSource()
+
     fun toCharSequence(resources: ResourcesWrapper): CharSequence = when (this) {
         is Simple -> text
 
@@ -43,6 +49,8 @@ sealed class TextSource {
         is Res -> resources.getString(res, *args.toTypedArray())
 
         is Plural -> resources.getPluralString(res, quantity)
+
+        is FormattedPlural -> resources.getPluralString(res, quantity).format(*args.toTypedArray())
     }
 
     fun toCharSequence(context: Context): CharSequence = toCharSequence(ResourcesWrapperImpl(context))

@@ -33,10 +33,13 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.flow.MutableStateFlow
 
 interface SimpleBilling : BillingRouter {
 
     val newPurchasesFlow: SharedFlow<List<Purchase>>
+
+    val isPayedVersionFlow: SharedFlow<Boolean>
 
     suspend fun getInAppProducts(): BillingEffect<List<Product>>
 
@@ -59,6 +62,8 @@ class SimpleBillingImpl @Inject constructor(
 ) : SimpleBilling {
 
     override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(replay = 1)
+
+    override val isPayedVersionFlow = MutableStateFlow(false)
 
     private val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {

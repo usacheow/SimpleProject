@@ -1,7 +1,0 @@
-<resources>
-
-    <string name="sms_code_header">Введите код из смс, отправленного на ваш номер</string>
-    <string name="sms_code_resend_timer">Отправить через %d сек.</string>
-    <string name="sms_code_resend">Отправить заново</string>
-
-</resources>

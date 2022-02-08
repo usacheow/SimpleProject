@@ -5,7 +5,7 @@ import com.usacheow.core.resource.TextSource
 import com.usacheow.core.resource.ResourcesWrapper
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.usacheow.coredata.R as CoreDataR
+import com.usacheow.core.R as CoreR
 
 sealed class ApiError(
     @StringRes val defaultMessageRes: Int,
@@ -16,36 +16,36 @@ sealed class ApiError(
     class InvalidAccessTokenException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.invalid_token_error_message, message, cause)
+    ) : ApiError(CoreR.string.invalid_token_error_message, message, cause)
 
     class NoInternetException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.connection_error_message, message, cause)
+    ) : ApiError(CoreR.string.connection_error_message, message, cause)
 
     class ServerException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.server_error_message, message, cause)
+    ) : ApiError(CoreR.string.server_error_message, message, cause)
 
     class EmptyResponseException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.unknown_error_message, message, cause)
+    ) : ApiError(CoreR.string.unknown_error_message, message, cause)
 
     class HostException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.server_error_message, message, cause)
+    ) : ApiError(CoreR.string.server_error_message, message, cause)
 
     class UnknownException(
         message: String? = null,
         cause: Throwable? = null
-    ) : ApiError(CoreDataR.string.unknown_error_message, message, cause)
+    ) : ApiError(CoreR.string.unknown_error_message, message, cause)
 
-    class CoroutineException : ApiError(CoreDataR.string.unknown_error_message)
+    class CoroutineException : ApiError(CoreR.string.unknown_error_message)
 
-    class SecurityException : ApiError(CoreDataR.string.unknown_error_message)
+    class SecurityException : ApiError(CoreR.string.unknown_error_message)
 
     fun getMessage(resources: ResourcesWrapper): String {
         return message ?: resources.getString(defaultMessageRes)
@@ -58,12 +58,12 @@ sealed class ApiError(
 
 fun Throwable.getMessage(resources: ResourcesWrapper): String = when (this) {
     is ApiError -> getMessage(resources)
-    else -> resources.getString(CoreDataR.string.unknown_error_message)
+    else -> resources.getString(CoreR.string.unknown_error_message)
 }
 
 fun Throwable.getMessage(): TextSource = when (this) {
     is ApiError -> getMessage()
-    else -> TextSource.Res(CoreDataR.string.unknown_error_message)
+    else -> TextSource.Res(CoreR.string.unknown_error_message)
 }
 
 @Serializable

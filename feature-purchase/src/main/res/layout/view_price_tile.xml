@@ -45,44 +45,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="20dp">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/periodView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:lines="1"
-                        android:textAppearance="?textAppearanceTitleLarge"
-                        android:textColor="?android:textColorSecondary"
-                        tools:text="799₽" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/priceView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:lines="1"
-                        android:textAppearance="?textAppearanceTitleMedium"
-                        tools:text="Подписка на год" />
-                </LinearLayout>
-
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/pricePerMonthView"
+                    android:id="@+id/periodView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:textAppearance="?textAppearanceHeadlineSmall"
-                    tools:text="66,58₽ / месяц" />
+                    android:textAppearance="?textAppearanceBodyMedium"
+                    android:textColor="?colorTextSecondary"
+                    tools:text="Подписка на год" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/priceView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAppearance="?textAppearanceHeadlineMedium"
+                    android:textColor="?colorTextPrimary"
+                    tools:text="799₽ / месяц" />
             </LinearLayout>
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>

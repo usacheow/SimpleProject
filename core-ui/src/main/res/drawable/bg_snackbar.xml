@@ -4,4 +4,6 @@
 
     <corners android:radius="@dimen/radius_medium" />
 
+    <solid android:color="?attr/colorSurfaceVariant"/>
+
 </shape>

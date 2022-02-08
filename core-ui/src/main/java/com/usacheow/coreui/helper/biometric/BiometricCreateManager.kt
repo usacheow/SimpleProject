@@ -4,7 +4,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
 import com.usacheow.core.resource.ResourcesWrapper
 import javax.inject.Inject
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.core.R as CoreR
 
 interface BiometricCreateManager {
 
@@ -28,9 +28,9 @@ class BiometricCreateManagerImpl @Inject constructor(
     fragment: Fragment,
 ) : BiometricManagerWrapper(
     activity = fragment.requireActivity(),
-    title = resources.getString(CoreUiR.string.biometric_create_title),
-    description = resources.getString(CoreUiR.string.biometric_create_message),
-    buttonText = resources.getString(CoreUiR.string.biometric_create_cancel),
+    title = resources.getString(CoreR.string.biometric_create_title),
+    description = resources.getString(CoreR.string.biometric_create_message),
+    buttonText = resources.getString(CoreR.string.biometric_create_cancel),
 ), BiometricCreateManager {
 
     override var onSuccessAction: (BiometricPrompt.CryptoObject?) -> Unit = {}

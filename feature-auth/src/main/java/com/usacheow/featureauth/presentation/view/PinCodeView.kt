@@ -7,7 +7,7 @@ import android.widget.GridLayout
 import com.usacheow.coreui.uikit.helper.string
 import com.usacheow.coreui.uikit.organism.NumPadView
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
-import com.usacheow.featureauth.R as FeatureR
+import com.usacheow.core.R as CoreR
 
 private const val PIN_CODE_LENGTH = 4
 
@@ -86,7 +86,7 @@ class PinCodeView @JvmOverloads constructor(
 
     fun resetState() {
         clearCode()
-        binding.hintTextView.text = string(FeatureR.string.pin_view_hint)
+        binding.hintTextView.text = string(CoreR.string.pin_view_hint)
     }
 
     fun setBiometricEnabled(isEnabled: Boolean) {

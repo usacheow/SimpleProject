@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/main_nav_graph"
-        android:title="@string/example"
+        android:title="@string/bb_example"
         android:icon="@drawable/ic_user" />
 
     <item
         android:id="@+id/example_1_nav_graph"
-        android:title="@string/example"
+        android:title="@string/bb_example"
         android:icon="@drawable/ic_user" />
 
     <item
         android:id="@+id/example_2_nav_graph"
-        android:title="@string/example"
+        android:title="@string/bb_example"
         android:icon="@drawable/ic_user" />
 </menu>

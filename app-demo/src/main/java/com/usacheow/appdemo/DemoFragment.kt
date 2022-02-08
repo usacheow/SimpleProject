@@ -22,7 +22,7 @@ import com.usacheow.coreui.uikit.molecule.HeaderTileItem
 import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.appdemo.R as DemoAppR
+import com.usacheow.core.R as CoreR
 import com.usacheow.coreui.R as CoreUiR
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
@@ -41,18 +41,18 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
             mutableListOf(
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
                     defaultImageRes = CoreUiR.drawable.ic_user,
-                    title = res.getString(DemoAppR.string.on_boarding_title_1).toTextSource(),
-                    description = res.getString(DemoAppR.string.on_boarding_description_1).toTextSource()
+                    title = res.getString(CoreR.string.on_boarding_title_1).toTextSource(),
+                    description = res.getString(CoreR.string.on_boarding_description_1).toTextSource()
                 ),
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
                     defaultImageRes = CoreUiR.drawable.ic_user,
-                    title = res.getString(DemoAppR.string.on_boarding_title_2).toTextSource(),
-                    description = res.getString(DemoAppR.string.on_boarding_description_2).toTextSource()
+                    title = res.getString(CoreR.string.on_boarding_title_2).toTextSource(),
+                    description = res.getString(CoreR.string.on_boarding_description_2).toTextSource()
                 ),
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
                     defaultImageRes = CoreUiR.drawable.ic_user,
-                    title = res.getString(DemoAppR.string.on_boarding_title_3).toTextSource(),
-                    description = res.getString(DemoAppR.string.on_boarding_description_3).toTextSource()
+                    title = res.getString(CoreR.string.on_boarding_title_3).toTextSource(),
+                    description = res.getString(CoreR.string.on_boarding_description_3).toTextSource()
                 )
             )
         )

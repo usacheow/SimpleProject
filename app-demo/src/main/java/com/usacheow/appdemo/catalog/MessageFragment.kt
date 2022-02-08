@@ -16,6 +16,7 @@ import com.usacheow.coreui.uikit.organism.MessageBannerItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
+import com.usacheow.core.R as CoreR
 import com.usacheow.coreui.R as CoreUiR
 
 @AndroidEntryPoint
@@ -46,7 +47,7 @@ class MessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
             MessageBannerItem(
                 title = TextSource.Simple("Error title"),
                 description = TextSource.Simple("Error description"),
-                button = TextSource.Res(DemoAppR.string.repeat),
+                button = TextSource.Res(CoreR.string.repeat),
                 clickListener = {},
             )
         )
@@ -62,7 +63,7 @@ class MessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
                 icon = ImageSource.Res(DemoAppR.drawable.demo_avatar),
                 title = TextSource.Simple("Error title"),
                 description = TextSource.Simple("Error description"),
-                button = TextSource.Res(DemoAppR.string.repeat),
+                button = TextSource.Res(CoreR.string.repeat),
                 clickListener = {},
             )
         )

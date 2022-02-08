@@ -1,14 +1,22 @@
 package com.usacheow.featurepurchase.mapper
 
-import com.usacheow.core.resource.TextSource
+import android.content.Context
+import android.text.style.ForegroundColorSpan
+import android.text.style.TextAppearanceSpan
+import androidx.core.text.buildSpannedString
+import androidx.core.text.inSpans
 import com.usacheow.core.resource.ResourcesWrapper
+import com.usacheow.core.resource.TextSource
 import com.usacheow.corebilling.model.Product
+import com.usacheow.coreui.R
 import com.usacheow.featurepurchase.view.PriceTileItem
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Currency
 import javax.inject.Inject
-import com.example.featurepurchase.R as FeatureR
+import com.usacheow.core.R as CoreR
 
 class ProductsMapper @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val resources: ResourcesWrapper,
 ) {
 
@@ -18,37 +26,60 @@ class ProductsMapper @Inject constructor(
     ): List<PriceTileItem> = products.map { map(it, onProductClicked) }
 
     private fun map(product: Product, onProductClicked: (String, Product) -> Unit) = PriceTileItem(
-        discount = null,
-        period = TextSource.Simple(product.details.subscriptionPeriod),
-        price = TextSource.Simple(product.getPrice()),
-        pricePerMonth = TextSource.Simple(product.getPricePerMonth()),
+        discount = product.getDiscount(),
+        period = product.getPeriod(),
+        price = product.getPrice(),
         buyButtonText = TextSource.Simple(product.getBuyButtonText()),
         selectListener = { onProductClicked(product.getBuyButtonText(), product) },
     )
 
-    private fun Product.getPrice(): String {
-        if (details.price == null || details.priceCurrencyCode == null) {
-            return ""
-        }
-
-        return "${details.price}${Currency.getInstance(details.priceCurrencyCode)}"
+    private fun Product.getDiscount(): TextSource? {
+        return null
     }
 
-    private fun Product.getPricePerMonth(): String {
-        if (details.price == null || details.priceCurrencyCode == null) {
-            return ""
+    private fun Product.getPrice(): TextSource {
+        val text = buildSpannedString {
+            inSpans(
+                TextAppearanceSpan(context, R.style.Simple_Text_Headline_M),
+                ForegroundColorSpan(resources.getColor(R.color.symbolPrimary)),
+            ) {
+                append(getPriceValue())
+            }
+            inSpans(
+                TextAppearanceSpan(context, R.style.Simple_Text_Body_S),
+                ForegroundColorSpan(resources.getColor(R.color.symbolSecondary)),
+            ) {
+                append(" / ${getPeriod().toCharSequence(resources)}")
+            }
         }
+        return TextSource.Spanned(text)
+    }
 
-        val price = "${details.price}${Currency.getInstance(details.priceCurrencyCode)}"
-        return resources.getString(FeatureR.string.price_per_month_format, price)
+    private fun Product.getPriceValue(): String {
+        return "${details.priceAmountMicros.div(1_000_000)}" +
+                Currency.getInstance(details.priceCurrencyCode).symbol
+    }
+
+    private fun Product.getPeriod(): TextSource {
+        val rawPeriod = details.subscriptionPeriod
+
+        fun getCount() = rawPeriod.filter { it.isDigit() }.toIntOrNull() ?: 0
+
+        val priceFormatRes = when {
+            rawPeriod.contains("D") -> CoreR.plurals.purchase_period_day_format
+            rawPeriod.contains("W") -> CoreR.plurals.purchase_period_week_format
+            rawPeriod.contains("M") -> CoreR.plurals.purchase_period_month_format
+            rawPeriod.contains("Y") -> CoreR.plurals.purchase_period_year_format
+            else -> return TextSource.Simple("")
+        }
+        return TextSource.FormattedPlural(priceFormatRes, getCount())
     }
 
     private fun Product.getBuyButtonText(): String {
-        val period = details.freeTrialPeriod
-
-        return when (details.freeTrialPeriod) {
-            null -> resources.getString(FeatureR.string.purchase_buy_button, getPrice(), period)
-            else -> resources.getString(FeatureR.string.purchase_try_button, period)
-        }
+        return resources.getString(
+            CoreR.string.purchase_buy_button,
+            getPriceValue(),
+            getPeriod().toCharSequence(resources),
+        )
     }
 }

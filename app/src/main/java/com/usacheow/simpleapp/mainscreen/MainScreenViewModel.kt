@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.usacheow.coreui.R as CoreUiR
-import com.usacheow.simpleapp.R as AppR
+import com.usacheow.core.R as CoreR
 
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
@@ -28,18 +28,18 @@ class MainScreenViewModel @Inject constructor(
         mutableListOf(
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(AppR.string.on_boarding_title_1).toTextSource(),
-                description = resources.getString(AppR.string.on_boarding_description_1).toTextSource()
+                title = resources.getString(CoreR.string.on_boarding_title_1).toTextSource(),
+                description = resources.getString(CoreR.string.on_boarding_description_1).toTextSource()
             ),
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(AppR.string.on_boarding_title_2).toTextSource(),
-                description = resources.getString(AppR.string.on_boarding_description_2).toTextSource()
+                title = resources.getString(CoreR.string.on_boarding_title_2).toTextSource(),
+                description = resources.getString(CoreR.string.on_boarding_description_2).toTextSource()
             ),
             OnBoardingFeatureProvider.OnBoardingArgs.Page(
                 defaultImageRes = CoreUiR.drawable.ic_user,
-                title = resources.getString(AppR.string.on_boarding_title_3).toTextSource(),
-                description = resources.getString(AppR.string.on_boarding_description_3).toTextSource()
+                title = resources.getString(CoreR.string.on_boarding_title_3).toTextSource(),
+                description = resources.getString(CoreR.string.on_boarding_description_3).toTextSource()
             ),
         )
     )

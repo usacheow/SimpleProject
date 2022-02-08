@@ -11,7 +11,7 @@ interface PurchaseStateProvider {
 
     val newPurchasesFlow: Flow<List<Purchase>>
 
-    val isPayedVersionFlow: Flow<Boolean?>
+    val isPayedVersionFlow: Flow<Boolean>
 
     suspend fun getInAppProducts(): BillingEffect<List<Product>>
     suspend fun getSubscribeProducts(): BillingEffect<List<Product>>
@@ -20,7 +20,6 @@ interface PurchaseStateProvider {
 }
 
 class PurchaseStateProviderImpl @Inject constructor(
-    storage: UserDataStorage,
     private val billingWrapper: SimpleBilling,
 ) : PurchaseStateProvider {
 
@@ -32,7 +31,7 @@ class PurchaseStateProviderImpl @Inject constructor(
     /*
     * paid app status
     * */
-    override val isPayedVersionFlow = storage.isPayedVersionFlow
+    override val isPayedVersionFlow = billingWrapper.isPayedVersionFlow
 
     override suspend fun getInAppProducts() = billingWrapper.getInAppProducts()
 
