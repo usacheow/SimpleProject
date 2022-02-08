@@ -26,27 +26,10 @@ fun TextView.populate(source: TextSource?) {
         }
     }
 
-    when (source) {
-        null -> makeGone()
-
-        is TextSource.Simple -> populate(source.text)
-
-        is TextSource.Spanned -> populate(source.text)
-
-        is TextSource.Html -> {
-            text = HtmlCompat.fromHtml(source.html, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            makeVisible()
-        }
-
-        is TextSource.Res -> {
-            text = string(source.res)
-            makeVisible()
-        }
-
-        is TextSource.Plural -> {
-            text = pluralString(source.res, source.quantity)
-            makeVisible()
-        }
+    if (source == null) {
+        makeGone()
+    } else {
+        populate(source.toCharSequence(context))
     }
 }
 
