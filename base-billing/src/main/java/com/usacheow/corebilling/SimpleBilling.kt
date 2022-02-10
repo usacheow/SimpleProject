@@ -37,9 +37,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 interface SimpleBilling : BillingRouter {
 
-    val newPurchasesFlow: SharedFlow<List<Purchase>>
-
     val isPayedVersionFlow: SharedFlow<Boolean>
+
+    val newPurchasesFlow: SharedFlow<List<Purchase>>
 
     suspend fun getInAppProducts(): BillingEffect<List<Product>>
 
@@ -61,9 +61,9 @@ class SimpleBillingImpl @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : SimpleBilling {
 
-    override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(replay = 1)
-
     override val isPayedVersionFlow = MutableStateFlow(false)
+
+    override val newPurchasesFlow = MutableSharedFlow<List<Purchase>>(replay = 1)
 
     private val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
@@ -93,7 +93,7 @@ class SimpleBillingImpl @Inject constructor(
         billingClient.launchBillingFlow(activity, flowParams)
     }
 
-    override suspend fun getInAppProducts(): BillingEffect<List<Product>> = fetchProducts(ProductType.IN_APP)
+    override suspend fun getInAppProducts() = fetchProducts(ProductType.IN_APP)
 
     override suspend fun getSubscribeProducts() = fetchProducts(ProductType.SUBSCRIBE)
 
