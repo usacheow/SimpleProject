@@ -25,7 +25,7 @@ import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.core.resource.compose.TextValue
 import com.usacheow.coreui.compose.tools.doOnClick
 import com.usacheow.coreui.compose.tools.get
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 private val iconPaddingHorizontal = Dimen.default_padding
 
@@ -75,11 +75,11 @@ fun ListTile(
         Column(modifier = Modifier.weight(1f)) {
             if (topDescription !is TextValue.Empty) {
                 SecondaryText(topDescription)
-                SpaceTile(height = 4.dp)
+                SpacerState(height = 4.dp).content()
             }
             PrimaryText(value)
             if (bottomDescription !is TextValue.Empty) {
-                SpaceTile(height = 4.dp)
+                SpacerState(height = 4.dp).content()
                 SecondaryText(bottomDescription)
             }
         }

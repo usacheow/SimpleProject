@@ -2,6 +2,7 @@ package com.usacheow.core.resource
 
 import android.content.Context
 import android.graphics.Color
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
@@ -18,6 +19,10 @@ sealed class ColorSource {
         @ColorRes val res: Int,
     ) : ColorSource()
 
+    data class Attr(
+        @AttrRes val res: Int,
+    ) : ColorSource()
+
     companion object Factory {
 
         @Throws
@@ -32,10 +37,7 @@ sealed class ColorSource {
         fun fromColorInt(@ColorInt color: Int) = Simple(color)
 
         fun fromRes(@ColorRes res: Int) = Res(res)
-    }
 
-    fun getColorInt(context: Context) = when (this) {
-        is Simple -> color
-        is Res -> ContextCompat.getColor(context, res)
+        fun fromAttr(@AttrRes res: Int) = Attr(res)
     }
 }

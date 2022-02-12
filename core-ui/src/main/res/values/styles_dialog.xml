@@ -20,11 +20,11 @@
     </style>
 
     <style name="Simple.Dialog.Alert.PositiveButton" parent="Widget.Material3.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">?colorPrimary</item>
     </style>
 
     <style name="Simple.Dialog.Alert.NegativeButton" parent="Widget.Material3.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">?colorPrimary</item>
     </style>
 
 </resources>

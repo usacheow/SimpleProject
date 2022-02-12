@@ -8,10 +8,10 @@ object Libs {
     private const val coroutinesVersion = "1.6.0"
     private const val kotlinterVersion = "3.8.0"
 
-    const val composeVersion = "1.1.0-rc03"
-    private const val composeMaterialVersion = "1.0.0-alpha04"
+    const val composeVersion = "1.2.0-alpha03"
+    private const val composeMaterialVersion = "1.0.0-alpha05"
     private const val androidxVersion = "1.4.1"
-    private const val androidxCoreVersion = "1.7.0"
+    private const val androidxCoreVersion = "1.8.0-alpha04"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val fragmentVersion = "1.4.0"
@@ -25,7 +25,7 @@ object Libs {
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
-    private const val accompanistVersion = "0.22.0-rc"
+    private const val accompanistVersion = "0.24.2-alpha"
     private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"

@@ -22,7 +22,7 @@ import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.core.resource.compose.TextValue
 import com.usacheow.coreui.compose.tools.get
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 private val linesMinWidth = 120.dp
 private val linesMaxWidth = 156.dp
@@ -48,7 +48,6 @@ data class BadgeTileState(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BadgeTile(
     header: TextValue = TextValue.Empty,
@@ -94,7 +93,7 @@ fun BadgeTileShimmer(needAdaptWidth: Boolean = true) {
         clickListener = null,
     ) {
         ShimmerTileLine(width = linesMinWidth)
-        SpaceTile(height = linesBetweenPadding)
+        SpacerState(height = linesBetweenPadding).content()
         ShimmerTileLine(width = linesMaxWidth, height = ShimmerTileDefaults.linesHeight.times(2))
     }
 }

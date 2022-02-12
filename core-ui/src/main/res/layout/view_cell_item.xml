@@ -59,7 +59,7 @@
                 android:ellipsize="end"
                 android:lines="1"
                 android:textAppearance="?textAppearanceBodyMedium"
-                android:textColor="?colorTextSecondary"
+                android:textColor="?colorSymbolSecondary"
                 tools:text="@tools:sample/lorem/random" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -69,7 +69,7 @@
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:textAppearance="?textAppearanceBodyLarge"
-                android:textColor="?colorTextPrimary"
+                android:textColor="?colorSymbolPrimary"
                 tools:text="@tools:sample/lorem/random" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -80,7 +80,7 @@
                 android:ellipsize="end"
                 android:lines="1"
                 android:textAppearance="?textAppearanceTitleLarge"
-                android:textColor="?colorTextPrimary"
+                android:textColor="?colorSymbolPrimary"
                 tools:text="Value" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -91,7 +91,7 @@
                 android:ellipsize="end"
                 android:lines="1"
                 android:textAppearance="?textAppearanceBodyMedium"
-                android:textColor="?colorTextSecondary"
+                android:textColor="?colorSymbolSecondary"
                 tools:text="@tools:sample/lorem/random" />
 
             <com.google.android.material.textview.MaterialTextView

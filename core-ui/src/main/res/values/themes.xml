@@ -14,13 +14,13 @@
 
     <style name="ThemeWithDefaultAttributes" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:colorBackground">?colorBackground</item>
-        <item name="iconTint">?colorIconPrimary</item>
-        <item name="android:textColorPrimary">?colorTextPrimary</item>
-        <item name="android:textColorPrimaryInverse">?colorTextPrimaryInverse</item>
-        <item name="android:textColorSecondary">?colorTextSecondary</item>
-        <item name="android:textColorSecondaryInverse">?colorTextSecondaryInverse</item>
-        <item name="android:textColorTertiary">?colorTextTertiary</item>
-        <item name="android:textColorTertiaryInverse">?colorTextTertiaryInverse</item>
+        <item name="iconTint">?colorSymbolPrimary</item>
+        <item name="android:textColorPrimary">?colorSymbolPrimary</item>
+        <item name="android:textColorPrimaryInverse">?colorSymbolPrimaryInverse</item>
+        <item name="android:textColorSecondary">?colorSymbolSecondary</item>
+        <item name="android:textColorSecondaryInverse">?colorSymbolSecondaryInverse</item>
+        <item name="android:textColorTertiary">?colorSymbolTertiary</item>
+        <item name="android:textColorTertiaryInverse">?colorSymbolTertiaryInverse</item>
 
         <item name="switchStyle">?materialSwitchStyle</item>
         <item name="checkboxStyle">?materialCheckBoxStyle</item>
@@ -74,18 +74,12 @@
         <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
         <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
 
-        <item name="colorIconPrimary">@color/symbolPrimary</item>
-        <item name="colorIconPrimaryInverse">@color/symbolPrimaryInverse</item>
-        <item name="colorIconSecondary">@color/symbolSecondary</item>
-        <item name="colorIconSecondaryInverse">@color/symbolSecondaryInverse</item>
-        <item name="colorIconTertiary">@color/symbolTertiary</item>
-        <item name="colorIconTertiaryInverse">@color/symbolTertiaryInverse</item>
-        <item name="colorTextPrimary">@color/symbolPrimary</item>
-        <item name="colorTextPrimaryInverse">@color/symbolPrimaryInverse</item>
-        <item name="colorTextSecondary">@color/symbolSecondary</item>
-        <item name="colorTextSecondaryInverse">@color/symbolSecondaryInverse</item>
-        <item name="colorTextTertiary">@color/symbolTertiary</item>
-        <item name="colorTextTertiaryInverse">@color/symbolTertiaryInverse</item>
+        <item name="colorSymbolPrimary">@color/symbolPrimary</item>
+        <item name="colorSymbolPrimaryInverse">@color/symbolPrimaryInverse</item>
+        <item name="colorSymbolSecondary">@color/symbolSecondary</item>
+        <item name="colorSymbolSecondaryInverse">@color/symbolSecondaryInverse</item>
+        <item name="colorSymbolTertiary">@color/symbolTertiary</item>
+        <item name="colorSymbolTertiaryInverse">@color/symbolTertiaryInverse</item>
 
         <item name="textAppearanceDisplayLarge">@style/Simple.Text.Display.L</item>
         <item name="textAppearanceDisplayMedium">@style/Simple.Text.Display.M</item>

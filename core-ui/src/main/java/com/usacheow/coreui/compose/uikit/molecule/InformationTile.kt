@@ -26,7 +26,7 @@ import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.core.resource.compose.TextValue
 import com.usacheow.coreui.compose.tools.doOnClick
 import com.usacheow.coreui.compose.tools.get
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 data class InformationTileState(
     val image: ImageValue = ImageValue.Empty,
@@ -74,7 +74,7 @@ fun InformationTile(
                 PrimaryText(mainLeftText, Modifier.weight(1f))
                 PrimaryText(mainRightText, Modifier.wrapContentWidth(), TextAlign.End)
             }
-            SpaceTile(height = 4.dp)
+            SpacerState(height = 4.dp).content()
             Row {
                 SecondaryText(additionalLeftText, Modifier.weight(1f))
                 SecondaryText(additionalRightText, Modifier.wrapContentWidth(), TextAlign.End)

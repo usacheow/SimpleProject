@@ -3,6 +3,7 @@ package com.usacheow.appdemo.catalog
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -18,9 +19,11 @@ import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.helper.toPx
@@ -42,43 +45,43 @@ class PaletteFragment : SimpleFragment<FragmentListBinding>() {
 
     private val items = listOf(
         SubtitleTileItem(TextSource.Simple("Primary")),
-        ColorItem(CoreUiR.color.primary),
-        ColorItem(CoreUiR.color.onPrimary),
-        ColorItem(CoreUiR.color.primaryContainer),
-        ColorItem(CoreUiR.color.onPrimaryContainer),
-        ColorItem(CoreUiR.color.primaryInverse),
+        ColorItem(ThemeColorsAttrs.primary),
+        ColorItem(ThemeColorsAttrs.onPrimary),
+        ColorItem(ThemeColorsAttrs.primaryContainer),
+        ColorItem(ThemeColorsAttrs.onPrimaryContainer),
+        ColorItem(ThemeColorsAttrs.primaryInverse),
         SubtitleTileItem(TextSource.Simple("Secondary")),
-        ColorItem(CoreUiR.color.secondary),
-        ColorItem(CoreUiR.color.onSecondary),
-        ColorItem(CoreUiR.color.secondaryContainer),
-        ColorItem(CoreUiR.color.onSecondaryContainer),
+        ColorItem(ThemeColorsAttrs.secondary),
+        ColorItem(ThemeColorsAttrs.onSecondary),
+        ColorItem(ThemeColorsAttrs.secondaryContainer),
+        ColorItem(ThemeColorsAttrs.onSecondaryContainer),
         SubtitleTileItem(TextSource.Simple("Tertiary")),
-        ColorItem(CoreUiR.color.tertiary),
-        ColorItem(CoreUiR.color.onTertiary),
-        ColorItem(CoreUiR.color.tertiaryContainer),
-        ColorItem(CoreUiR.color.onTertiaryContainer),
+        ColorItem(ThemeColorsAttrs.tertiary),
+        ColorItem(ThemeColorsAttrs.onTertiary),
+        ColorItem(ThemeColorsAttrs.tertiaryContainer),
+        ColorItem(ThemeColorsAttrs.onTertiaryContainer),
         SubtitleTileItem(TextSource.Simple("Error")),
-        ColorItem(CoreUiR.color.error),
-        ColorItem(CoreUiR.color.onError),
-        ColorItem(CoreUiR.color.errorContainer),
-        ColorItem(CoreUiR.color.onErrorContainer),
+        ColorItem(ThemeColorsAttrs.error),
+        ColorItem(ThemeColorsAttrs.onError),
+        ColorItem(ThemeColorsAttrs.errorContainer),
+        ColorItem(ThemeColorsAttrs.onErrorContainer),
         SubtitleTileItem(TextSource.Simple("Background")),
-        ColorItem(CoreUiR.color.background),
-        ColorItem(CoreUiR.color.onBackground),
+        ColorItem(ThemeColorsAttrs.background),
+        ColorItem(ThemeColorsAttrs.onBackground),
         SubtitleTileItem(TextSource.Simple("Surface")),
-        ColorItem(CoreUiR.color.surface),
-        ColorItem(CoreUiR.color.onSurface),
-        ColorItem(CoreUiR.color.surfaceVariant),
-        ColorItem(CoreUiR.color.onSurfaceVariant),
-        ColorItem(CoreUiR.color.surfaceInverse),
-        ColorItem(CoreUiR.color.onSurfaceInverse),
+        ColorItem(ThemeColorsAttrs.surface),
+        ColorItem(ThemeColorsAttrs.onSurface),
+        ColorItem(ThemeColorsAttrs.surfaceVariant),
+        ColorItem(ThemeColorsAttrs.onSurfaceVariant),
+        ColorItem(ThemeColorsAttrs.surfaceInverse),
+        ColorItem(ThemeColorsAttrs.onSurfaceInverse),
         SubtitleTileItem(TextSource.Simple("Text/Icons")),
-        ColorItem(CoreUiR.color.symbolPrimary),
-        ColorItem(CoreUiR.color.symbolPrimaryInverse),
-        ColorItem(CoreUiR.color.symbolSecondary),
-        ColorItem(CoreUiR.color.symbolSecondaryInverse),
-        ColorItem(CoreUiR.color.symbolTertiary),
-        ColorItem(CoreUiR.color.symbolTertiaryInverse),
+        ColorItem(ThemeColorsAttrs.symbolPrimary),
+        ColorItem(ThemeColorsAttrs.symbolPrimaryInverse),
+        ColorItem(ThemeColorsAttrs.symbolSecondary),
+        ColorItem(ThemeColorsAttrs.symbolSecondaryInverse),
+        ColorItem(ThemeColorsAttrs.symbolTertiary),
+        ColorItem(ThemeColorsAttrs.symbolTertiaryInverse),
     )
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
@@ -113,9 +116,9 @@ class ColorItemView @JvmOverloads constructor(
     private val binding by lazy { ViewColorItemBinding.bind(this) }
 
     override fun populate(model: ColorItem) = with(binding) {
-        val color = color(model.color)
+        val color = colorByAttr(model.colorAttrRes)
         setCardBackgroundColor(color)
-        nameTextView.text = resources.getResourceName(model.color)
+        nameTextView.text = resources.getResourceName(model.colorAttrRes)
             .split("/")
             .lastOrNull()
             ?.removePrefix("symbol")
@@ -140,5 +143,5 @@ class ColorItemView @JvmOverloads constructor(
 }
 
 data class ColorItem(
-    @ColorRes val color: Int,
+    @AttrRes val colorAttrRes: Int,
 ) : ViewState(AppDemoR.layout.view_color_item)

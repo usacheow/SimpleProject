@@ -1,17 +1,16 @@
 package com.usacheow.coreui.uikit.helper
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_FADE
 import com.google.android.material.snackbar.Snackbar
+import com.usacheow.core.resource.ColorSource
 import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.resource.TextSource
-import com.usacheow.core.resource.ColorSource
-import com.usacheow.coreui.R as CoreUiR
 import com.google.android.material.R as MaterialR
+import com.usacheow.coreui.R as CoreUiR
 
 private val SNACKBAR_ICON_PADDING_PX = 12.toPx
 
@@ -22,11 +21,11 @@ fun View.makeSnackbar(message: TextSource) = Snackbar
         view.background = drawable(CoreUiR.drawable.bg_snackbar)
     }
     .setAnimationMode(ANIMATION_MODE_FADE)
-    .setBackgroundTint(color(CoreUiR.color.surfaceInverse))
+    .setBackgroundTint(colorByAttr(ThemeColorsAttrs.surfaceInverse))
 
 fun Snackbar.setAction(
     text: TextSource,
-    color: ColorSource = ColorSource.fromRes(CoreUiR.color.symbolPrimary),
+    color: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolPrimary),
     action: () -> Unit,
 ) = setAction(text.toCharSequence(context)) { action() }
     .setActionTextColor(color.getColorInt(context))

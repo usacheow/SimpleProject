@@ -14,7 +14,9 @@ import com.usacheow.coreui.R
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewCellItemBinding
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.getColorInt
 import com.usacheow.coreui.uikit.helper.makeGone
 import com.usacheow.coreui.uikit.helper.makeVisible
 import com.usacheow.coreui.uikit.helper.populate
@@ -170,8 +172,8 @@ sealed class CellRightPart {
 }
 
 data class CellItemContentColors(
-    val subtitleColorSource: ColorSource = ColorSource.fromRes(R.color.symbolSecondary),
-    val titleColorSource: ColorSource = ColorSource.fromRes(R.color.symbolPrimary),
-    val valueColorSource: ColorSource = ColorSource.fromRes(R.color.symbolPrimary),
-    val additionalColorSource: ColorSource = ColorSource.fromRes(R.color.symbolSecondary),
+    val subtitleColorSource: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolSecondary),
+    val titleColorSource: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolPrimary),
+    val valueColorSource: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolPrimary),
+    val additionalColorSource: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolSecondary),
 )

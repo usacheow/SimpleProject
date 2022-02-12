@@ -8,7 +8,9 @@ import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.toPx
@@ -34,10 +36,10 @@ class PriceTileView @JvmOverloads constructor(
         }
 
         binding.cardView.setCardBackgroundColor(
-            color(
+            colorByAttr(
                 when (model.isSelected) {
-                    true -> CoreUiR.color.surface
-                    false -> CoreUiR.color.surfaceVariant
+                    true -> ThemeColorsAttrs.surface
+                    false -> ThemeColorsAttrs.surfaceVariant
                 }
             )
         )

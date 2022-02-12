@@ -20,7 +20,7 @@ fun createWindowInsetsControllerCompat(
     window ?: return null
 
     WindowCompat.setDecorFitsSystemWindows(window, false)
-    return WindowCompat.getInsetsController(window, view).apply {
+    return ViewCompat.getWindowInsetsController(view).apply {
         this?.isAppearanceLightStatusBars = !needWhiteStatusIcons
         this?.isAppearanceLightNavigationBars = !needWhiteNavigationIcons
     }

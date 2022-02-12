@@ -9,6 +9,8 @@ import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.resource.TextSource
 import com.usacheow.corebilling.model.Product
 import com.usacheow.coreui.R
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Currency
@@ -41,13 +43,13 @@ class ProductsMapper @Inject constructor(
         val text = buildSpannedString {
             inSpans(
                 TextAppearanceSpan(context, R.style.Simple_Text_Headline_M),
-                ForegroundColorSpan(resources.getColor(R.color.symbolPrimary)),
+                ForegroundColorSpan(context.colorByAttr(ThemeColorsAttrs.symbolPrimary)),
             ) {
                 append(getPriceValue())
             }
             inSpans(
                 TextAppearanceSpan(context, R.style.Simple_Text_Body_S),
-                ForegroundColorSpan(resources.getColor(R.color.symbolSecondary)),
+                ForegroundColorSpan(context.colorByAttr(ThemeColorsAttrs.symbolSecondary)),
             ) {
                 append(" / ${getPeriod().toCharSequence(resources)}")
             }

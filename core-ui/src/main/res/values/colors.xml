@@ -22,15 +22,15 @@
     <color name="errorContainer">#FFF9DEDC</color>
     <color name="onErrorContainer">#FF410E0B</color>
 
-    <color name="outline">#747E79</color>
-    <color name="shimmer">#DBE6E0</color>
+    <color name="outline">#CECCCC</color>
+    <color name="shimmer">#F4F4F4</color>
 
-    <color name="background">#F1F8F5</color>
-    <color name="onBackground">#FF1C1B1F</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="onBackground">@color/symbolPrimary</color>
 
     <color name="surface">@color/background</color>
     <color name="onSurface">@color/onBackground</color>
-    <color name="surfaceVariant">#CBE4D9</color>
+    <color name="surfaceVariant">#EEEEEE</color>
     <color name="onSurfaceVariant">#454F4B</color>
 
     <color name="surfaceInverse">#303331</color>

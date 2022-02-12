@@ -61,14 +61,15 @@ abstract class SimpleModalFragment<VIEW_BINDING : ViewBinding> :
         super.onViewCreated(view, savedInstanceState)
         dialog?.window?.attributes?.windowAnimations = CoreUiR.style.Simple_Dialog_ModalDialogAnimation
 
-        windowInsetsController = createWindowInsetsControllerCompat(
-            dialog?.window,
-            binding.root,
-            isNightMode() || defaultParams.needWhiteStatusIcons,
-            isNightMode() || defaultParams.needWhiteNavigationIcons,
-        )
-
-        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
+        view.post {
+            view.doOnApplyWindowInsets(::onApplyWindowInsets)
+            windowInsetsController = createWindowInsetsControllerCompat(
+                requireActivity().window,
+                binding.root,
+                isNightMode() || defaultParams.needWhiteStatusIcons,
+                isNightMode() || defaultParams.needWhiteNavigationIcons,
+            )
+        }
         setupViews(savedInstanceState)
         subscribe()
     }

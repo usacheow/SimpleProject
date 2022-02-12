@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.google.android.material.appbar.AppBarLayout
 import com.usacheow.coreui.databinding.SimpleAppBarLayoutBinding
@@ -32,27 +31,27 @@ class SimpleAppBarLayout @JvmOverloads constructor(
         context.theme.obtainStyledAttributes(attrs, CoreUiR.styleable.SimpleAppBarLayout, 0, 0).apply {
             title = getString(CoreUiR.styleable.SimpleAppBarLayout_headerText).orEmpty()
             if (hasValue(CoreUiR.styleable.SimpleAppBarLayout_headerColor)) {
-                setBackground(getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerColor, 0))
+                setBackground(color(getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerColor, 0)))
             }
             if (hasValue(CoreUiR.styleable.SimpleAppBarLayout_headerNavIcon)) {
                 setNavigationAction(
                     getResourceId(CoreUiR.styleable.SimpleAppBarLayout_headerNavIcon, 0),
                     getColor(
                         CoreUiR.styleable.SimpleAppBarLayout_headerNavIconColor,
-                        colorByAttr(CoreUiR.attr.colorIconTertiary),
+                        colorByAttr(CoreUiR.attr.colorSymbolTertiary),
                     ),
                 ) {}
             }
         }.recycle()
     }
 
-    fun setBackground(@ColorRes colorId: Int) {
-        setBackgroundColor(color(colorId))
+    fun setBackground(@ColorInt color: Int) {
+        setBackgroundColor(color)
     }
 
     fun setNavigationAction(
         @DrawableRes iconResId: Int,
-        @ColorInt color: Int = colorByAttr(CoreUiR.attr.colorIconPrimary),
+        @ColorInt color: Int = colorByAttr(CoreUiR.attr.colorSymbolPrimary),
         action: () -> Unit,
     ) {
         binding.toolbar.navigation(iconResId, color, action)

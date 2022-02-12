@@ -3,18 +3,12 @@
 
     <attr name="colorBackground" format="color"/>
     <attr name="colorShimmer" format="color"/>
-    <attr name="colorIconPrimary" format="color"/>
-    <attr name="colorIconPrimaryInverse" format="color"/>
-    <attr name="colorIconSecondary" format="color"/>
-    <attr name="colorIconSecondaryInverse" format="color"/>
-    <attr name="colorIconTertiary" format="color"/>
-    <attr name="colorIconTertiaryInverse" format="color"/>
-    <attr name="colorTextPrimary" format="color"/>
-    <attr name="colorTextPrimaryInverse" format="color"/>
-    <attr name="colorTextSecondary" format="color"/>
-    <attr name="colorTextSecondaryInverse" format="color"/>
-    <attr name="colorTextTertiary" format="color"/>
-    <attr name="colorTextTertiaryInverse" format="color"/>
+    <attr name="colorSymbolPrimary" format="color"/>
+    <attr name="colorSymbolPrimaryInverse" format="color"/>
+    <attr name="colorSymbolSecondary" format="color"/>
+    <attr name="colorSymbolSecondaryInverse" format="color"/>
+    <attr name="colorSymbolTertiary" format="color"/>
+    <attr name="colorSymbolTertiaryInverse" format="color"/>
 
     <attr name="shapeAppearanceCircleComponent" format="reference"/>
 

@@ -67,7 +67,6 @@ fun ActionTile(
     selectorType: ActionTileState.SelectorType = ActionTileState.SelectorType.CheckBox,
     clickListener: (Boolean) -> Unit = {},
 ) {
-    val (isCheckedState, onClick) = remember { mutableStateOf(isChecked) }
     val verticalAlignment = when (subtitle) {
         TextValue.Empty -> Alignment.CenterVertically
         else -> Alignment.Top
@@ -81,7 +80,6 @@ fun ActionTile(
             .padding(ripplePadding)
             .clip(AppTheme.shapes.medium)
             .doOnClick {
-                onClick(!isCheckedState)
                 clickListener(!isChecked)
             }
             .padding(Dimen.default_padding - ripplePadding),
@@ -93,7 +91,7 @@ fun ActionTile(
                 verticalAlignment = verticalAlignment,
             ) {
                 PrimaryText(title)
-                Selector(isCheckedState, selectorType)
+                Selector(isChecked, selectorType)
             }
             if (subtitle !is TextValue.Empty) {
                 SecondaryText(subtitle)

@@ -3,14 +3,15 @@ package com.usacheow.coreui.uikit.molecule
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
-import androidx.annotation.ColorRes
 import com.google.android.material.card.MaterialCardView
+import com.usacheow.core.resource.ColorSource
 import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.ViewState
 import com.usacheow.coreui.databinding.ViewBadgeTileBinding
-import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreui.uikit.helper.getColorInt
 import com.usacheow.coreui.uikit.helper.ifFalse
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.uikit.helper.resize
@@ -31,16 +32,16 @@ class BadgeTileView @JvmOverloads constructor(
         binding.root.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
         binding.clickableView.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        binding.root.setCardBackgroundColor(color(model.backgroundColorRes))
+        binding.root.setCardBackgroundColor(model.backgroundColor.getColorInt(context))
         binding.clickableView.doOnClick(model.clickListener.ifFalse(model.isShimmer))
 
         binding.headerView.apply {
             populate(model.header)
-            setTextColor(color(model.textColorRes))
+            setTextColor(model.textColor.getColorInt(context))
         }
         binding.valueView.apply {
             populate(model.value)
-            setTextColor(color(model.textColorRes))
+            setTextColor(model.textColor.getColorInt(context))
         }
     }
 }
@@ -49,8 +50,8 @@ data class BadgeTileItem(
     val header: TextSource? = null,
     val value: TextSource,
     val needAdaptWidth: Boolean = true,
-    @ColorRes val textColorRes: Int = CoreUiR.color.onSurface,
-    @ColorRes val backgroundColorRes: Int = CoreUiR.color.surface,
+    val textColor: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.onSurface),
+    val backgroundColor: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.surface),
     val clickListener: (() -> Unit)? = null,
 ) : ViewState(CoreUiR.layout.view_badge_tile) {
 

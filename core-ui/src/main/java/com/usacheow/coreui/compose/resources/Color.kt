@@ -26,12 +26,12 @@ val LightCommonColors = Colors(
     errorContainer = Color(0xFFF9DEDC),
     onErrorContainer = Color(0xFF410E0B),
 
-    outline = Color(0x0F000000),
-    shimmer = Color(0xFFDBE6E0),
+    outline = Color(0xFFCECCCC),
+    shimmer = Color(0xFFF4F4F4),
 
-    background = Color(0xFFF1F8F5),
+    background = Color(0xFFFFFFFF),
     onBackground = Color(0xFF1C1B1F),
-    surfaceVariant = Color(0xFFCBE4D9),
+    surfaceVariant = Color(0xFFEEEEEE),
     onSurfaceVariant = Color(0xFF454F4B),
     surfaceInverse = Color(0xFF303331),
     onSurfaceInverse = Color(0xFFEFF4F1),
@@ -67,14 +67,14 @@ val DarkCommonColors = Colors(
     errorContainer = Color(0xFF8C1D18),
     onErrorContainer = Color(0xFFF2B8B5),
 
-    outline = Color(0x0FFFFFFF),
+    outline = Color(0xFF9E9E9E),
     shimmer = Color(0xFF55565A),
 
-    background = Color(0xFF1B1F1D),
-    onBackground = Color(0xFFE1E6E4),
+    background = Color(0xFF000000),
+    onBackground = Color(0xFFFFFFFF),
     surfaceVariant = Color(0xFF454F49),
-    onSurfaceVariant = Color(0xFFC4D0C8),
-    surfaceInverse = Color(0xFFE1E6E4),
+    onSurfaceVariant = Color(0xFFD2D3D2),
+    surfaceInverse = Color(0xFFEAEAEA),
     onSurfaceInverse = Color(0xFF303331),
 
     symbolPrimary = Color(0xFFFFFFFF),
@@ -158,14 +158,17 @@ data class Colors(
         primaryContainer = primaryContainer,
         onPrimaryContainer = onPrimaryContainer,
         inversePrimary = primaryInverse,
+
         secondary = secondary,
         onSecondary = onSecondary,
         secondaryContainer = secondaryContainer,
         onSecondaryContainer = onSecondaryContainer,
+
         tertiary = tertiary,
         onTertiary = onTertiary,
         tertiaryContainer = tertiaryContainer,
         onTertiaryContainer = onTertiaryContainer,
+
         background = background,
         onBackground = onBackground,
         surface = surface,
@@ -174,10 +177,12 @@ data class Colors(
         onSurfaceVariant = onSurfaceVariant,
         inverseSurface = surfaceInverse,
         inverseOnSurface = onSurfaceInverse,
+
         error = error,
         onError = onError,
         errorContainer = errorContainer,
         onErrorContainer = onErrorContainer,
+
         outline = outline,
     )
 }

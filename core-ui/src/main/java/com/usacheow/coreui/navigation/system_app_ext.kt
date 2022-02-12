@@ -5,11 +5,14 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Browser
 import android.provider.Settings
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.R as CoreUiR
 
 fun Fragment.openDialer(phoneNumber: String) {
@@ -41,7 +44,14 @@ fun Fragment.openMail(mail: String, subject: String) {
 fun Fragment.openUrl(url: String) {
     CustomTabsIntent.Builder()
         .setShowTitle(true)
-        .setToolbarColor(color(CoreUiR.color.surface))
+        .setDefaultColorSchemeParams(
+            CustomTabColorSchemeParams.Builder()
+                .setToolbarColor(colorByAttr(ThemeColorsAttrs.surface))
+                .setSecondaryToolbarColor(colorByAttr(ThemeColorsAttrs.surfaceVariant))
+                .setNavigationBarColor(colorByAttr(ThemeColorsAttrs.surface))
+                .setNavigationBarDividerColor(colorByAttr(ThemeColorsAttrs.outline))
+                .build()
+        )
         .build()
         .apply {
             intent.putExtra(Browser.EXTRA_HEADERS, bundleOf())

@@ -55,7 +55,7 @@
                     android:ellipsize="end"
                     android:lines="1"
                     android:textAppearance="?textAppearanceBodyMedium"
-                    android:textColor="?colorTextSecondary"
+                    android:textColor="?colorSymbolSecondary"
                     tools:text="Подписка на год" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -65,7 +65,7 @@
                     android:ellipsize="end"
                     android:lines="1"
                     android:textAppearance="?textAppearanceHeadlineMedium"
-                    android:textColor="?colorTextPrimary"
+                    android:textColor="?colorSymbolPrimary"
                     tools:text="799₽ / месяц" />
             </LinearLayout>
         </FrameLayout>

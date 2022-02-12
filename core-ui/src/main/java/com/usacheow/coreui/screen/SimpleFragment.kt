@@ -54,21 +54,21 @@ abstract class SimpleFragment<VIEW_BINDING : ViewBinding> :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         container ?: return null
         saveBinding(defaultParams.viewBindingProvider(inflater, container, false))
-
-        windowInsetsController = createWindowInsetsControllerCompat(
-            requireActivity().window,
-            binding.root,
-            isNightMode() || defaultParams.needWhiteStatusIcons,
-            isNightMode() || defaultParams.needWhiteNavigationIcons,
-        )
-
         return binding.root
     }
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
+        view.post {
+            view.doOnApplyWindowInsets(::onApplyWindowInsets)
+            windowInsetsController = createWindowInsetsControllerCompat(
+                requireActivity().window,
+                binding.root,
+                isNightMode() || defaultParams.needWhiteStatusIcons,
+                isNightMode() || defaultParams.needWhiteNavigationIcons,
+            )
+        }
         setupViews(savedInstanceState)
         subscribe()
     }

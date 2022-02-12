@@ -5,6 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
+import com.usacheow.core.resource.ColorSource
 import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.ViewStateAdapter
@@ -12,6 +13,7 @@ import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.atom.DividerTileItem
 import com.usacheow.coreui.uikit.container.ViewStateHorizontalListItem
 import com.usacheow.coreui.uikit.helper.PaddingValue
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.applyBottomInset
 import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
@@ -78,15 +80,15 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
                             needAdaptWidth = true,
                             header = TextSource.Simple("Badge"),
                             value = TextSource.Simple("Non-clickable"),
-                            backgroundColorRes = CoreUiR.color.primary,
-                            textColorRes = CoreUiR.color.white,
+                            backgroundColor = ColorSource.fromAttr(ThemeColorsAttrs.primary),
+                            textColor = ColorSource.fromAttr(ThemeColorsAttrs.onPrimary),
                         ),
                         BadgeTileItem(
                             needAdaptWidth = true,
                             header = TextSource.Simple("Badge"),
                             value = TextSource.Simple("Clickable"),
-                            backgroundColorRes = CoreUiR.color.error,
-                            textColorRes = CoreUiR.color.white,
+                            backgroundColor = ColorSource.fromAttr(ThemeColorsAttrs.error),
+                            textColor = ColorSource.fromAttr(ThemeColorsAttrs.onError),
                             clickListener = {},
                         ),
                     )

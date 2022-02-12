@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
@@ -52,9 +53,11 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
 
         saveBinding(defaultParams.viewBindingProvider(layoutInflater))
         setContentView(binding.root)
-        binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
 
-        windowInsetsController = WindowCompat.getInsetsController(window, binding.root)
+        binding.root.post {
+            binding.root.doOnApplyWindowInsets(::onApplyWindowInsets)
+            windowInsetsController = ViewCompat.getWindowInsetsController(binding.root)
+        }
 
         setupViews(savedInstanceState)
         subscribe()

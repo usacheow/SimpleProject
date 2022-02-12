@@ -94,14 +94,15 @@ abstract class SimpleBottomSheetDialogFragment<VIEW_BINDING : ViewBinding> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        windowInsetsController = createWindowInsetsControllerCompat(
-            requireActivity().window,
-            binding.root,
-            isNightMode() || defaultParams.needWhiteStatusIcons,
-            isNightMode() || defaultParams.needWhiteNavigationIcons,
-        )
-
-        view.post { view.doOnApplyWindowInsets(::onApplyWindowInsets) }
+        view.post {
+            view.doOnApplyWindowInsets(::onApplyWindowInsets)
+            windowInsetsController = createWindowInsetsControllerCompat(
+                requireActivity().window,
+                binding.root,
+                isNightMode() || defaultParams.needWhiteStatusIcons,
+                isNightMode() || defaultParams.needWhiteNavigationIcons,
+            )
+        }
         setupViews(savedInstanceState)
         subscribe()
     }

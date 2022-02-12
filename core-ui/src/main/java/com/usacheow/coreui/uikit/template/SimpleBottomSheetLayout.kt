@@ -9,7 +9,8 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.uikit.helper.dimen
 import com.usacheow.coreui.uikit.helper.toPx
 import com.usacheow.coreui.R as CoreUiR
@@ -35,7 +36,7 @@ class SimpleBottomSheetLayout @JvmOverloads constructor(
     private val bottomSheetBehavior by lazy { BottomSheetBehavior.from<View>(this) }
 
     init {
-        setBackgroundColor(color(CoreUiR.color.background))
+        setBackgroundColor(colorByAttr(ThemeColorsAttrs.background))
         isClickable = true
     }
 

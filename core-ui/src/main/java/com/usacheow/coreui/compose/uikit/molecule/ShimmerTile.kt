@@ -20,7 +20,7 @@ import com.usacheow.coreui.compose.resources.AppTheme
 import com.usacheow.coreui.compose.resources.CircleShape
 import com.usacheow.coreui.compose.resources.Dimen
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 data class ShimmerTileState(
     val needLeftIcon: Boolean = true,
@@ -78,13 +78,13 @@ fun ShimmerTile(
         ) {
             if (needTopLine) {
                 ShimmerTileLine(width = 100.dp)
-                SpaceTile(height = 4.dp)
+                SpacerState(height = 4.dp).content()
             }
             if (needMiddleLine) {
                 ShimmerTileLine(width = 200.dp)
             }
             if (needBottomLine) {
-                SpaceTile(height = 4.dp)
+                SpacerState(height = 4.dp).content()
                 ShimmerTileLine(width = 150.dp)
             }
         }

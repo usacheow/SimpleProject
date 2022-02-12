@@ -18,7 +18,7 @@
         android:lines="1"
         android:padding="8dp"
         android:textAppearance="?textAppearanceTitleMedium"
-        android:textColor="?colorTextSecondary"
+        android:textColor="?colorSymbolSecondary"
         tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.button.MaterialButton

@@ -2,12 +2,15 @@ package com.usacheow.coreui.uikit.molecule
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
 import com.google.android.material.card.MaterialCardView
 import com.usacheow.core.resource.TextSource
 import com.usacheow.coreui.adapter.base.Populatable
 import com.usacheow.coreui.adapter.base.TagViewState
 import com.usacheow.coreui.databinding.ViewTagTileBinding
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.uikit.helper.doOnClick
 import com.usacheow.coreui.uikit.helper.populate
 import com.usacheow.coreui.R as CoreUiR
@@ -22,7 +25,7 @@ class TagTileView @JvmOverloads constructor(
     override fun populate(model: TagTileItem) {
         binding.nameView.populate(model.name)
         binding.nameView.setTextColor(
-            color(
+            colorByAttr(
                 when (model.isSelected) {
                     true -> model.selectedColor.text
                     false -> model.unselectedColor.text
@@ -30,7 +33,7 @@ class TagTileView @JvmOverloads constructor(
             )
         )
         setCardBackgroundColor(
-            color(
+            colorByAttr(
                 when (model.isSelected) {
                     true -> model.selectedColor.background
                     false -> model.unselectedColor.background
@@ -49,12 +52,13 @@ class TagTileView @JvmOverloads constructor(
 
 data class TagTileItem(
     val name: TextSource,
-    val unselectedColor: TagColor = TagColor(CoreUiR.color.onSecondaryContainer, CoreUiR.color.secondaryContainer),
-    val selectedColor: TagColor = TagColor(CoreUiR.color.onSecondary, CoreUiR.color.secondary),
+    val unselectedColor: Color = Color(ThemeColorsAttrs.onSecondaryContainer, ThemeColorsAttrs.secondaryContainer),
+    val selectedColor: Color = Color(ThemeColorsAttrs.onSecondary, ThemeColorsAttrs.secondary),
     val selectListener: () -> Unit,
-) : TagViewState(CoreUiR.layout.view_tag_tile)
+) : TagViewState(CoreUiR.layout.view_tag_tile) {
 
-data class TagColor(
-    val text: Int,
-    val background: Int,
-)
+    data class Color(
+        @AttrRes val text: Int,
+        @AttrRes val background: Int,
+    )
+}

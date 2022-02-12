@@ -28,7 +28,7 @@ import com.usacheow.core.resource.compose.ImageValue
 import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.core.resource.compose.TextValue
 import com.usacheow.coreui.compose.tools.get
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 private val iconSize = 36.dp
 private val lineMaxWidth = 144.dp
@@ -85,7 +85,7 @@ fun BannerTileShimmer() {
             width = lineMaxWidth,
             modifier = Modifier.padding(end = linePaddingEnd),
         )
-        SpaceTile(height = linePaddingBottom)
+        SpacerState(height = linePaddingBottom).content()
         ShimmerTileCircle(
             size = iconSize,
             modifier = Modifier.align(Alignment.End),

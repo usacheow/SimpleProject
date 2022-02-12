@@ -5,7 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
 import com.usacheow.coreui.uikit.helper.color
+import com.usacheow.coreui.uikit.helper.colorByAttr
 import com.usacheow.coreui.uikit.helper.toPx
 import kotlin.math.min
 import com.usacheow.coreui.R as CoreUiR
@@ -22,22 +24,22 @@ class PinIndicatorView @JvmOverloads constructor(
     private val defaultPaint by lazy {
         Paint().apply {
             style = Paint.Style.FILL
-            color = color(defaultColor)
+            color = defaultColor
             isAntiAlias = true
         }
     }
     private val inputtedPaint by lazy {
         Paint().apply {
             style = Paint.Style.FILL
-            color = color(selectedColor)
+            color = selectedColor
             isAntiAlias = true
         }
     }
 
     private val diameterWithMargin = DOT_MARGIN.toPx + DEFAULT_RADIUS_DP.toPx * 2
-    private val errorColor = CoreUiR.color.error
-    private val defaultColor = CoreUiR.color.black_10
-    private val selectedColor = CoreUiR.color.primary
+    private val errorColor = colorByAttr(ThemeColorsAttrs.error)
+    private val defaultColor = colorByAttr(ThemeColorsAttrs.symbolTertiary)
+    private val selectedColor = colorByAttr(ThemeColorsAttrs.primary)
 
     private var firstDotX = paddingLeft + DEFAULT_RADIUS_DP.toPx.toFloat()
     private var firstDotY = paddingTop + DEFAULT_RADIUS_DP.toPx.toFloat()
@@ -77,13 +79,13 @@ class PinIndicatorView @JvmOverloads constructor(
 
     fun indicateError() {
         inputtedCounter = 0
-        defaultPaint.color = color(errorColor)
+        defaultPaint.color = errorColor
         invalidate()
     }
 
     fun refreshPinView() {
         inputtedCounter = 0
-        defaultPaint.color = color(defaultColor)
+        defaultPaint.color = defaultColor
         invalidate()
     }
 

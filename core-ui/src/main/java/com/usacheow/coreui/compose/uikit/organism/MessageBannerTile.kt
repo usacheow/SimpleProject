@@ -25,7 +25,7 @@ import com.usacheow.coreui.compose.tools.LazySimpleWidgetStatePreview
 import com.usacheow.core.resource.compose.TextValue
 import com.usacheow.coreui.compose.tools.get
 import com.usacheow.coreui.compose.uikit.atom.SimpleButtonOutlined
-import com.usacheow.coreui.compose.uikit.atom.SpaceTile
+import com.usacheow.coreui.compose.uikit.atom.SpacerState
 
 data class MessageBannerState(
     val icon: ImageValue = ImageValue.Empty,
@@ -67,33 +67,33 @@ fun MessageBannerTile(
             val hasButton = button !is TextValue.Empty
 
             iconPainter?.let {
-                SpaceTile(height = 8.dp)
+                SpacerState(height = 8.dp).content()
                 Icon(it)
-                SpaceTile(height = 8.dp)
+                SpacerState(height = 8.dp).content()
             }
             if (hasTitle) {
                 when {
-                    hasIcon -> SpaceTile(height = 8.dp)
+                    hasIcon -> SpacerState(height = 8.dp).content()
                 }
                 Title(title)
                 when {
-                    hasIcon && !hasDescription && !hasButton -> SpaceTile(height = 8.dp)
+                    hasIcon && !hasDescription && !hasButton -> SpacerState(height = 8.dp).content()
                 }
             }
             if (hasDescription) {
                 when {
-                    hasTitle -> SpaceTile(height = 4.dp)
-                    hasIcon -> SpaceTile(height = 8.dp)
+                    hasTitle -> SpacerState(height = 4.dp).content()
+                    hasIcon -> SpacerState(height = 8.dp).content()
                 }
                 Description(description)
                 when {
-                    hasIcon && !hasButton -> SpaceTile(height = 8.dp)
+                    hasIcon && !hasButton -> SpacerState(height = 8.dp).content()
                 }
             }
             if (hasButton) {
                 when {
-                    hasTitle || hasDescription -> SpaceTile(height = 16.dp)
-                    hasIcon -> SpaceTile(height = 8.dp)
+                    hasTitle || hasDescription -> SpacerState(height = 16.dp).content()
+                    hasIcon -> SpacerState(height = 8.dp).content()
                 }
                 Button(button, clickListener)
             }
