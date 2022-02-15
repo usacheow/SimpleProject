@@ -3,15 +3,15 @@ package com.usacheow.corebilling
 import com.android.billingclient.api.Purchase
 import com.usacheow.corebilling.model.BillingEffect
 import com.usacheow.corebilling.model.Product
-import com.usacheow.coredata.database.UserDataStorage
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 
 interface PurchaseStateProvider {
 
-    val newPurchasesFlow: Flow<List<Purchase>>
+    val newPurchasesFlow: SharedFlow<List<Purchase>>
 
-    val isPayedVersionFlow: Flow<Boolean>
+    val isPayedVersionFlow: StateFlow<Boolean>
 
     suspend fun getInAppProducts(): BillingEffect<List<Product>>
     suspend fun getSubscribeProducts(): BillingEffect<List<Product>>

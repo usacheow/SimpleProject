@@ -23,21 +23,22 @@ import com.usacheow.corebilling.model.Sku
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import com.usacheow.coredata.coroutine.IoDispatcher
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
-import kotlinx.coroutines.flow.MutableStateFlow
 
 interface SimpleBilling : BillingRouter {
 
-    val isPayedVersionFlow: SharedFlow<Boolean>
+    val isPayedVersionFlow: StateFlow<Boolean>
 
     val newPurchasesFlow: SharedFlow<List<Purchase>>
 
