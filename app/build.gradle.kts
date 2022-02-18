@@ -24,6 +24,11 @@ android {
     }
 
     buildTypes {
+        applicationVariants.all {
+            outputs.withType<com.android.build.gradle.api.ApkVariantOutput> {
+                outputFileName = "${App.name}-$outputFileName"
+            }
+        }
         getByName(BuildTypes.release) {
             versionNameSuffix = BuildTypes.releaseSuffix
 
