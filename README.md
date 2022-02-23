@@ -17,7 +17,7 @@ The remaining fragments are recommended to inherit from SimpleFragment/SimpleMod
 which provides a convenient way to initialize the fragment.
 
 #### 2. Custom views and screens and resources for light/night mode
-The project contains custom elements and screen templates. 
+The project contains custom elements (and on compose too) and screen templates (Sign In, Sing Up, Pin Code, OnBoarding, Purchase...). 
 For more information, see the app_demo. It is the module which demonstrates different opportunity of this template.
 
 #### 3. Universal Lists
@@ -39,3 +39,20 @@ SimpleBilling encapsulates the interaction with the library and is responsible f
 Tracker implementation can work with one system for analytics, or with a group of systems. 
 The project has an example wrapper for FirebaseAnalytics (FirebaseTracker). 
 Access to the Tracker object is through AnalyticsTrackerHolder.
+
+#### 7. A few more tools
+AppUpdateProvider
+LocationProvider
+NetworkStateProvider
+PreferencesProvider
+FirebaseNotificationsService
+BuildInfo (contains info of current build)
+Resources containers (ColorSource, ImageSource, TextSource)
+Effect (like Result in Kotlin for results of operations)
+CacheProvider (with two implementations)
+ApiConfig (for build retrofit instances)
+apiCall(...) and cachedApiCall(...) (for network requests)
+NotificationHelper
+BiometricManagerWrapper
+Navigation extensions (in nav_ext.kt)
+and many other extensions for some routine

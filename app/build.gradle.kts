@@ -5,6 +5,7 @@ plugins {
     id("dagger-config")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    id("com.spotify.ruler")
 }
 
 android {
@@ -12,6 +13,13 @@ android {
         versionName = App.name
         versionCode = App.code
         applicationId = App.packageName
+    }
+
+    ruler {
+        abi.set("arm64-v8a")
+        locale.set("en")
+        screenDensity.set(480)
+        sdkVersion.set(27)
     }
 
     signingConfigs {

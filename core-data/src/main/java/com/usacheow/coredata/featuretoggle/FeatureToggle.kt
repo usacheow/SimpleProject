@@ -6,5 +6,5 @@ interface FeatureToggle {
 
     fun isRemoteEnabled(feature: Feature): Boolean
 
-    fun isManualEnabled(feature: Feature): Boolean?
+    fun isLocalEnabled(feature: Feature): Boolean?
 }

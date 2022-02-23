@@ -11,34 +11,34 @@ import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
-import com.usacheow.coreui.uikit.helper.color
 import com.usacheow.coreui.uikit.helper.colorByAttr
-import com.usacheow.coreui.R as CoreUiR
 
-fun Fragment.openDialer(phoneNumber: String) {
-    val intent = Intent(Intent.ACTION_DIAL).apply {
-        data = Uri.parse("tel:$phoneNumber")
-    }
-    startActivity(intent)
+fun Fragment.openDialer(phoneNumber: String): Boolean {
+    val uri = Uri.parse("tel:$phoneNumber")
+    return openIntent(uri, Intent.ACTION_DIAL)
 }
 
-fun Fragment.openStore(packageName: String) {
-    val storeUri = "market://details?id=$packageName"
-    val storeUrl = "https://play.google.com/store/apps/details?id=$packageName"
-    try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(storeUri))
-        context?.startActivity(intent)
-    } catch (e: ActivityNotFoundException) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(storeUrl))
-        context?.startActivity(intent)
+fun Fragment.openStore(packageName: String = requireActivity().packageName) {
+    val uri = Uri.parse("market://details?id=$packageName")
+    openIntent(uri) {
+        val url = Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+        openIntent(url)
     }
 }
 
-fun Fragment.openMail(mail: String, subject: String) {
-    val feedbackTheme = "mailto:$mail?subject=$subject"
-    val uri = Uri.parse(feedbackTheme)
-    val intent = Intent(Intent.ACTION_VIEW).setData(uri)
-    context?.startActivity(intent)
+fun Fragment.openMail(mail: String, subject: String): Boolean {
+    val uri = Uri.parse("mailto:$mail?subject=$subject")
+    return openIntent(uri)
+}
+
+fun Fragment.openMaps(address: String): Boolean {
+    val uri = Uri.parse("http://maps.google.com/maps?q=$address")
+    return openIntent(uri)
+}
+
+fun Fragment.openMaps(latitude: Double, longitude: Double): Boolean {
+    val uri = Uri.parse("geo:<$latitude>,<$longitude>?q=<$latitude>,<$longitude>(Вам сюда)")
+    return openIntent(uri)
 }
 
 fun Fragment.openUrl(url: String) {
@@ -53,22 +53,8 @@ fun Fragment.openUrl(url: String) {
                 .build()
         )
         .build()
-        .apply {
-            intent.putExtra(Browser.EXTRA_HEADERS, bundleOf())
-        }
+        .apply { intent.putExtra(Browser.EXTRA_HEADERS, bundleOf()) }
         .launchUrl(requireContext(), Uri.parse(url))
-}
-
-fun Fragment.openMaps(address: String) {
-    val geoUri = "http://maps.google.com/maps?q=$address"
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
-    startActivity(intent)
-}
-
-fun Fragment.openMaps(latitude: Double, longitude: Double) {
-    val uri = Uri.parse("geo:<$latitude>,<$longitude>?q=<$latitude>,<$longitude>(Вам сюда)")
-    val intent = Intent(Intent.ACTION_VIEW, uri)
-    startActivity(intent)
 }
 
 fun Fragment.openShareDialog(url: String) {
@@ -83,4 +69,14 @@ fun Fragment.openShareDialog(url: String) {
 fun Fragment.openKeyboardSettingsScreen() {
     val intent = Intent(Settings.ACTION_INPUT_METHOD_SETTINGS)
     startActivity(intent)
+}
+
+private fun Fragment.openIntent(uri: Uri, action: String = Intent.ACTION_VIEW, onError: (() -> Boolean)? = null): Boolean {
+    return try {
+        val intent = Intent(action, uri)
+        context?.startActivity(intent)
+        true
+    } catch (e: ActivityNotFoundException) {
+        onError?.invoke() ?: false
+    }
 }

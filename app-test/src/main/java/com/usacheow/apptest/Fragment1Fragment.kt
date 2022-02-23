@@ -3,7 +3,6 @@ package com.usacheow.apptest
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
-import androidx.biometric.BiometricPrompt
 import com.usacheow.apptest.databinding.Fragment1Binding
 import com.usacheow.coredata.crypto.CryptoConfigurator
 import com.usacheow.coreui.helper.biometric.BiometricData
@@ -25,7 +24,7 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
 
     @Inject lateinit var biometricDelegate: BiometricEnterManager
     private val cryptoConfig by lazy { CryptoConfigurator() }
-    var cryptoObject: BiometricPrompt.CryptoObject? = null
+
     private val secretWord = "Secret word"
     private var encoded = "nothing"
 
@@ -34,16 +33,18 @@ class Fragment1Fragment : SimpleFragment<Fragment1Binding>() {
         binding.backButton.doOnClick(router::back)
 
         binding.encodeButton.doOnClick {
-            cryptoObject = cryptoConfig.createCryptoObject()
-            encoded = cryptoConfig.encode(secretWord) ?: "encode error"
+            val cipher = CryptoConfigurator().createEncryptCipher()
+            encoded = cryptoConfig.encode(secretWord, cipher!!)
+
             Toast.makeText(requireContext(), encoded, Toast.LENGTH_SHORT).show()
         }
         binding.decodeButton.doOnClick {
-            biometricDelegate.tryShow(BiometricData(cryptoObject!!))
+            val cipher = CryptoConfigurator().createDecryptCipher()
+            biometricDelegate.tryShow(BiometricData(cipher!!))
         }
 
         biometricDelegate.onSuccessAction = {
-            val decoded = cryptoConfig.decode(encoded, it?.cipher!!) ?: "decode 1 error"
+            val decoded = CryptoConfigurator().decode(encoded, it?.cipher!!)
             Toast.makeText(requireContext(), decoded, Toast.LENGTH_SHORT).show()
         }
     }

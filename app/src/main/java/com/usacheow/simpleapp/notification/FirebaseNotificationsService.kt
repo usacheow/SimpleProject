@@ -23,7 +23,7 @@ class FirebaseNotificationsService : FirebaseMessagingService() {
         val model = NotificationHelper.Model(
             title = remoteMessage.notification?.title.orEmpty(),
             text = remoteMessage.notification?.body.orEmpty(),
-            intent = notificationIntent
+            intent = notificationIntent,
         )
 
         notificationHelper.showSimpleNotification(model)

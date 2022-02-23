@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 private const val MANUAL_TOGGLE_FORMAT = "Mft_%s"
 
-class ManualFeatureToggleStorage @Inject constructor(
+class LocalFeatureToggleStorage @Inject constructor(
     @ApplicationContext context: Context
 ) {
 

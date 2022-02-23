@@ -24,65 +24,57 @@ private const val TRANSFORMATION = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 
 class CryptoConfigurator @Inject constructor() {
 
-    private lateinit var cipher: Cipher
-    private lateinit var keyStore: KeyStore
-    private lateinit var keyPairGenerator: KeyPairGenerator
+    private var keyStore = KeyStore.getInstance(KEY_STORE).apply { load(null) }
 
     fun deleteBiometricKey() = try {
-        initKeyStore()
         keyStore.deleteEntry(KEY_FOR_BIOMETRIC)
     } catch (exception: Exception) {
         Log.d("CryptoConfigurator", "deleteBiometricKey: $exception")
     }
 
-    fun createCryptoObject(): BiometricPrompt.CryptoObject? = ifCipherInit(KEY_FOR_BIOMETRIC, Cipher.DECRYPT_MODE) {
-        BiometricPrompt.CryptoObject(cipher)
-    }
+    @Throws
+    fun createDecryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.DECRYPT_MODE)
 
-    fun encode(inputString: String): String? = ifCipherInit(KEY_FOR_BIOMETRIC, Cipher.ENCRYPT_MODE) {
-        inputString.toByteArray()
+    @Throws
+    fun createEncryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.ENCRYPT_MODE)
+
+    @Throws
+    fun encode(inputString: String, cipher: Cipher): String {
+        return inputString.toByteArray()
             .run(cipher::doFinal)
             .run { Base64.encodeToString(this, Base64.NO_WRAP) }
     }
 
-    fun decode(encodedString: String, cipher: Cipher): String? = ifCipherInit(KEY_FOR_BIOMETRIC, Cipher.DECRYPT_MODE) {
-        Base64.decode(encodedString, Base64.NO_WRAP)
+    @Throws
+    fun decode(encodedString: String, cipher: Cipher): String {
+        return Base64.decode(encodedString, Base64.NO_WRAP)
             .run(cipher::doFinal)
             .run { String(this) }
     }
 
-    private fun <T> ifCipherInit(keyTag: String, mode: Int, block: () -> T): T? {
+    @Throws
+    private fun initCipher(keyTag: String, mode: Int): Cipher? {
         try {
-            initKeyStore()
             createKeyIfNotExist(keyTag)
-            if (initCipher(mode, keyTag)) {
-                return block()
-            }
+            return initCipher(mode, keyTag)
         } catch (e: Exception) {
             Log.d("CryptoConfigurator", "initKeyStore: $e")
-            if (wasBiometricDataChanged(e)) {
+            if (e.wasBiometricDataChanged()) {
                 keyStore.deleteEntry(keyTag)
+                return null
             }
+            throw e
         }
-
-        return null
-    }
-
-    @Throws
-    private fun initKeyStore() {
-        keyStore = KeyStore.getInstance(KEY_STORE)
-            .apply { load(null) }
     }
 
     @Throws
     private fun createKeyIfNotExist(keyTag: String) {
         if (!keyStore.containsAlias(keyTag)) {
             val params = createAlgorithmParameterSpec(keyTag, isForBiometric = keyTag == KEY_FOR_BIOMETRIC)
-            keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEY_STORE)
-                .apply {
-                    initialize(params)
-                    generateKeyPair()
-                }
+            KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEY_STORE).apply {
+                initialize(params)
+                generateKeyPair()
+            }
         }
     }
 
@@ -95,16 +87,15 @@ class CryptoConfigurator @Inject constructor() {
     }
 
     @Throws
-    private fun initCipher(mode: Int, keyTag: String): Boolean = when (mode) {
+    private fun initCipher(mode: Int, keyTag: String): Cipher = when (mode) {
         Cipher.ENCRYPT_MODE -> initCipherForEncryptMode(mode, keyTag)
         Cipher.DECRYPT_MODE -> initCipherForDecryptMode(mode, keyTag)
-        else -> false
+        else -> throw IllegalArgumentException()
     }
 
     @Throws
-    private fun initCipherForEncryptMode(mode: Int, keyTag: String): Boolean {
-        cipher = Cipher.getInstance(TRANSFORMATION)
-        keyStore.load(null)
+    private fun initCipherForEncryptMode(mode: Int, keyTag: String): Cipher {
+        val cipher = Cipher.getInstance(TRANSFORMATION)
 
         // workaround for using public key
         // from https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.html
@@ -118,23 +109,15 @@ class CryptoConfigurator @Inject constructor() {
             OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA1, PSource.PSpecified.DEFAULT),
         )
 
-        return true
+        return cipher
     }
 
     @Throws
-    private fun initCipherForDecryptMode(mode: Int, keyTag: String): Boolean {
-        cipher = Cipher.getInstance(TRANSFORMATION)
-        keyStore.load(null)
-
-        cipher.init(
-            mode,
-            keyStore.getKey(keyTag, null) as PrivateKey,
-        )
-
-        return true
+    private fun initCipherForDecryptMode(mode: Int, keyTag: String): Cipher {
+        return Cipher.getInstance(TRANSFORMATION).apply {
+            init(mode, keyStore.getKey(keyTag, null) as PrivateKey)
+        }
     }
 
-    private fun wasBiometricDataChanged(
-        exception: Exception,
-    ) = exception is KeyPermanentlyInvalidatedException
+    private fun Exception.wasBiometricDataChanged() = this is KeyPermanentlyInvalidatedException
 }

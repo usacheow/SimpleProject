@@ -8,7 +8,7 @@ import com.usacheow.coredata.database.AppDatabase
 import com.usacheow.coredata.featuretoggle.EditableFeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggle
 import com.usacheow.coredata.featuretoggle.FeatureToggleImpl
-import com.usacheow.coredata.featuretoggle.ManualFeatureToggleStorage
+import com.usacheow.coredata.featuretoggle.LocalFeatureToggleStorage
 import com.usacheow.coredata.featuretoggle.RemoteFeatureToggleStorage
 import com.usacheow.coredata.location.LocationProvider
 import com.usacheow.coredata.location.LocationProviderImpl
@@ -40,8 +40,8 @@ class CoreDataModule {
     @Singleton
     fun editableFeatureToggle(
         remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
-        manualFeatureToggleStorage: ManualFeatureToggleStorage,
-    ): EditableFeatureToggle = FeatureToggleImpl(remoteFeatureToggleStorage, manualFeatureToggleStorage)
+        localFeatureToggleStorage: LocalFeatureToggleStorage,
+    ): EditableFeatureToggle = FeatureToggleImpl(remoteFeatureToggleStorage, localFeatureToggleStorage)
 
     @Provides
     @Singleton

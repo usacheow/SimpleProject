@@ -7,6 +7,7 @@ object Libs {
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.6.0"
     private const val kotlinterVersion = "3.8.0"
+    private const val rulerVersion = "1.1.0"
 
     const val composeVersion = "1.2.0-alpha03"
     private const val composeMaterialVersion = "1.0.0-alpha05"
@@ -81,6 +82,7 @@ object Libs {
         const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         const val navigation_safeArgs_gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
+        const val ruler = "com.spotify.ruler:ruler-gradle-plugin:$rulerVersion"
     }
 
     object bundle {

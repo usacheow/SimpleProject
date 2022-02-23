@@ -4,6 +4,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import javax.crypto.Cipher
 
 open class BiometricManagerWrapper(
     private val activity: FragmentActivity,
@@ -43,6 +44,7 @@ open class BiometricManagerWrapper(
     fun isBiometricAvailable(): Boolean = manager.canAuthenticate(authenticators) == BiometricManager.BIOMETRIC_SUCCESS
 }
 
-data class BiometricData(
-    val cryptoObject: BiometricPrompt.CryptoObject,
-)
+class BiometricData(cipher: Cipher) {
+
+    val cryptoObject = BiometricPrompt.CryptoObject(cipher)
+}
