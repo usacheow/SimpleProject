@@ -1,4 +1,4 @@
-package com.usacheow.coremediator
+package com.usacheow.corenavigation
 
 import com.usacheow.core.navigation.FeatureNavDirection
 

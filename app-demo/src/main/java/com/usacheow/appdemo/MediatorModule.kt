@@ -1,8 +1,8 @@
 package com.usacheow.appdemo
 
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coremediator.OtpFeatureProvider
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.OtpFeatureProvider
 import com.usacheow.featureauth.presentation.navigation.AuthorizationFeatureProviderImpl
 import com.usacheow.featureonboarding.navigation.OnBoardingFeatureProviderImpl
 import com.usacheow.featureotp.navigation.OtpFeatureProviderImpl

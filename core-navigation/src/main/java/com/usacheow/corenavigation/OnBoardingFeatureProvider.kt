@@ -1,4 +1,4 @@
-package com.usacheow.coremediator
+package com.usacheow.corenavigation
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes

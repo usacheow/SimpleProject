@@ -2,10 +2,10 @@ package com.usacheow.featureauth.presentation.navigation
 
 import android.os.Bundle
 import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coreui.navigation.WITH
-import com.usacheow.coreui.navigation.addNextScreenDirection
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.base.WITH
+import com.usacheow.corenavigation.base.addNextScreenDirection
+import com.usacheow.corenavigation.base.screen
 import javax.inject.Inject
 import com.usacheow.featureauth.R as FeatureR
 

@@ -1,7 +1,7 @@
 package com.usacheow.featuremain.presentation.navigation
 
-import com.usacheow.coremediator.MainFeatureProvider
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.MainFeatureProvider
+import com.usacheow.corenavigation.base.screen
 import javax.inject.Inject
 import com.usacheow.featuremain.R as FeatureR
 

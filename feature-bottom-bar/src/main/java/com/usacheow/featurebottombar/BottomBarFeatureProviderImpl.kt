@@ -2,9 +2,9 @@ package com.usacheow.featurebottombar
 
 import androidx.annotation.MenuRes
 import androidx.annotation.NavigationRes
-import com.usacheow.coremediator.BottomBarFeatureProvider
-import com.usacheow.coreui.navigation.WITH
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.BottomBarFeatureProvider
+import com.usacheow.corenavigation.base.WITH
+import com.usacheow.corenavigation.base.screen
 import javax.inject.Inject
 import com.usacheow.featurebottombar.R as FeatureR
 

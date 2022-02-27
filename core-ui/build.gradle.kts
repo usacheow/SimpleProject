@@ -1,6 +1,5 @@
 plugins {
     id("library-config")
-    id("navigation-config")
     id("lifecycle-config")
     id("glide-config")
     id("dagger-config")
@@ -14,6 +13,4 @@ dependencies {
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.biometric)
-    implementation(*Libs.bundle.browser)
-    implementation(*Libs.bundle.firebase)
 }

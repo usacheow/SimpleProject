@@ -2,10 +2,10 @@ package com.usacheow.featureauth.presentation.navigation
 
 import androidx.fragment.app.Fragment
 import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coremediator.OtpFeatureProvider
-import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.navigation.OPEN_IN
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.OtpFeatureProvider
+import com.usacheow.corenavigation.base.Router
+import com.usacheow.corenavigation.base.OPEN_IN
 import javax.inject.Inject
 
 class AuthorizationRouter @Inject constructor(

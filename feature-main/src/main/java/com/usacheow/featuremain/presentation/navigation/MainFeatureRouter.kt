@@ -1,10 +1,10 @@
 package com.usacheow.featuremain.presentation.navigation
 
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.navigation.OPEN_IN
-import com.usacheow.coreui.navigation.WITH
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.base.Router
+import com.usacheow.corenavigation.base.OPEN_IN
+import com.usacheow.corenavigation.base.WITH
+import com.usacheow.corenavigation.base.screen
 import com.usacheow.featuremain.presentation.fragment.BFragment
 import javax.inject.Inject
 import com.usacheow.featuremain.R as FeatureR

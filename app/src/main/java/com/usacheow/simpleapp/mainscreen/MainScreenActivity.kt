@@ -5,18 +5,18 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coremediator.BottomBarFeatureProvider
-import com.usacheow.coremediator.MainFeatureProvider
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coreui.navigation.passBackPressedTo
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.BottomBarFeatureProvider
+import com.usacheow.corenavigation.MainFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.base.findNavController
+import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.hideIme
 import com.usacheow.coreui.uikit.helper.isImeVisible
-import com.usacheow.coreui.navigation.OPEN_IN
-import com.usacheow.coreui.navigation.REPLACING
+import com.usacheow.corenavigation.base.OPEN_IN
+import com.usacheow.corenavigation.base.REPLACING
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.simpleapp.databinding.ActivityHostBinding
 import com.usacheow.simpleapp.mainscreen.MainScreenViewModel.Action
@@ -48,8 +48,6 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
             }
         }
     }
-
-    override fun findNavController() = findNavController(AppR.id.fragmentContainer)
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         isKeyboardVisible = insets.isImeVisible()

@@ -5,7 +5,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.databinding.ActivityHostBinding
-import com.usacheow.coreui.navigation.passBackPressedTo
+import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.hideIme

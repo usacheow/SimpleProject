@@ -14,7 +14,7 @@ import com.usacheow.coreui.uikit.helper.applyTopInset
 import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.molecule.ListTileItem
-import com.usacheow.coreui.navigation.addArgs
+import com.usacheow.corenavigation.base.addArgs
 import com.usacheow.coreui.uikit.helper.startFragmentTransition
 import com.usacheow.featuremain.databinding.FragmentBBinding
 import com.usacheow.featuremain.presentation.navigation.MainFeatureRouter

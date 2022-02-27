@@ -18,21 +18,6 @@ fun ColorSource.getColorInt(context: Context) = when (this) {
     is ColorSource.Attr -> context.colorByAttr(res)
 }
 
-fun Int.gradientTo(
-    direction: GradientDrawable.Orientation,
-    vararg colors: Int,
-) = GradientDrawable(direction, intArrayOf(this) + colors.toTypedArray().toIntArray())
-
-fun String.colorify(
-    coloredPartLength: Int,
-    @ColorInt color: Int,
-) = SpannableString(this).apply {
-    val colorSpan = ForegroundColorSpan(color)
-    val startIndex = this.length - coloredPartLength
-    val endIndex = this.length
-    setSpan(colorSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-}
-
 object ThemeColorsAttrs {
     val primary get() = MaterialR.attr.colorPrimary
     val onPrimary get() = MaterialR.attr.colorOnPrimary

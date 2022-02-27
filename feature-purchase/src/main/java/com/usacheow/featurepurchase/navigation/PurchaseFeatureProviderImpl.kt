@@ -1,7 +1,7 @@
 package com.usacheow.featurepurchase.navigation
 
-import com.usacheow.coremediator.PurchaseFeatureProvider
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.PurchaseFeatureProvider
+import com.usacheow.corenavigation.base.screen
 import javax.inject.Inject
 import com.example.featurepurchase.R as FeatureR
 

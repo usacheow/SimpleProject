@@ -14,6 +14,7 @@ android {
 
 dependencies {
     implementation(projects.coreUi)
+    implementation(projects.coreNavigation)
     implementation(projects.coreData)
 
     implementation(*Libs.bundle.biometric)

@@ -1,4 +1,4 @@
-package com.usacheow.coremediator
+package com.usacheow.corenavigation
 
 import androidx.annotation.MenuRes
 import androidx.annotation.NavigationRes

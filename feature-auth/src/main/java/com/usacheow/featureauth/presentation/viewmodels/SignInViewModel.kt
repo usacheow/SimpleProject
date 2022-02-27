@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coredata.network.getMessage
-import com.usacheow.coreui.navigation.requireNextScreenDirection
+import com.usacheow.corenavigation.base.requireNextScreenDirection
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy

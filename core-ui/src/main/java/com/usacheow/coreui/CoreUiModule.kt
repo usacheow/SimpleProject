@@ -1,9 +1,5 @@
 package com.usacheow.coreui
 
-import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.core.resource.ResourcesWrapperImpl
-import com.usacheow.coreui.analytics.AnalyticsTracker
-import com.usacheow.coreui.analytics.AnalyticsTrackerImpl
 import com.usacheow.coreui.helper.NotificationHelper
 import com.usacheow.coreui.helper.NotificationHelperImpl
 import dagger.Binds
@@ -17,14 +13,6 @@ import javax.inject.Singleton
 )
 @InstallIn(SingletonComponent::class)
 interface CoreUiModule {
-
-    @Binds
-    @Singleton
-    fun resources(resources: ResourcesWrapperImpl): ResourcesWrapper
-
-    @Binds
-    @Singleton
-    fun analyticsTracker(tracker: AnalyticsTrackerImpl): AnalyticsTracker
 
     @Binds
     @Singleton

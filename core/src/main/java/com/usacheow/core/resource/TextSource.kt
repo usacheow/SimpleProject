@@ -57,9 +57,3 @@ sealed class TextSource {
 }
 
 fun String.toTextSource() = TextSource.Simple(this)
-
-fun SpannedString.toTextSource() = TextSource.Spanned(this)
-
-fun Int.toTextSource() = TextSource.Res(this)
-
-fun Int.toTextSource(quantity: Int) = TextSource.Plural(this, quantity)

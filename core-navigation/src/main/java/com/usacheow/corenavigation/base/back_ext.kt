@@ -1,4 +1,4 @@
-package com.usacheow.coreui.navigation
+package com.usacheow.corenavigation.base
 
 import android.app.Activity
 import androidx.activity.OnBackPressedCallback

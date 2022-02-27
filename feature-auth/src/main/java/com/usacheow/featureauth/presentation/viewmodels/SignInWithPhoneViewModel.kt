@@ -6,7 +6,7 @@ import com.usacheow.core.resource.TextSource
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.coredata.network.getMessage
-import com.usacheow.coreui.navigation.requireNextScreenDirection
+import com.usacheow.corenavigation.base.requireNextScreenDirection
 import com.usacheow.core.isPhoneNumberValid
 import com.usacheow.core.normalizedPhoneNumber
 import com.usacheow.coreui.viewmodel.EventChannel

@@ -6,9 +6,9 @@ import com.usacheow.core.resource.ImageSource
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.resource.toImageSource
 import com.usacheow.coredata.database.SettingsStorage
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coreui.navigation.requireArgs
-import com.usacheow.coreui.navigation.requireNextScreenDirection
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.base.requireArgs
+import com.usacheow.corenavigation.base.requireNextScreenDirection
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy

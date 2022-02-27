@@ -6,4 +6,5 @@ plugins {
 
 dependencies {
     implementation(*Libs.bundle.kotlinSerialization)
+    implementation(*Libs.bundle.firebase)
 }

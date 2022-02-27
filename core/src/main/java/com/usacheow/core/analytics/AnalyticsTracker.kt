@@ -1,4 +1,4 @@
-package com.usacheow.coreui.analytics
+package com.usacheow.core.analytics
 
 import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics

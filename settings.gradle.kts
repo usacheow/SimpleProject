@@ -18,7 +18,7 @@ include(
     ":core",
     ":core-data",
     ":core-ui",
-    ":core-mediator",
+    ":core-navigation",
     ":core-unit-test",
 
     ":base-billing",

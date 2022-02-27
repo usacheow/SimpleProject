@@ -8,7 +8,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
 import com.usacheow.core.resource.TextSource
 import com.usacheow.core.resource.toTextSource
-import com.usacheow.coremediator.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.coreui.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.PaddingValue

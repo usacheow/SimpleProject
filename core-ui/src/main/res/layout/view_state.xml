@@ -4,12 +4,7 @@
     android:layout_height="match_parent">
 
     <com.usacheow.coreui.uikit.organism.MessageBannerView
-        android:id="@+id/errorMessageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.usacheow.coreui.uikit.organism.MessageBannerView
-        android:id="@+id/emptyMessageView"
+        android:id="@+id/messageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

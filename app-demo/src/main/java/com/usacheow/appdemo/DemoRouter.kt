@@ -3,12 +3,12 @@ package com.usacheow.appdemo
 import androidx.fragment.app.Fragment
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coremediator.OtpFeatureProvider
-import com.usacheow.coreui.navigation.Router
-import com.usacheow.coreui.navigation.OPEN_IN
-import com.usacheow.coreui.navigation.openIn
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.OtpFeatureProvider
+import com.usacheow.corenavigation.base.Router
+import com.usacheow.corenavigation.base.OPEN_IN
+import com.usacheow.corenavigation.base.openIn
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
 

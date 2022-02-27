@@ -1,11 +1,11 @@
 package com.usacheow.simpleapp
 
-import com.usacheow.coremediator.AuthorizationFeatureProvider
-import com.usacheow.coremediator.BottomBarFeatureProvider
-import com.usacheow.coremediator.MainFeatureProvider
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coremediator.OtpFeatureProvider
-import com.usacheow.coremediator.PurchaseFeatureProvider
+import com.usacheow.corenavigation.AuthorizationFeatureProvider
+import com.usacheow.corenavigation.BottomBarFeatureProvider
+import com.usacheow.corenavigation.MainFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.OtpFeatureProvider
+import com.usacheow.corenavigation.PurchaseFeatureProvider
 import com.usacheow.featureauth.presentation.navigation.AuthorizationFeatureProviderImpl
 import com.usacheow.featurebottombar.BottomBarFeatureProviderImpl
 import com.usacheow.featuremain.presentation.navigation.MainFeatureProviderImpl

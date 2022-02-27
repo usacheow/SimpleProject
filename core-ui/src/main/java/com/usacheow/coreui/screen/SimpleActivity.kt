@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.NavController
 import androidx.viewbinding.ViewBinding
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
-import com.usacheow.coreui.analytics.Events
+import com.usacheow.core.analytics.AnalyticsTrackerHolder
+import com.usacheow.core.analytics.Events
 import com.usacheow.coreui.screen.base.ActivityViewBindingHolder
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.SimpleLifecycle
@@ -31,8 +29,6 @@ abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :
     protected var windowInsetsController: WindowInsetsControllerCompat? = null
 
     protected open fun initSplashScreen() {}
-
-    open fun findNavController(): NavController? = null
 
     @CallSuper
     override fun onStart() {

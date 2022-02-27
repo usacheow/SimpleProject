@@ -2,11 +2,11 @@ package com.usacheow.featureonboarding.navigation
 
 import android.os.Bundle
 import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.coremediator.OnBoardingFeatureProvider
-import com.usacheow.coreui.navigation.WITH
-import com.usacheow.coreui.navigation.addArgs
-import com.usacheow.coreui.navigation.addNextScreenDirection
-import com.usacheow.coreui.navigation.screen
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.base.WITH
+import com.usacheow.corenavigation.base.addArgs
+import com.usacheow.corenavigation.base.addNextScreenDirection
+import com.usacheow.corenavigation.base.screen
 import javax.inject.Inject
 import com.usacheow.featureonboarding.R as FeatureR
 

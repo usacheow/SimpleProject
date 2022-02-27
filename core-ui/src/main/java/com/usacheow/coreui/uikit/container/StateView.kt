@@ -16,30 +16,26 @@ class StateView @JvmOverloads constructor(
     private val binding by lazy { ViewStateBinding.bind(this) }
 
     fun setHiddenState() = with(binding) {
-        errorMessageView.makeGone()
-        emptyMessageView.makeGone()
+        messageView.makeGone()
         loaderView.makeGone()
     }
 
     fun setLoadState() = with(binding) {
-        errorMessageView.makeGone()
-        emptyMessageView.makeGone()
+        messageView.makeGone()
         loaderView.makeVisible()
     }
 
     fun setErrorState(message: MessageBannerItem) = with(binding) {
-        errorMessageView.populate(message)
+        messageView.populate(message)
 
-        errorMessageView.makeVisible()
-        emptyMessageView.makeGone()
+        messageView.makeVisible()
         loaderView.makeGone()
     }
 
     fun setEmptyState(message: MessageBannerItem) = with(binding) {
-        emptyMessageView.populate(message)
+        messageView.populate(message)
 
-        errorMessageView.makeGone()
-        emptyMessageView.makeVisible()
+        messageView.makeVisible()
         loaderView.makeGone()
     }
 }

@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.resource.ResourcesWrapper
 import com.usacheow.core.resource.toTextSource
 import com.usacheow.coredata.database.SettingsStorage
-import com.usacheow.coremediator.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy

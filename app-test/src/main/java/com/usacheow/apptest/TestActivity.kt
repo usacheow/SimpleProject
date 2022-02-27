@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.apptest.databinding.ActivityHostBinding
-import com.usacheow.coreui.navigation.passBackPressedTo
+import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
 import com.usacheow.coreui.uikit.helper.PaddingValue
 import com.usacheow.coreui.uikit.helper.hideIme

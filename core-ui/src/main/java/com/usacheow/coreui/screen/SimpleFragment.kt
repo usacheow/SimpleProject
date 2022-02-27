@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.usacheow.core.resource.ResourcesWrapper
-import com.usacheow.coreui.analytics.AnalyticsTrackerHolder
-import com.usacheow.coreui.analytics.Events
+import com.usacheow.core.analytics.AnalyticsTrackerHolder
+import com.usacheow.core.analytics.Events
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.FragmentViewBindingHolder
 import com.usacheow.coreui.screen.base.SimpleLifecycle

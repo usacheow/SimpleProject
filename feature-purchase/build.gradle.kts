@@ -8,7 +8,7 @@ plugins {
 dependencies {
     implementation(projects.coreData)
     implementation(projects.coreUi)
-    implementation(projects.coreMediator)
+    implementation(projects.coreNavigation)
 
     implementation(projects.baseBilling)
 

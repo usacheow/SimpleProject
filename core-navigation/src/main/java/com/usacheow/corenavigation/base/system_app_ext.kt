@@ -1,4 +1,4 @@
-package com.usacheow.coreui.navigation
+package com.usacheow.corenavigation.base
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -10,8 +10,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
-import com.usacheow.coreui.uikit.helper.colorByAttr
 
 fun Fragment.openDialer(phoneNumber: String): Boolean {
     val uri = Uri.parse("tel:$phoneNumber")
@@ -44,26 +42,17 @@ fun Fragment.openMaps(latitude: Double, longitude: Double): Boolean {
 fun Fragment.openUrl(url: String) {
     CustomTabsIntent.Builder()
         .setShowTitle(true)
-        .setDefaultColorSchemeParams(
-            CustomTabColorSchemeParams.Builder()
-                .setToolbarColor(colorByAttr(ThemeColorsAttrs.surface))
-                .setSecondaryToolbarColor(colorByAttr(ThemeColorsAttrs.surfaceVariant))
-                .setNavigationBarColor(colorByAttr(ThemeColorsAttrs.surface))
-                .setNavigationBarDividerColor(colorByAttr(ThemeColorsAttrs.outline))
-                .build()
-        )
+        .setDefaultColorSchemeParams(CustomTabColorSchemeParams.Builder().build())
         .build()
         .apply { intent.putExtra(Browser.EXTRA_HEADERS, bundleOf()) }
         .launchUrl(requireContext(), Uri.parse(url))
 }
 
 fun Fragment.openShareDialog(url: String) {
-    activity?.let {
-        ShareCompat.IntentBuilder(it)
-            .setText(url)
-            .setType("text/plain")
-            .startChooser()
-    }
+    ShareCompat.IntentBuilder(requireActivity())
+        .setText(url)
+        .setType("text/plain")
+        .startChooser()
 }
 
 fun Fragment.openKeyboardSettingsScreen() {
@@ -71,7 +60,11 @@ fun Fragment.openKeyboardSettingsScreen() {
     startActivity(intent)
 }
 
-private fun Fragment.openIntent(uri: Uri, action: String = Intent.ACTION_VIEW, onError: (() -> Boolean)? = null): Boolean {
+private fun Fragment.openIntent(
+    uri: Uri,
+    action: String = Intent.ACTION_VIEW,
+    onError: (() -> Boolean)? = null,
+): Boolean {
     return try {
         val intent = Intent(action, uri)
         context?.startActivity(intent)

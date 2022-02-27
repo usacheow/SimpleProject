@@ -7,10 +7,7 @@ import java.text.NumberFormat
 
 private const val SUM_FORMAT = "%s %s"
 
-fun formatAmount(value: Double, currencySymbol: String) = SUM_FORMAT.format(
-    value.formatDigits(),
-    currencySymbol,
-)
+fun formatAmount(value: Double, currencySymbol: String) = SUM_FORMAT.format(value.formatDigits(), currencySymbol)
 
 fun Double.formatDigits() = try {
     NumberFormat.getNumberInstance(RU_LOCALE).format(this.round())
@@ -23,16 +20,4 @@ fun Double.round(places: Int = 2): Double {
     return BigDecimal.valueOf(this)
         .setScale(places, RoundingMode.HALF_UP)
         .toDouble()
-}
-
-fun Double?.compareWith(other: Double) = when (this?.compareTo(other)) {
-    1 -> CompareResult.MORE
-    -1 -> CompareResult.LESS
-    else -> CompareResult.EQUAL
-}
-
-enum class CompareResult {
-    MORE,
-    EQUAL,
-    LESS,
 }

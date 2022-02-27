@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.coredata.database.UserDataStorage
-import com.usacheow.coreui.navigation.requireNextScreenDirection
+import com.usacheow.corenavigation.base.requireNextScreenDirection
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleAction
 import com.usacheow.coreui.viewmodel.SimpleViewModel
