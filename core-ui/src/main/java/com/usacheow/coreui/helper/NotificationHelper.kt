@@ -14,26 +14,25 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import com.usacheow.coreui.R as CoreUiR
 
-private const val APP_PACKAGE = "com.usacheow.simpleapp"
-private const val APP_INFO_CHANNEL_ID = "$APP_PACKAGE.APP_INFO_CHANNEL"
-
-private const val SIMPLE_NOTIFICATION_ID = 221
-
 interface NotificationHelper {
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    fun startNotificationsSettingsScreen()
 
     fun showSimpleNotification(model: Model)
 
     data class Model(
+        val id: Int = 1,
+        val channelId: Channels = Channels.Default,
         val title: String? = null,
-        val channelId: String = APP_INFO_CHANNEL_ID,
         val smallIcon: Int = CoreUiR.drawable.ic_user,
         val largeIcon: Int = CoreUiR.mipmap.ic_launcher,
         val text: String? = null,
-        val intent: Intent
+        val intent: Intent,
     )
+
+    enum class Channels(val channelName: String, val channelDescription: String) {
+        Default("Default", "Default channel");
+
+        fun getId(context: Context) = "${context.packageName}_$name"
+    }
 }
 
 class NotificationHelperImpl @Inject constructor(
@@ -44,44 +43,33 @@ class NotificationHelperImpl @Inject constructor(
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val appInfoChannel = NotificationChannel(
-                APP_INFO_CHANNEL_ID,
-                "Channel Name",
-                NotificationManager.IMPORTANCE_DEFAULT
-            ).apply {
-                description = "Channel description"
-                setShowBadge(true)
+            val channels = NotificationHelper.Channels.values().map {
+                NotificationChannel(it.getId(context), it.channelName, NotificationManager.IMPORTANCE_DEFAULT).apply {
+                    description = it.channelDescription
+                }
             }
 
-            notificationManager.createNotificationChannels(listOf(appInfoChannel))
+            notificationManager.createNotificationChannels(channels)
         }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    override fun startNotificationsSettingsScreen() {
-        val citiesChannelIntent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
-            putExtra(Settings.EXTRA_CHANNEL_ID, APP_INFO_CHANNEL_ID)
-            putExtra(Settings.EXTRA_APP_PACKAGE, APP_PACKAGE)
-        }
-        context.startActivity(citiesChannelIntent)
     }
 
     override fun showSimpleNotification(model: NotificationHelper.Model) {
-        val notification = createNotification(model).build()
-        notificationManager.notify(SIMPLE_NOTIFICATION_ID, notification)
+        notificationManager.notify(
+            model.id,
+            model.toNotificationBuilder().build(),
+        )
     }
 
-    private fun createNotification(model: NotificationHelper.Model) = with(model) {
+    private fun NotificationHelper.Model.toNotificationBuilder(): NotificationCompat.Builder {
+        val style = NotificationCompat.BigTextStyle().bigText(text)
         val pendingIntent = PendingIntent.getActivity(
             context,
-            SIMPLE_NOTIFICATION_ID,
-            model.intent,
+            id,
+            intent,
             PendingIntent.FLAG_IMMUTABLE,
         )
 
-        val style = NotificationCompat.BigTextStyle()
-            .bigText(model.text)
-        NotificationCompat.Builder(context, channelId)
+        return NotificationCompat.Builder(context, channelId.getId(context))
             .setStyle(style)
             .setSmallIcon(smallIcon)
             .setLargeIcon(resources.getBitmap(largeIcon))
