@@ -184,31 +184,25 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("page"),
-                    value = TextSource.Simple("1. SMS Code Fragment"),
-                    clickListener = { router.toSmsCodeFlow(codeLength = 2) },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("page"),
-                    value = TextSource.Simple("2. Sign Up Fragment"),
+                    value = TextSource.Simple("1. Sign Up Fragment"),
                     clickListener = { router.toSignUpFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("page"),
-                    value = TextSource.Simple("3. Sign In Fragment"),
+                    value = TextSource.Simple("2. Sign In Fragment"),
                     clickListener = { router.toSignInFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("page"),
-                    value = TextSource.Simple("4. Sign In With Phone Fragment"),
+                    value = TextSource.Simple("3. Sign In With Phone Fragment"),
                     clickListener = { router.toSignInWithPhoneFlow() },
                 ),
                 BadgeTileItem(
                     needAdaptWidth = false,
                     header = TextSource.Simple("page"),
-                    value = TextSource.Simple("5. Pin Code Fragment"),
+                    value = TextSource.Simple("4. Pin Code Fragment"),
                     clickListener = { router.toPinCodeFlow() },
                 ),
             )

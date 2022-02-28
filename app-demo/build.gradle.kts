@@ -20,7 +20,6 @@ dependencies {
 
     implementation(projects.featureAuth)
     implementation(projects.featureOnboarding)
-    implementation(projects.featureOtp)
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.paging)

@@ -23,17 +23,12 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val CONFIRM_CODE_LENGTH = 4
-
 @HiltViewModel
 class SignInWithPhoneViewModel @Inject constructor(
     private val interactor: AuthInteractor,
     private val resources: ResourcesWrapper,
     private val savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
-
-    private val _codeConfirmMessageState = MutableStateFlow<TextSource?>(null)
-    val codeConfirmMessageState = _codeConfirmMessageState.asStateFlow()
 
     private val _isSubmitButtonEnabledState = MutableStateFlow(false)
     val isSubmitButtonEnabledState = _isSubmitButtonEnabledState.asStateFlow()
@@ -44,17 +39,11 @@ class SignInWithPhoneViewModel @Inject constructor(
     private val _errorState = MutableStateFlow<String?>(null)
     val errorState = _errorState.asStateFlow()
 
-    private val _closeSmsCodeScreenAction = EventChannel<SimpleAction>()
-    val closeSmsCodeScreenAction = _closeSmsCodeScreenAction.receiveAsFlow()
-
     private val _openNextScreenAction = EventChannel<FeatureNavDirection>()
     val openNextScreenAction = _openNextScreenAction.receiveAsFlow()
 
     private val _openSignUpScreenAction = EventChannel<FeatureNavDirection>()
     val openSignUpScreenAction = _openSignUpScreenAction.receiveAsFlow()
-
-    private val _openConfirmScreenAction = EventChannel<Int>()
-    val openConfirmScreenAction = _openConfirmScreenAction.receiveAsFlow()
 
     private val nextScreenDirection by lazy { savedStateHandle.requireNextScreenDirection() }
 
@@ -81,7 +70,7 @@ class SignInWithPhoneViewModel @Inject constructor(
         _isLoadingState tryPublish true
 
         interactor.signInWithPhone(phone).doOnSuccess {
-            _openConfirmScreenAction triggerBy CONFIRM_CODE_LENGTH
+            _openNextScreenAction triggerBy nextScreenDirection
         }.doOnError { exception, _ ->
             _errorState tryPublish exception.getMessage(resources)
         }
@@ -91,22 +80,5 @@ class SignInWithPhoneViewModel @Inject constructor(
 
     fun onSignUpClicked() = viewModelScope.launch {
         _openSignUpScreenAction triggerBy nextScreenDirection
-    }
-
-    fun onCodeInputted(code: String) = viewModelScope.launch {
-        if (code.isEmpty()) {
-            return@launch
-        }
-
-        interactor.verifyPhone(phoneNumber, code).doOnSuccess {
-            _closeSmsCodeScreenAction.trigger()
-            _openNextScreenAction triggerBy nextScreenDirection
-        }.doOnError { _, _ ->
-            _codeConfirmMessageState tryPublish TextSource.Simple("Неверный код")
-        }
-    }
-
-    fun onResendClicked() = viewModelScope.launch {
-        interactor.resendCode(phoneNumber)
     }
 }

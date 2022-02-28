@@ -5,7 +5,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.usacheow.baseotp.OtpFeatureConnector
+import com.usacheow.core.resource.toTextSource
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreui.uikit.helper.MarginValues
 import com.usacheow.coreui.uikit.helper.PaddingValue
@@ -17,6 +17,7 @@ import com.usacheow.coreui.uikit.helper.getBottomInset
 import com.usacheow.coreui.uikit.helper.getTopInset
 import com.usacheow.coreui.uikit.helper.hideIme
 import com.usacheow.coreui.uikit.helper.isImeVisible
+import com.usacheow.coreui.uikit.helper.makeSnackbar
 import com.usacheow.coreui.uikit.helper.toPx
 import com.usacheow.coreui.uikit.helper.updateMargins
 import com.usacheow.coreui.viewmodel.observe
@@ -37,7 +38,6 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
 
     @Inject lateinit var router: AuthorizationRouter
     private val viewModel by viewModels<SignInWithPhoneViewModel>()
-    private val otpStateViewModel by viewModels<OtpFeatureConnector>({ requireParentFragment() })
 
     override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
         val topMargin = when (insets.isImeVisible()) {
@@ -55,7 +55,7 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.phoneInput.addPhoneNumberFormatter(
             viewModel::onPhoneChanged,
-            viewModel::onPhoneChanged
+            viewModel::onPhoneChanged,
         )
         binding.phoneInput.doOnActionClick(EditorInfo.IME_ACTION_DONE) {
             binding.phoneInput.clearFocus()
@@ -73,20 +73,9 @@ class SignInWithPhoneFragment : SimpleFragment<FragmentSignInWithPhoneBinding>()
 
     override fun subscribe() {
         viewModel.isLoadingState.observe(viewLifecycleOwner) { binding.loaderView.isVisible = it }
-        viewModel.errorState.observe(viewLifecycleOwner) {
-            // todo: implement
-        }
+        viewModel.errorState.observe(viewLifecycleOwner) { it?.toTextSource()?.let(requireView()::makeSnackbar) }
         viewModel.isSubmitButtonEnabledState.observe(viewLifecycleOwner) { binding.signInButton.isEnabled = it }
-        viewModel.openConfirmScreenAction.observe(viewLifecycleOwner, router::toSmsCodeFlow)
         viewModel.openSignUpScreenAction.observe(viewLifecycleOwner, router::toSignUpFlow)
         viewModel.openNextScreenAction.observe(viewLifecycleOwner, router::apply)
-        viewModel.closeSmsCodeScreenAction.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutSuccess() }
-        viewModel.codeConfirmMessageState.observe(viewLifecycleOwner) { otpStateViewModel.notifyAboutError(it) }
-        otpStateViewModel.featureEvent.observe(viewLifecycleOwner) {
-            when (it) {
-                is OtpFeatureConnector.Event.CodeInputted -> viewModel.onCodeInputted(it.code)
-                is OtpFeatureConnector.Event.CodeRequested -> viewModel.onResendClicked()
-            }
-        }
     }
 }

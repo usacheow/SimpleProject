@@ -22,12 +22,10 @@ include(
     ":core-unit-test",
 
     ":base-billing",
-    ":base-otp",
 
     ":feature-bottom-bar",
     ":feature-auth",
     ":feature-main",
     ":feature-onboarding",
     ":feature-purchase",
-    ":feature-otp",
 )

@@ -7,8 +7,6 @@
     <include
         app:graph="@navigation/main_nav_graph"/>
     <include
-        app:graph="@navigation/sms_code_nav_graph"/>
-    <include
         app:graph="@navigation/on_boarding_nav_graph"/>
     <include
         app:graph="@navigation/sign_in_nav_graph"/>

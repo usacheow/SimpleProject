@@ -12,6 +12,4 @@
         app:graph="@navigation/sign_in_with_phone_nav_graph"/>
     <include
         app:graph="@navigation/pin_code_nav_graph"/>
-    <include
-        app:graph="@navigation/sms_code_nav_graph"/>
 </navigation>

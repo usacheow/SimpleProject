@@ -5,9 +5,8 @@ import com.usacheow.core.navigation.FeatureNavDirection
 import com.usacheow.core.navigation.ResetTo
 import com.usacheow.corenavigation.AuthorizationFeatureProvider
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
-import com.usacheow.corenavigation.OtpFeatureProvider
-import com.usacheow.corenavigation.base.Router
 import com.usacheow.corenavigation.base.OPEN_IN
+import com.usacheow.corenavigation.base.Router
 import com.usacheow.corenavigation.base.openIn
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
@@ -16,7 +15,6 @@ class DemoRouter @Inject constructor(
     fragment: Fragment,
     private val authorizationFeatureProvider: AuthorizationFeatureProvider,
     private val onBoardingFeatureProvider: OnBoardingFeatureProvider,
-    private val otpFeatureProvider: OtpFeatureProvider,
 ) : Router(fragment) {
 
     fun fromDemoToTypographyScreen() {
@@ -105,9 +103,5 @@ class DemoRouter @Inject constructor(
             resetTo = ResetTo(DemoAppR.id.demo_app_nav_graph),
         )
         authorizationFeatureProvider.getPinCodeFlowDirection(nextDirection) OPEN_IN navController
-    }
-
-    fun toSmsCodeFlow(codeLength: Int) {
-        otpFeatureProvider.getOtpFlowDirection(OtpFeatureProvider.OtpArgs(codeLength)) OPEN_IN navController
     }
 }

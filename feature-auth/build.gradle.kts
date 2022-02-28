@@ -10,8 +10,6 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(projects.baseOtp)
-
     implementation(*Libs.bundle.biometric)
 
     testImplementation(projects.coreUnitTest)
