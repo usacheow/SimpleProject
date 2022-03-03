@@ -12,9 +12,9 @@ import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.corenavigation.base.findNavController
 import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.hideIme
-import com.usacheow.coreui.uikit.helper.isImeVisible
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.hideIme
+import com.usacheow.coreuiview.helper.isImeVisible
 import com.usacheow.corenavigation.base.OPEN_IN
 import com.usacheow.corenavigation.base.REPLACING
 import com.usacheow.coreui.viewmodel.observe

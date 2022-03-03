@@ -62,7 +62,7 @@ abstract class CommonConfigPlugin : BaseConfigPlugin() {
 
         implementation(*Libs.bundle.kotlin)
         implementation(*Libs.bundle.coroutines)
-        implementation(*Libs.bundle.uiComposeCompiler)
-        implementation(*Libs.bundle.uiComposeRuntime)
+        implementation(*Libs.bundle.composeCompiler)
+        implementation(*Libs.bundle.composeRuntime)
     }
 }

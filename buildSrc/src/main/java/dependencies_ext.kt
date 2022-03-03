@@ -35,3 +35,18 @@ fun DependencyHandler.coreLibraryDesugaring(vararg list: String) {
         add("coreLibraryDesugaring", dependency)
     }
 }
+
+fun DependencyHandler.room() {
+    implementation(*Libs.bundle.room)
+    kapt(Libs.bundle.roomKapt)
+}
+
+fun DependencyHandler.lifecycle() {
+    implementation(*Libs.bundle.lifecycle)
+    kapt(Libs.bundle.lifecycleKapt)
+}
+
+fun DependencyHandler.glide() {
+    implementation(*Libs.bundle.glide)
+    kapt(Libs.bundle.glideKapt)
+}

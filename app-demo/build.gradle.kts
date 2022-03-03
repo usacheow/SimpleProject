@@ -1,7 +1,6 @@
 plugins {
     id("app-config")
     id("navigation-config")
-    id("lifecycle-config")
     id("dagger-config")
 }
 
@@ -14,6 +13,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.coreCommon)
     implementation(projects.coreData)
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
@@ -21,6 +21,7 @@ dependencies {
     implementation(projects.featureAuth)
     implementation(projects.featureOnboarding)
 
+    lifecycle()
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.paging)
     implementation(*Libs.bundle.biometric)

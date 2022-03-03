@@ -9,23 +9,27 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SimpleProject"
-include(
-    ":app",
-    ":app-demo",
-    ":app-test",
+val rootProjectPathLength = rootDir.absolutePath.length
+val excludedProjects = listOf(File(rootDir, "buildSrc"))
 
-    ":core",
-    ":core-data",
-    ":core-ui",
-    ":core-navigation",
-    ":core-unit-test",
+rootDir.findAllPotentialModuleDirs()
+    .filter { it.list()!!.any { child -> child.startsWith("build.gradle") } }
+    .filterNot { it in excludedProjects }
+    .forEach { moduleDir ->
 
-    ":base-billing",
+        val moduleName = moduleDir.absolutePath
+            .substring(rootProjectPathLength)
+            .replace(File.separator, "-")
+            .replaceFirst('-', ':')
 
-    ":feature-bottom-bar",
-    ":feature-auth",
-    ":feature-main",
-    ":feature-onboarding",
-    ":feature-purchase",
-)
+        include(moduleName)
+        project(moduleName).projectDir = moduleDir
+    }
+
+fun File.findAllPotentialModuleDirs(): Sequence<File> = listFiles()!!.asSequence()
+    .filter { it.isDirectory }
+    .filterNot { it.isHidden }
+    .filterNot { it.name.startsWith('.') }
+    .filterNot { it.name == "build" }
+    .filterNot { it.name == "src" }
+    .flatMap { sequenceOf(it) + it.findAllPotentialModuleDirs() }

@@ -1,8 +1,8 @@
 package com.usacheow.appdemo
 
 import androidx.fragment.app.Fragment
-import com.usacheow.core.navigation.FeatureNavDirection
-import com.usacheow.core.navigation.ResetTo
+import com.usacheow.corecommon.navigation.FeatureNavDirection
+import com.usacheow.corecommon.navigation.ResetTo
 import com.usacheow.corenavigation.AuthorizationFeatureProvider
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.corenavigation.base.OPEN_IN

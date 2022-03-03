@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreuiview.molecule.TagTileView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    style="?attr/materialCardViewFilledStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    tools:cardBackgroundColor="?colorSurface">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/nameView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackgroundBorderless"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
+        android:maxWidth="156dp"
+        android:minWidth="112dp"
+        android:padding="20dp"
+        android:textAppearance="?textAppearanceBodyMedium"
+        tools:text="@tools:sample/lorem" />
+</com.usacheow.coreuiview.molecule.TagTileView>

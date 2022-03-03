@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.usacheow.appdemo.databinding.FragmentDemoBinding
-import com.usacheow.core.resource.TextSource
-import com.usacheow.core.resource.toTextSource
+import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.resource.toTextSource
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
-import com.usacheow.coreui.adapter.ViewStateAdapter
+import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.helper.toPx
-import com.usacheow.coreui.uikit.molecule.BadgeTileItem
-import com.usacheow.coreui.uikit.molecule.HeaderTileItem
-import com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.helper.toPx
+import com.usacheow.coreuiview.molecule.BadgeTileItem
+import com.usacheow.coreuiview.molecule.HeaderTileItem
+import com.usacheow.coreuiview.template.SimpleBottomSheetLayout
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.core.R as CoreR
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.corecommon.R as CoreR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 private const val CAN_SWIPE_LIST_TO_HIDE = true
 
@@ -40,17 +40,17 @@ class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
         OnBoardingFeatureProvider.OnBoardingArgs(
             mutableListOf(
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
                     title = res.getString(CoreR.string.on_boarding_title_1).toTextSource(),
                     description = res.getString(CoreR.string.on_boarding_description_1).toTextSource()
                 ),
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
                     title = res.getString(CoreR.string.on_boarding_title_2).toTextSource(),
                     description = res.getString(CoreR.string.on_boarding_description_2).toTextSource()
                 ),
                 OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiR.drawable.ic_user,
+                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
                     title = res.getString(CoreR.string.on_boarding_title_3).toTextSource(),
                     description = res.getString(CoreR.string.on_boarding_description_3).toTextSource()
                 )

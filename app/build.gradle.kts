@@ -1,7 +1,6 @@
 plugins {
     id("app-config")
     id("navigation-config")
-    id("lifecycle-config")
     id("dagger-config")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
@@ -53,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.coreCommon)
     implementation(projects.coreData)
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
@@ -69,4 +69,5 @@ dependencies {
     implementation(*Libs.bundle.appUpdater)
     implementation(*Libs.bundle.firebase)
     implementation(*Libs.bundle.biometric)
+    lifecycle()
 }

@@ -5,19 +5,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
-import com.usacheow.core.resource.TextSource
-import com.usacheow.coreui.adapter.MultipleSelectionViewStatesAdapter
-import com.usacheow.coreui.adapter.SingleSelectionViewStatesAdapter
+import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.coreuiview.adapter.MultipleSelectionViewStatesAdapter
+import com.usacheow.coreuiview.adapter.SingleSelectionViewStatesAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.molecule.TagTileItem
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.molecule.TagTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
@@ -35,7 +35,7 @@ class TagListFragment : SimpleFragment<FragmentTagListBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
         binding.radioListView.isNestedScrollingEnabled = false
         binding.radioListView.layoutManager = GridLayoutManager(context, 2)

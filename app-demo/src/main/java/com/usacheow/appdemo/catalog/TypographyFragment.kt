@@ -11,22 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.appdemo.databinding.ViewTextItemBinding
-import com.usacheow.core.resource.TextSource
-import com.usacheow.coreui.adapter.ViewStateAdapter
-import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewState
+import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.coreuiview.adapter.ViewStateAdapter
+import com.usacheow.coreuiview.adapter.base.Populatable
+import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.molecule.SubtitleTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.math.roundToInt
 import com.usacheow.appdemo.R as AppDemoR
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class TypographyFragment : SimpleFragment<FragmentListBinding>() {
@@ -46,31 +46,31 @@ class TypographyFragment : SimpleFragment<FragmentListBinding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.title = "Typography"
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewStateAdapter(
             listOf(
                 SubtitleTileItem(TextSource.Simple("Display"), actionText = TextSource.Simple("Size")),
-                TextItem(CoreUiR.style.Simple_Text_Display_L),
-                TextItem(CoreUiR.style.Simple_Text_Display_M),
-                TextItem(CoreUiR.style.Simple_Text_Display_S),
+                TextItem(CoreUiThemeR.style.Simple_Text_Display_L),
+                TextItem(CoreUiThemeR.style.Simple_Text_Display_M),
+                TextItem(CoreUiThemeR.style.Simple_Text_Display_S),
                 SubtitleTileItem(TextSource.Simple("Headline")),
-                TextItem(CoreUiR.style.Simple_Text_Headline_L),
-                TextItem(CoreUiR.style.Simple_Text_Headline_M),
-                TextItem(CoreUiR.style.Simple_Text_Headline_S),
+                TextItem(CoreUiThemeR.style.Simple_Text_Headline_L),
+                TextItem(CoreUiThemeR.style.Simple_Text_Headline_M),
+                TextItem(CoreUiThemeR.style.Simple_Text_Headline_S),
                 SubtitleTileItem(TextSource.Simple("Title")),
-                TextItem(CoreUiR.style.Simple_Text_Title_L),
-                TextItem(CoreUiR.style.Simple_Text_Title_M),
-                TextItem(CoreUiR.style.Simple_Text_Title_S),
+                TextItem(CoreUiThemeR.style.Simple_Text_Title_L),
+                TextItem(CoreUiThemeR.style.Simple_Text_Title_M),
+                TextItem(CoreUiThemeR.style.Simple_Text_Title_S),
                 SubtitleTileItem(TextSource.Simple("Body")),
-                TextItem(CoreUiR.style.Simple_Text_Body_L),
-                TextItem(CoreUiR.style.Simple_Text_Body_M),
-                TextItem(CoreUiR.style.Simple_Text_Body_S),
+                TextItem(CoreUiThemeR.style.Simple_Text_Body_L),
+                TextItem(CoreUiThemeR.style.Simple_Text_Body_M),
+                TextItem(CoreUiThemeR.style.Simple_Text_Body_S),
                 SubtitleTileItem(TextSource.Simple("Label")),
-                TextItem(CoreUiR.style.Simple_Text_Label_L),
-                TextItem(CoreUiR.style.Simple_Text_Label_M),
-                TextItem(CoreUiR.style.Simple_Text_Label_S),
+                TextItem(CoreUiThemeR.style.Simple_Text_Label_L),
+                TextItem(CoreUiThemeR.style.Simple_Text_Label_M),
+                TextItem(CoreUiThemeR.style.Simple_Text_Label_S),
             )
         )
     }

@@ -5,28 +5,28 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
-import com.usacheow.core.resource.ColorSource
-import com.usacheow.core.resource.ImageSource
-import com.usacheow.core.resource.TextSource
-import com.usacheow.coreui.adapter.ViewStateAdapter
+import com.usacheow.corecommon.resource.ColorSource
+import com.usacheow.corecommon.resource.ImageSource
+import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.atom.DividerTileItem
-import com.usacheow.coreui.uikit.container.ViewStateHorizontalListItem
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.molecule.BadgeTileItem
-import com.usacheow.coreui.uikit.molecule.BannerTileItem
-import com.usacheow.coreui.uikit.molecule.HeaderTileItem
-import com.usacheow.coreui.uikit.molecule.InformationTileItem
-import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
+import com.usacheow.coreuiview.atom.DividerTileItem
+import com.usacheow.coreuiview.container.ViewStateHorizontalListItem
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.ThemeColorsAttrs
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.molecule.BadgeTileItem
+import com.usacheow.coreuiview.molecule.BannerTileItem
+import com.usacheow.coreuiview.molecule.HeaderTileItem
+import com.usacheow.coreuiview.molecule.InformationTileItem
+import com.usacheow.coreuiview.molecule.SubtitleTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
@@ -45,7 +45,7 @@ class InformationTilesFragment : SimpleFragment<FragmentListBinding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.title = "Information tiles"
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
         binding.widgetsListView.layoutManager = LinearLayoutManager(context)
         binding.widgetsListView.adapter = ViewStateAdapter(

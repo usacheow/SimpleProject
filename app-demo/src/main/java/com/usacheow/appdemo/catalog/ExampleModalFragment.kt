@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.databinding.FragmentExampleModalBinding
 import com.usacheow.coreui.screen.SimpleModalFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.getTopInset
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.getTopInset
 import dagger.hilt.android.AndroidEntryPoint
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() {
@@ -23,6 +23,6 @@ class ExampleModalFragment : SimpleModalFragment<FragmentExampleModalBinding>() 
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_close, action = ::dismiss)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_close, action = ::dismiss)
     }
 }

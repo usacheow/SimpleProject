@@ -6,11 +6,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.usacheow.apptest.databinding.ActivityHostBinding
 import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.hideIme
-import com.usacheow.coreui.uikit.helper.isImeVisible
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.hideIme
+import com.usacheow.coreuiview.helper.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
-import com.usacheow.coreui.R as TestAppR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class TestActivity : SimpleActivity<ActivityHostBinding>() {
@@ -36,7 +36,7 @@ class TestActivity : SimpleActivity<ActivityHostBinding>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(TestAppR.style.Simple_AppTheme)
+        setTheme(CoreUiThemeR.style.Simple_AppTheme)
         super.onCreate(savedInstanceState)
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)

@@ -5,8 +5,8 @@ import com.usacheow.corebilling.PurchaseStateProvider
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
 import com.usacheow.coredata.network.NetworkStateProvider
-import com.usacheow.core.analytics.AnalyticsTracker
-import com.usacheow.core.analytics.AnalyticsTrackerHolder
+import com.usacheow.corecommon.analytics.AnalyticsTracker
+import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:clipToPadding="false">
 
-    <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout
+    <com.usacheow.coreuiview.organism.SimpleAppBarLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

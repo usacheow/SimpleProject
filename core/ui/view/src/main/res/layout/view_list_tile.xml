@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.usacheow.coreuiview.molecule.ListTileView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/left_right_margin">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/leftIconView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="@dimen/left_right_margin"
+        android:scaleType="centerCrop"
+        app:shapeAppearance="?shapeAppearanceCircleComponent"
+        tools:src="@tools:sample/avatars"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/topDescriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorSecondary"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?textAppearanceBodyMedium"
+            tools:text="Subtitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/valueView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="?textAppearanceBodyLarge"
+            tools:text="Title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bottomDescriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorSecondary"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?textAppearanceBodyMedium"
+            tools:text="Description" />
+    </LinearLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/rightIconView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/left_right_margin"
+        android:scaleType="centerCrop" />
+</com.usacheow.coreuiview.molecule.ListTileView>

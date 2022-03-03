@@ -19,21 +19,9 @@ gradlePlugin {
             id = "navigation-config"
             implementationClass = "plugin.NavigationConfigPlugin"
         }
-        register("lifecycle-config") {
-            id = "lifecycle-config"
-            implementationClass = "plugin.LifecycleConfigPlugin"
-        }
-        register("glide-config") {
-            id = "glide-config"
-            implementationClass = "plugin.GlideConfigPlugin"
-        }
         register("dagger-config") {
             id = "dagger-config"
             implementationClass = "plugin.DaggerConfigPlugin"
-        }
-        register("room-config") {
-            id = "room-config"
-            implementationClass = "plugin.RoomConfigPlugin"
         }
     }
 }
@@ -45,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.3")
+    implementation("com.android.tools.build:gradle:7.0.4")
     api(kotlin("gradle-plugin:1.6.10"))
 //    implementation(gradleApi())
 //    implementation(localGroovy())

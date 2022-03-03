@@ -1,6 +1,6 @@
 package com.usacheow.simpleapp
 
-import com.usacheow.core.BuildInfo
+import com.usacheow.corecommon.BuildInfo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

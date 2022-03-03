@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.usacheow.coreui.uikit.organism.SimpleAppBarLayout
+    <com.usacheow.coreuiview.organism.SimpleAppBarLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         tools:listitem="@layout/view_list_tile"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-    <com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout
+    <com.usacheow.coreuiview.template.SimpleBottomSheetLayout
         android:id="@+id/bottomSheetLayout"
         style="?attr/bottomSheetStyle"
         android:layout_width="match_parent"
@@ -55,5 +55,5 @@
                 android:text="example"
                 android:textAppearance="?textAppearanceDisplayLarge" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </com.usacheow.coreui.uikit.template.SimpleBottomSheetLayout>
+    </com.usacheow.coreuiview.template.SimpleBottomSheetLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

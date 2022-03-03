@@ -1,7 +1,7 @@
 object Libs {
 
     private const val gmsVersion = "4.3.4"
-    private const val gradleVersion = "7.0.3"
+    private const val gradleVersion = "7.0.4"
     private const val desugarVersion = "1.1.5"
     private const val kotlinVersion = "1.6.10"
     private const val kotlinSerializationVersion = "1.3.0"
@@ -9,8 +9,8 @@ object Libs {
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeVersion = "1.2.0-alpha03"
-    private const val composeMaterialVersion = "1.0.0-alpha05"
+    const val composeVersion = "1.2.0-alpha04"
+    private const val composeMaterialVersion = "1.0.0-alpha06"
     private const val androidxVersion = "1.4.1"
     private const val androidxCoreVersion = "1.8.0-alpha04"
     private const val splashVersion = "1.0.0-beta01"
@@ -26,11 +26,11 @@ object Libs {
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
-    private const val accompanistVersion = "0.24.2-alpha"
+    private const val accompanistVersion = "0.24.3-alpha"
     private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"
-    private const val navigationVersion = "2.4.0-rc01"
+    private const val navigationVersion = "2.4.0"
     private const val appUpdaterVersion = "1.8.1"
     private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"
@@ -108,39 +108,37 @@ object Libs {
             "com.google.firebase:firebase-messaging-ktx:$messagingVersion",
             "com.google.firebase:firebase-config-ktx:$configVersion")
 
-        val uiCore = arrayOf(
+        val viewTheme =arrayOf("com.google.android.material:material:$materialVersion")
+        val viewKit =arrayOf(
             "androidx.appcompat:appcompat:$androidxVersion",
-            "androidx.core:core-ktx:$androidxCoreVersion")
-        val uiView = arrayOf(
-            "com.google.android.material:material:$materialVersion",
-
+            "androidx.core:core-ktx:$androidxCoreVersion",
             "androidx.activity:activity-ktx:$activityVersion",
             "androidx.fragment:fragment-ktx:$fragmentVersion",
-
             "androidx.cardview:cardview:$cardViewVersion",
             "androidx.viewpager2:viewpager2:$viewPagerVersion",
             "androidx.recyclerview:recyclerview:$recyclerVersion",
             "androidx.constraintlayout:constraintlayout:$constraintVersion",
             "androidx.coordinatorlayout:coordinatorlayout:$coordinatorVersion",
-
             "com.facebook.shimmer:shimmer:$shimmerVersion",
             "ru.tinkoff.decoro:decoro:$decoroVersion",
             "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion")
-        val uiComposeCompiler = arrayOf("androidx.compose.compiler:compiler:$composeVersion")
-        val uiComposeRuntime = arrayOf("androidx.compose.runtime:runtime:$composeVersion")
-        val uiCompose = arrayOf(
-            "androidx.compose.animation:animation:$composeVersion",
+
+        val composeCompiler =arrayOf("androidx.compose.compiler:compiler:$composeVersion")
+        val composeRuntime =arrayOf("androidx.compose.runtime:runtime:$composeVersion")
+        val composeTheme =arrayOf(
             "androidx.compose.ui:ui:$composeVersion",
             "androidx.compose.ui:ui-tooling:$composeVersion",
             "androidx.compose.ui:ui-tooling-preview:$composeVersion",
-            "androidx.compose.foundation:foundation:$composeVersion",
-            "androidx.compose.foundation:foundation-layout:$composeVersion",
             "androidx.compose.material:material:$composeVersion",
             "androidx.compose.material3:material3:$composeMaterialVersion",
-            "androidx.compose.material:material-icons-extended:$composeVersion",
+            "androidx.compose.material:material-icons-extended:$composeVersion",)
+        val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
+            "androidx.compose.foundation:foundation:$composeVersion",
+            "androidx.compose.foundation:foundation-layout:$composeVersion",
             "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion",
             "com.google.accompanist:accompanist-insets:$accompanistVersion",
+            "androidx.compose.animation:animation:$composeVersion",
             "io.coil-kt:coil-compose:$coilVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")

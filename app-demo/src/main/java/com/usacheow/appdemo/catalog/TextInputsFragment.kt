@@ -7,22 +7,22 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
-import com.usacheow.core.date.DateTimeFormat
-import com.usacheow.core.date.LocalDateTimeFactory
+import com.usacheow.corecommon.date.DateTimeFormat
+import com.usacheow.corecommon.date.LocalDateTimeFactory
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.addCurrencyFormatter
-import com.usacheow.coreui.uikit.helper.addPhoneNumberFormatter
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.doOnActionClick
-import com.usacheow.coreui.uikit.helper.doOnClick
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.helper.showIfCan
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.addCurrencyFormatter
+import com.usacheow.coreuiview.helper.addPhoneNumberFormatter
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.doOnActionClick
+import com.usacheow.coreuiview.helper.doOnClick
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.helper.showIfCan
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 private const val DATE_PICKER_TAG = "DATE_PICKER_TAG"
 private const val DATE_RANGE_PICKER_TAG = "DATE_RANGE_PICKER_TAG"
@@ -75,7 +75,7 @@ class TextInputsFragment : SimpleFragment<FragmentTextInputsBinding>() {
     }
 
     override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
         binding.viewAmountInput.addCurrencyFormatter("50000.00")
         binding.viewPhoneNumberInput.addPhoneNumberFormatter({}, {})

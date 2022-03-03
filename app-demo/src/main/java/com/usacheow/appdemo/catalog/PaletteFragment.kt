@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
-import androidx.annotation.ColorRes
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,25 +12,25 @@ import com.google.android.material.color.MaterialColors
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
 import com.usacheow.appdemo.databinding.ViewColorItemBinding
-import com.usacheow.core.resource.TextSource
-import com.usacheow.coreui.adapter.ViewStateAdapter
-import com.usacheow.coreui.adapter.base.Populatable
-import com.usacheow.coreui.adapter.base.ViewState
+import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.coreuiview.adapter.ViewStateAdapter
+import com.usacheow.coreuiview.adapter.base.Populatable
+import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.PaddingValue
-import com.usacheow.coreui.uikit.helper.ThemeColorsAttrs
-import com.usacheow.coreui.uikit.helper.applyBottomInset
-import com.usacheow.coreui.uikit.helper.applyTopInset
-import com.usacheow.coreui.uikit.helper.color
-import com.usacheow.coreui.uikit.helper.colorByAttr
-import com.usacheow.coreui.uikit.helper.getBottomInset
-import com.usacheow.coreui.uikit.helper.getTopInset
-import com.usacheow.coreui.uikit.helper.toPx
-import com.usacheow.coreui.uikit.molecule.SubtitleTileItem
+import com.usacheow.coreuiview.helper.PaddingValue
+import com.usacheow.coreuiview.helper.ThemeColorsAttrs
+import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyTopInset
+import com.usacheow.coreuiview.helper.color
+import com.usacheow.coreuiview.helper.colorByAttr
+import com.usacheow.coreuiview.helper.getBottomInset
+import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.helper.toPx
+import com.usacheow.coreuiview.molecule.SubtitleTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as AppDemoR
-import com.usacheow.coreui.R as CoreUiR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @AndroidEntryPoint
 class PaletteFragment : SimpleFragment<FragmentListBinding>() {
@@ -92,7 +91,7 @@ class PaletteFragment : SimpleFragment<FragmentListBinding>() {
 
     override fun setupViews(savedInstanceState: Bundle?) {
         binding.header.title = "Palette"
-        binding.header.setNavigationAction(CoreUiR.drawable.ic_back, action = router::back)
+        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
         binding.widgetsListView.updatePadding(left = 16.toPx, right = 16.toPx)
         binding.widgetsListView.layoutManager = GridLayoutManager(context, 2).apply {
@@ -126,8 +125,8 @@ class ColorItemView @JvmOverloads constructor(
         codeTextView.text = "#%s".format(Integer.toHexString(color)).uppercase()
 
         val textColorRes = when (MaterialColors.isColorLight(color)) {
-            true -> CoreUiR.color.black
-            false -> CoreUiR.color.white
+            true -> CoreUiThemeR.color.black
+            false -> CoreUiThemeR.color.white
         }
         val textColor = MaterialColors.harmonize(color(textColorRes), color)
         nameTextView.setTextColor(textColor)

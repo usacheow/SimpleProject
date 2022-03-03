@@ -3,7 +3,7 @@ package com.usacheow.apptest
 import android.os.Bundle
 import com.usacheow.apptest.databinding.Fragment5Binding
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreui.uikit.helper.doOnClick
+import com.usacheow.coreuiview.helper.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

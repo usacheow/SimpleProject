@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="num_pad_button_size">56dp</dimen>
+    <dimen name="num_pad_button_margin_vertical">0dp</dimen>
+    <dimen name="num_pad_button_margin_horizontal">12dp</dimen>
+
+    <dimen name="cell_left_parts_width">52dp</dimen>
+    <dimen name="cell_right_parts_width">68dp</dimen> <!--включенён отступ в 16dp-->
+    <dimen name="cell_content_vertical_padding">12dp</dimen>
+    <dimen name="cell_icon_size">40dp</dimen>
+    <dimen name="cell_card_icon_height">30dp</dimen>
+
+</resources>

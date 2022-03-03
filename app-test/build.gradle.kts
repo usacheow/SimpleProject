@@ -13,6 +13,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.coreCommon)
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
     implementation(projects.coreData)
