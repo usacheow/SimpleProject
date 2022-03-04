@@ -1,7 +1,10 @@
 plugins {
-    id("library-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+dagger()
+lifecycle()
 
 dependencies {
     api(*Libs.bundle.billing)
@@ -11,5 +14,4 @@ dependencies {
     implementation(projects.coreUi)
 
     implementation(*Libs.bundle.firebase)
-    lifecycle()
 }

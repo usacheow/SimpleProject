@@ -1,8 +1,11 @@
 plugins {
-    id("library-config")
-    id("navigation-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+navigation()
+dagger()
+lifecycle()
 
 dependencies {
     implementation(projects.coreCommon)
@@ -11,7 +14,6 @@ dependencies {
     implementation(projects.coreNavigation)
 
     implementation(*Libs.bundle.biometric)
-    lifecycle()
 
     testImplementation(projects.coreUnitTest)
     androidTestImplementation(*Libs.bundle.uiTests)

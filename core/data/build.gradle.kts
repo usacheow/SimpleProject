@@ -1,7 +1,10 @@
 plugins {
-    id("library-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+dagger()
+room()
 
 dependencies {
     api(*Libs.bundle.requests)
@@ -14,5 +17,4 @@ dependencies {
     implementation(*Libs.bundle.preference)
     implementation(*Libs.bundle.cryptoPreference)
     implementation(*Libs.bundle.biometric)
-    room()
 }

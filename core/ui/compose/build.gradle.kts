@@ -1,7 +1,10 @@
 plugins {
-    id("library-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+compose()
+dagger()
 
 dependencies {
     api(projects.coreUiTheme)

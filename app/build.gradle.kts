@@ -1,7 +1,5 @@
 plugins {
-    id("app-config")
-    id("navigation-config")
-    id("dagger-config")
+    id(Libs.plugin.application)
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.spotify.ruler")
@@ -51,6 +49,11 @@ android {
     }
 }
 
+common()
+navigation()
+dagger()
+lifecycle()
+
 dependencies {
     implementation(projects.coreCommon)
     implementation(projects.coreData)
@@ -69,5 +72,4 @@ dependencies {
     implementation(*Libs.bundle.appUpdater)
     implementation(*Libs.bundle.firebase)
     implementation(*Libs.bundle.biometric)
-    lifecycle()
 }

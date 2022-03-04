@@ -9,7 +9,7 @@ object Libs {
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeVersion = "1.2.0-alpha04"
+    const val composeVersion = "1.1.1"
     private const val composeMaterialVersion = "1.0.0-alpha06"
     private const val androidxVersion = "1.4.1"
     private const val androidxCoreVersion = "1.8.0-alpha04"

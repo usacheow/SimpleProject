@@ -1,7 +1,11 @@
 plugins {
-    id("library-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+dagger()
+lifecycle()
+glide()
 
 dependencies {
     api(projects.coreUiCompose)
@@ -10,6 +14,4 @@ dependencies {
     implementation(projects.coreCommon)
 
     implementation(*Libs.bundle.splashscreen)
-    lifecycle()
-    glide()
 }

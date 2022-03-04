@@ -1,8 +1,10 @@
 plugins {
-    id("library-config")
-    id("navigation-config")
-    id("dagger-config")
+    id(Libs.plugin.library)
 }
+
+common()
+navigation()
+dagger()
 
 dependencies {
     implementation(*Libs.bundle.kotlinSerialization)

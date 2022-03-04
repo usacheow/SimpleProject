@@ -1,6 +1,8 @@
 plugins {
-    id("library-config")
+    id(Libs.plugin.library)
 }
+
+common()
 
 dependencies {
     api(*Libs.bundle.unitTests)

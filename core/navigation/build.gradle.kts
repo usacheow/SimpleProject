@@ -1,7 +1,9 @@
 plugins {
-    id("library-config")
-    id("navigation-config")
+    id(Libs.plugin.library)
 }
+
+common()
+navigation()
 
 dependencies {
     implementation(projects.coreCommon)

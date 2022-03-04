@@ -1,7 +1,5 @@
 plugins {
-    id("app-config")
-    id("navigation-config")
-    id("dagger-config")
+    id(Libs.plugin.application)
 }
 
 android {
@@ -11,6 +9,10 @@ android {
         applicationId = "com.usacheow.simpleapp.sandbox"
     }
 }
+
+common()
+navigation()
+dagger()
 
 dependencies {
     implementation(projects.coreCommon)
