@@ -3,7 +3,7 @@ package com.usacheow.coreuiview.molecule
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewHeaderTileBinding

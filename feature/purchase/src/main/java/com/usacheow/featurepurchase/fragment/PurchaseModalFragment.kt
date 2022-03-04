@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import com.example.featurepurchase.databinding.FragmentPurchaseBinding
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.corebilling.BillingRouter
 import com.usacheow.coreuiview.adapter.SingleSelectionViewStatesAdapter
 import com.usacheow.coreuiview.adapter.ViewStateAdapter

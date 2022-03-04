@@ -3,8 +3,8 @@ package com.usacheow.coreuiview.molecule
 import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewBannerTileBinding

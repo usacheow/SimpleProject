@@ -1,4 +1,4 @@
-package com.usacheow.corecommon.resource
+package com.usacheow.corecommon.container
 
 import android.graphics.Bitmap
 import androidx.annotation.DrawableRes
@@ -29,4 +29,3 @@ data class CombineIcon(
 
 fun String.toImageSource() = ImageSource.Url(this)
 fun Int.toImageSource() = ImageSource.Res(this)
-fun Bitmap.toImageSource() = ImageSource.Image(this)

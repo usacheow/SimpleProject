@@ -1,4 +1,4 @@
-package com.usacheow.corecommon.resource
+package com.usacheow.coreuiview.resourcewrapper
 
 import android.content.Context
 import android.content.res.AssetManager

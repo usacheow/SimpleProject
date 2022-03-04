@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.databinding.ViewMessageBannerBinding
 import com.usacheow.coreuiview.helper.doOnClick
 import com.usacheow.coreuiview.helper.makeGone
@@ -13,7 +13,6 @@ import com.usacheow.coreuiview.helper.makeVisible
 import com.usacheow.coreuiview.helper.populate
 import com.usacheow.coreuiview.helper.string
 import com.usacheow.coreuiview.molecule.ListTileItem
-import com.usacheow.coreuiview.R as CoreUiViewR
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 class MessageBannerView @JvmOverloads constructor(

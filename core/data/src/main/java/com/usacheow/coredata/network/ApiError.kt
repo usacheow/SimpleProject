@@ -1,8 +1,7 @@
 package com.usacheow.coredata.network
 
 import androidx.annotation.StringRes
-import com.usacheow.corecommon.resource.TextSource
-import com.usacheow.corecommon.resource.ResourcesWrapper
+import com.usacheow.corecommon.container.TextSource
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import com.usacheow.corecommon.R as CoreR
@@ -47,18 +46,9 @@ sealed class ApiError(
 
     class SecurityException : ApiError(CoreR.string.unknown_error_message)
 
-    fun getMessage(resources: ResourcesWrapper): String {
-        return message ?: resources.getString(defaultMessageRes)
-    }
-
     fun getMessage(): TextSource {
         return message?.let { TextSource.Simple(it) } ?: TextSource.Res(defaultMessageRes)
     }
-}
-
-fun Throwable.getMessage(resources: ResourcesWrapper): String = when (this) {
-    is ApiError -> getMessage(resources)
-    else -> resources.getString(CoreR.string.unknown_error_message)
 }
 
 fun Throwable.getMessage(): TextSource = when (this) {

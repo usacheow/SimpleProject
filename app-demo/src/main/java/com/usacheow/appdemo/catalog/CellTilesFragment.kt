@@ -5,8 +5,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentListBinding
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreuiview.helper.PaddingValue

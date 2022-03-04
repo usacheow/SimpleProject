@@ -5,14 +5,14 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.DimenRes
-import com.usacheow.corecommon.resource.ColorSource
+import com.usacheow.corecommon.container.ColorSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewDividerTileBinding
 import com.usacheow.coreuiview.helper.MarginValues
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
 import com.usacheow.coreuiview.helper.dimen
-import com.usacheow.coreuiview.helper.getColorInt
+import com.usacheow.coreuiview.helper.get
 import com.usacheow.coreuiview.helper.resize
 import com.usacheow.coreuiview.helper.updateMargins
 import com.usacheow.coreuiview.R as CoreUiViewR
@@ -26,7 +26,7 @@ class DividerTileView @JvmOverloads constructor(
     private val binding by lazy { ViewDividerTileBinding.bind(this) }
 
     override fun populate(model: DividerTileItem) {
-        binding.dividerBackgroundView.setBackgroundColor(model.color.getColorInt(context))
+        binding.dividerBackgroundView.setBackgroundColor(model.color.get(context))
         binding.dividerBackgroundView.resize(
             widthPx = ViewGroup.LayoutParams.MATCH_PARENT,
             heightPx = dimen(model.heightResId).toInt()

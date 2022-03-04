@@ -6,16 +6,16 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import com.usacheow.corecommon.resource.ColorSource
-import com.usacheow.corecommon.resource.CombineIcon
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ColorSource
+import com.usacheow.corecommon.container.CombineIcon
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewCellItemBinding
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
 import com.usacheow.coreuiview.helper.doOnClick
-import com.usacheow.coreuiview.helper.getColorInt
+import com.usacheow.coreuiview.helper.get
 import com.usacheow.coreuiview.helper.makeGone
 import com.usacheow.coreuiview.helper.makeVisible
 import com.usacheow.coreuiview.helper.populate
@@ -68,10 +68,10 @@ class CellTileView @JvmOverloads constructor(
         binding.additionalView.populate(model.additional)
         binding.linkView.populate(model.link)
 
-        binding.subtitleView.setTextColor(model.contentColors.subtitleColorSource.getColorInt(context))
-        binding.titleView.setTextColor(model.contentColors.titleColorSource.getColorInt(context))
-        binding.valueView.setTextColor(model.contentColors.valueColorSource.getColorInt(context))
-        binding.additionalView.setTextColor(model.contentColors.additionalColorSource.getColorInt(context))
+        binding.subtitleView.setTextColor(model.contentColors.subtitleColorSource.get(context))
+        binding.titleView.setTextColor(model.contentColors.titleColorSource.get(context))
+        binding.valueView.setTextColor(model.contentColors.valueColorSource.get(context))
+        binding.additionalView.setTextColor(model.contentColors.additionalColorSource.get(context))
     }
 
     private fun fillRightPart(rightPart: CellRightPart?) {

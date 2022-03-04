@@ -1,4 +1,4 @@
-package com.usacheow.corecommon.resource
+package com.usacheow.corecommon.container
 
 import android.graphics.Color
 import androidx.annotation.AttrRes

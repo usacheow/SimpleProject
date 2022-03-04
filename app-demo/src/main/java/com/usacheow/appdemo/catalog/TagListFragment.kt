@@ -5,7 +5,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentTagListBinding
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.MultipleSelectionViewStatesAdapter
 import com.usacheow.coreuiview.adapter.SingleSelectionViewStatesAdapter
 import com.usacheow.coreui.screen.SimpleFragment

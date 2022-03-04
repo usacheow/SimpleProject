@@ -1,4 +1,4 @@
-package com.usacheow.corecommon.resource.compose
+package com.usacheow.corecommon.container.compose
 
 import android.graphics.Bitmap
 import androidx.annotation.DrawableRes

@@ -5,7 +5,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.usacheow.corecommon.resource.toTextSource
+import com.usacheow.corecommon.container.toTextSource
 import com.usacheow.coreui.screen.SimpleFragment
 import com.usacheow.coreuiview.helper.MarginValues
 import com.usacheow.coreuiview.helper.PaddingValue

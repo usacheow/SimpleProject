@@ -5,17 +5,18 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.TextAppearanceSpan
 import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
-import com.usacheow.corecommon.resource.ResourcesWrapper
-import com.usacheow.corecommon.resource.TextSource
 import com.usacheow.corebilling.model.Product
-import com.usacheow.coreuitheme.R as CoreUiThemeR
+import com.usacheow.corecommon.container.TextSource
+import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
 import com.usacheow.coreuiview.helper.colorByAttr
+import com.usacheow.coreuiview.helper.get
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Currency
 import javax.inject.Inject
 import com.usacheow.corecommon.R as CoreR
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 class ProductsMapper @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -51,7 +52,7 @@ class ProductsMapper @Inject constructor(
                 TextAppearanceSpan(context, CoreUiThemeR.style.Simple_Text_Body_S),
                 ForegroundColorSpan(context.colorByAttr(ThemeColorsAttrs.symbolSecondary)),
             ) {
-                append(" / ${getPeriod().toCharSequence(resources)}")
+                append(" / ${getPeriod().get(resources)}")
             }
         }
         return TextSource.Spanned(text)
@@ -81,7 +82,7 @@ class ProductsMapper @Inject constructor(
         return resources.getString(
             CoreR.string.purchase_buy_button,
             getPriceValue(),
-            getPeriod().toCharSequence(resources),
+            getPeriod().get(resources),
         )
     }
 }

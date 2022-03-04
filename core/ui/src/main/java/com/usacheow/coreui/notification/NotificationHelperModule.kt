@@ -1,18 +1,14 @@
-package com.usacheow.coreui
+package com.usacheow.coreui.notification
 
-import com.usacheow.coreui.helper.NotificationHelper
-import com.usacheow.coreui.helper.NotificationHelperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module(
-    includes = [SystemServiceModule::class]
-)
+@Module
 @InstallIn(SingletonComponent::class)
-interface CoreUiModule {
+interface NotificationHelperModule {
 
     @Binds
     @Singleton

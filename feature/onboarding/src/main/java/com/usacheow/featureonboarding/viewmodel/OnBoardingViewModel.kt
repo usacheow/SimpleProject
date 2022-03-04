@@ -2,9 +2,9 @@ package com.usacheow.featureonboarding.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.usacheow.corecommon.resource.ImageSource
+import com.usacheow.corecommon.container.ImageSource
 import com.usacheow.corecommon.navigation.FeatureNavDirection
-import com.usacheow.corecommon.resource.toImageSource
+import com.usacheow.corecommon.container.toImageSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.corenavigation.base.requireArgs

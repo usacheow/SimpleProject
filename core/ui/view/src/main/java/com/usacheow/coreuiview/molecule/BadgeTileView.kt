@@ -4,14 +4,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import com.google.android.material.card.MaterialCardView
-import com.usacheow.corecommon.resource.ColorSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ColorSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewBadgeTileBinding
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
 import com.usacheow.coreuiview.helper.doOnClick
-import com.usacheow.coreuiview.helper.getColorInt
+import com.usacheow.coreuiview.helper.get
 import com.usacheow.coreuiview.helper.ifFalse
 import com.usacheow.coreuiview.helper.populate
 import com.usacheow.coreuiview.helper.resize
@@ -32,16 +32,16 @@ class BadgeTileView @JvmOverloads constructor(
         binding.root.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
         binding.clickableView.resize(widthPx = containerWidth, heightPx = ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        binding.root.setCardBackgroundColor(model.backgroundColor.getColorInt(context))
+        binding.root.setCardBackgroundColor(model.backgroundColor.get(context))
         binding.clickableView.doOnClick(model.clickListener.ifFalse(model.isShimmer))
 
         binding.headerView.apply {
             populate(model.header)
-            setTextColor(model.textColor.getColorInt(context))
+            setTextColor(model.textColor.get(context))
         }
         binding.valueView.apply {
             populate(model.value)
-            setTextColor(model.textColor.getColorInt(context))
+            setTextColor(model.textColor.get(context))
         }
     }
 }

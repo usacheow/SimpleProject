@@ -1,4 +1,4 @@
-package com.usacheow.simpleapp.appupdater
+package com.usacheow.simpleapp.appupdate
 
 import android.app.Activity
 import android.content.Context

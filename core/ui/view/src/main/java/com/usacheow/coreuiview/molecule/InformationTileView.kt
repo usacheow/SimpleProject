@@ -3,15 +3,14 @@ package com.usacheow.coreuiview.molecule
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewInformationTileBinding
 import com.usacheow.coreuiview.helper.doOnClick
 import com.usacheow.coreuiview.helper.populate
 import com.usacheow.coreuiview.R as CoreUiViewR
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 class InformationTileView @JvmOverloads constructor(
     context: Context,

@@ -2,7 +2,7 @@ package com.usacheow.corenavigation
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.TextSource
 import com.usacheow.corecommon.navigation.FeatureNavDirection
 import kotlinx.parcelize.Parcelize
 

@@ -7,7 +7,6 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewShimmerTileBinding
-import com.usacheow.coreuiview.helper.setShimmer
 import com.usacheow.coreuiview.R as CoreUiViewR
 
 class ShimmerTileView @JvmOverloads constructor(
@@ -25,6 +24,11 @@ class ShimmerTileView @JvmOverloads constructor(
         binding.rightIconView.isVisible = model.rightIcon
 
         setShimmer(true)
+    }
+
+    private fun ShimmerFrameLayout.setShimmer(needShimmer: Boolean) = when {
+        needShimmer -> showShimmer(true)
+        else -> hideShimmer()
     }
 }
 

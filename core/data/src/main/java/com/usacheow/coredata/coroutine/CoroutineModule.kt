@@ -1,4 +1,4 @@
-package com.usacheow.coredata
+package com.usacheow.coredata.coroutine
 
 import android.app.Application
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope

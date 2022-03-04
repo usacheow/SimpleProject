@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.TextView
 import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_FADE
 import com.google.android.material.snackbar.Snackbar
-import com.usacheow.corecommon.resource.ColorSource
-import com.usacheow.corecommon.resource.ImageSource
-import com.usacheow.corecommon.resource.TextSource
+import com.usacheow.corecommon.container.ColorSource
+import com.usacheow.corecommon.container.ImageSource
+import com.usacheow.corecommon.container.TextSource
 import com.google.android.material.R as MaterialR
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
@@ -16,7 +16,7 @@ private val SNACKBAR_ICON_PADDING_PX = 12.toPx
 
 @SuppressLint("ShowToast")
 fun View.makeSnackbar(message: TextSource) = Snackbar
-    .make(this, message.toCharSequence(context), Snackbar.LENGTH_SHORT)
+    .make(this, message.get(context), Snackbar.LENGTH_SHORT)
     .apply {
         view.background = drawable(CoreUiThemeR.drawable.bg_snackbar)
     }
@@ -27,8 +27,8 @@ fun Snackbar.setAction(
     text: TextSource,
     color: ColorSource = ColorSource.fromAttr(ThemeColorsAttrs.symbolPrimary),
     action: () -> Unit,
-) = setAction(text.toCharSequence(context)) { action() }
-    .setActionTextColor(color.getColorInt(context))
+) = setAction(text.get(context)) { action() }
+    .setActionTextColor(color.get(context))
 
 fun Snackbar.setIcon(drawable: ImageSource.Res) = apply {
     view.findViewById<TextView>(MaterialR.id.snackbar_text).apply {

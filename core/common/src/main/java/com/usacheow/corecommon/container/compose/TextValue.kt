@@ -1,4 +1,4 @@
-package com.usacheow.corecommon.resource.compose
+package com.usacheow.corecommon.container.compose
 
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes

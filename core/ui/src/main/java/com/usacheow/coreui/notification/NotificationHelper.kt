@@ -1,4 +1,4 @@
-package com.usacheow.coreui.helper
+package com.usacheow.coreui.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.usacheow.corecommon.resource.ResourcesWrapper
+import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import com.usacheow.coreuitheme.R as CoreUiThemeR

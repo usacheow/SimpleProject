@@ -1,8 +1,8 @@
 package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.viewModelScope
-import com.usacheow.corecommon.resource.ResourcesWrapper
-import com.usacheow.corecommon.resource.toTextSource
+import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.corecommon.container.toTextSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.coreui.viewmodel.EventChannel

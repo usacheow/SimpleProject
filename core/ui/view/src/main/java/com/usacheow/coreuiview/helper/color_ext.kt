@@ -2,12 +2,12 @@ package com.usacheow.coreuiview.helper
 
 import android.content.Context
 import androidx.core.content.ContextCompat
-import com.usacheow.corecommon.resource.ColorSource
+import com.usacheow.corecommon.container.ColorSource
 import com.google.android.material.R as MaterialR
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 import android.R as AndroidR
 
-fun ColorSource.getColorInt(context: Context) = when (this) {
+fun ColorSource.get(context: Context) = when (this) {
     is ColorSource.Simple -> color
     is ColorSource.Res -> ContextCompat.getColor(context, res)
     is ColorSource.Attr -> context.colorByAttr(res)

@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.usacheow.corecommon.resource.ResourcesWrapper
+import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import com.usacheow.corecommon.analytics.Events
 import com.usacheow.coreui.screen.base.ApplyWindowInsets

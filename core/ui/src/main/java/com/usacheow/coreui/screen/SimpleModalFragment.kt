@@ -8,7 +8,7 @@ import androidx.annotation.CallSuper
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
-import com.usacheow.corecommon.resource.ResourcesWrapper
+import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import com.usacheow.corecommon.analytics.Events
 import com.usacheow.coreui.screen.base.ApplyWindowInsets

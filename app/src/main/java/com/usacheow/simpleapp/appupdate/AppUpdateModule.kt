@@ -1,4 +1,4 @@
-package com.usacheow.simpleapp.appupdater
+package com.usacheow.simpleapp.appupdate
 
 import dagger.Binds
 import dagger.Module

@@ -23,7 +23,7 @@ import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
-import com.usacheow.corecommon.resource.compose.TextValue
+import com.usacheow.corecommon.container.compose.TextValue
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.get
 

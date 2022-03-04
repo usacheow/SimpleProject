@@ -1,11 +1,9 @@
-package com.usacheow.corecommon.resource
+package com.usacheow.corecommon.container
 
-import android.content.Context
 import android.os.Parcelable
 import android.text.SpannedString
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
-import androidx.core.text.HtmlCompat
 import kotlinx.parcelize.Parcelize
 
 sealed class TextSource {
@@ -38,22 +36,6 @@ sealed class TextSource {
         val quantity: Int,
         val args: List<Any> = listOf(quantity),
     ) : TextSource()
-
-    fun toCharSequence(resources: ResourcesWrapper): CharSequence = when (this) {
-        is Simple -> text
-
-        is Spanned -> text
-
-        is Html -> HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-        is Res -> resources.getString(res, *args.toTypedArray())
-
-        is Plural -> resources.getPluralString(res, quantity)
-
-        is FormattedPlural -> resources.getPluralString(res, quantity).format(*args.toTypedArray())
-    }
-
-    fun toCharSequence(context: Context): CharSequence = toCharSequence(ResourcesWrapperImpl(context))
 }
 
 fun String.toTextSource() = TextSource.Simple(this)
