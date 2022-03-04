@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors
@@ -17,9 +16,11 @@ import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreui.screen.SimpleFragment
+import com.usacheow.coreuiview.helper.MarginValues
 import com.usacheow.coreuiview.helper.PaddingValue
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
 import com.usacheow.coreuiview.helper.applyBottomInset
+import com.usacheow.coreuiview.helper.applyPadding
 import com.usacheow.coreuiview.helper.applyTopInset
 import com.usacheow.coreuiview.helper.color
 import com.usacheow.coreuiview.helper.colorByAttr
@@ -93,7 +94,7 @@ class PaletteFragment : SimpleFragment<FragmentListBinding>() {
         binding.header.title = "Palette"
         binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
 
-        binding.widgetsListView.updatePadding(left = 16.toPx, right = 16.toPx)
+        binding.widgetsListView.applyPadding(MarginValues(horizontal = 16.toPx))
         binding.widgetsListView.layoutManager = GridLayoutManager(context, 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
 

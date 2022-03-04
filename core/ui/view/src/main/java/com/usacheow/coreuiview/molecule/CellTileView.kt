@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
-import androidx.core.view.updatePadding
 import com.usacheow.corecommon.container.ColorSource
 import com.usacheow.corecommon.container.CombineIcon
 import com.usacheow.corecommon.container.ImageSource
@@ -13,7 +12,9 @@ import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.base.Populatable
 import com.usacheow.coreuiview.adapter.base.ViewState
 import com.usacheow.coreuiview.databinding.ViewCellItemBinding
+import com.usacheow.coreuiview.helper.MarginValues
 import com.usacheow.coreuiview.helper.ThemeColorsAttrs
+import com.usacheow.coreuiview.helper.applyPadding
 import com.usacheow.coreuiview.helper.doOnClick
 import com.usacheow.coreuiview.helper.get
 import com.usacheow.coreuiview.helper.makeGone
@@ -104,7 +105,7 @@ class CellTileView @JvmOverloads constructor(
             true -> 0
             false -> resources.getDimensionPixelOffset(CoreUiThemeR.dimen.left_right_margin)
         }
-        binding.middleView.updatePadding(right = middleViewRightMargin)
+        binding.middleView.applyPadding(MarginValues(end = middleViewRightMargin))
     }
 
     private fun fillClickListeners(

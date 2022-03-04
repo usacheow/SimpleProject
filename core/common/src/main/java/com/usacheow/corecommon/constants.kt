@@ -1,6 +1,7 @@
-package com.usacheow.corecommon.date
+package com.usacheow.corecommon
 
 import java.util.Locale
 
-val EN_LOCALE get() = Locale("en")
-val RU_LOCALE get() = Locale("ru")
+val DEFAULT_LOCALE: Locale get() = Locale.getDefault()
+val EN_LOCALE: Locale get() = Locale("en")
+val RU_LOCALE: Locale get() = Locale("ru")

@@ -17,7 +17,7 @@ import com.usacheow.coreuiview.helper.hideIme
 import com.usacheow.coreuiview.helper.isImeVisible
 import com.usacheow.coreuiview.helper.onTextChanged
 import com.usacheow.coreuiview.helper.toPx
-import com.usacheow.coreuiview.helper.updateMargins
+import com.usacheow.coreuiview.helper.applyMargins
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.featureauth.databinding.FragmentSignInBinding
 import com.usacheow.featureauth.presentation.navigation.AuthorizationRouter
@@ -44,7 +44,7 @@ class SignInFragment : SimpleFragment<FragmentSignInBinding>() {
         }
 
         binding.signUpButton.isVisible = !insets.isImeVisible()
-        binding.headerView.updateMargins(MarginValues.Top(topMargin))
+        binding.headerView.applyMargins(MarginValues(top = topMargin))
         binding.scrollView.applyInsets(top = insets.getTopInset(), bottom = insets.getBottomInset(needIme = true))
 
         return insets

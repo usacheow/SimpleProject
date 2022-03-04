@@ -3,11 +3,11 @@ package com.usacheow.coreuiview.helper
 import android.graphics.Rect
 import android.view.View
 import android.view.Window
+import androidx.annotation.Px
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.updatePadding
 
 typealias PaddingValue = Rect
 
@@ -40,22 +40,25 @@ fun WindowInsetsCompat.getBottomInset(needIme: Boolean = false) = when (needIme 
     false -> getNavigationBarHeight()
 }
 
-fun View.applyTopInset(size: Int, needAddToPadding: Boolean = true) {
+fun View.applyTopInset(@Px size: Int, needAddToPadding: Boolean = true) {
+    val margin = MarginValues(top = size)
     when {
-        needAddToPadding -> updatePadding(top = size)
-        else -> updateMargins(MarginValues.Top(size))
+        needAddToPadding -> applyPadding(margin)
+        else -> applyMargins(margin)
     }
 }
-fun View.applyBottomInset(size: Int, needAddToPadding: Boolean = true) {
+fun View.applyBottomInset(@Px size: Int, needAddToPadding: Boolean = true) {
+    val margin = MarginValues(bottom = size)
     when {
-        needAddToPadding -> updatePadding(bottom = size)
-        else -> updateMargins(MarginValues.Bottom(size))
+        needAddToPadding -> applyPadding(margin)
+        else -> applyMargins(margin)
     }
 }
-fun View.applyInsets(top: Int, bottom: Int, needAddToPadding: Boolean = true) {
+fun View.applyInsets(@Px top: Int, @Px bottom: Int, needAddToPadding: Boolean = true) {
+    val margin = MarginValues(top = top, bottom = bottom)
     when {
-        needAddToPadding -> updatePadding(top = top, bottom = bottom)
-        else -> updateMargins(MarginValues.Vertical(top = top, bottom = bottom))
+        needAddToPadding -> applyPadding(margin)
+        else -> applyMargins(margin)
     }
 }
 

@@ -1,6 +1,5 @@
 package com.usacheow.coreuiview.helper
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
@@ -18,30 +17,25 @@ import com.google.android.material.color.MaterialColors
 fun Context.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
 fun View.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
 fun Fragment.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(requireContext(), id)
-fun Activity.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
 
 fun Context.string(@StringRes id: Int) = resources.getString(id)
 fun View.string(@StringRes id: Int) = resources.getString(id)
 fun Fragment.string(@StringRes id: Int) = resources.getString(id)
-fun Activity.string(@StringRes id: Int) = resources.getString(id)
 
 fun Context.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
 fun View.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
 fun Fragment.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
-fun Activity.pluralString(@PluralsRes id: Int, quantity: Int) = resources.getQuantityString(id, quantity)
 
+fun Context.color(@ColorRes id: Int) = ContextCompat.getColor(this, id)
 fun View.color(@ColorRes id: Int) = ContextCompat.getColor(context, id)
 fun Fragment.color(@ColorRes id: Int) = ContextCompat.getColor(context!!, id)
-fun Activity.color(@ColorRes id: Int) = ContextCompat.getColor(this, id)
 
 fun Context.colorByAttr(@AttrRes attrRes: Int) = MaterialColors.getColor(this, attrRes, Color.BLACK)
 fun View.colorByAttr(@AttrRes attrRes: Int) = MaterialColors.getColor(this, attrRes, Color.BLACK)
 fun Fragment.colorByAttr(@AttrRes attrRes: Int) = MaterialColors.getColor(requireContext(), attrRes, Color.BLACK)
-fun Activity.colorByAttr(@AttrRes attrRes: Int) = MaterialColors.getColor(this, attrRes, Color.BLACK)
 
 fun Context.dimen(@DimenRes id: Int) = resources.getDimension(id)
 fun View.dimen(@DimenRes id: Int) = resources.getDimension(id)
 fun Fragment.dimen(@DimenRes id: Int) = resources.getDimension(id)
-fun Activity.dimen(@DimenRes id: Int) = resources.getDimension(id)
 
 val Int.toPx: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()

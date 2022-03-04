@@ -1,5 +1,6 @@
 package com.usacheow.corecommon.date
 
+import com.usacheow.corecommon.DEFAULT_LOCALE
 import java.time.LocalTime
 
 object LocalTimeFactory {
@@ -25,6 +26,6 @@ object LocalTimeFactory {
     fun from(date: String, format: DateTimeFormat) = from(date, format.code)
 
     fun from(date: String, format: String) = runCatching {
-        LocalTime.parse(date, format.toDateTimeFormat(EN_LOCALE))
+        LocalTime.parse(date, format.toDateTimeFormat(DEFAULT_LOCALE))
     }.getOrNull()
 }
