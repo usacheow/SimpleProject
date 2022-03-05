@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.usacheow.coreuiview.adapter.base.Populatable
-import com.usacheow.coreuiview.adapter.base.ViewState
+import com.usacheow.coreuiview.tools.Populatable
+import com.usacheow.coreuiview.tools.ViewState
 
 open class ViewStateAdapter(
     private var entities: List<ViewState> = emptyList()

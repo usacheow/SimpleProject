@@ -5,12 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.usacheow.coreuiview.helper.ThemeColorsAttrs
-import com.usacheow.coreuiview.helper.color
-import com.usacheow.coreuiview.helper.colorByAttr
-import com.usacheow.coreuiview.helper.toPx
+import com.usacheow.coreuiview.tools.resource.ThemeColorsAttrs
+import com.usacheow.coreuiview.tools.resource.colorByAttr
+import com.usacheow.coreuiview.tools.resource.toPx
 import kotlin.math.min
-import com.usacheow.coreui.R as CoreUiR
 
 private const val DEFAULT_RADIUS_DP = 10
 private const val DOT_MARGIN = 16

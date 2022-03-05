@@ -9,14 +9,14 @@ import com.usacheow.corecommon.container.ImageSource
 import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.applyBottomInset
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.getBottomInset
-import com.usacheow.coreuiview.helper.getTopInset
-import com.usacheow.coreuiview.molecule.CellLeftPart
-import com.usacheow.coreuiview.molecule.CellRightPart
-import com.usacheow.coreuiview.molecule.CellTileItem
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.applyBottomInset
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.getBottomInset
+import com.usacheow.coreuiview.tools.getTopInset
+import com.usacheow.coreuiview.uikit.molecule.CellLeftPart
+import com.usacheow.coreuiview.uikit.molecule.CellRightPart
+import com.usacheow.coreuiview.uikit.molecule.CellTileItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR

@@ -10,16 +10,16 @@ import com.usacheow.appdemo.databinding.FragmentTextInputsBinding
 import com.usacheow.corecommon.date.DateTimeFormat
 import com.usacheow.corecommon.date.LocalDateTimeFactory
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.addCurrencyFormatter
-import com.usacheow.coreuiview.helper.addPhoneNumberFormatter
-import com.usacheow.coreuiview.helper.applyBottomInset
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.doOnActionClick
-import com.usacheow.coreuiview.helper.doOnClick
-import com.usacheow.coreuiview.helper.getBottomInset
-import com.usacheow.coreuiview.helper.getTopInset
-import com.usacheow.coreuiview.helper.showIfCan
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.addCurrencyFormatter
+import com.usacheow.coreuiview.tools.addPhoneNumberFormatter
+import com.usacheow.coreuiview.tools.applyBottomInset
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.doOnActionClick
+import com.usacheow.coreuiview.tools.doOnClick
+import com.usacheow.coreuiview.tools.getBottomInset
+import com.usacheow.coreuiview.tools.getTopInset
+import com.usacheow.coreuiview.tools.showIfCan
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.coreuitheme.R as CoreUiThemeR

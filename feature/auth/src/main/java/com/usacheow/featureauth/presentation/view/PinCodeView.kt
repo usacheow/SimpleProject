@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.GridLayout
-import com.usacheow.coreuiview.helper.string
-import com.usacheow.coreuiview.organism.NumPadView
+import com.usacheow.coreuiview.tools.resource.string
+import com.usacheow.coreuiview.uikit.organism.NumPadView
 import com.usacheow.featureauth.databinding.ViewPinCodeBinding
 import com.usacheow.corecommon.R as CoreR
 

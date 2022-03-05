@@ -1,4 +1,4 @@
-<com.usacheow.coreuiview.molecule.InformationTileView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuiview.uikit.molecule.InformationTileView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -77,4 +77,4 @@
         android:textAppearance="?textAppearanceLabelSmall"
         android:textColor="?android:textColorSecondary"
         tools:text="@tools:sample/date/day_of_week" />
-</com.usacheow.coreuiview.molecule.InformationTileView>
+</com.usacheow.coreuiview.uikit.molecule.InformationTileView>

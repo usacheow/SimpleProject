@@ -2,7 +2,7 @@ package com.usacheow.featureauth.presentation.biometric
 
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import javax.inject.Inject
 import com.usacheow.corecommon.R as CoreR
 

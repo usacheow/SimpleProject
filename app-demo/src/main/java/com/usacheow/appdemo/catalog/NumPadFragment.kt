@@ -5,11 +5,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.DemoRouter
 import com.usacheow.appdemo.databinding.FragmentNumPadBinding
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.applyBottomInset
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.getBottomInset
-import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.applyBottomInset
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.getBottomInset
+import com.usacheow.coreuiview.tools.getTopInset
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.coreuitheme.R as CoreUiThemeR

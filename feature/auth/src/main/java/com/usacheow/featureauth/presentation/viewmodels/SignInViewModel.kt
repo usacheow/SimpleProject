@@ -3,14 +3,14 @@ package com.usacheow.featureauth.presentation.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.usacheow.corecommon.navigation.FeatureNavDirection
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import com.usacheow.coredata.network.getMessage
 import com.usacheow.corenavigation.base.requireNextScreenDirection
 import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.tryPublish
-import com.usacheow.coreuiview.helper.get
+import com.usacheow.coreuiview.tools.resource.get
 import com.usacheow.featureauth.domain.AuthInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

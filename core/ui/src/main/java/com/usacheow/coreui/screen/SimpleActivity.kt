@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import com.usacheow.corecommon.analytics.Events
 import com.usacheow.coreui.screen.base.ActivityViewBindingHolder
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.SimpleLifecycle
 import com.usacheow.coreui.screen.base.ViewBindingHolder
-import com.usacheow.coreuiview.helper.doOnApplyWindowInsets
+import com.usacheow.coreuiview.tools.doOnApplyWindowInsets
 import javax.inject.Inject
 
 abstract class SimpleActivity<VIEW_BINDING : ViewBinding> :

@@ -9,8 +9,8 @@ import com.usacheow.coreui.viewmodel.EventChannel
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.coreui.viewmodel.triggerBy
 import com.usacheow.coreui.viewmodel.tryPublish
-import com.usacheow.coreuiview.helper.get
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.get
 import com.usacheow.featureauth.domain.AuthInteractor
 import com.usacheow.featureauth.presentation.isPhoneNumberValid
 import com.usacheow.featureauth.presentation.normalizedPhoneNumber

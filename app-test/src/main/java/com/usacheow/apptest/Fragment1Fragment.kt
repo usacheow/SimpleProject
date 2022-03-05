@@ -2,11 +2,9 @@ package com.usacheow.apptest
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
 import com.usacheow.apptest.databinding.Fragment1Binding
-import com.usacheow.coredata.crypto.CryptoConfigurator
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.doOnClick
+import com.usacheow.coreuiview.tools.doOnClick
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

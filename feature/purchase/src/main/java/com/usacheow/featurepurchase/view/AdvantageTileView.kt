@@ -6,9 +6,9 @@ import android.widget.LinearLayout
 import com.example.featurepurchase.databinding.ViewAdvantageTileBinding
 import com.usacheow.corecommon.container.ImageSource
 import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.adapter.base.Populatable
-import com.usacheow.coreuiview.adapter.base.ViewState
-import com.usacheow.coreuiview.helper.populate
+import com.usacheow.coreuiview.tools.Populatable
+import com.usacheow.coreuiview.tools.ViewState
+import com.usacheow.coreuiview.tools.populate
 import com.example.featurepurchase.R as FeatureR
 
 class AdvantageTileView @JvmOverloads constructor(

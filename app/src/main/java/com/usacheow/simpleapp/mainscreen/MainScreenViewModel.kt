@@ -1,7 +1,7 @@
 package com.usacheow.simpleapp.mainscreen
 
 import androidx.lifecycle.viewModelScope
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import com.usacheow.corecommon.container.toTextSource
 import com.usacheow.coredata.database.SettingsStorage
 import com.usacheow.corenavigation.OnBoardingFeatureProvider

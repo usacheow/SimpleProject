@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.usacheow.coreuiview.adapter.base.Populatable
-import com.usacheow.coreuiview.adapter.base.TagViewState
+import com.usacheow.coreuiview.tools.Populatable
+import com.usacheow.coreuiview.tools.TagViewState
 
 abstract class BaseSelectionModeViewStatesAdapter(
     protected var entities: List<TagViewState> = emptyList(),

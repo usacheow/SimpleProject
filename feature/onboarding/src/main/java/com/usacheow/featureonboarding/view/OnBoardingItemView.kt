@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.usacheow.corecommon.container.ImageSource
 import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.adapter.base.Populatable
-import com.usacheow.coreuiview.adapter.base.ViewState
-import com.usacheow.coreuiview.helper.populate
+import com.usacheow.coreuiview.tools.Populatable
+import com.usacheow.coreuiview.tools.ViewState
+import com.usacheow.coreuiview.tools.populate
 import com.usacheow.featureonboarding.databinding.OnBoardingItemViewBinding
 import com.usacheow.featureonboarding.R as FeatureR
 

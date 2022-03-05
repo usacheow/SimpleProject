@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.delay
@@ -20,7 +21,7 @@ fun Modifier.defaultBorder() = composed {
         width = 1.dp,
         color = AppTheme.commonColors.outline,
         shape = MaterialTheme.shapes.medium,
-    )
+    ).clip(MaterialTheme.shapes.medium)
 }
 
 fun Modifier.doOnClick(

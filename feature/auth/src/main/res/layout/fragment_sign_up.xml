@@ -76,7 +76,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.usacheow.coreuiview.organism.FullScreenLoaderView
+    <com.usacheow.coreuiview.uikit.organism.FullScreenLoaderView
         android:id="@+id/loaderView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

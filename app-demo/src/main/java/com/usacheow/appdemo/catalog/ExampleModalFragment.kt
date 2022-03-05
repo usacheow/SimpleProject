@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.databinding.FragmentExampleModalBinding
 import com.usacheow.coreui.screen.SimpleModalFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.getTopInset
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.getTopInset
 import dagger.hilt.android.AndroidEntryPoint
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 

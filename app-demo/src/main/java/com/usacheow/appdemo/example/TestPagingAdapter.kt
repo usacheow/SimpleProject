@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.usacheow.coreuiview.adapter.ViewTypesViewHolder
-import com.usacheow.coreuiview.adapter.base.ViewState
+import com.usacheow.coreuiview.tools.ViewState
 
 class TestPagingAdapter : PagingDataAdapter<TestModel, ViewTypesViewHolder<ViewState>>(TestModelDiffUtil) {
 

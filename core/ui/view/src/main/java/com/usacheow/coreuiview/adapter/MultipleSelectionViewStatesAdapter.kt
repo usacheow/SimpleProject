@@ -1,6 +1,6 @@
 package com.usacheow.coreuiview.adapter
 
-import com.usacheow.coreuiview.adapter.base.TagViewState
+import com.usacheow.coreuiview.tools.TagViewState
 
 class MultipleSelectionViewStatesAdapter(
     entities: List<TagViewState> = emptyList(),

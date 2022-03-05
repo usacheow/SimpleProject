@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false">
 
-    <com.usacheow.coreuiview.organism.SimpleAppBarLayout
+    <com.usacheow.coreuiview.uikit.organism.SimpleAppBarLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,22 +24,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.usacheow.coreuiview.organism.MessageBannerView
+            <com.usacheow.coreuiview.uikit.organism.MessageBannerView
                 android:id="@+id/errorMessageView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.usacheow.coreuiview.organism.MessageBannerView
+            <com.usacheow.coreuiview.uikit.organism.MessageBannerView
                 android:id="@+id/errorMessageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.usacheow.coreuiview.organism.MessageBannerView
+            <com.usacheow.coreuiview.uikit.organism.MessageBannerView
                 android:id="@+id/errorMessageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.usacheow.coreuiview.organism.MessageBannerView
+            <com.usacheow.coreuiview.uikit.organism.MessageBannerView
                 android:id="@+id/errorMessageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

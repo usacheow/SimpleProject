@@ -11,15 +11,15 @@ import com.usacheow.corecommon.container.toTextSource
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.coreuiview.adapter.ViewStateAdapter
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.applyBottomInset
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.getBottomInset
-import com.usacheow.coreuiview.helper.getTopInset
-import com.usacheow.coreuiview.helper.toPx
-import com.usacheow.coreuiview.molecule.BadgeTileItem
-import com.usacheow.coreuiview.molecule.HeaderTileItem
-import com.usacheow.coreuiview.template.SimpleBottomSheetLayout
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.applyBottomInset
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.getBottomInset
+import com.usacheow.coreuiview.tools.getTopInset
+import com.usacheow.coreuiview.tools.resource.toPx
+import com.usacheow.coreuiview.uikit.molecule.BadgeTileItem
+import com.usacheow.coreuiview.uikit.molecule.HeaderTileItem
+import com.usacheow.coreuiview.uikit.template.SimpleBottomSheetLayout
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.corecommon.R as CoreR

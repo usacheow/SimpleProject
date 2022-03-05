@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreuiview.molecule.ListTileView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuiview.uikit.molecule.ListTileView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -62,4 +62,4 @@
         android:layout_height="32dp"
         android:layout_marginStart="@dimen/left_right_margin"
         android:scaleType="centerCrop" />
-</com.usacheow.coreuiview.molecule.ListTileView>
+</com.usacheow.coreuiview.uikit.molecule.ListTileView>

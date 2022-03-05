@@ -7,9 +7,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.usacheow.appdemo.databinding.ActivityHostBinding
 import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.hideIme
-import com.usacheow.coreuiview.helper.isImeVisible
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.hideIme
+import com.usacheow.coreuiview.tools.isImeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

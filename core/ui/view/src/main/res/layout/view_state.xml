@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreuiview.container.StateView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuiview.uikit.container.StateView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.usacheow.coreuiview.organism.MessageBannerView
+    <com.usacheow.coreuiview.uikit.organism.MessageBannerView
         android:id="@+id/messageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.usacheow.coreuiview.organism.FullScreenLoaderView
+    <com.usacheow.coreuiview.uikit.organism.FullScreenLoaderView
         android:id="@+id/loaderView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
-</com.usacheow.coreuiview.container.StateView>
+</com.usacheow.coreuiview.uikit.container.StateView>

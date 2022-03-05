@@ -7,10 +7,10 @@ import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
 import com.usacheow.corebilling.model.Product
 import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
-import com.usacheow.coreuiview.helper.ThemeColorsAttrs
-import com.usacheow.coreuiview.helper.colorByAttr
-import com.usacheow.coreuiview.helper.get
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ThemeColorsAttrs
+import com.usacheow.coreuiview.tools.resource.colorByAttr
+import com.usacheow.coreuiview.tools.resource.get
 import com.usacheow.featurepurchase.view.PriceTileItem
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Currency

@@ -8,16 +8,16 @@ import androidx.annotation.CallSuper
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
-import com.usacheow.coreuiview.resourcewrapper.ResourcesWrapper
+import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import com.usacheow.corecommon.analytics.Events
 import com.usacheow.coreui.screen.base.ApplyWindowInsets
 import com.usacheow.coreui.screen.base.FragmentViewBindingHolder
 import com.usacheow.coreui.screen.base.SimpleLifecycle
 import com.usacheow.coreui.screen.base.ViewBindingHolder
-import com.usacheow.coreuiview.helper.createWindowInsetsControllerCompat
-import com.usacheow.coreuiview.helper.doOnApplyWindowInsets
-import com.usacheow.coreuiview.helper.isNightMode
+import com.usacheow.coreuiview.tools.createWindowInsetsControllerCompat
+import com.usacheow.coreuiview.tools.doOnApplyWindowInsets
+import com.usacheow.coreuiview.tools.isNightMode
 import javax.inject.Inject
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 

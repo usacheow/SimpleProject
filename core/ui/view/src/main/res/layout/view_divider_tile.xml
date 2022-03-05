@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.usacheow.coreuiview.atom.DividerTileView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.usacheow.coreuiview.uikit.atom.DividerTileView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -8,4 +8,4 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height_large"
         android:background="?colorOutline" />
-</com.usacheow.coreuiview.atom.DividerTileView>
+</com.usacheow.coreuiview.uikit.atom.DividerTileView>

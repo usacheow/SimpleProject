@@ -6,13 +6,13 @@ import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.example.featurepurchase.databinding.ViewPriceTileBinding
 import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.adapter.base.Populatable
-import com.usacheow.coreuiview.adapter.base.TagViewState
-import com.usacheow.coreuiview.helper.ThemeColorsAttrs
-import com.usacheow.coreuiview.helper.colorByAttr
-import com.usacheow.coreuiview.helper.doOnClick
-import com.usacheow.coreuiview.helper.populate
-import com.usacheow.coreuiview.helper.toPx
+import com.usacheow.coreuiview.tools.Populatable
+import com.usacheow.coreuiview.tools.TagViewState
+import com.usacheow.coreuiview.tools.resource.ThemeColorsAttrs
+import com.usacheow.coreuiview.tools.resource.colorByAttr
+import com.usacheow.coreuiview.tools.doOnClick
+import com.usacheow.coreuiview.tools.populate
+import com.usacheow.coreuiview.tools.resource.toPx
 import com.example.featurepurchase.R as FeatureR
 
 private const val SELECTED_STROKE_WIDTH_DP = 2

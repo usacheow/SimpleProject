@@ -7,12 +7,12 @@ import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
 import com.usacheow.corecommon.container.ImageSource
 import com.usacheow.corecommon.container.TextSource
 import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.helper.PaddingValue
-import com.usacheow.coreuiview.helper.applyBottomInset
-import com.usacheow.coreuiview.helper.applyTopInset
-import com.usacheow.coreuiview.helper.getBottomInset
-import com.usacheow.coreuiview.helper.getTopInset
-import com.usacheow.coreuiview.organism.MessageBannerItem
+import com.usacheow.coreuiview.tools.PaddingValue
+import com.usacheow.coreuiview.tools.applyBottomInset
+import com.usacheow.coreuiview.tools.applyTopInset
+import com.usacheow.coreuiview.tools.getBottomInset
+import com.usacheow.coreuiview.tools.getTopInset
+import com.usacheow.coreuiview.uikit.organism.MessageBannerItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.usacheow.appdemo.R as DemoAppR
