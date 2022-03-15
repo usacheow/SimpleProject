@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 
 fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, action: suspend (value: T) -> Unit) {
     onEach(action)
@@ -24,13 +25,8 @@ fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, action: suspend (value: 
         .launchIn(lifecycleOwner.lifecycle.coroutineScope)
 }
 
-suspend infix fun <T> MutableStateFlow<T>.publish(value: T) { emit(value) }
-
+fun <T> MutableStateFlow<T>.publish(function: (T) -> T) { update(function) }
 infix fun <T> MutableStateFlow<T>.tryPublish(value: T) { tryEmit(value) }
-
-suspend infix fun <T> MutableSharedFlow<T>.publish(value: T) { emit(value) }
-
-infix fun <T> MutableSharedFlow<T>.tryPublish(value: T) { tryEmit(value) }
 
 suspend infix fun <T> Channel<T>.triggerBy(value: T) { send(value) }
 suspend fun Channel<SimpleAction>.trigger() { send(SimpleAction) }
