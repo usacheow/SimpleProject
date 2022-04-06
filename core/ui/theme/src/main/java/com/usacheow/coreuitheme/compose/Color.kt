@@ -119,6 +119,7 @@ data class Colors(
     val onSurfaceVariant: Color,
     val surfaceInverse: Color,
     val onSurfaceInverse: Color,
+    val surfaceTint: Color = primary,
 
     val symbolPrimary: Color,
     val symbolPrimaryInverse: Color,
@@ -177,6 +178,7 @@ data class Colors(
         onSurfaceVariant = onSurfaceVariant,
         inverseSurface = surfaceInverse,
         inverseOnSurface = onSurfaceInverse,
+        surfaceTint = surfaceTint,
 
         error = error,
         onError = onError,
