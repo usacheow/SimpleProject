@@ -2,13 +2,13 @@ package com.usacheow.coreuitheme.compose
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Shapes
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.RippleAlpha
 import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -19,8 +19,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
-val LocalCommonColors = staticCompositionLocalOf { LightCommonColors }
-val LocalShapes = staticCompositionLocalOf { Shapes }
+private val LocalCommonColors = staticCompositionLocalOf { LightCommonColors }
 
 private val DarkColorPalette = DarkCommonColors.toColorScheme()
 private val LightColorPalette = LightCommonColors.toColorScheme()
@@ -38,13 +37,13 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
 
     CompositionLocalProvider(
         LocalCommonColors provides commonColors,
-        LocalShapes provides Shapes,
         LocalIndication provides rememberRipple(),
         LocalRippleTheme provides AppRippleTheme,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = Typography,
+            shapes = AppShapes,
+            typography = AppTypography,
             content = content,
         )
     }
@@ -82,6 +81,11 @@ fun SystemBarsIconsColor(
 
 object AppTheme {
 
+    val commonColors: Colors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalCommonColors.current
+
     val colorScheme: ColorScheme
         @Composable
         @ReadOnlyComposable
@@ -92,13 +96,8 @@ object AppTheme {
         @ReadOnlyComposable
         get() = MaterialTheme.typography
 
-    val commonColors: Colors
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalCommonColors.current
-
     val shapes: Shapes
         @Composable
         @ReadOnlyComposable
-        get() = LocalShapes.current
+        get() = MaterialTheme.shapes
 }

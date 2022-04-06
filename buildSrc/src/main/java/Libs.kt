@@ -10,7 +10,7 @@ object Libs {
     private const val rulerVersion = "1.1.0"
 
     const val composeVersion = "1.1.1"
-    private const val composeMaterialVersion = "1.0.0-alpha08"
+    private const val composeMaterialVersion = "1.0.0-alpha09"
     private const val androidxVersion = "1.4.1"
     private const val androidxCoreVersion = "1.8.0-alpha04"
     private const val splashVersion = "1.0.0-beta01"

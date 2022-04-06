@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.sp
 
 const val secondaryTextAlpha = 0.6f
 
-val Typography = Typography(
+internal val AppTypography = Typography(
     displayLarge = TextStyle(
         fontWeight = FontWeight.W400,
         fontSize = 57.sp,
