@@ -10,5 +10,3 @@ internal val AppShapes = Shapes(
     large = RoundedCornerShape(Dimen.radius_large),
     extraLarge = RoundedCornerShape(Dimen.radius_large),
 )
-
-val CircleShape = RoundedCornerShape(percent = 50)

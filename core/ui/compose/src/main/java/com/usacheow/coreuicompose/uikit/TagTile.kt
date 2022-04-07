@@ -35,12 +35,12 @@ data class TagTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        TagTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        TagTile(modifier ?: Modifier, this)
     }
 
     companion object {
-        fun shimmer() = ShimmerState { TagTileShimmer() }
+        fun shimmer() = ShimmerState { TagTileShimmer(it) }
     }
 
     data class DataColor(
@@ -86,8 +86,8 @@ fun TagTile(
 }
 
 @Composable
-fun TagTileShimmer() {
-    TagCard(color = TagTileDefaults.unselectedColor(), clickListener = null) {
+fun TagTileShimmer(modifier: Modifier = Modifier,) {
+    TagCard(modifier = modifier, color = TagTileDefaults.unselectedColor(), clickListener = null) {
         ShimmerTileLine(width = 40.dp)
     }
 }

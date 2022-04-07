@@ -6,13 +6,13 @@ import androidx.compose.ui.Modifier
 interface WidgetState {
 
     @Composable
-    fun Content(modifier: Modifier = Modifier) {}
+    fun Content(modifier: Modifier? = Modifier) {}
 }
 
-data class ShimmerState(private val block: @Composable () -> Unit) : WidgetState {
+data class ShimmerState(private val block: @Composable (Modifier) -> Unit) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        block()
+    override fun Content(modifier: Modifier?) {
+        block(modifier ?: Modifier)
     }
 }

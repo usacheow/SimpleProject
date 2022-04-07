@@ -33,7 +33,7 @@ import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 
-data class ActionTileState(
+data class CellTileState(
     val image: ImageValue = ImageValue.Empty,
     val title: TextValue,
     val subtitle: TextValue = TextValue.Empty,
@@ -43,8 +43,8 @@ data class ActionTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        ActionTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        CellTile(modifier ?: Modifier, this)
     }
 
     companion object {
@@ -60,9 +60,9 @@ data class ActionTileState(
 }
 
 @Composable
-fun ActionTile(
+fun CellTile(
     modifier: Modifier = Modifier,
-    data: ActionTileState,
+    data: CellTileState,
 ) {
     val verticalAlignment = when (data.subtitle) {
         TextValue.Empty -> Alignment.CenterVertically
@@ -120,15 +120,15 @@ private fun RowScope.PrimaryText(value: TextValue) {
 }
 
 @Composable
-private fun Selector(isChecked: Boolean, selectorType: ActionTileState.SelectorType) {
+private fun Selector(isChecked: Boolean, selectorType: CellTileState.SelectorType) {
     when (selectorType) {
-        ActionTileState.SelectorType.Switch -> Switch(
+        CellTileState.SelectorType.Switch -> Switch(
             checked = isChecked,
             onCheckedChange = null,
             modifier = Modifier.height(24.dp),
         )
 
-        ActionTileState.SelectorType.CheckBox -> Checkbox(
+        CellTileState.SelectorType.CheckBox -> Checkbox(
             checked = isChecked,
             onCheckedChange = null,
             modifier = Modifier.size(height = 24.dp, width = 32.dp),
@@ -151,40 +151,40 @@ private fun SecondaryText(value: TextValue) {
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun ActionTilePreview() {
+private fun CellTilePreview() {
     SimplePreview {
         LazyColumn {
-            items(previewActionTiles()) {
+            items(previewCellTiles()) {
                 it.Content()
             }
         }
     }
 }
 
-private fun previewActionTiles(): List<WidgetState> = listOf(
-    ActionTileState.shimmer(),
-    ActionTileState(
+fun previewCellTiles(): List<WidgetState> = listOf(
+    CellTileState.shimmer(),
+    CellTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),
         title = TextValue.Simple("Title"),
         subtitle = TextValue.Empty,
         isChecked = false,
-        selectorType = ActionTileState.SelectorType.CheckBox,
+        selectorType = CellTileState.SelectorType.CheckBox,
         clickListener = {},
     ),
-    ActionTileState(
+    CellTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),
         title = TextValue.Simple("Title"),
         subtitle = TextValue.Simple("Subtitle"),
         isChecked = false,
-        selectorType = ActionTileState.SelectorType.CheckBox,
+        selectorType = CellTileState.SelectorType.CheckBox,
         clickListener = {},
     ),
-    ActionTileState(
+    CellTileState(
         image = ImageValue.Vector(Icons.Default.VerifiedUser),
         title = TextValue.Simple("Title"),
         subtitle = TextValue.Simple("Subtitle"),
         isChecked = true,
-        selectorType = ActionTileState.SelectorType.Switch,
+        selectorType = CellTileState.SelectorType.Switch,
         clickListener = {},
     ),
 )

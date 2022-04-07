@@ -42,8 +42,8 @@ data class ListTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        ListTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        ListTile(modifier ?: Modifier, this)
     }
 
     companion object {
@@ -137,7 +137,7 @@ private fun ListTilePreview() {
     }
 }
 
-private fun previewListTiles(): List<WidgetState> = listOf(
+fun previewListTiles(): List<WidgetState> = listOf(
     ListTileState.shimmer(),
     ListTileState(
         leftImageInfo = ImageValue.Empty,

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +21,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.CircleShape
 import com.usacheow.coreuitheme.compose.Dimen
 import com.usacheow.coreuicompose.tools.SimplePreview
 
@@ -33,9 +33,9 @@ data class ShimmerTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
+    override fun Content(modifier: Modifier?) {
         ShimmerTile(
-            modifier = modifier,
+            modifier = modifier ?: Modifier,
             needLeftIcon = needLeftIcon,
             needRightIcon = needRightIcon,
             needTopLine = needTopLine,

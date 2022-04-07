@@ -3,6 +3,7 @@ plugins {
 }
 
 common()
+compose()
 dagger()
 lifecycle()
 glide()

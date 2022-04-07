@@ -28,8 +28,8 @@ data class HeaderTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        HeaderTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        HeaderTile(modifier ?: Modifier, this)
     }
 
     companion object {
@@ -97,7 +97,7 @@ private fun HeaderTilePreview() {
     }
 }
 
-private fun previewHeaderTiles(): List<WidgetState> = listOf(
+fun previewHeaderTiles(): List<WidgetState> = listOf(
     HeaderTileState.shimmer(HeaderTileState.Type.Title),
     HeaderTileState(
         value = TextValue.Simple("Title"),

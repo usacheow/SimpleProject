@@ -40,8 +40,8 @@ data class MessageBannerState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        MessageBannerTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        MessageBannerTile(modifier ?: Modifier, this)
     }
 }
 
@@ -157,7 +157,7 @@ private fun MessageBannerTilePreview() {
     }
 }
 
-private fun previewMessageBanners(): List<WidgetState> = listOf(
+fun previewMessageBanners(): List<WidgetState> = listOf(
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

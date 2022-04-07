@@ -55,93 +55,98 @@ fun ButtonContent(
 @Composable
 private fun SimpleButtonPreview() {
     SimplePreview {
-        Column {
+        PreviewContentSimpleButton()
+    }
+}
+
+@Composable
+fun PreviewContentSimpleButton() {
+    Column {
+        Button(
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            onClick = {},
+        ) { ButtonContent(TextValue.Simple("Simple button"), ImageValue.Empty) }
+        Row {
             Button(
-                modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                 onClick = {},
             ) { ButtonContent(TextValue.Simple("Simple button"), ImageValue.Empty) }
-            Row {
-                Button(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Simple("Simple button"), ImageValue.Empty) }
-                Button(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
-            }
+            Button(
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                onClick = {},
+            ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
+        }
 
+        FilledTonalButton(
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            onClick = {},
+        ) { ButtonContent(TextValue.Simple("Tonal button"), ImageValue.Empty) }
+        Row {
             FilledTonalButton(
-                modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                 onClick = {},
             ) { ButtonContent(TextValue.Simple("Tonal button"), ImageValue.Empty) }
-            Row {
-                FilledTonalButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Simple("Tonal button"), ImageValue.Empty) }
-                FilledTonalButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
-            }
+            FilledTonalButton(
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                onClick = {},
+            ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
+        }
 
+        ElevatedButton(
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            onClick = {},
+        ) { ButtonContent(TextValue.Simple("Elevated button"), ImageValue.Empty) }
+        Row {
             ElevatedButton(
-                modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                 onClick = {},
             ) { ButtonContent(TextValue.Simple("Elevated button"), ImageValue.Empty) }
-            Row {
-                ElevatedButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Simple("Elevated button"), ImageValue.Empty) }
-                ElevatedButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
-            }
+            ElevatedButton(
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                onClick = {},
+            ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
+        }
+        OutlinedButton(
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            onClick = {},
+        ) { ButtonContent(TextValue.Simple("Outlined button"), ImageValue.Empty) }
+        Row {
             OutlinedButton(
-                modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                 onClick = {},
             ) { ButtonContent(TextValue.Simple("Outlined button"), ImageValue.Empty) }
-            Row {
-                OutlinedButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Simple("Outlined button"), ImageValue.Empty) }
-                OutlinedButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
-            }
+            OutlinedButton(
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                onClick = {},
+            ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
+        }
 
+        TextButton(
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            onClick = {},
+        ) { ButtonContent(TextValue.Simple("Text button"), ImageValue.Empty) }
+        Row {
             TextButton(
-                modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                 onClick = {},
             ) { ButtonContent(TextValue.Simple("Text button"), ImageValue.Empty) }
-            Row {
-                TextButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Simple("Text button"), ImageValue.Empty) }
-                TextButton(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    onClick = {},
-                ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
-            }
-            IconButton(onClick = {}) {
-                ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add))
-            }
+            TextButton(
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                onClick = {},
+            ) { ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add)) }
+        }
+        IconButton(onClick = {}) {
+            ButtonContent(TextValue.Empty, ImageValue.Vector(Icons.Default.Add))
         }
     }
 }

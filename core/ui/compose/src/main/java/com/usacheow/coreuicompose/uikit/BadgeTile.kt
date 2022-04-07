@@ -41,13 +41,13 @@ data class BadgeTileState(
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier) {
-        BadgeTile(modifier, this)
+    override fun Content(modifier: Modifier?) {
+        BadgeTile(modifier ?: Modifier, this)
     }
 
     companion object {
         fun shimmer(needAdaptWidth: Boolean = true) = ShimmerState {
-            BadgeTileShimmer(needAdaptWidth = needAdaptWidth)
+            BadgeTileShimmer(it, needAdaptWidth)
         }
     }
 }
@@ -86,8 +86,12 @@ fun BadgeTile(
 }
 
 @Composable
-fun BadgeTileShimmer(needAdaptWidth: Boolean = true) {
+fun BadgeTileShimmer(
+    modifier: Modifier = Modifier,
+    needAdaptWidth: Boolean = true,
+) {
     BadgeCard(
+        modifier = modifier,
         needAdaptWidth = needAdaptWidth,
         contentColor = AppTheme.commonColors.symbolPrimary,
         backgroundColor = AppTheme.colorScheme.surface,
@@ -141,7 +145,7 @@ private fun BadgeTilePreview() {
 }
 
 @Composable
-private fun previewBadgeTiles() = listOf(
+fun previewBadgeTiles() = listOf(
     BadgeTileState.shimmer(),
     BadgeTileState(
         header = TextValue.Empty,
