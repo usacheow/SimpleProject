@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/demoFragment"
         android:name="com.usacheow.appdemo.DemoFragment"
-        android:label="DemoFragment"
-        tools:layout="@layout/fragment_demo">
+        android:label="DemoFragment">
         <action
             android:id="@+id/action_demoFragment_to_typographyFragment"
             app:destination="@id/typographyFragment" />
@@ -54,18 +53,15 @@
     <fragment
         android:id="@+id/typographyFragment"
         android:name="com.usacheow.appdemo.catalog.TypographyFragment"
-        android:label="TypographyFragment"
-        tools:layout="@layout/fragment_list"/>
+        android:label="TypographyFragment"/>
     <fragment
         android:id="@+id/paletteFragment"
         android:name="com.usacheow.appdemo.catalog.PaletteFragment"
-        android:label="PaletteFragment"
-        tools:layout="@layout/fragment_list"/>
+        android:label="PaletteFragment"/>
     <fragment
         android:id="@+id/buttonsFragment"
         android:name="com.usacheow.appdemo.catalog.ButtonsFragment"
-        android:label="ButtonsFragment"
-        tools:layout="@layout/fragment_buttons"/>
+        android:label="ButtonsFragment"/>
     <fragment
         android:id="@+id/textInputsFragment"
         android:name="com.usacheow.appdemo.catalog.TextInputsFragment"
@@ -74,33 +70,27 @@
     <fragment
         android:id="@+id/actionTilesFragment"
         android:name="com.usacheow.appdemo.catalog.CellTilesFragment"
-        android:label="ActionTilesFragment"
-        tools:layout="@layout/fragment_list"/>
+        android:label="ActionTilesFragment"/>
     <fragment
         android:id="@+id/listTilesFragment"
         android:name="com.usacheow.appdemo.catalog.ListTilesFragment"
-        android:label="ListTilesFragment"
-        tools:layout="@layout/fragment_list" />
+        android:label="ListTilesFragment" />
     <fragment
         android:id="@+id/tagListFragment"
         android:name="com.usacheow.appdemo.catalog.TagListFragment"
-        android:label="TagListFragment"
-        tools:layout="@layout/fragment_tag_list" />
+        android:label="TagListFragment" />
     <fragment
         android:id="@+id/informationTilesFragment"
         android:name="com.usacheow.appdemo.catalog.InformationTilesFragment"
-        android:label="InformationTilesFragment"
-        tools:layout="@layout/fragment_list" />
+        android:label="InformationTilesFragment" />
     <fragment
         android:id="@+id/messageFragment"
         android:name="com.usacheow.appdemo.catalog.MessageFragment"
-        android:label="MessageFragment"
-        tools:layout="@layout/fragment_error_message" />
+        android:label="MessageFragment" />
     <fragment
         android:id="@+id/numPadFragment"
         android:name="com.usacheow.appdemo.catalog.NumPadFragment"
-        android:label="NumPadFragment"
-        tools:layout="@layout/fragment_num_pad" />
+        android:label="NumPadFragment" />
     <dialog
         android:id="@+id/exampleModalFragment"
         android:name="com.usacheow.appdemo.catalog.ExampleModalFragment"

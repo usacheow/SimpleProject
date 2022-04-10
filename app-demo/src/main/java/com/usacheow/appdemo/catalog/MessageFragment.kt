@@ -1,71 +1,101 @@
 package com.usacheow.appdemo.catalog
 
-import android.os.Bundle
-import androidx.core.view.WindowInsetsCompat
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Error
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import com.usacheow.appdemo.DemoRouter
-import com.usacheow.appdemo.databinding.FragmentErrorMessageBinding
-import com.usacheow.corecommon.container.ImageSource
-import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.tools.PaddingValue
-import com.usacheow.coreuiview.tools.applyBottomInset
-import com.usacheow.coreuiview.tools.applyTopInset
-import com.usacheow.coreuiview.tools.getBottomInset
-import com.usacheow.coreuiview.tools.getTopInset
-import com.usacheow.coreuiview.uikit.organism.MessageBannerItem
+import com.usacheow.corecommon.container.compose.ImageValue
+import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreui.screen.ComposeFragment
+import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.getBottomInset
+import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.uikit.MessageBannerState
+import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuitheme.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.appdemo.R as DemoAppR
-import com.usacheow.corecommon.R as CoreR
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
+@OptIn(ExperimentalMaterial3Api::class)
 @AndroidEntryPoint
-class MessageFragment : SimpleFragment<FragmentErrorMessageBinding>() {
+class MessageFragment : ComposeFragment() {
 
     @Inject lateinit var router: DemoRouter
 
-    override val defaultParams = Params(
-        viewBindingProvider = FragmentErrorMessageBinding::inflate,
+    @Composable
+    override fun Screen() {
+        val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+
+        Scaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                SimpleTopAppBar(
+                    title = TextValue.Simple("Message tiles"),
+                    navigationIcon = R.drawable.ic_back to router::back,
+                    contentPadding = getTopInset(),
+                    scrollBehavior = scrollBehavior,
+                )
+            }
+        ) {
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = getBottomInset(),
+            ) {
+                items(items()) {
+                    it.Content(Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                }
+            }
+        }
+    }
+
+    private fun items(): List<WidgetState> = listOf(
+        MessageBannerState(
+            title = TextValue.Simple("Message title text"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ),
+        MessageBannerState(
+            title = TextValue.Simple("Message title text"),
+            description = TextValue.Simple("Message description text"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ),
+        MessageBannerState(
+            icon = ImageValue.Vector(Icons.Default.Error),
+            title = TextValue.Simple("Message title text"),
+            description = TextValue.Simple("Message description text"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ),
+        MessageBannerState(
+            title = TextValue.Simple("Message title text"),
+            button = TextValue.Simple("Button"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            clickListener = {},
+        ),
+        MessageBannerState(
+            title = TextValue.Simple("Message title text"),
+            description = TextValue.Simple("Message description text"),
+            button = TextValue.Simple("Button"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            clickListener = {},
+        ),
+        MessageBannerState(
+            icon = ImageValue.Vector(Icons.Default.Error),
+            title = TextValue.Simple("Message title text"),
+            description = TextValue.Simple("Message description text"),
+            button = TextValue.Simple("Button"),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            clickListener = {},
+        ),
     )
-
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.header.applyTopInset(insets.getTopInset())
-        binding.viewsScrollView.applyBottomInset(insets.getBottomInset())
-        return insets
-    }
-
-    override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
-
-        binding.errorMessageView1.showOrHideError(
-            MessageBannerItem(
-                title = TextSource.Simple("Error title"),
-                description = TextSource.Simple("Error description"),
-            )
-        )
-        binding.errorMessageView2.showOrHideError(
-            MessageBannerItem(
-                title = TextSource.Simple("Error title"),
-                description = TextSource.Simple("Error description"),
-                button = TextSource.Res(CoreR.string.repeat),
-                clickListener = {},
-            )
-        )
-        binding.errorMessageView3.showOrHideError(
-            MessageBannerItem(
-                icon = ImageSource.Res(DemoAppR.drawable.demo_avatar),
-                title = TextSource.Simple("Error title"),
-                description = TextSource.Simple("Error description"),
-            )
-        )
-        binding.errorMessageView4.showOrHideError(
-            MessageBannerItem(
-                icon = ImageSource.Res(DemoAppR.drawable.demo_avatar),
-                title = TextSource.Simple("Error title"),
-                description = TextSource.Simple("Error description"),
-                button = TextSource.Res(CoreR.string.repeat),
-                clickListener = {},
-            )
-        )
-    }
 }

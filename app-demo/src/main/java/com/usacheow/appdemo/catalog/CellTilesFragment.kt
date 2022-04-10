@@ -1,107 +1,110 @@
 package com.usacheow.appdemo.catalog
 
-import android.os.Bundle
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.NavigateNext
+import com.usacheow.appdemo.R as AppDemoR
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.usacheow.appdemo.DemoRouter
-import com.usacheow.appdemo.databinding.FragmentListBinding
-import com.usacheow.corecommon.container.ImageSource
-import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.adapter.ViewStateAdapter
-import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.tools.PaddingValue
-import com.usacheow.coreuiview.tools.applyBottomInset
-import com.usacheow.coreuiview.tools.applyTopInset
-import com.usacheow.coreuiview.tools.getBottomInset
-import com.usacheow.coreuiview.tools.getTopInset
-import com.usacheow.coreuiview.uikit.molecule.CellLeftPart
-import com.usacheow.coreuiview.uikit.molecule.CellRightPart
-import com.usacheow.coreuiview.uikit.molecule.CellTileItem
+import com.usacheow.corecommon.container.compose.ImageValue
+import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreui.screen.ComposeFragment
+import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.getBottomInset
+import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.uikit.CellTileState
+import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuitheme.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.usacheow.appdemo.R as DemoAppR
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
+@OptIn(ExperimentalMaterial3Api::class)
 @AndroidEntryPoint
-class CellTilesFragment : SimpleFragment<FragmentListBinding>() {
+class CellTilesFragment : ComposeFragment() {
 
     @Inject lateinit var router: DemoRouter
 
-    override val defaultParams = Params(
-        viewBindingProvider = FragmentListBinding::inflate,
+    @Composable
+    override fun Screen() {
+        val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+
+        Scaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                SimpleTopAppBar(
+                    title = TextValue.Simple("Cell tiles"),
+                    navigationIcon = R.drawable.ic_back to router::back,
+                    contentPadding = getTopInset(),
+                    scrollBehavior = scrollBehavior,
+                )
+            }
+        ) {
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = getBottomInset(),
+            ) {
+                items(items()) {
+                    it.Content(Modifier)
+                }
+            }
+        }
+    }
+
+    private fun items(): List<WidgetState> = listOf(
+        CellTileState.shimmer(),
+        CellTileState(
+            title = TextValue.Simple("Cell tile title"),
+        ),
+        CellTileState(
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Cell tile title"),
+        ),
+        CellTileState(
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Cell tile title"),
+            additional = TextValue.Simple("Additional text with some interesting information"),
+        ),
+        CellTileState(
+            title = TextValue.Simple("Cell tile title"),
+            value = TextValue.Simple("Value"),
+        ),
+        CellTileState(
+            leftPart = CellTileState.LeftPart.Icon(
+                icon = ImageValue.ResVector(R.drawable.ic_user),
+                background = ImageValue.ResVector(R.drawable.bg_ic_square),
+            ),
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Title"),
+            additional = TextValue.Simple("Additional"),
+            rightPart = CellTileState.RightPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
+            clickListener = {},
+        ),
+        CellTileState(
+            leftPart = CellTileState.LeftPart.Icon(
+                icon = ImageValue.ResVector(R.drawable.ic_lock),
+                background = ImageValue.ResVector(R.drawable.bg_ic_square),
+            ),
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Title"),
+            additional = TextValue.Simple("Additional"),
+            rightPart = CellTileState.RightPart.ActionIcon(ImageValue.Vector(Icons.Default.NavigateNext)),
+            clickListener = {},
+        ),
+        CellTileState(
+            leftPart = CellTileState.LeftPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Title"),
+            additional = TextValue.Simple("Additional"),
+            rightPart = CellTileState.RightPart.Switch(true),
+            clickListener = {},
+        ),
     )
-
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.header.applyTopInset(insets.getTopInset())
-        binding.widgetsListView.applyBottomInset(insets.getBottomInset())
-        return insets
-    }
-
-    override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Cell tiles"
-        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
-
-        binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewStateAdapter(
-            listOf(
-
-                CellTileItem(
-                    title = TextSource.Simple("Cell tile title"),
-                ),
-                CellTileItem(
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                ),
-
-                CellTileItem(
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                    additional = TextSource.Simple("Additional text with some interesting information"),
-                ),
-
-                CellTileItem(
-                    title = TextSource.Simple("Cell tile title"),
-                    value = TextSource.Simple("Value"),
-                ),
-
-                CellTileItem(
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                    link = TextSource.Simple("Link button"),
-                    mainClickListener = {},
-                ),
-
-                CellTileItem(
-                    leftPart = CellLeftPart.Icon(
-                        ImageSource.Res(CoreUiThemeR.drawable.ic_user),
-                        ImageSource.Res(CoreUiThemeR.drawable.bg_ic_square),
-                    ),
-                    rightPart = CellRightPart.Logo(ImageSource.Res(DemoAppR.drawable.demo_avatar)),
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                    additional = TextSource.Simple("Additional text with some interesting information"),
-                ),
-
-                CellTileItem(
-                    leftPart = CellLeftPart.Logo(ImageSource.Res(DemoAppR.drawable.demo_avatar)),
-                    rightPart = CellRightPart.ActionIcon(ImageSource.Res(CoreUiThemeR.drawable.ic_next)),
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                    additional = TextSource.Simple("Additional text with some interesting information"),
-                    mainClickListener = {},
-                ),
-
-                CellTileItem(
-                    leftPart = CellLeftPart.Icon(ImageSource.Res(DemoAppR.drawable.demo_avatar)),
-                    title = TextSource.Simple("Cell tile title"),
-                    subtitle = TextSource.Simple("Subtitle"),
-                    additional = TextSource.Simple("Additional text with some interesting information"),
-                    rightPart = CellRightPart.Switch(true),
-                    mainClickListener = {},
-                ),
-
-                CellTileItem.shimmer(),
-            )
-        )
-    }
 }

@@ -1,112 +1,115 @@
 package com.usacheow.appdemo.catalog
 
-import android.content.Context
-import android.content.res.Resources
-import android.os.Bundle
-import android.util.AttributeSet
-import androidx.annotation.StyleRes
-import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
 import com.usacheow.appdemo.DemoRouter
-import com.usacheow.appdemo.databinding.FragmentListBinding
-import com.usacheow.appdemo.databinding.ViewTextItemBinding
-import com.usacheow.corecommon.container.TextSource
-import com.usacheow.coreuiview.adapter.ViewStateAdapter
-import com.usacheow.coreuiview.tools.Populatable
-import com.usacheow.coreuiview.tools.ViewState
-import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.tools.PaddingValue
-import com.usacheow.coreuiview.tools.applyBottomInset
-import com.usacheow.coreuiview.tools.applyTopInset
-import com.usacheow.coreuiview.tools.getBottomInset
-import com.usacheow.coreuiview.tools.getTopInset
-import com.usacheow.coreuiview.uikit.molecule.SubtitleTileItem
+import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreui.screen.ComposeFragment
+import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.getBottomInset
+import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.uikit.HeaderTileState
+import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.math.roundToInt
-import com.usacheow.appdemo.R as AppDemoR
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @AndroidEntryPoint
-class TypographyFragment : SimpleFragment<FragmentListBinding>() {
+class TypographyFragment : ComposeFragment() {
 
     @Inject
     lateinit var router: DemoRouter
 
-    override val defaultParams = Params(
-        viewBindingProvider = FragmentListBinding::inflate,
-    )
+    @Composable
+    override fun Screen() {
+        val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+        val items = items()
 
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.header.applyTopInset(insets.getTopInset())
-        binding.widgetsListView.applyBottomInset(insets.getBottomInset())
-        return insets
-    }
-
-    override fun setupViews(savedInstanceState: Bundle?) {
-        binding.header.title = "Typography"
-        binding.header.setNavigationAction(CoreUiThemeR.drawable.ic_back, action = router::back)
-
-        binding.widgetsListView.layoutManager = LinearLayoutManager(context)
-        binding.widgetsListView.adapter = ViewStateAdapter(
-            listOf(
-                SubtitleTileItem(TextSource.Simple("Display"), actionText = TextSource.Simple("Size")),
-                TextItem(CoreUiThemeR.style.Simple_Text_Display_L),
-                TextItem(CoreUiThemeR.style.Simple_Text_Display_M),
-                TextItem(CoreUiThemeR.style.Simple_Text_Display_S),
-                SubtitleTileItem(TextSource.Simple("Headline")),
-                TextItem(CoreUiThemeR.style.Simple_Text_Headline_L),
-                TextItem(CoreUiThemeR.style.Simple_Text_Headline_M),
-                TextItem(CoreUiThemeR.style.Simple_Text_Headline_S),
-                SubtitleTileItem(TextSource.Simple("Title")),
-                TextItem(CoreUiThemeR.style.Simple_Text_Title_L),
-                TextItem(CoreUiThemeR.style.Simple_Text_Title_M),
-                TextItem(CoreUiThemeR.style.Simple_Text_Title_S),
-                SubtitleTileItem(TextSource.Simple("Body")),
-                TextItem(CoreUiThemeR.style.Simple_Text_Body_L),
-                TextItem(CoreUiThemeR.style.Simple_Text_Body_M),
-                TextItem(CoreUiThemeR.style.Simple_Text_Body_S),
-                SubtitleTileItem(TextSource.Simple("Label")),
-                TextItem(CoreUiThemeR.style.Simple_Text_Label_L),
-                TextItem(CoreUiThemeR.style.Simple_Text_Label_M),
-                TextItem(CoreUiThemeR.style.Simple_Text_Label_S),
-            )
-        )
-    }
-}
-
-class TextItemView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-) : LinearLayoutCompat(context, attrs), Populatable<TextItem> {
-
-    private val binding by lazy { ViewTextItemBinding.bind(this) }
-
-    override fun populate(model: TextItem) {
-        binding.nameView.setTextAppearance(model.style)
-        binding.sizeView.setTextAppearance(model.style)
-        binding.nameView.text = resources.getResourceName(model.style)
-            .split("/")
-            .lastOrNull()
-            ?.removePrefix("Simple.Text.")
-            ?.replace('.', ' ')
-        binding.sizeView.text = binding.nameView.textSize.toSp.roundToInt().toString()
-    }
-
-    private fun String.splitName(divider: String): String {
-        if (!contains(divider)) {
-            return this
+        Scaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                SimpleTopAppBar(
+                    title = TextValue.Simple("Typography"),
+                    navigationIcon = com.usacheow.coreuitheme.R.drawable.ic_back to router::back,
+                    contentPadding = getTopInset(),
+                    scrollBehavior = scrollBehavior,
+                )
+            }
+        ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(horizontal = 8.dp),
+                contentPadding = getBottomInset(),
+            ) {
+                items(items = items) {
+                    it.Content(Modifier.padding(8.dp))
+                }
+            }
         }
-
-        return split(divider).toMutableList()
-            .apply { add(1, divider) }
-            .reduce { acc, s -> "%s %s".format(acc, s) }
     }
 
-    private val Float.toSp get() = this / Resources.getSystem().displayMetrics.scaledDensity
+    @Composable
+    private fun items() = listOf(
+        HeaderTileState(value = TextValue.Simple("Name"), button = TextValue.Simple("Size"), type = HeaderTileState.Type.SmallSecondary),
+        TextItem(AppTheme.typography.displayLarge, "Display L"),
+        TextItem(AppTheme.typography.displayMedium, "Display M"),
+        TextItem(AppTheme.typography.displaySmall, "Display S"),
+
+        TextItem(AppTheme.typography.headlineLarge, "Headline L"),
+        TextItem(AppTheme.typography.headlineMedium, "Headline M"),
+        TextItem(AppTheme.typography.headlineSmall, "Headline S"),
+
+        TextItem(AppTheme.typography.titleLarge, "Title L"),
+        TextItem(AppTheme.typography.titleMedium, "Title M"),
+        TextItem(AppTheme.typography.titleSmall, "Title S"),
+
+        TextItem(AppTheme.typography.bodyLarge, "Body L"),
+        TextItem(AppTheme.typography.bodyMedium, "Body M"),
+        TextItem(AppTheme.typography.bodySmall, "Body S"),
+
+        TextItem(AppTheme.typography.labelLarge, "Label L"),
+        TextItem(AppTheme.typography.labelMedium, "Label M"),
+        TextItem(AppTheme.typography.labelSmall, "Label S"),
+    )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 data class TextItem(
-    @StyleRes val style: Int,
-) : ViewState(AppDemoR.layout.view_text_item)
+    val style: TextStyle,
+    val name: String,
+) : WidgetState {
+
+    @Composable
+    override fun Content(modifier: Modifier) {
+        Row(modifier = modifier.fillMaxWidth()) {
+            Text(
+                text = name,
+                style = style,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp),
+            )
+            Text(
+                text = style.fontSize.value.toInt().toString(),
+                style = style,
+            )
+        }
+    }
+}

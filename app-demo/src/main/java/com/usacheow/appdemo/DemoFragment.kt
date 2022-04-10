@@ -1,286 +1,352 @@
 package com.usacheow.appdemo
 
-import android.os.Bundle
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.usacheow.appdemo.databinding.FragmentDemoBinding
-import com.usacheow.corecommon.container.TextSource
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.BottomSheetScaffold
+import androidx.compose.material.BottomSheetState
+import androidx.compose.material.BottomSheetValue
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberBottomSheetScaffoldState
+import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.compose.TextValue
 import com.usacheow.corecommon.container.toTextSource
 import com.usacheow.corenavigation.OnBoardingFeatureProvider
-import com.usacheow.coreuiview.adapter.ViewStateAdapter
-import com.usacheow.coreui.screen.SimpleFragment
-import com.usacheow.coreuiview.tools.PaddingValue
-import com.usacheow.coreuiview.tools.applyBottomInset
-import com.usacheow.coreuiview.tools.applyTopInset
-import com.usacheow.coreuiview.tools.getBottomInset
-import com.usacheow.coreuiview.tools.getTopInset
-import com.usacheow.coreuiview.tools.resource.toPx
-import com.usacheow.coreuiview.uikit.molecule.BadgeTileItem
-import com.usacheow.coreuiview.uikit.molecule.HeaderTileItem
-import com.usacheow.coreuiview.uikit.template.SimpleBottomSheetLayout
+import com.usacheow.coreui.screen.ComposeFragment
+import com.usacheow.coreuicompose.tools.getBottomInset
+import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.uikit.BadgeTileState
+import com.usacheow.coreuicompose.uikit.ButtonContent
+import com.usacheow.coreuicompose.uikit.HeaderTileState
+import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 import com.usacheow.corecommon.R as CoreR
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
-private const val CAN_SWIPE_LIST_TO_HIDE = true
-
+@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @AndroidEntryPoint
-class DemoFragment : SimpleFragment<FragmentDemoBinding>() {
+class DemoFragment : ComposeFragment() {
 
-    @Inject lateinit var router: DemoRouter
+    @Inject
+    lateinit var router: DemoRouter
 
-    override val defaultParams = Params(
-        viewBindingProvider = FragmentDemoBinding::inflate,
+    @Composable
+    override fun Screen() {
+        val coroutineScope = rememberCoroutineScope()
+        val modalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+
+        var isDialogVisible by remember { mutableStateOf(false) }
+
+        ModalBottomSheetLayout(
+            sheetState = modalBottomSheetState,
+            sheetShape = AppTheme.shapes.large,
+            sheetContent = { ModalSheetContent() },
+        ) {
+            ModalBottomContent(
+                showDialogClickListener = { isDialogVisible = true },
+                showHideModalBottomSheetClickListener = {
+                    coroutineScope.launch {
+                        if (modalBottomSheetState.isVisible) {
+                            modalBottomSheetState.hide()
+                        } else {
+                            modalBottomSheetState.show()
+                        }
+                    }
+                },
+            )
+        }
+
+        if (isDialogVisible) {
+            AlertDialog(
+                title = { Text("Material dialog") },
+                text = { Text("Material dialog example") },
+                confirmButton = {
+                    TextButton(onClick = {
+                        isDialogVisible = false
+                    }) { ButtonContent(TextValue.Simple("Agree")) }
+                },
+                dismissButton = {
+                    TextButton(onClick = {
+                        isDialogVisible = false
+                    }) { ButtonContent(TextValue.Simple("Disagree")) }
+                },
+                onDismissRequest = { isDialogVisible = false },
+            )
+        }
+    }
+
+    @Composable
+    private fun ModalBottomContent(
+        showDialogClickListener: () -> Unit,
+        showHideModalBottomSheetClickListener: () -> Unit,
+    ) {
+        val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+        val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+            bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed),
+        )
+
+        var sheetPeekHeight by remember { mutableStateOf(0.dp) }
+        val sheetPeekHeightAnimated = animateDpAsState(targetValue = sheetPeekHeight)
+
+        BottomSheetScaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            scaffoldState = bottomSheetScaffoldState,
+            topBar = {
+                SimpleTopAppBar(
+                    title = TextValue.Simple("Demo UIkit"),
+                    contentPadding = getTopInset(),
+                    scrollBehavior = scrollBehavior,
+                )
+            },
+            sheetShape = AppTheme.shapes.large,
+            sheetPeekHeight = sheetPeekHeightAnimated.value,
+            sheetContent = { SheetContent() },
+            content = {
+                BottomContent(
+                    it,
+                    showDialogClickListener = showDialogClickListener,
+                    showHideBottomSheetClickListener = {
+                        sheetPeekHeight = if (sheetPeekHeight == 0.dp) 144.dp else 0.dp
+                    },
+                    showHideModalBottomSheetClickListener = showHideModalBottomSheetClickListener,
+                )
+            },
+        )
+    }
+
+    @Composable
+    private fun BottomContent(
+        paddingValues: PaddingValues,
+        showDialogClickListener: () -> Unit,
+        showHideBottomSheetClickListener: () -> Unit,
+        showHideModalBottomSheetClickListener: () -> Unit,
+    ) {
+        val headerModifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
+        val cardModifier = Modifier.padding(8.dp)
+
+        val items = items(
+            onBoardingArgs = onBoardingArgs(),
+            showDialogClickListener = showDialogClickListener,
+            showHideBottomSheetClickListener = showHideBottomSheetClickListener,
+            showHideModalBottomSheetClickListener = showHideModalBottomSheetClickListener,
+        )
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(horizontal = 8.dp)
+                .padding(paddingValues),
+            contentPadding = getBottomInset(),
+        ) {
+            items(
+                items = items,
+                span = { if (it is HeaderTileState) GridItemSpan(2) else GridItemSpan(1) },
+            ) {
+                it.Content(when (it is HeaderTileState) {
+                    true -> headerModifier
+                    false -> cardModifier
+                })
+            }
+        }
+    }
+
+    @Composable
+    private fun SheetContent() {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(text = "Bottom", style = AppTheme.typography.displayLarge)
+            Text(text = "sheet", style = AppTheme.typography.displayLarge)
+            Text(text = "example", style = AppTheme.typography.displayLarge)
+        }
+    }
+
+    @Composable
+    private fun ModalSheetContent() {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(text = "Modal", style = AppTheme.typography.displayLarge)
+            Text(text = "bottom", style = AppTheme.typography.displayLarge)
+            Text(text = "sheet", style = AppTheme.typography.displayLarge)
+            Text(text = "example", style = AppTheme.typography.displayLarge)
+        }
+    }
+
+    @Composable
+    private fun items(
+        onBoardingArgs: OnBoardingFeatureProvider.OnBoardingArgs,
+        showDialogClickListener: () -> Unit,
+        showHideBottomSheetClickListener: () -> Unit,
+        showHideModalBottomSheetClickListener: () -> Unit,
+    ) = listOf(
+        HeaderTileState.largePrimary(TextValue.Simple("Atoms")),
+        BadgeTileState(
+            header = TextValue.Simple("atom"),
+            value = TextValue.Simple("1. Typography"),
+            clickListener = { router.fromDemoToTypographyScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("atom"),
+            value = TextValue.Simple("2. Palette"),
+            clickListener = { router.fromDemoToPaletteScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("atom"),
+            value = TextValue.Simple("3. Buttons"),
+            clickListener = { router.fromDemoToButtonsScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("atom"),
+            value = TextValue.Simple("4. Text Inputs"),
+            clickListener = { router.fromDemoToTextInputsScreen() }
+        ),
+
+        HeaderTileState.largePrimary(TextValue.Simple("Molecules")),
+        BadgeTileState(
+            header = TextValue.Simple("molecule"),
+            value = TextValue.Simple("1. Cell Tiles"),
+            clickListener = { router.fromDemoToActionTilesScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("molecule"),
+            value = TextValue.Simple("2. List Tiles"),
+            clickListener = { router.fromDemoToListTilesScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("molecule"),
+            value = TextValue.Simple("3. Tag Lists"),
+            clickListener = { router.fromDemoToTagListScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("molecule"),
+            value = TextValue.Simple("4. Information Tiles"),
+            clickListener = { router.fromDemoToInformationTilesScreen() }
+        ),
+
+        HeaderTileState.largePrimary(TextValue.Simple("Organisms")),
+        BadgeTileState(
+            header = TextValue.Simple("organism"),
+            value = TextValue.Simple("1. Message Tiles"),
+            clickListener = { router.fromDemoToMessageScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("organism"),
+            value = TextValue.Simple("2. Num Pad"),
+            clickListener = { router.fromDemoToNumPadScreen() }
+        ),
+
+        HeaderTileState.largePrimary(TextValue.Simple("Templates")),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("1. Alert Dialog"),
+            clickListener = { showDialogClickListener() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("2. Modal Fragment"),
+            clickListener = { router.fromDemoToExampleModalScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("3. Bottom Dialog"),
+            clickListener = { router.fromDemoToExampleBottomDialogScreen() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("4. Bottom sheet"),
+            clickListener = { showHideBottomSheetClickListener() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("5. Modal bottom sheet"),
+            clickListener = { showHideModalBottomSheetClickListener() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("template"),
+            value = TextValue.Simple("6. Onboarding Fragment"),
+            clickListener = { router.toOnBoardingFlow(onBoardingArgs) }
+        ),
+
+        HeaderTileState.largePrimary(TextValue.Simple("Pages")),
+        BadgeTileState(
+            header = TextValue.Simple("page"),
+            value = TextValue.Simple("1. Sign Up Fragment"),
+            clickListener = { router.toSignUpFlow() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("page"),
+            value = TextValue.Simple("2. Sign In Fragment"),
+            clickListener = { router.toSignInFlow() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("page"),
+            value = TextValue.Simple("3. Sign In With Phone Fragment"),
+            clickListener = { router.toSignInWithPhoneFlow() }
+        ),
+        BadgeTileState(
+            header = TextValue.Simple("page"),
+            value = TextValue.Simple("4. Pin Code Fragment"),
+            clickListener = { router.toPinCodeFlow() }
+        ),
     )
 
-    private val onBoardingArgs by lazy {
-        OnBoardingFeatureProvider.OnBoardingArgs(
-            mutableListOf(
-                OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
-                    title = res.getString(CoreR.string.on_boarding_title_1).toTextSource(),
-                    description = res.getString(CoreR.string.on_boarding_description_1).toTextSource()
-                ),
-                OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
-                    title = res.getString(CoreR.string.on_boarding_title_2).toTextSource(),
-                    description = res.getString(CoreR.string.on_boarding_description_2).toTextSource()
-                ),
-                OnBoardingFeatureProvider.OnBoardingArgs.Page(
-                    defaultImageRes = CoreUiThemeR.drawable.ic_user,
-                    title = res.getString(CoreR.string.on_boarding_title_3).toTextSource(),
-                    description = res.getString(CoreR.string.on_boarding_description_3).toTextSource()
-                )
+    @Composable
+    private fun onBoardingArgs() = OnBoardingFeatureProvider.OnBoardingArgs(
+        mutableListOf(
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                defaultImageRes = CoreUiThemeR.drawable.ic_user,
+                title = stringResource(CoreR.string.on_boarding_title_1).toTextSource(),
+                description = stringResource(CoreR.string.on_boarding_description_1).toTextSource()
+            ),
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                defaultImageRes = CoreUiThemeR.drawable.ic_user,
+                title = stringResource(CoreR.string.on_boarding_title_2).toTextSource(),
+                description = stringResource(CoreR.string.on_boarding_description_2).toTextSource()
+            ),
+            OnBoardingFeatureProvider.OnBoardingArgs.Page(
+                defaultImageRes = CoreUiThemeR.drawable.ic_user,
+                title = stringResource(CoreR.string.on_boarding_title_3).toTextSource(),
+                description = stringResource(CoreR.string.on_boarding_description_3).toTextSource()
             )
         )
-    }
-
-    override fun onApplyWindowInsets(insets: WindowInsetsCompat, padding: PaddingValue): WindowInsetsCompat {
-        binding.header.post {
-            binding.bottomSheetLayout.setExpandOffset(binding.header.height)
-        }
-        binding.header.applyTopInset(insets.getTopInset())
-        binding.listView.applyBottomInset(insets.getBottomInset())
-        return insets
-    }
-
-    override fun setupViews(savedInstanceState: Bundle?) {
-        binding.listView.adapter = ViewStateAdapter(
-            listOf(
-                HeaderTileItem(TextSource.Simple("Atoms")),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("1. Typography"),
-                    clickListener = { router.fromDemoToTypographyScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("2. Palette"),
-                    clickListener = { router.fromDemoToPaletteScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("3. Buttons"),
-                    clickListener = { router.fromDemoToButtonsScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("atom"),
-                    value = TextSource.Simple("4. Text Inputs"),
-                    clickListener = { router.fromDemoToTextInputsScreen() },
-                ),
-
-                HeaderTileItem(TextSource.Simple("Molecules")),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("molecule"),
-                    value = TextSource.Simple("1. Cell Tiles"),
-                    clickListener = { router.fromDemoToActionTilesScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("molecule"),
-                    value = TextSource.Simple("2. List Tiles"),
-                    clickListener = { router.fromDemoToListTilesScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("molecule"),
-                    value = TextSource.Simple("3. Tag Lists"),
-                    clickListener = { router.fromDemoToTagListScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("molecule"),
-                    value = TextSource.Simple("4. Information Tiles"),
-                    clickListener = { router.fromDemoToInformationTilesScreen() },
-                ),
-
-                HeaderTileItem(TextSource.Simple("Organisms")),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("organism"),
-                    value = TextSource.Simple("1. Message Tiles"),
-                    clickListener = { router.fromDemoToMessageScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("organism"),
-                    value = TextSource.Simple("2. Num Pad View"),
-                    clickListener = { router.fromDemoToNumPadScreen() },
-                ),
-
-                HeaderTileItem(TextSource.Simple("Templates")),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("1. Alert Dialog"),
-                    clickListener = { showMaterialDialog() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("2. Single Choice Dialog"),
-                    clickListener = { showMaterialDialogWithSingleChoice() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("3. Multi Choice Dialog"),
-                    clickListener = { showMaterialDialogWithMultiChoice() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("4. Modal Fragment"),
-                    clickListener = { router.fromDemoToExampleModalScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("5. Bottom Dialog"),
-                    clickListener = { router.fromDemoToExampleBottomDialogScreen() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("6. Bottom sheet"),
-                    clickListener = { showOrHideBottomSheet() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("template"),
-                    value = TextSource.Simple("7. Onboarding Fragment"),
-                    clickListener = { router.toOnBoardingFlow(onBoardingArgs) },
-                ),
-
-                HeaderTileItem(TextSource.Simple("Pages")),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("page"),
-                    value = TextSource.Simple("1. Sign Up Fragment"),
-                    clickListener = { router.toSignUpFlow() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("page"),
-                    value = TextSource.Simple("2. Sign In Fragment"),
-                    clickListener = { router.toSignInFlow() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("page"),
-                    value = TextSource.Simple("3. Sign In With Phone Fragment"),
-                    clickListener = { router.toSignInWithPhoneFlow() },
-                ),
-                BadgeTileItem(
-                    needAdaptWidth = false,
-                    header = TextSource.Simple("page"),
-                    value = TextSource.Simple("4. Pin Code Fragment"),
-                    clickListener = { router.toPinCodeFlow() },
-                ),
-            )
-        )
-        binding.listView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
-            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int = when {
-                    (binding.listView.adapter as ViewStateAdapter).getData()[position] is BadgeTileItem -> 1
-
-                    else -> 2
-                }
-            }
-        }
-
-        setupBottomSheet()
-    }
-
-    private fun setupBottomSheet() {
-        binding.bottomSheetLayout.setHiddenState()
-        binding.bottomSheetLayout.setup(
-            SimpleBottomSheetLayout.BottomSheetHeight.QUARTER_SIZE,
-            CAN_SWIPE_LIST_TO_HIDE,
-            onStateChangedListener = { newState ->
-                when (newState) {
-                    BottomSheetBehavior.STATE_HIDDEN -> {
-                    }
-
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                        binding.header.setExpanded(false)
-                    }
-
-                    BottomSheetBehavior.STATE_EXPANDED -> Unit
-                }
-            },
-            onScrollListener = {
-                if (it >= 0) {
-                    binding.listView.translationY = -it * 50.toPx
-                }
-                binding.listView.alpha = 1 - it
-            }
-        )
-    }
-
-    private fun showMaterialDialog() {
-        messageDialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Material dialog")
-            .setMessage("Material dialog example")
-            .setPositiveButton("Agree") { _, _ -> }
-            .setNegativeButton("Disagree") { _, _ -> }
-            .setNeutralButton("Ok") { _, _ -> }
-            .create()
-            .also { it.show() }
-    }
-
-    private fun showMaterialDialogWithSingleChoice() {
-        messageDialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Single choice dialog")
-            .setSingleChoiceItems(arrayOf("Item 1", "Item 2", "Item 3"), 0) { _, _ -> }
-            .setPositiveButton("Agree") { _, _ -> }
-            .setNegativeButton("Disagree") { _, _ -> }
-            .create()
-            .also { it.show() }
-    }
-
-    private fun showMaterialDialogWithMultiChoice() {
-        messageDialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Multi choice dialog")
-            .setMultiChoiceItems(arrayOf("Item 1", "Item 2", "Item 3"), booleanArrayOf(true, false, false)) { _, _, _ -> }
-            .setPositiveButton("Agree") { _, _ -> }
-            .setNegativeButton("Disagree") { _, _ -> }
-            .create()
-            .also { it.show() }
-    }
-
-    private fun showOrHideBottomSheet() = with(binding.bottomSheetLayout) {
-        when {
-            isVisible -> setHiddenState()
-            else -> setCollapseState()
-        }
-    }
+    )
 }
