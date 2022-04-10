@@ -6,10 +6,4 @@
 
     <include
         app:graph="@navigation/bottom_bar_nav_graph"/>
-    <include
-        app:graph="@navigation/on_boarding_nav_graph"/>
-    <include
-        app:graph="@navigation/sign_in_with_phone_nav_graph"/>
-    <include
-        app:graph="@navigation/pin_code_nav_graph"/>
 </navigation>

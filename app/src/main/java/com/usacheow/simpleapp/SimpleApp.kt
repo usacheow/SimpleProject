@@ -1,7 +1,6 @@
 package com.usacheow.simpleapp
 
 import android.app.Application
-import com.usacheow.corebilling.PurchaseStateProvider
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
 import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
 import com.usacheow.coredata.network.NetworkStateProvider
@@ -22,8 +21,6 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder {
     @Inject lateinit var tracker: AnalyticsTracker
 
     @Inject lateinit var featureToggleUpdater: FeatureToggleUpdater
-
-    @Inject lateinit var purchaseStateProvider: PurchaseStateProvider
 
     @Inject lateinit var networkStateProvider: NetworkStateProvider
 

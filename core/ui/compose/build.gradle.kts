@@ -12,4 +12,5 @@ dependencies {
     api(*Libs.bundle.composeKit)
 
     implementation(projects.coreCommon)
+    implementation(*Libs.bundle.window)
 }

@@ -5,10 +5,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
-import com.usacheow.corenavigation.AuthorizationFeatureProvider
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.corenavigation.MainFeatureProvider
-import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.corenavigation.base.findNavController
 import com.usacheow.corenavigation.base.passBackPressedTo
 import com.usacheow.coreui.screen.SimpleActivity
@@ -31,8 +29,6 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
         viewBindingProvider = ActivityHostBinding::inflate,
     )
 
-    @Inject lateinit var authFeatureProvider: AuthorizationFeatureProvider
-    @Inject lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
     @Inject lateinit var mainFeatureProvider: MainFeatureProvider
     @Inject lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
@@ -71,9 +67,6 @@ class MainScreenActivity : SimpleActivity<ActivityHostBinding>() {
 
         viewModel.action.observe(this) {
             val direction = when (it) {
-                is Action.OpenOnBoardingScreen -> onBoardingFeatureProvider.getOnBoardingFlowDirection(it.args, nextDirection)
-                is Action.OpenAuthScreen -> authFeatureProvider.getSignInWithPhoneFlowDirection(nextDirection)
-                is Action.OpenPinScreen -> authFeatureProvider.getPinCodeFlowDirection(nextDirection)
                 is Action.OpenAppScreen -> mainAppFlowDirection
             }
 

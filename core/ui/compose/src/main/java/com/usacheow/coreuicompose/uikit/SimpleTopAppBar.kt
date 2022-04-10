@@ -37,12 +37,13 @@ import kotlin.math.max
 import kotlin.math.roundToInt
 
 private typealias OnIconClick = () -> Unit
+private typealias OnBackIconClick = () -> Boolean
 
 @Composable
 fun SimpleTopAppBar(
     title: TextValue?,
     titleTextStyle: TextStyle = AppTheme.typography.titleLarge,
-    navigationIcon: Pair<Int, OnIconClick>? = null,
+    navigationIcon: Pair<Int, OnBackIconClick>? = null,
     actions: Map<Int, OnIconClick> = emptyMap(),
     contentPadding: PaddingValues = PaddingValues(),
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
@@ -83,7 +84,7 @@ fun SimpleTopAppBar(
                         contentDescription = null,
                         modifier = Modifier
                             .clip(CircleShape)
-                            .clickable(onClick = navigationIcon.second)
+                            .clickable(onClick = { navigationIcon.second() })
                             .padding(8.dp),
                     )
                 }

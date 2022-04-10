@@ -32,9 +32,9 @@ object Libs {
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0"
     private const val appUpdaterVersion = "1.8.1"
-    private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"
     private const val biometricVersion = "1.2.0-alpha04"
+    private const val windowVersion = "1.0.0"
 
     private const val hiltVersion = "2.37"
     private const val hiltJetpackVersion = "1.0.0"
@@ -157,9 +157,9 @@ object Libs {
             "androidx.navigation:navigation-compose:$navigationVersion")
 
         val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
-        val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
         val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
+        val window = arrayOf("androidx.window:window:$windowVersion")
 
         val glide = arrayOf("com.github.bumptech.glide:glide:$glideVersion")
         const val glideKapt = "com.github.bumptech.glide:compiler:$glideVersion"

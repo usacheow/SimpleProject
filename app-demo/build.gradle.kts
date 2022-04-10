@@ -22,10 +22,5 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(projects.featureAuth)
-    implementation(projects.featureOnboarding)
-
     implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.paging)
-    implementation(*Libs.bundle.biometric)
 }

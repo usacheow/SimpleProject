@@ -50,6 +50,7 @@ android {
 }
 
 common()
+compose()
 navigation()
 dagger()
 lifecycle()
@@ -60,13 +61,8 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(projects.baseBilling)
-
     implementation(projects.featureBottomBar)
     implementation(projects.featureMain)
-    implementation(projects.featureAuth)
-    implementation(projects.featureOnboarding)
-    implementation(projects.featurePurchase)
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.appUpdater)
