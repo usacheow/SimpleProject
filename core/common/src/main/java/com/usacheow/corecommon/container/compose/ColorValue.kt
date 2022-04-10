@@ -15,6 +15,15 @@ sealed class ColorValue {
 
     companion object Factory {
 
+        @Throws
+        fun fromHex(hex: String): ColorValue {
+            var hexCode = hex.replace("#", "")
+            if (hexCode.length == 6) {
+                hexCode = "FF$hexCode"
+            }
+            return Simple(Color("0x$hexCode".toLong()))
+        }
+
         fun fromColor(color: Color) = Simple(color)
 
         fun fromRes(@ColorRes res: Int) = Res(res)

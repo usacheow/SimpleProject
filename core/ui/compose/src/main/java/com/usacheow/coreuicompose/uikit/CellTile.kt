@@ -1,6 +1,9 @@
 package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -8,54 +11,68 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Checkbox
 import androidx.compose.material.Icon
-import androidx.compose.material.Switch
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.VerifiedUser
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
 import com.usacheow.corecommon.container.compose.ImageValue
 import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
+import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 data class CellTileState(
-    val image: ImageValue = ImageValue.Empty,
-    val title: TextValue,
-    val subtitle: TextValue = TextValue.Empty,
-    val isChecked: Boolean = false,
-    val selectorType: SelectorType = SelectorType.CheckBox,
-    val clickListener: (Boolean) -> Unit = {},
+    val leftPart: LeftPart? = null,
+    val subtitle: TextValue? = null,
+    val title: TextValue? = null,
+    val value: TextValue? = null,
+    val additional: TextValue? = null,
+    val rightPart: RightPart? = null,
+    val clickListener: (() -> Unit)? = null,
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier?) {
-        CellTile(modifier ?: Modifier, this)
+    override fun Content(modifier: Modifier) {
+        CellTile(modifier, this)
     }
 
     companion object {
-        fun shimmer() = ShimmerTileState(
-            needBottomLine = false,
-            needRightIcon = false,
-        )
+        fun shimmer() = ShimmerState {
+            ShimmerTile(
+                modifier = it.padding(CellTileConfig.RipplePadding + CellTileConfig.ContentPadding),
+                needBottomLine = false,
+                needRightIcon = false,
+            )
+        }
     }
 
-    enum class SelectorType {
-        CheckBox, Switch
+    sealed class LeftPart {
+
+        data class Icon(
+            val icon: ImageValue.ResVector,
+            val background: ImageValue.ResVector? = null,
+        ) : LeftPart()
+
+        data class Logo(
+            val source: ImageValue,
+        ) : LeftPart()
+    }
+
+    sealed class RightPart {
+
+        data class ActionIcon(val source: ImageValue) : RightPart()
+        data class Logo(val source: ImageValue) : RightPart()
+        data class Switch(val isChecked: Boolean) : RightPart()
     }
 }
 
@@ -64,127 +81,154 @@ fun CellTile(
     modifier: Modifier = Modifier,
     data: CellTileState,
 ) {
-    val verticalAlignment = when (data.subtitle) {
-        TextValue.Empty -> Alignment.CenterVertically
-        else -> Alignment.Top
-    }
-    val ripplePadding = 8.dp
-
     Row(
-        verticalAlignment = verticalAlignment,
+        verticalAlignment = Alignment.Top,
         modifier = modifier
             .fillMaxWidth()
-            .padding(ripplePadding)
-            .clip(AppTheme.shapes.medium)
-            .doOnClick {
-                data.clickListener(!data.isChecked)
-            }
-            .padding(Dimen.default_padding - ripplePadding),
+            .padding(CellTileConfig.RipplePadding)
+            .clip(AppTheme.shapes.small)
+            .doOnClick(onClick = data.clickListener)
+            .padding(CellTileConfig.ContentPadding),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        data.image.get()?.let { LeftIcon(it) }
-        Column {
-            Row(
+        LeftPart(data.leftPart)
+        MiddlePart(
+            subtitle = data.subtitle,
+            title = data.title,
+            value = data.value,
+            additional = data.additional,
+        )
+        RightPart(data.rightPart)
+    }
+}
+
+@Composable
+private fun LeftPart(data: CellTileState.LeftPart?) {
+    data ?: return
+    when (data) {
+        is CellTileState.LeftPart.Icon -> Box {
+            data.background?.get()?.let {
+                Image(
+                    painter = it,
+                    contentDescription = null,
+                    modifier = Modifier.size(CellTileConfig.IconSize),
+                )
+            }
+            Icon(
+                painter = data.icon.get(),
+                tint = AppTheme.commonColors.symbolPrimary,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(CellTileConfig.IconSize)
+                    .padding(8.dp),
+            )
+        }
+        is CellTileState.LeftPart.Logo -> Image(
+            painter = data.source.get(),
+            contentDescription = null,
+            modifier = Modifier.size(CellTileConfig.IconSize),
+        )
+    }
+}
+
+@Composable
+private fun RowScope.MiddlePart(
+    subtitle: TextValue? = null,
+    title: TextValue? = null,
+    value: TextValue? = null,
+    additional: TextValue? = null,
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = Modifier.weight(1f),
+    ) {
+        subtitle?.get()?.let {
+            Text(
+                text = it,
+                color = AppTheme.commonColors.symbolSecondary,
+                style = AppTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = verticalAlignment,
-            ) {
-                PrimaryText(data.title)
-                Selector(data.isChecked, data.selectorType)
-            }
-            if (data.subtitle !is TextValue.Empty) {
-                SecondaryText(data.subtitle)
-            }
+            )
+        }
+        title?.get()?.let {
+            Text(
+                text = it,
+                color = AppTheme.commonColors.symbolPrimary,
+                style = AppTheme.typography.bodyLarge,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+        value?.get()?.let {
+            Text(
+                text = it,
+                color = AppTheme.commonColors.symbolPrimary,
+                style = AppTheme.typography.titleLarge,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+        additional?.get()?.let {
+            Text(
+                text = it,
+                color = AppTheme.commonColors.symbolSecondary,
+                style = AppTheme.typography.bodyMedium,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }
 
 @Composable
-private fun LeftIcon(icon: Painter) {
-    Icon(
-        painter = icon,
-        tint = AppTheme.commonColors.symbolSecondary,
-        contentDescription = "Item icon",
-        modifier = Modifier
-            .width(36.dp)
-            .padding(end = Dimen.default_padding),
-    )
-}
-
-@Composable
-private fun RowScope.PrimaryText(value: TextValue) {
-    Text(
-        text = value.get(),
-        color = AppTheme.commonColors.symbolPrimary,
-        style = AppTheme.typography.bodyLarge,
-        modifier = Modifier.weight(1f),
-    )
-}
-
-@Composable
-private fun Selector(isChecked: Boolean, selectorType: CellTileState.SelectorType) {
-    when (selectorType) {
-        CellTileState.SelectorType.Switch -> Switch(
-            checked = isChecked,
-            onCheckedChange = null,
-            modifier = Modifier.height(24.dp),
+private fun RowScope.RightPart(data: CellTileState.RightPart?) {
+    data ?: return
+    when (data) {
+        is CellTileState.RightPart.ActionIcon -> Icon(
+            painter = data.source.get(),
+            tint = AppTheme.commonColors.symbolPrimary,
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .size(CellTileConfig.IconSize)
+                .padding(8.dp),
         )
-
-        CellTileState.SelectorType.CheckBox -> Checkbox(
-            checked = isChecked,
+        is CellTileState.RightPart.Logo -> Image(
+            painter = data.source.get(),
+            contentDescription = null,
+            modifier = Modifier
+                .size(CellTileConfig.IconSize)
+                .align(Alignment.CenterVertically),
+        )
+        is CellTileState.RightPart.Switch -> Switch(
+            checked = data.isChecked,
             onCheckedChange = null,
-            modifier = Modifier.size(height = 24.dp, width = 32.dp),
+            modifier = Modifier
+                .height(24.dp)
+                .align(Alignment.CenterVertically),
         )
     }
 }
 
-@Composable
-private fun SecondaryText(value: TextValue) {
-    Text(
-        text = value.get(),
-        color = AppTheme.commonColors.symbolSecondary,
-        style = AppTheme.typography.bodyMedium,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 4.dp),
-    )
+private object CellTileConfig {
+    val IconSize = 40.dp
+    val RipplePadding = 8.dp
+    val ContentPadding = Dimen.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun CellTilePreview() {
+private fun Preview() {
     SimplePreview {
-        LazyColumn {
-            items(previewCellTiles()) {
-                it.Content()
-            }
-        }
+        CellTileState(
+            leftPart = CellTileState.LeftPart.Icon(
+                icon = ImageValue.ResVector(CoreUiThemeR.drawable.ic_lock),
+                background = ImageValue.ResVector(CoreUiThemeR.drawable.bg_ic_square),
+            ),
+            subtitle = TextValue.Simple("Subtitle"),
+            title = TextValue.Simple("Title"),
+            value = TextValue.Simple("Value"),
+            additional = TextValue.Simple("Additional"),
+            rightPart = CellTileState.RightPart.Switch(true),
+            clickListener = {},
+        ).Content(Modifier)
     }
 }
-
-fun previewCellTiles(): List<WidgetState> = listOf(
-    CellTileState.shimmer(),
-    CellTileState(
-        image = ImageValue.Vector(Icons.Default.VerifiedUser),
-        title = TextValue.Simple("Title"),
-        subtitle = TextValue.Empty,
-        isChecked = false,
-        selectorType = CellTileState.SelectorType.CheckBox,
-        clickListener = {},
-    ),
-    CellTileState(
-        image = ImageValue.Vector(Icons.Default.VerifiedUser),
-        title = TextValue.Simple("Title"),
-        subtitle = TextValue.Simple("Subtitle"),
-        isChecked = false,
-        selectorType = CellTileState.SelectorType.CheckBox,
-        clickListener = {},
-    ),
-    CellTileState(
-        image = ImageValue.Vector(Icons.Default.VerifiedUser),
-        title = TextValue.Simple("Title"),
-        subtitle = TextValue.Simple("Subtitle"),
-        isChecked = true,
-        selectorType = CellTileState.SelectorType.Switch,
-        clickListener = {},
-    ),
-)

@@ -1,15 +1,12 @@
 package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.NavigateNext
@@ -21,36 +18,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
 import com.usacheow.corecommon.container.compose.ImageValue
 import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
+import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
-
-private val iconPaddingHorizontal = Dimen.default_padding
+import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.Dimen
 
 data class ListTileState(
-    val leftImageInfo: ImageValue = ImageValue.Empty,
-    val rightImageInfo: ImageValue = ImageValue.Empty,
+    val leftImageInfo: ImageValue? = null,
+    val rightImageInfo: ImageValue? = null,
     val value: TextValue,
-    val topDescription: TextValue = TextValue.Empty,
-    val bottomDescription: TextValue = TextValue.Empty,
+    val topDescription: TextValue? = null,
+    val bottomDescription: TextValue? = null,
     val clickListener: (() -> Unit)? = null,
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier?) {
-        ListTile(modifier ?: Modifier, this)
+    override fun Content(modifier: Modifier) {
+        ListTile(modifier, this)
     }
 
     companion object {
-        fun shimmer() = ShimmerTileState(
-            needTopLine = false,
-            needRightIcon = false,
-        )
+        fun shimmer() = ShimmerState {
+            ShimmerTile(
+                modifier = it.padding(ListTileConfig.RipplePadding + ListTileConfig.ContentPadding),
+                needTopLine = false,
+                needRightIcon = false,
+            )
+        }
     }
 }
 
@@ -59,47 +58,36 @@ fun ListTile(
     modifier: Modifier = Modifier,
     data: ListTileState,
 ) {
-    val ripplePadding = 8.dp
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(ripplePadding)
-            .clip(AppTheme.shapes.medium)
+            .padding(ListTileConfig.RipplePadding)
+            .clip(AppTheme.shapes.small)
             .doOnClick(onClick = data.clickListener)
-            .padding(Dimen.default_padding - ripplePadding),
+            .padding(ListTileConfig.ContentPadding),
+        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal)
     ) {
-        Icon(
-            icon = data.leftImageInfo,
-            modifier = Modifier.padding(end = iconPaddingHorizontal),
-        )
-        Column(modifier = Modifier.weight(1f)) {
-            if (data.topDescription !is TextValue.Empty) {
-                SecondaryText(data.topDescription)
-                Spacer(modifier = Modifier.height(4.dp))
-            }
+        Icon(icon = data.leftImageInfo)
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            SecondaryText(data.topDescription)
             PrimaryText(data.value)
-            if (data.bottomDescription !is TextValue.Empty) {
-                Spacer(modifier = Modifier.height(4.dp))
-                SecondaryText(data.bottomDescription)
-            }
+            SecondaryText(data.bottomDescription)
         }
-        Icon(
-            icon = data.rightImageInfo,
-            modifier = Modifier
-                .align(Alignment.CenterVertically)
-                .padding(start = iconPaddingHorizontal),
-        )
+        Icon(icon = data.rightImageInfo)
     }
 }
 
 @Composable
-private fun Icon(icon: ImageValue, modifier: Modifier) {
-    icon.get()?.let {
+private fun RowScope.Icon(icon: ImageValue?) {
+    icon?.get()?.let {
         Icon(
             painter = it,
             tint = AppTheme.commonColors.symbolPrimary,
             contentDescription = "Item icon",
-            modifier = modifier.width(36.dp),
+            modifier = Modifier.align(Alignment.CenterVertically),
         )
     }
 }
@@ -115,76 +103,35 @@ private fun PrimaryText(value: TextValue) {
 }
 
 @Composable
-private fun SecondaryText(value: TextValue) {
-    Text(
-        text = value.get(),
-        color = AppTheme.commonColors.symbolSecondary,
-        style = AppTheme.typography.bodyMedium,
-        modifier = Modifier.fillMaxWidth(),
-    )
+private fun SecondaryText(value: TextValue?) {
+    value?.get()?.let {
+        Text(
+            text = it,
+            color = AppTheme.commonColors.symbolSecondary,
+            style = AppTheme.typography.bodyMedium,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+private object ListTileConfig {
+    val IconPaddingHorizontal = Dimen.default_padding
+    val RipplePadding = 8.dp
+    val ContentPadding = Dimen.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun ListTilePreview() {
+private fun Preview() {
     SimplePreview {
-        LazyColumn {
-            items(previewListTiles()) {
-                it.Content()
-            }
-        }
+        ListTileState(
+            leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
+            rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
+            value = TextValue.Simple("Main information"),
+            topDescription = TextValue.Simple("Top description"),
+            bottomDescription = TextValue.Simple("Bottom description"),
+            clickListener = {},
+        ).Content(Modifier)
     }
 }
-
-fun previewListTiles(): List<WidgetState> = listOf(
-    ListTileState.shimmer(),
-    ListTileState(
-        leftImageInfo = ImageValue.Empty,
-        rightImageInfo = ImageValue.Empty,
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Empty,
-        bottomDescription = TextValue.Empty,
-        clickListener = {},
-    ),
-    ListTileState(
-        leftImageInfo = ImageValue.Empty,
-        rightImageInfo = ImageValue.Empty,
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Empty,
-        bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {},
-    ),
-    ListTileState(
-        leftImageInfo = ImageValue.Empty,
-        rightImageInfo = ImageValue.Empty,
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Simple("Top description"),
-        bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {},
-    ),
-    ListTileState(
-        leftImageInfo = ImageValue.Empty,
-        rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Empty,
-        bottomDescription = TextValue.Empty,
-        clickListener = {},
-    ),
-    ListTileState(
-        leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
-        rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Empty,
-        bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {},
-    ),
-    ListTileState(
-        leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
-        rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
-        value = TextValue.Simple("Main information"),
-        topDescription = TextValue.Simple("Top description"),
-        bottomDescription = TextValue.Simple("Bottom description"),
-        clickListener = {},
-    ),
-)

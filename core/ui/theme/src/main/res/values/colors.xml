@@ -12,7 +12,7 @@
     <color name="secondaryContainer">#C3B6B2</color>
     <color name="onSecondaryContainer">#2B1D19</color>
 
-    <color name="tertiary">#FFFB91</color>
+    <color name="tertiary">#FFDBD655</color>
     <color name="onTertiary">#FFFFFFFF</color>
     <color name="tertiaryContainer">#F4F3D1</color>
     <color name="onTertiaryContainer">#312911</color>

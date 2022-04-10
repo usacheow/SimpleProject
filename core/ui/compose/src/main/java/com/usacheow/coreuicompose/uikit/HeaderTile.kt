@@ -4,46 +4,57 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
+import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 
 data class HeaderTileState(
     val value: TextValue,
-    val button: TextValue = TextValue.Empty,
+    val button: TextValue? = null,
     val clickListener: (() -> Unit)? = null,
-    val type: Type = Type.Title,
+    val type: Type = Type.MediumPrimary,
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier?) {
-        HeaderTile(modifier ?: Modifier, this)
+    override fun Content(modifier: Modifier) {
+        HeaderTile(modifier, this)
     }
 
     companion object {
-        fun shimmer(type: Type = Type.Title) = ShimmerTileState(
-            needTopLine = type == Type.Title,
-            needBottomLine = type == Type.Subtitle,
-            needMiddleLine = false,
-            needRightIcon = false,
-            needLeftIcon = false,
-        )
+        fun shimmer(type: Type = Type.MediumPrimary) = ShimmerState {
+            ShimmerTile(
+                modifier = it,
+                needTopLine = type == Type.SmallPrimary || type == Type.SmallSecondary,
+                needMiddleLine = type == Type.LargePrimary || type == Type.LargeSecondary,
+                needBottomLine = type == Type.MediumPrimary || type == Type.MediumSecondary,
+                needRightIcon = false,
+                needLeftIcon = false,
+            )
+        }
+
+        fun largePrimary(value: TextValue) = HeaderTileState(value = value, type = Type.LargePrimary)
+        fun largeSecondary(value: TextValue) = HeaderTileState(value = value, type = Type.LargeSecondary)
+        fun mediumPrimary(value: TextValue) = HeaderTileState(value = value, type = Type.MediumPrimary)
+        fun mediumSecondary(value: TextValue) = HeaderTileState(value = value, type = Type.MediumSecondary)
+        fun smallPrimary(value: TextValue) = HeaderTileState(value = value, type = Type.SmallPrimary)
+        fun smallSecondary(value: TextValue) = HeaderTileState(value = value, type = Type.SmallSecondary)
     }
 
     enum class Type {
-        Title, Subtitle
+        LargePrimary, MediumPrimary, SmallPrimary,
+        LargeSecondary, MediumSecondary, SmallSecondary,
     }
 }
 
@@ -53,31 +64,39 @@ fun HeaderTile(
     data: HeaderTileState,
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(start = 8.dp, end = 8.dp, top = 8.dp),
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = data.value.get(),
-            color = AppTheme.commonColors.symbolPrimary,
-            style = when (data.type) {
-                HeaderTileState.Type.Title -> AppTheme.typography.displayLarge
-                HeaderTileState.Type.Subtitle -> AppTheme.typography.titleLarge
+            color = when (data.type) {
+                HeaderTileState.Type.LargePrimary,
+                HeaderTileState.Type.MediumPrimary,
+                HeaderTileState.Type.SmallPrimary -> AppTheme.commonColors.symbolPrimary
+                HeaderTileState.Type.LargeSecondary,
+                HeaderTileState.Type.MediumSecondary,
+                HeaderTileState.Type.SmallSecondary -> AppTheme.commonColors.symbolSecondary
             },
-            maxLines = 1,
-            modifier = Modifier
-                .weight(1f)
-                .padding(8.dp),
+            style = when (data.type) {
+                HeaderTileState.Type.LargePrimary,
+                HeaderTileState.Type.LargeSecondary -> AppTheme.typography.headlineLarge
+                HeaderTileState.Type.MediumPrimary,
+                HeaderTileState.Type.MediumSecondary -> AppTheme.typography.headlineSmall
+                HeaderTileState.Type.SmallPrimary,
+                HeaderTileState.Type.SmallSecondary -> AppTheme.typography.titleMedium
+            },
+            modifier = Modifier.weight(1f),
         )
-        if (data.button != TextValue.Empty) {
-            ClickableText(
-                text = data.button.get(),
+        data.button?.get()?.let {
+            Text(
+                text = it,
                 maxLines = 1,
-                onClick = { data.clickListener?.invoke() },
-                style = AppTheme.typography.labelMedium.copy(color = LocalContentColor.current),
+                style = AppTheme.typography.labelMedium,
+                color = AppTheme.commonColors.symbolSecondary,
                 modifier = Modifier
-                    .padding(8.dp)
-                    .align(Alignment.CenterVertically),
+                    .clip(AppTheme.shapes.extraSmall)
+                    .doOnClick(onClick = data.clickListener)
+                    .padding(8.dp),
             )
         }
     }
@@ -86,38 +105,13 @@ fun HeaderTile(
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-private fun HeaderTilePreview() {
-
+private fun Preview() {
     SimplePreview {
-        LazyColumn {
-            items(previewHeaderTiles()) {
-                it.Content()
-            }
-        }
+        HeaderTileState(
+            value = TextValue.Simple("Title with button"),
+            type = HeaderTileState.Type.MediumPrimary,
+            button = TextValue.Simple("button"),
+            clickListener = {},
+        ).Content(Modifier)
     }
 }
-
-fun previewHeaderTiles(): List<WidgetState> = listOf(
-    HeaderTileState.shimmer(HeaderTileState.Type.Title),
-    HeaderTileState(
-        value = TextValue.Simple("Title"),
-        type = HeaderTileState.Type.Title,
-    ),
-    HeaderTileState(
-        value = TextValue.Simple("Title with button"),
-        type = HeaderTileState.Type.Title,
-        button = TextValue.Simple("button"),
-        clickListener = {},
-    ),
-    HeaderTileState.shimmer(HeaderTileState.Type.Subtitle),
-    HeaderTileState(
-        value = TextValue.Simple("Subtitle"),
-        type = HeaderTileState.Type.Subtitle,
-    ),
-    HeaderTileState(
-        value = TextValue.Simple("Subtitle with button"),
-        type = HeaderTileState.Type.Subtitle,
-        button = TextValue.Simple("button"),
-        clickListener = {},
-    ),
-)

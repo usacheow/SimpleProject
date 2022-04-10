@@ -1,14 +1,16 @@
 package com.usacheow.coreuicompose.tools
 
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.Composable
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
+
 
 @Composable
-fun getAllInsets() = rememberInsetsPaddingValues(insets = LocalWindowInsets.current.systemBars)
+fun getBottomInset() = WindowInsets.navigationBars.add(WindowInsets.ime).asPaddingValues()
 
 @Composable
-fun getBottomInset() = rememberInsetsPaddingValues(insets = LocalWindowInsets.current.navigationBars)
-
-@Composable
-fun getTopInset() = rememberInsetsPaddingValues(insets = LocalWindowInsets.current.statusBars)
+fun getTopInset() = WindowInsets.statusBars.asPaddingValues()

@@ -75,7 +75,7 @@ class ProductsMapper @Inject constructor(
             rawPeriod.contains("Y") -> CoreR.plurals.purchase_period_year_format
             else -> return TextSource.Simple("")
         }
-        return TextSource.FormattedPlural(priceFormatRes, getCount())
+        return TextSource.Plural(priceFormatRes, getCount())
     }
 
     private fun Product.getBuyButtonText(): String {

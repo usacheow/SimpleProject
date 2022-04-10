@@ -54,12 +54,6 @@
         android:label="CoroutinesFragment"
         tools:layout="@layout/fragment_7"/>
 
-    <fragment
-        android:id="@+id/coroutinesFragment"
-        android:name="com.usacheow.apptest.CoroutinesFragment"
-        android:label="CoroutinesFragment"
-        tools:layout="@layout/fragment_coroutines"/>
-
     <include
         app:graph="@navigation/nested_test_app_nav_graph"/>
 </navigation>

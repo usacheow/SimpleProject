@@ -2,16 +2,15 @@ package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,35 +18,30 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.compose.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
+import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
-import com.usacheow.corecommon.container.compose.TextValue
-import com.usacheow.coreuicompose.tools.SimplePreview
-import com.usacheow.coreuicompose.tools.get
-
-private val linesMinWidth = 120.dp
-private val linesMaxWidth = 156.dp
-private val linesBetweenPadding = 8.dp
 
 data class BadgeTileState(
-    val header: TextValue = TextValue.Empty,
+    val header: TextValue? = null,
     val value: TextValue,
-    val needAdaptWidth: Boolean = true,
-    val contentColor: Color,
-    val color: Color,
+    val contentColor: Color? = null,
+    val containerColor: Color? = null,
     val clickListener: (() -> Unit)? = null,
 ) : WidgetState {
 
     @Composable
-    override fun Content(modifier: Modifier?) {
-        BadgeTile(modifier ?: Modifier, this)
+    override fun Content(modifier: Modifier) {
+        BadgeTile(modifier, this)
     }
 
     companion object {
-        fun shimmer(needAdaptWidth: Boolean = true) = ShimmerState {
-            BadgeTileShimmer(it, needAdaptWidth)
+        fun shimmer(hasHeader: Boolean = true) = ShimmerState {
+            BadgeTileShimmer(it, hasHeader)
         }
     }
 }
@@ -59,20 +53,19 @@ fun BadgeTile(
 ) {
     BadgeCard(
         modifier = modifier,
-        needAdaptWidth = data.needAdaptWidth,
-        contentColor = data.contentColor,
-        backgroundColor = data.color,
+        contentColor = data.contentColor ?: AppTheme.colorScheme.onSurface,
+        containerColor = data.containerColor ?: AppTheme.colorScheme.surface,
         clickListener = data.clickListener,
     ) {
-        if (data.header !is TextValue.Empty) {
+        data.header?.get()?.let {
             Text(
-                text = data.header.get(),
-                color = AppTheme.commonColors.symbolSecondary,
+                text = it,
+                color = AppTheme.commonColors.symbolPrimary,
                 style = AppTheme.typography.bodyMedium,
                 maxLines = 1,
                 modifier = Modifier
-                    .padding(bottom = linesBetweenPadding)
-                    .widthIn(min = linesMinWidth, max = linesMaxWidth),
+                    .padding(bottom = BadgeTileConfig.LinesBetweenPadding)
+                    .widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
             )
         }
         Text(
@@ -80,7 +73,7 @@ fun BadgeTile(
             color = AppTheme.commonColors.symbolPrimary,
             style = AppTheme.typography.bodyLarge,
             maxLines = 2,
-            modifier = Modifier.widthIn(min = linesMinWidth, max = linesMaxWidth),
+            modifier = Modifier.widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
         )
     }
 }
@@ -88,79 +81,88 @@ fun BadgeTile(
 @Composable
 fun BadgeTileShimmer(
     modifier: Modifier = Modifier,
-    needAdaptWidth: Boolean = true,
+    hasHeader: Boolean,
 ) {
     BadgeCard(
         modifier = modifier,
-        needAdaptWidth = needAdaptWidth,
         contentColor = AppTheme.commonColors.symbolPrimary,
-        backgroundColor = AppTheme.colorScheme.surface,
+        containerColor = AppTheme.colorScheme.surface,
         clickListener = null,
     ) {
-        ShimmerTileLine(width = linesMinWidth)
-        Spacer(modifier = Modifier.height(linesBetweenPadding))
-        ShimmerTileLine(width = linesMaxWidth, height = ShimmerTileDefaults.linesHeight.times(2))
+        if (hasHeader) {
+            ShimmerTileLine(
+                width = BadgeTileConfig.LinesMinWidth,
+                height = AppTheme.typography.bodyMedium.fontSize.value.dp + 4.dp,
+            )
+            Spacer(modifier = Modifier.height(BadgeTileConfig.LinesBetweenPadding))
+        }
+        ShimmerTileLine(
+            width = BadgeTileConfig.LinesMaxWidth,
+            height = AppTheme.typography.bodyLarge.fontSize.value.dp.times(2) + 8.dp,
+        )
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
 private fun BadgeCard(
     modifier: Modifier = Modifier,
-    needAdaptWidth: Boolean,
     contentColor: Color,
-    backgroundColor: Color,
+    containerColor: Color,
     clickListener: (() -> Unit)?,
     content: @Composable () -> Unit,
 ) {
-    Card(
-        modifier = when (needAdaptWidth) {
-            true -> modifier.wrapContentWidth()
-            false -> modifier.fillMaxWidth()
-        }.padding(8.dp),
-        shape = AppTheme.shapes.medium,
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        elevation = Dimen.elevation_32,
-        onClick = clickListener ?: {},
-    ) {
+    val body: @Composable ColumnScope.() -> Unit = {
         Column(modifier = Modifier.padding(Dimen.default_padding)) {
             content()
         }
     }
+    val elevation = CardDefaults.elevatedCardElevation(
+        defaultElevation = 16.dp,
+        pressedElevation = 16.dp,
+        focusedElevation = 16.dp,
+        hoveredElevation = 16.dp,
+        draggedElevation = 16.dp,
+    )
+    if (clickListener != null) {
+        Card(
+            modifier = modifier,
+            shape = AppTheme.shapes.medium,
+            containerColor = containerColor,
+            contentColor = contentColor,
+            elevation = elevation,
+            onClick = clickListener,
+            content = body,
+        )
+    } else {
+        Card(
+            modifier = modifier,
+            shape = AppTheme.shapes.medium,
+            containerColor = containerColor,
+            contentColor = contentColor,
+            elevation = elevation,
+            content = body,
+        )
+    }
+}
+
+private object BadgeTileConfig {
+    val LinesMinWidth = 120.dp
+    val LinesMaxWidth = 156.dp
+    val LinesBetweenPadding = 8.dp
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun BadgeTilePreview() {
-    val items = previewBadgeTiles()
+private fun Preview() {
     SimplePreview {
-        LazyColumn {
-            items(items) {
-                it.Content()
-            }
-        }
+        BadgeTileState(
+            header = TextValue.Simple("Badge tile header text"),
+            value = TextValue.Simple("Badge tile text"),
+            contentColor = AppTheme.colorScheme.onSurface,
+            containerColor = AppTheme.colorScheme.surface,
+            clickListener = {}
+        ).Content(Modifier)
     }
 }
-
-@Composable
-fun previewBadgeTiles() = listOf(
-    BadgeTileState.shimmer(),
-    BadgeTileState(
-        header = TextValue.Empty,
-        value = TextValue.Simple("Badge tile text"),
-        needAdaptWidth = true,
-        contentColor = AppTheme.colorScheme.onSurface,
-        color = AppTheme.colorScheme.surface,
-        clickListener = {}
-    ),
-    BadgeTileState(
-        header = TextValue.Simple("Badge tile header text"),
-        value = TextValue.Simple("Badge tile text"),
-        needAdaptWidth = true,
-        contentColor = AppTheme.colorScheme.onSurface,
-        color = AppTheme.colorScheme.surface,
-        clickListener = {}
-    ),
-)

@@ -16,7 +16,7 @@ val LightCommonColors = Colors(
     secondaryContainer = Color(0xFFC3B6B2),
     onSecondaryContainer = Color(0xFF2B1D19),
 
-    tertiary = Color(0xFFFFFB91),
+    tertiary = Color(0xFFDBD655),
     onTertiary = Color(0xFFFFFFFF),
     tertiaryContainer = Color(0xFFF4F3D1),
     onTertiaryContainer = Color(0xFF312911),

@@ -61,7 +61,7 @@ fun dimen(@DimenRes id: Int): Dp {
 }
 
 @Composable
-fun ImageValue.get(): Painter? = when (this) {
+fun ImageValue.get(): Painter = when (this) {
     is ImageValue.Url, is ImageValue.Image, is ImageValue.ResImage -> rememberImagePainter(
         data = value,
         builder = {
@@ -72,8 +72,6 @@ fun ImageValue.get(): Painter? = when (this) {
     is ImageValue.ResVector -> rememberVectorPainter(image = ImageVector.vectorResource(id = value as Int))
 
     is ImageValue.Vector -> rememberVectorPainter(image = value as ImageVector)
-
-    else -> null
 }
 
 @Composable
@@ -84,7 +82,5 @@ fun TextValue.get(): AnnotatedString = when (this) {
 
     is TextValue.Res -> AnnotatedString(string(value, *args.toTypedArray()))
 
-    is TextValue.Plural -> AnnotatedString(plural(value, quantity))
-
-    is TextValue.Empty -> AnnotatedString("")
+    is TextValue.Plural -> AnnotatedString(plural(value, quantity).format(*args.toTypedArray()))
 }

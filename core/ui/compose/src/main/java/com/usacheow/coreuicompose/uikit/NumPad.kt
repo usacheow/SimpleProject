@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Fingerprint
@@ -31,9 +31,6 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuicompose.tools.SimplePreview
 
-private val buttonSize = 56.dp
-private val buttonMarginHorizontal = 12.dp
-
 enum class NumPadActionMode(val icon: ImageVector?) {
     Biometric(Icons.Default.Fingerprint),
     Next(Icons.Default.NavigateNext),
@@ -49,7 +46,7 @@ fun NumPad(
     onActionClick: () -> Unit,
     onNumberClick: (String) -> Unit,
 ) {
-    LazyVerticalGrid(cells = GridCells.Fixed(3)) {
+    LazyVerticalGrid(columns = GridCells.Fixed(3)) {
         items(9) {
             NumPadButton(text = (it + 1).toString(), onClick = onNumberClick)
         }
@@ -83,9 +80,9 @@ private fun NumPadButton(text: String, onClick: (String) -> Unit) {
         maxLines = 1,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .padding(horizontal = buttonMarginHorizontal)
+            .padding(horizontal = NumPadConfig.ButtonMarginHorizontal)
             .clickable { onClick(text) }
-            .size(buttonSize),
+            .size(NumPadConfig.ButtonSize),
     )
 }
 
@@ -93,24 +90,29 @@ private fun NumPadButton(text: String, onClick: (String) -> Unit) {
 private fun NumPadButton(imageVector: ImageVector, contentDescription: String, onClick: () -> Unit) {
     IconButton(
         modifier = Modifier
-            .size(buttonSize)
-            .padding(horizontal = buttonMarginHorizontal),
+            .size(NumPadConfig.ButtonSize)
+            .padding(horizontal = NumPadConfig.ButtonMarginHorizontal),
         onClick = onClick,
     ) {
         Icon(
             imageVector = imageVector,
             contentDescription = contentDescription,
             modifier = Modifier
-                .size(buttonSize)
-                .padding(horizontal = buttonMarginHorizontal),
+                .size(NumPadConfig.ButtonSize)
+                .padding(horizontal = NumPadConfig.ButtonMarginHorizontal),
         )
     }
+}
+
+private object NumPadConfig {
+    val ButtonSize = 56.dp
+    val ButtonMarginHorizontal = 12.dp
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun NumPadPreview() {
+private fun Preview() {
     val enteredCode = remember { mutableStateOf("7") }
 
     SimplePreview {

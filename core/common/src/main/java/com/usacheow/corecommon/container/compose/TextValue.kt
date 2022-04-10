@@ -6,8 +6,6 @@ import androidx.compose.ui.text.AnnotatedString
 
 sealed class TextValue {
 
-    object Empty : TextValue()
-
     data class Simple(
         val value: String,
     ) : TextValue()
@@ -24,5 +22,6 @@ sealed class TextValue {
     data class Plural(
         @PluralsRes val value: Int,
         val quantity: Int,
+        val args: List<Any> = listOf(quantity),
     ) : TextValue()
 }

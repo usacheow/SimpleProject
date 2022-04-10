@@ -17,21 +17,12 @@ sealed class TextSource {
         val text: SpannedString,
     ) : TextSource()
 
-    data class Html(
-        val html: String,
-    ) : TextSource()
-
     data class Res(
         @StringRes val res: Int,
         val args: List<Any> = emptyList(),
     ) : TextSource()
 
     data class Plural(
-        @PluralsRes val res: Int,
-        val quantity: Int,
-    ) : TextSource()
-
-    data class FormattedPlural(
         @PluralsRes val res: Int,
         val quantity: Int,
         val args: List<Any> = listOf(quantity),

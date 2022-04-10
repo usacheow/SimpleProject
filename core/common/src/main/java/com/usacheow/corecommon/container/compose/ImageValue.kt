@@ -6,8 +6,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class ImageValue(val value: Any?) {
 
-    object Empty : ImageValue(null)
-
     class Url(value: String) : ImageValue(value)
 
     class Image(value: Bitmap) : ImageValue(value)

@@ -9,7 +9,7 @@ object Libs {
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeVersion = "1.1.1"
+    const val composeVersion = "1.2.0-alpha07"
     private const val composeMaterialVersion = "1.0.0-alpha09"
     private const val androidxVersion = "1.4.1"
     private const val androidxCoreVersion = "1.8.0-alpha04"
@@ -26,7 +26,7 @@ object Libs {
     private const val decoroVersion = "1.5.0"
     private const val shimmerVersion = "0.5.0"
     private const val pageIndicatorVersion = "1.2.1"
-    private const val accompanistVersion = "0.24.3-alpha"
+    private const val accompanistVersion = "0.24.6-alpha"
     private const val coilVersion = "1.4.0"
 
     private const val lifecycleVersion = "2.4.0"
@@ -137,7 +137,8 @@ object Libs {
             "androidx.compose.foundation:foundation:$composeVersion",
             "androidx.compose.foundation:foundation-layout:$composeVersion",
             "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion",
-            "com.google.accompanist:accompanist-insets:$accompanistVersion",
+            "com.google.accompanist:accompanist-pager:$accompanistVersion",
+            "com.google.accompanist:accompanist-placeholder-material:$accompanistVersion",
             "androidx.compose.animation:animation:$composeVersion",
             "io.coil-kt:coil-compose:$coilVersion")
 
