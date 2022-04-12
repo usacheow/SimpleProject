@@ -128,20 +128,14 @@
         <item name="materialButtonElevationStyle">@style/Simple.Button.Elevation</item>
         <item name="materialButtonElevationStyleLarge">@style/Simple.Button.Elevation.Large</item>
         <item name="materialButtonToolbarStyle">@style/Simple.Button.Toolbar</item>
-        <item name="materialButtonNumPadStyle">@style/Simple.Button.NumPad</item>
 
         <item name="materialTextInputOutlinedStyle">@style/Simple.Input.Outlined</item>
         <item name="materialTextInputFilledStyle">@style/Simple.Input.Filled</item>
-        <item name="materialSelectorStyle">@style/Simple.Selector</item>
-        <item name="materialSelectorOutlinedStyle">@style/Simple.Selector.Outlined</item>
-        <item name="materialSelectorFilledStyle">@style/Simple.Selector.Filled</item>
 
         <item name="materialCalendarTheme">@style/Simple.Dialog.DatePicker</item>
         <item name="materialCalendarFullscreenTheme">@style/Simple.Dialog.DateRangePicker</item>
         <item name="materialTimePickerTheme">@style/Simple.Dialog.TimePicker</item>
         <item name="materialAlertDialogTheme">@style/Simple.Dialog.Alert</item>
-
-        <item name="materialShimmerLayoutStyle">@style/Simple.ShimmerLayout</item>
     </style>
 
 </resources>

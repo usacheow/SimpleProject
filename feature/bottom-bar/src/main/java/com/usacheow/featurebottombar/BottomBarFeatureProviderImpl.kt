@@ -1,17 +1,14 @@
 package com.usacheow.featurebottombar
 
-import androidx.annotation.MenuRes
-import androidx.annotation.NavigationRes
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.corenavigation.base.WITH
-import com.usacheow.corenavigation.base.screen
+import com.usacheow.corenavigation.FeatureRoute
 import javax.inject.Inject
-import com.usacheow.featurebottombar.R as FeatureR
 
 class BottomBarFeatureProviderImpl @Inject constructor() : BottomBarFeatureProvider {
 
-    override fun getBottomBarFlowDirection(
-        @MenuRes menuRes: Int,
-        @NavigationRes graphRes: Int,
-    ) = screen(FeatureR.id.bottom_bar_nav_graph) WITH BottomBarFragment.bundle(menuRes, graphRes)
+    override fun NavGraphBuilder.bottomBarGraph(route: FeatureRoute, items: List<BottomBarFeatureProvider.ScreenItem>) {
+        composable(route = route.route) { BottomBarScreen(items) }
+    }
 }

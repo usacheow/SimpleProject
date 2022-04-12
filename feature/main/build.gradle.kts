@@ -3,7 +3,7 @@ plugins {
 }
 
 common()
-navigation()
+compose()
 dagger()
 lifecycle()
 

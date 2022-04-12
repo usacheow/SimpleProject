@@ -12,7 +12,6 @@ android {
 
 common()
 compose()
-navigation()
 dagger()
 lifecycle()
 

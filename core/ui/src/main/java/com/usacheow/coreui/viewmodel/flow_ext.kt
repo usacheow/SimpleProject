@@ -1,9 +1,13 @@
 package com.usacheow.coreui.viewmodel
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
@@ -18,6 +22,22 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+@Composable
+inline fun <reified T> Flow<T>.observe(
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    noinline action: suspend (T) -> Unit
+) {
+    LaunchedEffect(key1 = Unit) {
+        lifecycleOwner.lifecycleScope.launch {
+            onEach(action)
+                .flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState)
+                .launchIn(lifecycleOwner.lifecycle.coroutineScope)
+        }
+    }
+}
 
 fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, action: suspend (value: T) -> Unit) {
     onEach(action)

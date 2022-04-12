@@ -18,6 +18,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,7 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlin.math.max
@@ -49,13 +50,48 @@ fun SimpleTopAppBar(
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
     scrollBehavior: TopAppBarScrollBehavior,
 ) {
-    val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.ContainerHeight.toPx() }
+    val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.ContainerHeight.toPx() / 4 }
     SideEffect {
         if (scrollBehavior.offsetLimit != offsetLimit) {
             scrollBehavior.offsetLimit = offsetLimit
         }
     }
-    Surface(color = colors.containerColor(scrollFraction = scrollBehavior.scrollFraction).value) {
+
+    val scrollFraction = scrollBehavior.scrollFraction
+    val appBarContainerColor by colors.containerColor(scrollFraction)
+
+    val navigationIconUi = @Composable {
+        if (navigationIcon != null) {
+            Icon(
+                painter = painterResource(navigationIcon.first),
+                tint = AppTheme.commonColors.symbolPrimary,
+                contentDescription = null,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .clickable(onClick = { navigationIcon.second() })
+                    .padding(8.dp),
+            )
+        }
+    }
+    val actionsUi = @Composable {
+        if (actions.toList().isNotEmpty()) {
+            Row {
+                actions.toList().forEach {
+                    Icon(
+                        painter = painterResource(it.first),
+                        contentDescription = null,
+                        tint = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .clickable(enabled = true, onClick = it.second)
+                            .padding(12.dp),
+                    )
+                }
+            }
+        }
+    }
+
+    Surface(color = appBarContainerColor) {
         val height = SimpleTopAppBarConfig.ContainerHeight +
                 contentPadding.calculateTopPadding() +
                 contentPadding.calculateBottomPadding()
@@ -76,36 +112,8 @@ fun SimpleTopAppBar(
             titleBottomPadding = 0,
             hideTitleSemantics = false,
 
-            navigationIcon = {
-                if (navigationIcon != null) {
-                    Icon(
-                        painter = painterResource(navigationIcon.first),
-                        tint = AppTheme.commonColors.symbolPrimary,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .clickable(onClick = { navigationIcon.second() })
-                            .padding(8.dp),
-                    )
-                }
-            },
-            actions = {
-                if (actions.toList().isNotEmpty()) {
-                    Row {
-                        actions.toList().forEach {
-                            Icon(
-                                painter = painterResource(it.first),
-                                contentDescription = null,
-                                tint = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
-                                modifier = Modifier
-                                    .clip(CircleShape)
-                                    .clickable(enabled = true, onClick = it.second)
-                                    .padding(12.dp),
-                            )
-                        }
-                    }
-                }
-            },
+            navigationIcon = navigationIconUi,
+            actions = actionsUi,
         )
     }
 }

@@ -51,7 +51,6 @@ android {
 
 common()
 compose()
-navigation()
 dagger()
 lifecycle()
 
@@ -63,6 +62,7 @@ dependencies {
 
     implementation(projects.featureBottomBar)
     implementation(projects.featureMain)
+    implementation(projects.featureOnboarding)
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.appUpdater)

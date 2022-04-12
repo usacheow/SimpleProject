@@ -45,6 +45,5 @@
 
     <color name="colorStatusBar">#00FFFFFF</color>
     <color name="colorNavigationBar">#4D000000</color>
-    <color name="backgroundBottomBar">@color/white_90</color>
 
 </resources>

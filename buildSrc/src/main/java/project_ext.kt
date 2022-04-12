@@ -26,8 +26,6 @@ fun Project.common() {
             testInstrumentationRunner = Libs.bundle.unitTestsRunner
         }
 
-        buildFeatures.viewBinding = true
-
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
         }
@@ -58,10 +56,6 @@ fun Project.compose() {
 }
 
 fun Project.navigation() {
-    plugins.apply {
-        apply(Libs.plugin.navigation)
-    }
-
     dependencies {
         implementation(*Libs.bundle.navigation)
     }

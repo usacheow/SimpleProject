@@ -18,13 +18,6 @@ class AnalyticsTrackerImpl @Inject constructor(
         FirebaseAnalytics.getInstance(context)
     }
 
-    init {
-//        YandexMetricaConfig.newConfigBuilder(BuildConfig.APP_METRICA_KEY).build().apply {
-//            YandexMetrica.activate(application, this)
-//            YandexMetrica.enableActivityAutoTracking(application)
-//        }
-    }
-
     override fun trackEvent(event: Events, clazz: Class<*>, attributes: Map<String, String>) {
 //        val bundle = bundleOf(*attributes.map { it.key to it.value }.toTypedArray())
 //

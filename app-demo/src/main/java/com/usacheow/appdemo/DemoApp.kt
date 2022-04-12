@@ -2,16 +2,15 @@ package com.usacheow.appdemo
 
 import android.app.Application
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.android.material.color.DynamicColors
 import com.usacheow.appdemo.catalog.ButtonsScreen
 import com.usacheow.appdemo.catalog.CellTilesScreen
 import com.usacheow.appdemo.catalog.InformationTilesScreen
@@ -22,8 +21,6 @@ import com.usacheow.appdemo.catalog.PaletteScreen
 import com.usacheow.appdemo.catalog.TagListScreen
 import com.usacheow.appdemo.catalog.TypographyScreen
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.coreuicompose.tools.WindowSize
-import com.usacheow.coreuicompose.tools.rememberWindowSizeClass
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.SystemBarsIconsColor
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +36,7 @@ class DemoApp : Application(), ApplicationCoroutineScopeHolder {
 }
 
 @AndroidEntryPoint
-class DemoActivity : AppCompatActivity() {
+class DemoActivity : ComponentActivity() {
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {

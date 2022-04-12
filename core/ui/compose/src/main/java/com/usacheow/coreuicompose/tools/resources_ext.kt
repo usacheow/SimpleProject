@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
-import com.usacheow.corecommon.container.compose.ImageValue
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.TextValue
 
 @Composable
 @ReadOnlyComposable

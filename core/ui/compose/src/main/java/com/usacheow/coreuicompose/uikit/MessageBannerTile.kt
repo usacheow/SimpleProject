@@ -22,8 +22,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.ImageValue
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get

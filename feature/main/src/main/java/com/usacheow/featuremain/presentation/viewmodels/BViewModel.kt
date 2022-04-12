@@ -1,12 +1,11 @@
 package com.usacheow.featuremain.presentation.viewmodels
 
-import android.os.Parcelable
 import androidx.lifecycle.SavedStateHandle
 import com.usacheow.coredata.location.LocationProvider
-import com.usacheow.corenavigation.base.getArgs
+import com.usacheow.corenavigation.base.getArg
 import com.usacheow.coreui.viewmodel.SimpleViewModel
+import com.usacheow.featuremain.presentation.BScreenArg
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,17 +14,7 @@ class BViewModel @Inject constructor(
     private val locationProvider: LocationProvider,
 ) : SimpleViewModel() {
 
-    val itemNumber by lazy { savedStateHandle.getArgs<Args>()?.itemNumber }
+    val index by lazy { savedStateHandle.getArg<BScreenArg>()?.index }
 
-    init {
-//        viewModelScope.launch {
-//            delay(100)
-//            locationProvider.state.onEach {  }.collect()
-//        }
-    }
-
-    @Parcelize
-    data class Args(
-        val itemNumber: Int,
-    ) : Parcelable
+    var x = 0
 }

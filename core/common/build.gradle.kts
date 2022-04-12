@@ -3,7 +3,6 @@ plugins {
 }
 
 common()
-navigation()
 dagger()
 
 dependencies {

@@ -22,17 +22,11 @@
     <attr name="materialButtonTonalStyle" format="reference"/>
     <attr name="materialButtonTonalStyleLarge" format="reference"/>
     <attr name="materialButtonToolbarStyle" format="reference"/>
-    <attr name="materialButtonNumPadStyle" format="reference"/>
 
     <attr name="materialSwitchStyle" format="reference"/>
     <attr name="materialCheckBoxStyle" format="reference"/>
 
     <attr name="materialTextInputOutlinedStyle" format="reference"/>
     <attr name="materialTextInputFilledStyle" format="reference"/>
-    <attr name="materialSelectorStyle" format="reference"/>
-    <attr name="materialSelectorOutlinedStyle" format="reference"/>
-    <attr name="materialSelectorFilledStyle" format="reference"/>
-
-    <attr name="materialShimmerLayoutStyle" format="reference"/>
 
 </resources>
