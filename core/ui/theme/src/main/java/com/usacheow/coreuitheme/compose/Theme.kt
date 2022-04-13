@@ -44,7 +44,7 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
             colorScheme = colorScheme,
             shapes = AppShapes,
             typography = AppTypography,
-            content = content,
+            content = { Material2ThemeSupport(darkTheme, content) },
         )
     }
 }

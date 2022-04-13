@@ -39,12 +39,6 @@ inline fun <reified T> Flow<T>.observe(
     }
 }
 
-fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, action: suspend (value: T) -> Unit) {
-    onEach(action)
-        .flowWithLifecycle(lifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-        .launchIn(lifecycleOwner.lifecycle.coroutineScope)
-}
-
 fun <T> MutableStateFlow<T>.publish(function: (T) -> T) { update(function) }
 infix fun <T> MutableStateFlow<T>.tryPublish(value: T) { tryEmit(value) }
 

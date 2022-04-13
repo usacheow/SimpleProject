@@ -1,5 +1,6 @@
 package com.usacheow.appdemo
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
@@ -50,6 +51,12 @@ fun DemoScreen(navController: NavHostController) {
     val modalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
 
     var isDialogVisible by remember { mutableStateOf(false) }
+    
+    BackHandler(enabled = modalBottomSheetState.isVisible) {
+        coroutineScope.launch {
+            modalBottomSheetState.hide()
+        }
+    }
 
     ModalBottomSheetLayout(
         sheetState = modalBottomSheetState,
@@ -207,6 +214,11 @@ private fun items(
         header = TextValue.Simple("atom"),
         value = TextValue.Simple("3. Buttons"),
         clickListener = { navController.navigate(DemoDestinations.Buttons) }
+    ),
+    BadgeTileState(
+        header = TextValue.Simple("atom"),
+        value = TextValue.Simple("4. Inputs"),
+        clickListener = { navController.navigate(DemoDestinations.Inputs) }
     ),
 
     HeaderTileState.largePrimary(TextValue.Simple("Molecules")),

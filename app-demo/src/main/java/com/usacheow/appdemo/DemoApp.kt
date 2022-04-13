@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.usacheow.appdemo.catalog.ButtonsScreen
 import com.usacheow.appdemo.catalog.CellTilesScreen
 import com.usacheow.appdemo.catalog.InformationTilesScreen
+import com.usacheow.appdemo.catalog.InputsScreen
 import com.usacheow.appdemo.catalog.ListTilesScreen
 import com.usacheow.appdemo.catalog.MessageScreen
 import com.usacheow.appdemo.catalog.NumPadScreen
@@ -41,8 +42,8 @@ class DemoActivity : ComponentActivity() {
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             Content()
@@ -59,6 +60,7 @@ class DemoActivity : ComponentActivity() {
                 composable(DemoDestinations.Demo) { DemoScreen(navController) }
                 composable(DemoDestinations.Typography) { TypographyScreen(navController) }
                 composable(DemoDestinations.Buttons) { ButtonsScreen(navController) }
+                composable(DemoDestinations.Inputs) { InputsScreen(navController) }
                 composable(DemoDestinations.CellTiles) { CellTilesScreen(navController) }
                 composable(DemoDestinations.InformationTiles) { InformationTilesScreen(navController) }
                 composable(DemoDestinations.ListTiles) { ListTilesScreen(navController) }
@@ -75,6 +77,7 @@ object DemoDestinations {
     const val Demo = "Demo"
     const val Typography = "Typography"
     const val Buttons = "Buttons"
+    const val Inputs = "Inputs"
     const val CellTiles = "CellTiles"
     const val InformationTiles = "InformationTiles"
     const val ListTiles = "ListTiles"
