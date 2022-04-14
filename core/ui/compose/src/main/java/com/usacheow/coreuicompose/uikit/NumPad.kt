@@ -120,7 +120,7 @@ private fun Preview() {
             Box(
                 modifier = Modifier
                     .border(
-                        border = BorderStroke(2.dp, AppTheme.commonColors.outline),
+                        border = BorderStroke(2.dp, AppTheme.specificColorScheme.outline),
                         shape = AppTheme.shapes.small,
                     )
                     .padding(8.dp)

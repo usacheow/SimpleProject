@@ -22,8 +22,8 @@ import com.usacheow.appdemo.catalog.PaletteScreen
 import com.usacheow.appdemo.catalog.TagListScreen
 import com.usacheow.appdemo.catalog.TypographyScreen
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
+import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.SystemBarsIconsColor
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope

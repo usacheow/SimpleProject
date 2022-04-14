@@ -73,49 +73,49 @@ fun PaletteScreen(navController: NavHostController) {
 @Composable
 private fun items() = listOf(
     HeaderTileState(value = TextValue.Simple("Primary"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.primary, "primary"),
-    ColorItem(AppTheme.commonColors.onPrimary, "onPrimary"),
-    ColorItem(AppTheme.commonColors.primaryContainer, "primaryContainer"),
-    ColorItem(AppTheme.commonColors.onPrimaryContainer, "onPrimaryContainer"),
-    ColorItem(AppTheme.commonColors.primaryInverse, "primaryInverse"),
+    ColorItem(AppTheme.specificColorScheme.primary, "primary"),
+    ColorItem(AppTheme.specificColorScheme.onPrimary, "onPrimary"),
+    ColorItem(AppTheme.specificColorScheme.primaryContainer, "primaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.onPrimaryContainer, "onPrimaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.primaryInverse, "primaryInverse"),
 
     HeaderTileState(value = TextValue.Simple("Secondary"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.secondary, "secondary"),
-    ColorItem(AppTheme.commonColors.onSecondary, "onSecondary"),
-    ColorItem(AppTheme.commonColors.secondaryContainer, "secondaryContainer"),
-    ColorItem(AppTheme.commonColors.onSecondaryContainer, "onSecondaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.secondary, "secondary"),
+    ColorItem(AppTheme.specificColorScheme.onSecondary, "onSecondary"),
+    ColorItem(AppTheme.specificColorScheme.secondaryContainer, "secondaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.onSecondaryContainer, "onSecondaryContainer"),
 
     HeaderTileState(value = TextValue.Simple("Tertiary"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.tertiary, "tertiary"),
-    ColorItem(AppTheme.commonColors.onTertiary, "onTertiary"),
-    ColorItem(AppTheme.commonColors.tertiaryContainer, "tertiaryContainer"),
-    ColorItem(AppTheme.commonColors.onTertiaryContainer, "onTertiaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.tertiary, "tertiary"),
+    ColorItem(AppTheme.specificColorScheme.onTertiary, "onTertiary"),
+    ColorItem(AppTheme.specificColorScheme.tertiaryContainer, "tertiaryContainer"),
+    ColorItem(AppTheme.specificColorScheme.onTertiaryContainer, "onTertiaryContainer"),
 
     HeaderTileState(value = TextValue.Simple("Error"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.error, "error"),
-    ColorItem(AppTheme.commonColors.onError, "onError"),
-    ColorItem(AppTheme.commonColors.errorContainer, "errorContainer"),
-    ColorItem(AppTheme.commonColors.onErrorContainer, "onErrorContainer"),
+    ColorItem(AppTheme.specificColorScheme.error, "error"),
+    ColorItem(AppTheme.specificColorScheme.onError, "onError"),
+    ColorItem(AppTheme.specificColorScheme.errorContainer, "errorContainer"),
+    ColorItem(AppTheme.specificColorScheme.onErrorContainer, "onErrorContainer"),
 
     HeaderTileState(value = TextValue.Simple("Background"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.background, "background"),
-    ColorItem(AppTheme.commonColors.onBackground, "onBackground"),
+    ColorItem(AppTheme.specificColorScheme.background, "background"),
+    ColorItem(AppTheme.specificColorScheme.onBackground, "onBackground"),
 
     HeaderTileState(value = TextValue.Simple("Surface"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.surface, "surface"),
-    ColorItem(AppTheme.commonColors.onSurface, "onSurface"),
-    ColorItem(AppTheme.commonColors.surfaceVariant, "surfaceVariant"),
-    ColorItem(AppTheme.commonColors.onSurfaceVariant, "onSurfaceVariant"),
-    ColorItem(AppTheme.commonColors.surfaceInverse, "surfaceInverse"),
-    ColorItem(AppTheme.commonColors.onSurfaceInverse, "onSurfaceInverse"),
+    ColorItem(AppTheme.specificColorScheme.surface, "surface"),
+    ColorItem(AppTheme.specificColorScheme.onSurface, "onSurface"),
+    ColorItem(AppTheme.specificColorScheme.surfaceVariant, "surfaceVariant"),
+    ColorItem(AppTheme.specificColorScheme.onSurfaceVariant, "onSurfaceVariant"),
+    ColorItem(AppTheme.specificColorScheme.surfaceInverse, "surfaceInverse"),
+    ColorItem(AppTheme.specificColorScheme.onSurfaceInverse, "onSurfaceInverse"),
 
     HeaderTileState(value = TextValue.Simple("Text/Icons"), type = HeaderTileState.Type.SmallSecondary),
-    ColorItem(AppTheme.commonColors.symbolPrimary, "symbolPrimary"),
-    ColorItem(AppTheme.commonColors.symbolPrimaryInverse, "symbolPrimaryInverse"),
-    ColorItem(AppTheme.commonColors.symbolSecondary, "symbolSecondary"),
-    ColorItem(AppTheme.commonColors.symbolSecondaryInverse, "symbolSecondaryInverse"),
-    ColorItem(AppTheme.commonColors.symbolTertiary, "symbolTertiary"),
-    ColorItem(AppTheme.commonColors.symbolTertiaryInverse, "symbolTertiaryInverse"),
+    ColorItem(AppTheme.specificColorScheme.symbolPrimary, "symbolPrimary"),
+    ColorItem(AppTheme.specificColorScheme.symbolPrimaryInverse, "symbolPrimaryInverse"),
+    ColorItem(AppTheme.specificColorScheme.symbolSecondary, "symbolSecondary"),
+    ColorItem(AppTheme.specificColorScheme.symbolSecondaryInverse, "symbolSecondaryInverse"),
+    ColorItem(AppTheme.specificColorScheme.symbolTertiary, "symbolTertiary"),
+    ColorItem(AppTheme.specificColorScheme.symbolTertiaryInverse, "symbolTertiaryInverse"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -129,9 +129,9 @@ data class ColorItem(
         OutlinedCard(
             containerColor = color,
             contentColor = if (MaterialColors.isColorLight(color.toArgb())) {
-                AppTheme.commonColors.symbolPrimary
+                AppTheme.specificColorScheme.symbolPrimary
             } else {
-                AppTheme.commonColors.symbolPrimaryInverse
+                AppTheme.specificColorScheme.symbolPrimaryInverse
             },
             modifier = modifier.heightIn(min = 100.dp),
             shape = AppTheme.shapes.extraLarge,

@@ -65,7 +65,8 @@ fun ListTile(
             .clip(AppTheme.shapes.small)
             .doOnClick(onClick = data.clickListener)
             .padding(ListTileConfig.ContentPadding),
-        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal)
+        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(icon = data.leftImageInfo)
         Column(
@@ -85,7 +86,7 @@ private fun RowScope.Icon(icon: ImageValue?) {
     icon?.get()?.let {
         Icon(
             painter = it,
-            tint = AppTheme.commonColors.symbolPrimary,
+            tint = AppTheme.specificColorScheme.symbolPrimary,
             contentDescription = "Item icon",
             modifier = Modifier.align(Alignment.CenterVertically),
         )
@@ -96,7 +97,7 @@ private fun RowScope.Icon(icon: ImageValue?) {
 private fun PrimaryText(value: TextValue) {
     Text(
         text = value.get(),
-        color = AppTheme.commonColors.symbolPrimary,
+        color = AppTheme.specificColorScheme.symbolPrimary,
         style = AppTheme.typography.bodyLarge,
         modifier = Modifier.fillMaxWidth(),
     )
@@ -107,7 +108,7 @@ private fun SecondaryText(value: TextValue?) {
     value?.get()?.let {
         Text(
             text = it,
-            color = AppTheme.commonColors.symbolSecondary,
+            color = AppTheme.specificColorScheme.symbolSecondary,
             style = AppTheme.typography.bodyMedium,
             modifier = Modifier.fillMaxWidth(),
         )

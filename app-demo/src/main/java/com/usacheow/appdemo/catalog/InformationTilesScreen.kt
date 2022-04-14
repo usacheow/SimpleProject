@@ -121,8 +121,8 @@ private fun badges(): List<WidgetState> = listOf(
     BadgeTileState(
         header = TextValue.Simple("Badge tile header text"),
         value = TextValue.Simple("Badge tile text"),
-        contentColor = AppTheme.colorScheme.onSurface,
-        containerColor = AppTheme.colorScheme.surface,
+        contentColor = AppTheme.specificColorScheme.onSurface,
+        containerColor = AppTheme.specificColorScheme.surface,
         clickListener = {}
     ),
 )
@@ -132,8 +132,8 @@ private fun smallBadges(): List<WidgetState> = listOf(
     BadgeTileState.shimmer(hasHeader = false),
     BadgeTileState(
         value = TextValue.Simple("Badge tile text"),
-        contentColor = AppTheme.colorScheme.onSurface,
-        containerColor = AppTheme.colorScheme.surface,
+        contentColor = AppTheme.specificColorScheme.onSurface,
+        containerColor = AppTheme.specificColorScheme.surface,
         clickListener = {}
     ),
 )

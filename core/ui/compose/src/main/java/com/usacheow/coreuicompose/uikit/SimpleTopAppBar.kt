@@ -64,7 +64,7 @@ fun SimpleTopAppBar(
         if (navigationIcon != null) {
             Icon(
                 painter = painterResource(navigationIcon.first),
-                tint = AppTheme.commonColors.symbolPrimary,
+                tint = AppTheme.specificColorScheme.symbolPrimary,
                 contentDescription = null,
                 modifier = Modifier
                     .clip(CircleShape)

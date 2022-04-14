@@ -1,90 +1,49 @@
 package com.usacheow.coreuitheme.compose
 
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.ripple.LocalRippleTheme
-import androidx.compose.material.ripple.RippleAlpha
-import androidx.compose.material.ripple.RippleTheme
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.ViewCompat
-
-private val LocalCommonColors = staticCompositionLocalOf { LightCommonColors }
-
-private val DarkColorPalette = DarkCommonColors.toColorScheme()
-private val LightColorPalette = LightCommonColors.toColorScheme()
 
 @Composable
 fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val commonColors = when {
-        darkTheme -> DarkCommonColors
-        else -> LightCommonColors
+    val specificColorScheme = when {
+        darkTheme -> DarkSpecificColorScheme
+        else -> LightSpecificColorScheme
     }
     val colorScheme = when {
-        darkTheme -> DarkColorPalette
-        else -> LightColorPalette
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
     }
 
     CompositionLocalProvider(
-        LocalCommonColors provides commonColors,
-        LocalIndication provides rememberRipple(),
-        LocalRippleTheme provides AppRippleTheme,
+        LocalSpecificColorScheme provides specificColorScheme,
+        LocalSpecificTypography provides DefaultSpecificTypography,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
             shapes = AppShapes,
-            typography = AppTypography,
+            typography = DefaultTypography,
             content = { Material2ThemeSupport(darkTheme, content) },
         )
     }
 }
 
-@Immutable
-private object AppRippleTheme : RippleTheme {
-
-    @Composable
-    override fun defaultColor() = AppTheme.commonColors.symbolPrimary
-
-    @Composable
-    override fun rippleAlpha() = RippleAlpha(
-        draggedAlpha = .16f,
-        focusedAlpha = .12f,
-        hoveredAlpha = .08f,
-        pressedAlpha = .12f,
-    )
-}
-
-@Composable
-fun SystemBarsIconsColor(
-    needWhiteAllIcons: Boolean = isSystemInDarkTheme(),
-    needWhiteStatusIcons: Boolean = needWhiteAllIcons,
-    needWhiteNavigationIcons: Boolean = needWhiteAllIcons,
-) {
-    val view = LocalView.current
-    SideEffect {
-        ViewCompat.getWindowInsetsController(view)?.apply {
-            isAppearanceLightStatusBars = !needWhiteStatusIcons
-            isAppearanceLightNavigationBars = !needWhiteNavigationIcons
-        }
-    }
-}
-
 object AppTheme {
 
-    val commonColors: Colors
+    val specificColorScheme: SpecificColorScheme
         @Composable
         @ReadOnlyComposable
-        get() = LocalCommonColors.current
+        get() = LocalSpecificColorScheme.current
+
+    val specificTypography: SpecificTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSpecificTypography.current
 
     val colorScheme: ColorScheme
         @Composable

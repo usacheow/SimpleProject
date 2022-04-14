@@ -52,8 +52,8 @@ fun MessageBannerTile(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        containerColor = AppTheme.commonColors.surfaceVariant,
-        contentColor = AppTheme.commonColors.onSurfaceVariant,
+        containerColor = AppTheme.specificColorScheme.surfaceVariant,
+        contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
         elevation = CardDefaults.cardElevation(),
         shape = AppTheme.shapes.medium,
     ) {
@@ -111,7 +111,7 @@ private fun Icon(icon: Painter) {
 private fun Title(title: TextValue) {
     Text(
         text = title.get(),
-        color = AppTheme.commonColors.symbolPrimary,
+        color = AppTheme.specificColorScheme.symbolPrimary,
         style = AppTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
@@ -122,7 +122,7 @@ private fun Title(title: TextValue) {
 private fun Description(description: TextValue) {
     Text(
         text = description.get(),
-        color = AppTheme.commonColors.symbolSecondary,
+        color = AppTheme.specificColorScheme.symbolSecondary,
         style = AppTheme.typography.bodyMedium,
         textAlign = TextAlign.Center,
         maxLines = 3,

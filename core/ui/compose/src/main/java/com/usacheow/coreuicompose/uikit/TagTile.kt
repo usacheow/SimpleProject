@@ -50,14 +50,14 @@ object TagTileDefaults {
 
     @Composable
     fun selectedColor() = TagTileState.DataColor(
-        background = AppTheme.commonColors.tertiaryContainer,
-        content = AppTheme.commonColors.onTertiaryContainer,
+        background = AppTheme.specificColorScheme.tertiaryContainer,
+        content = AppTheme.specificColorScheme.onTertiaryContainer,
     )
 
     @Composable
     fun unselectedColor() = TagTileState.DataColor(
-        background = AppTheme.commonColors.surfaceVariant,
-        content = AppTheme.commonColors.onSurfaceVariant,
+        background = AppTheme.specificColorScheme.surfaceVariant,
+        content = AppTheme.specificColorScheme.onSurfaceVariant,
     )
 }
 
@@ -75,7 +75,7 @@ fun TagTile(
     TagCard(modifier = modifier, color = color, clickListener = data.clickListener) {
         Text(
             text = data.text.get(),
-            color = AppTheme.commonColors.symbolPrimary,
+            color = AppTheme.specificColorScheme.symbolPrimary,
             style = AppTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
         )

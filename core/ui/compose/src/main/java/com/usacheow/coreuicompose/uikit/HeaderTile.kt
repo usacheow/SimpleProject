@@ -71,10 +71,10 @@ fun HeaderTile(
             color = when (data.type) {
                 HeaderTileState.Type.LargePrimary,
                 HeaderTileState.Type.MediumPrimary,
-                HeaderTileState.Type.SmallPrimary -> AppTheme.commonColors.symbolPrimary
+                HeaderTileState.Type.SmallPrimary -> AppTheme.specificColorScheme.symbolPrimary
                 HeaderTileState.Type.LargeSecondary,
                 HeaderTileState.Type.MediumSecondary,
-                HeaderTileState.Type.SmallSecondary -> AppTheme.commonColors.symbolSecondary
+                HeaderTileState.Type.SmallSecondary -> AppTheme.specificColorScheme.symbolSecondary
             },
             style = when (data.type) {
                 HeaderTileState.Type.LargePrimary,
@@ -91,7 +91,7 @@ fun HeaderTile(
                 text = it,
                 maxLines = 1,
                 style = AppTheme.typography.labelMedium,
-                color = AppTheme.commonColors.symbolSecondary,
+                color = AppTheme.specificColorScheme.symbolSecondary,
                 modifier = Modifier
                     .clip(AppTheme.shapes.extraSmall)
                     .doOnClick(onClick = data.clickListener)

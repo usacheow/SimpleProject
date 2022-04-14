@@ -1,6 +1,7 @@
 package com.usacheow.coreuitheme.compose
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -10,40 +11,9 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
-const val secondaryTextAlpha = 0.6f
+internal val LocalSpecificTypography = staticCompositionLocalOf { DefaultSpecificTypography }
 
-private val FontFamilyW100 = FontFamily(
-    listOf(
-        Font(CoreUiThemeR.font.thin, weight = FontWeight.W100, style = FontStyle.Normal),
-        Font(CoreUiThemeR.font.thin_italic, weight = FontWeight.W100, style = FontStyle.Italic),
-    )
-)
-private val FontFamilyW200 = FontFamily(
-    listOf(
-        Font(CoreUiThemeR.font.light, weight = FontWeight.W200, style = FontStyle.Normal),
-        Font(CoreUiThemeR.font.light_italic, weight = FontWeight.W200, style = FontStyle.Italic),
-    )
-)
-private val FontFamilyW400 = FontFamily(
-    listOf(
-        Font(CoreUiThemeR.font.regular, weight = FontWeight.W400, style = FontStyle.Normal),
-        Font(CoreUiThemeR.font.regular_italic, weight = FontWeight.W400, style = FontStyle.Italic),
-    )
-)
-private val FontFamilyW500 = FontFamily(
-    listOf(
-        Font(CoreUiThemeR.font.medium, weight = FontWeight.W500, style = FontStyle.Normal),
-        Font(CoreUiThemeR.font.medium_italic, weight = FontWeight.W500, style = FontStyle.Italic),
-    )
-)
-private val FontFamilyW700 = FontFamily(
-    listOf(
-        Font(CoreUiThemeR.font.bold, weight = FontWeight.W700, style = FontStyle.Normal),
-        Font(CoreUiThemeR.font.bold_italic, weight = FontWeight.W700, style = FontStyle.Italic),
-    )
-)
-
-internal val AppTypography = Typography(
+internal val DefaultSpecificTypography = SpecificTypography(
     displayLarge = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 52.sp,
@@ -124,3 +94,42 @@ internal val AppTypography = Typography(
         letterSpacing = 0.045.em,
     ),
 )
+
+internal val DefaultTypography = DefaultSpecificTypography.toTypography()
+
+data class SpecificTypography(
+    val displayLarge: TextStyle,
+    val displayMedium: TextStyle,
+    val displaySmall: TextStyle,
+    val headlineLarge: TextStyle,
+    val headlineMedium: TextStyle,
+    val headlineSmall: TextStyle,
+    val titleLarge: TextStyle,
+    val titleMedium: TextStyle,
+    val titleSmall: TextStyle,
+    val bodyLarge: TextStyle,
+    val bodyMedium: TextStyle,
+    val bodySmall: TextStyle,
+    val labelLarge: TextStyle,
+    val labelMedium: TextStyle,
+    val labelSmall: TextStyle,
+) {
+
+    fun toTypography() = Typography(
+        displayLarge = displayLarge,
+        displayMedium = displayMedium,
+        displaySmall = displaySmall,
+        headlineLarge = headlineLarge,
+        headlineMedium = headlineMedium,
+        headlineSmall = headlineSmall,
+        titleLarge = titleLarge,
+        titleMedium = titleMedium,
+        titleSmall = titleSmall,
+        bodyLarge = bodyLarge,
+        bodyMedium = bodyMedium,
+        bodySmall = bodySmall,
+        labelLarge = labelLarge,
+        labelMedium = labelMedium,
+        labelSmall = labelSmall,
+    )
+}

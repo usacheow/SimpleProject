@@ -53,14 +53,14 @@ fun BadgeTile(
 ) {
     BadgeCard(
         modifier = modifier,
-        contentColor = data.contentColor ?: AppTheme.colorScheme.onSurface,
-        containerColor = data.containerColor ?: AppTheme.colorScheme.surface,
+        contentColor = data.contentColor ?: AppTheme.specificColorScheme.onSurface,
+        containerColor = data.containerColor ?: AppTheme.specificColorScheme.surface,
         clickListener = data.clickListener,
     ) {
         data.header?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.commonColors.symbolPrimary,
+                color = AppTheme.specificColorScheme.symbolPrimary,
                 style = AppTheme.typography.bodyMedium,
                 maxLines = 1,
                 modifier = Modifier
@@ -70,7 +70,7 @@ fun BadgeTile(
         }
         Text(
             text = data.value.get().plus(AnnotatedString("\n")),
-            color = AppTheme.commonColors.symbolPrimary,
+            color = AppTheme.specificColorScheme.symbolPrimary,
             style = AppTheme.typography.bodyLarge,
             maxLines = 2,
             modifier = Modifier.widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
@@ -85,8 +85,8 @@ fun BadgeTileShimmer(
 ) {
     BadgeCard(
         modifier = modifier,
-        contentColor = AppTheme.commonColors.symbolPrimary,
-        containerColor = AppTheme.colorScheme.surface,
+        contentColor = AppTheme.specificColorScheme.symbolPrimary,
+        containerColor = AppTheme.specificColorScheme.surface,
         clickListener = null,
     ) {
         if (hasHeader) {
@@ -160,8 +160,8 @@ private fun Preview() {
         BadgeTileState(
             header = TextValue.Simple("Badge tile header text"),
             value = TextValue.Simple("Badge tile text"),
-            contentColor = AppTheme.colorScheme.onSurface,
-            containerColor = AppTheme.colorScheme.surface,
+            contentColor = AppTheme.specificColorScheme.onSurface,
+            containerColor = AppTheme.specificColorScheme.surface,
             clickListener = {}
         ).Content(Modifier)
     }
