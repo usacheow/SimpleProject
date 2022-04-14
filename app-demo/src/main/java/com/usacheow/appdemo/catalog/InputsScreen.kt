@@ -36,7 +36,6 @@ import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
-import java.lang.StringBuilder
 import kotlin.math.min
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,10 +45,6 @@ fun InputsScreen(navController: NavHostController) {
 
     var firstInputValue by remember { mutableStateOf("") }
     var secondInputValue by remember { mutableStateOf("") }
-
-    fun onCardNumberChanged(value: String) {
-        secondInputValue = value.take(16)
-    }
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -100,7 +95,7 @@ fun InputsScreen(navController: NavHostController) {
                     .padding(top = 16.dp, bottom = 8.dp)
                     .fillMaxWidth(),
                 value = secondInputValue,
-                onValueChange = CardNumberFormatted.onValueChanged(::onCardNumberChanged),
+                onValueChange = CardNumberFormatted.onValueChanged { secondInputValue = it },
                 visualTransformation = CardNumberFormatted.visualTransformation(),
                 enabled = true,
                 readOnly = false,
