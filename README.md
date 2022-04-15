@@ -24,6 +24,9 @@ Based on FirebaseRemoteConfig
 + Feature stores available flags with default values
 + FeatureToggle check flag status
 
+#### 4. Billing
+Based on Billing 4.0. SimpleBilling encapsulates the interaction with the library and is responsible for working with purchases.
+
 #### 5. Analytics
 Tracker implementation can work with one system for analytics, or with a group of systems. 
 The project has an example wrapper for FirebaseAnalytics (FirebaseTracker). 
