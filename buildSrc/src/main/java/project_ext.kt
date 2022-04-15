@@ -86,10 +86,3 @@ fun Project.lifecycle() {
         kapt(Libs.bundle.lifecycleKapt)
     }
 }
-
-fun Project.glide() {
-    dependencies {
-        implementation(*Libs.bundle.glide)
-        kapt(Libs.bundle.glideKapt)
-    }
-}

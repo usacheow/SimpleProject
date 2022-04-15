@@ -16,7 +16,7 @@ object Libs {
     private const val materialVersion = "1.5.0"
     private const val pagingVersion = "3.1.0"
     private const val accompanistVersion = "0.24.6-alpha"
-    private const val coilVersion = "1.4.0"
+    private const val coilVersion = "2.0.0-rc03"
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0"
@@ -34,7 +34,6 @@ object Libs {
     private const val messagingVersion = "21.0.1"
     private const val configVersion = "20.0.4"
 
-    private const val glideVersion = "4.12.0"
     private const val datastoreVersion = "1.0.0-rc01"
     private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
@@ -132,9 +131,6 @@ object Libs {
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
         val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
         val window = arrayOf("androidx.window:window:$windowVersion")
-
-        val glide = arrayOf("com.github.bumptech.glide:glide:$glideVersion")
-        const val glideKapt = "com.github.bumptech.glide:compiler:$glideVersion"
 
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")
         val cryptoPreference = arrayOf("androidx.security:security-crypto:$securityVersion")

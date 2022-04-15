@@ -6,7 +6,6 @@ common()
 compose()
 dagger()
 lifecycle()
-glide()
 
 dependencies {
     api(projects.coreUiCompose)
