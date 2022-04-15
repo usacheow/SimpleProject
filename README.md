@@ -39,7 +39,7 @@ NetworkStateProvider
 PreferencesProvider
 FirebaseNotificationsService
 BuildInfo (contains info of current build)
-Resources containers (ColorSource, ImageSource, TextSource)
+Resources containers (ColorValue, ImageValue, TextValue)
 Effect (like Result in Kotlin for results of operations)
 CacheProvider (with two implementations)
 ApiConfig (for build retrofit instances)
