@@ -3,13 +3,8 @@ package com.usacheow.coreuitheme.compose
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 internal val LocalSpecificTypography = staticCompositionLocalOf { DefaultSpecificTypography }
 

@@ -29,7 +29,6 @@ import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 data class CellTileState(
     val leftPart: LeftPart? = null,

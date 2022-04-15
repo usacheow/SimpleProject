@@ -59,9 +59,9 @@ fun PaletteScreen(navController: NavHostController) {
         ) {
             items(
                 items = items,
-                span = { if(it is HeaderTileState) GridItemSpan(2) else GridItemSpan(1) },
+                span = { if (it is HeaderTileState) GridItemSpan(2) else GridItemSpan(1) },
             ) {
-                it.Content(when(it is HeaderTileState) {
+                it.Content(when (it is HeaderTileState) {
                     true -> headerModifier
                     false -> cardModifier
                 })

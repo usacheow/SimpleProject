@@ -51,7 +51,7 @@ fun DemoScreen(navController: NavHostController) {
     val modalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
 
     var isDialogVisible by remember { mutableStateOf(false) }
-    
+
     BackHandler(enabled = modalBottomSheetState.isVisible) {
         coroutineScope.launch {
             modalBottomSheetState.hide()

@@ -5,7 +5,6 @@ import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
-import androidx.biometric.BiometricPrompt
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
 import java.security.KeyStore

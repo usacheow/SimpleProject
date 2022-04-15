@@ -26,9 +26,12 @@ import com.usacheow.coreuitheme.R as CoreUiThemeR
 @AndroidEntryPoint
 class AppActivity : ComponentActivity() {
 
-    @Inject lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
-    @Inject lateinit var mainFeatureProvider: MainFeatureProvider
-    @Inject lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
+    @Inject
+    lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
+    @Inject
+    lateinit var mainFeatureProvider: MainFeatureProvider
+    @Inject
+    lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
     private val startDestination = FeatureRoute.onBoarding
 
@@ -44,7 +47,7 @@ class AppActivity : ComponentActivity() {
                 val viewModel = viewModel<AppViewModel>()
 
                 viewModel.initialScreenEvent.observe { value ->
-                    val route = when(value) {
+                    val route = when (value) {
                         AppViewModel.Action.OpenAppScreen -> FeatureRoute.authZone
                         AppViewModel.Action.OpenOnBoardingScreen -> FeatureRoute.onBoarding
                     }
