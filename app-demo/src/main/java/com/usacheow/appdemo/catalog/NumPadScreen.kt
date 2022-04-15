@@ -23,7 +23,7 @@ import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.NumPad
-import com.usacheow.coreuicompose.uikit.NumPadActionMode
+import com.usacheow.coreuicompose.uikit.NumPadAction
 import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -66,9 +66,8 @@ fun NumPadScreen(navController: NavHostController) {
                 )
             }
             NumPad(
-                mode = NumPadActionMode.Accept,
-                onBackspaceClick = { enteredCode.value = enteredCode.value.dropLast(1) },
-                onActionClick = {},
+                action = NumPadAction.Delete { enteredCode.value = enteredCode.value.dropLast(1) },
+                onForgetClick = {},
                 onNumberClick = { enteredCode.value = (enteredCode.value + it).take(4) },
             )
         }
