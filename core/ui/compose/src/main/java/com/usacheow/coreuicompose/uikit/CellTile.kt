@@ -219,10 +219,6 @@ private object CellTileConfig {
 private fun Preview() {
     SimplePreview {
         CellTileState(
-            leftPart = CellTileState.LeftPart.Icon(
-                icon = ImageValue.ResVector(CoreUiThemeR.drawable.ic_lock),
-                background = ImageValue.ResVector(CoreUiThemeR.drawable.bg_ic_square),
-            ),
             subtitle = TextValue.Simple("Subtitle"),
             title = TextValue.Simple("Title"),
             value = TextValue.Simple("Value"),

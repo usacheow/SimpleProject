@@ -20,7 +20,7 @@ internal class ScreenNavigator(navHostController: NavHostController) : Navigator
 
     fun toOnBoardingInfoScreen() = navHostController.navigate(ScreenRoute.info.route)
 
-    fun toMainFeature() = navHostController.navigate(FeatureRoute.authZone.route)
+    fun toMainFeature() = navHostController.navigate(FeatureRoute.main.route)
 }
 
 class OnBoardingFeatureProviderImpl @Inject constructor() : OnBoardingFeatureProvider {

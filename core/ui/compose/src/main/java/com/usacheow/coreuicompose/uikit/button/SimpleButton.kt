@@ -28,7 +28,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object SimpleButtonDefaults {
+object SimpleButtonConfig {
 
     val heightModifierS = Modifier.sizeIn(minWidth = 32.dp, minHeight = 32.dp)
     val heightModifierM = Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp)
@@ -98,16 +98,16 @@ fun SimpleButtonActionS(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleS())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierS),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeS,
-            colors = SimpleButtonDefaults.colorsAction(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingS,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeS,
+            colors = SimpleButtonConfig.colorsAction(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
     }
@@ -121,16 +121,16 @@ fun SimpleButtonActionM(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleM())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierM),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeM,
-            colors = SimpleButtonDefaults.colorsAction(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingM,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeM,
+            colors = SimpleButtonConfig.colorsAction(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
     }
@@ -144,16 +144,16 @@ fun SimpleButtonActionL(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleL())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierL),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeL,
-            colors = SimpleButtonDefaults.colorsAction(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingL,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeL,
+            colors = SimpleButtonConfig.colorsAction(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
     }
@@ -167,16 +167,16 @@ fun SimpleButtonLightS(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleS())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierS),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeS,
-            colors = SimpleButtonDefaults.colorsLight(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingS,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeS,
+            colors = SimpleButtonConfig.colorsLight(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
     }
@@ -190,16 +190,16 @@ fun SimpleButtonLightM(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleM())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierM),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeM,
-            colors = SimpleButtonDefaults.colorsLight(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingM,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeM,
+            colors = SimpleButtonConfig.colorsLight(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
     }
@@ -213,16 +213,16 @@ fun SimpleButtonLightL(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleL())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierL),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeL,
-            colors = SimpleButtonDefaults.colorsLight(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingL,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeL,
+            colors = SimpleButtonConfig.colorsLight(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
     }
@@ -236,16 +236,16 @@ fun SimpleButtonDefaultS(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleS())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierS),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeS,
-            colors = SimpleButtonDefaults.colorsDefault(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingS,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeS,
+            colors = SimpleButtonConfig.colorsDefault(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
     }
@@ -259,16 +259,16 @@ fun SimpleButtonDefaultM(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleM())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierM),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeM,
-            colors = SimpleButtonDefaults.colorsDefault(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingM,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeM,
+            colors = SimpleButtonConfig.colorsDefault(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
     }
@@ -282,16 +282,16 @@ fun SimpleButtonDefaultL(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleL())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierL),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeL,
-            colors = SimpleButtonDefaults.colorsDefault(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingL,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeL,
+            colors = SimpleButtonConfig.colorsDefault(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
     }
@@ -305,17 +305,17 @@ fun SimpleButtonOutlineS(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleS())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierS),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeS,
-            colors = SimpleButtonDefaults.colorsOutline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingS,
-            border = if (enabled) SimpleButtonDefaults.borderOutline() else null,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeS,
+            colors = SimpleButtonConfig.colorsOutline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
+            border = if (enabled) SimpleButtonConfig.borderOutline() else null,
             content = content,
         )
     }
@@ -329,17 +329,17 @@ fun SimpleButtonOutlineM(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleM())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierM),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeM,
-            colors = SimpleButtonDefaults.colorsOutline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingM,
-            border = if (enabled) SimpleButtonDefaults.borderOutline() else null,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeM,
+            colors = SimpleButtonConfig.colorsOutline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
+            border = if (enabled) SimpleButtonConfig.borderOutline() else null,
             content = content,
         )
     }
@@ -353,17 +353,17 @@ fun SimpleButtonOutlineL(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleL())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierL),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeL,
-            colors = SimpleButtonDefaults.colorsOutline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingL,
-            border = if (enabled) SimpleButtonDefaults.borderOutline() else null,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeL,
+            colors = SimpleButtonConfig.colorsOutline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
+            border = if (enabled) SimpleButtonConfig.borderOutline() else null,
             content = content,
         )
     }
@@ -377,16 +377,16 @@ fun SimpleButtonInlineS(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleS())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierS),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeS,
-            colors = SimpleButtonDefaults.colorsInline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingS,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeS,
+            colors = SimpleButtonConfig.colorsInline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
     }
@@ -400,16 +400,16 @@ fun SimpleButtonInlineM(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleM())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierM),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeM,
-            colors = SimpleButtonDefaults.colorsInline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingM,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeM,
+            colors = SimpleButtonConfig.colorsInline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
     }
@@ -423,16 +423,16 @@ fun SimpleButtonInlineL(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit,
 ) {
-    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonDefaults.textStyleL())) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
-            modifier = modifier.then(SimpleButtonDefaults.heightModifierL),
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
-            elevation = SimpleButtonDefaults.elevation(),
-            shape = SimpleButtonDefaults.ShapeL,
-            colors = SimpleButtonDefaults.colorsInline(),
-            contentPadding = SimpleButtonDefaults.ContentPaddingL,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.ShapeL,
+            colors = SimpleButtonConfig.colorsInline(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
     }

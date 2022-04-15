@@ -137,7 +137,7 @@ private fun Button(button: TextValue, clickListener: () -> Unit) {
             .padding(horizontal = 16.dp)
             .fillMaxWidth(),
         onClick = clickListener,
-    ) { ButtonContent(button) }
+    ) { SimpleButtonContent(button) }
 }
 
 @Preview(showBackground = true)

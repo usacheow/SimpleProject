@@ -80,10 +80,6 @@ private fun items(): List<WidgetState> = listOf(
         clickListener = {},
     ),
     CellTileState(
-        leftPart = CellTileState.LeftPart.Icon(
-            icon = ImageValue.ResVector(R.drawable.ic_lock),
-            background = ImageValue.ResVector(R.drawable.bg_ic_square),
-        ),
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),

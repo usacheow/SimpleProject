@@ -28,7 +28,7 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
-import com.usacheow.coreuicompose.uikit.ButtonContent
+import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.button.*
 import com.usacheow.coreuitheme.R
@@ -76,44 +76,44 @@ private fun Actions() {
     Header("Action")
     Container {
         SimpleButtonActionS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionS(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonActionS(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonActionM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionM(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonActionM(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonActionL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionL(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonActionL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonActionL(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
 }
@@ -124,44 +124,44 @@ private fun Lights() {
     Header("Light")
     Container {
         SimpleButtonLightS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightS(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonLightS(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonLightM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightM(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonLightM(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonLightL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightL(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonLightL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonLightL(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
 }
@@ -172,44 +172,44 @@ private fun Defaults() {
     Header("Default")
     Container {
         SimpleButtonDefaultS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultS(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonDefaultS(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonDefaultM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultM(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonDefaultM(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonDefaultL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultL(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonDefaultL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonDefaultL(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
 }
@@ -220,44 +220,44 @@ private fun Outlines() {
     Header("Outline")
     Container {
         SimpleButtonOutlineS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineS(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonOutlineS(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonOutlineM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineM(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonOutlineM(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonOutlineL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineL(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonOutlineL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonOutlineL(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
 }
@@ -268,44 +268,44 @@ private fun Inlines() {
     Header("Inline")
     Container {
         SimpleButtonInlineS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineS(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineS(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonInlineS(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonInlineM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineM(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineM(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonInlineM(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
     Container {
         SimpleButtonInlineL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineL(onClick = {}, enabled = false) {
-            ButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent(TextValue.Simple("Label"))
         }
         SimpleButtonInlineL(onClick = {}) {
-            ButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
         SimpleButtonInlineL(onClick = {}) {
-            ButtonContent(null, icon)
+            SimpleButtonContent(null, icon)
         }
     }
 }

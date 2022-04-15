@@ -82,13 +82,13 @@ class AppActivity : ComponentActivity() {
             builder = { with(mainFeatureProvider) { mainGraph(FeatureRoute.main, it) } },
         ),
         BottomBarFeatureProvider.ScreenItem(
-            iconRes = CoreUiThemeR.drawable.ic_date,
+            iconRes = CoreUiThemeR.drawable.ic_user,
             labelRes = CoreCommonR.string.bb_example,
             route = FeatureRoute.mock,
             builder = { with(mainFeatureProvider) { mockGraph(FeatureRoute.mock, it) } },
         ),
         BottomBarFeatureProvider.ScreenItem(
-            iconRes = CoreUiThemeR.drawable.ic_accept,
+            iconRes = CoreUiThemeR.drawable.ic_user,
             labelRes = CoreCommonR.string.bb_example,
             route = FeatureRoute.mock2,
             builder = { with(mainFeatureProvider) { mock2Graph(FeatureRoute.mock2, it) } },

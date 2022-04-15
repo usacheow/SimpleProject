@@ -22,8 +22,6 @@
         <item name="android:textColorTertiary">?colorSymbolTertiary</item>
         <item name="android:textColorTertiaryInverse">?colorSymbolTertiaryInverse</item>
 
-        <item name="switchStyle">?materialSwitchStyle</item>
-        <item name="checkboxStyle">?materialCheckBoxStyle</item>
         <item name="materialButtonStyle">?materialButtonElevationStyle</item>
         <item name="borderlessButtonStyle">?materialButtonTextStyle</item>
         <item name="textInputStyle">?textInputOutlinedStyle</item>
@@ -113,9 +111,6 @@
         <item name="materialCardViewFilledStyle">@style/Simple.Card.Filled</item>
         <item name="materialCardViewElevatedStyle">@style/Simple.Card.Elevated</item>
         <item name="materialCardViewOutlinedStyle">@style/Simple.Card.Outlined</item>
-
-        <item name="materialSwitchStyle">@style/Simple.Switch</item>
-        <item name="materialCheckBoxStyle">@style/Simple.CheckBox</item>
 
         <item name="materialButtonOutlinedStyle">@style/Simple.Button.Outlined</item>
         <item name="materialButtonOutlinedStyleLarge">@style/Simple.Button.Outlined.Large</item>

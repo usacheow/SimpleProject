@@ -23,9 +23,6 @@
     <attr name="materialButtonTonalStyleLarge" format="reference"/>
     <attr name="materialButtonToolbarStyle" format="reference"/>
 
-    <attr name="materialSwitchStyle" format="reference"/>
-    <attr name="materialCheckBoxStyle" format="reference"/>
-
     <attr name="materialTextInputOutlinedStyle" format="reference"/>
     <attr name="materialTextInputFilledStyle" format="reference"/>
 

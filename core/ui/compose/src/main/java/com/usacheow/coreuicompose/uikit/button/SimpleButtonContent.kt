@@ -19,7 +19,7 @@ import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.get
 
 @Composable
-fun ButtonContent(
+fun SimpleButtonContent(
     text: TextValue?,
     iconLeft: ImageValue? = null,
     iconRight: ImageValue? = null,
@@ -68,6 +68,6 @@ private fun Preview() {
                 .padding(vertical = 8.dp, horizontal = 16.dp)
                 .fillMaxWidth(),
             onClick = {},
-        ) { ButtonContent(TextValue.Simple("Simple button")) }
+        ) { SimpleButtonContent(TextValue.Simple("Simple button")) }
     }
 }

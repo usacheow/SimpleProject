@@ -69,7 +69,7 @@ fun InputsScreen(navController: NavHostController) {
                 label = { Text("Label") },
                 placeholder = { Text("Placeholder") },
                 leadingIcon = { Icon(painter = painterResource(R.drawable.ic_user), contentDescription = null) },
-                trailingIcon = { Icon(painter = painterResource(R.drawable.ic_date), contentDescription = null) },
+                trailingIcon = { Icon(painter = painterResource(R.drawable.ic_user), contentDescription = null) },
                 isError = false,
                 visualTransformation = VisualTransformation.None,
                 keyboardOptions = KeyboardOptions(

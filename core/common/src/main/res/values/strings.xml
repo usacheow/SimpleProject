@@ -1,102 +1,14 @@
 <resources>
     <string name="app_name">Simple App</string>
     <string name="app_name_uikit">Simple UiKit</string>
-    <string name="app_name_test">Simple Sandbox</string>
 
     <string name="connection_error_message">Отсутствует подключение к сети, проверьте сетевое соединение</string>
     <string name="invalid_token_error_message">Ваша сессия истекла. Необходимо авторизоваться заново</string>
     <string name="server_error_message">Сервис временно недоступен. Попробуйте повторить позднее</string>
     <string name="unknown_error_message">Произошла ошибка. Попробуйте повторить позднее</string>
 
-    <string name="repeat">Повторить</string>
-    <string name="share_title">Поделиться</string>
-
     <string name="bb_example">Example</string>
 
-    <string name="on_boarding_skip">Пропустить</string>
-    <string name="on_boarding_next">Дальше</string>
-    <string name="on_boarding_title_1">Title 1</string>
-    <string name="on_boarding_description_1">Description 1</string>
-    <string name="on_boarding_title_2">Title 2</string>
-    <string name="on_boarding_description_2">Description 2</string>
-    <string name="on_boarding_title_3">Title 3</string>
-    <string name="on_boarding_description_3">Description 3</string>
-
-    <string name="sign_up_header">Для регистрации придумайте\nлогин и пароль</string>
-    <string name="sign_up_login">Логин</string>
-    <string name="sign_up_password">Пароль</string>
-    <string name="sign_up_button">Зарегистрироваться</string>
-
-    <string name="sign_in_header">Для продолжения введите\nлогин и пароль</string>
-    <string name="sign_in_login">Логин</string>
-    <string name="sign_in_password">Пароль</string>
-    <string name="sign_in_button">Войти</string>
-    <string name="sign_in_sing_up">У меня нет аккаунта</string>
-
-    <string name="sign_in_by_phone_header">Для входа введите свой\nномер телефона</string>
-    <string name="sign_in_by_phone_hint">Номер телефона</string>
-    <string name="sign_in_by_phone_button">Войти</string>
-    <string name="sign_in_by_phone_sing_up">У меня нет аккаунта</string>
-
-    <string name="pin_view_hint">Для входа в приложение введите ваш PIN-код</string>
-    <string name="pin_view_code_error">Неверный PIN-код, попробуйте снова</string>
-    <string name="pin_view_code_forgot">Забыл пароль</string>
-
-    <string name="create_pin_view_hint">Задайте PIN-код для вход в приложение</string>
-    <string name="create_pin_view_code_error">Неверный PIN-код, попробуйте снова</string>
-    <string name="create_pin_view_code_forgot">Забыл пароль</string>
-
-    <string name="sms_code_header">Введите код из смс, отправленного на ваш номер</string>
-    <string name="sms_code_resend_timer">Отправить через %d сек.</string>
-    <string name="sms_code_resend">Отправить заново</string>
-
-    <string name="biometric_create_title">Вход в приложение</string>
-    <string name="biometric_create_message">Добавьте биометрические данные для быстрого входа в приложение</string>
-    <string name="biometric_create_cancel">Пропустить</string>
-
-    <string name="biometric_enter_title">Вход в приложение</string>
-    <string name="biometric_enter_message">Используйте биометрию для входа в приложение</string>
-    <string name="biometric_enter_cancel">Ввести пароль</string>
-
-    <string name="purchase_advantage_1_title">Mock</string>
-    <string name="purchase_advantage_1_info">Mock</string>
-    <string name="purchase_advantage_2_title">Mock</string>
-    <string name="purchase_advantage_2_info">Mock</string>
-    <string name="purchase_advantage_3_title">Mock</string>
-    <string name="purchase_advantage_3_info">Mock</string>
-    <string name="purchase_buy_button">Начать %s/%s</string>
-    <string name="price_item_discount_format">Скидка %d</string>
-    <plurals name="purchase_period_day_format">
-        <item quantity="zero">%d дней</item>
-        <item quantity="one">%d день</item>
-        <item quantity="two">%d дня</item>
-        <item quantity="few">%d дня</item>
-        <item quantity="many">%d дней</item>
-        <item quantity="other">%d дней</item>
-    </plurals>
-    <plurals name="purchase_period_week_format">
-        <item quantity="zero">%d недель</item>
-        <item quantity="one">%d неделя</item>
-        <item quantity="two">%d недели</item>
-        <item quantity="few">%d недели</item>
-        <item quantity="many">%d недель</item>
-        <item quantity="other">%d недель</item>
-    </plurals>
-    <plurals name="purchase_period_month_format">
-        <item quantity="zero">%d месяцев</item>
-        <item quantity="one">%d месяц</item>
-        <item quantity="two">%d месяца</item>
-        <item quantity="few">%d месяца</item>
-        <item quantity="many">%d месяцев</item>
-        <item quantity="other">%d месяцев</item>
-    </plurals>
-    <plurals name="purchase_period_year_format">
-        <item quantity="zero">%d лет</item>
-        <item quantity="one">%d год</item>
-        <item quantity="two">%d года</item>
-        <item quantity="few">%d года</item>
-        <item quantity="many">%d лет</item>
-        <item quantity="other">%d лет</item>
-    </plurals>
+    <string name="num_pad_forget">Забыл код</string>
 
 </resources>
