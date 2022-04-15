@@ -3,9 +3,11 @@ package com.usacheow.coreuicompose.uikit
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,26 +21,39 @@ import com.usacheow.coreuicompose.tools.get
 @Composable
 fun ButtonContent(
     text: TextValue?,
-    icon: ImageValue? = null,
+    iconLeft: ImageValue? = null,
+    iconRight: ImageValue? = null,
 ) {
-    val textValue = text?.get()
-    val iconPaddingEnd = when {
-        textValue.isNullOrEmpty() -> 0.dp
+    val textPaddingStart = when (iconLeft) {
+        null -> 4.dp
+        else -> 8.dp
+    }
+    val textPaddingEnd = when (iconRight) {
+        null -> 4.dp
         else -> 8.dp
     }
 
-    icon?.get()?.let {
+    iconLeft?.get()?.let {
         Icon(
             painter = it,
             contentDescription = "Button icon",
             tint = LocalContentColor.current,
-            modifier = Modifier.padding(end = iconPaddingEnd),
+            modifier = Modifier.size(LocalTextStyle.current.lineHeight.value.dp),
         )
     }
-    textValue?.let {
+    text?.get()?.let {
         Text(
             text = it,
             color = LocalContentColor.current,
+            modifier = Modifier.padding(start = textPaddingStart, end = textPaddingEnd),
+        )
+    }
+    iconRight?.get()?.let {
+        Icon(
+            painter = it,
+            contentDescription = "Button icon",
+            tint = LocalContentColor.current,
+            modifier = Modifier.size(LocalTextStyle.current.lineHeight.value.dp),
         )
     }
 }

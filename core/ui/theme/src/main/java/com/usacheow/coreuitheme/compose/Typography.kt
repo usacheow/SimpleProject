@@ -33,64 +33,76 @@ internal val DefaultSpecificTypography = SpecificTypography(
     headlineLarge = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 32.sp,
+        lineHeight = 40.sp,
         letterSpacing = 0.em,
     ),
     headlineMedium = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 28.sp,
+        lineHeight = 36.sp,
         letterSpacing = 0.em,
     ),
     headlineSmall = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 24.sp,
+        lineHeight = 30.sp,
         letterSpacing = 0.em,
     ),
 
     titleLarge = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 22.sp,
+        lineHeight = 28.sp,
         letterSpacing = 0.em,
     ),
     titleMedium = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 16.sp,
+        lineHeight = 18.sp,
         letterSpacing = 0.009.em,
     ),
     titleSmall = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 14.sp,
+        lineHeight = 16.sp,
         letterSpacing = 0.007.em,
     ),
 
     bodyLarge = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 16.sp,
+        lineHeight = 18.sp,
         letterSpacing = 0.009.em,
     ),
     bodyMedium = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 14.sp,
+        lineHeight = 16.sp,
         letterSpacing = 0.0178.em,
     ),
     bodySmall = TextStyle(
         fontFamily = FontFamilyW400,
         fontSize = 12.sp,
+        lineHeight = 14.sp,
         letterSpacing = 0.03.em,
     ),
 
     labelLarge = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 14.sp,
+        lineHeight = 16.sp,
         letterSpacing = 0.007.em,
     ),
     labelMedium = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 12.sp,
+        lineHeight = 14.sp,
         letterSpacing = 0.0416.em,
     ),
     labelSmall = TextStyle(
         fontFamily = FontFamilyW500,
         fontSize = 11.sp,
+        lineHeight = 12.sp,
         letterSpacing = 0.045.em,
     ),
 )
