@@ -2,8 +2,8 @@
 
 Starter project with functional modules on the next stack:
 + kotlin, coroutines
-+ mvvm, hilt, view binding, navigation component
-+ retrofit 2, kotlinx-serialization, glide, room
++ mvvm, hilt, compose, navigation component
++ retrofit 2, kotlinx-serialization, coil, room
 + junit, espresso
 + gitlab ci
 
@@ -11,13 +11,14 @@ Starter project with functional modules on the next stack:
 
 #### 1. Single Activity with Navigation Component
 There is the single MainScreen activity, which contains navigation graph with nested feature graph from feature modules.
-BottomBarFragment from feature-bottom-bar is responsible for working with one or more stacks of fragments, it can be launched by BottomBarMediator.
+BottomBarFragment from feature-bottom-bar is responsible for working with one or more stacks of fragments, 
+it can be launched by BottomBarFeatureProvider.
 
 The remaining fragments are recommended to inherit from SimpleFragment/SimpleModalFragment/SimpleBottomSheetDialogFragment,
 which provides a convenient way to initialize the fragment.
 
 #### 2. Custom views and screens and resources for light/night mode
-The project contains custom elements (and on compose too) and screen templates (Sign In, Sing Up, Pin Code, OnBoarding, Purchase...). 
+The project contains custom elements and screen templates (Sign In, Sing Up, Pin Code, OnBoarding, Purchase...). 
 For more information, see the app_demo. It is the module which demonstrates different opportunity of this template.
 
 #### 3. Universal Lists
