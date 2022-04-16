@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavHostController
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
@@ -70,8 +71,8 @@ private fun items(): List<WidgetState> = listOf(
     ),
     CellTileState(
         leftPart = CellTileState.LeftPart.Icon(
-            icon = ImageValue.ResVector(R.drawable.ic_user),
-            background = ImageValue.ResVector(R.drawable.bg_ic_square),
+            icon = IconValue.ResVector(R.drawable.ic_user),
+            background = IconValue.ResVector(R.drawable.bg_ic_square),
         ),
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),

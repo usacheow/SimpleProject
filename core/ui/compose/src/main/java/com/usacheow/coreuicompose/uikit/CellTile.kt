@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
@@ -58,8 +59,8 @@ data class CellTileState(
     sealed class LeftPart {
 
         data class Icon(
-            val icon: ImageValue.ResVector,
-            val background: ImageValue.ResVector? = null,
+            val icon: IconValue,
+            val background: IconValue? = null,
         ) : LeftPart()
 
         data class Logo(
