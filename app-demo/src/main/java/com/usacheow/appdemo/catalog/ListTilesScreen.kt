@@ -20,7 +20,7 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.ListTileState
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -20,7 +20,7 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.CellTileState
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
 import com.usacheow.appdemo.R as AppDemoR
 

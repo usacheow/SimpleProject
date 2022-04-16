@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.Dimen
 
 object SimpleButtonConfig {
 
@@ -34,31 +36,36 @@ object SimpleButtonConfig {
     val heightModifierM = Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp)
     val heightModifierL = Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp)
 
-    val ShapeS = RoundedCornerShape(50)
-    val ShapeM = RoundedCornerShape(10.dp)
-    val ShapeL = RoundedCornerShape(12.dp)
-
     val ContentPaddingS = PaddingValues(10.dp)
     val ContentPaddingM = PaddingValues(13.dp)
     val ContentPaddingL = PaddingValues(17.dp)
 
     @Composable
+    fun shapeS() = CircleShape
+
+    @Composable
+    fun shapeM() = AppTheme.shapes.medium
+
+    @Composable
+    fun shapeL() = AppTheme.shapes.medium
+
+    @Composable
     fun elevation() = ButtonDefaults.buttonElevation()
 
     @Composable
-    fun colorsAction() = ButtonDefaults.buttonColors(
+    fun colorsPrimary() = ButtonDefaults.buttonColors(
         containerColor = AppTheme.specificColorScheme.primary,
         contentColor = AppTheme.specificColorScheme.onPrimary,
     )
 
     @Composable
-    fun colorsLight() = ButtonDefaults.buttonColors(
+    fun colorsSecondary() = ButtonDefaults.buttonColors(
         containerColor = AppTheme.specificColorScheme.primaryContainer,
         contentColor = AppTheme.specificColorScheme.onPrimaryContainer,
     )
 
     @Composable
-    fun colorsDefault() = ButtonDefaults.buttonColors(
+    fun colorsTonal() = ButtonDefaults.buttonColors(
         containerColor = AppTheme.specificColorScheme.surfaceVariant,
         contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
     )
@@ -91,7 +98,7 @@ object SimpleButtonConfig {
 }
 
 @Composable
-fun SimpleButtonActionS(
+fun SimpleButtonPrimaryS(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -105,8 +112,8 @@ fun SimpleButtonActionS(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeS,
-            colors = SimpleButtonConfig.colorsAction(),
+            shape = SimpleButtonConfig.shapeS(),
+            colors = SimpleButtonConfig.colorsPrimary(),
             contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
@@ -114,7 +121,7 @@ fun SimpleButtonActionS(
 }
 
 @Composable
-fun SimpleButtonActionM(
+fun SimpleButtonPrimaryM(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -128,8 +135,8 @@ fun SimpleButtonActionM(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeM,
-            colors = SimpleButtonConfig.colorsAction(),
+            shape = SimpleButtonConfig.shapeM(),
+            colors = SimpleButtonConfig.colorsPrimary(),
             contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
@@ -137,7 +144,7 @@ fun SimpleButtonActionM(
 }
 
 @Composable
-fun SimpleButtonActionL(
+fun SimpleButtonPrimaryL(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -151,8 +158,8 @@ fun SimpleButtonActionL(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeL,
-            colors = SimpleButtonConfig.colorsAction(),
+            shape = SimpleButtonConfig.shapeL(),
+            colors = SimpleButtonConfig.colorsPrimary(),
             contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
@@ -160,7 +167,7 @@ fun SimpleButtonActionL(
 }
 
 @Composable
-fun SimpleButtonLightS(
+fun SimpleButtonSecondaryS(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -174,8 +181,8 @@ fun SimpleButtonLightS(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeS,
-            colors = SimpleButtonConfig.colorsLight(),
+            shape = SimpleButtonConfig.shapeS(),
+            colors = SimpleButtonConfig.colorsSecondary(),
             contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
@@ -183,7 +190,7 @@ fun SimpleButtonLightS(
 }
 
 @Composable
-fun SimpleButtonLightM(
+fun SimpleButtonSecondaryM(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -197,8 +204,8 @@ fun SimpleButtonLightM(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeM,
-            colors = SimpleButtonConfig.colorsLight(),
+            shape = SimpleButtonConfig.shapeM(),
+            colors = SimpleButtonConfig.colorsSecondary(),
             contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
@@ -206,7 +213,7 @@ fun SimpleButtonLightM(
 }
 
 @Composable
-fun SimpleButtonLightL(
+fun SimpleButtonSecondaryL(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -220,8 +227,8 @@ fun SimpleButtonLightL(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeL,
-            colors = SimpleButtonConfig.colorsLight(),
+            shape = SimpleButtonConfig.shapeL(),
+            colors = SimpleButtonConfig.colorsSecondary(),
             contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
@@ -229,7 +236,7 @@ fun SimpleButtonLightL(
 }
 
 @Composable
-fun SimpleButtonDefaultS(
+fun SimpleButtonTonalS(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -243,8 +250,8 @@ fun SimpleButtonDefaultS(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeS,
-            colors = SimpleButtonConfig.colorsDefault(),
+            shape = SimpleButtonConfig.shapeS(),
+            colors = SimpleButtonConfig.colorsTonal(),
             contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
         )
@@ -252,7 +259,7 @@ fun SimpleButtonDefaultS(
 }
 
 @Composable
-fun SimpleButtonDefaultM(
+fun SimpleButtonTonalM(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -266,8 +273,8 @@ fun SimpleButtonDefaultM(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeM,
-            colors = SimpleButtonConfig.colorsDefault(),
+            shape = SimpleButtonConfig.shapeM(),
+            colors = SimpleButtonConfig.colorsTonal(),
             contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
         )
@@ -275,7 +282,7 @@ fun SimpleButtonDefaultM(
 }
 
 @Composable
-fun SimpleButtonDefaultL(
+fun SimpleButtonTonalL(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -289,8 +296,8 @@ fun SimpleButtonDefaultL(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeL,
-            colors = SimpleButtonConfig.colorsDefault(),
+            shape = SimpleButtonConfig.shapeL(),
+            colors = SimpleButtonConfig.colorsTonal(),
             contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,
         )
@@ -312,7 +319,7 @@ fun SimpleButtonOutlineS(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeS,
+            shape = SimpleButtonConfig.shapeS(),
             colors = SimpleButtonConfig.colorsOutline(),
             contentPadding = SimpleButtonConfig.ContentPaddingS,
             border = if (enabled) SimpleButtonConfig.borderOutline() else null,
@@ -336,7 +343,7 @@ fun SimpleButtonOutlineM(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeM,
+            shape = SimpleButtonConfig.shapeM(),
             colors = SimpleButtonConfig.colorsOutline(),
             contentPadding = SimpleButtonConfig.ContentPaddingM,
             border = if (enabled) SimpleButtonConfig.borderOutline() else null,
@@ -360,7 +367,7 @@ fun SimpleButtonOutlineL(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeL,
+            shape = SimpleButtonConfig.shapeL(),
             colors = SimpleButtonConfig.colorsOutline(),
             contentPadding = SimpleButtonConfig.ContentPaddingL,
             border = if (enabled) SimpleButtonConfig.borderOutline() else null,
@@ -384,7 +391,7 @@ fun SimpleButtonInlineS(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeS,
+            shape = SimpleButtonConfig.shapeS(),
             colors = SimpleButtonConfig.colorsInline(),
             contentPadding = SimpleButtonConfig.ContentPaddingS,
             content = content,
@@ -407,7 +414,7 @@ fun SimpleButtonInlineM(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeM,
+            shape = SimpleButtonConfig.shapeM(),
             colors = SimpleButtonConfig.colorsInline(),
             contentPadding = SimpleButtonConfig.ContentPaddingM,
             content = content,
@@ -430,7 +437,7 @@ fun SimpleButtonInlineL(
             enabled = enabled,
             interactionSource = interactionSource,
             elevation = SimpleButtonConfig.elevation(),
-            shape = SimpleButtonConfig.ShapeL,
+            shape = SimpleButtonConfig.shapeL(),
             colors = SimpleButtonConfig.colorsInline(),
             contentPadding = SimpleButtonConfig.ContentPaddingL,
             content = content,

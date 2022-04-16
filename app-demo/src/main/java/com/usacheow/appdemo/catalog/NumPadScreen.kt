@@ -24,7 +24,7 @@ import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.NumPad
 import com.usacheow.coreuicompose.uikit.NumPadAction
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
 

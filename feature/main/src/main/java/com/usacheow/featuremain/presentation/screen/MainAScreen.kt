@@ -14,7 +14,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getBottomInsetWithBottomNavigation
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.ListTileState
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.BScreenArg
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel

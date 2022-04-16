@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.SimplePreview
@@ -21,8 +22,8 @@ import com.usacheow.coreuicompose.tools.get
 @Composable
 fun SimpleButtonContent(
     text: TextValue?,
-    iconLeft: ImageValue? = null,
-    iconRight: ImageValue? = null,
+    iconLeft: IconValue? = null,
+    iconRight: IconValue? = null,
 ) {
     val textPaddingStart = when (iconLeft) {
         null -> 4.dp

@@ -24,24 +24,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonActionL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonActionM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonActionS
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonDefaultL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonDefaultM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonDefaultS
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalS
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineS
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonLightL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonLightM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonLightS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryS
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineS
@@ -69,11 +69,11 @@ fun ButtonsScreen(navController: NavHostController) {
             modifier = Modifier.verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Actions()
+            Primaries()
             DividerBetweenCards()
-            Lights()
+            Secondaries()
             DividerBetweenCards()
-            Defaults()
+            Tonals()
             DividerBetweenCards()
             Outlines()
             DividerBetweenCards()
@@ -85,144 +85,144 @@ fun ButtonsScreen(navController: NavHostController) {
 }
 
 @Composable
-private fun Actions() {
-    val icon = ImageValue.Vector(Icons.Default.Add)
-    Header("Action")
+private fun Primaries() {
+    val icon = IconValue.Vector(Icons.Default.Add)
+    Header("Primary")
     Container {
-        SimpleButtonActionS(onClick = {}) {
+        SimpleButtonPrimaryS(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionS(onClick = {}, enabled = false) {
+        SimpleButtonPrimaryS(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionS(onClick = {}) {
+        SimpleButtonPrimaryS(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonActionS(onClick = {}) {
+        SimpleButtonPrimaryS(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
     Container {
-        SimpleButtonActionM(onClick = {}) {
+        SimpleButtonPrimaryM(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionM(onClick = {}, enabled = false) {
+        SimpleButtonPrimaryM(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionM(onClick = {}) {
+        SimpleButtonPrimaryM(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonActionM(onClick = {}) {
+        SimpleButtonPrimaryM(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
     Container {
-        SimpleButtonActionL(onClick = {}) {
+        SimpleButtonPrimaryL(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionL(onClick = {}, enabled = false) {
+        SimpleButtonPrimaryL(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonActionL(onClick = {}) {
+        SimpleButtonPrimaryL(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonActionL(onClick = {}) {
-            SimpleButtonContent(null, icon)
-        }
-    }
-}
-
-@Composable
-private fun Lights() {
-    val icon = ImageValue.Vector(Icons.Default.Add)
-    Header("Light")
-    Container {
-        SimpleButtonLightS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
-        }
-        SimpleButtonLightS(onClick = {}) {
-            SimpleButtonContent(null, icon)
-        }
-    }
-    Container {
-        SimpleButtonLightM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
-        }
-        SimpleButtonLightM(onClick = {}) {
-            SimpleButtonContent(null, icon)
-        }
-    }
-    Container {
-        SimpleButtonLightL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
-        }
-        SimpleButtonLightL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
-        }
-        SimpleButtonLightL(onClick = {}) {
+        SimpleButtonPrimaryL(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
 }
 
 @Composable
-private fun Defaults() {
-    val icon = ImageValue.Vector(Icons.Default.Add)
-    Header("Default")
+private fun Secondaries() {
+    val icon = IconValue.Vector(Icons.Default.Add)
+    Header("Secondary")
     Container {
-        SimpleButtonDefaultS(onClick = {}) {
+        SimpleButtonSecondaryS(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultS(onClick = {}, enabled = false) {
+        SimpleButtonSecondaryS(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultS(onClick = {}) {
+        SimpleButtonSecondaryS(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonDefaultS(onClick = {}) {
+        SimpleButtonSecondaryS(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
     Container {
-        SimpleButtonDefaultM(onClick = {}) {
+        SimpleButtonSecondaryM(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultM(onClick = {}, enabled = false) {
+        SimpleButtonSecondaryM(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultM(onClick = {}) {
+        SimpleButtonSecondaryM(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonDefaultM(onClick = {}) {
+        SimpleButtonSecondaryM(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
     Container {
-        SimpleButtonDefaultL(onClick = {}) {
+        SimpleButtonSecondaryL(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultL(onClick = {}, enabled = false) {
+        SimpleButtonSecondaryL(onClick = {}, enabled = false) {
             SimpleButtonContent(TextValue.Simple("Label"))
         }
-        SimpleButtonDefaultL(onClick = {}) {
+        SimpleButtonSecondaryL(onClick = {}) {
             SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
         }
-        SimpleButtonDefaultL(onClick = {}) {
+        SimpleButtonSecondaryL(onClick = {}) {
+            SimpleButtonContent(null, icon)
+        }
+    }
+}
+
+@Composable
+private fun Tonals() {
+    val icon = IconValue.Vector(Icons.Default.Add)
+    Header("Tonal")
+    Container {
+        SimpleButtonTonalS(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalS(onClick = {}, enabled = false) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalS(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+        }
+        SimpleButtonTonalS(onClick = {}) {
+            SimpleButtonContent(null, icon)
+        }
+    }
+    Container {
+        SimpleButtonTonalM(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalM(onClick = {}, enabled = false) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalM(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+        }
+        SimpleButtonTonalM(onClick = {}) {
+            SimpleButtonContent(null, icon)
+        }
+    }
+    Container {
+        SimpleButtonTonalL(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalL(onClick = {}, enabled = false) {
+            SimpleButtonContent(TextValue.Simple("Label"))
+        }
+        SimpleButtonTonalL(onClick = {}) {
+            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+        }
+        SimpleButtonTonalL(onClick = {}) {
             SimpleButtonContent(null, icon)
         }
     }
@@ -230,7 +230,7 @@ private fun Defaults() {
 
 @Composable
 private fun Outlines() {
-    val icon = ImageValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(Icons.Default.Add)
     Header("Outline")
     Container {
         SimpleButtonOutlineS(onClick = {}) {
@@ -278,7 +278,7 @@ private fun Outlines() {
 
 @Composable
 private fun Inlines() {
-    val icon = ImageValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(Icons.Default.Add)
     Header("Inline")
     Container {
         SimpleButtonInlineS(onClick = {}) {

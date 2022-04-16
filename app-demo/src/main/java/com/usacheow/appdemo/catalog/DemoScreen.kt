@@ -40,7 +40,7 @@ import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.BadgeTileState
 import com.usacheow.coreuicompose.uikit.HeaderTileState
-import com.usacheow.coreuicompose.uikit.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.launch
 

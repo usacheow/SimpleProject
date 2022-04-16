@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.barcopy
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
