@@ -26,7 +26,7 @@ lint:
     when: on_failure
     expire_in: 4 days
     paths:
-      - app/build/reports/checkstyle/
+    - app/build/reports/
 
 build_mr:
   stage: build
