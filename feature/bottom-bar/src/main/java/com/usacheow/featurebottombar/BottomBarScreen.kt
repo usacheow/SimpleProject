@@ -18,9 +18,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.uikit.BottomNavigationDefaults
-import com.usacheow.coreuicompose.uikit.LocalBottomNavigationHeight
-import com.usacheow.coreuicompose.uikit.SimpleBottomNavigation
+import com.usacheow.coreuicompose.uikit.barcopy.BottomNavigationDefaults
+import com.usacheow.coreuicompose.uikit.barcopy.LocalBottomNavigationHeight
+import com.usacheow.coreuicompose.uikit.barcopy.SimpleBottomNavigation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

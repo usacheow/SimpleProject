@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -92,18 +91,18 @@ fun BadgeTileShimmer(
         if (hasHeader) {
             ShimmerTileLine(
                 width = BadgeTileConfig.LinesMinWidth,
-                height = AppTheme.typography.bodyMedium.fontSize.value.dp + 4.dp,
+                height = AppTheme.typography.bodyMedium.lineHeight.value.dp,
             )
             Spacer(modifier = Modifier.height(BadgeTileConfig.LinesBetweenPadding))
         }
         ShimmerTileLine(
             width = BadgeTileConfig.LinesMaxWidth,
-            height = AppTheme.typography.bodyLarge.fontSize.value.dp.times(2) + 8.dp,
+            height = AppTheme.typography.bodyLarge.lineHeight.value.dp.times(2) + 4.dp,
         )
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun BadgeCard(
     modifier: Modifier = Modifier,

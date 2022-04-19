@@ -1,15 +1,6 @@
 image: jangrewe/gitlab-ci-android
 
-stages:
-- lint
-- build
-- test
-- increment_version
-#- deploy
-- clean
-
 cache:
-  key: ${CI_PROJECT_ID}
   paths:
   - .m2/
   - .gradle/
@@ -19,126 +10,54 @@ variables:
   ANDROID_BUILD_TOOLS: "28.0.3"
   ANDROID_SDK_TOOLS:   "4333796"
 
+stages:
+  - lint
+  - build
+
 before_script:
 - export GRADLE_USER_HOME=$(pwd)/.gradle
 - chmod +x ./gradlew
-- apt-get update -y && apt-get install wget -y
-
-#todo: change url and add variables
-- git remote set-url origin https://${CI_USER_NAME}:${CI_USER_TOKEN}@gitlab.com/account_name/project_name.git
-- git config --global user.email "${GITLAB_USER_EMAIL}"
-- git config --global user.name "${GITLAB_USER_NAME}"
-- git checkout ${CI_COMMIT_REF_NAME}
-
-.build_template: &build
-  stage: build
-  except:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version/
-    - $CI_COMMIT_MESSAGE =~ /Merge branch/
-  artifacts:
-    expire_in: 4 days
-    paths:
-    - app/build/outputs/
-
-.test_template: &test
-  stage: test
-  only:
-  - master
-  - develop
-  except:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version/
-    - $CI_COMMIT_MESSAGE =~ /Merge branch/
 
 lint:
   stage: lint
   script:
-  - ./gradlew lint
+    - ./gradlew lintKotlin
   artifacts:
-    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
     when: on_failure
     expire_in: 4 days
     paths:
-    - app/build/reports/
+      - app/build/reports/checkstyle/
 
-build_feature:
-  <<: *build
+build_mr:
+  stage: build
   script:
-  - ./gradlew clean assembleDevelopmentDebug
+    - ./gradlew assembleDebug
   only:
-  - /^feature\/*/
+    - merge_requests
+  artifacts:
+    expire_in: 4 days
+    paths:
+      - app/build/outputs/
 
 build_develop:
-  <<: *build
+  stage: build
   script:
-  - ./gradlew clean assembleDevelopmentDebug assemblePlayDebug
+    - ./gradlew assembleAlpha
   only:
-  - develop
-
-build_master:
-  <<: *build
-  script:
-  - ./gradlew clean assemblePlayDebug assemblePlayRelease
-  only:
-  - master
-
-test_unit:
-  <<: *test
-  script:
-  - ./gradlew test
+    - develop
   artifacts:
-    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
-    when: on_failure
     expire_in: 4 days
     paths:
-    - app/build/reports/tests/
+      - app/build/outputs/
 
-increment_version:patch:
-  stage: increment_version
+build_release:
+  stage: build
   script:
-  - ./gradlew incrementVersionPatch
-  - git add --all
-  - git commit -m "Increment version >> Patch"
-  - git push -u origin ${CI_COMMIT_REF_NAME}
+    - ./gradlew assembleRelease bundleRelease
   only:
-  - /^feature\/*/
-  except:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version >> Patch/
-    - $CI_COMMIT_MESSAGE =~ /Merge branch 'develop' into/
-
-increment_version:minor:
-  stage: increment_version
-  script:
-  - ./gradlew incrementVersionMinor
-  - git add --all
-  - git commit -m "Increment version >> Minor"
-  - git push -u origin ${CI_COMMIT_REF_NAME}
-  only:
-  - develop
-  except:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version >> Minor/
-    - $CI_COMMIT_MESSAGE =~ /Merge branch 'master' into/
-
-increment_version:major:
-  stage: increment_version
-  script:
-  - ./gradlew incrementVersionMajor
-  - git add --all
-  - git commit -m "Increment version >> Major"
-  - git push -u origin ${CI_COMMIT_REF_NAME}
-  only:
-  - master
-  except:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version >> Major/
-
-finish:
-  stage: clean
-  script:
-  - ./gradlew clean
-  only:
-    variables:
-    - $CI_COMMIT_MESSAGE =~ /Increment version/
+    - main
+    - /^rc_*/
+  artifacts:
+    expire_in: 4 days
+    paths:
+      - app/build/outputs/
