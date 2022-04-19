@@ -53,7 +53,8 @@ build_develop:
 build_release:
   stage: build
   script:
-    - ./gradlew assembleRelease bundleRelease
+    - ./gradlew assembleRelease
+    - ./gradlew bundleRelease
   only:
     - main
     - /^rc_*/
