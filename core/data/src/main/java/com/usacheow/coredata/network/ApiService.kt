@@ -11,8 +11,8 @@ enum class ApiService(
     Stub("https://stub.com/api/v1/");
 
     fun getBaseUrl(buildInfo: BuildInfo) = when {
+        buildInfo.isDebug || buildInfo.isAlpha -> test
         buildInfo.isRelease -> prod
-        buildInfo.isDebug -> test
         else -> throw IllegalStateException("Unknown build type")
     }
 }

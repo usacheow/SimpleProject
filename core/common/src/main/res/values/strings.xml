@@ -1,7 +1,4 @@
 <resources>
-    <string name="app_name">Simple App</string>
-    <string name="app_name_uikit">Simple UiKit</string>
-
     <string name="connection_error_message">Отсутствует подключение к сети, проверьте сетевое соединение</string>
     <string name="invalid_token_error_message">Ваша сессия истекла. Необходимо авторизоваться заново</string>
     <string name="server_error_message">Сервис временно недоступен. Попробуйте повторить позднее</string>
