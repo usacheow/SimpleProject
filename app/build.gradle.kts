@@ -5,6 +5,11 @@ plugins {
     id("com.spotify.ruler")
 }
 
+common()
+compose()
+dagger()
+lifecycle()
+
 android {
     defaultConfig {
         versionName = App.name
@@ -34,25 +39,42 @@ android {
                 outputFileName = "${App.name}-$outputFileName"
             }
         }
+        getByName(BuildTypes.debug) {
+            versionNameSuffix = BuildTypes.debugSuffix
+            applicationIdSuffix = BuildTypes.debugPackageSuffix
+
+            addManifestPlaceholders(mapOf(
+                "app_name" to "SA Debug",
+            ))
+
+            isMinifyEnabled = false
+        }
+        getByName(BuildTypes.alpha) {
+            initWith(getByName(BuildTypes.debug))
+            versionNameSuffix = BuildTypes.alphaSuffix
+            applicationIdSuffix = BuildTypes.alphaPackageSuffix
+
+            addManifestPlaceholders(mapOf(
+                "app_name" to "SA Alpha",
+            ))
+
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
         getByName(BuildTypes.release) {
             versionNameSuffix = BuildTypes.releaseSuffix
+            applicationIdSuffix = BuildTypes.releasePackageSuffix
+
+            addManifestPlaceholders(mapOf(
+                "app_name" to "Sample App",
+            ))
 
             signingConfig = signingConfigs.getByName(BuildTypes.release)
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
-        getByName(BuildTypes.debug) {
-            versionNameSuffix = BuildTypes.debugSuffix
-
-            isMinifyEnabled = false
-        }
     }
 }
-
-common()
-navigation()
-dagger()
-lifecycle()
 
 dependencies {
     implementation(projects.coreCommon)
@@ -60,13 +82,9 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(projects.baseBilling)
-
     implementation(projects.featureBottomBar)
     implementation(projects.featureMain)
-    implementation(projects.featureAuth)
     implementation(projects.featureOnboarding)
-    implementation(projects.featurePurchase)
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.appUpdater)

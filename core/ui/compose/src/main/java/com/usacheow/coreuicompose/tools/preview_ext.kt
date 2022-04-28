@@ -8,8 +8,8 @@ import com.usacheow.coreuitheme.compose.AppTheme
 fun SimplePreview(content: @Composable () -> Unit) {
     AppTheme {
         Surface(
-            color = AppTheme.colorScheme.surface,
-            contentColor = AppTheme.colorScheme.onSurface,
+            color = AppTheme.specificColorScheme.surface,
+            contentColor = AppTheme.specificColorScheme.onSurface,
             content = content,
         )
     }

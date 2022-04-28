@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
@@ -50,14 +50,14 @@ object TagTileDefaults {
 
     @Composable
     fun selectedColor() = TagTileState.DataColor(
-        background = AppTheme.commonColors.tertiaryContainer,
-        content = AppTheme.commonColors.onTertiaryContainer,
+        background = AppTheme.specificColorScheme.tertiaryContainer,
+        content = AppTheme.specificColorScheme.onTertiaryContainer,
     )
 
     @Composable
     fun unselectedColor() = TagTileState.DataColor(
-        background = AppTheme.commonColors.surfaceVariant,
-        content = AppTheme.commonColors.onSurfaceVariant,
+        background = AppTheme.specificColorScheme.surfaceVariant,
+        content = AppTheme.specificColorScheme.onSurfaceVariant,
     )
 }
 
@@ -75,7 +75,7 @@ fun TagTile(
     TagCard(modifier = modifier, color = color, clickListener = data.clickListener) {
         Text(
             text = data.text.get(),
-            color = AppTheme.commonColors.symbolPrimary,
+            color = AppTheme.specificColorScheme.symbolPrimary,
             style = AppTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
         )

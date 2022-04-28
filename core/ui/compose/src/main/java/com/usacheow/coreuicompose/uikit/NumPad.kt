@@ -1,71 +1,79 @@
 package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Fingerprint
-import androidx.compose.material.icons.filled.KeyboardBackspace
-import androidx.compose.material.icons.filled.NavigateNext
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuicompose.tools.SimplePreview
+import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.corecommon.R as CoreCommonR
 
-enum class NumPadActionMode(val icon: ImageVector?) {
-    Biometric(Icons.Default.Fingerprint),
-    Next(Icons.Default.NavigateNext),
-    Accept(Icons.Default.Done),
-    Empty(null),
+class NumPadAction(
+    val icon: ImageVector,
+    val onClick: () -> Unit,
+) {
+    companion object {
+
+        @Composable
+        fun biometric(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.fingerprint, onClick)
+
+        @Composable
+        fun delete(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.delete, onClick)
+
+        @Composable
+        fun accept(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.done, onClick)
+    }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NumPad(
-    mode: NumPadActionMode,
-    onBackspaceClick: () -> Unit,
-    onActionClick: () -> Unit,
+    action: NumPadAction? = null,
+    onForgetClick: () -> Unit,
     onNumberClick: (String) -> Unit,
 ) {
-    LazyVerticalGrid(columns = GridCells.Fixed(3)) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        verticalArrangement = Arrangement.spacedBy(NumPadConfig.ButtonMarginHorizontal),
+        horizontalArrangement = Arrangement.spacedBy(NumPadConfig.ButtonMarginHorizontal),
+        modifier = Modifier
+            .padding(NumPadConfig.ButtonMarginHorizontal)
+            .wrapContentWidth(),
+    ) {
         items(9) {
-            NumPadButton(text = (it + 1).toString(), onClick = onNumberClick)
+            NumberButton(text = (it + 1).toString(), onClick = onNumberClick)
         }
         item {
-            NumPadButton(
-                imageVector = Icons.Default.KeyboardBackspace,
-                contentDescription = "Backspace button",
-                onClick = onBackspaceClick,
-            )
+            ForgetButton(onClick = onForgetClick)
         }
         item {
-            NumPadButton(text = "0", onClick = onNumberClick)
+            NumberButton(text = "0", onClick = onNumberClick)
         }
         item {
-            mode.icon?.let {
-                NumPadButton(
+            action?.icon?.let {
+                IconButton(
                     imageVector = it,
-                    contentDescription = "Action button",
-                    onClick = onActionClick,
+                    onClick = action.onClick,
                 )
             }
         }
@@ -73,68 +81,73 @@ fun NumPad(
 }
 
 @Composable
-private fun NumPadButton(text: String, onClick: (String) -> Unit) {
-    Text(
-        text = text,
-        style = AppTheme.typography.displaySmall,
-        maxLines = 1,
-        textAlign = TextAlign.Center,
-        modifier = Modifier
-            .padding(horizontal = NumPadConfig.ButtonMarginHorizontal)
-            .clickable { onClick(text) }
-            .size(NumPadConfig.ButtonSize),
-    )
+private fun NumberButton(text: String, onClick: (String) -> Unit) {
+    Box(contentAlignment = Alignment.Center) {
+        Text(
+            text = text,
+            style = AppTheme.typography.titleMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .size(NumPadConfig.ButtonSize)
+                .background(color = AppTheme.specificColorScheme.surfaceVariant, shape = NumPadConfig.Shape)
+                .clip(NumPadConfig.Shape)
+                .clickable { onClick(text) }
+                .wrapContentHeight(),
+        )
+    }
 }
 
 @Composable
-private fun NumPadButton(imageVector: ImageVector, contentDescription: String, onClick: () -> Unit) {
-    IconButton(
-        modifier = Modifier
-            .size(NumPadConfig.ButtonSize)
-            .padding(horizontal = NumPadConfig.ButtonMarginHorizontal),
-        onClick = onClick,
-    ) {
-        Icon(
-            imageVector = imageVector,
-            contentDescription = contentDescription,
+private fun ForgetButton(onClick: () -> Unit) {
+    Box(contentAlignment = Alignment.Center) {
+        Text(
+            text = stringResource(CoreCommonR.string.num_pad_forget),
+            style = AppTheme.typography.bodySmall,
+            textAlign = TextAlign.Center,
+            color = AppTheme.specificColorScheme.symbolSecondary,
             modifier = Modifier
                 .size(NumPadConfig.ButtonSize)
-                .padding(horizontal = NumPadConfig.ButtonMarginHorizontal),
+                .clip(NumPadConfig.Shape)
+                .clickable { onClick() }
+                .padding(8.dp)
+                .wrapContentHeight(),
+        )
+    }
+}
+
+@Composable
+private fun IconButton(imageVector: ImageVector, onClick: () -> Unit) {
+    Box(contentAlignment = Alignment.Center) {
+        Icon(
+            imageVector = imageVector,
+            contentDescription = null,
+            tint = AppTheme.specificColorScheme.symbolSecondary,
+            modifier = Modifier
+                .size(NumPadConfig.ButtonSize)
+                .clip(NumPadConfig.Shape)
+                .clickable { onClick() }
+                .padding(24.dp),
         )
     }
 }
 
 private object NumPadConfig {
-    val ButtonSize = 56.dp
-    val ButtonMarginHorizontal = 12.dp
+
+    val ButtonSize = 72.dp
+    val ButtonMarginHorizontal = 20.dp
+    val Shape = RoundedCornerShape(Dimen.radius_extra_large)
 }
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    val enteredCode = remember { mutableStateOf("7") }
-
     SimplePreview {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(
-                modifier = Modifier
-                    .border(
-                        border = BorderStroke(2.dp, AppTheme.commonColors.outline),
-                        shape = AppTheme.shapes.small,
-                    )
-                    .padding(8.dp)
-            ) {
-                Text(
-                    text = enteredCode.value,
-                    style = AppTheme.typography.displayLarge,
-                )
-            }
             NumPad(
-                mode = NumPadActionMode.Accept,
-                onBackspaceClick = { enteredCode.value = enteredCode.value.dropLast(1) },
-                onActionClick = {},
-                onNumberClick = { enteredCode.value += it },
+                action = NumPadAction.accept {},
+                onForgetClick = {},
+                onNumberClick = { },
             )
         }
     }

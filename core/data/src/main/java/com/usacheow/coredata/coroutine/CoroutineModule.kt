@@ -1,19 +1,14 @@
 package com.usacheow.coredata.coroutine
 
 import android.app.Application
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.coredata.coroutine.DefaultDispatcher
-import com.usacheow.coredata.coroutine.IoDispatcher
-import com.usacheow.coredata.coroutine.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

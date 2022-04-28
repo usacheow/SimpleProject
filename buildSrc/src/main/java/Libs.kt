@@ -11,23 +11,12 @@ object Libs {
 
     const val composeVersion = "1.2.0-alpha07"
     private const val composeMaterialVersion = "1.0.0-alpha09"
-    private const val androidxVersion = "1.4.1"
-    private const val androidxCoreVersion = "1.8.0-alpha04"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
-    private const val fragmentVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
-    private const val cardViewVersion = "1.0.0"
-    private const val viewPagerVersion = "1.1.0-beta01"
-    private const val recyclerVersion = "1.3.0-alpha01"
-    private const val constraintVersion = "2.0.4"
-    private const val coordinatorVersion = "1.2.0-beta01"
     private const val pagingVersion = "3.1.0"
-    private const val decoroVersion = "1.5.0"
-    private const val shimmerVersion = "0.5.0"
-    private const val pageIndicatorVersion = "1.2.1"
     private const val accompanistVersion = "0.24.6-alpha"
-    private const val coilVersion = "1.4.0"
+    private const val coilVersion = "2.0.0-rc03"
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0"
@@ -35,6 +24,7 @@ object Libs {
     private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"
     private const val biometricVersion = "1.2.0-alpha04"
+    private const val windowVersion = "1.0.0"
 
     private const val hiltVersion = "2.37"
     private const val hiltJetpackVersion = "1.0.0"
@@ -45,7 +35,6 @@ object Libs {
     private const val messagingVersion = "21.0.1"
     private const val configVersion = "20.0.4"
 
-    private const val glideVersion = "4.12.0"
     private const val datastoreVersion = "1.0.0-rc01"
     private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
@@ -69,7 +58,6 @@ object Libs {
         const val kotlin_serialization = "kotlinx-serialization"
         const val kotlin_android = "kotlin-android"
         const val hilt = "dagger.hilt.android.plugin"
-        const val navigation = "androidx.navigation.safeargs.kotlin"
         const val lint = "org.jmailen.kotlinter"
     }
 
@@ -98,7 +86,7 @@ object Libs {
 
         val hilt = arrayOf(
             "com.google.dagger:hilt-android:$hiltVersion",
-            "androidx.hilt:hilt-navigation-fragment:$hiltJetpackVersion")
+            "androidx.hilt:hilt-navigation-compose:$hiltJetpackVersion")
         const val hiltKapt = "com.google.dagger:hilt-android-compiler:$hiltVersion"
         const val hiltKaptViewModel = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
@@ -108,21 +96,6 @@ object Libs {
             "com.google.firebase:firebase-messaging-ktx:$messagingVersion",
             "com.google.firebase:firebase-config-ktx:$configVersion")
 
-        val viewTheme =arrayOf("com.google.android.material:material:$materialVersion")
-        val viewKit =arrayOf(
-            "androidx.appcompat:appcompat:$androidxVersion",
-            "androidx.core:core-ktx:$androidxCoreVersion",
-            "androidx.activity:activity-ktx:$activityVersion",
-            "androidx.fragment:fragment-ktx:$fragmentVersion",
-            "androidx.cardview:cardview:$cardViewVersion",
-            "androidx.viewpager2:viewpager2:$viewPagerVersion",
-            "androidx.recyclerview:recyclerview:$recyclerVersion",
-            "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            "androidx.coordinatorlayout:coordinatorlayout:$coordinatorVersion",
-            "com.facebook.shimmer:shimmer:$shimmerVersion",
-            "ru.tinkoff.decoro:decoro:$decoroVersion",
-            "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:$pageIndicatorVersion")
-
         val composeCompiler =arrayOf("androidx.compose.compiler:compiler:$composeVersion")
         val composeRuntime =arrayOf("androidx.compose.runtime:runtime:$composeVersion")
         val composeTheme =arrayOf(
@@ -131,7 +104,8 @@ object Libs {
             "androidx.compose.ui:ui-tooling-preview:$composeVersion",
             "androidx.compose.material:material:$composeVersion",
             "androidx.compose.material3:material3:$composeMaterialVersion",
-            "androidx.compose.material:material-icons-extended:$composeVersion",)
+            "androidx.compose.material:material-icons-extended:$composeVersion",
+            "com.google.android.material:material:$materialVersion")
         val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
             "androidx.compose.foundation:foundation:$composeVersion",
@@ -152,17 +126,13 @@ object Libs {
         const val lifecycleKapt = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
         val navigation = arrayOf(
-            "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
-            "androidx.navigation:navigation-ui-ktx:$navigationVersion",
             "androidx.navigation:navigation-compose:$navigationVersion")
 
         val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
         val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
         val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
-
-        val glide = arrayOf("com.github.bumptech.glide:glide:$glideVersion")
-        const val glideKapt = "com.github.bumptech.glide:compiler:$glideVersion"
+        val window = arrayOf("androidx.window:window:$windowVersion")
 
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")
         val cryptoPreference = arrayOf("androidx.security:security-crypto:$securityVersion")

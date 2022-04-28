@@ -5,9 +5,9 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.usacheow.coreuiview.tools.resource.ResourcesWrapper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import com.usacheow.coreuitheme.R as CoreUiThemeR
@@ -20,7 +20,7 @@ interface NotificationHelper {
         val id: Int = 1,
         val channelId: Channels = Channels.Default,
         val title: String? = null,
-        val smallIcon: Int = CoreUiThemeR.drawable.ic_user,
+        val smallIcon: Int = CoreUiThemeR.drawable.ic_logo,
         val largeIcon: Int = CoreUiThemeR.mipmap.ic_launcher,
         val text: String? = null,
         val intent: Intent,
@@ -36,7 +36,6 @@ interface NotificationHelper {
 class NotificationHelperImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val notificationManager: NotificationManager,
-    private val resources: ResourcesWrapper,
 ) : NotificationHelper {
 
     init {
@@ -70,7 +69,7 @@ class NotificationHelperImpl @Inject constructor(
         return NotificationCompat.Builder(context, channelId.getId(context))
             .setStyle(style)
             .setSmallIcon(smallIcon)
-            .setLargeIcon(resources.getBitmap(largeIcon))
+            .setLargeIcon(BitmapFactory.decodeResource(context.resources, largeIcon))
             .setContentTitle(title)
             .setContentText(text)
             .setContentIntent(pendingIntent)

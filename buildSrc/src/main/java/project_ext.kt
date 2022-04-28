@@ -26,7 +26,20 @@ fun Project.common() {
             testInstrumentationRunner = Libs.bundle.unitTestsRunner
         }
 
-        buildFeatures.viewBinding = true
+        buildTypes {
+            getByName(BuildTypes.debug) {
+                isMinifyEnabled = false
+            }
+            create(BuildTypes.alpha) {
+                initWith(getByName(BuildTypes.debug))
+                isMinifyEnabled = true
+                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            }
+            getByName(BuildTypes.release) {
+                isMinifyEnabled = true
+                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            }
+        }
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
@@ -58,10 +71,6 @@ fun Project.compose() {
 }
 
 fun Project.navigation() {
-    plugins.apply {
-        apply(Libs.plugin.navigation)
-    }
-
     dependencies {
         implementation(*Libs.bundle.navigation)
     }
@@ -90,12 +99,5 @@ fun Project.lifecycle() {
     dependencies {
         implementation(*Libs.bundle.lifecycle)
         kapt(Libs.bundle.lifecycleKapt)
-    }
-}
-
-fun Project.glide() {
-    dependencies {
-        implementation(*Libs.bundle.glide)
-        kapt(Libs.bundle.glideKapt)
     }
 }

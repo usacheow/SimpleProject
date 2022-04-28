@@ -10,5 +10,7 @@ data class BuildInfo(
 
     val isDebug: Boolean get() = buildType == "debug"
 
+    val isAlpha: Boolean get() = buildType == "alpha"
+
     val isRelease: Boolean get() = buildType == "release"
 }

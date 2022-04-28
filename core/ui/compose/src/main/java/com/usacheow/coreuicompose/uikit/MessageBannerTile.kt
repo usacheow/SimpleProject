@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,8 +20,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.ImageValue
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
@@ -52,8 +50,8 @@ fun MessageBannerTile(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        containerColor = AppTheme.commonColors.surfaceVariant,
-        contentColor = AppTheme.commonColors.onSurfaceVariant,
+        containerColor = AppTheme.specificColorScheme.surfaceVariant,
+        contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
         elevation = CardDefaults.cardElevation(),
         shape = AppTheme.shapes.medium,
     ) {
@@ -111,7 +109,7 @@ private fun Icon(icon: Painter) {
 private fun Title(title: TextValue) {
     Text(
         text = title.get(),
-        color = AppTheme.commonColors.symbolPrimary,
+        color = AppTheme.specificColorScheme.symbolPrimary,
         style = AppTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
@@ -122,7 +120,7 @@ private fun Title(title: TextValue) {
 private fun Description(description: TextValue) {
     Text(
         text = description.get(),
-        color = AppTheme.commonColors.symbolSecondary,
+        color = AppTheme.specificColorScheme.symbolSecondary,
         style = AppTheme.typography.bodyMedium,
         textAlign = TextAlign.Center,
         maxLines = 3,
@@ -137,7 +135,7 @@ private fun Button(button: TextValue, clickListener: () -> Unit) {
             .padding(horizontal = 16.dp)
             .fillMaxWidth(),
         onClick = clickListener,
-    ) { ButtonContent(button) }
+    ) { SimpleButtonContent(button) }
 }
 
 @Preview(showBackground = true)
@@ -146,7 +144,7 @@ private fun Button(button: TextValue, clickListener: () -> Unit) {
 private fun Preview() {
     SimplePreview {
         MessageBannerState(
-            icon = ImageValue.Vector(Icons.Default.Error),
+            icon = ImageValue.Vector(AppTheme.specificIcons.error),
             title = TextValue.Simple("Message title text"),
             description = TextValue.Simple("Message description text"),
             button = TextValue.Simple("Button"),

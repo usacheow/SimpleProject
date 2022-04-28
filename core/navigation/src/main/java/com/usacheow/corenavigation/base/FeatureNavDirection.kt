@@ -1,23 +1,16 @@
-package com.usacheow.corecommon.navigation
+package com.usacheow.corenavigation.base
 
-import android.os.Bundle
-import android.os.Parcelable
-import androidx.annotation.IdRes
-import androidx.navigation.NavDirections
-import kotlinx.parcelize.Parcelize
+import androidx.navigation.NavOptionsBuilder
 
-@Parcelize
-data class FeatureNavDirection(
-    @IdRes override val actionId: Int,
-    override val arguments: Bundle = Bundle(),
+data class FeatureNavDirection<ARG>(
+    val route: String,
+    val clazz: Class<ARG>,
+    val arg: ARG? = null,
+    val optionsBuilder: NavOptionsBuilder.() -> Unit = {},
+)
 
-    val resetTo: ResetTo? = null,
-) : NavDirections, Parcelable
-
-@Parcelize
-data class ResetTo(
-    @IdRes val destinationId: Int,
-    val inclusive: Boolean = true,
-) : Parcelable
-
-fun NavDirections.toFeatureNavDirection() = FeatureNavDirection(actionId, arguments)
+inline fun <reified ARG> FeatureNavDirection(
+    route: String,
+    arg: ARG? = null,
+    noinline optionsBuilder: NavOptionsBuilder.() -> Unit = {},
+) = FeatureNavDirection(route, ARG::class.java, arg, optionsBuilder)

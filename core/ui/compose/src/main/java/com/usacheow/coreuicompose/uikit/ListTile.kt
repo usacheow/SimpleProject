@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.ImageValue
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
@@ -65,7 +62,8 @@ fun ListTile(
             .clip(AppTheme.shapes.small)
             .doOnClick(onClick = data.clickListener)
             .padding(ListTileConfig.ContentPadding),
-        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal)
+        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(icon = data.leftImageInfo)
         Column(
@@ -85,7 +83,7 @@ private fun RowScope.Icon(icon: ImageValue?) {
     icon?.get()?.let {
         Icon(
             painter = it,
-            tint = AppTheme.commonColors.symbolPrimary,
+            tint = AppTheme.specificColorScheme.symbolPrimary,
             contentDescription = "Item icon",
             modifier = Modifier.align(Alignment.CenterVertically),
         )
@@ -96,7 +94,7 @@ private fun RowScope.Icon(icon: ImageValue?) {
 private fun PrimaryText(value: TextValue) {
     Text(
         text = value.get(),
-        color = AppTheme.commonColors.symbolPrimary,
+        color = AppTheme.specificColorScheme.symbolPrimary,
         style = AppTheme.typography.bodyLarge,
         modifier = Modifier.fillMaxWidth(),
     )
@@ -107,7 +105,7 @@ private fun SecondaryText(value: TextValue?) {
     value?.get()?.let {
         Text(
             text = it,
-            color = AppTheme.commonColors.symbolSecondary,
+            color = AppTheme.specificColorScheme.symbolSecondary,
             style = AppTheme.typography.bodyMedium,
             modifier = Modifier.fillMaxWidth(),
         )
@@ -126,8 +124,8 @@ private object ListTileConfig {
 private fun Preview() {
     SimplePreview {
         ListTileState(
-            leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
-            rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
+            leftImageInfo = ImageValue.Vector(AppTheme.specificIcons.account),
+            rightImageInfo = ImageValue.Vector(AppTheme.specificIcons.navigateNext),
             value = TextValue.Simple("Main information"),
             topDescription = TextValue.Simple("Top description"),
             bottomDescription = TextValue.Simple("Bottom description"),

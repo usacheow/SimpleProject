@@ -4,7 +4,7 @@ import android.content.Intent
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.usacheow.coreui.notification.NotificationHelper
-import com.usacheow.simpleapp.mainscreen.MainScreenActivity
+import com.usacheow.simpleapp.mainscreen.AppActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class FirebaseNotificationsService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(remoteMessage: RemoteMessage) {
-        val notificationIntent = Intent(this, MainScreenActivity::class.java)
+        val notificationIntent = Intent(this, AppActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         val model = NotificationHelper.Model(
             title = remoteMessage.notification?.title.orEmpty(),

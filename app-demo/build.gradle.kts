@@ -2,19 +2,26 @@ plugins {
     id(Libs.plugin.application)
 }
 
+common()
+compose()
+dagger()
+lifecycle()
+
 android {
     defaultConfig {
         versionName = "8.8.8"
         versionCode = 888
         applicationId = "com.usacheow.simpleapp.uikit"
     }
-}
 
-common()
-compose()
-navigation()
-dagger()
-lifecycle()
+    buildTypes {
+        all {
+            addManifestPlaceholders(mapOf(
+                "app_name" to "SA UiKit",
+            ))
+        }
+    }
+}
 
 dependencies {
     implementation(projects.coreCommon)
@@ -22,10 +29,5 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(projects.featureAuth)
-    implementation(projects.featureOnboarding)
-
     implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.paging)
-    implementation(*Libs.bundle.biometric)
 }

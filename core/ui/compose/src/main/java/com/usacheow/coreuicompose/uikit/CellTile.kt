@@ -20,8 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.corecommon.container.compose.ImageValue
-import com.usacheow.corecommon.container.compose.TextValue
+import com.usacheow.corecommon.container.IconValue
+import com.usacheow.corecommon.container.ImageValue
+import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
@@ -29,7 +30,6 @@ import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
-import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 data class CellTileState(
     val leftPart: LeftPart? = null,
@@ -59,8 +59,8 @@ data class CellTileState(
     sealed class LeftPart {
 
         data class Icon(
-            val icon: ImageValue.ResVector,
-            val background: ImageValue.ResVector? = null,
+            val icon: IconValue,
+            val background: IconValue? = null,
         ) : LeftPart()
 
         data class Logo(
@@ -116,7 +116,7 @@ private fun LeftPart(data: CellTileState.LeftPart?) {
             }
             Icon(
                 painter = data.icon.get(),
-                tint = AppTheme.commonColors.symbolPrimary,
+                tint = AppTheme.specificColorScheme.symbolPrimary,
                 contentDescription = null,
                 modifier = Modifier
                     .size(CellTileConfig.IconSize)
@@ -145,7 +145,7 @@ private fun RowScope.MiddlePart(
         subtitle?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.commonColors.symbolSecondary,
+                color = AppTheme.specificColorScheme.symbolSecondary,
                 style = AppTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -153,7 +153,7 @@ private fun RowScope.MiddlePart(
         title?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.commonColors.symbolPrimary,
+                color = AppTheme.specificColorScheme.symbolPrimary,
                 style = AppTheme.typography.bodyLarge,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -161,7 +161,7 @@ private fun RowScope.MiddlePart(
         value?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.commonColors.symbolPrimary,
+                color = AppTheme.specificColorScheme.symbolPrimary,
                 style = AppTheme.typography.titleLarge,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -169,7 +169,7 @@ private fun RowScope.MiddlePart(
         additional?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.commonColors.symbolSecondary,
+                color = AppTheme.specificColorScheme.symbolSecondary,
                 style = AppTheme.typography.bodyMedium,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -183,7 +183,7 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
     when (data) {
         is CellTileState.RightPart.ActionIcon -> Icon(
             painter = data.source.get(),
-            tint = AppTheme.commonColors.symbolPrimary,
+            tint = AppTheme.specificColorScheme.symbolPrimary,
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterVertically)
@@ -219,10 +219,6 @@ private object CellTileConfig {
 private fun Preview() {
     SimplePreview {
         CellTileState(
-            leftPart = CellTileState.LeftPart.Icon(
-                icon = ImageValue.ResVector(CoreUiThemeR.drawable.ic_lock),
-                background = ImageValue.ResVector(CoreUiThemeR.drawable.bg_ic_square),
-            ),
             subtitle = TextValue.Simple("Subtitle"),
             title = TextValue.Simple("Title"),
             value = TextValue.Simple("Value"),

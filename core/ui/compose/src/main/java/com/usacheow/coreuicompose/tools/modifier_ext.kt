@@ -24,7 +24,7 @@ import kotlin.time.Duration.Companion.milliseconds
 fun Modifier.defaultBorder() = composed {
     border(
         width = 1.dp,
-        color = AppTheme.commonColors.outline,
+        color = AppTheme.specificColorScheme.outline,
         shape = MaterialTheme.shapes.medium,
     ).clip(MaterialTheme.shapes.medium)
 }
@@ -35,7 +35,7 @@ fun Modifier.defaultPlaceholder(
     placeholder(
         visible = true,
         shape = shape,
-        color = AppTheme.commonColors.shimmer,
+        color = AppTheme.specificColorScheme.shimmer,
         highlight = PlaceholderHighlight.fade(),
     )
 }
