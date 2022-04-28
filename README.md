@@ -33,17 +33,17 @@ The project has an example wrapper for FirebaseAnalytics (FirebaseTracker).
 Access to the Tracker object is through AnalyticsTrackerHolder.
 
 #### 6. A few more tools
-AppUpdateProvider
-LocationProvider
-NetworkStateProvider
-PreferencesProvider
-FirebaseNotificationsService
-BuildInfo (contains info of current build)
-Resources containers (ColorValue, ImageValue, TextValue)
-Effect (like Result in Kotlin for results of operations)
-CacheProvider (with two implementations)
-ApiConfig (for build retrofit instances)
-apiCall(...) and cachedApiCall(...) (for network requests)
-NotificationHelper
-Navigation extensions (in nav_ext.kt)
-and many other extensions for some routine
++ AppUpdateProvider
++ LocationProvider
++ NetworkStateProvider
++ PreferencesProvider
++ FirebaseNotificationsService
++ BuildInfo (contains info of current build)
++ Resources containers (ColorValue, ImageValue, TextValue)
++ Effect (like Result in Kotlin for results of operations)
++ CacheProvider (with two implementations)
++ ApiConfig (for build retrofit instances)
++ apiCall(...) and cachedApiCall(...) (for network requests)
++ NotificationHelper
++ Navigation extensions (in nav_ext.kt)
++ and many other extensions for some routine
