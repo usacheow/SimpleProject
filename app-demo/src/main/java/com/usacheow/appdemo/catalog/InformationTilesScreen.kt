@@ -21,7 +21,6 @@ import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.BadgeTileState
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +35,7 @@ fun InformationTilesScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Information tiles"),
-                navigationIcon = R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )

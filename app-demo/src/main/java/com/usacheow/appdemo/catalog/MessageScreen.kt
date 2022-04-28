@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
@@ -22,19 +20,20 @@ import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.MessageBannerState
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
+import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MessageScreen(navController: NavHostController) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+    val items = items()
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Message tiles"),
-                navigationIcon = R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )
@@ -44,13 +43,14 @@ fun MessageScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxWidth(),
             contentPadding = getBottomInset(),
         ) {
-            items(items()) {
+            items(items) {
                 it.Content(Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
             }
         }
     }
 }
 
+@Composable
 private fun items(): List<WidgetState> = listOf(
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
@@ -62,7 +62,7 @@ private fun items(): List<WidgetState> = listOf(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ),
     MessageBannerState(
-        icon = ImageValue.Vector(Icons.Default.Error),
+        icon = ImageValue.Vector(AppTheme.specificIcons.error),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -81,7 +81,7 @@ private fun items(): List<WidgetState> = listOf(
         clickListener = {},
     ),
     MessageBannerState(
-        icon = ImageValue.Vector(Icons.Default.Error),
+        icon = ImageValue.Vector(AppTheme.specificIcons.error),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),

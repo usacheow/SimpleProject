@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -127,8 +124,8 @@ private object ListTileConfig {
 private fun Preview() {
     SimplePreview {
         ListTileState(
-            leftImageInfo = ImageValue.Vector(Icons.Default.AccountCircle),
-            rightImageInfo = ImageValue.Vector(Icons.Default.NavigateNext),
+            leftImageInfo = ImageValue.Vector(AppTheme.specificIcons.account),
+            rightImageInfo = ImageValue.Vector(AppTheme.specificIcons.navigateNext),
             value = TextValue.Simple("Main information"),
             topDescription = TextValue.Simple("Top description"),
             bottomDescription = TextValue.Simple("Bottom description"),

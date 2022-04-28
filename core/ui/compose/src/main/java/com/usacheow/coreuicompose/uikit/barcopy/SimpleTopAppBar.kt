@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.Layout
@@ -44,7 +45,7 @@ private typealias OnBackIconClick = () -> Boolean
 fun SimpleTopAppBar(
     title: TextValue?,
     titleTextStyle: TextStyle = AppTheme.typography.titleLarge,
-    navigationIcon: Pair<Int, OnBackIconClick>? = null,
+    navigationIcon: Pair<ImageVector, OnBackIconClick>? = null,
     actions: Map<Int, OnIconClick> = emptyMap(),
     contentPadding: PaddingValues = PaddingValues(),
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
@@ -63,7 +64,7 @@ fun SimpleTopAppBar(
     val navigationIconUi = @Composable {
         if (navigationIcon != null) {
             Icon(
-                painter = painterResource(navigationIcon.first),
+                imageVector = navigationIcon.first,
                 tint = AppTheme.specificColorScheme.symbolPrimary,
                 contentDescription = null,
                 modifier = Modifier

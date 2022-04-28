@@ -17,12 +17,11 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
+import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
 import com.usacheow.featuremain.presentation.viewmodels.BViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainBScreen(
     graphRoute: String,
@@ -60,7 +59,7 @@ private fun MainBScreen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Main B screen $selectionNumber $index"),
-                navigationIcon = R.drawable.ic_back to onBackClick,
+                navigationIcon = AppTheme.specificIcons.back to onBackClick,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )

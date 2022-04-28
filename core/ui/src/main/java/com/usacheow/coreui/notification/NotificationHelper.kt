@@ -20,7 +20,7 @@ interface NotificationHelper {
         val id: Int = 1,
         val channelId: Channels = Channels.Default,
         val title: String? = null,
-        val smallIcon: Int = CoreUiThemeR.drawable.ic_user,
+        val smallIcon: Int = CoreUiThemeR.drawable.ic_logo,
         val largeIcon: Int = CoreUiThemeR.mipmap.ic_launcher,
         val text: String? = null,
         val intent: Intent,

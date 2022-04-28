@@ -25,7 +25,6 @@ import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.NumPad
 import com.usacheow.coreuicompose.uikit.NumPadAction
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +38,7 @@ fun NumPadScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Num pad"),
-                navigationIcon = R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )
@@ -66,7 +65,7 @@ fun NumPadScreen(navController: NavHostController) {
                 )
             }
             NumPad(
-                action = NumPadAction.Delete { enteredCode.value = enteredCode.value.dropLast(1) },
+                action = NumPadAction.delete { enteredCode.value = enteredCode.value.dropLast(1) },
                 onForgetClick = {},
                 onNumberClick = { enteredCode.value = (enteredCode.value + it).take(4) },
             )

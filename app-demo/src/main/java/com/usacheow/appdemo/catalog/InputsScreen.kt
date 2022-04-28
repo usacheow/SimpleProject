@@ -4,15 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CreditCard
-import androidx.compose.material.icons.filled.CurrencyExchange
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,7 +13,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -28,7 +20,6 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.money.CurrencyType
-import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.textfield.AmountFormatter
@@ -37,7 +28,7 @@ import com.usacheow.coreuicompose.uikit.textfield.PhoneNumberFormatter
 import com.usacheow.coreuicompose.uikit.textfield.SimpleTextField
 import com.usacheow.coreuicompose.uikit.textfield.SimpleTextFieldConfig
 import com.usacheow.coreuicompose.uikit.textfield.SimpleTextFieldIcon
-import com.usacheow.coreuitheme.R
+import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,7 +44,7 @@ fun InputsScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Inputs tiles"),
-                navigationIcon = R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )
@@ -69,7 +60,7 @@ fun InputsScreen(navController: NavHostController) {
                 visualTransformation = CardNumberFormatter.visualTransformation(),
                 placeholderValue = CardNumberFormatter.placeholder(),
                 labelValue = TextValue.Simple("Card number"),
-                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(Icons.Default.CreditCard)),
+                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.creditCard)),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 shape = SimpleTextFieldConfig.shape(),
             )
@@ -83,7 +74,7 @@ fun InputsScreen(navController: NavHostController) {
                 visualTransformation = PhoneNumberFormatter.visualTransformation(),
                 placeholderValue = PhoneNumberFormatter.placeholder(),
                 labelValue = TextValue.Simple("Phone number"),
-                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(Icons.Default.Phone)),
+                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.phone)),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 shape = SimpleTextFieldConfig.shape(),
             )
@@ -97,7 +88,7 @@ fun InputsScreen(navController: NavHostController) {
                 visualTransformation = AmountFormatter.visualTransformation(CurrencyType.RUB),
                 placeholderValue = TextValue.Simple("Enter amount"),
                 labelValue = TextValue.Simple("Transfer amount"),
-                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(Icons.Default.CurrencyExchange)),
+                leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.currencyExchange)),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 shape = SimpleTextFieldConfig.shape(),
             )

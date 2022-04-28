@@ -13,8 +13,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
@@ -45,7 +43,6 @@ import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryS
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineS
-import com.usacheow.coreuitheme.R
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
 
@@ -59,7 +56,7 @@ fun ButtonsScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Button tiles"),
-                navigationIcon = R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )
@@ -86,7 +83,7 @@ fun ButtonsScreen(navController: NavHostController) {
 
 @Composable
 private fun Primaries() {
-    val icon = IconValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(AppTheme.specificIcons.add)
     Header("Primary")
     Container {
         SimpleButtonPrimaryS(onClick = {}) {
@@ -134,7 +131,7 @@ private fun Primaries() {
 
 @Composable
 private fun Secondaries() {
-    val icon = IconValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(AppTheme.specificIcons.add)
     Header("Secondary")
     Container {
         SimpleButtonSecondaryS(onClick = {}) {
@@ -182,7 +179,7 @@ private fun Secondaries() {
 
 @Composable
 private fun Tonals() {
-    val icon = IconValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(AppTheme.specificIcons.add)
     Header("Tonal")
     Container {
         SimpleButtonTonalS(onClick = {}) {
@@ -230,7 +227,7 @@ private fun Tonals() {
 
 @Composable
 private fun Outlines() {
-    val icon = IconValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(AppTheme.specificIcons.add)
     Header("Outline")
     Container {
         SimpleButtonOutlineS(onClick = {}) {
@@ -278,7 +275,7 @@ private fun Outlines() {
 
 @Composable
 private fun Inlines() {
-    val icon = IconValue.Vector(Icons.Default.Add)
+    val icon = IconValue.Vector(AppTheme.specificIcons.add)
     Header("Inline")
     Container {
         SimpleButtonInlineS(onClick = {}) {

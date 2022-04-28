@@ -12,24 +12,7 @@
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
     </style>
 
-    <style name="ThemeWithDefaultAttributes" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:colorBackground">?colorBackground</item>
-        <item name="iconTint">?colorSymbolPrimary</item>
-        <item name="android:textColorPrimary">?colorSymbolPrimary</item>
-        <item name="android:textColorPrimaryInverse">?colorSymbolPrimaryInverse</item>
-        <item name="android:textColorSecondary">?colorSymbolSecondary</item>
-        <item name="android:textColorSecondaryInverse">?colorSymbolSecondaryInverse</item>
-        <item name="android:textColorTertiary">?colorSymbolTertiary</item>
-        <item name="android:textColorTertiaryInverse">?colorSymbolTertiaryInverse</item>
-
-        <item name="materialButtonStyle">?materialButtonElevationStyle</item>
-        <item name="borderlessButtonStyle">?materialButtonTextStyle</item>
-        <item name="textInputStyle">?textInputOutlinedStyle</item>
-        <item name="textInputOutlinedStyle">?materialTextInputOutlinedStyle</item>
-        <item name="textInputFilledStyle">?materialTextInputFilledStyle</item>
-    </style>
-
-    <style name="Simple.AppTheme" parent="ThemeWithDefaultAttributes">
+    <style name="Simple.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryContainer">@color/primaryContainer</item>
@@ -52,9 +35,8 @@
         <item name="colorOnErrorContainer">@color/onErrorContainer</item>
 
         <item name="colorOutline">@color/outline</item>
-        <item name="colorShimmer">@color/shimmer</item>
 
-        <item name="colorBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
         <item name="colorOnBackground">@color/onBackground</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/onSurface</item>
@@ -69,68 +51,15 @@
         <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:navigationBarColor">@color/colorNavigationBar</item>
 
-        <item name="android:spotShadowAlpha">@dimen/spot_shadow_alpha</item>
-        <item name="android:ambientShadowAlpha">@dimen/ambient_shadow_alpha</item>
+        <item name="android:spotShadowAlpha">0.05</item>
+        <item name="android:ambientShadowAlpha">0.05</item>
 
-        <item name="colorSymbolPrimary">@color/symbolPrimary</item>
-        <item name="colorSymbolPrimaryInverse">@color/symbolPrimaryInverse</item>
-        <item name="colorSymbolSecondary">@color/symbolSecondary</item>
-        <item name="colorSymbolSecondaryInverse">@color/symbolSecondaryInverse</item>
-        <item name="colorSymbolTertiary">@color/symbolTertiary</item>
-        <item name="colorSymbolTertiaryInverse">@color/symbolTertiaryInverse</item>
-
-        <item name="textAppearanceDisplayLarge">@style/Simple.Text.Display.L</item>
-        <item name="textAppearanceDisplayMedium">@style/Simple.Text.Display.M</item>
-        <item name="textAppearanceDisplaySmall">@style/Simple.Text.Display.S</item>
-        <item name="textAppearanceHeadlineLarge">@style/Simple.Text.Headline.L</item>
-        <item name="textAppearanceHeadlineMedium">@style/Simple.Text.Headline.M</item>
-        <item name="textAppearanceHeadlineSmall">@style/Simple.Text.Headline.S</item>
-        <item name="textAppearanceTitleLarge">@style/Simple.Text.Title.L</item>
-        <item name="textAppearanceTitleMedium">@style/Simple.Text.Title.M</item>
-        <item name="textAppearanceTitleSmall">@style/Simple.Text.Title.S</item>
-        <item name="textAppearanceBodyLarge">@style/Simple.Text.Body.L</item>
-        <item name="textAppearanceBodyMedium">@style/Simple.Text.Body.M</item>
-        <item name="textAppearanceBodySmall">@style/Simple.Text.Body.S</item>
-        <item name="textAppearanceLabelLarge">@style/Simple.Text.Label.L</item>
-        <item name="textAppearanceLabelMedium">@style/Simple.Text.Label.M</item>
-        <item name="textAppearanceLabelSmall">@style/Simple.Text.Label.S</item>
-
-        <item name="shapeAppearanceSmallComponent">@style/Simple.Shape.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/Simple.Shape.MediumComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/Simple.Shape.LargeComponent</item>
-        <item name="shapeAppearanceCircleComponent">@style/Simple.Shape.Circle</item>
-
-        <item name="appBarLayoutStyle">@style/Simple.Header.AppBar</item>
-        <item name="toolbarStyle">@style/Simple.Header.Toolbar</item>
-        <item name="toolbarSurfaceStyle">@style/Simple.Header.ToolbarSurface</item>
-        <item name="actionMenuTextColor">@color/primary</item>
-        <item name="actionMenuTextAppearance">@style/Simple.Text.Body.L</item>
-
-        <item name="bottomNavigationStyle">@style/Simple.BottomBar</item>
-
-        <item name="materialCardViewFilledStyle">@style/Simple.Card.Filled</item>
-        <item name="materialCardViewElevatedStyle">@style/Simple.Card.Elevated</item>
-        <item name="materialCardViewOutlinedStyle">@style/Simple.Card.Outlined</item>
-
-        <item name="materialButtonOutlinedStyle">@style/Simple.Button.Outlined</item>
-        <item name="materialButtonOutlinedStyleLarge">@style/Simple.Button.Outlined.Large</item>
-        <item name="materialButtonUnelevatedStyle">@style/Simple.Button.Unelevated</item>
-        <item name="materialButtonUnelevatedStyleLarge">@style/Simple.Button.Unelevated.Large</item>
-        <item name="materialButtonTonalStyle">@style/Simple.Button.Tonal</item>
-        <item name="materialButtonTonalStyleLarge">@style/Simple.Button.Tonal.Large</item>
-        <item name="materialButtonTextStyle">@style/Simple.Button.Text</item>
-        <item name="materialButtonTextStyleLarge">@style/Simple.Button.Text.Large</item>
-        <item name="materialButtonElevationStyle">@style/Simple.Button.Elevation</item>
-        <item name="materialButtonElevationStyleLarge">@style/Simple.Button.Elevation.Large</item>
-        <item name="materialButtonToolbarStyle">@style/Simple.Button.Toolbar</item>
-
-        <item name="materialTextInputOutlinedStyle">@style/Simple.Input.Outlined</item>
-        <item name="materialTextInputFilledStyle">@style/Simple.Input.Filled</item>
-
-        <item name="materialCalendarTheme">@style/Simple.Dialog.DatePicker</item>
-        <item name="materialCalendarFullscreenTheme">@style/Simple.Dialog.DateRangePicker</item>
-        <item name="materialTimePickerTheme">@style/Simple.Dialog.TimePicker</item>
-        <item name="materialAlertDialogTheme">@style/Simple.Dialog.Alert</item>
+        <item name="android:textColorPrimary">@color/symbolPrimary</item>
+        <item name="android:textColorPrimaryInverse">@color/symbolPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/symbolSecondary</item>
+        <item name="android:textColorSecondaryInverse">@color/symbolSecondaryInverse</item>
+        <item name="android:textColorTertiary">@color/symbolTertiary</item>
+        <item name="android:textColorTertiaryInverse">@color/symbolTertiaryInverse</item>
     </style>
 
 </resources>

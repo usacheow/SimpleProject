@@ -1,6 +1,5 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +25,7 @@ import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TypographyScreen(navController: NavHostController) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
@@ -37,7 +36,7 @@ fun TypographyScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Typography"),
-                navigationIcon = com.usacheow.coreuitheme.R.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )

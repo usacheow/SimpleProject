@@ -16,10 +16,9 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
+import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.featureonboarding.presentation.ScreenNavigator
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OnBoardingInfoScreen(
     navHostController: NavHostController
@@ -44,7 +43,7 @@ private fun OnBoardingInfoScreen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("OnBoarding info screen"),
-                navigationIcon = R.drawable.ic_back to onBackClick,
+                navigationIcon = AppTheme.specificIcons.back to onBackClick,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )

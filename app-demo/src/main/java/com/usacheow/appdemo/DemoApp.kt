@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.usacheow.appdemo.catalog.ButtonsScreen
 import com.usacheow.appdemo.catalog.CellTilesScreen
+import com.usacheow.appdemo.catalog.DemoScreen
 import com.usacheow.appdemo.catalog.InformationTilesScreen
 import com.usacheow.appdemo.catalog.InputsScreen
 import com.usacheow.appdemo.catalog.ListTilesScreen

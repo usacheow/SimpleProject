@@ -1,7 +1,6 @@
 package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,10 +13,6 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,16 +29,23 @@ import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.Dimen
 import com.usacheow.corecommon.R as CoreCommonR
 
-sealed class NumPadAction(
+class NumPadAction(
     val icon: ImageVector,
     val onClick: () -> Unit,
 ) {
-    class Biometric(onClick: () -> Unit) : NumPadAction(Icons.Default.Fingerprint, onClick)
-    class Delete(onClick: () -> Unit) : NumPadAction(Icons.Default.Delete, onClick)
-    class Accept(onClick: () -> Unit) : NumPadAction(Icons.Default.Done, onClick)
+    companion object {
+
+        @Composable
+        fun biometric(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.fingerprint, onClick)
+
+        @Composable
+        fun delete(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.delete, onClick)
+
+        @Composable
+        fun accept(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.done, onClick)
+    }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NumPad(
     action: NumPadAction? = null,
@@ -143,7 +145,7 @@ private fun Preview() {
     SimplePreview {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             NumPad(
-                action = NumPadAction.Accept {},
+                action = NumPadAction.accept {},
                 onForgetClick = {},
                 onNumberClick = { },
             )

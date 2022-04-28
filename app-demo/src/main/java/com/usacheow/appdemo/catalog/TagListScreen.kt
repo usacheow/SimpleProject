@@ -1,6 +1,5 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -25,9 +24,9 @@ import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.TagTileState
 import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
-import com.usacheow.coreuitheme.R as CoreUiThemeR
+import com.usacheow.coreuitheme.compose.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TagListScreen(navController: NavHostController) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
@@ -51,7 +50,7 @@ fun TagListScreen(navController: NavHostController) {
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Tag tiles"),
-                navigationIcon = CoreUiThemeR.drawable.ic_back to navController::popBackStack,
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,
             )

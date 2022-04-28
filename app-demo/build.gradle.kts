@@ -17,7 +17,7 @@ android {
     buildTypes {
         all {
             addManifestPlaceholders(mapOf(
-                "app_name" to "Bank131 UiKit",
+                "app_name" to "SA UiKit",
             ))
         }
     }

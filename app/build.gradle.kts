@@ -44,7 +44,7 @@ android {
             applicationIdSuffix = BuildTypes.debugPackageSuffix
 
             addManifestPlaceholders(mapOf(
-                "app_name" to "Sample App Debug",
+                "app_name" to "SA Debug",
             ))
 
             isMinifyEnabled = false
@@ -55,7 +55,7 @@ android {
             applicationIdSuffix = BuildTypes.alphaPackageSuffix
 
             addManifestPlaceholders(mapOf(
-                "app_name" to "Sample App Alpha",
+                "app_name" to "SA Alpha",
             ))
 
             isMinifyEnabled = true

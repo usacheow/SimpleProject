@@ -23,6 +23,7 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
     CompositionLocalProvider(
         LocalSpecificColorScheme provides specificColorScheme,
         LocalSpecificTypography provides DefaultSpecificTypography,
+        LocalSpecificIcons provides SpecificIcons(),
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
@@ -44,6 +45,11 @@ object AppTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalSpecificTypography.current
+
+    val specificIcons: SpecificIcons
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSpecificIcons.current
 
     val colorScheme: ColorScheme
         @Composable

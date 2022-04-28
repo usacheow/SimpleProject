@@ -1,4 +1,4 @@
-package com.usacheow.appdemo
+package com.usacheow.appdemo.catalog
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
@@ -44,7 +44,7 @@ import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun DemoScreen(navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
