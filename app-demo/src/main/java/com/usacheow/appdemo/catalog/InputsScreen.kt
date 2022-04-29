@@ -20,7 +20,6 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.money.CurrencyType
 import com.usacheow.coreuicompose.tools.getTopInset

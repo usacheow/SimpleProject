@@ -59,7 +59,7 @@ inline fun <reified T : Any> Response<T>.toEffect() = when {
     isSuccessful -> when (val body = body()) {
         null -> when (T::class) {
             Completable::class -> Effect.success(Completable as T)
-            else -> Effect.error(AppError.Empty())
+            else -> Effect.error(AppError.EmptyResponse())
         }
         else -> Effect.success(body)
     }

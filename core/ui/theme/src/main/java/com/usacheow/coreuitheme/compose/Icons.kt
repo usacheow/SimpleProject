@@ -13,7 +13,6 @@ import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.vector.ImageVector
 import com.usacheow.corecommon.container.IconValue
 
 internal val LocalSpecificIcons = staticCompositionLocalOf { SpecificIcons() }

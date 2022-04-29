@@ -25,7 +25,7 @@ sealed class AppError(
         cause: Exception? = null
     ) : AppError(CoreR.string.server_error_message, message, cause)
 
-    class Empty(
+    class EmptyResponse(
         message: String? = null,
         cause: Exception? = null
     ) : AppError(CoreR.string.unknown_error_message, message, cause)

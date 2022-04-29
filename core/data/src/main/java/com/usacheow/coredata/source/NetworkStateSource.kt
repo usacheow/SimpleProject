@@ -1,4 +1,4 @@
-package com.usacheow.coredata.network
+package com.usacheow.coredata.source
 
 import android.annotation.SuppressLint
 import android.net.ConnectivityManager
@@ -6,7 +6,12 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -15,21 +20,21 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.stateIn
 
-interface NetworkStateProvider {
+interface NetworkStateSource {
 
-    val state: StateFlow<NetworkState>
-}
+    val state: StateFlow<State>
 
-enum class NetworkState {
-    Available, Unavailable,
+    enum class State {
+        Available, Unavailable,
+    }
 }
 
 @SuppressLint("MissingPermission")
 @OptIn(ExperimentalCoroutinesApi::class)
-class NetworkStateProviderImpl @Inject constructor(
+class NetworkStateSourceImpl @Inject constructor(
     connectivityManager: ConnectivityManager,
     @ApplicationCoroutineScope private val scope: CoroutineScope,
-) : NetworkStateProvider {
+) : NetworkStateSource {
 
     override val state = connectivityManager
         .networkChangesFlow()
@@ -47,12 +52,12 @@ class NetworkStateProviderImpl @Inject constructor(
         val listener = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
-                trySend(NetworkState.Available)
+                trySend(NetworkStateSource.State.Available)
             }
 
             override fun onLost(network: Network) {
                 super.onLost(network)
-                trySend(NetworkState.Unavailable)
+                trySend(NetworkStateSource.State.Unavailable)
             }
         }
 
@@ -61,7 +66,16 @@ class NetworkStateProviderImpl @Inject constructor(
     }
 
     private fun networkState(isAvailable: Boolean) = when {
-        isAvailable -> NetworkState.Available
-        else -> NetworkState.Unavailable
+        isAvailable -> NetworkStateSource.State.Available
+        else -> NetworkStateSource.State.Unavailable
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface NetworkStateSourceModule {
+
+    @Binds
+    @Singleton
+    fun networkStateSource(source: NetworkStateSourceImpl): NetworkStateSource
 }

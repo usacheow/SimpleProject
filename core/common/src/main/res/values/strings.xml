@@ -1,5 +1,6 @@
 <resources>
-    <string name="connection_error_message">Отсутствует подключение к сети, проверьте сетевое соединение</string>
+    <string name="connection_success_message">Соединение восстановлено</string>
+    <string name="connection_error_message">Отсутствует подключение к сети</string>
     <string name="invalid_token_error_message">Ваша сессия истекла. Необходимо авторизоваться заново</string>
     <string name="server_error_message">Сервис временно недоступен. Попробуйте повторить позднее</string>
     <string name="unknown_error_message">Произошла ошибка. Попробуйте повторить позднее</string>

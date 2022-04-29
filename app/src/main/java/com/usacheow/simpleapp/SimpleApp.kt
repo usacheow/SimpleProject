@@ -1,11 +1,11 @@
 package com.usacheow.simpleapp
 
 import android.app.Application
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
-import com.usacheow.coredata.network.NetworkStateProvider
 import com.usacheow.corecommon.analytics.AnalyticsTracker
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
+import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
+import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
+import com.usacheow.coredata.source.NetworkStateSource
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -19,7 +19,7 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder {
 
     @Inject lateinit var featureToggleUpdater: FeatureToggleUpdater
 
-    @Inject lateinit var networkStateProvider: NetworkStateProvider
+    @Inject lateinit var networkStateSource: NetworkStateSource
 
     override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 

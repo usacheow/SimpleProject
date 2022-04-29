@@ -122,7 +122,8 @@ object Libs {
         val lifecycle = arrayOf(
             "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion",
             "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion",
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            "androidx.lifecycle:lifecycle-process:$lifecycleVersion")
         const val lifecycleKapt = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
         val navigation = arrayOf(

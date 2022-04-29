@@ -3,6 +3,7 @@ plugins {
 }
 
 common()
+lifecycle()
 dagger()
 room()
 

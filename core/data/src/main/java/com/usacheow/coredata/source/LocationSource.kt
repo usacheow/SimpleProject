@@ -1,42 +1,52 @@
-package com.usacheow.coredata.location
+package com.usacheow.coredata.source
 
 import android.annotation.SuppressLint
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import com.usacheow.corecommon.Effect
 import com.usacheow.corecommon.AppError
+import com.usacheow.corecommon.Effect
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import javax.inject.Inject
 
 private const val MIN_TIME_IN_MILLISECONDS = 400L
 private const val MIN_DISTANCE_IN_METRES = 1f
 
-interface LocationProvider {
+interface LocationSource {
 
-    val state: Flow<Effect<SimpleLocation>>
+    val state: Flow<Effect<State>>
 
-    fun getLastKnownLocation(): Effect<SimpleLocation>
+    fun getLastKnownLocation(): Effect<State>
+
+    data class State(
+        val latitude: Double,
+        val longitude: Double,
+    )
 }
 
 @SuppressLint("MissingPermission")
 @OptIn(ExperimentalCoroutinesApi::class)
-class LocationProviderImpl @Inject constructor(
+class LocationSourceImpl @Inject constructor(
     private val locationManager: LocationManager,
-) : LocationProvider {
+) : LocationSource {
 
     override val state = locationManager.currentLocationFlow()
 
-    override fun getLastKnownLocation(): Effect<SimpleLocation> {
+    override fun getLastKnownLocation(): Effect<LocationSource.State> {
         return try {
             locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
                 ?.toSimpleLocation()
                 ?.let { Effect.success(it) }
-                ?: Effect.error(AppError.Empty())
+                ?: Effect.error(AppError.EmptyResponse())
         } catch (e: Exception) {
             Effect.error(AppError.Security())
         }
@@ -70,12 +80,7 @@ class LocationProviderImpl @Inject constructor(
     private fun LocationManager.unregisterListener(listener: LocationListener) = removeUpdates(listener)
 }
 
-data class SimpleLocation(
-    val latitude: Double,
-    val longitude: Double,
-)
-
-fun Location.toSimpleLocation() = SimpleLocation(
+fun Location.toSimpleLocation() = LocationSource.State(
     latitude = latitude,
     longitude = longitude,
 )
@@ -102,4 +107,13 @@ class EmptyLocationListener(
     override fun onProviderDisabled(provider: String) {
         onProviderDisabledAction(provider)
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface LocationSourceModule {
+
+    @Binds
+    @Singleton
+    fun locationSource(source: LocationSourceImpl): LocationSource
 }
