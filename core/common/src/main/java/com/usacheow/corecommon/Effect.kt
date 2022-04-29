@@ -15,7 +15,7 @@ class Effect<DATA : Any> private constructor(
         fun <T : Any> success(data: T) = Effect(Success(data))
 
         fun <T : Any> error(
-            exception: Throwable,
+            exception: AppError,
             cachedData: T? = null,
         ) = Effect(Error(exception, cachedData))
     }
@@ -88,7 +88,7 @@ class Effect<DATA : Any> private constructor(
     ) : Data<DATA>()
 
     internal data class Error<DATA : Any>(
-        val exception: Throwable,
+        val exception: AppError,
         val cache: DATA? = null,
     ) : Data<DATA>()
 }
@@ -96,7 +96,9 @@ class Effect<DATA : Any> private constructor(
 inline fun <IN, OUT : Any> IN.tryRun(block: IN.() -> OUT): Effect<OUT> {
     return try {
         Effect.success(block())
-    } catch (e: Throwable) {
-        Effect.error(e)
+    } catch (e: Exception) {
+        val error = if (e is AppError) e
+        else AppError.Unknown(cause = e)
+        Effect.error(error)
     }
 }

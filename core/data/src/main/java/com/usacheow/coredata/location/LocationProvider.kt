@@ -6,7 +6,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import com.usacheow.corecommon.Effect
-import com.usacheow.coredata.network.ApiError
+import com.usacheow.corecommon.AppError
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -36,9 +36,9 @@ class LocationProviderImpl @Inject constructor(
             locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
                 ?.toSimpleLocation()
                 ?.let { Effect.success(it) }
-                ?: Effect.error(ApiError.EmptyResponseException())
+                ?: Effect.error(AppError.Empty())
         } catch (e: Exception) {
-            Effect.error(ApiError.SecurityException())
+            Effect.error(AppError.Security())
         }
     }
 
@@ -52,8 +52,8 @@ class LocationProviderImpl @Inject constructor(
             registerListener(listener)
         } catch (e: Exception) {
             val exception = when (e) {
-                is SecurityException -> ApiError.SecurityException()
-                else -> ApiError.UnknownException()
+                is SecurityException -> AppError.Security()
+                else -> AppError.Unknown()
             }
             send(Effect.error(exception))
         }
