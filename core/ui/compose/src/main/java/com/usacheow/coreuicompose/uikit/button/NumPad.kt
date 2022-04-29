@@ -23,13 +23,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.defaultBorder
+import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.corecommon.R as CoreCommonR
 
 class NumPadAction(
-    val icon: ImageVector,
+    val icon: IconValue,
     val onClick: () -> Unit,
 ) {
     companion object {
@@ -76,7 +78,7 @@ fun NumPad(
             item {
                 action?.icon?.let {
                     IconButton(
-                        imageVector = it,
+                        icon = it,
                         onClick = action.onClick,
                     )
                 }
@@ -120,10 +122,10 @@ private fun ForgetButton(onClick: () -> Unit) {
 }
 
 @Composable
-private fun IconButton(imageVector: ImageVector, onClick: () -> Unit) {
+private fun IconButton(icon: IconValue, onClick: () -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Icon(
-            imageVector = imageVector,
+            painter = icon.get(),
             contentDescription = null,
             tint = AppTheme.specificColorScheme.symbolSecondary,
             modifier = Modifier

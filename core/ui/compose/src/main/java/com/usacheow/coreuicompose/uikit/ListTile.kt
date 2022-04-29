@@ -124,8 +124,8 @@ private object ListTileConfig {
 private fun Preview() {
     SimplePreview {
         ListTileState(
-            leftImageInfo = ImageValue.Vector(AppTheme.specificIcons.account),
-            rightImageInfo = ImageValue.Vector(AppTheme.specificIcons.navigateNext),
+            leftImageInfo = AppTheme.specificIcons.account.toImageValue(),
+            rightImageInfo = AppTheme.specificIcons.navigateNext.toImageValue(),
             value = TextValue.Simple("Main information"),
             topDescription = TextValue.Simple("Top description"),
             bottomDescription = TextValue.Simple("Bottom description"),

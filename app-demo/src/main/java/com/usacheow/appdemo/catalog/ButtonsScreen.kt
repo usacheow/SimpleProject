@@ -83,7 +83,7 @@ fun ButtonsScreen(navController: NavHostController) {
 
 @Composable
 private fun Primaries() {
-    val icon = IconValue.Vector(AppTheme.specificIcons.add)
+    val icon = AppTheme.specificIcons.add
     Header("Primary")
     Container {
         SimpleButtonPrimaryS(onClick = {}) {
@@ -131,7 +131,7 @@ private fun Primaries() {
 
 @Composable
 private fun Secondaries() {
-    val icon = IconValue.Vector(AppTheme.specificIcons.add)
+    val icon = AppTheme.specificIcons.add
     Header("Secondary")
     Container {
         SimpleButtonSecondaryS(onClick = {}) {
@@ -179,7 +179,7 @@ private fun Secondaries() {
 
 @Composable
 private fun Tonals() {
-    val icon = IconValue.Vector(AppTheme.specificIcons.add)
+    val icon = AppTheme.specificIcons.add
     Header("Tonal")
     Container {
         SimpleButtonTonalS(onClick = {}) {
@@ -227,7 +227,7 @@ private fun Tonals() {
 
 @Composable
 private fun Outlines() {
-    val icon = IconValue.Vector(AppTheme.specificIcons.add)
+    val icon = AppTheme.specificIcons.add
     Header("Outline")
     Container {
         SimpleButtonOutlineS(onClick = {}) {
@@ -275,7 +275,7 @@ private fun Outlines() {
 
 @Composable
 private fun Inlines() {
-    val icon = IconValue.Vector(AppTheme.specificIcons.add)
+    val icon = AppTheme.specificIcons.add
     Header("Inline")
     Container {
         SimpleButtonInlineS(onClick = {}) {

@@ -144,7 +144,7 @@ private fun Button(button: TextValue, clickListener: () -> Unit) {
 private fun Preview() {
     SimplePreview {
         MessageBannerState(
-            icon = ImageValue.Vector(AppTheme.specificIcons.error),
+            icon = AppTheme.specificIcons.error.toImageValue(),
             title = TextValue.Simple("Message title text"),
             description = TextValue.Simple("Message description text"),
             button = TextValue.Simple("Button"),

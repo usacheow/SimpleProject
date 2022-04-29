@@ -72,7 +72,7 @@ private fun items(): List<WidgetState> = listOf(
     ),
     CellTileState(
         leftPart = CellTileState.LeftPart.Icon(
-            icon = IconValue.Vector(AppTheme.specificIcons.account),
+            icon = AppTheme.specificIcons.account,
             background = IconValue.ResVector(R.drawable.bg_ic_square),
         ),
         subtitle = TextValue.Simple("Subtitle"),
@@ -85,7 +85,7 @@ private fun items(): List<WidgetState> = listOf(
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),
-        rightPart = CellTileState.RightPart.ActionIcon(ImageValue.Vector(AppTheme.specificIcons.navigateNext)),
+        rightPart = CellTileState.RightPart.ActionIcon(AppTheme.specificIcons.navigateNext.toImageValue()),
         clickListener = {},
     ),
     CellTileState(

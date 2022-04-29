@@ -81,7 +81,7 @@ private fun TextFields() {
         visualTransformation = CardNumberFormatter.visualTransformation(),
         placeholderValue = CardNumberFormatter.placeholder(),
         labelValue = TextValue.Simple("Card number"),
-        leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.creditCard)),
+        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.creditCard),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         shape = SimpleTextFieldConfig.shape(),
     )
@@ -95,7 +95,7 @@ private fun TextFields() {
         visualTransformation = PhoneNumberFormatter.visualTransformation(),
         placeholderValue = PhoneNumberFormatter.placeholder(),
         labelValue = TextValue.Simple("Phone number"),
-        leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.phone)),
+        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.phone),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
         shape = SimpleTextFieldConfig.shape(),
     )
@@ -109,7 +109,7 @@ private fun TextFields() {
         visualTransformation = AmountFormatter.visualTransformation(CurrencyType.RUB),
         placeholderValue = TextValue.Simple("Enter amount"),
         labelValue = TextValue.Simple("Transfer amount"),
-        leadingIconValue = SimpleTextFieldIcon(IconValue.Vector(AppTheme.specificIcons.currencyExchange)),
+        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.currencyExchange),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         shape = SimpleTextFieldConfig.shape(),
     )

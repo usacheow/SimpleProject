@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.getBottomInset
@@ -62,7 +61,7 @@ private fun items(): List<WidgetState> = listOf(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ),
     MessageBannerState(
-        icon = ImageValue.Vector(AppTheme.specificIcons.error),
+        icon = AppTheme.specificIcons.error.toImageValue(),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -81,7 +80,7 @@ private fun items(): List<WidgetState> = listOf(
         clickListener = {},
     ),
     MessageBannerState(
-        icon = ImageValue.Vector(AppTheme.specificIcons.error),
+        icon = AppTheme.specificIcons.error.toImageValue(),
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),
