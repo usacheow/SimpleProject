@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit.textfield
+package com.usacheow.coreuicompose.uikit.input.formatter
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString

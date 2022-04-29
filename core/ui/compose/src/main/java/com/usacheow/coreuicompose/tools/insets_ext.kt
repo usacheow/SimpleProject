@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.union
 import androidx.compose.runtime.Composable
-import com.usacheow.coreuicompose.uikit.barcopy.LocalBottomNavigationHeight
+import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
 
 @Composable
 fun getBottomInset() = WindowInsets.navigationBars

@@ -27,7 +27,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryS
@@ -55,7 +55,7 @@ fun ButtonsScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Button tiles"),
+                title = TextValue.Simple("Buttons"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = getTopInset(),
                 scrollBehavior = scrollBehavior,

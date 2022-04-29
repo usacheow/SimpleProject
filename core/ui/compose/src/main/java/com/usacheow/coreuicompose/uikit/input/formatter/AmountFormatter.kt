@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit.textfield
+package com.usacheow.coreuicompose.uikit.input.formatter
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

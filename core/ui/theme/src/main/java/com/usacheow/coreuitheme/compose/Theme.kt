@@ -51,7 +51,7 @@ object AppTheme {
         @ReadOnlyComposable
         get() = LocalSpecificIcons.current
 
-    val colorScheme: ColorScheme
+    internal val colorScheme: ColorScheme
         @Composable
         @ReadOnlyComposable
         get() = MaterialTheme.colorScheme

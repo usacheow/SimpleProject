@@ -16,7 +16,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getTopInset
-import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel

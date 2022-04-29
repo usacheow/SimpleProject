@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit.barcopy
+package com.usacheow.coreuicompose.uikit.duplicate
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,6 +29,7 @@ import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
@@ -41,6 +43,7 @@ import kotlin.math.roundToInt
 private typealias OnIconClick = () -> Unit
 private typealias OnBackIconClick = () -> Boolean
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SimpleTopAppBar(
     title: TextValue?,
@@ -61,6 +64,7 @@ fun SimpleTopAppBar(
     val scrollFraction = scrollBehavior.scrollFraction
     val appBarContainerColor by colors.containerColor(scrollFraction)
 
+    val ime = LocalSoftwareKeyboardController.current
     val navigationIconUi = @Composable {
         if (navigationIcon != null) {
             Icon(
@@ -69,7 +73,10 @@ fun SimpleTopAppBar(
                 contentDescription = null,
                 modifier = Modifier
                     .clip(CircleShape)
-                    .clickable(onClick = { navigationIcon.second() })
+                    .clickable(onClick = {
+                        navigationIcon.second()
+                        ime?.hide()
+                    })
                     .padding(8.dp),
             )
         }

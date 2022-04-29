@@ -1,26 +1,29 @@
-package com.usacheow.coreuicompose.uikit.textfield
+package com.usacheow.coreuicompose.uikit.input.formatter
 
 import androidx.compose.runtime.Composable
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object PhoneNumberFormatter {
+object CardNumberFormatter {
 
     private val pattern = listOf(
-        SimpleInputSymbol.Divider("+"),
-        SimpleInputSymbol.Inputted("7"),
-        SimpleInputSymbol.Divider(" ("),
         SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Divider(") "),
         SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Divider("-"),
         SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Divider("-"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Divider("-"),
+        SimpleInputSymbol.Inputted("0"),
+        SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Inputted("0"),
         SimpleInputSymbol.Inputted("0"),
     )

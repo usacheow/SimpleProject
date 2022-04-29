@@ -3,7 +3,6 @@ package com.usacheow.coreuicompose.tools
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -21,12 +20,12 @@ import kotlinx.coroutines.launch
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
-fun Modifier.defaultBorder() = composed {
+fun Modifier.defaultBorder(shape: Shape) = composed {
     border(
         width = 1.dp,
         color = AppTheme.specificColorScheme.outline,
-        shape = MaterialTheme.shapes.medium,
-    ).clip(MaterialTheme.shapes.medium)
+        shape = shape,
+    ).clip(shape)
 }
 
 fun Modifier.defaultPlaceholder(

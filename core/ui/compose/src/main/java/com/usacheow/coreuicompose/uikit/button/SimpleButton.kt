@@ -465,7 +465,7 @@ private fun Button(
     CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
         Surface(
             onClick = onClick,
-            modifier = Modifier,
+            modifier = modifier,
             shape = shape,
             color = containerColor,
             contentColor = contentColor,
@@ -478,7 +478,7 @@ private fun Button(
             CompositionLocalProvider(LocalContentColor provides contentColor) {
                 ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
                     Row(
-                        modifier = modifier.padding(contentPadding),
+                        modifier = Modifier.padding(contentPadding),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically,
                         content = content

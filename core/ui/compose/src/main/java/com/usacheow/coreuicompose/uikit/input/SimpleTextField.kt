@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit.textfield
+package com.usacheow.coreuicompose.uikit.input
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

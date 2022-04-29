@@ -22,9 +22,10 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.getBottomInset
 import com.usacheow.coreuicompose.tools.getTopInset
-import com.usacheow.coreuicompose.uikit.NumPad
-import com.usacheow.coreuicompose.uikit.NumPadAction
-import com.usacheow.coreuicompose.uikit.barcopy.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.PinCodeIndicator
+import com.usacheow.coreuicompose.uikit.button.NumPad
+import com.usacheow.coreuicompose.uikit.button.NumPadAction
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,8 +54,7 @@ fun NumPadScreen(navController: NavHostController) {
         ) {
             Box(
                 modifier = Modifier
-                    .padding(bottom = 16.dp)
-                    .defaultBorder()
+                    .defaultBorder(AppTheme.shapes.medium)
                     .padding(8.dp)
                     .width(150.dp),
             ) {
@@ -64,6 +64,10 @@ fun NumPadScreen(navController: NavHostController) {
                     modifier = Modifier.align(Alignment.Center),
                 )
             }
+            PinCodeIndicator(
+                modifier = Modifier.padding(top = 20.dp),
+                filledCirclesCount = enteredCode.value.length,
+            )
             NumPad(
                 action = NumPadAction.delete { enteredCode.value = enteredCode.value.dropLast(1) },
                 onForgetClick = {},
