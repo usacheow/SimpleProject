@@ -46,9 +46,9 @@ class LocationSourceImpl @Inject constructor(
             locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
                 ?.toSimpleLocation()
                 ?.let { Effect.success(it) }
-                ?: Effect.error(AppError.EmptyResponse())
+                ?: Effect.error(AppError.Unknown())
         } catch (e: Exception) {
-            Effect.error(AppError.Security())
+            Effect.error(AppError.Unknown(cause = e))
         }
     }
 
@@ -61,10 +61,7 @@ class LocationSourceImpl @Inject constructor(
         try {
             registerListener(listener)
         } catch (e: Exception) {
-            val exception = when (e) {
-                is SecurityException -> AppError.Security()
-                else -> AppError.Unknown()
-            }
+            val exception = AppError.Unknown(cause = e)
             send(Effect.error(exception))
         }
         awaitClose { unregisterListener(listener) }

@@ -69,6 +69,9 @@ private fun TextFields() {
     var cardNumberInputValue by remember { mutableStateOf("") }
     var phoneNumberInputValue by remember { mutableStateOf("") }
     var amountInputValue by remember { mutableStateOf("") }
+    val phoneNumberFormatter = PhoneNumberFormatter()
+    val cardNumberFormatter = CardNumberFormatter()
+    val amountFormatter = AmountFormatter()
 
     SimpleTextField(
         modifier = Modifier
@@ -76,9 +79,9 @@ private fun TextFields() {
             .padding(top = 16.dp)
             .fillMaxWidth(),
         value = cardNumberInputValue,
-        onValueChange = CardNumberFormatter.onValueChanged { cardNumberInputValue = it },
-        visualTransformation = CardNumberFormatter.visualTransformation(),
-        placeholderValue = CardNumberFormatter.placeholder(),
+        onValueChange = cardNumberFormatter.onValueChanged { cardNumberInputValue = it },
+        visualTransformation = cardNumberFormatter.visualTransformation(),
+        placeholderValue = cardNumberFormatter.placeholder(),
         labelValue = TextValue.Simple("Card number"),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.creditCard),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -90,9 +93,9 @@ private fun TextFields() {
             .padding(top = 16.dp)
             .fillMaxWidth(),
         value = phoneNumberInputValue,
-        onValueChange = PhoneNumberFormatter.onValueChanged { phoneNumberInputValue = it },
-        visualTransformation = PhoneNumberFormatter.visualTransformation(),
-        placeholderValue = PhoneNumberFormatter.placeholder(),
+        onValueChange = phoneNumberFormatter.onValueChanged { phoneNumberInputValue = it },
+        visualTransformation = phoneNumberFormatter.visualTransformation(),
+        placeholderValue = phoneNumberFormatter.placeholder(),
         labelValue = TextValue.Simple("Phone number"),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.phone),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
@@ -104,8 +107,8 @@ private fun TextFields() {
             .padding(top = 16.dp)
             .fillMaxWidth(),
         value = amountInputValue,
-        onValueChange = AmountFormatter.onValueChanged { amountInputValue = it },
-        visualTransformation = AmountFormatter.visualTransformation(CurrencyType.RUB),
+        onValueChange = amountFormatter.onValueChanged { amountInputValue = it },
+        visualTransformation = amountFormatter.visualTransformation(CurrencyType.RUB),
         placeholderValue = TextValue.Simple("Enter amount"),
         labelValue = TextValue.Simple("Transfer amount"),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.currencyExchange),

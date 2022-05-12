@@ -15,13 +15,12 @@ class Effect<DATA : Any> private constructor(
         fun <T : Any> success(data: T) = Effect(Success(data))
 
         fun <T : Any> error(
-            exception: AppError,
+            error: AppError,
             cachedData: T? = null,
-        ) = Effect(Error(exception, cachedData))
+        ) = Effect(Error(error, cachedData))
     }
 
     val isSuccess: Boolean get() = value is Success<DATA>
-
     val isError: Boolean get() = value is Error<DATA>
 
     val requireData: DATA get() = requireNotNull(findData)
@@ -31,16 +30,16 @@ class Effect<DATA : Any> private constructor(
             else -> null
         }
 
-    val requireDataOrCache: DATA get() = requireNotNull(dataOrCache)
-    val dataOrCache: DATA?
+    val requireDataOrCache: DATA get() = requireNotNull(findDataOrCache)
+    val findDataOrCache: DATA?
         get() = when (value) {
             is Success<DATA> -> value.data
             is Error<DATA> -> value.cache
         }
 
-    val exceptionOrNull
+    val errorOrNull
         get() = when (value) {
-            is Error<DATA> -> value.exception
+            is Error<DATA> -> value.error
             else -> null
         }
 
@@ -54,10 +53,10 @@ class Effect<DATA : Any> private constructor(
     }
 
     suspend fun doOnError(
-        block: suspend (exception: Throwable, data: DATA?) -> Unit,
+        block: suspend (error: AppError, data: DATA?) -> Unit,
     ): Effect<DATA> {
         if (value is Error<DATA>) {
-            block(value.exception, value.cache)
+            block(value.error, value.cache)
         }
         return this
     }
@@ -66,19 +65,19 @@ class Effect<DATA : Any> private constructor(
         cachedDataProvider: suspend () -> DATA?,
     ): Effect<DATA> = when (value) {
         is Success<DATA> -> this
-        is Error<DATA> -> error(value.exception, cachedDataProvider())
+        is Error<DATA> -> error(value.error, cachedDataProvider())
     }
 
     suspend fun <OUT : Any> map(
         transform: suspend (value: DATA) -> OUT,
     ): Effect<OUT> = when (value) {
         is Success<DATA> -> success(transform(value.data))
-        is Error<DATA> -> error(value.exception, value.cache?.let { transform(it) })
+        is Error<DATA> -> error(value.error, value.cache?.let { transform(it) })
     }
 
     fun toCompletable() = when (value) {
         is Success<DATA> -> success(Completable)
-        is Error<DATA> -> error(value.exception)
+        is Error<DATA> -> error(value.error)
     }
 
     internal sealed class Data<DATA : Any>
@@ -88,7 +87,7 @@ class Effect<DATA : Any> private constructor(
     ) : Data<DATA>()
 
     internal data class Error<DATA : Any>(
-        val exception: AppError,
+        val error: AppError,
         val cache: DATA? = null,
     ) : Data<DATA>()
 }

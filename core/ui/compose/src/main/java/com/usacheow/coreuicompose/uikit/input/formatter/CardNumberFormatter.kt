@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object CardNumberFormatter {
+class CardNumberFormatter {
 
     private val pattern = listOf(
         SimpleInputSymbol.Inputted("0"),
@@ -28,12 +28,12 @@ object CardNumberFormatter {
         SimpleInputSymbol.Inputted("0"),
     )
 
-    private val cardNumberLength = pattern.count { it is SimpleInputSymbol.Inputted }
+    val length = pattern.count { it is SimpleInputSymbol.Inputted }
 
     fun placeholder() = TextValue.Simple(pattern.joinToString("") { it.value })
 
     fun onValueChanged(action: (String) -> Unit) = { value: String ->
-        action(value.filter { it.isDigit() }.take(cardNumberLength))
+        action(value.filter { it.isDigit() }.take(length))
     }
 
     @Composable

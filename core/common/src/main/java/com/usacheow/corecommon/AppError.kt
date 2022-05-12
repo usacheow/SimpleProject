@@ -15,11 +15,6 @@ sealed class AppError(
         cause: Exception? = null
     ) : AppError(CoreR.string.invalid_token_error_message, message, cause)
 
-    class NoInternet(
-        message: String? = null,
-        cause: Exception? = null
-    ) : AppError(CoreR.string.connection_error_message, message, cause)
-
     class Server(
         message: String? = null,
         cause: Exception? = null
@@ -39,10 +34,6 @@ sealed class AppError(
         message: String? = null,
         cause: Exception? = null
     ) : AppError(CoreR.string.unknown_error_message, message, cause)
-
-    class Coroutine : AppError(CoreR.string.unknown_error_message)
-
-    class Security : AppError(CoreR.string.unknown_error_message)
 
     fun makeUserReadableErrorMessage(): TextValue {
         return message?.let { TextValue.Simple(it) } ?: TextValue.Res(defaultMessageRes)

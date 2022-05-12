@@ -80,7 +80,7 @@ fun Throwable.toApiError() = when (this) {
     is ConnectException,
     is SocketTimeoutException -> AppError.Host()
 
-    is CancellationException -> AppError.Coroutine()
+    is CancellationException -> throw this
 
     is HttpException -> when (response()?.code()) {
         HttpURLConnection.HTTP_BAD_REQUEST,

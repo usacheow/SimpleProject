@@ -13,13 +13,13 @@ import com.usacheow.corecommon.money.CurrencyType
 import com.usacheow.coreuitheme.compose.AppTheme
 import java.text.NumberFormat
 
-object AmountFormatter {
+class AmountFormatter {
 
     private val formatter = NumberFormat.getNumberInstance(RU_LOCALE)
-    private const val numberFormatterSpace = ' '
-    private const val trueSpace = ' '
-    private const val amountDivider = ','
-    private const val fractionalPartMaxLength = 2
+    private val numberFormatterSpace = ' '
+    private val trueSpace = ' '
+    private val amountDivider = ','
+    private val fractionalPartMaxLength = 2
 
     fun onValueChanged(action: (String) -> Unit) = { value: String ->
         var newValue = value.replace('.', amountDivider)

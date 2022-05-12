@@ -4,33 +4,23 @@ import androidx.compose.runtime.Composable
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object PhoneNumberFormatter {
+private const val PhonePatterSymbol = '#'
 
-    private val pattern = listOf(
-        SimpleInputSymbol.Divider("+"),
-        SimpleInputSymbol.Inputted("7"),
-        SimpleInputSymbol.Divider(" ("),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Divider(") "),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Divider("-"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Divider("-"),
-        SimpleInputSymbol.Inputted("0"),
-        SimpleInputSymbol.Inputted("0"),
-    )
+class PhoneNumberFormatter(format: String = "+7(###)###-##-##") {
 
-    private val cardNumberLength = pattern.count { it is SimpleInputSymbol.Inputted }
+    private val pattern = format.map {
+        when (it) {
+            PhonePatterSymbol -> SimpleInputSymbol.Inputted("0")
+            else -> SimpleInputSymbol.Divider(it.toString())
+        }
+    }
+
+    val length = pattern.count { it is SimpleInputSymbol.Inputted }
 
     fun placeholder() = TextValue.Simple(pattern.joinToString("") { it.value })
 
     fun onValueChanged(action: (String) -> Unit) = { value: String ->
-        action(value.filter { it.isDigit() }.take(cardNumberLength))
+        action(value.filter { it.isDigit() }.take(length))
     }
 
     @Composable

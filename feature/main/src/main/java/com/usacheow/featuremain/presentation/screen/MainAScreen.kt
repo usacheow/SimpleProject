@@ -18,6 +18,7 @@ import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.BScreenArg
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
+import com.usacheow.featuremain.presentation.viewmodels.CViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,6 +31,7 @@ fun MainAScreen(
         navHostController.getBackStackEntry(graphRoute)
     }
     val aViewModel = hiltViewModel<AViewModel>(parentEntry)
+    val cViewModel = hiltViewModel<CViewModel>()
 
     MainAScreen(
         selectionNumber = aViewModel.x,

@@ -9,17 +9,21 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import com.usacheow.corecommon.R as CoreCommonR
 
 interface NotificationsSource {
 
-    val state: SharedFlow<State?>
+    val state: StateFlow<State?>
 
     suspend fun sendMessage(value: TextValue)
 
@@ -39,41 +43,66 @@ interface NotificationsSource {
 }
 
 class NotificationsSourceImpl @Inject constructor(
-    @ApplicationCoroutineScope coroutineScope: CoroutineScope,
     networkStateProvider: NetworkStateSource,
+    @ApplicationCoroutineScope private val coroutineScope: CoroutineScope,
 ) : NotificationsSource {
 
-    private val _state = MutableSharedFlow<NotificationsSource.State?>()
-    override val state = _state.asSharedFlow()
+    private val _state = MutableStateFlow<NotificationsSource.State?>(null)
+    override val state = _state.asStateFlow()
+
+    private var needShowInternetConnectedMessage = false
+    private var hideMessageJob: Job? = null
 
     init {
         networkStateProvider.state.onEach {
-            val res = when (it) {
-                NetworkStateSource.State.Available -> CoreCommonR.string.connection_success_message
-                NetworkStateSource.State.Unavailable -> CoreCommonR.string.connection_error_message
+            val state = when (it) {
+                NetworkStateSource.State.Available -> {
+                    NotificationsSource.State.Message(TextValue.Res(CoreCommonR.string.connection_success_message))
+                }
+                NetworkStateSource.State.Unavailable -> {
+                    NotificationsSource.State.Error(TextValue.Res(CoreCommonR.string.connection_error_message))
+                }
             }
-            _state.emit(NotificationsSource.State.Message(TextValue.Res(res)))
+            if (it == NetworkStateSource.State.Unavailable) {
+                needShowInternetConnectedMessage = true
+            }
+            if (it == NetworkStateSource.State.Unavailable || needShowInternetConnectedMessage) {
+                _state.emit(state)
+            }
+            restartTimer()
         }.launchIn(coroutineScope)
     }
 
     override suspend fun sendMessage(value: TextValue) {
         _state.emit(NotificationsSource.State.Message(value))
+        restartTimer()
     }
 
     override suspend fun sendWarning(value: TextValue) {
         _state.emit(NotificationsSource.State.Warning(value))
+        restartTimer()
     }
 
     override suspend fun sendError(value: TextValue) {
         _state.emit(NotificationsSource.State.Error(value))
+        restartTimer()
     }
 
     override suspend fun sendError(exception: Exception) {
         _state.emit(NotificationsSource.State.Error(exception.makeUserReadableErrorMessage()))
+        restartTimer()
     }
 
     override suspend fun hide() {
         _state.emit(null)
+    }
+
+    private fun restartTimer() {
+        hideMessageJob?.cancel()
+        hideMessageJob = coroutineScope.launch {
+            delay(5.seconds)
+            _state.emit(null)
+        }
     }
 }
 
