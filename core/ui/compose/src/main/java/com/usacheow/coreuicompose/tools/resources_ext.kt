@@ -40,7 +40,7 @@ fun string(@StringRes id: Int): String {
 @Composable
 @ReadOnlyComposable
 fun string(@StringRes id: Int, vararg args: Any): String {
-    return LocalContext.current.resources.getString(id, args)
+    return LocalContext.current.resources.getString(id, *args)
 }
 
 @Composable
