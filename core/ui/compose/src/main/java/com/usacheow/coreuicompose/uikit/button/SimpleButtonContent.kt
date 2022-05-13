@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -56,6 +57,14 @@ fun SimpleButtonContent(
             modifier = Modifier.size(LocalTextStyle.current.lineHeight.value.dp),
         )
     }
+}
+
+@Composable
+fun SimpleButtonContentLoader() {
+    CircularProgressIndicator(
+        color = LocalContentColor.current,
+        modifier = Modifier.size(20.dp),
+    )
 }
 
 @Preview(showBackground = true)

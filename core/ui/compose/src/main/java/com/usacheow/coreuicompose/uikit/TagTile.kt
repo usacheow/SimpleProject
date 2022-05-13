@@ -21,7 +21,7 @@ import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.compose.DimenValues
 
 data class TagTileState(
     val text: TextValue,
@@ -107,7 +107,7 @@ private fun TagCard(
     ) {
         Column(
             modifier = Modifier
-                .padding(Dimen.default_padding)
+                .padding(DimenValues.default_padding)
                 .align(Alignment.CenterHorizontally),
         ) {
             content()

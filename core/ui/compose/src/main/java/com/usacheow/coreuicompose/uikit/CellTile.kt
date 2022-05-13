@@ -29,7 +29,7 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.compose.DimenValues
 
 data class CellTileState(
     val leftPart: LeftPart? = null,
@@ -210,7 +210,7 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
 private object CellTileConfig {
     val IconSize = 40.dp
     val RipplePadding = 8.dp
-    val ContentPadding = Dimen.default_padding - RipplePadding
+    val ContentPadding = DimenValues.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)

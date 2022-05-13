@@ -23,7 +23,7 @@ import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.compose.DimenValues
 
 data class BadgeTileState(
     val header: TextValue? = null,
@@ -112,7 +112,7 @@ private fun BadgeCard(
     content: @Composable () -> Unit,
 ) {
     val body: @Composable ColumnScope.() -> Unit = {
-        Column(modifier = Modifier.padding(Dimen.default_padding)) {
+        Column(modifier = Modifier.padding(DimenValues.default_padding)) {
             content()
         }
     }

@@ -23,7 +23,7 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.compose.DimenValues
 
 data class ListTileState(
     val leftImageInfo: ImageValue? = null,
@@ -113,9 +113,9 @@ private fun SecondaryText(value: TextValue?) {
 }
 
 private object ListTileConfig {
-    val IconPaddingHorizontal = Dimen.default_padding
+    val IconPaddingHorizontal = DimenValues.default_padding
     val RipplePadding = 8.dp
-    val ContentPadding = Dimen.default_padding - RipplePadding
+    val ContentPadding = DimenValues.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)

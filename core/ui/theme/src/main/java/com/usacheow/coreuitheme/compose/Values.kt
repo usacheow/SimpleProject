@@ -2,7 +2,7 @@ package com.usacheow.coreuitheme.compose
 
 import androidx.compose.ui.unit.dp
 
-object Dimen {
+object DimenValues {
     val default_padding = 16.dp
 
     val stroke_card = 1.dp
@@ -25,4 +25,9 @@ object Dimen {
     val elevation_8 = 8.dp
     val elevation_16 = 16.dp
     val elevation_32 = 32.dp
+}
+
+object StringValues {
+
+    const val UnbreakableSpace = " "
 }

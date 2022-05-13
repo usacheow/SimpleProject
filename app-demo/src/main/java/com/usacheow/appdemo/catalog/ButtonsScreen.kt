@@ -43,7 +43,7 @@ import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineS
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.Dimen
+import com.usacheow.coreuitheme.compose.DimenValues
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -352,7 +352,7 @@ private fun DividerBetweenCards() {
                     color = AppTheme.specificColorScheme.surface,
                     shape = AppTheme.shapes.extraLarge.copy(topEnd = CornerSize(0.dp), topStart = CornerSize(0.dp)),
                 )
-                .height(Dimen.radius_extra_large)
+                .height(DimenValues.radius_extra_large)
                 .fillMaxWidth(),
         )
         Box(
@@ -362,7 +362,7 @@ private fun DividerBetweenCards() {
                     shape = AppTheme.shapes.extraLarge.copy(bottomEnd = CornerSize(0.dp),
                         bottomStart = CornerSize(0.dp)),
                 )
-                .height(Dimen.radius_extra_large)
+                .height(DimenValues.radius_extra_large)
                 .fillMaxWidth(),
         )
     }
