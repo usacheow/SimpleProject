@@ -73,7 +73,7 @@ fun simpleSheetParams(
 
 @OptIn(ExperimentalMaterialApi::class)
 private fun BottomSheetState.swipePercent(): Float {
-    return when (SwipeDirection.from(direction)) {
+    return when (SwipeDirection.from(direction = direction, offset = offset.value)) {
         SwipeDirection.ToTop -> progress.fraction
         SwipeDirection.ToBottom -> 1f - progress.fraction
         SwipeDirection.None -> when (currentValue) {
@@ -85,7 +85,7 @@ private fun BottomSheetState.swipePercent(): Float {
 
 @OptIn(ExperimentalMaterialApi::class)
 private fun ModalBottomSheetState.swipePercent(): Float {
-    return when (SwipeDirection.from(direction)) {
+    return when (SwipeDirection.from(direction = direction, offset = offset.value)) {
         SwipeDirection.ToTop -> progress.fraction.run {
             when {
                 currentValue == ModalBottomSheetValue.HalfExpanded -> this / 2f + .5f
@@ -109,14 +109,13 @@ private fun ModalBottomSheetState.swipePercent(): Float {
 }
 
 private enum class SwipeDirection {
-
     ToTop, ToBottom, None;
 
     companion object {
 
-        fun from(value: Float) = when (value) {
-            -1f -> ToTop
-            1f -> ToBottom
+        fun from(direction: Float, offset: Float) = when {
+            direction == -1f || offset < 10f -> ToTop
+            direction == 1f -> ToBottom
             else -> None
         }
     }
