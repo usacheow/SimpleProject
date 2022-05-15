@@ -44,6 +44,7 @@ fun TypographyScreen(navController: NavHostController) {
     ) {
         LazyColumn(
             modifier = Modifier
+                .padding(it)
                 .fillMaxHeight()
                 .padding(horizontal = 8.dp),
             contentPadding = getBottomInset(),

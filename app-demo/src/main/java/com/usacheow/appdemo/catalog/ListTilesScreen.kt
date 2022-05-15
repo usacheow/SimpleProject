@@ -1,6 +1,7 @@
 package com.usacheow.appdemo.catalog
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,7 +38,9 @@ fun ListTilesScreen(navController: NavHostController) {
         }
     ) {
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .padding(it)
+                .fillMaxWidth(),
             contentPadding = getBottomInset(),
         ) {
             items(items) {

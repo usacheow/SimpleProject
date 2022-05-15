@@ -11,13 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.SimplePreview
+import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class HeaderTileState(
     val value: TextValue,
@@ -71,18 +71,23 @@ fun HeaderTile(
             color = when (data.type) {
                 HeaderTileState.Type.LargePrimary,
                 HeaderTileState.Type.MediumPrimary,
-                HeaderTileState.Type.SmallPrimary -> AppTheme.specificColorScheme.symbolPrimary
+                HeaderTileState.Type.SmallPrimary,
+                -> AppTheme.specificColorScheme.symbolPrimary
                 HeaderTileState.Type.LargeSecondary,
                 HeaderTileState.Type.MediumSecondary,
-                HeaderTileState.Type.SmallSecondary -> AppTheme.specificColorScheme.symbolSecondary
+                HeaderTileState.Type.SmallSecondary,
+                -> AppTheme.specificColorScheme.symbolSecondary
             },
             style = when (data.type) {
                 HeaderTileState.Type.LargePrimary,
-                HeaderTileState.Type.LargeSecondary -> AppTheme.typography.headlineLarge
+                HeaderTileState.Type.LargeSecondary,
+                -> AppTheme.typography.headlineLarge
                 HeaderTileState.Type.MediumPrimary,
-                HeaderTileState.Type.MediumSecondary -> AppTheme.typography.headlineSmall
+                HeaderTileState.Type.MediumSecondary,
+                -> AppTheme.typography.headlineSmall
                 HeaderTileState.Type.SmallPrimary,
-                HeaderTileState.Type.SmallSecondary -> AppTheme.typography.titleMedium
+                HeaderTileState.Type.SmallSecondary,
+                -> AppTheme.typography.titleMedium
             },
             modifier = Modifier.weight(1f),
         )
@@ -105,7 +110,7 @@ fun HeaderTile(
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         HeaderTileState(
             value = TextValue.Simple("Title with button"),
             type = HeaderTileState.Type.MediumPrimary,

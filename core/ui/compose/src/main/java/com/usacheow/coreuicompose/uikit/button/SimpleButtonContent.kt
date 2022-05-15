@@ -4,8 +4,8 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
@@ -16,8 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 @Composable
 fun SimpleButtonContent(
@@ -71,7 +71,7 @@ fun SimpleButtonContentLoader() {
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         Button(
             modifier = Modifier
                 .padding(vertical = 8.dp, horizontal = 16.dp)

@@ -47,6 +47,7 @@ fun NumPadScreen(navController: NavHostController) {
     ) {
         Column(
             modifier = Modifier
+                .padding(it)
                 .fillMaxHeight()
                 .padding(getBottomInset()),
             horizontalAlignment = Alignment.CenterHorizontally,

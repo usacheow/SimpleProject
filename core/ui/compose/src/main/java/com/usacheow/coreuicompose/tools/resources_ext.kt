@@ -1,6 +1,7 @@
 package com.usacheow.coreuicompose.tools
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -34,6 +35,7 @@ fun IconValue.get(): Painter = when (this) {
     is IconValue.Vector -> rememberVectorPainter(image = value as ImageVector)
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TextValue.get(): AnnotatedString = when (this) {
     is TextValue.Simple -> AnnotatedString(value)

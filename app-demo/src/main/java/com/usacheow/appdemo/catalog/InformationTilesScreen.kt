@@ -42,7 +42,9 @@ fun InformationTilesScreen(navController: NavHostController) {
         }
     ) {
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .padding(it)
+                .fillMaxWidth(),
             contentPadding = getBottomInset(),
         ) {
             items(large()) {

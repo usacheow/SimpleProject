@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class ListTileState(
     val leftImageInfo: ImageValue? = null,
@@ -122,7 +122,7 @@ private object ListTileConfig {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         ListTileState(
             leftImageInfo = AppTheme.specificIcons.account.toImageValue(),
             rightImageInfo = AppTheme.specificIcons.navigateNext.toImageValue(),

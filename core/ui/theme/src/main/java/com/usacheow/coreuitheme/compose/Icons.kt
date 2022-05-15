@@ -12,21 +12,21 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.usacheow.corecommon.container.IconValue
 
-internal val LocalSpecificIcons = staticCompositionLocalOf { SpecificIcons() }
-
 data class SpecificIcons(
-    val back: IconValue = IconValue.Vector(Icons.Default.ArrowBack),
-    val add: IconValue = IconValue.Vector(Icons.Default.Add),
-    val account: IconValue = IconValue.Vector(Icons.Default.AccountCircle),
-    val navigateNext: IconValue = IconValue.Vector(Icons.Default.NavigateNext),
-    val creditCard: IconValue = IconValue.Vector(Icons.Default.CreditCard),
-    val currencyExchange: IconValue = IconValue.Vector(Icons.Default.CurrencyExchange),
-    val phone: IconValue = IconValue.Vector(Icons.Default.Phone),
-    val error: IconValue = IconValue.Vector(Icons.Default.Error),
-    val fingerprint: IconValue = IconValue.Vector(Icons.Default.Fingerprint),
-    val delete: IconValue = IconValue.Vector(Icons.Default.Delete),
-    val done: IconValue = IconValue.Vector(Icons.Default.Done),
+    val back: IconValue = vector(Icons.Filled.ArrowBack),
+    val add: IconValue = vector(Icons.Filled.Add),
+    val account: IconValue = vector(Icons.Filled.AccountCircle),
+    val navigateNext: IconValue = vector(Icons.Filled.NavigateNext),
+    val creditCard: IconValue = vector(Icons.Filled.CreditCard),
+    val currencyExchange: IconValue = vector(Icons.Filled.CurrencyExchange),
+    val phone: IconValue = vector(Icons.Filled.Phone),
+    val error: IconValue = vector(Icons.Filled.Error),
+    val fingerprint: IconValue = vector(Icons.Filled.Fingerprint),
+    val delete: IconValue = vector(Icons.Filled.Delete),
+    val done: IconValue = vector(Icons.Filled.Done),
 )
+
+private fun vector(value: ImageVector) = IconValue.Vector(value)

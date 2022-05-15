@@ -19,11 +19,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class BadgeTileState(
     val header: TextValue? = null,
@@ -127,8 +127,10 @@ private fun BadgeCard(
         Card(
             modifier = modifier,
             shape = AppTheme.shapes.medium,
-            containerColor = containerColor,
-            contentColor = contentColor,
+            colors = CardDefaults.cardColors(
+                containerColor = containerColor,
+                contentColor = contentColor,
+            ),
             elevation = elevation,
             onClick = clickListener,
             content = body,
@@ -137,8 +139,10 @@ private fun BadgeCard(
         Card(
             modifier = modifier,
             shape = AppTheme.shapes.medium,
-            containerColor = containerColor,
-            contentColor = contentColor,
+            colors = CardDefaults.cardColors(
+                containerColor = containerColor,
+                contentColor = contentColor,
+            ),
             elevation = elevation,
             content = body,
         )
@@ -155,7 +159,7 @@ private object BadgeTileConfig {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         BadgeTileState(
             header = TextValue.Simple("Badge tile header text"),
             value = TextValue.Simple("Badge tile text"),

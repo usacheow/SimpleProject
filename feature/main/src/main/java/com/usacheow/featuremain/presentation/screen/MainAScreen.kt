@@ -20,7 +20,6 @@ import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
 import com.usacheow.featuremain.presentation.viewmodels.CViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainAScreen(
     graphRoute: String,

@@ -17,11 +17,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class TagTileState(
     val text: TextValue,
@@ -99,8 +99,10 @@ private fun TagCard(
 ) {
     Card(
         modifier = modifier,
-        containerColor = color.background,
-        contentColor = color.content,
+        colors = CardDefaults.cardColors(
+            containerColor = color.background,
+            contentColor = color.content,
+        ),
         elevation = CardDefaults.cardElevation(),
         shape = AppTheme.shapes.small,
         onClick = clickListener ?: {},
@@ -119,7 +121,7 @@ private fun TagCard(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         TagTileState(
             text = TextValue.Simple("Tag text"),
             isSelected = false,

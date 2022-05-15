@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -39,6 +41,7 @@ class DemoApp : Application(), ApplicationCoroutineScopeHolder {
     override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 }
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
 class DemoActivity : ComponentActivity() {
 
@@ -55,7 +58,7 @@ class DemoActivity : ComponentActivity() {
 
     @Composable
     private fun Content() {
-        AppTheme {
+        AppTheme(calculateWindowSizeClass(this)) {
             val navController = rememberNavController()
 
             SystemBarsIconsColor()

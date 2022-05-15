@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.defaultPlaceholder
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 @Composable
 fun ShimmerTile(
@@ -91,7 +91,7 @@ private object ShimmerTileConfig {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         ShimmerTile(
             modifier = Modifier.padding(8.dp),
             needLeftIcon = true,

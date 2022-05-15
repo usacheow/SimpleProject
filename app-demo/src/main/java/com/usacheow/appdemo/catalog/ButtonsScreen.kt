@@ -62,7 +62,9 @@ fun ButtonsScreen(navController: NavHostController) {
         }
     ) {
         Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()),
+            modifier = Modifier
+                .padding(it)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Primaries()

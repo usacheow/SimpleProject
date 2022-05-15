@@ -24,12 +24,12 @@ import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class CellTileState(
     val leftPart: LeftPart? = null,
@@ -217,7 +217,7 @@ private object CellTileConfig {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         CellTileState(
             subtitle = TextValue.Simple("Subtitle"),
             title = TextValue.Simple("Title"),

@@ -23,10 +23,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 import com.usacheow.corecommon.R as CoreCommonR
 
 class NumPadAction(
@@ -35,13 +35,10 @@ class NumPadAction(
 ) {
     companion object {
 
-        @Composable
         fun biometric(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.fingerprint, onClick)
 
-        @Composable
         fun delete(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.delete, onClick)
 
-        @Composable
         fun accept(onClick: () -> Unit) = NumPadAction(AppTheme.specificIcons.done, onClick)
     }
 }
@@ -150,7 +147,7 @@ private object NumPadConfig {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             NumPad(
                 action = NumPadAction.accept {},

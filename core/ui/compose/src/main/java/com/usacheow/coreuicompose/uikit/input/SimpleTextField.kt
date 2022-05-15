@@ -127,7 +127,7 @@ fun SimpleTextField(
         } else {
             modifier
         }
-            .background(colors.backgroundColor(enabled).value, shape)
+            .background(colors.containerColor(enabled).value, shape)
             .defaultMinSize(minWidth = SimpleTextFieldConfig.MinWidth, minHeight = SimpleTextFieldConfig.MinHeight),
         onValueChange = onValueChange,
         enabled = enabled,
@@ -155,7 +155,7 @@ fun SimpleTextField(
                 interactionSource = interactionSource,
                 colors = colors,
                 border = {
-                    TextFieldDefaults.BorderStroke(
+                    TextFieldDefaults.BorderBox(
                         enabled,
                         isError,
                         interactionSource,

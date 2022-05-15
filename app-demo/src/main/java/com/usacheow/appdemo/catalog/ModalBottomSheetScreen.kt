@@ -87,7 +87,7 @@ private fun SheetContent(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Content(
     navController: NavHostController,
@@ -107,6 +107,7 @@ private fun Content(
     ) {
         SimpleButtonPrimaryL(
             modifier = Modifier
+                .padding(it)
                 .padding(16.dp)
                 .fillMaxWidth(),
             onClick = showSheet,

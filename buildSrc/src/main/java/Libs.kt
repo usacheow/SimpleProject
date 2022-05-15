@@ -1,16 +1,16 @@
 object Libs {
 
     private const val gmsVersion = "4.3.4"
-    private const val gradleVersion = "7.0.4"
+    private const val gradleVersion = "7.1.3"
     private const val desugarVersion = "1.1.5"
-    private const val kotlinVersion = "1.6.10"
+    private const val kotlinVersion = "1.6.21"
     private const val kotlinSerializationVersion = "1.3.0"
-    private const val coroutinesVersion = "1.6.0"
+    private const val coroutinesVersion = "1.6.1"
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeVersion = "1.2.0-alpha07"
-    private const val composeMaterialVersion = "1.0.0-alpha09"
+    const val composeVersion = "1.2.0-beta01"
+    private const val composeMaterialVersion = "1.0.0-alpha11"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
@@ -26,7 +26,7 @@ object Libs {
     private const val biometricVersion = "1.2.0-alpha04"
     private const val windowVersion = "1.0.0"
 
-    private const val hiltVersion = "2.37"
+    private const val hiltVersion = "2.42"
     private const val hiltJetpackVersion = "1.0.0"
 
     private const val crashlyticsGradleVersion = "2.5.2"
@@ -104,6 +104,7 @@ object Libs {
             "androidx.compose.ui:ui-tooling-preview:$composeVersion",
             "androidx.compose.material:material:$composeVersion",
             "androidx.compose.material3:material3:$composeMaterialVersion",
+            "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
             "com.google.android.material:material:$materialVersion")
         val composeKit =arrayOf(
@@ -114,7 +115,8 @@ object Libs {
             "com.google.accompanist:accompanist-pager:$accompanistVersion",
             "com.google.accompanist:accompanist-placeholder-material:$accompanistVersion",
             "androidx.compose.animation:animation:$composeVersion",
-            "io.coil-kt:coil-compose:$coilVersion")
+            "io.coil-kt:coil-compose:$coilVersion",
+            "io.coil-kt:coil-svg:$coilVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")
         val paging = arrayOf("androidx.paging:paging-runtime:$pagingVersion")

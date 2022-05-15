@@ -55,6 +55,7 @@ fun InputsScreen(navController: NavHostController) {
     ) {
         Column(
             modifier = Modifier
+                .padding(it)
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState()),
         ) {

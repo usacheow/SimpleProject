@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -23,13 +25,16 @@ import javax.inject.Inject
 import com.usacheow.corecommon.R as CoreCommonR
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
 class AppActivity : ComponentActivity() {
 
     @Inject
     lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
+
     @Inject
     lateinit var mainFeatureProvider: MainFeatureProvider
+
     @Inject
     lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
@@ -42,7 +47,7 @@ class AppActivity : ComponentActivity() {
         installSplashScreen()
 
         setContent {
-            AppTheme {
+            AppTheme(calculateWindowSizeClass(this)) {
                 val navController = rememberNavController()
                 val viewModel = viewModel<AppViewModel>()
 

@@ -2,7 +2,6 @@ package com.usacheow.appdemo.catalog
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,12 +27,12 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.simpleSheetParams
 import com.usacheow.coreuitheme.compose.AppTheme
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheetScreen(navController: NavHostController) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
@@ -66,10 +65,12 @@ fun BottomSheetScreen(navController: NavHostController) {
             SheetContent(sheetParams.sheetContentPadding)
         },
         content = {
-            Content(
-                showSheet = { sheetPeekHeight = 144.dp },
-                hideSheet = { sheetPeekHeight = 0.dp },
-            )
+            Column(modifier = Modifier.padding(it)) {
+                Content(
+                    showSheet = { sheetPeekHeight = 144.dp },
+                    hideSheet = { sheetPeekHeight = 0.dp },
+                )
+            }
         },
     )
 }
@@ -92,7 +93,6 @@ private fun SheetContent(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 private fun Content(
     showSheet: () -> Unit,

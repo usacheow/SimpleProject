@@ -22,10 +22,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.SimplePreview
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 data class MessageBannerState(
     val icon: ImageValue? = null,
@@ -50,8 +50,10 @@ fun MessageBannerTile(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        containerColor = AppTheme.specificColorScheme.surfaceVariant,
-        contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+        colors = CardDefaults.cardColors(
+            containerColor = AppTheme.specificColorScheme.surfaceVariant,
+            contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+        ),
         elevation = CardDefaults.cardElevation(),
         shape = AppTheme.shapes.medium,
     ) {
@@ -142,7 +144,7 @@ private fun Button(button: TextValue, clickListener: () -> Unit) {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
-    SimplePreview {
+    PreviewAppTheme {
         MessageBannerState(
             icon = AppTheme.specificIcons.error.toImageValue(),
             title = TextValue.Simple("Message title text"),

@@ -59,7 +59,9 @@ fun TagListScreen(navController: NavHostController) {
         Column {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier
+                    .padding(it)
+                    .padding(8.dp),
                 contentPadding = getBottomInset(),
             ) {
                 item(span = { GridItemSpan(2) }) {

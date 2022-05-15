@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
@@ -53,7 +54,8 @@ fun PaletteScreen(navController: NavHostController) {
             columns = GridCells.Fixed(2),
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 8.dp)
+                .padding(it),
             contentPadding = getBottomInset(),
         ) {
             items(
@@ -126,12 +128,14 @@ data class ColorItem(
     @Composable
     override fun Content(modifier: Modifier) {
         OutlinedCard(
-            containerColor = color,
-            contentColor = if (MaterialColors.isColorLight(color.toArgb())) {
-                AppTheme.specificColorScheme.symbolPrimary
-            } else {
-                AppTheme.specificColorScheme.symbolPrimaryInverse
-            },
+            colors = CardDefaults.cardColors(
+                containerColor = color,
+                contentColor = if (MaterialColors.isColorLight(color.toArgb())) {
+                    AppTheme.specificColorScheme.symbolPrimary
+                } else {
+                    AppTheme.specificColorScheme.symbolPrimaryInverse
+                },
+            ),
             modifier = modifier.heightIn(min = 100.dp),
             shape = AppTheme.shapes.extraLarge,
         ) {

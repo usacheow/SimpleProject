@@ -1,7 +1,10 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -9,11 +12,14 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
@@ -25,10 +31,14 @@ import com.usacheow.coreuicompose.tools.getTopInset
 import com.usacheow.coreuicompose.uikit.BadgeTileState
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
+import com.usacheow.coreuitheme.compose.LocalWindowSizeClass
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DemoScreen(navController: NavHostController) {
+fun DemoScreen(
+    navController: NavHostController,
+    windowSizeClass: WindowSizeClass = LocalWindowSizeClass.current,
+) {
     var isDialogVisible by remember { mutableStateOf(false) }
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
 
@@ -40,6 +50,16 @@ fun DemoScreen(navController: NavHostController) {
         showDialogClickListener = { isDialogVisible = true },
     )
 
+    val modifier = when (windowSizeClass.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> Modifier.fillMaxWidth()
+        else -> Modifier.width(700.dp)
+    }
+
+    val columnsCount = when (windowSizeClass.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> 2
+        else -> 4
+    }
+
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -50,22 +70,27 @@ fun DemoScreen(navController: NavHostController) {
             )
         },
         content = {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(horizontal = 8.dp)
-                    .padding(it),
-                contentPadding = getBottomInset(),
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center,
             ) {
-                items(
-                    items = items,
-                    span = { if (it is HeaderTileState) GridItemSpan(2) else GridItemSpan(1) },
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(columnsCount),
+                    modifier = modifier
+                        .fillMaxHeight()
+                        .padding(horizontal = 8.dp)
+                        .padding(it),
+                    contentPadding = getBottomInset(),
                 ) {
-                    it.Content(when (it is HeaderTileState) {
-                        true -> headerModifier
-                        false -> cardModifier
-                    })
+                    items(
+                        items = items,
+                        span = { item -> if (item is HeaderTileState) GridItemSpan(columnsCount) else GridItemSpan(1) },
+                    ) {
+                        it.Content(when (it is HeaderTileState) {
+                            true -> headerModifier
+                            false -> cardModifier
+                        })
+                    }
                 }
             }
         },

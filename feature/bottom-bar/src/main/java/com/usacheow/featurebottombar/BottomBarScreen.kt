@@ -1,8 +1,8 @@
 package com.usacheow.featurebottombar
 
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,7 +58,7 @@ private fun BottomBar(
         val currentBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = currentBackStackEntry?.destination
         items.forEachIndexed { index, screen ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 alwaysShowLabel = false,
                 icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
                 label = { Text(stringResource(screen.labelRes)) },
