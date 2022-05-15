@@ -13,7 +13,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -34,7 +33,6 @@ interface LocationSource {
 }
 
 @SuppressLint("MissingPermission")
-@OptIn(ExperimentalCoroutinesApi::class)
 class LocationSourceImpl @Inject constructor(
     private val locationManager: LocationManager,
 ) : LocationSource {

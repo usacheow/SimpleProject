@@ -5,11 +5,9 @@ import java.util.Collections
 import javax.inject.Inject
 import kotlin.reflect.KType
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 
 private const val DEFAULT_SIZE_CACHE_BYTES = 4 * 1024 * 1024
 
-@OptIn(ExperimentalTime::class)
 class LruCacheProvider @Inject constructor() : CacheProvider {
 
     private val persisterMap = Collections.synchronizedMap(

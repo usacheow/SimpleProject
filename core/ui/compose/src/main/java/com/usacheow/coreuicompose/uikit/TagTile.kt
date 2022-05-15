@@ -3,7 +3,6 @@ package com.usacheow.coreuicompose.uikit
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -61,7 +60,6 @@ object TagTileDefaults {
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun TagTile(
     modifier: Modifier = Modifier,

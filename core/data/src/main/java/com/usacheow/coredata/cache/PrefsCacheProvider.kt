@@ -9,19 +9,17 @@ import com.usacheow.coredata.database.get
 import com.usacheow.coredata.database.set
 import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.serializerOrNull
 import java.util.Collections
 import javax.inject.Inject
 import kotlin.reflect.KType
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.serializerOrNull
 
 private const val CACHE_STORE = "cache_data"
 
-@OptIn(ExperimentalStdlibApi::class, ExperimentalTime::class)
 class PrefsCacheProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val jsonProvider: KotlinxSerializationJsonProvider,

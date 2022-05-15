@@ -11,16 +11,15 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.tasks.Task
 import com.usacheow.coredata.database.SettingsStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 private const val REQUEST_CODE = 11
 
@@ -38,7 +37,6 @@ interface UpdateRouter {
     fun openUpdateScreen(data: UpdateAvailableState.Available, activity: Activity)
 }
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class AppUpdateProviderImpl @Inject constructor(
     @ApplicationContext context: Context,
     private val settingsStorage: SettingsStorage,

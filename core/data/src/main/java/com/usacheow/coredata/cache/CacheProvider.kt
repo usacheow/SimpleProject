@@ -2,9 +2,7 @@ package com.usacheow.coredata.cache
 
 import kotlin.reflect.KType
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 
-@OptIn(ExperimentalTime::class)
 interface CacheProvider : CacheCleaner {
 
     suspend fun <T> get(type: KType, key: String): T?
@@ -19,7 +17,6 @@ interface CacheCleaner {
     suspend fun clearAll()
 }
 
-@OptIn(ExperimentalTime::class)
 class CacheElement<T>(
     val data: T,
     private val lifeDuration: Duration,

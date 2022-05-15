@@ -4,14 +4,10 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.usacheow.coredata.BuildConfig
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.ExperimentalTime
 
-@OptIn(ExperimentalTime::class)
 private val FETCH_TIME_DURATION_DEBUG = 0.hours
-@OptIn(ExperimentalTime::class)
 private val FETCH_TIME_DURATION_RELEASE = 6.hours
 
-@OptIn(ExperimentalTime::class)
 class FeatureToggleUpdater @Inject constructor(
     private val featureToggle: EditableFeatureToggle,
 ) {

@@ -80,7 +80,6 @@ private fun items() = listOf(
     TextItem(AppTheme.typography.labelSmall, "Label S"),
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 data class TextItem(
     val style: TextStyle,
     val name: String,

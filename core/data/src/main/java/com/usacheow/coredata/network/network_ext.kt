@@ -14,7 +14,6 @@ import javax.net.ssl.SSLException
 import kotlin.reflect.typeOf
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
-import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -22,7 +21,6 @@ import kotlinx.serialization.json.decodeFromStream
 import retrofit2.HttpException
 import retrofit2.Response
 
-@OptIn(ExperimentalStdlibApi::class, ExperimentalTime::class)
 suspend inline fun <reified T : Any> cachedApiCall(
     key: String,
     cacheProvider: CacheProvider,

@@ -13,7 +13,6 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -30,7 +29,6 @@ interface NetworkStateSource {
 }
 
 @SuppressLint("MissingPermission")
-@OptIn(ExperimentalCoroutinesApi::class)
 class NetworkStateSourceImpl @Inject constructor(
     connectivityManager: ConnectivityManager,
     @ApplicationCoroutineScope private val scope: CoroutineScope,
