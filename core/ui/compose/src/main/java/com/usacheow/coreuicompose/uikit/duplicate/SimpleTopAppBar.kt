@@ -100,10 +100,7 @@ fun SimpleTopAppBar(
     }
 
     Surface(color = appBarContainerColor) {
-        val height = SimpleTopAppBarConfig.ContainerHeight +
-                contentPadding.calculateTopPadding() +
-                contentPadding.calculateBottomPadding()
-        val heightPx = LocalDensity.current.run { height.toPx() }
+        val heightPx = LocalDensity.current.run { SimpleTopAppBarConfig.ContainerHeight.toPx() }
         TopAppBarLayout(
             modifier = Modifier.padding(contentPadding),
             heightPx = heightPx,

@@ -9,7 +9,7 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.tasks.Task
-import com.usacheow.coredata.database.SettingsStorage
+import com.usacheow.coredata.database.UserDataStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
@@ -39,7 +39,7 @@ interface UpdateRouter {
 
 class AppUpdateProviderImpl @Inject constructor(
     @ApplicationContext context: Context,
-    private val settingsStorage: SettingsStorage,
+    private val userDataStorage: UserDataStorage,
 ) : AppUpdateProvider {
 
     private val appUpdateManager = AppUpdateManagerFactory.create(context)
@@ -49,7 +49,7 @@ class AppUpdateProviderImpl @Inject constructor(
 
         when {
             info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE -> {
-                settingsStorage.lastCheckedAvailableVersionCode = info.availableVersionCode()
+                userDataStorage.lastCheckedAvailableVersionCode = info.availableVersionCode()
                 UpdateAvailableState.Available(info)
             }
             info.installStatus() == InstallStatus.DOWNLOADED -> {

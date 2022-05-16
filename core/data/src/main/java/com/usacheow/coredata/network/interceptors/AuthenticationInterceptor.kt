@@ -17,7 +17,7 @@ class AuthenticationInterceptor(
         val originalRequest = chain.request()
         val customRequest = chain.request().newBuilder()
             .method(originalRequest.method, originalRequest.body)
-            .header(AUTHORIZATION_HEADER, "$BEARER ${tokenStorage.token}")
+            .header(AUTHORIZATION_HEADER, "$BEARER ${tokenStorage.accessToken}")
             .build()
 
         return chain.proceed(customRequest)

@@ -1,5 +1,6 @@
 package com.usacheow.coredata.database
 
+import androidx.core.content.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,4 +23,22 @@ class UserDataStorage @Inject constructor(
     suspend fun setPhoneNumber(value: String) {
         provider.userDataStore.set(PREF_PHONE, value)
     }
+
+    var isAllowBiometric: Boolean
+        get() = provider.prefs.getBoolean("isAllowBiometric", true)
+        set(value) = provider.prefs.edit {
+            putBoolean("isAllowBiometric", value)
+        }
+
+    var isFirstEntry: Boolean
+        get() = provider.prefs.getBoolean("isFirstEntry", true)
+        set(value) = provider.prefs.edit {
+            putBoolean("isFirstEntry", value)
+        }
+
+    var lastCheckedAvailableVersionCode: Int
+        get() = provider.prefs.getInt("lastCheckedAvailableVersionCode", 0)
+        set(value) = provider.prefs.edit {
+            putInt("lastCheckedAvailableVersionCode", value)
+        }
 }

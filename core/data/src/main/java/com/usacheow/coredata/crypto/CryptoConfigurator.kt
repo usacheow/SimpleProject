@@ -32,10 +32,10 @@ class CryptoConfigurator @Inject constructor() {
     }
 
     @Throws
-    fun createDecryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.DECRYPT_MODE)
+    fun createBiometricDecryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.DECRYPT_MODE)
 
     @Throws
-    fun createEncryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.ENCRYPT_MODE)
+    fun createBiometricEncryptCipher() = initCipher(KEY_FOR_BIOMETRIC, Cipher.ENCRYPT_MODE)
 
     @Throws
     fun encode(inputString: String, cipher: Cipher): String {
