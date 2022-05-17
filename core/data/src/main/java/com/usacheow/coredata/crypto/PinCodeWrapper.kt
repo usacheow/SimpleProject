@@ -19,6 +19,8 @@ class PinCodeWrapper @Inject constructor(
     private val cryptoConfigurator: CryptoConfigurator,
 ) {
 
+    fun getPinCodeLength(): Int = tokenStorage.pinCodeLength
+
     fun isValid(pinCode: String) = pinCode != "2580" &&
             pinCode.toSet().size > 1 &&
             (0 until pinCode.length - 1).any { pinCode[it] - pinCode[it + 1] != 1 } &&

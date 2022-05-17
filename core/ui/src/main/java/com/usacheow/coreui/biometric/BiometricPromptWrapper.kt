@@ -7,24 +7,15 @@ import androidx.fragment.app.FragmentActivity
 import javax.crypto.Cipher
 
 class BiometricPromptWrapper(
-    private val activity: FragmentActivity,
-    private val title: String,
-    private val description: String,
-    private val buttonText: String,
+    activity: FragmentActivity,
     private val onSuccessAction: (BiometricPrompt.CryptoObject?) -> Unit = {},
     private val onUnavailableAction: () -> Unit = {},
 ) : BiometricPrompt.AuthenticationCallback() {
 
-    private val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG
-    private val prompt by lazy { BiometricPrompt(activity, ContextCompat.getMainExecutor(activity), this) }
-    private val promptInfo by lazy {
-        BiometricPrompt.PromptInfo.Builder()
-            .setTitle(title)
-            .setDescription(description)
-            .setNegativeButtonText(buttonText)
-            .setAllowedAuthenticators(authenticators)
-            .build()
-    }
+    private val prompt = BiometricPrompt(activity, ContextCompat.getMainExecutor(activity), this)
+
+    private val promptInfoBuilder = BiometricPrompt.PromptInfo.Builder()
+        .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
 
     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
         onSuccessAction(result.cryptoObject)
@@ -36,12 +27,13 @@ class BiometricPromptWrapper(
         }
     }
 
-    fun show(data: BiometricData) {
+    fun show(
+        data: BiometricData,
+        title: String,
+        buttonText: String,
+    ) {
+        val promptInfo = promptInfoBuilder.setTitle(title).setNegativeButtonText(buttonText).build()
         prompt.authenticate(promptInfo, data.cryptoObject)
-    }
-
-    fun hide() {
-        prompt.cancelAuthentication()
     }
 }
 

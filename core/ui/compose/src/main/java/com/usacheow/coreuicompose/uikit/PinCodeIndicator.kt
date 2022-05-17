@@ -1,6 +1,5 @@
 package com.usacheow.coreuicompose.uikit
 
-import androidx.annotation.IntRange
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -29,8 +28,6 @@ object PinCodeInputConfig {
     val IndicatorDotSizeMin = 12.dp
     val IndicatorDotSizeMax = 14.dp
     val MarginHorizontal = 20.dp
-
-    const val DotsCount = 4
 
     @Composable
     fun defaultColor() = PinCodeIndicatorColor(
@@ -64,7 +61,8 @@ data class PinCodeIndicatorColor(
 @Composable
 fun PinCodeIndicator(
     modifier: Modifier = Modifier,
-    @IntRange(from = 0, to = PinCodeInputConfig.DotsCount.toLong()) filledCirclesCount: Int,
+    inputtedCodeLength: Int,
+    codeLength: Int,
     status: PinCodeStatus = PinCodeStatus.Normal,
 ) {
     val color = when (status) {
@@ -77,9 +75,9 @@ fun PinCodeIndicator(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(PinCodeInputConfig.MarginHorizontal),
     ) {
-        repeat(PinCodeInputConfig.DotsCount) { index ->
+        repeat(codeLength) { index ->
             Dot(
-                color = if (index < filledCirclesCount) color.filled else color.unfilled,
+                color = if (index < inputtedCodeLength) color.filled else color.unfilled,
                 index = index,
                 status = status,
             )

@@ -24,6 +24,8 @@ class TokenStorage @Inject constructor(
             putString("refreshToken", value)
         }
 
+    val pinCodeLength: Int = 4
+
     var salt: String
         get() = provider.cryptoPrefs.getString("salt", "").orEmpty()
         set(value) = provider.cryptoPrefs.edit {

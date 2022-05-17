@@ -1,7 +1,6 @@
 package com.usacheow.simpleapp.mainscreen
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -9,6 +8,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -27,7 +27,7 @@ import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
-class AppActivity : ComponentActivity() {
+class AppActivity : FragmentActivity() {
 
     @Inject
     lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider

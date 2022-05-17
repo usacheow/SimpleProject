@@ -11,13 +11,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridScope
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.tools.longPress
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 import com.usacheow.corecommon.R as CoreCommonR
@@ -46,9 +53,30 @@ class NumPadAction(
 @Composable
 fun NumPad(
     action: NumPadAction? = null,
-    onForgetClick: () -> Unit,
-    onNumberClick: (String) -> Unit,
+    onForgetClick: (() -> Unit)?,
+    onNumberClick: (Int) -> Unit,
 ) {
+    when (LocalConfiguration.current.orientation) {
+        Configuration.ORIENTATION_LANDSCAPE -> LandscapeNumPad(
+            action = action,
+            onForgetClick = onForgetClick,
+            onNumberClick = onNumberClick,
+        )
+        else -> PortraitNumPad(
+            action = action,
+            onForgetClick = onForgetClick,
+            onNumberClick = onNumberClick,
+        )
+    }
+}
+
+@Composable
+fun PortraitNumPad(
+    action: NumPadAction? = null,
+    onForgetClick: (() -> Unit)?,
+    onNumberClick: (Int) -> Unit,
+) {
+    val hapticFeedback = LocalHapticFeedback.current
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxWidth(),
@@ -59,41 +87,95 @@ fun NumPad(
             horizontalArrangement = Arrangement.spacedBy(NumPadConfig.ButtonMargin),
             modifier = Modifier
                 .padding(NumPadConfig.ButtonMargin)
-                .width(NumPadConfig.ContainerWidth),
+                .width(NumPadConfig.ButtonSize * 3 + NumPadConfig.ButtonMargin * 2),
             userScrollEnabled = false,
         ) {
-            items(9) {
-                NumberButton(text = (it + 1).toString(), onClick = onNumberClick)
-            }
-            item {
-                ForgetButton(onClick = onForgetClick)
-            }
-            item {
-                NumberButton(text = "0", onClick = onNumberClick)
-            }
-            item {
-                action?.icon?.let {
-                    IconButton(
-                        icon = it,
-                        onClick = action.onClick,
-                    )
-                }
-            }
+            numPadContent(
+                hapticFeedback = hapticFeedback,
+                isPortraitOrientation = true,
+                action = action,
+                onForgetClick = onForgetClick,
+                onNumberClick = onNumberClick,
+            )
         }
     }
 }
 
 @Composable
-private fun NumberButton(text: String, onClick: (String) -> Unit) {
+fun LandscapeNumPad(
+    action: NumPadAction? = null,
+    onForgetClick: (() -> Unit)?,
+    onNumberClick: (Int) -> Unit,
+) {
+    val hapticFeedback = LocalHapticFeedback.current
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(3),
+        verticalArrangement = Arrangement.spacedBy(NumPadConfig.ButtonMargin),
+        horizontalArrangement = Arrangement.spacedBy(NumPadConfig.ButtonMargin),
+        modifier = Modifier
+            .padding(NumPadConfig.ButtonMargin)
+            .width(NumPadConfig.ButtonSize * 4 + NumPadConfig.ButtonMargin * 3),
+        userScrollEnabled = false,
+    ) {
+        numPadContent(
+            hapticFeedback = hapticFeedback,
+            isPortraitOrientation = false,
+            action = action,
+            onForgetClick = onForgetClick,
+            onNumberClick = onNumberClick,
+        )
+    }
+}
+
+private fun LazyGridScope.numPadContent(
+    hapticFeedback: HapticFeedback,
+    isPortraitOrientation: Boolean,
+    action: NumPadAction? = null,
+    onForgetClick: (() -> Unit)?,
+    onNumberClick: (Int) -> Unit,
+) {
+    val buttons = when {
+        isPortraitOrientation -> listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, Helper.Forget, 0, Helper.Action)
+        else -> listOf(1, 4, 7, 2, 5, 8, 3, 6, 9, Helper.Action, 0, Helper.Forget)
+    }
+    items(buttons) {
+        when (it) {
+            is Int -> NumberButton(number = it) { value ->
+                onNumberClick(value)
+                hapticFeedback.longPress()
+            }
+            Helper.Action -> action?.icon?.let {
+                IconButton(icon = it) {
+                    action.onClick()
+                    hapticFeedback.longPress()
+                }
+            } ?: Box(Modifier)
+            Helper.Forget -> onForgetClick?.let {
+                ForgetButton {
+                    onForgetClick()
+                    hapticFeedback.longPress()
+                }
+            } ?: Box(Modifier)
+        }
+    }
+}
+
+private sealed class Helper {
+    object Action : Helper()
+    object Forget : Helper()
+}
+
+@Composable
+private fun NumberButton(number: Int, onClick: (Int) -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Text(
-            text = text,
+            text = number.toString(),
             style = AppTheme.typography.headlineSmall,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .size(NumPadConfig.ButtonSize)
                 .defaultBorder(NumPadConfig.shape())
-                .clickable { onClick(text) }
+                .clickable { onClick(number) }
                 .wrapContentHeight(),
         )
     }

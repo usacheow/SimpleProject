@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.defaultBorder
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.PinCodeIndicator
 import com.usacheow.coreuicompose.uikit.button.NumPad
 import com.usacheow.coreuicompose.uikit.button.NumPadAction
@@ -40,7 +40,7 @@ fun NumPadScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Num pad"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -67,7 +67,8 @@ fun NumPadScreen(navController: NavHostController) {
             }
             PinCodeIndicator(
                 modifier = Modifier.padding(top = 20.dp),
-                filledCirclesCount = enteredCode.value.length,
+                inputtedCodeLength = enteredCode.value.length,
+                codeLength = 4,
             )
             NumPad(
                 action = NumPadAction.delete { enteredCode.value = enteredCode.value.dropLast(1) },

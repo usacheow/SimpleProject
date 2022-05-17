@@ -25,7 +25,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.insetTop
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -55,7 +55,7 @@ fun BottomSheetScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Bottom sheet"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         },

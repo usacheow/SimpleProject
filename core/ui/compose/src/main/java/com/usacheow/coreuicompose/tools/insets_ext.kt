@@ -21,6 +21,11 @@ fun insetTop() = WindowInsets.safeDrawing
     .asPaddingValues()
 
 @Composable
+fun insetAllExcludeBottom() = WindowInsets.safeDrawing
+    .only(WindowInsetsSides.Start + WindowInsetsSides.End + WindowInsetsSides.Top)
+    .asPaddingValues()
+
+@Composable
 fun insetHorizontal() = WindowInsets.safeDrawing
     .only(WindowInsetsSides.Start + WindowInsetsSides.End)
     .asPaddingValues()

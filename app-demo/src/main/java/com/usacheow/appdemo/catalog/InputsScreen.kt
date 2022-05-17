@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.CurrencyType
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.insetTop
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.input.SimpleSelector
 import com.usacheow.coreuicompose.uikit.input.SimpleSelectorDropDown
@@ -48,7 +48,7 @@ fun InputsScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Inputs"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }

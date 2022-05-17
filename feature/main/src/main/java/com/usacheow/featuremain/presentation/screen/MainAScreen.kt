@@ -1,5 +1,6 @@
 package com.usacheow.featuremain.presentation.screen
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -11,8 +12,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
-import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.ListTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
@@ -52,12 +53,13 @@ private fun MainAScreen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Main A screen $selectionNumber"),
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
         LazyColumn(
+            modifier = Modifier.padding(it),
             contentPadding = insetBottomWithBottomNavigation(),
         ) {
             items(20) {

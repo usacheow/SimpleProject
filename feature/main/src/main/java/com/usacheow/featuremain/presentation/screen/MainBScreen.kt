@@ -15,7 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.insetTop
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.featuremain.presentation.ScreenNavigator
@@ -60,11 +60,11 @@ private fun MainBScreen(
             SimpleTopAppBar(
                 title = TextValue.Simple("Main B screen $selectionNumber $index"),
                 navigationIcon = AppTheme.specificIcons.back to onBackClick,
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
-        Text("Main B text", modifier = Modifier.padding(24.dp))
+        Text("Main B text", modifier = Modifier.padding(24.dp).padding(it))
     }
 }

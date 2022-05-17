@@ -14,13 +14,13 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.insetTop
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featureonboarding.presentation.ScreenNavigator
 
 @Composable
 fun OnBoardingScreen(
-    navHostController: NavHostController
+    navHostController: NavHostController,
 ) {
     val router = remember(navHostController) { ScreenNavigator(navHostController) }
 
@@ -40,12 +40,12 @@ private fun OnBoardingScreen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("OnBoarding screen"),
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
-        Column {
+        Column(modifier = Modifier.padding(it)) {
             Text("OnBoarding text", modifier = Modifier.padding(24.dp))
             Button(onClick = onNextClick) {
                 Text("Next screen")

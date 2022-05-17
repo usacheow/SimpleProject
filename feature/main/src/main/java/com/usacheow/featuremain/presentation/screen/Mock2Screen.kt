@@ -14,7 +14,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.insetTop
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 
@@ -40,12 +40,12 @@ private fun Mock2Screen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Mock 2 screen"),
-                contentPadding = insetTop(),
+                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
-        Column {
+        Column(modifier = Modifier.padding(it)) {
             Text("Mock 2 text", modifier = Modifier.padding(24.dp))
             Button(onClick = onNextClick) {
                 Text("Next screen")
