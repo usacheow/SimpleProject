@@ -23,8 +23,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetBottom
+import com.usacheow.coreuicompose.tools.insetHorizontal
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
@@ -56,7 +57,7 @@ fun ButtonsScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Buttons"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -64,7 +65,8 @@ fun ButtonsScreen(navController: NavHostController) {
         Column(
             modifier = Modifier
                 .padding(it)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(rememberScrollState())
+                .padding(insetHorizontal()),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Primaries()
@@ -77,7 +79,7 @@ fun ButtonsScreen(navController: NavHostController) {
             DividerBetweenCards()
             Inlines()
 
-            Box(modifier = Modifier.padding(getBottomInset()))
+            Box(modifier = Modifier.padding(insetBottom()))
         }
     }
 }

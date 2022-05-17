@@ -11,11 +11,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.getBottomInsetWithBottomNavigation
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.ListTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
-import com.usacheow.featuremain.presentation.BScreenArg
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodels.AViewModel
 import com.usacheow.featuremain.presentation.viewmodels.CViewModel
@@ -36,7 +35,7 @@ fun MainAScreen(
         selectionNumber = aViewModel.x,
         onNextClick = {
             aViewModel.x += 1
-            router.toBScreen(BScreenArg(it))
+            router.toBScreen(it)
         },
     )
 }
@@ -53,13 +52,13 @@ private fun MainAScreen(
         topBar = {
             SimpleTopAppBar(
                 title = TextValue.Simple("Main A screen $selectionNumber"),
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
         LazyColumn(
-            contentPadding = getBottomInsetWithBottomNavigation(),
+            contentPadding = insetBottomWithBottomNavigation(),
         ) {
             items(20) {
                 ListTileState(

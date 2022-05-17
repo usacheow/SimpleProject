@@ -1,6 +1,7 @@
 package com.usacheow.coredata.database
 
 import androidx.core.content.edit
+import com.usacheow.corecommon.Token
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -9,15 +10,15 @@ class TokenStorage @Inject constructor(
     private val provider: PreferencesProvider,
 ) {
 
-    var decodedAccessToken = ""
+    var decodedAccessToken: Token = ""
 
-    var accessToken: String
+    var accessToken: Token
         get() = provider.cryptoPrefs.getString("accessToken", "").orEmpty()
         set(value) = provider.cryptoPrefs.edit {
             putString("accessToken", value)
         }
 
-    var refreshToken: String
+    var refreshToken: Token
         get() = provider.cryptoPrefs.getString("refreshToken", "").orEmpty()
         set(value) = provider.cryptoPrefs.edit {
             putString("refreshToken", value)

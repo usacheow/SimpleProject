@@ -14,8 +14,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetAllExcludeTop
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.ListTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -33,7 +33,7 @@ fun ListTilesScreen(navController: NavHostController) {
                 scrollBehavior = scrollBehavior,
                 title = TextValue.Simple("List tiles"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
             )
         }
     ) {
@@ -41,7 +41,7 @@ fun ListTilesScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxWidth(),
-            contentPadding = getBottomInset(),
+            contentPadding = insetAllExcludeTop(),
         ) {
             items(items) {
                 it.Content(Modifier)

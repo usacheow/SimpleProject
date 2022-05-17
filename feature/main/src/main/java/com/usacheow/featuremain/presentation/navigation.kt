@@ -14,8 +14,8 @@ import com.usacheow.featuremain.presentation.screen.MainAScreen
 import com.usacheow.featuremain.presentation.screen.MainBScreen
 import com.usacheow.featuremain.presentation.screen.Mock2Screen
 import com.usacheow.featuremain.presentation.screen.MockScreen
+import com.usacheow.featuremain.presentation.viewmodels.BViewModel
 import javax.inject.Inject
-import kotlinx.serialization.Serializable
 
 internal enum class ScreenRoute(val route: String) {
     a("a"),
@@ -28,7 +28,10 @@ internal enum class ScreenRoute(val route: String) {
 
 internal class ScreenNavigator(navHostController: NavHostController) : Navigator(navHostController) {
 
-    fun toBScreen(arg: BScreenArg) = navHostController navigateWithArg FeatureNavDirection(ScreenRoute.b.route, arg)
+    fun toBScreen(index: String) = navHostController navigateWithArg FeatureNavDirection(
+        ScreenRoute.b.route,
+        BViewModel.Args(index),
+    )
 
     fun toMockBScreen() = navHostController.navigate(ScreenRoute.mockB.route)
 
@@ -67,6 +70,3 @@ class MainFeatureProviderImpl @Inject constructor() : MainFeatureProvider {
         }
     }
 }
-
-@Serializable
-data class BScreenArg(val index: String)

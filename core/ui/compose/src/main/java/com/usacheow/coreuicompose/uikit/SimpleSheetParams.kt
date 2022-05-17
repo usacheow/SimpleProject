@@ -10,8 +10,8 @@ import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
-import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetBottom
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuitheme.compose.DimenValues
 
 class SimpleSheetParams(
@@ -50,8 +50,8 @@ object SheetConfig {
 fun simpleSheetParams(
     sheetState: BottomSheetState,
     borderValue: Float = .8f,
-    maxTopPadding: Dp = getTopInset().calculateTopPadding(),
-    bottomPadding: Dp = getBottomInset().calculateBottomPadding(),
+    maxTopPadding: Dp = insetTop().calculateTopPadding(),
+    bottomPadding: Dp = insetBottom().calculateBottomPadding(),
 ) = SimpleSheetParams(
     swipePercent = sheetState.swipePercent(),
     sheetContentPadding = SheetConfig.sheetContentPadding(sheetState.swipePercent(), maxTopPadding, bottomPadding),
@@ -63,8 +63,8 @@ fun simpleSheetParams(
 fun simpleSheetParams(
     sheetState: ModalBottomSheetState,
     borderValue: Float = .8f,
-    maxTopPadding: Dp = getTopInset().calculateTopPadding(),
-    bottomPadding: Dp = getBottomInset().calculateBottomPadding(),
+    maxTopPadding: Dp = insetTop().calculateTopPadding(),
+    bottomPadding: Dp = insetBottom().calculateBottomPadding(),
 ) = SimpleSheetParams(
     swipePercent = sheetState.swipePercent(),
     sheetContentPadding = SheetConfig.sheetContentPadding(sheetState.swipePercent(), maxTopPadding, bottomPadding),

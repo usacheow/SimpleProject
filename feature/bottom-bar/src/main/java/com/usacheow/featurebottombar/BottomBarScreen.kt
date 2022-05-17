@@ -17,7 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.coreuicompose.tools.getBottomInset
+import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationDefaults
 import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleBottomNavigation
@@ -33,6 +33,7 @@ fun BottomBarScreen(
     Scaffold(
         bottomBar = { BottomBar(navController, items) },
     ) {
+        it
         CompositionLocalProvider(
             LocalBottomNavigationHeight provides BottomNavigationDefaults.Height,
         ) {
@@ -53,7 +54,7 @@ private fun BottomBar(
     items: List<BottomBarFeatureProvider.ScreenItem>,
 ) {
     SimpleBottomNavigation(
-        contentPadding = getBottomInset(),
+        contentPadding = insetAllExcludeTop(),
     ) {
         val currentBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = currentBackStackEntry?.destination

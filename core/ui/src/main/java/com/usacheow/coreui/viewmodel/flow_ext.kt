@@ -9,10 +9,8 @@ import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -42,8 +40,7 @@ inline fun <reified T> Flow<T>.observe(
 fun <T> MutableStateFlow<T>.publish(function: (T) -> T) { update(function) }
 infix fun <T> MutableStateFlow<T>.tryPublish(value: T) { tryEmit(value) }
 
-suspend infix fun <T> Channel<T>.triggerBy(value: T) { send(value) }
-suspend fun Channel<SimpleAction>.trigger() { send(SimpleAction) }
+suspend infix fun <T> Channel<T>.publish(value: T) { send(value) }
 
 fun <T> Flow<T>.likeStateFlow(
     scope: CoroutineScope,
@@ -61,10 +58,3 @@ fun <T> Flow<T>.likeStateFlow(
     started = SharingStarted.WhileSubscribed(5_000),
     replay = 1,
 )
-
-fun <T> MutableStateFlowWithoutState() = MutableSharedFlow<T>(
-    onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    replay = 1,
-)
-
-fun <T> EventChannel() = Channel<T>()

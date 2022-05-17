@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetAllExcludeTop
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.BadgeTileState
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -36,7 +36,7 @@ fun InformationTilesScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Information tiles"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -45,7 +45,7 @@ fun InformationTilesScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxWidth(),
-            contentPadding = getBottomInset(),
+            contentPadding = insetAllExcludeTop(),
         ) {
             items(large()) {
                 it.Content(modifier = Modifier.padding(16.dp))

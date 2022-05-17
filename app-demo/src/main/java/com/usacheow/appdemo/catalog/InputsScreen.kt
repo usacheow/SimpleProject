@@ -20,9 +20,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.usacheow.corecommon.CurrencyType
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.corecommon.money.CurrencyType
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.input.SimpleSelector
 import com.usacheow.coreuicompose.uikit.input.SimpleSelectorDropDown
@@ -48,7 +48,7 @@ fun InputsScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Inputs"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
                 scrollBehavior = scrollBehavior,
             )
         }

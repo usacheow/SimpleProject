@@ -16,8 +16,8 @@ import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuicompose.tools.getBottomInset
-import com.usacheow.coreuicompose.tools.getTopInset
+import com.usacheow.coreuicompose.tools.insetAllExcludeTop
+import com.usacheow.coreuicompose.tools.insetTop
 import com.usacheow.coreuicompose.uikit.CellTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.R
@@ -36,7 +36,7 @@ fun CellTilesScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = TextValue.Simple("Cell tiles"),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = getTopInset(),
+                contentPadding = insetTop(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -45,7 +45,7 @@ fun CellTilesScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxWidth(),
-            contentPadding = getBottomInset(),
+            contentPadding = insetAllExcludeTop(),
         ) {
             items(items) {
                 it.Content(Modifier)
