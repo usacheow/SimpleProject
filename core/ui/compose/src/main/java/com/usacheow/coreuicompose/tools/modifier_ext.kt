@@ -58,6 +58,8 @@ fun Modifier.doOnClick(
     delay: Duration = 500.milliseconds,
     onClick: (() -> Unit)?,
 ): Modifier = composed {
+    if (onClick == null) return@composed this
+
     val enable = remember { mutableStateOf(true) }
     val coroutineScope = rememberCoroutineScope()
     clickable(enabled = onClick != null) {
