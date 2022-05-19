@@ -19,7 +19,6 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.BadgeTileState
-import com.usacheow.coreuicompose.uikit.HeaderTileAction
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -83,7 +82,7 @@ private fun large(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargeSecondary,
-        action = HeaderTileAction.Text(TextValue.Simple("action")),
+        action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.LargePrimary),
@@ -97,7 +96,7 @@ private fun medium(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumSecondary,
-        action = HeaderTileAction.Text(TextValue.Simple("action")),
+        action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.MediumPrimary),
@@ -111,7 +110,7 @@ private fun small(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallSecondary,
-        action = HeaderTileAction.Text(TextValue.Simple("action")),
+        action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.SmallPrimary),

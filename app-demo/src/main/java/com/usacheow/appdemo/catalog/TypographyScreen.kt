@@ -21,7 +21,6 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.HeaderTileAction
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -61,7 +60,7 @@ fun TypographyScreen(navController: NavHostController) {
 private fun items() = listOf(
     HeaderTileState(
         value = TextValue.Simple("Name"),
-        action = HeaderTileAction.Text(TextValue.Simple("action")),
+        action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         type = HeaderTileState.Type.SmallSecondary,
     ),
     TextItem(AppTheme.typography.displayLarge, "Display L"),

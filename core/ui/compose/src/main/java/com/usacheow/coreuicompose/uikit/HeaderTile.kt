@@ -20,7 +20,7 @@ import com.usacheow.coreuitheme.compose.PreviewAppTheme
 data class HeaderTileState(
     val value: TextValue,
     val button: TextValue? = null,
-    val action: HeaderTileAction? = null,
+    val action: Action? = null,
     val clickListener: (() -> Unit)? = null,
     val type: Type = Type.MediumPrimary,
 ) : WidgetState {
@@ -54,17 +54,17 @@ data class HeaderTileState(
         LargePrimary, MediumPrimary, SmallPrimary,
         LargeSecondary, MediumSecondary, SmallSecondary,
     }
-}
 
-sealed class HeaderTileAction {
+    sealed class Action {
 
-    data class Text(
-        val text: TextValue,
-    ) : HeaderTileAction()
+        data class Text(
+            val text: TextValue,
+        ) : Action()
 
-    data class Icon(
-        val icon: IconValue,
-    ) : HeaderTileAction()
+        data class Icon(
+            val icon: IconValue,
+        ) : Action()
+    }
 }
 
 @Composable
@@ -104,13 +104,13 @@ fun HeaderTile(
             modifier = Modifier.weight(1f),
         )
         when (data.action) {
-            is HeaderTileAction.Text -> Text(
+            is HeaderTileState.Action.Text -> Text(
                 text = data.action.text.get(),
                 maxLines = 1,
                 style = AppTheme.typography.labelMedium,
                 color = AppTheme.specificColorScheme.symbolSecondary,
             )
-            is HeaderTileAction.Icon -> androidx.compose.material.Icon(
+            is HeaderTileState.Action.Icon -> androidx.compose.material.Icon(
                 painter = data.action.icon.get(),
                 contentDescription = null,
                 tint = AppTheme.specificColorScheme.symbolSecondary,
@@ -128,7 +128,7 @@ private fun Preview() {
         HeaderTileState(
             value = TextValue.Simple("Title with button"),
             type = HeaderTileState.Type.MediumPrimary,
-            action = HeaderTileAction.Text(TextValue.Simple("action")),
+            action = HeaderTileState.Action.Text(TextValue.Simple("action")),
             clickListener = {},
         ).Content(Modifier)
     }
