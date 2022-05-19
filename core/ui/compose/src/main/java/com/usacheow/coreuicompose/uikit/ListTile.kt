@@ -19,6 +19,7 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -42,7 +43,7 @@ data class ListTileState(
     companion object {
         fun shimmer() = ShimmerState {
             ShimmerTile(
-                modifier = it.padding(ListTileConfig.RipplePadding + ListTileConfig.ContentPadding),
+                modifier = it.padding(DimenValues.default_padding),
                 needTopLine = false,
                 needRightIcon = false,
             )
@@ -58,10 +59,8 @@ fun ListTile(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(ListTileConfig.RipplePadding)
-            .clip(AppTheme.shapes.small)
-            .doOnClick(onClick = data.clickListener)
-            .padding(ListTileConfig.ContentPadding),
+            .padding(DimenValues.ripple_outer_padding)
+            .defaultTileRipple(shape = AppTheme.shapes.small, onClick = data.clickListener),
         horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -114,8 +113,6 @@ private fun SecondaryText(value: TextValue?) {
 
 private object ListTileConfig {
     val IconPaddingHorizontal = DimenValues.default_padding
-    val RipplePadding = 8.dp
-    val ContentPadding = DimenValues.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)

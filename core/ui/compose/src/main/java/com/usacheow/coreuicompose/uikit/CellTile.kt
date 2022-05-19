@@ -25,6 +25,7 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -49,7 +50,7 @@ data class CellTileState(
     companion object {
         fun shimmer() = ShimmerState {
             ShimmerTile(
-                modifier = it.padding(CellTileConfig.RipplePadding + CellTileConfig.ContentPadding),
+                modifier = it.padding(DimenValues.default_padding),
                 needBottomLine = false,
                 needRightIcon = false,
             )
@@ -85,10 +86,8 @@ fun CellTile(
         verticalAlignment = Alignment.Top,
         modifier = modifier
             .fillMaxWidth()
-            .padding(CellTileConfig.RipplePadding)
-            .clip(AppTheme.shapes.small)
-            .doOnClick(onClick = data.clickListener)
-            .padding(CellTileConfig.ContentPadding),
+            .padding(DimenValues.ripple_outer_padding)
+            .defaultTileRipple(shape = AppTheme.shapes.small, onClick = data.clickListener),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         LeftPart(data.leftPart)
@@ -209,8 +208,6 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
 
 private object CellTileConfig {
     val IconSize = 40.dp
-    val RipplePadding = 8.dp
-    val ContentPadding = DimenValues.default_padding - RipplePadding
 }
 
 @Preview(showBackground = true)

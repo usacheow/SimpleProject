@@ -3,7 +3,9 @@ package com.usacheow.coreuitheme.compose
 import androidx.compose.ui.unit.dp
 
 object DimenValues {
-    val default_padding = 16.dp
+    val ripple_inner_padding = 8.dp
+    val ripple_outer_padding = 8.dp
+    val default_padding = ripple_inner_padding + ripple_outer_padding
 
     val stroke_card = 1.dp
 

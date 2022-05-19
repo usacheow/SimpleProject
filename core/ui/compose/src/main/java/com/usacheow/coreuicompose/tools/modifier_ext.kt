@@ -1,8 +1,12 @@
 package com.usacheow.coreuicompose.tools
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -15,6 +19,7 @@ import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.material.fade
 import com.google.accompanist.placeholder.material.placeholder
 import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.DimenValues
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration
@@ -38,6 +43,16 @@ fun Modifier.defaultPlaceholder(
         highlight = PlaceholderHighlight.fade(),
     )
 }
+
+@SuppressLint("ComposableModifierFactory")
+@Composable
+fun Modifier.defaultTileRipple(
+    delay: Duration = 500.milliseconds,
+    shape: Shape = MaterialTheme.shapes.small,
+    onClick: (() -> Unit)?,
+) = clip(shape)
+    .doOnClick(delay, onClick)
+    .padding(DimenValues.ripple_inner_padding)
 
 fun Modifier.doOnClick(
     delay: Duration = 500.milliseconds,

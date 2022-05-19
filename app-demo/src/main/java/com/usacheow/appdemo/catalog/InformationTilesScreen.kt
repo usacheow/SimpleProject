@@ -19,6 +19,7 @@ import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.BadgeTileState
+import com.usacheow.coreuicompose.uikit.HeaderTileAction
 import com.usacheow.coreuicompose.uikit.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -48,13 +49,13 @@ fun InformationTilesScreen(navController: NavHostController) {
             contentPadding = insetAllExcludeTop(),
         ) {
             items(large()) {
-                it.Content(modifier = Modifier.padding(16.dp))
+                it.Content(modifier = Modifier.padding(8.dp))
             }
             items(medium()) {
-                it.Content(modifier = Modifier.padding(16.dp))
+                it.Content(modifier = Modifier.padding(8.dp))
             }
             items(small()) {
-                it.Content(modifier = Modifier.padding(16.dp))
+                it.Content(modifier = Modifier.padding(8.dp))
             }
             item {
                 LazyRow {
@@ -82,7 +83,7 @@ private fun large(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargeSecondary,
-        button = TextValue.Simple("button"),
+        action = HeaderTileAction.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.LargePrimary),
@@ -96,7 +97,7 @@ private fun medium(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumSecondary,
-        button = TextValue.Simple("button"),
+        action = HeaderTileAction.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.MediumPrimary),
@@ -110,7 +111,7 @@ private fun small(): List<WidgetState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallSecondary,
-        button = TextValue.Simple("button"),
+        action = HeaderTileAction.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
     HeaderTileState.shimmer(HeaderTileState.Type.SmallPrimary),

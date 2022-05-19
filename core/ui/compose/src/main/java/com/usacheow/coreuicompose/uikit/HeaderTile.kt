@@ -3,18 +3,16 @@ package com.usacheow.coreuicompose.uikit
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
-import com.usacheow.coreuicompose.tools.doOnClick
+import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
@@ -22,6 +20,7 @@ import com.usacheow.coreuitheme.compose.PreviewAppTheme
 data class HeaderTileState(
     val value: TextValue,
     val button: TextValue? = null,
+    val action: HeaderTileAction? = null,
     val clickListener: (() -> Unit)? = null,
     val type: Type = Type.MediumPrimary,
 ) : WidgetState {
@@ -57,13 +56,26 @@ data class HeaderTileState(
     }
 }
 
+sealed class HeaderTileAction {
+
+    data class Text(
+        val text: TextValue,
+    ) : HeaderTileAction()
+
+    data class Icon(
+        val icon: IconValue,
+    ) : HeaderTileAction()
+}
+
 @Composable
 fun HeaderTile(
     modifier: Modifier = Modifier,
     data: HeaderTileState,
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .defaultTileRipple(onClick = data.clickListener),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
@@ -91,17 +103,19 @@ fun HeaderTile(
             },
             modifier = Modifier.weight(1f),
         )
-        data.button?.get()?.let {
-            Text(
-                text = it,
+        when (data.action) {
+            is HeaderTileAction.Text -> Text(
+                text = data.action.text.get(),
                 maxLines = 1,
                 style = AppTheme.typography.labelMedium,
                 color = AppTheme.specificColorScheme.symbolSecondary,
-                modifier = Modifier
-                    .clip(AppTheme.shapes.extraSmall)
-                    .doOnClick(onClick = data.clickListener)
-                    .padding(8.dp),
             )
+            is HeaderTileAction.Icon -> androidx.compose.material.Icon(
+                painter = data.action.icon.get(),
+                contentDescription = null,
+                tint = AppTheme.specificColorScheme.symbolSecondary,
+            )
+            null -> {}
         }
     }
 }
@@ -114,7 +128,7 @@ private fun Preview() {
         HeaderTileState(
             value = TextValue.Simple("Title with button"),
             type = HeaderTileState.Type.MediumPrimary,
-            button = TextValue.Simple("button"),
+            action = HeaderTileAction.Text(TextValue.Simple("action")),
             clickListener = {},
         ).Content(Modifier)
     }
