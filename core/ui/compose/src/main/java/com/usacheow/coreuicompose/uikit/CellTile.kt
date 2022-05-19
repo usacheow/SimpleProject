@@ -17,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
@@ -26,7 +25,6 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
-import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
@@ -49,11 +47,15 @@ data class CellTileState(
 
     companion object {
         fun shimmer() = ShimmerState {
-            ShimmerTile(
-                modifier = it.padding(DimenValues.default_padding),
-                needBottomLine = false,
-                needRightIcon = false,
-            )
+            CellTileContainer(
+                modifier = it,
+                clickListener = null,
+            ) {
+                ShimmerTile(
+                    needBottomLine = false,
+                    needRightIcon = false,
+                )
+            }
         }
     }
 
@@ -82,13 +84,9 @@ fun CellTile(
     modifier: Modifier = Modifier,
     data: CellTileState,
 ) {
-    Row(
-        verticalAlignment = Alignment.Top,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(DimenValues.ripple_outer_padding)
-            .defaultTileRipple(shape = AppTheme.shapes.small, onClick = data.clickListener),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
+    CellTileContainer(
+        modifier = modifier,
+        clickListener = data.clickListener,
     ) {
         LeftPart(data.leftPart)
         MiddlePart(
@@ -99,6 +97,23 @@ fun CellTile(
         )
         RightPart(data.rightPart)
     }
+}
+
+@Composable
+private fun CellTileContainer(
+    modifier: Modifier = Modifier,
+    clickListener: (() -> Unit)?,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        verticalAlignment = Alignment.Top,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(DimenValues.ripple_outer_padding)
+            .defaultTileRipple(onClick = clickListener),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        content = content,
+    )
 }
 
 @Composable
@@ -206,7 +221,7 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
     }
 }
 
-private object CellTileConfig {
+object CellTileConfig {
     val IconSize = 40.dp
 }
 

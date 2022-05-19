@@ -42,9 +42,9 @@ fun ShimmerTile(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            if (needTopLine) ShimmerTileLine(width = 100.dp)
-            if (needMiddleLine) ShimmerTileLine(width = 200.dp)
-            if (needBottomLine) ShimmerTileLine(width = 150.dp)
+            if (needTopLine) ShimmerTileLine(width = ShimmerTileConfig.WidthExtraSmall)
+            if (needMiddleLine) ShimmerTileLine(width = ShimmerTileConfig.WidthExtraLarge)
+            if (needBottomLine) ShimmerTileLine(width = ShimmerTileConfig.WidthMedium)
         }
         if (needRightIcon) ShimmerTileCircle()
     }
@@ -54,7 +54,7 @@ fun ShimmerTile(
 fun ShimmerTileLine(
     width: Dp,
     modifier: Modifier = Modifier,
-    height: Dp = ShimmerTileConfig.linesHeight,
+    height: Dp = 16.dp,
 ) {
     Surface(
         color = AppTheme.specificColorScheme.shimmer,
@@ -82,9 +82,13 @@ fun ShimmerTileCircle(
     )
 }
 
-private object ShimmerTileConfig {
+object ShimmerTileConfig {
 
-    val linesHeight = 16.dp
+    val WidthExtraSmall = 100.dp
+    val WidthSmall = 125.dp
+    val WidthMedium = 175.dp
+    val WidthLarge = 225.dp
+    val WidthExtraLarge = 250.dp
 }
 
 @Preview(showBackground = true)

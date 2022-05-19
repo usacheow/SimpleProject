@@ -215,7 +215,7 @@ private fun IconButton(icon: IconValue, onClick: () -> Unit) {
     }
 }
 
-private object NumPadConfig {
+object NumPadConfig {
 
     val ButtonSize = 72.dp
     val ButtonMargin = 20.dp

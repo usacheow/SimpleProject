@@ -70,7 +70,7 @@ fun TagTile(
         else -> data.unselectedColor ?: TagTileDefaults.unselectedColor()
     }
 
-    TagCard(modifier = modifier, color = color, clickListener = data.clickListener) {
+    TagTileContainer(modifier = modifier, color = color, clickListener = data.clickListener) {
         Text(
             text = data.text.get(),
             color = AppTheme.specificColorScheme.symbolPrimary,
@@ -82,14 +82,14 @@ fun TagTile(
 
 @Composable
 fun TagTileShimmer(modifier: Modifier = Modifier) {
-    TagCard(modifier = modifier, color = TagTileDefaults.unselectedColor(), clickListener = null) {
+    TagTileContainer(modifier = modifier, color = TagTileDefaults.unselectedColor(), clickListener = null) {
         ShimmerTileLine(width = 40.dp)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TagCard(
+private fun TagTileContainer(
     modifier: Modifier = Modifier,
     color: TagTileState.DataColor,
     clickListener: (() -> Unit)?,

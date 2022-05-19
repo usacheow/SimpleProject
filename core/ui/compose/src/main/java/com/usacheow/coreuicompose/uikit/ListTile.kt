@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
@@ -20,7 +19,6 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
-import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
@@ -42,11 +40,15 @@ data class ListTileState(
 
     companion object {
         fun shimmer() = ShimmerState {
-            ShimmerTile(
-                modifier = it.padding(DimenValues.default_padding),
-                needTopLine = false,
-                needRightIcon = false,
-            )
+            ListTileContainer(
+                modifier = it,
+                clickListener = null,
+            ) {
+                ShimmerTile(
+                    needTopLine = false,
+                    needRightIcon = false,
+                )
+            }
         }
     }
 }
@@ -56,13 +58,9 @@ fun ListTile(
     modifier: Modifier = Modifier,
     data: ListTileState,
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(DimenValues.ripple_outer_padding)
-            .defaultTileRipple(shape = AppTheme.shapes.small, onClick = data.clickListener),
-        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal),
-        verticalAlignment = Alignment.CenterVertically,
+    ListTileContainer(
+        modifier = modifier,
+        clickListener = data.clickListener,
     ) {
         Icon(icon = data.leftImageInfo)
         Column(
@@ -75,6 +73,23 @@ fun ListTile(
         }
         Icon(icon = data.rightImageInfo)
     }
+}
+
+@Composable
+private fun ListTileContainer(
+    modifier: Modifier = Modifier,
+    clickListener: (() -> Unit)?,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(DimenValues.ripple_outer_padding)
+            .defaultTileRipple(onClick = clickListener),
+        horizontalArrangement = Arrangement.spacedBy(ListTileConfig.IconPaddingHorizontal),
+        verticalAlignment = Alignment.CenterVertically,
+        content = content,
+    )
 }
 
 @Composable
@@ -111,7 +126,7 @@ private fun SecondaryText(value: TextValue?) {
     }
 }
 
-private object ListTileConfig {
+object ListTileConfig {
     val IconPaddingHorizontal = DimenValues.default_padding
 }
 

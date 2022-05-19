@@ -50,7 +50,7 @@ fun BadgeTile(
     modifier: Modifier = Modifier,
     data: BadgeTileState,
 ) {
-    BadgeCard(
+    BadgeTileContainer(
         modifier = modifier,
         contentColor = data.contentColor ?: AppTheme.specificColorScheme.onSurface,
         containerColor = data.containerColor ?: AppTheme.specificColorScheme.surface,
@@ -82,7 +82,7 @@ fun BadgeTileShimmer(
     modifier: Modifier = Modifier,
     hasHeader: Boolean,
 ) {
-    BadgeCard(
+    BadgeTileContainer(
         modifier = modifier,
         contentColor = AppTheme.specificColorScheme.symbolPrimary,
         containerColor = AppTheme.specificColorScheme.surface,
@@ -104,7 +104,7 @@ fun BadgeTileShimmer(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun BadgeCard(
+private fun BadgeTileContainer(
     modifier: Modifier = Modifier,
     contentColor: Color,
     containerColor: Color,
@@ -149,7 +149,7 @@ private fun BadgeCard(
     }
 }
 
-private object BadgeTileConfig {
+object BadgeTileConfig {
     val LinesMinWidth = 120.dp
     val LinesMaxWidth = 156.dp
     val LinesBetweenPadding = 8.dp

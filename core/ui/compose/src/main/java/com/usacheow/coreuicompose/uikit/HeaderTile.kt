@@ -2,6 +2,7 @@ package com.usacheow.coreuicompose.uikit
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,14 +33,18 @@ data class HeaderTileState(
 
     companion object {
         fun shimmer(type: Type = Type.MediumPrimary) = ShimmerState {
-            ShimmerTile(
+            HeaderTileContainer(
                 modifier = it,
-                needTopLine = type == Type.SmallPrimary || type == Type.SmallSecondary,
-                needMiddleLine = type == Type.LargePrimary || type == Type.LargeSecondary,
-                needBottomLine = type == Type.MediumPrimary || type == Type.MediumSecondary,
-                needRightIcon = false,
-                needLeftIcon = false,
-            )
+                clickListener = null,
+            ) {
+                ShimmerTile(
+                    needTopLine = type == Type.SmallPrimary || type == Type.SmallSecondary,
+                    needMiddleLine = type == Type.LargePrimary || type == Type.LargeSecondary,
+                    needBottomLine = type == Type.MediumPrimary || type == Type.MediumSecondary,
+                    needRightIcon = false,
+                    needLeftIcon = false,
+                )
+            }
         }
 
         fun largePrimary(value: TextValue) = HeaderTileState(value = value, type = Type.LargePrimary)
@@ -72,11 +77,9 @@ fun HeaderTile(
     modifier: Modifier = Modifier,
     data: HeaderTileState,
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .defaultTileRipple(onClick = data.clickListener),
-        verticalAlignment = Alignment.CenterVertically
+    HeaderTileContainer(
+        modifier = modifier,
+        clickListener = data.clickListener,
     ) {
         Text(
             text = data.value.get(),
@@ -118,6 +121,21 @@ fun HeaderTile(
             null -> {}
         }
     }
+}
+
+@Composable
+private fun HeaderTileContainer(
+    modifier: Modifier = Modifier,
+    clickListener: (() -> Unit)?,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .defaultTileRipple(onClick = clickListener),
+        verticalAlignment = Alignment.CenterVertically,
+        content = content,
+    )
 }
 
 @Preview(showBackground = true)

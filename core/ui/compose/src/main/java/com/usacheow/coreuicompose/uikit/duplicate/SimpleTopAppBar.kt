@@ -237,6 +237,6 @@ private fun TopAppBarLayout(
     }
 }
 
-private object SimpleTopAppBarConfig {
+object SimpleTopAppBarConfig {
     val ContainerHeight = 64.dp
 }
