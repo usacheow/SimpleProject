@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.status
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -24,6 +24,7 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 

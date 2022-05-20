@@ -26,6 +26,7 @@ import com.usacheow.coreuicompose.tools.ShimmerState
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.uikit.status.ShimmerTile
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
 import com.usacheow.coreuitheme.compose.PreviewAppTheme

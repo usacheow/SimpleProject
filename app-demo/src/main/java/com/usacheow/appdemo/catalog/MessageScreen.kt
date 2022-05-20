@@ -17,7 +17,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.WidgetState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.MessageBannerState
+import com.usacheow.coreuicompose.uikit.status.MessageBannerState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 

@@ -4,7 +4,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.NumberFormat
 
-fun Double.formatDigits() = try {
+fun Double.formatToMoney() = try {
     NumberFormat.getNumberInstance(DEFAULT_LOCALE).format(this.round())
 } catch (ex: NumberFormatException) {
     this.toString()

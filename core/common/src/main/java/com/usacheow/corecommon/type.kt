@@ -30,7 +30,10 @@ data class MoneyDto(
     @SerialName("currency") val currency: CurrencyType,
     @SerialName("value") val value: Double,
 ) {
-    fun getFormattedMoney() = "%s %s".format(value.formatDigits(), currency.symbol)
+
+    fun getFormattedMoney() = value.formatToMoney()
+
+    fun getFormattedMoneyWithCurrency() = "%s %s".format(getFormattedMoney(), currency.symbol)
 }
 
 @Serializable
