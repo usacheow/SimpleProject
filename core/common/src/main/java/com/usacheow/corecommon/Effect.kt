@@ -2,7 +2,14 @@ package com.usacheow.corecommon
 
 object Completable
 
-sealed class State<out T : Any>
+sealed class State<out T : Any> {
+
+    open val findDataOrCache: T?
+        get() = when (this) {
+            is Effect -> this.findDataOrCache
+            else -> null
+        }
+}
 
 class Loading<T : Any>(val data: T? = null) : State<T>()
 
@@ -31,7 +38,7 @@ class Effect<DATA : Any> private constructor(
         }
 
     val requireDataOrCache: DATA get() = requireNotNull(findDataOrCache)
-    val findDataOrCache: DATA?
+    override val findDataOrCache: DATA?
         get() = when (value) {
             is Success<DATA> -> value.data
             is Error<DATA> -> value.cache
