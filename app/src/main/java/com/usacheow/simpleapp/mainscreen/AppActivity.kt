@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.corenavigation.FeatureRoute
 import com.usacheow.corenavigation.MainFeatureProvider
-import com.usacheow.corenavigation.OnBoardingFeatureProvider
+import com.usacheow.corenavigation.ExampleFeatureProvider
 import com.usacheow.coreui.viewmodel.observe
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -30,7 +30,7 @@ import com.usacheow.coreuitheme.R as CoreUiThemeR
 class AppActivity : FragmentActivity() {
 
     @Inject
-    lateinit var onBoardingFeatureProvider: OnBoardingFeatureProvider
+    lateinit var exampleFeatureProvider: ExampleFeatureProvider
 
     @Inject
     lateinit var mainFeatureProvider: MainFeatureProvider
@@ -38,7 +38,7 @@ class AppActivity : FragmentActivity() {
     @Inject
     lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
-    private val startDestination = FeatureRoute.onBoarding
+    private val startDestination = FeatureRoute.example
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +54,7 @@ class AppActivity : FragmentActivity() {
                 viewModel.initialScreenEvent.observe { value ->
                     val route = when (value) {
                         AppViewModel.Action.OpenAppScreen -> FeatureRoute.authZone
-                        AppViewModel.Action.OpenOnBoardingScreen -> FeatureRoute.onBoarding
+                        AppViewModel.Action.OpenOnBoardingScreen -> FeatureRoute.example
                     }
                     navController.navigate(route.route) {
                         popUpTo(startDestination.route) {
@@ -73,8 +73,8 @@ class AppActivity : FragmentActivity() {
     @Composable
     private fun NavHost(navController: NavHostController) {
         NavHost(navController = navController, startDestination = startDestination.route) {
-            with(onBoardingFeatureProvider) {
-                onBoardingGraph(FeatureRoute.onBoarding, navController)
+            with(exampleFeatureProvider) {
+                exampleGraph(FeatureRoute.example, navController)
             }
             with(bottomBarFeatureProvider) {
                 bottomBarGraph(FeatureRoute.authZone, authZoneBottomBarItems())

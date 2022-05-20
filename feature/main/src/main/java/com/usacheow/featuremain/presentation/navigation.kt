@@ -14,7 +14,7 @@ import com.usacheow.featuremain.presentation.screen.MainAScreen
 import com.usacheow.featuremain.presentation.screen.MainBScreen
 import com.usacheow.featuremain.presentation.screen.Mock2Screen
 import com.usacheow.featuremain.presentation.screen.MockScreen
-import com.usacheow.featuremain.presentation.viewmodels.BViewModel
+import com.usacheow.featuremain.presentation.viewmodel.BViewModel
 import javax.inject.Inject
 
 internal enum class ScreenRoute(val route: String) {

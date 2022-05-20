@@ -1,4 +1,4 @@
-package com.usacheow.featuremain.presentation.viewmodels
+package com.usacheow.featuremain.presentation.viewmodel
 
 import com.usacheow.corecommon.Effect
 import com.usacheow.corecommon.State

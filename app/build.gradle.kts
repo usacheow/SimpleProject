@@ -84,7 +84,7 @@ dependencies {
 
     implementation(projects.featureBottomBar)
     implementation(projects.featureMain)
-    implementation(projects.featureOnboarding)
+    implementation(projects.featureExample)
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.appUpdater)

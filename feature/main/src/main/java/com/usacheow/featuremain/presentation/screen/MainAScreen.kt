@@ -17,8 +17,8 @@ import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
 import com.usacheow.coreuicompose.uikit.ListTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
-import com.usacheow.featuremain.presentation.viewmodels.AViewModel
-import com.usacheow.featuremain.presentation.viewmodels.CViewModel
+import com.usacheow.featuremain.presentation.viewmodel.AViewModel
+import com.usacheow.featuremain.presentation.viewmodel.CViewModel
 
 @Composable
 fun MainAScreen(

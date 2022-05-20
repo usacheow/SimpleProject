@@ -1,11 +1,11 @@
 package com.usacheow.simpleapp
 
 import com.usacheow.corenavigation.BottomBarFeatureProvider
+import com.usacheow.corenavigation.ExampleFeatureProvider
 import com.usacheow.corenavigation.MainFeatureProvider
-import com.usacheow.corenavigation.OnBoardingFeatureProvider
 import com.usacheow.featurebottombar.BottomBarFeatureProviderImpl
+import com.usacheow.featureexample.presentation.ExampleFeatureProviderImpl
 import com.usacheow.featuremain.presentation.MainFeatureProviderImpl
-import com.usacheow.featureonboarding.presentation.OnBoardingFeatureProviderImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -26,5 +26,5 @@ interface FeatureProviderModule {
 
     @Binds
     @Singleton
-    fun onBoardingProvider(provider: OnBoardingFeatureProviderImpl): OnBoardingFeatureProvider
+    fun exampleProvider(provider: ExampleFeatureProviderImpl): ExampleFeatureProvider
 }

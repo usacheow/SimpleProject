@@ -5,5 +5,5 @@ enum class FeatureRoute(val route: String) {
     main("mainFlow"),
     mock("mockFlow"),
     mock2("mock2Flow"),
-    onBoarding("onBoardingFlow"),
+    example("exampleFlow"),
 }

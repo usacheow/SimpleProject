@@ -5,11 +5,6 @@ import androidx.annotation.StringRes
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 
-interface OnBoardingFeatureProvider {
-
-    fun NavGraphBuilder.onBoardingGraph(route: FeatureRoute, controller: NavHostController)
-}
-
 interface MainFeatureProvider {
 
     fun NavGraphBuilder.mainGraph(route: FeatureRoute, controller: NavHostController)
@@ -29,4 +24,9 @@ interface BottomBarFeatureProvider {
         val route: FeatureRoute,
         val builder: NavGraphBuilder.(NavHostController) -> Unit,
     )
+}
+
+interface ExampleFeatureProvider {
+
+    fun NavGraphBuilder.exampleGraph(route: FeatureRoute, controller: NavHostController)
 }
