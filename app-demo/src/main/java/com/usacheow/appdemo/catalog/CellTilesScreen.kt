@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.CellTileState
@@ -55,7 +55,7 @@ fun CellTilesScreen(navController: NavHostController) {
 }
 
 @Composable
-private fun items(): List<WidgetState> = listOf(
+private fun items(): List<TileState> = listOf(
     CellTileState.shimmer(),
     CellTileState(
         title = TextValue.Simple("Cell tile title"),

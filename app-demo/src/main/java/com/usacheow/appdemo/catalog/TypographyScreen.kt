@@ -18,7 +18,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.HeaderTileState
@@ -87,7 +87,7 @@ private fun items() = listOf(
 data class TextItem(
     val style: TextStyle,
     val name: String,
-) : WidgetState {
+) : TileState {
 
     @Composable
     override fun Content(modifier: Modifier) {

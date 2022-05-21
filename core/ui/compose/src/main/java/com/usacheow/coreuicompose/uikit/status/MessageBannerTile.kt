@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -35,7 +35,7 @@ data class MessageBannerState(
     val button: TextValue? = null,
     val modifier: Modifier = Modifier,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState {
+) : TileState {
 
     @Composable
     override fun Content(modifier: Modifier) {

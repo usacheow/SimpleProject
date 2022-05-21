@@ -18,8 +18,8 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TilesShimmerState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -32,7 +32,7 @@ data class BadgeTileState(
     val contentColor: Color? = null,
     val containerColor: Color? = null,
     val clickListener: (() -> Unit)? = null,
-) : WidgetState {
+) : TileState {
 
     @Composable
     override fun Content(modifier: Modifier) {
@@ -40,7 +40,7 @@ data class BadgeTileState(
     }
 
     companion object {
-        fun shimmer(hasHeader: Boolean = true) = ShimmerState {
+        fun shimmer(hasHeader: Boolean = true) = TilesShimmerState {
             BadgeTileShimmer(it, hasHeader)
         }
     }

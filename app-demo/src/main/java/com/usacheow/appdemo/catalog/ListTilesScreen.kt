@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.ListTileState
@@ -51,7 +51,7 @@ fun ListTilesScreen(navController: NavHostController) {
 }
 
 @Composable
-private fun items(): List<WidgetState> = listOf(
+private fun items(): List<TileState> = listOf(
     ListTileState.shimmer(),
     ListTileState(
         value = TextValue.Simple("Main information"),

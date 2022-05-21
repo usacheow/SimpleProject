@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TilesShimmerState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTile
@@ -25,7 +25,7 @@ data class HeaderTileState(
     val action: Action? = null,
     val clickListener: (() -> Unit)? = null,
     val type: Type = Type.MediumPrimary,
-) : WidgetState {
+) : TileState {
 
     @Composable
     override fun Content(modifier: Modifier) {
@@ -33,7 +33,7 @@ data class HeaderTileState(
     }
 
     companion object {
-        fun shimmer(type: Type = Type.MediumPrimary) = ShimmerState {
+        fun shimmer(type: Type = Type.MediumPrimary) = TilesShimmerState {
             HeaderTileContainer(
                 modifier = it,
                 clickListener = null,

@@ -15,8 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.ShimmerState
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TilesShimmerState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -29,7 +29,7 @@ data class TagTileState(
     val unselectedColor: DataColor? = null,
     val selectedColor: DataColor? = null,
     val clickListener: () -> Unit,
-) : WidgetState {
+) : TileState {
 
     @Composable
     override fun Content(modifier: Modifier) {
@@ -37,7 +37,7 @@ data class TagTileState(
     }
 
     companion object {
-        fun shimmer() = ShimmerState { TagTileShimmer(it) }
+        fun shimmer() = TilesShimmerState { TagTileShimmer(it) }
     }
 
     data class DataColor(

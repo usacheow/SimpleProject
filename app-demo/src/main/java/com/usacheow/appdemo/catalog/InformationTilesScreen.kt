@@ -15,7 +15,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.BadgeTileState
@@ -74,7 +74,7 @@ fun InformationTilesScreen(navController: NavHostController) {
     }
 }
 
-private fun large(): List<WidgetState> = listOf(
+private fun large(): List<TileState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargePrimary,
@@ -88,7 +88,7 @@ private fun large(): List<WidgetState> = listOf(
     HeaderTileState.shimmer(HeaderTileState.Type.LargePrimary),
 )
 
-private fun medium(): List<WidgetState> = listOf(
+private fun medium(): List<TileState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumPrimary,
@@ -102,7 +102,7 @@ private fun medium(): List<WidgetState> = listOf(
     HeaderTileState.shimmer(HeaderTileState.Type.MediumPrimary),
 )
 
-private fun small(): List<WidgetState> = listOf(
+private fun small(): List<TileState> = listOf(
     HeaderTileState(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallPrimary,
@@ -117,7 +117,7 @@ private fun small(): List<WidgetState> = listOf(
 )
 
 @Composable
-private fun badges(): List<WidgetState> = listOf(
+private fun badges(): List<TileState> = listOf(
     BadgeTileState.shimmer(),
     BadgeTileState(
         header = TextValue.Simple("Badge tile header text"),
@@ -129,7 +129,7 @@ private fun badges(): List<WidgetState> = listOf(
 )
 
 @Composable
-private fun smallBadges(): List<WidgetState> = listOf(
+private fun smallBadges(): List<TileState> = listOf(
     BadgeTileState.shimmer(hasHeader = false),
     BadgeTileState(
         value = TextValue.Simple("Badge tile text"),

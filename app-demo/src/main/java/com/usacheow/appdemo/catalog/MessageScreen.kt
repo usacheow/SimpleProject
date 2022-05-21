@@ -14,7 +14,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.WidgetState
+import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.status.MessageBannerState
@@ -52,7 +52,7 @@ fun MessageScreen(navController: NavHostController) {
 }
 
 @Composable
-private fun items(): List<WidgetState> = listOf(
+private fun items(): List<TileState> = listOf(
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
