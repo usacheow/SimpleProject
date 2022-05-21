@@ -6,18 +6,22 @@ import androidx.annotation.CallSuper
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.corenavigation.FeatureRoute
+import com.usacheow.corenavigation.ScreenRoute
 import com.usacheow.corenavigation.MainFeatureProvider
 import com.usacheow.corenavigation.ExampleFeatureProvider
-import com.usacheow.coreui.viewmodel.observe
+import com.usacheow.corenavigation.TabRoute
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,76 +34,87 @@ import com.usacheow.coreuitheme.R as CoreUiThemeR
 class AppActivity : FragmentActivity() {
 
     @Inject
-    lateinit var exampleFeatureProvider: ExampleFeatureProvider
+    lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
 
     @Inject
     lateinit var mainFeatureProvider: MainFeatureProvider
 
     @Inject
-    lateinit var bottomBarFeatureProvider: BottomBarFeatureProvider
+    lateinit var exampleFeatureProvider: ExampleFeatureProvider
 
-    private val startDestination = FeatureRoute.example
+    private var shouldKeepSplashScreen = true
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        installSplashScreen()
+        installSplashScreen().setKeepOnScreenCondition {
+            shouldKeepSplashScreen
+        }
 
         setContent {
             AppTheme(calculateWindowSizeClass(this)) {
-                val navController = rememberNavController()
-                val viewModel = viewModel<AppViewModel>()
-
-                viewModel.initialScreenEvent.observe { value ->
-                    val route = when (value) {
-                        AppViewModel.Action.OpenAppScreen -> FeatureRoute.authZone
-                        AppViewModel.Action.OpenOnBoardingScreen -> FeatureRoute.example
-                    }
-                    navController.navigate(route.route) {
-                        popUpTo(startDestination.route) {
-                            inclusive = true
-                        }
-                        launchSingleTop = true
-                    }
+                SideEffect {
+                    shouldKeepSplashScreen = false
                 }
-
                 SystemBarsIconsColor()
-                NavHost(navController)
+                AppScreen()
             }
         }
     }
 
     @Composable
-    private fun NavHost(navController: NavHostController) {
-        NavHost(navController = navController, startDestination = startDestination.route) {
-            with(exampleFeatureProvider) {
-                exampleGraph(FeatureRoute.example, navController)
-            }
-            with(bottomBarFeatureProvider) {
-                bottomBarGraph(FeatureRoute.authZone, authZoneBottomBarItems())
-            }
+    private fun AppScreen() {
+        val navController = rememberNavController()
+        val viewModel = viewModel<AppViewModel>()
+        val currentFlow by viewModel.currentFlowState.collectAsState()
+
+        when (currentFlow) {
+            AppViewModel.CurrentFlow.Main -> MainFlow(navController)
         }
     }
 
-    private fun authZoneBottomBarItems() = listOf(
+    @Composable
+    private fun MainFlow(navController: NavHostController) {
+        NavHost(navController = navController, startDestination = ScreenRoute.mainBottomBar.route) {
+            with(bottomBarFeatureProvider) { bottomBarGraph(ScreenRoute.mainBottomBar, mainBottomBarItems()) }
+            with(exampleFeatureProvider) { exampleGraph(navController) }
+        }
+    }
+
+    private fun mainBottomBarItems() = listOf(
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = FeatureRoute.main,
-            builder = { with(mainFeatureProvider) { mainGraph(FeatureRoute.main, it) } },
+            route = TabRoute.mainTab1,
+            startDestination = ScreenRoute.mock1,
+            builder = { mainTab1Graph(it) },
         ),
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = FeatureRoute.mock,
-            builder = { with(mainFeatureProvider) { mockGraph(FeatureRoute.mock, it) } },
+            route = TabRoute.mainTab2,
+            startDestination = ScreenRoute.mock2,
+            builder = { mainTab2Graph(it) },
         ),
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = FeatureRoute.mock2,
-            builder = { with(mainFeatureProvider) { mock2Graph(FeatureRoute.mock2, it) } },
+            route = TabRoute.mainTab3,
+            startDestination = ScreenRoute.mock3,
+            builder = { mainTab3Graph(it) },
         ),
     )
+
+    private fun NavGraphBuilder.mainTab1Graph(controller: NavHostController) {
+        with(mainFeatureProvider) { mock1Graph(controller) }
+    }
+
+    private fun NavGraphBuilder.mainTab2Graph(controller: NavHostController) {
+        with(mainFeatureProvider) { mock2Graph(controller) }
+    }
+
+    private fun NavGraphBuilder.mainTab3Graph(controller: NavHostController) {
+        with(mainFeatureProvider) { mock3Graph(controller) }
+    }
 }

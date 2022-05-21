@@ -7,26 +7,27 @@ import androidx.navigation.NavHostController
 
 interface MainFeatureProvider {
 
-    fun NavGraphBuilder.mainGraph(route: FeatureRoute, controller: NavHostController)
+    fun NavGraphBuilder.mock1Graph(controller: NavHostController)
 
-    fun NavGraphBuilder.mockGraph(route: FeatureRoute, controller: NavHostController)
+    fun NavGraphBuilder.mock2Graph(controller: NavHostController)
 
-    fun NavGraphBuilder.mock2Graph(route: FeatureRoute, controller: NavHostController)
+    fun NavGraphBuilder.mock3Graph(controller: NavHostController)
 }
 
 interface BottomBarFeatureProvider {
 
-    fun NavGraphBuilder.bottomBarGraph(route: FeatureRoute, items: List<ScreenItem>)
+    fun NavGraphBuilder.bottomBarGraph(route: ScreenRoute, items: List<ScreenItem>)
 
     data class ScreenItem(
         @DrawableRes val iconRes: Int,
         @StringRes val labelRes: Int,
-        val route: FeatureRoute,
+        val route: TabRoute,
+        val startDestination: ScreenRoute,
         val builder: NavGraphBuilder.(NavHostController) -> Unit,
     )
 }
 
 interface ExampleFeatureProvider {
 
-    fun NavGraphBuilder.exampleGraph(route: FeatureRoute, controller: NavHostController)
+    fun NavGraphBuilder.exampleGraph(controller: NavHostController)
 }

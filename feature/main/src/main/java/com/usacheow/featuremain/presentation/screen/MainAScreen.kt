@@ -18,41 +18,30 @@ import com.usacheow.coreuicompose.uikit.ListTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodel.AViewModel
-import com.usacheow.featuremain.presentation.viewmodel.CViewModel
 
 @Composable
 fun MainAScreen(
-    graphRoute: String,
     navHostController: NavHostController,
 ) {
     val router = remember(navHostController) { ScreenNavigator(navHostController) }
-    val parentEntry = remember {
-        navHostController.getBackStackEntry(graphRoute)
-    }
-    val aViewModel = hiltViewModel<AViewModel>(parentEntry)
-    val cViewModel = hiltViewModel<CViewModel>()
+    val viewModel = hiltViewModel<AViewModel>()
 
     MainAScreen(
-        selectionNumber = aViewModel.x,
-        onNextClick = {
-            aViewModel.x += 1
-            router.toBScreen(it)
-        },
+        onNextClick = router::toMock1SecondScreen,
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun MainAScreen(
-    selectionNumber: Int,
-    onNextClick: (String) -> Unit,
+    onNextClick: () -> Unit,
 ) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Main A screen $selectionNumber"),
+                title = TextValue.Simple("Main A screen"),
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
@@ -65,7 +54,7 @@ private fun MainAScreen(
             items(20) {
                 ListTileState(
                     value = TextValue.Simple("item $it"),
-                    clickListener = { onNextClick(it.toString()) },
+                    clickListener = onNextClick,
                 ).Content(modifier = Modifier)
             }
         }

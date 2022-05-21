@@ -16,6 +16,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationDefaults
@@ -34,13 +35,14 @@ fun BottomBarScreen(
         bottomBar = { BottomBar(navController, items) },
     ) {
         it
-        CompositionLocalProvider(
-            LocalBottomNavigationHeight provides BottomNavigationDefaults.Height,
-        ) {
+        CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationDefaults.Height) {
             NavHost(navController = navController, startDestination = firstRootRoute) {
                 items.forEach {
-                    with(it) {
-                        builder(navController)
+                    navigation(
+                        route = it.route.route,
+                        startDestination = it.startDestination.route,
+                    ) {
+                        with(it) { builder(navController) }
                     }
                 }
             }

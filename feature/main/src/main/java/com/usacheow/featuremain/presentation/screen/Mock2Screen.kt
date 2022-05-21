@@ -25,7 +25,7 @@ fun Mock2Screen(
     val router = remember(navHostController) { ScreenNavigator(navHostController) }
 
     Mock2Screen(
-        onNextClick = router::toMock2BScreen,
+        onNextClick = router::toMock3SecondScreen,
     )
 }
 
