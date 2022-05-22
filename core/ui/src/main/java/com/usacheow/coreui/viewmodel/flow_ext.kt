@@ -5,7 +5,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
@@ -32,7 +31,7 @@ inline fun <reified T> Flow<T>.observe(
         lifecycleOwner.lifecycleScope.launch {
             onEach(action)
                 .flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState)
-                .launchIn(lifecycleOwner.lifecycle.coroutineScope)
+                .launchIn(this)
         }
     }
 }

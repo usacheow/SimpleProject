@@ -17,7 +17,7 @@ import kotlinx.serialization.json.Json
 
 const val ARG_KEY = "arg"
 
-inline fun <reified ARG> ARG?.toQuery() = ARG_KEY + "=" + this?.let { Json.encodeToString(it) }
+inline fun <reified ARG> ARG.toQuery() = ARG_KEY + "=" + Json.encodeToString(this)
 inline fun <reified ARG> SavedStateHandle.getArg(): ARG? = this.get<String>(ARG_KEY)?.let { Json.decodeFromString(it) }
 inline fun <reified ARG> SavedStateHandle.requireArgs(): ARG = requireNotNull(getArg())
 
