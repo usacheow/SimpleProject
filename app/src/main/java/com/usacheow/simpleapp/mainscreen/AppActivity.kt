@@ -17,11 +17,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.usacheow.corenavigation.AppRoute
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.corenavigation.ScreenRoute
 import com.usacheow.corenavigation.MainFeatureProvider
 import com.usacheow.corenavigation.ExampleFeatureProvider
-import com.usacheow.corenavigation.TabRoute
+import com.usacheow.corenavigation.base.createRoute
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,8 +76,8 @@ class AppActivity : FragmentActivity() {
 
     @Composable
     private fun MainFlow(navController: NavHostController) {
-        NavHost(navController = navController, startDestination = ScreenRoute.mainBottomBar.route) {
-            with(bottomBarFeatureProvider) { bottomBarGraph(ScreenRoute.mainBottomBar, mainBottomBarItems()) }
+        NavHost(navController = navController, startDestination = createRoute(AppRoute.MainBottomBar)) {
+            with(bottomBarFeatureProvider) { bottomBarGraph(AppRoute.MainBottomBar, mainBottomBarItems()) }
             with(exampleFeatureProvider) { exampleGraph(navController) }
         }
     }
@@ -86,22 +86,22 @@ class AppActivity : FragmentActivity() {
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = TabRoute.mainTab1,
-            startDestination = ScreenRoute.mock1,
+            route = AppRoute.MainBottomBar.MainTab1,
+            startDestination = AppRoute.MainBottomBar.Mock1,
             builder = { mainTab1Graph(it) },
         ),
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = TabRoute.mainTab2,
-            startDestination = ScreenRoute.mock2,
+            route = AppRoute.MainBottomBar.MainTab2,
+            startDestination = AppRoute.MainBottomBar.Mock2,
             builder = { mainTab2Graph(it) },
         ),
         BottomBarFeatureProvider.ScreenItem(
             iconRes = CoreUiThemeR.drawable.ic_logo,
             labelRes = CoreCommonR.string.bb_example,
-            route = TabRoute.mainTab3,
-            startDestination = ScreenRoute.mock3,
+            route = AppRoute.MainBottomBar.MainTab3,
+            startDestination = AppRoute.MainBottomBar.Mock3,
             builder = { mainTab3Graph(it) },
         ),
     )

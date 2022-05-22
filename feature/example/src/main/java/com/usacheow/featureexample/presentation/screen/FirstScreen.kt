@@ -35,7 +35,7 @@ fun FirstScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FirstScreen(
-    onNextClick: () -> Unit,
+    onNextClick: (String) -> Unit,
 ) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
     Scaffold(
@@ -50,7 +50,7 @@ private fun FirstScreen(
     ) {
         Column(modifier = Modifier.padding(it)) {
             Text("First screen content", modifier = Modifier.padding(24.dp))
-            Button(onClick = onNextClick) {
+            Button(onClick = { onNextClick("Arg") }) {
                 Text("Second screen")
             }
         }

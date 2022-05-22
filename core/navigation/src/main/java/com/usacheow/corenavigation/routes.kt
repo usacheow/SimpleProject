@@ -1,21 +1,30 @@
 package com.usacheow.corenavigation
 
-enum class ScreenRoute(val route: String) {
-    mainBottomBar("mainBottomBar"),
+import kotlinx.serialization.Serializable
 
-    mock1("mock1"),
-    mock1Second("mock1Second"),
-    mock2("mock2"),
-    mock2Second("mock2Second"),
-    mock3("mock3"),
-    mock3Second("mock3Second"),
+sealed class Route(val path: String)
 
-    exampleFirst("exampleFirst"),
-    exampleSecond("exampleSecond"),
-}
+sealed class RouteWithArg(val path: String)
 
-enum class TabRoute(val route: String) {
-    mainTab1("mainTab1"),
-    mainTab2("mainTab2"),
-    mainTab3("mainTab3"),
+object AppRoute {
+
+    object MainBottomBar : Route("MainBottomBar") {
+
+        object MainTab1 : Route("mainTab1")
+        object MainTab2 : Route("mainTab2")
+        object MainTab3 : Route("mainTab3")
+
+        object Mock1 : Route("Mock1")
+        object Mock1Second : Route("Mock1Second")
+        object Mock2 : Route("Mock2")
+        object Mock2Second : Route("Mock2Second")
+        object Mock3 : Route("Mock3")
+        object Mock3Second : Route("Mock3Second")
+    }
+
+    object ExampleFirst : Route("ExampleFirst")
+    object ExampleSecond : RouteWithArg("ExampleSecond") {
+        @Serializable
+        data class Args(val index: String)
+    }
 }

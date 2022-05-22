@@ -18,6 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
+import com.usacheow.corenavigation.base.createRoute
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationDefaults
 import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
@@ -29,18 +30,18 @@ fun BottomBarScreen(
     items: List<BottomBarFeatureProvider.ScreenItem>,
 ) {
     val navController = rememberNavController()
-    val firstRootRoute = items.first().route.route
+    val firstRootRoute = items.first().route
 
     Scaffold(
         bottomBar = { BottomBar(navController, items) },
     ) {
         it
         CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationDefaults.Height) {
-            NavHost(navController = navController, startDestination = firstRootRoute) {
+            NavHost(navController = navController, startDestination = createRoute(firstRootRoute)) {
                 items.forEach {
                     navigation(
-                        route = it.route.route,
-                        startDestination = it.startDestination.route,
+                        route = createRoute(it.route),
+                        startDestination = createRoute(it.startDestination),
                     ) {
                         with(it) { builder(navController) }
                     }
@@ -65,8 +66,8 @@ private fun BottomBar(
                 alwaysShowLabel = false,
                 icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
                 label = { Text(stringResource(screen.labelRes)) },
-                selected = currentDestination?.hierarchy?.any { it.route == screen.route.route } == true,
-                onClick = { navController.switchTo(screen.route.route) }
+                selected = currentDestination?.hierarchy?.any { it.route == createRoute(screen.route) } == true,
+                onClick = { navController.switchTo(createRoute(screen.route)) }
             )
         }
     }

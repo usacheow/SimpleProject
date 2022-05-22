@@ -16,13 +16,13 @@ interface MainFeatureProvider {
 
 interface BottomBarFeatureProvider {
 
-    fun NavGraphBuilder.bottomBarGraph(route: ScreenRoute, items: List<ScreenItem>)
+    fun NavGraphBuilder.bottomBarGraph(route: Route, items: List<ScreenItem>)
 
     data class ScreenItem(
         @DrawableRes val iconRes: Int,
         @StringRes val labelRes: Int,
-        val route: TabRoute,
-        val startDestination: ScreenRoute,
+        val route: Route,
+        val startDestination: Route,
         val builder: NavGraphBuilder.(NavHostController) -> Unit,
     )
 }

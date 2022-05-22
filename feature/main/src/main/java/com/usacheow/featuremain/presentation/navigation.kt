@@ -2,10 +2,11 @@ package com.usacheow.featuremain.presentation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
-import com.usacheow.corenavigation.ScreenRoute
+import com.usacheow.corenavigation.AppRoute
 import com.usacheow.corenavigation.MainFeatureProvider
 import com.usacheow.corenavigation.base.Navigator
+import com.usacheow.corenavigation.base.composable
+import com.usacheow.corenavigation.base.navigate
 import com.usacheow.featuremain.presentation.screen.MainAScreen
 import com.usacheow.featuremain.presentation.screen.MainBScreen
 import com.usacheow.featuremain.presentation.screen.Mock2Screen
@@ -14,27 +15,27 @@ import javax.inject.Inject
 
 internal class ScreenNavigator(navHostController: NavHostController) : Navigator(navHostController) {
 
-    fun toMock1SecondScreen() = navHostController.navigate(ScreenRoute.mock1Second.route)
+    fun toMock1SecondScreen() = navHostController.navigate(AppRoute.MainBottomBar.Mock1Second)
 
-    fun toMock2SecondScreen() = navHostController.navigate(ScreenRoute.mock2Second.route)
+    fun toMock2SecondScreen() = navHostController.navigate(AppRoute.MainBottomBar.Mock2Second)
 
-    fun toMock3SecondScreen() = navHostController.navigate(ScreenRoute.mock3Second.route)
+    fun toMock3SecondScreen() = navHostController.navigate(AppRoute.MainBottomBar.Mock3Second)
 }
 
 class MainFeatureProviderImpl @Inject constructor() : MainFeatureProvider {
 
     override fun NavGraphBuilder.mock1Graph(controller: NavHostController) {
-        composable(ScreenRoute.mock1.route) { MainAScreen(controller) }
-        composable(ScreenRoute.mock1Second.route) { MainBScreen(controller) }
+        composable(AppRoute.MainBottomBar.Mock1) { MainAScreen(controller) }
+        composable(AppRoute.MainBottomBar.Mock1Second) { MainBScreen(controller) }
     }
 
     override fun NavGraphBuilder.mock2Graph(controller: NavHostController) {
-        composable(ScreenRoute.mock2.route) { MockScreen(controller) }
-        composable(ScreenRoute.mock2Second.route) { MainBScreen(controller) }
+        composable(AppRoute.MainBottomBar.Mock2) { MockScreen(controller) }
+        composable(AppRoute.MainBottomBar.Mock2Second) { MainBScreen(controller) }
     }
 
     override fun NavGraphBuilder.mock3Graph(controller: NavHostController) {
-        composable(ScreenRoute.mock3.route) { Mock2Screen(controller) }
-        composable(ScreenRoute.mock3Second.route) { MainBScreen(controller) }
+        composable(AppRoute.MainBottomBar.Mock3) { Mock2Screen(controller) }
+        composable(AppRoute.MainBottomBar.Mock3Second) { MainBScreen(controller) }
     }
 }
