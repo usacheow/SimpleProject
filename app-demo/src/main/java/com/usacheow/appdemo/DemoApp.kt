@@ -19,7 +19,6 @@ import com.usacheow.appdemo.catalog.CellTilesScreen
 import com.usacheow.appdemo.catalog.DemoScreen
 import com.usacheow.appdemo.catalog.InformationTilesScreen
 import com.usacheow.appdemo.catalog.InputsScreen
-import com.usacheow.appdemo.catalog.ListTilesScreen
 import com.usacheow.appdemo.catalog.MessageScreen
 import com.usacheow.appdemo.catalog.ModalBottomSheetScreen
 import com.usacheow.appdemo.catalog.NumPadScreen
@@ -69,7 +68,6 @@ class DemoActivity : ComponentActivity() {
                 composable(DemoDestinations.Inputs) { InputsScreen(navController) }
                 composable(DemoDestinations.CellTiles) { CellTilesScreen(navController) }
                 composable(DemoDestinations.InformationTiles) { InformationTilesScreen(navController) }
-                composable(DemoDestinations.ListTiles) { ListTilesScreen(navController) }
                 composable(DemoDestinations.Messages) { MessageScreen(navController) }
                 composable(DemoDestinations.NumPad) { NumPadScreen(navController) }
                 composable(DemoDestinations.Palette) { PaletteScreen(navController) }
@@ -88,7 +86,6 @@ object DemoDestinations {
     const val Inputs = "Inputs"
     const val CellTiles = "CellTiles"
     const val InformationTiles = "InformationTiles"
-    const val ListTiles = "ListTiles"
     const val Messages = "Messages"
     const val NumPad = "NumPad"
     const val Palette = "Palette"

@@ -73,36 +73,36 @@ fun PaletteScreen(navController: NavHostController) {
 
 @Composable
 private fun items() = listOf(
-    HeaderTileState(value = TextValue.Simple("Primary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Primary"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.primary, "primary"),
     ColorItem(AppTheme.specificColorScheme.onPrimary, "onPrimary"),
     ColorItem(AppTheme.specificColorScheme.primaryContainer, "primaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onPrimaryContainer, "onPrimaryContainer"),
     ColorItem(AppTheme.specificColorScheme.primaryInverse, "primaryInverse"),
 
-    HeaderTileState(value = TextValue.Simple("Secondary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Secondary"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.secondary, "secondary"),
     ColorItem(AppTheme.specificColorScheme.onSecondary, "onSecondary"),
     ColorItem(AppTheme.specificColorScheme.secondaryContainer, "secondaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onSecondaryContainer, "onSecondaryContainer"),
 
-    HeaderTileState(value = TextValue.Simple("Tertiary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Tertiary"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.tertiary, "tertiary"),
     ColorItem(AppTheme.specificColorScheme.onTertiary, "onTertiary"),
     ColorItem(AppTheme.specificColorScheme.tertiaryContainer, "tertiaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onTertiaryContainer, "onTertiaryContainer"),
 
-    HeaderTileState(value = TextValue.Simple("Error"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Error"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.error, "error"),
     ColorItem(AppTheme.specificColorScheme.onError, "onError"),
     ColorItem(AppTheme.specificColorScheme.errorContainer, "errorContainer"),
     ColorItem(AppTheme.specificColorScheme.onErrorContainer, "onErrorContainer"),
 
-    HeaderTileState(value = TextValue.Simple("Background"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Background"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.background, "background"),
     ColorItem(AppTheme.specificColorScheme.onBackground, "onBackground"),
 
-    HeaderTileState(value = TextValue.Simple("Surface"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Surface"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.surface, "surface"),
     ColorItem(AppTheme.specificColorScheme.onSurface, "onSurface"),
     ColorItem(AppTheme.specificColorScheme.surfaceVariant, "surfaceVariant"),
@@ -110,7 +110,7 @@ private fun items() = listOf(
     ColorItem(AppTheme.specificColorScheme.surfaceInverse, "surfaceInverse"),
     ColorItem(AppTheme.specificColorScheme.onSurfaceInverse, "onSurfaceInverse"),
 
-    HeaderTileState(value = TextValue.Simple("Text/Icons"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = TextValue.Simple("Text/Icons"), type = HeaderTileState.Type.SmallSecondary),
     ColorItem(AppTheme.specificColorScheme.symbolPrimary, "symbolPrimary"),
     ColorItem(AppTheme.specificColorScheme.symbolPrimaryInverse, "symbolPrimaryInverse"),
     ColorItem(AppTheme.specificColorScheme.symbolSecondary, "symbolSecondary"),

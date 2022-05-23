@@ -3,6 +3,7 @@ package com.usacheow.coreuicompose.tools
 import android.annotation.SuppressLint
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -53,6 +54,12 @@ fun Modifier.defaultTileRipple(
 ) = clip(shape)
     .doOnClick(delay, onClick)
     .padding(DimenValues.ripple_inner_padding)
+
+fun Modifier.mockClick() = clickable(
+    interactionSource = MutableInteractionSource(),
+    indication = null,
+    onClick = {},
+)
 
 fun Modifier.doOnClick(
     delay: Duration = 500.milliseconds,

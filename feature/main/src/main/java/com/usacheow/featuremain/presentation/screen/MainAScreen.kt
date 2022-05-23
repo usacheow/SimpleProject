@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
-import com.usacheow.coreuicompose.uikit.ListTileState
+import com.usacheow.coreuicompose.uikit.CellTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodel.AViewModel
@@ -52,8 +52,8 @@ private fun MainAScreen(
             contentPadding = insetBottomWithBottomNavigation(),
         ) {
             items(20) {
-                ListTileState(
-                    value = TextValue.Simple("item $it"),
+                CellTileState.Data(
+                    title = TextValue.Simple("item $it"),
                     clickListener = onNextClick,
                 ).Content(modifier = Modifier)
             }

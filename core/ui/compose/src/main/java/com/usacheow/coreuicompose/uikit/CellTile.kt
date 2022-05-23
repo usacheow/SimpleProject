@@ -1,6 +1,5 @@
 package com.usacheow.coreuicompose.uikit
 
-import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,47 +16,34 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.TilesShimmerState
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTile
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
-import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
-data class CellTileState(
-    val leftPart: LeftPart? = null,
-    val subtitle: TextValue? = null,
-    val title: TextValue? = null,
-    val value: TextValue? = null,
-    val additional: TextValue? = null,
-    val rightPart: RightPart? = null,
-    val clickListener: (() -> Unit)? = null,
-) : TileState {
+sealed class CellTileState : TileState {
+
+    data class Data(
+        val leftPart: LeftPart? = null,
+        val subtitle: TextValue? = null,
+        val title: TextValue? = null,
+        val value: TextValue? = null,
+        val additional: TextValue? = null,
+        val rightPart: RightPart? = null,
+        val clickListener: (() -> Unit)? = null,
+    ) : CellTileState()
+
+    object Shimmer : CellTileState()
 
     @Composable
     override fun Content(modifier: Modifier) {
         CellTile(modifier, this)
-    }
-
-    companion object {
-        fun shimmer() = TilesShimmerState {
-            CellTileContainer(
-                modifier = it,
-                clickListener = null,
-            ) {
-                ShimmerTile(
-                    needBottomLine = false,
-                    needRightIcon = false,
-                )
-            }
-        }
     }
 
     sealed class LeftPart {
@@ -85,7 +71,18 @@ fun CellTile(
     modifier: Modifier = Modifier,
     data: CellTileState,
 ) {
-    CellTileContainer(
+    when (data) {
+        is CellTileState.Data -> Data(modifier, data)
+        is CellTileState.Shimmer -> Shimmer(modifier)
+    }
+}
+
+@Composable
+private fun Data(
+    modifier: Modifier = Modifier,
+    data: CellTileState.Data,
+) {
+    Container(
         modifier = modifier,
         clickListener = data.clickListener,
     ) {
@@ -101,7 +98,20 @@ fun CellTile(
 }
 
 @Composable
-private fun CellTileContainer(
+private fun Shimmer(modifier: Modifier = Modifier) {
+    Container(
+        modifier = modifier,
+        clickListener = null,
+    ) {
+        ShimmerTile(
+            needBottomLine = false,
+            needRightIcon = false,
+        )
+    }
+}
+
+@Composable
+private fun Container(
     modifier: Modifier = Modifier,
     clickListener: (() -> Unit)?,
     content: @Composable RowScope.() -> Unit,
@@ -224,20 +234,4 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
 
 object CellTileConfig {
     val IconSize = 40.dp
-}
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun Preview() {
-    PreviewAppTheme {
-        CellTileState(
-            subtitle = TextValue.Simple("Subtitle"),
-            title = TextValue.Simple("Title"),
-            value = TextValue.Simple("Value"),
-            additional = TextValue.Simple("Additional"),
-            rightPart = CellTileState.RightPart.Switch(true),
-            clickListener = {},
-        ).Content(Modifier)
-    }
 }

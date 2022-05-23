@@ -58,7 +58,7 @@ fun TypographyScreen(navController: NavHostController) {
 
 @Composable
 private fun items() = listOf(
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Name"),
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         type = HeaderTileState.Type.SmallSecondary,

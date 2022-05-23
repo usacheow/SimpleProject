@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object PinCodeInputConfig {
+object PinCodeIndicatorUiConfig {
 
     val IndicatorDotSizeMin = 12.dp
     val IndicatorDotSizeMax = 14.dp
@@ -59,21 +59,21 @@ data class PinCodeIndicatorColor(
 )
 
 @Composable
-fun PinCodeIndicator(
+fun PinCodeIndicatorUi(
     modifier: Modifier = Modifier,
     inputtedCodeLength: Int,
     codeLength: Int,
     status: PinCodeStatus = PinCodeStatus.Normal,
 ) {
     val color = when (status) {
-        PinCodeStatus.Normal, PinCodeStatus.Checking -> PinCodeInputConfig.defaultColor()
-        PinCodeStatus.Loading, PinCodeStatus.Success -> PinCodeInputConfig.successColor()
-        PinCodeStatus.Error -> PinCodeInputConfig.errorColor()
+        PinCodeStatus.Normal, PinCodeStatus.Checking -> PinCodeIndicatorUiConfig.defaultColor()
+        PinCodeStatus.Loading, PinCodeStatus.Success -> PinCodeIndicatorUiConfig.successColor()
+        PinCodeStatus.Error -> PinCodeIndicatorUiConfig.errorColor()
     }
 
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(PinCodeInputConfig.MarginHorizontal),
+        horizontalArrangement = Arrangement.spacedBy(PinCodeIndicatorUiConfig.MarginHorizontal),
     ) {
         repeat(codeLength) { index ->
             Dot(
@@ -93,8 +93,8 @@ private fun Dot(
 ) {
     val dotSize = if (status == PinCodeStatus.Loading) {
         val circleSize = rememberInfiniteTransition().animateFloat(
-            initialValue = PinCodeInputConfig.IndicatorDotSizeMin.value,
-            targetValue = PinCodeInputConfig.IndicatorDotSizeMax.value,
+            initialValue = PinCodeIndicatorUiConfig.IndicatorDotSizeMin.value,
+            targetValue = PinCodeIndicatorUiConfig.IndicatorDotSizeMax.value,
             animationSpec = infiniteRepeatable(
                 animation = tween(durationMillis = 1000, delayMillis = 100, easing = FastOutLinearInEasing),
                 repeatMode = RepeatMode.Reverse,
@@ -103,13 +103,13 @@ private fun Dot(
         )
         circleSize.value.dp
     } else {
-        PinCodeInputConfig.IndicatorDotSizeMin
+        PinCodeIndicatorUiConfig.IndicatorDotSizeMin
     }
 
     val dotColor by animateColorAsState(targetValue = color)
 
     Box(
-        modifier = Modifier.size(PinCodeInputConfig.IndicatorDotSizeMax),
+        modifier = Modifier.size(PinCodeIndicatorUiConfig.IndicatorDotSizeMax),
         contentAlignment = Alignment.Center,
     ) {
         Box(

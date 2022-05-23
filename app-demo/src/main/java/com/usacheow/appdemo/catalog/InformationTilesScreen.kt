@@ -75,51 +75,51 @@ fun InformationTilesScreen(navController: NavHostController) {
 }
 
 private fun large(): List<TileState> = listOf(
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargePrimary,
     ),
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargeSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
-    HeaderTileState.shimmer(HeaderTileState.Type.LargePrimary),
+    HeaderTileState.Shimmer(HeaderTileState.Type.LargePrimary),
 )
 
 private fun medium(): List<TileState> = listOf(
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumPrimary,
     ),
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
-    HeaderTileState.shimmer(HeaderTileState.Type.MediumPrimary),
+    HeaderTileState.Shimmer(HeaderTileState.Type.MediumPrimary),
 )
 
 private fun small(): List<TileState> = listOf(
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallPrimary,
     ),
-    HeaderTileState(
+    HeaderTileState.Data(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
         clickListener = {},
     ),
-    HeaderTileState.shimmer(HeaderTileState.Type.SmallPrimary),
+    HeaderTileState.Shimmer(HeaderTileState.Type.SmallPrimary),
 )
 
 @Composable
 private fun badges(): List<TileState> = listOf(
-    BadgeTileState.shimmer(),
-    BadgeTileState(
+    BadgeTileState.Shimmer(),
+    BadgeTileState.Data(
         header = TextValue.Simple("Badge tile header text"),
         value = TextValue.Simple("Badge tile text"),
         contentColor = AppTheme.specificColorScheme.onSurface,
@@ -130,8 +130,8 @@ private fun badges(): List<TileState> = listOf(
 
 @Composable
 private fun smallBadges(): List<TileState> = listOf(
-    BadgeTileState.shimmer(hasHeader = false),
-    BadgeTileState(
+    BadgeTileState.Shimmer(hasHeader = false),
+    BadgeTileState.Data(
         value = TextValue.Simple("Badge tile text"),
         contentColor = AppTheme.specificColorScheme.onSurface,
         containerColor = AppTheme.specificColorScheme.surface,

@@ -1,6 +1,5 @@
 package com.usacheow.coreuicompose.uikit
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
@@ -15,34 +14,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.TilesShimmerState
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
-import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
-data class BadgeTileState(
-    val header: TextValue? = null,
-    val value: TextValue,
-    val contentColor: Color? = null,
-    val containerColor: Color? = null,
-    val clickListener: (() -> Unit)? = null,
-) : TileState {
+sealed class BadgeTileState : TileState {
+
+    data class Data(
+        val header: TextValue? = null,
+        val value: TextValue,
+        val contentColor: Color? = null,
+        val containerColor: Color? = null,
+        val clickListener: (() -> Unit)? = null,
+    ) : BadgeTileState()
+
+    data class Shimmer(
+        val hasHeader: Boolean = true,
+    ) : BadgeTileState()
 
     @Composable
     override fun Content(modifier: Modifier) {
         BadgeTile(modifier, this)
-    }
-
-    companion object {
-        fun shimmer(hasHeader: Boolean = true) = TilesShimmerState {
-            BadgeTileShimmer(it, hasHeader)
-        }
     }
 }
 
@@ -50,6 +46,17 @@ data class BadgeTileState(
 fun BadgeTile(
     modifier: Modifier = Modifier,
     data: BadgeTileState,
+) {
+    when (data) {
+        is BadgeTileState.Data -> Data(modifier, data)
+        is BadgeTileState.Shimmer -> Shimmer(modifier, data)
+    }
+}
+
+@Composable
+private fun Data(
+    modifier: Modifier = Modifier,
+    data: BadgeTileState.Data,
 ) {
     BadgeTileContainer(
         modifier = modifier,
@@ -79,9 +86,9 @@ fun BadgeTile(
 }
 
 @Composable
-fun BadgeTileShimmer(
+private fun Shimmer(
     modifier: Modifier = Modifier,
-    hasHeader: Boolean,
+    data: BadgeTileState.Shimmer,
 ) {
     BadgeTileContainer(
         modifier = modifier,
@@ -89,7 +96,7 @@ fun BadgeTileShimmer(
         containerColor = AppTheme.specificColorScheme.surface,
         clickListener = null,
     ) {
-        if (hasHeader) {
+        if (data.hasHeader) {
             ShimmerTileLine(
                 width = BadgeTileConfig.LinesMinWidth,
                 height = AppTheme.typography.bodyMedium.lineHeight.value.dp,
@@ -154,19 +161,4 @@ object BadgeTileConfig {
     val LinesMinWidth = 120.dp
     val LinesMaxWidth = 156.dp
     val LinesBetweenPadding = 8.dp
-}
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun Preview() {
-    PreviewAppTheme {
-        BadgeTileState(
-            header = TextValue.Simple("Badge tile header text"),
-            value = TextValue.Simple("Badge tile text"),
-            contentColor = AppTheme.specificColorScheme.onSurface,
-            containerColor = AppTheme.specificColorScheme.surface,
-            clickListener = {}
-        ).Content(Modifier)
-    }
 }

@@ -65,7 +65,7 @@ fun TagListScreen(navController: NavHostController) {
                 contentPadding = insetAllExcludeTop(),
             ) {
                 item(span = { GridItemSpan(2) }) {
-                    HeaderTileState(
+                    HeaderTileState.Data(
                         value = TextValue.Simple("Single selection mode"),
                         type = HeaderTileState.Type.MediumPrimary,
                     ).Content(Modifier.padding(8.dp))
@@ -74,7 +74,7 @@ fun TagListScreen(navController: NavHostController) {
                     it.Content(Modifier.padding(8.dp))
                 }
                 item(span = { GridItemSpan(2) }) {
-                    HeaderTileState(
+                    HeaderTileState.Data(
                         value = TextValue.Simple("Multi selection mode"),
                         type = HeaderTileState.Type.MediumPrimary,
                     ).Content(Modifier

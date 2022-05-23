@@ -56,24 +56,24 @@ fun CellTilesScreen(navController: NavHostController) {
 
 @Composable
 private fun items(): List<TileState> = listOf(
-    CellTileState.shimmer(),
-    CellTileState(
+    CellTileState.Shimmer,
+    CellTileState.Data(
         title = TextValue.Simple("Cell tile title"),
     ),
-    CellTileState(
+    CellTileState.Data(
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Cell tile title"),
     ),
-    CellTileState(
+    CellTileState.Data(
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Cell tile title"),
         additional = TextValue.Simple("Additional text with some interesting information"),
     ),
-    CellTileState(
+    CellTileState.Data(
         title = TextValue.Simple("Cell tile title"),
         value = TextValue.Simple("Value"),
     ),
-    CellTileState(
+    CellTileState.Data(
         leftPart = CellTileState.LeftPart.Icon(
             icon = AppTheme.specificIcons.account,
             background = IconValue.ResVector(R.drawable.bg_ic_square),
@@ -84,14 +84,14 @@ private fun items(): List<TileState> = listOf(
         rightPart = CellTileState.RightPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
         clickListener = {},
     ),
-    CellTileState(
+    CellTileState.Data(
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),
         rightPart = CellTileState.RightPart.ActionIcon(AppTheme.specificIcons.navigateNext.toImageValue()),
         clickListener = {},
     ),
-    CellTileState(
+    CellTileState.Data(
         leftPart = CellTileState.LeftPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),

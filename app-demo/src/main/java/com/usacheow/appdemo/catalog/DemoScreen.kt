@@ -109,73 +109,68 @@ private fun items(
     showDialogClickListener: () -> Unit,
 ) = listOf(
     HeaderTileState.largePrimary(TextValue.Simple("Atoms")),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("atom"),
         value = TextValue.Simple("1. Typography"),
         clickListener = { navController.navigate(DemoDestinations.Typography) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("atom"),
         value = TextValue.Simple("2. Palette"),
         clickListener = { navController.navigate(DemoDestinations.Palette) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("atom"),
         value = TextValue.Simple("3. Buttons"),
         clickListener = { navController.navigate(DemoDestinations.Buttons) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("atom"),
         value = TextValue.Simple("4. Inputs"),
         clickListener = { navController.navigate(DemoDestinations.Inputs) }
     ),
 
     HeaderTileState.largePrimary(TextValue.Simple("Molecules")),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("molecule"),
         value = TextValue.Simple("1. Cell Tiles"),
         clickListener = { navController.navigate(DemoDestinations.CellTiles) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("2. List Tiles"),
-        clickListener = { navController.navigate(DemoDestinations.ListTiles) }
-    ),
-    BadgeTileState(
-        header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("3. Tag Lists"),
+        value = TextValue.Simple("2. Tag Lists"),
         clickListener = { navController.navigate(DemoDestinations.TagList) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("4. Information Tiles"),
+        value = TextValue.Simple("3. Information Tiles"),
         clickListener = { navController.navigate(DemoDestinations.InformationTiles) }
     ),
 
     HeaderTileState.largePrimary(TextValue.Simple("Organisms")),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("organism"),
         value = TextValue.Simple("1. Message Tiles"),
         clickListener = { navController.navigate(DemoDestinations.Messages) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("organism"),
         value = TextValue.Simple("2. Num Pad"),
         clickListener = { navController.navigate(DemoDestinations.NumPad) }
     ),
 
     HeaderTileState.largePrimary(TextValue.Simple("Templates")),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("template"),
         value = TextValue.Simple("1. Alert Dialog"),
         clickListener = { showDialogClickListener() }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("template"),
         value = TextValue.Simple("2. Bottom sheet"),
         clickListener = { navController.navigate(DemoDestinations.BottomSheet) }
     ),
-    BadgeTileState(
+    BadgeTileState.Data(
         header = TextValue.Simple("template"),
         value = TextValue.Simple("3. Modal bottom sheet"),
         clickListener = { navController.navigate(DemoDestinations.ModalBottomSheet) }

@@ -3,6 +3,7 @@ package com.usacheow.coreuicompose.uikit.duplicate
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -19,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,8 +28,6 @@ import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -43,16 +41,126 @@ import kotlin.math.roundToInt
 private typealias OnIconClick = () -> Unit
 private typealias OnBackIconClick = () -> Boolean
 
-@OptIn(ExperimentalComposeUiApi::class)
+data class ActionIconData(
+    val icon: IconValue,
+    val color: Color? = null,
+    val clickListener: () -> Unit,
+)
+
+object SimpleTopAppBarConfig {
+    val ContainerHeight = 64.dp
+}
+
 @Composable
 fun SimpleTopAppBar(
     title: TextValue?,
-    titleTextStyle: TextStyle = AppTheme.typography.titleLarge,
+    additional: @Composable () -> Unit = {},
+    titleTextStyle: TextStyle = AppTheme.typography.titleMedium,
     navigationIcon: Pair<IconValue, OnBackIconClick>? = null,
-    actions: Map<Int, OnIconClick> = emptyMap(),
+    actions: List<ActionIconData> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(),
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
     scrollBehavior: TopAppBarScrollBehavior,
+) {
+    SimpleTopAppBar(
+        title = { title?.get()?.let { Text(it) } },
+        additional = additional,
+        titleTextStyle = titleTextStyle,
+        navigationIcon = navigationIcon,
+        actions = actions,
+        contentPadding = contentPadding,
+        colors = colors,
+        scrollBehavior = scrollBehavior,
+    )
+}
+
+@Composable
+fun SimpleTopAppBar(
+    title: @Composable () -> Unit,
+    additional: @Composable () -> Unit = {},
+    titleTextStyle: TextStyle = AppTheme.typography.titleMedium,
+    navigationIcon: Pair<IconValue, OnBackIconClick>? = null,
+    actions: List<ActionIconData> = emptyList(),
+    contentPadding: PaddingValues = PaddingValues(),
+    colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
+    scrollBehavior: TopAppBarScrollBehavior,
+) {
+    val navigationIconUi = @Composable {
+        if (navigationIcon != null) {
+            TopAppBarNavIcon(
+                iconValue = navigationIcon.first,
+                onClick = { navigationIcon.second() },
+            )
+        }
+    }
+    val actionsUi = @Composable {
+        if (actions.toList().isNotEmpty()) {
+            Row {
+                actions.toList().forEach {
+                    Icon(
+                        painter = it.icon.get(),
+                        contentDescription = null,
+                        tint = it.color ?: colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .clickable(enabled = true, onClick = it.clickListener)
+                            .padding(12.dp),
+                    )
+                }
+            }
+        }
+    }
+
+    SimpleTopAppBarContainer(
+        colors = colors,
+        scrollBehavior = scrollBehavior,
+    ) {
+        val heightPx = LocalDensity.current.run { SimpleTopAppBarConfig.ContainerHeight.toPx() }
+        Column {
+            TopAppBarLayout(
+                modifier = Modifier.padding(contentPadding),
+                heightPx = heightPx,
+
+                navigationIconContentColor = colors.navigationIconContentColor(scrollBehavior.scrollFraction).value,
+                titleContentColor = colors.titleContentColor(scrollBehavior.scrollFraction).value,
+                actionIconContentColor = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
+
+                title = title,
+                titleTextStyle = titleTextStyle,
+                titleAlpha = 1f,
+                titleVerticalArrangement = Arrangement.Center,
+                titleHorizontalArrangement = Arrangement.Center,
+                titleBottomPadding = 0,
+                hideTitleSemantics = false,
+
+                navigationIcon = navigationIconUi,
+                actions = actionsUi,
+            )
+            additional()
+        }
+    }
+}
+
+@Composable
+fun SimpleTopAppBar(
+    colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
+    scrollBehavior: TopAppBarScrollBehavior,
+    content: @Composable () -> Unit,
+) {
+
+    SimpleTopAppBarContainer(
+        colors = colors,
+        scrollBehavior = scrollBehavior,
+    ) {
+        content()
+    }
+}
+
+@Composable
+private fun SimpleTopAppBarContainer(
+    colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
+    scrollBehavior: TopAppBarScrollBehavior,
+    content: @Composable () -> Unit,
 ) {
     val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.ContainerHeight.toPx() / 4 }
     SideEffect {
@@ -64,62 +172,8 @@ fun SimpleTopAppBar(
     val scrollFraction = scrollBehavior.scrollFraction
     val appBarContainerColor by colors.containerColor(scrollFraction)
 
-    val ime = LocalSoftwareKeyboardController.current
-    val navigationIconUi = @Composable {
-        if (navigationIcon != null) {
-            Icon(
-                painter = navigationIcon.first.get(),
-                tint = AppTheme.specificColorScheme.symbolPrimary,
-                contentDescription = null,
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .clickable(onClick = {
-                        navigationIcon.second()
-                        ime?.hide()
-                    })
-                    .padding(8.dp),
-            )
-        }
-    }
-    val actionsUi = @Composable {
-        if (actions.toList().isNotEmpty()) {
-            Row {
-                actions.toList().forEach {
-                    Icon(
-                        painter = painterResource(it.first),
-                        contentDescription = null,
-                        tint = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .clickable(enabled = true, onClick = it.second)
-                            .padding(12.dp),
-                    )
-                }
-            }
-        }
-    }
-
     Surface(color = appBarContainerColor) {
-        val heightPx = LocalDensity.current.run { SimpleTopAppBarConfig.ContainerHeight.toPx() }
-        TopAppBarLayout(
-            modifier = Modifier.padding(contentPadding),
-            heightPx = heightPx,
-
-            navigationIconContentColor = colors.navigationIconContentColor(scrollBehavior.scrollFraction).value,
-            titleContentColor = colors.titleContentColor(scrollBehavior.scrollFraction).value,
-            actionIconContentColor = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
-
-            title = { title?.get()?.let { Text(it) } },
-            titleTextStyle = titleTextStyle,
-            titleAlpha = 1f,
-            titleVerticalArrangement = Arrangement.Center,
-            titleHorizontalArrangement = Arrangement.Center,
-            titleBottomPadding = 0,
-            hideTitleSemantics = false,
-
-            navigationIcon = navigationIconUi,
-            actions = actionsUi,
-        )
+        content()
     }
 }
 
@@ -237,6 +291,15 @@ private fun TopAppBarLayout(
     }
 }
 
-object SimpleTopAppBarConfig {
-    val ContainerHeight = 64.dp
+@Composable
+fun TopAppBarNavIcon(iconValue: IconValue, onClick: () -> Unit) {
+    Icon(
+        painter = iconValue.get(),
+        tint = AppTheme.specificColorScheme.symbolPrimary,
+        contentDescription = "navigation icon",
+        modifier = Modifier
+            .clip(CircleShape)
+            .clickable(onClick = onClick)
+            .padding(8.dp),
+    )
 }
