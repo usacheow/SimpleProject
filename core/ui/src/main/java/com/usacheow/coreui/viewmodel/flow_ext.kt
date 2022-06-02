@@ -28,11 +28,9 @@ inline fun <reified T> Flow<T>.observe(
     noinline action: suspend (T) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
-        lifecycleOwner.lifecycleScope.launch {
-            onEach(action)
-                .flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState)
-                .launchIn(this)
-        }
+        onEach(action)
+            .flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState)
+            .launchIn(this)
     }
 }
 

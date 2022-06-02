@@ -12,16 +12,10 @@ class TokenStorage @Inject constructor(
 
     var decodedAccessToken: Token = ""
 
-    var accessToken: Token
-        get() = provider.cryptoPrefs.getString("accessToken", "").orEmpty()
+    var encodedRefreshToken: Token
+        get() = provider.cryptoPrefs.getString("encodedRefreshToken", "").orEmpty()
         set(value) = provider.cryptoPrefs.edit {
-            putString("accessToken", value)
-        }
-
-    var refreshToken: Token
-        get() = provider.cryptoPrefs.getString("refreshToken", "").orEmpty()
-        set(value) = provider.cryptoPrefs.edit {
-            putString("refreshToken", value)
+            putString("encodedRefreshToken", value)
         }
 
     val pinCodeLength: Int = 4
@@ -40,8 +34,7 @@ class TokenStorage @Inject constructor(
 
     fun reset() {
         decodedAccessToken = ""
-        accessToken = ""
-        refreshToken = ""
+        encodedRefreshToken = ""
         salt = ""
         encodedPinCode = ""
     }

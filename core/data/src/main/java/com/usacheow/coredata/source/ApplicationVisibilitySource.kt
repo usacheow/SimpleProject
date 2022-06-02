@@ -11,10 +11,14 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 
 interface ApplicationVisibilitySource {
@@ -55,4 +59,15 @@ interface ApplicationVisibilitySourceModule {
     @Binds
     @Singleton
     fun applicationVisibilitySource(source: ApplicationVisibilitySourceImpl): ApplicationVisibilitySource
+}
+
+@OptIn(ExperimentalCoroutinesApi::class)
+fun <T> Flow<T>.activeWhenForeground(applicationVisibilitySource: ApplicationVisibilitySource): Flow<T> {
+    return applicationVisibilitySource.state.flatMapLatest {
+        if (it == ApplicationVisibilitySource.State.Foreground) {
+            this
+        } else {
+            emptyFlow()
+        }
+    }
 }

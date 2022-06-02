@@ -5,6 +5,7 @@ import android.security.keystore.KeyPermanentlyInvalidatedException
 import com.usacheow.corecommon.AppError
 import com.usacheow.corecommon.Completable
 import com.usacheow.corecommon.Effect
+import com.usacheow.corecommon.Token
 import com.usacheow.coredata.database.TokenStorage
 import java.security.GeneralSecurityException
 import java.security.SecureRandom
@@ -28,33 +29,17 @@ class PinCodeWrapper @Inject constructor(
 
     fun save(pinCode: String, accessToken: String, refreshToken: String): Effect<Completable> {
         tokenStorage.salt = generateSalt().decodeToString()
+        return update(pinCode, accessToken, refreshToken)
+    }
+
+    fun update(pinCode: String, accessToken: String, refreshToken: String): Effect<Completable> {
         val secretKey = Pbkdf2Factory.createKey(pinCode.toCharArray(), tokenStorage.salt.encodeToByteArray())
         val cipher = createEncryptCipher(secretKey)
 
         tokenStorage.decodedAccessToken = accessToken
-        tokenStorage.accessToken = cryptoConfigurator.encode(accessToken, cipher)
-        tokenStorage.refreshToken = cryptoConfigurator.encode(refreshToken, cipher)
+        tokenStorage.encodedRefreshToken = cryptoConfigurator.encode(refreshToken, cipher)
 
         return Effect.success(Completable)
-    }
-
-    fun check(pin: String): Effect<Completable> {
-        val salt = tokenStorage.salt.encodeToByteArray()
-        val secretKey = Pbkdf2Factory.createKey(pin.toCharArray(), salt)
-        val cipher = createDecryptCipher(secretKey)
-
-        val token = try {
-            val encryptedAccessToken = tokenStorage.accessToken
-            cryptoConfigurator.decode(encryptedAccessToken, cipher)
-        } catch (e: GeneralSecurityException) {
-            null
-        }
-
-        return if (token == null) {
-            Effect.error(AppError.Unknown(cause = GeneralSecurityException()))
-        } else {
-            Effect.success(Completable)
-        }
     }
 
     fun enableBiometric(pinCode: String): Effect<Completable> {
@@ -69,9 +54,28 @@ class PinCodeWrapper @Inject constructor(
         return Effect.success(cipher)
     }
 
-    fun isBiometricValid(cipher: Cipher?): Effect<Completable> {
+    fun getRefreshToken(cipher: Cipher?): Effect<Token> {
         cipher ?: return Effect.error(AppError.Unknown())
-        return check(CryptoConfigurator().decode(tokenStorage.encodedPinCode, cipher))
+        return getRefreshToken(CryptoConfigurator().decode(tokenStorage.encodedPinCode, cipher))
+    }
+
+    fun getRefreshToken(pin: String): Effect<Token> {
+        val salt = tokenStorage.salt.encodeToByteArray()
+        val secretKey = Pbkdf2Factory.createKey(pin.toCharArray(), salt)
+        val cipher = createDecryptCipher(secretKey)
+
+        val token = try {
+            val encryptedRefreshToken = tokenStorage.encodedRefreshToken
+            cryptoConfigurator.decode(encryptedRefreshToken, cipher)
+        } catch (e: GeneralSecurityException) {
+            null
+        }
+
+        return if (token == null) {
+            Effect.error(AppError.Unknown(cause = GeneralSecurityException()))
+        } else {
+            Effect.success(token)
+        }
     }
 
     private fun createEncryptCipher(secretKey: SecretKey) = Cipher.getInstance("AES/ECB/PKCS5Padding").apply {
