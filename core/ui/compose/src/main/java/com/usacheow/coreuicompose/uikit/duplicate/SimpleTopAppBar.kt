@@ -38,7 +38,6 @@ import com.usacheow.coreuitheme.compose.AppTheme
 import kotlin.math.max
 import kotlin.math.roundToInt
 
-private typealias OnIconClick = () -> Unit
 private typealias OnBackIconClick = () -> Boolean
 
 data class ActionIconData(
@@ -48,7 +47,7 @@ data class ActionIconData(
 )
 
 object SimpleTopAppBarConfig {
-    val ContainerHeight = 64.dp
+    val DefaultContentHeight = 64.dp
 }
 
 @Composable
@@ -115,7 +114,7 @@ fun SimpleTopAppBar(
         colors = colors,
         scrollBehavior = scrollBehavior,
     ) {
-        val heightPx = LocalDensity.current.run { SimpleTopAppBarConfig.ContainerHeight.toPx() }
+        val heightPx = LocalDensity.current.run { SimpleTopAppBarConfig.DefaultContentHeight.toPx() }
         Column {
             TopAppBarLayout(
                 modifier = Modifier.padding(contentPadding),
@@ -162,7 +161,7 @@ private fun SimpleTopAppBarContainer(
     scrollBehavior: TopAppBarScrollBehavior,
     content: @Composable () -> Unit,
 ) {
-    val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.ContainerHeight.toPx() / 4 }
+    val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.DefaultContentHeight.toPx() / 4 }
     SideEffect {
         if (scrollBehavior.offsetLimit != offsetLimit) {
             scrollBehavior.offsetLimit = offsetLimit
@@ -175,6 +174,28 @@ private fun SimpleTopAppBarContainer(
     Surface(color = appBarContainerColor) {
         content()
     }
+
+//    Box {
+//        content()
+//        Box(modifier = Modifier
+//            .align(Alignment.BottomCenter)
+//            .height(1.dp)
+//            .fillMaxWidth()
+//            .background(appBarContainerColor))
+//    }
+}
+
+@Composable
+fun TopAppBarNavIcon(iconValue: IconValue, onClick: () -> Unit) {
+    Icon(
+        painter = iconValue.get(),
+        tint = AppTheme.specificColorScheme.primary,
+        contentDescription = "navigation icon",
+        modifier = Modifier
+            .clip(CircleShape)
+            .clickable(onClick = onClick)
+            .padding(8.dp),
+    )
 }
 
 @Composable
@@ -195,111 +216,71 @@ private fun TopAppBarLayout(
     actions: @Composable () -> Unit,
 ) {
     Layout(
-        {
-            Box(Modifier
-                .layoutId("navigationIcon")
-                .padding(start = 4.dp)) {
-                CompositionLocalProvider(
-                    LocalContentColor provides navigationIconContentColor,
-                    content = navigationIcon
-                )
+        content = {
+            Box(
+                modifier = Modifier
+                    .layoutId("navigationIcon")
+                    .padding(start = 4.dp),
+            ) {
+                CompositionLocalProvider(LocalContentColor provides navigationIconContentColor, content = navigationIcon)
             }
             Box(
-                Modifier
+                modifier = Modifier
                     .layoutId("title")
                     .padding(horizontal = 4.dp)
-                    .then(if (hideTitleSemantics) Modifier.clearAndSetSemantics { } else Modifier)
+                    .then(if (hideTitleSemantics) Modifier.clearAndSetSemantics { } else Modifier),
             ) {
                 ProvideTextStyle(value = titleTextStyle) {
-                    CompositionLocalProvider(
-                        LocalContentColor provides titleContentColor.copy(alpha = titleAlpha),
-                        content = title
-                    )
+                    CompositionLocalProvider(LocalContentColor provides titleContentColor.copy(alpha = titleAlpha),
+                        content = title)
                 }
             }
-            Box(Modifier
-                .layoutId("actionIcons")
-                .padding(end = 4.dp)) {
-                CompositionLocalProvider(
-                    LocalContentColor provides actionIconContentColor,
-                    content = actions
-                )
+            Box(
+                modifier = Modifier
+                    .layoutId("actionIcons")
+                    .padding(end = 4.dp),
+            ) {
+                CompositionLocalProvider(LocalContentColor provides actionIconContentColor, content = actions)
             }
         },
-        modifier = modifier
+        modifier = modifier,
     ) { measurables, constraints ->
-        val navigationIconPlaceable =
-            measurables.first { it.layoutId == "navigationIcon" }.measure(constraints)
-        val actionIconsPlaceable =
-            measurables.first { it.layoutId == "actionIcons" }.measure(constraints)
+        val navigationIconPlaceable = measurables.first { it.layoutId == "navigationIcon" }.measure(constraints)
+        val actionIconsPlaceable = measurables.first { it.layoutId == "actionIcons" }.measure(constraints)
 
-        val maxTitleWidth =
-            constraints.maxWidth - navigationIconPlaceable.width - actionIconsPlaceable.width
-        val titlePlaceable =
-            measurables
-                .first { it.layoutId == "title" }
-                .measure(constraints.copy(maxWidth = maxTitleWidth))
-        // Locate the title's baseline.
-        val titleBaseline =
-            if (titlePlaceable[LastBaseline] != AlignmentLine.Unspecified) {
-                titlePlaceable[LastBaseline]
-            } else {
-                0
-            }
+        val maxTitleWidth = constraints.maxWidth - navigationIconPlaceable.width - actionIconsPlaceable.width
+        val titlePlaceable = measurables.first { it.layoutId == "title" }
+            .measure(constraints.copy(maxWidth = maxTitleWidth)) // Locate the title's baseline.
+        val titleBaseline = if (titlePlaceable[LastBaseline] != AlignmentLine.Unspecified) {
+            titlePlaceable[LastBaseline]
+        } else {
+            0
+        }
 
         val layoutHeight = heightPx.roundToInt()
 
-        layout(constraints.maxWidth, layoutHeight) {
-            // Navigation icon
-            navigationIconPlaceable.placeRelative(
-                x = 0,
-                y = (layoutHeight - navigationIconPlaceable.height) / 2
-            )
+        layout(constraints.maxWidth, layoutHeight) { // Navigation icon
+            navigationIconPlaceable.placeRelative(x = 0, y = (layoutHeight - navigationIconPlaceable.height) / 2)
 
             // Title
-            titlePlaceable.placeRelative(
-                x = when (titleHorizontalArrangement) {
-                    Arrangement.Center -> (constraints.maxWidth - titlePlaceable.width) / 2
-                    Arrangement.End ->
-                        constraints.maxWidth - titlePlaceable.width - actionIconsPlaceable.width
-                    // Arrangement.Start.
-                    // An TopAppBarTitleInset will make sure the title is offset in case the
-                    // navigation icon is missing.
-                    else -> max(12.dp.roundToPx(), navigationIconPlaceable.width)
-                },
-                y = when (titleVerticalArrangement) {
-                    Arrangement.Center -> (layoutHeight - titlePlaceable.height) / 2
-                    // Apply bottom padding from the title's baseline only when the Arrangement is
-                    // "Bottom".
-                    Arrangement.Bottom ->
-                        if (titleBottomPadding == 0) layoutHeight - titlePlaceable.height
-                        else layoutHeight - titlePlaceable.height - max(
-                            0,
-                            titleBottomPadding - titlePlaceable.height + titleBaseline
-                        )
-                    // Arrangement.Top
-                    else -> 0
-                }
-            )
+            titlePlaceable.placeRelative(x = when (titleHorizontalArrangement) {
+                Arrangement.Center -> (constraints.maxWidth - titlePlaceable.width) / 2
+                Arrangement.End -> constraints.maxWidth - titlePlaceable.width - actionIconsPlaceable.width // Arrangement.Start.
+                // An TopAppBarTitleInset will make sure the title is offset in case the
+                // navigation icon is missing.
+                else -> max(12.dp.roundToPx(), navigationIconPlaceable.width)
+            }, y = when (titleVerticalArrangement) {
+                Arrangement.Center -> (layoutHeight - titlePlaceable.height) / 2 // Apply bottom padding from the title's baseline only when the Arrangement is
+                // "Bottom".
+                Arrangement.Bottom -> if (titleBottomPadding == 0) layoutHeight - titlePlaceable.height
+                else layoutHeight - titlePlaceable.height - max(0,
+                    titleBottomPadding - titlePlaceable.height + titleBaseline) // Arrangement.Top
+                else -> 0
+            })
 
             // Action icons
-            actionIconsPlaceable.placeRelative(
-                x = constraints.maxWidth - actionIconsPlaceable.width,
-                y = (layoutHeight - actionIconsPlaceable.height) / 2
-            )
+            actionIconsPlaceable.placeRelative(x = constraints.maxWidth - actionIconsPlaceable.width,
+                y = (layoutHeight - actionIconsPlaceable.height) / 2)
         }
     }
-}
-
-@Composable
-fun TopAppBarNavIcon(iconValue: IconValue, onClick: () -> Unit) {
-    Icon(
-        painter = iconValue.get(),
-        tint = AppTheme.specificColorScheme.symbolPrimary,
-        contentDescription = "navigation icon",
-        modifier = Modifier
-            .clip(CircleShape)
-            .clickable(onClick = onClick)
-            .padding(8.dp),
-    )
 }
