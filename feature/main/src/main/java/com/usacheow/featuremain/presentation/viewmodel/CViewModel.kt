@@ -1,8 +1,8 @@
 package com.usacheow.featuremain.presentation.viewmodel
 
-import com.usacheow.corecommon.Effect
-import com.usacheow.corecommon.State
-import com.usacheow.corecommon.log
+import com.usacheow.corecommon.model.Effect
+import com.usacheow.corecommon.model.State
+import com.usacheow.corecommon.ext.log
 import com.usacheow.coredata.network.Action
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +14,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class CViewModel @Inject constructor(
@@ -26,6 +25,7 @@ class CViewModel @Inject constructor(
     val loadDataThroughFlow = interactor.loadDataFlow
 
     val job: Job = Job()
+//    val job: Job = SupervisorJob()
     val scope = CoroutineScope(job + Dispatchers.Default)
 
     init {
@@ -33,7 +33,7 @@ class CViewModel @Inject constructor(
     }
 
     fun simpleLoadDataExample() {
-        scope.launch {
+/*        scope.launch {
             action.execute {
                 supervisorScope {
                     val x1 = async { delay(500); throw IllegalArgumentException() }
@@ -45,40 +45,40 @@ class CViewModel @Inject constructor(
             }.doOnError { error, data -> log("error") }
                 .doOnSuccess { log("success") }
         }
-//        scope.launch {
-//            try {
-//                action.start {
-//                    val x1 = async {
-//                        delay(1000)
-//                        throw IllegalArgumentException()
-//                    }
-//                    val x2 = async {
-//                        delay(1500)
-//                        log("x2")
-//                    }
-//                    x1.await()
-//                    x2.await()
-//                }
-//            } catch (e: Exception) {
-//                log("error")
-//            }
-//        }
-//        scope.launch {
-//            try {
-//                val x1 = scope.async {
-//                    delay(1000)
-//                    throw IllegalArgumentException()
-//                }
-//                val x2 = scope.async {
-//                    delay(1500)
-//                    log("x2")
-//                }
-//                x1.await()
-//                x2.await()
-//            } catch (e: Exception) {
-//                log("error")
-//            }
-//        }
+        scope.launch {
+            try {
+                action.start {
+                    val x1 = async {
+                        delay(1000)
+                        throw IllegalArgumentException()
+                    }
+                    val x2 = async {
+                        delay(1500)
+                        log("x2")
+                    }
+                    x1.await()
+                    x2.await()
+                }
+            } catch (e: Exception) {
+                log("error")
+            }
+        }*/
+        scope.launch {
+            try {
+                val x1 = scope.async {
+                    delay(1000)
+                    throw IllegalArgumentException()
+                }
+                val x2 = scope.async {
+                    delay(1200)
+                    log("x2")
+                }
+                x1.await()
+                x2.await()
+            } catch (e: Exception) {
+                log("error")
+            }
+        }
     }
 
 //    fun simpleLoadDataExample() {

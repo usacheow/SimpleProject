@@ -1,4 +1,4 @@
-package com.usacheow.corecommon
+package com.usacheow.corecommon.model
 
 data class BuildInfo(
     val applicationId: String,

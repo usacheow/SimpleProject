@@ -2,10 +2,10 @@ package com.usacheow.coredata.crypto
 
 import android.os.Build
 import android.security.keystore.KeyPermanentlyInvalidatedException
-import com.usacheow.corecommon.AppError
-import com.usacheow.corecommon.Completable
-import com.usacheow.corecommon.Effect
-import com.usacheow.corecommon.Token
+import com.usacheow.corecommon.model.AppError
+import com.usacheow.corecommon.model.Completable
+import com.usacheow.corecommon.model.Effect
+import com.usacheow.corecommon.model.Token
 import com.usacheow.coredata.database.TokenStorage
 import java.security.GeneralSecurityException
 import java.security.SecureRandom
@@ -43,7 +43,8 @@ class PinCodeWrapper @Inject constructor(
     }
 
     fun enableBiometric(pinCode: String): Effect<Completable> {
-        val cipher = cryptoConfigurator.createBiometricEncryptCipher() ?: return Effect.error(AppError.Unknown())
+        val cipher = cryptoConfigurator.createBiometricEncryptCipher() ?: return Effect.error(
+            AppError.Unknown())
         tokenStorage.encodedPinCode = cryptoConfigurator.encode(pinCode, cipher)
         return Effect.success(Completable)
     }

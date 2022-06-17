@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarScrollState
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
@@ -40,7 +41,7 @@ fun DemoScreen(
     windowSizeClass: WindowSizeClass = LocalWindowSizeClass.current,
 ) {
     var isDialogVisible by remember { mutableStateOf(false) }
-    val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
 
     val headerModifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
     val cardModifier = Modifier.padding(8.dp)

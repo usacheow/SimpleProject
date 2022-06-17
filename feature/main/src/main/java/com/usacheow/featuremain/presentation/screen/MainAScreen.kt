@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -18,6 +19,7 @@ import com.usacheow.coreuicompose.uikit.CellTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodel.AViewModel
+import com.usacheow.featuremain.presentation.viewmodel.CViewModel
 
 @Composable
 fun MainAScreen(
@@ -25,6 +27,7 @@ fun MainAScreen(
 ) {
     val router = remember(navHostController) { ScreenNavigator(navHostController) }
     val viewModel = hiltViewModel<AViewModel>()
+    val cviewModel = hiltViewModel<CViewModel>()
 
     MainAScreen(
         onNextClick = router::toMock1SecondScreen,
@@ -36,7 +39,7 @@ fun MainAScreen(
 private fun MainAScreen(
     onNextClick: () -> Unit,
 ) {
-    val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {

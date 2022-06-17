@@ -1,11 +1,12 @@
-package com.usacheow.corecommon
+package com.usacheow.corecommon.ext
 
+import com.usacheow.corecommon.RU_LOCALE
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.NumberFormat
 
 fun Double.formatToMoney() = try {
-    NumberFormat.getNumberInstance(DEFAULT_LOCALE).format(this.round())
+    NumberFormat.getNumberInstance(RU_LOCALE).format(this.round())
 } catch (ex: NumberFormatException) {
     this.toString()
 }

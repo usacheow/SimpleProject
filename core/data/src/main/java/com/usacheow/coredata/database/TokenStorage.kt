@@ -1,7 +1,7 @@
 package com.usacheow.coredata.database
 
 import androidx.core.content.edit
-import com.usacheow.corecommon.Token
+import com.usacheow.corecommon.model.Token
 import javax.inject.Inject
 import javax.inject.Singleton
 

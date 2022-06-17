@@ -1,7 +1,7 @@
 package com.usacheow.coredata.network
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.usacheow.corecommon.BuildInfo
+import com.usacheow.corecommon.model.BuildInfo
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

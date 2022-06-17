@@ -1,8 +1,8 @@
 package com.usacheow.coredata.network
 
-import com.usacheow.corecommon.AppError
-import com.usacheow.corecommon.Effect
-import com.usacheow.corecommon.log
+import com.usacheow.corecommon.model.AppError
+import com.usacheow.corecommon.model.Effect
+import com.usacheow.corecommon.ext.log
 import com.usacheow.coredata.source.NotificationsSource
 import dagger.Binds
 import dagger.Module

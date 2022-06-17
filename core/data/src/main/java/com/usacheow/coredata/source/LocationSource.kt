@@ -5,8 +5,8 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import com.usacheow.corecommon.AppError
-import com.usacheow.corecommon.Effect
+import com.usacheow.corecommon.model.AppError
+import com.usacheow.corecommon.model.Effect
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

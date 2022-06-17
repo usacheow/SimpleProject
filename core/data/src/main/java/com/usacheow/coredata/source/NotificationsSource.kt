@@ -1,7 +1,7 @@
 package com.usacheow.coredata.source
 
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.corecommon.makeUserReadableErrorMessage
+import com.usacheow.corecommon.model.makeUserReadableErrorMessage
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import dagger.Binds
 import dagger.Module
@@ -20,6 +20,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import com.usacheow.corecommon.R as CoreCommonR
+
+private val NotificationVisibilitySeconds = 5.seconds
 
 interface NotificationsSource {
 
@@ -100,7 +102,7 @@ class NotificationsSourceImpl @Inject constructor(
     private fun restartTimer() {
         hideMessageJob?.cancel()
         hideMessageJob = coroutineScope.launch {
-            delay(5.seconds)
+            delay(NotificationVisibilitySeconds)
             _state.emit(null)
         }
     }

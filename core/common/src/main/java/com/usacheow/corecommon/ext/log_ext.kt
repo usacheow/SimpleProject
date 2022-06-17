@@ -1,4 +1,4 @@
-package com.usacheow.corecommon
+package com.usacheow.corecommon.ext
 
 import android.util.Log
 

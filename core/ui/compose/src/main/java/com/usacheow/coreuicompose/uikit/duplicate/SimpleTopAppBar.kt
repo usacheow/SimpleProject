@@ -163,8 +163,8 @@ private fun SimpleTopAppBarContainer(
 ) {
     val offsetLimit = with(LocalDensity.current) { -SimpleTopAppBarConfig.DefaultContentHeight.toPx() / 4 }
     SideEffect {
-        if (scrollBehavior.offsetLimit != offsetLimit) {
-            scrollBehavior.offsetLimit = offsetLimit
+        if (scrollBehavior.state.offsetLimit != offsetLimit) {
+            scrollBehavior.state.offsetLimit = offsetLimit
         }
     }
 
@@ -175,7 +175,7 @@ private fun SimpleTopAppBarContainer(
         content()
     }
 
-//    Box {
+//    Box(modifier = Modifier.background(colors.containerColor(scrollFraction = 0f).value)) {
 //        content()
 //        Box(modifier = Modifier
 //            .align(Alignment.BottomCenter)

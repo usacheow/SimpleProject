@@ -1,5 +1,6 @@
-package com.usacheow.corecommon
+package com.usacheow.corecommon.model
 
+import com.usacheow.corecommon.ext.formatToMoney
 import java.time.ZonedDateTime
 import java.util.Currency
 import java.util.UUID
@@ -10,7 +11,11 @@ typealias DateTime = String
 typealias Timestamp = Long
 typealias Token = String
 typealias PhoneNumber = String
-typealias MaskedPhoneNumber = String
+typealias FormattedMoneyWithCurrency = String
+typealias FormattedMoney = String
+typealias CurrencyIso = Int
+typealias FullUrl = String
+typealias PartialUrl = String
 
 fun generateCurrentDateTime() = ZonedDateTime.now().toString()
 fun generateRequestId() = UUID.randomUUID().toString()
@@ -38,24 +43,9 @@ data class MoneyDto(
 
 @Serializable
 enum class CurrencyType {
-    @SerialName("RUB")
-    RUB,
-    @SerialName("USD")
-    USD,
-    @SerialName("EUR")
-    EUR,
-    @SerialName("GBP")
-    GBP,
-    @SerialName("HKD")
-    HKD,
-    @SerialName("CHF")
-    CHF,
-    @SerialName("JPY")
-    JPY,
-    @SerialName("CNY")
-    CNY,
-    @SerialName("TRY")
-    TRY;
+    @SerialName("643") RUB,
+    @SerialName("840") USD,
+    @SerialName("978") EUR;
 
     val symbol
         get() = runCatching {

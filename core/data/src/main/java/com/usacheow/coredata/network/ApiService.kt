@@ -1,6 +1,6 @@
 package com.usacheow.coredata.network
 
-import com.usacheow.corecommon.BuildInfo
+import com.usacheow.corecommon.model.BuildInfo
 import java.lang.IllegalStateException
 
 enum class ApiService(

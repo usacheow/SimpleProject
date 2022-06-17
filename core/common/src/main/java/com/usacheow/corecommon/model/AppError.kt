@@ -1,4 +1,4 @@
-package com.usacheow.corecommon
+package com.usacheow.corecommon.model
 
 import androidx.annotation.StringRes
 import com.usacheow.corecommon.container.TextValue
@@ -25,7 +25,7 @@ sealed class AppError(
         cause: Exception? = null
     ) : AppError(CoreR.string.unknown_error_message, message, cause)
 
-    class Host(
+    class Client(
         message: String? = null,
         cause: Exception? = null
     ) : AppError(CoreR.string.server_error_message, message, cause)

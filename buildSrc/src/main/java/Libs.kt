@@ -10,7 +10,7 @@ object Libs {
     private const val rulerVersion = "1.1.0"
 
     const val composeVersion = "1.2.0-beta01"
-    private const val composeMaterialVersion = "1.0.0-alpha11"
+    private const val composeMaterialVersion = "1.0.0-alpha13"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
@@ -77,7 +77,8 @@ object Libs {
         val kotlin = arrayOf("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
         val coroutines = arrayOf(
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion")
         val kotlinSerialization = arrayOf(
             "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinSerializationVersion",
             "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion")
