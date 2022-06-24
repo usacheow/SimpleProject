@@ -211,8 +211,8 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
             tint = AppTheme.specificColorScheme.symbolPrimary,
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.CenterVertically)
                 .size(CellTileConfig.IconSize)
+                .align(Alignment.CenterVertically)
                 .padding(8.dp),
         )
         is CellTileState.RightPart.Logo -> Image(
@@ -220,14 +220,16 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
             contentDescription = null,
             modifier = Modifier
                 .size(CellTileConfig.IconSize)
-                .align(Alignment.CenterVertically),
+                .align(Alignment.CenterVertically)
+                .padding(8.dp),
         )
         is CellTileState.RightPart.Switch -> Switch(
             checked = data.isChecked,
             onCheckedChange = null,
             modifier = Modifier
                 .height(24.dp)
-                .align(Alignment.CenterVertically),
+                .align(Alignment.CenterVertically)
+                .padding(vertical = 16.dp, horizontal = 8.dp),
         )
     }
 }

@@ -5,38 +5,30 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.R as CoreR
 
 sealed class AppError(
-    @StringRes val defaultMessageRes: Int,
+    @StringRes val defaultMessageRes: Int = CoreR.string.unknown_error_message,
     message: String? = null,
-    cause: Exception? = null
+    cause: Exception? = null,
+    val code: Int? = null,
 ) : Exception(message, cause) {
-
-    class InvalidAccessToken(
-        message: String? = null,
-        cause: Exception? = null
-    ) : AppError(CoreR.string.invalid_token_error_message, message, cause)
-
-    class Server(
-        message: String? = null,
-        cause: Exception? = null
-    ) : AppError(CoreR.string.server_error_message, message, cause)
-
-    class EmptyResponse(
-        message: String? = null,
-        cause: Exception? = null
-    ) : AppError(CoreR.string.unknown_error_message, message, cause)
-
-    class Client(
-        message: String? = null,
-        cause: Exception? = null
-    ) : AppError(CoreR.string.server_error_message, message, cause)
 
     class Unknown(
         message: String? = null,
         cause: Exception? = null
-    ) : AppError(CoreR.string.unknown_error_message, message, cause)
+    ) : AppError(message = message, cause = cause)
+
+    class Custom(
+        message: String? = null,
+        cause: Exception? = null,
+        code: Int? = null,
+        val displayMessage: String? = null,
+    ) : AppError(message = message, cause = cause, code = code)
 
     fun makeUserReadableErrorMessage(): TextValue {
-        return message?.let { TextValue.Simple(it) } ?: TextValue.Res(defaultMessageRes)
+        return if (this is Custom && displayMessage != null) {
+            TextValue.Simple(displayMessage)
+        } else {
+            message?.let { TextValue.Simple(it) } ?: TextValue.Res(defaultMessageRes)
+        }
     }
 }
 

@@ -25,3 +25,13 @@ sealed class TextValue {
         val args: List<Any> = listOf(quantity),
     ) : TextValue()
 }
+
+fun String.textValue(): TextValue = TextValue.Simple(this)
+
+fun AnnotatedString.textValue(): TextValue = TextValue.Annotated(this)
+
+fun @receiver:StringRes Int.textValue(vararg args: Any): TextValue =
+    TextValue.Res(value = this, args = args.toList())
+
+fun @receiver:PluralsRes Int.textValue(quantity: Int, vararg args: Any): TextValue =
+    TextValue.Plural(value = this, quantity = quantity, args = args.toList().ifEmpty { listOf(quantity) })

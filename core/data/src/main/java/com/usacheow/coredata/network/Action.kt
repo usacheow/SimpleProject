@@ -13,6 +13,7 @@ import javax.inject.Singleton
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
+import java.net.HttpURLConnection
 
 interface Action {
 
@@ -27,7 +28,7 @@ class ActionImpl @Inject constructor(
         val effect = try {
             coroutineScope {
                 var effect = block()
-                if (effect.errorOrNull is AppError.InvalidAccessToken) {
+                if (effect.errorOrNull?.code == HttpURLConnection.HTTP_UNAUTHORIZED) {
                     // todo: refresh
                     effect = block()
                 }
