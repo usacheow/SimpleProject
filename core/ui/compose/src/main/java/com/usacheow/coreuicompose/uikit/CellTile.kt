@@ -220,16 +220,13 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
             contentDescription = null,
             modifier = Modifier
                 .size(CellTileConfig.IconSize)
-                .align(Alignment.CenterVertically)
-                .padding(8.dp),
+                .align(Alignment.CenterVertically),
         )
         is CellTileState.RightPart.Switch -> Switch(
             checked = data.isChecked,
             onCheckedChange = null,
             modifier = Modifier
-                .height(24.dp)
-                .align(Alignment.CenterVertically)
-                .padding(vertical = 16.dp, horizontal = 8.dp),
+                .align(Alignment.CenterVertically),
         )
     }
 }

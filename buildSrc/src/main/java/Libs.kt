@@ -16,7 +16,7 @@ object Libs {
     private const val materialVersion = "1.5.0"
     private const val pagingVersion = "3.1.0"
     private const val accompanistVersion = "0.24.6-alpha"
-    private const val coilVersion = "2.0.0-rc03"
+    private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "2.4.0"
