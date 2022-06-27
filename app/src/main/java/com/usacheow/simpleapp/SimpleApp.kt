@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import coil.decode.SvgDecoder
+import com.usacheow.coredata.network.ApiConfig
 
 @HiltAndroidApp
 class SimpleApp : Application(), ApplicationCoroutineScopeHolder, ImageLoaderFactory {
@@ -24,6 +25,8 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder, ImageLoaderFac
 
     @Inject lateinit var networkStateSource: NetworkStateSource
 
+    @Inject lateinit var apiConfig: ApiConfig
+
     override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreate() {
@@ -33,8 +36,13 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder, ImageLoaderFac
     }
 
     override fun newImageLoader() = ImageLoader.Builder(this)
+        .okHttpClient {
+            apiConfig.okHttpBuilder()
+                .build()
+        }
         .components {
             add(SvgDecoder.Factory())
         }
+        .crossfade(true)
         .build()
 }

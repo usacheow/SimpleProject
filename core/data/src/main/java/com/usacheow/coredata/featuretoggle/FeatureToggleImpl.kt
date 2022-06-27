@@ -1,17 +1,19 @@
 package com.usacheow.coredata.featuretoggle
 
+import com.usacheow.corecommon.model.BuildInfo
 import com.usacheow.coredata.BuildConfig
 import javax.inject.Inject
 
 class FeatureToggleImpl @Inject constructor(
     private val remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
     private val localFeatureToggleStorage: LocalFeatureToggleStorage,
+    private val buildInfo: BuildInfo,
 ) : EditableFeatureToggle {
 
     override fun isEnabled(feature: Feature): Boolean {
-        return when (val isManualToggleEnabled = isLocalEnabled(feature)) {
-            BuildConfig.DEBUG && isManualToggleEnabled != null -> isManualToggleEnabled
-
+        val isManualToggleEnabled = isLocalEnabled(feature)
+        return when {
+            !buildInfo.isRelease && isManualToggleEnabled != null -> isManualToggleEnabled
             else -> isRemoteEnabled(feature)
         }
     }

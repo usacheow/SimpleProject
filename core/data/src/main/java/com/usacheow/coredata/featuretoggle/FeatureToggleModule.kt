@@ -1,5 +1,6 @@
 package com.usacheow.coredata.featuretoggle
 
+import com.usacheow.corecommon.model.BuildInfo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,8 @@ class FeatureToggleModule {
     fun editableFeatureToggle(
         remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
         localFeatureToggleStorage: LocalFeatureToggleStorage,
-    ): EditableFeatureToggle = FeatureToggleImpl(remoteFeatureToggleStorage, localFeatureToggleStorage)
+        buildInfo: BuildInfo,
+    ): EditableFeatureToggle = FeatureToggleImpl(remoteFeatureToggleStorage, localFeatureToggleStorage, buildInfo)
 
     @Provides
     @Singleton

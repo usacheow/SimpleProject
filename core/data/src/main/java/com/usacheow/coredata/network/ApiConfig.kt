@@ -22,20 +22,24 @@ class ApiConfig @Inject constructor(
     private val buildInfo: BuildInfo,
 ) {
 
-    fun <API> builder(clazz: Class<API>): Params<API> = Params(clazz)
+    fun <API> serviceBuilder(clazz: Class<API>): ServiceParams<API> = ServiceParams(clazz)
 
-    private fun createOkHttpClient(baseUrl: String, interceptors: Set<Interceptor>): Retrofit {
-        val builder = okHttpClientBuilder()
-        interceptors.forEach { builder.addInterceptor(it) }
-        builder.build()
+    fun okHttpBuilder() = OkHttpParams()
 
-        return retrofitBuilder(baseUrl, builder.build()).build()
+    private fun createRetrofit(baseUrl: String, interceptors: Set<Interceptor>): Retrofit {
+        return retrofitBuilder(baseUrl, createOkHttpClient(interceptors)).build()
     }
 
     private fun retrofitBuilder(baseUrl: String, okHttp: OkHttpClient) = Retrofit.Builder()
         .addConverterFactory(converter)
         .client(okHttp)
         .baseUrl(baseUrl)
+
+    private fun createOkHttpClient(interceptors: Set<Interceptor>): OkHttpClient {
+        val builder = okHttpClientBuilder()
+        interceptors.forEach { builder.addInterceptor(it) }
+        return builder.build()
+    }
 
     private fun okHttpClientBuilder(): OkHttpClient.Builder {
         val builder = OkHttpClient.Builder()
@@ -52,7 +56,7 @@ class ApiConfig @Inject constructor(
         return builder
     }
 
-    inner class Params<API>(var clazz: Class<API>) {
+    inner class ServiceParams<API>(var clazz: Class<API>) {
 
         private var service: ApiService? = null
         private val interceptors = mutableSetOf<Interceptor>()
@@ -61,6 +65,15 @@ class ApiConfig @Inject constructor(
 
         fun interceptor(interceptor: Interceptor) = this.apply { interceptors += interceptor }
 
-        fun build(): API = createOkHttpClient(requireNotNull(service).getBaseUrl(buildInfo), interceptors).create(clazz)
+        fun build(): API = createRetrofit(requireNotNull(service).getBaseUrl(buildInfo), interceptors).create(clazz)
+    }
+
+    inner class OkHttpParams {
+
+        private val interceptors = mutableSetOf<Interceptor>()
+
+        fun interceptor(interceptor: Interceptor) = this.apply { interceptors += interceptor }
+
+        fun build() = createOkHttpClient(interceptors)
     }
 }
