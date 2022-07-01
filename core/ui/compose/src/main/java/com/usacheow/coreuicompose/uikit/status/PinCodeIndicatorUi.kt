@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.status
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutLinearInEasing

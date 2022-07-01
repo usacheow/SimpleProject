@@ -21,14 +21,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.model.CurrencyType
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.model.CurrencyType
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
+import com.usacheow.coreuicompose.uikit.SimplePopup
+import com.usacheow.coreuicompose.uikit.SimplePopupHeader
+import com.usacheow.coreuicompose.uikit.SimplePopupItem
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.input.SimpleSelector
-import com.usacheow.coreuicompose.uikit.input.SimpleSelectorDropDown
-import com.usacheow.coreuicompose.uikit.input.SimpleSelectorDropDownHeader
-import com.usacheow.coreuicompose.uikit.input.SimpleSelectorDropDownItem
 import com.usacheow.coreuicompose.uikit.input.SimpleSelectorPlaceholder
 import com.usacheow.coreuicompose.uikit.input.SimpleTextField
 import com.usacheow.coreuicompose.uikit.input.SimpleTextFieldConfig
@@ -141,26 +141,18 @@ private fun Selectors() {
         }
 
         if (isExpanded) {
-            SimpleSelectorDropDown(onDismissRequest = { isExpanded = false }) {
-                SimpleSelectorDropDownHeader(defaultPlaceholder)
+            SimplePopup(onDismissRequest = { isExpanded = false }) {
+                SimplePopupHeader(defaultPlaceholder)
                 items.forEach {
-                    Item(it) {
-                        isExpanded = false
-                        selectedItem = it
-                    }
+                    SimplePopupItem(
+                        value = TextValue.Simple(it),
+                        onClick = {
+                            isExpanded = false
+                            selectedItem = it
+                        },
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-private fun Item(
-    value: String,
-    onClick: () -> Unit,
-) {
-    SimpleSelectorDropDownItem(
-        value = TextValue.Simple(value),
-        onClick = onClick,
-    )
 }

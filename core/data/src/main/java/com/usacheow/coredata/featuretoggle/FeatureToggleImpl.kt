@@ -1,7 +1,6 @@
 package com.usacheow.coredata.featuretoggle
 
 import com.usacheow.corecommon.model.BuildInfo
-import com.usacheow.coredata.BuildConfig
 import javax.inject.Inject
 
 class FeatureToggleImpl @Inject constructor(

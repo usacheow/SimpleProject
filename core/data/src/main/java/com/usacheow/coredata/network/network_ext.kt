@@ -6,7 +6,6 @@ import com.usacheow.corecommon.model.Effect
 import com.usacheow.coredata.cache.CacheProvider
 import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
 import java.net.ConnectException
-import java.net.HttpURLConnection
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.CancellationException
@@ -18,7 +17,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.decodeFromStream
-import retrofit2.HttpException
 import retrofit2.Response
 
 suspend inline fun <reified T : Any> cachedApiCall(

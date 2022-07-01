@@ -9,8 +9,8 @@ object Libs {
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeVersion = "1.2.0-beta01"
-    private const val composeMaterialVersion = "1.0.0-alpha13"
+    const val composeVersion = "1.2.0-rc02"
+    private const val composeMaterialVersion = "1.0.0-alpha14"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"

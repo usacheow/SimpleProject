@@ -4,9 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
@@ -18,11 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupProperties
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.doOnClick
@@ -35,7 +30,6 @@ object SimpleSelectorConfig {
     val MinHeight = SimpleTextFieldConfig.MinHeight
     val IconSize = 20.dp
     val Padding = 16.dp
-    val Elevation = 16.dp
 
     @Composable
     fun shape() = SimpleTextFieldConfig.shape()
@@ -82,62 +76,12 @@ fun SimpleSelector(
 }
 
 @Composable
-fun SimpleSelectorDropDown(
-    onDismissRequest: () -> Unit,
-    content: @Composable () -> Unit,
-) {
-    Popup(
-        onDismissRequest = onDismissRequest,
-        properties = PopupProperties(focusable = true),
-    ) {
-        Column(
-            modifier = Modifier
-                .shadow(SimpleSelectorConfig.Elevation, shape = SimpleSelectorConfig.shape())
-                .clip(SimpleSelectorConfig.shape())
-                .background(AppTheme.specificColorScheme.surface)
-                .fillMaxWidth(),
-        ) {
-            content()
-        }
-    }
-}
-
-@Composable
 fun SimpleSelectorPlaceholder(value: TextValue, icon: IconValue? = null) {
     DefaultSelectorItem(value = value, icon = icon)
 }
 
 @Composable
-fun SimpleSelectorDropDownHeader(
-    value: TextValue,
-) {
-    DefaultSelectorItem(
-        modifier = Modifier.padding(SimpleSelectorConfig.Padding),
-        value = value,
-        color = AppTheme.specificColorScheme.symbolSecondary,
-    )
-}
-
-@Composable
-fun SimpleSelectorDropDownItem(
-    modifier: Modifier = Modifier,
-    value: TextValue,
-    icon: IconValue? = null,
-    onClick: () -> Unit,
-) {
-    DefaultSelectorItem(
-        modifier = Modifier
-            .fillMaxWidth()
-            .doOnClick(onClick = onClick)
-            .padding(horizontal = SimpleSelectorConfig.Padding, vertical = SimpleSelectorConfig.Padding / 2)
-            .then(modifier),
-        value = value,
-        icon = icon
-    )
-}
-
-@Composable
-private fun DefaultSelectorItem(
+internal fun DefaultSelectorItem(
     modifier: Modifier = Modifier,
     value: TextValue,
     icon: IconValue? = null,

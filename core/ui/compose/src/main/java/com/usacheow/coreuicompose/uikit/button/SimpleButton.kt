@@ -1,6 +1,8 @@
 package com.usacheow.coreuicompose.uikit.button
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonElevation
@@ -23,8 +26,10 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
@@ -83,6 +88,12 @@ object SimpleButtonConfig {
     )
 
     @Composable
+    fun colorsWhite() = ButtonDefaults.buttonColors(
+        containerColor = AppTheme.specificColorScheme.surface,
+        contentColor = AppTheme.specificColorScheme.onSurface,
+    )
+
+    @Composable
     fun borderOutline() = BorderStroke(width = 1.dp, color = AppTheme.specificColorScheme.outline)
 
     @Composable
@@ -98,6 +109,7 @@ object SimpleButtonConfig {
 @Composable
 fun SimpleButtonPrimaryS(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -106,6 +118,7 @@ fun SimpleButtonPrimaryS(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -121,6 +134,7 @@ fun SimpleButtonPrimaryS(
 @Composable
 fun SimpleButtonPrimaryM(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -129,6 +143,7 @@ fun SimpleButtonPrimaryM(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -144,6 +159,7 @@ fun SimpleButtonPrimaryM(
 @Composable
 fun SimpleButtonPrimaryL(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -152,6 +168,7 @@ fun SimpleButtonPrimaryL(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -167,6 +184,7 @@ fun SimpleButtonPrimaryL(
 @Composable
 fun SimpleButtonSecondaryS(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -175,6 +193,7 @@ fun SimpleButtonSecondaryS(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -190,6 +209,7 @@ fun SimpleButtonSecondaryS(
 @Composable
 fun SimpleButtonSecondaryM(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -198,6 +218,7 @@ fun SimpleButtonSecondaryM(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -213,6 +234,7 @@ fun SimpleButtonSecondaryM(
 @Composable
 fun SimpleButtonSecondaryL(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -221,6 +243,7 @@ fun SimpleButtonSecondaryL(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -236,6 +259,7 @@ fun SimpleButtonSecondaryL(
 @Composable
 fun SimpleButtonTonalS(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -244,6 +268,7 @@ fun SimpleButtonTonalS(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -259,6 +284,7 @@ fun SimpleButtonTonalS(
 @Composable
 fun SimpleButtonTonalM(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -267,6 +293,7 @@ fun SimpleButtonTonalM(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -282,6 +309,7 @@ fun SimpleButtonTonalM(
 @Composable
 fun SimpleButtonTonalL(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -290,6 +318,7 @@ fun SimpleButtonTonalL(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -305,6 +334,7 @@ fun SimpleButtonTonalL(
 @Composable
 fun SimpleButtonOutlineS(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -313,6 +343,7 @@ fun SimpleButtonOutlineS(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -329,6 +360,7 @@ fun SimpleButtonOutlineS(
 @Composable
 fun SimpleButtonOutlineM(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -337,6 +369,7 @@ fun SimpleButtonOutlineM(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -353,6 +386,7 @@ fun SimpleButtonOutlineM(
 @Composable
 fun SimpleButtonOutlineL(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -361,6 +395,7 @@ fun SimpleButtonOutlineL(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -377,6 +412,7 @@ fun SimpleButtonOutlineL(
 @Composable
 fun SimpleButtonInlineS(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -385,6 +421,7 @@ fun SimpleButtonInlineS(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierS),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -400,6 +437,7 @@ fun SimpleButtonInlineS(
 @Composable
 fun SimpleButtonInlineM(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -408,6 +446,7 @@ fun SimpleButtonInlineM(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierM),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -423,6 +462,7 @@ fun SimpleButtonInlineM(
 @Composable
 fun SimpleButtonInlineL(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -431,6 +471,7 @@ fun SimpleButtonInlineL(
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
         Button(
             onClick = onClick,
+            onLongClick = onLongClick,
             modifier = modifier.then(SimpleButtonConfig.heightModifierL),
             enabled = enabled,
             interactionSource = interactionSource,
@@ -443,10 +484,86 @@ fun SimpleButtonInlineL(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SimpleButtonWhiteS(
+    onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit,
+) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleS())) {
+        Button(
+            onClick = onClick,
+            onLongClick = onLongClick,
+            modifier = modifier.then(SimpleButtonConfig.heightModifierS),
+            enabled = enabled,
+            interactionSource = interactionSource,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.shapeS(),
+            colors = SimpleButtonConfig.colorsWhite(),
+            contentPadding = SimpleButtonConfig.ContentPaddingS,
+            content = content,
+        )
+    }
+}
+
+@Composable
+fun SimpleButtonWhiteM(
+    onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit,
+) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleM())) {
+        Button(
+            onClick = onClick,
+            onLongClick = onLongClick,
+            modifier = modifier.then(SimpleButtonConfig.heightModifierM),
+            enabled = enabled,
+            interactionSource = interactionSource,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.shapeM(),
+            colors = SimpleButtonConfig.colorsWhite(),
+            contentPadding = SimpleButtonConfig.ContentPaddingM,
+            content = content,
+        )
+    }
+}
+
+@Composable
+fun SimpleButtonWhiteL(
+    onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit,
+) {
+    MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = SimpleButtonConfig.textStyleL())) {
+        Button(
+            onClick = onClick,
+            onLongClick = onLongClick,
+            modifier = modifier.then(SimpleButtonConfig.heightModifierL),
+            enabled = enabled,
+            interactionSource = interactionSource,
+            elevation = SimpleButtonConfig.elevation(),
+            shape = SimpleButtonConfig.shapeL(),
+            colors = SimpleButtonConfig.colorsWhite(),
+            contentPadding = SimpleButtonConfig.ContentPaddingL,
+            content = content,
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 private fun Button(
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier,
     enabled: Boolean,
     interactionSource: MutableInteractionSource,
@@ -464,16 +581,22 @@ private fun Button(
 
     CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
         Surface(
-            onClick = onClick,
-            modifier = modifier,
+            modifier = modifier
+                .clip(shape)
+                .combinedClickable(
+                    onClick = onClick,
+                    onLongClick = onLongClick,
+                    enabled = enabled,
+                    role = Role.Button,
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(),
+                ),
             shape = shape,
             color = containerColor,
             contentColor = contentColor,
             tonalElevation = tonalElevation,
             shadowElevation = shadowElevation,
             border = border,
-            interactionSource = interactionSource,
-            enabled = enabled,
         ) {
             CompositionLocalProvider(LocalContentColor provides contentColor) {
                 ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {

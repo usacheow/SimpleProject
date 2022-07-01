@@ -10,8 +10,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.os.bundleOf
 
-fun Context.openShareDialog(url: String) = ShareCompat.IntentBuilder(this)
-    .setText(url)
+fun Context.openShareDialog(data: String) = ShareCompat.IntentBuilder(this)
+    .setText(data)
     .setType("text/plain")
     .startChooser()
 
