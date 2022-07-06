@@ -43,7 +43,7 @@ private typealias OnBackIconClick = () -> Boolean
 data class ActionIconData(
     val icon: IconValue,
     val color: Color? = null,
-    val clickListener: () -> Unit,
+    val onClick: () -> Unit,
 )
 
 object SimpleTopAppBarConfig {
@@ -102,7 +102,7 @@ fun SimpleTopAppBar(
                         tint = it.color ?: colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
                         modifier = Modifier
                             .clip(CircleShape)
-                            .clickable(enabled = true, onClick = it.clickListener)
+                            .clickable(enabled = true, onClick = it.onClick)
                             .padding(12.dp),
                     )
                 }

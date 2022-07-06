@@ -35,7 +35,7 @@ sealed class CellTileState : TileState {
         val value: TextValue? = null,
         val additional: TextValue? = null,
         val rightPart: RightPart? = null,
-        val clickListener: (() -> Unit)? = null,
+        val onClick: (() -> Unit)? = null,
     ) : CellTileState()
 
     object Shimmer : CellTileState()
@@ -83,7 +83,7 @@ private fun Data(
 ) {
     Container(
         modifier = modifier,
-        clickListener = data.clickListener,
+        onClick = data.onClick,
     ) {
         LeftPart(data.leftPart)
         MiddlePart(
@@ -100,7 +100,7 @@ private fun Data(
 private fun Shimmer(modifier: Modifier = Modifier) {
     Container(
         modifier = modifier,
-        clickListener = null,
+        onClick = null,
     ) {
         ShimmerTile(
             needBottomLine = false,
@@ -112,7 +112,7 @@ private fun Shimmer(modifier: Modifier = Modifier) {
 @Composable
 private fun Container(
     modifier: Modifier = Modifier,
-    clickListener: (() -> Unit)?,
+    onClick: (() -> Unit)?,
     content: @Composable RowScope.() -> Unit,
 ) {
     Row(
@@ -120,7 +120,7 @@ private fun Container(
         modifier = modifier
             .fillMaxWidth()
             .padding(DimenValues.ripple_outer_padding)
-            .defaultTileRipple(onClick = clickListener),
+            .defaultTileRipple(onClick = onClick),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         content = content,
     )

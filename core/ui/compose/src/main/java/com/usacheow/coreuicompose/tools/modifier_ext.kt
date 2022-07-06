@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.blur
@@ -14,6 +15,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.material.fade
@@ -28,12 +30,12 @@ import kotlin.math.sqrt
 
 fun Modifier.addIf(
     needAdd: Boolean,
-    action: Modifier.() -> Modifier,
-) = if (needAdd) this.action() else this
+    action: @Composable Modifier.() -> Modifier,
+) = composed { if (needAdd) this.action() else this }
 
-fun Modifier.defaultBorder(shape: Shape) = composed {
+fun Modifier.defaultBorder(shape: Shape, width: Dp = .5f.dp) = composed {
     border(
-        width = 1.dp,
+        width = width,
         color = AppTheme.specificColorScheme.outline,
         shape = shape,
     ).clip(shape)

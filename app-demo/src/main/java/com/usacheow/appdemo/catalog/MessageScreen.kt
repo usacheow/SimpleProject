@@ -72,14 +72,14 @@ private fun items(): List<TileState> = listOf(
         title = TextValue.Simple("Message title text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {},
+        onClick = {},
     ),
     MessageBannerState(
         title = TextValue.Simple("Message title text"),
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {},
+        onClick = {},
     ),
     MessageBannerState(
         icon = AppTheme.specificIcons.error.toImageValue(),
@@ -87,6 +87,6 @@ private fun items(): List<TileState> = listOf(
         description = TextValue.Simple("Message description text"),
         button = TextValue.Simple("Button"),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        clickListener = {},
+        onClick = {},
     ),
 )

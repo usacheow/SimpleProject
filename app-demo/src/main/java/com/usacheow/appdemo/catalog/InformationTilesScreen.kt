@@ -83,7 +83,7 @@ private fun large(): List<TileState> = listOf(
         value = TextValue.Simple("Large title"),
         type = HeaderTileState.Type.LargeSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
-        clickListener = {},
+        onClick = {},
     ),
     HeaderTileState.Shimmer(HeaderTileState.Type.LargePrimary),
 )
@@ -97,7 +97,7 @@ private fun medium(): List<TileState> = listOf(
         value = TextValue.Simple("Medium title"),
         type = HeaderTileState.Type.MediumSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
-        clickListener = {},
+        onClick = {},
     ),
     HeaderTileState.Shimmer(HeaderTileState.Type.MediumPrimary),
 )
@@ -111,7 +111,7 @@ private fun small(): List<TileState> = listOf(
         value = TextValue.Simple("Small title"),
         type = HeaderTileState.Type.SmallSecondary,
         action = HeaderTileState.Action.Text(TextValue.Simple("action")),
-        clickListener = {},
+        onClick = {},
     ),
     HeaderTileState.Shimmer(HeaderTileState.Type.SmallPrimary),
 )
@@ -124,7 +124,7 @@ private fun badges(): List<TileState> = listOf(
         value = TextValue.Simple("Badge tile text"),
         contentColor = AppTheme.specificColorScheme.onSurface,
         containerColor = AppTheme.specificColorScheme.surface,
-        clickListener = {}
+        onClick = {}
     ),
 )
 
@@ -135,6 +135,6 @@ private fun smallBadges(): List<TileState> = listOf(
         value = TextValue.Simple("Badge tile text"),
         contentColor = AppTheme.specificColorScheme.onSurface,
         containerColor = AppTheme.specificColorScheme.surface,
-        clickListener = {}
+        onClick = {}
     ),
 )

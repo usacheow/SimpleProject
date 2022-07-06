@@ -19,7 +19,7 @@ import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.featureexample.presentation.ScreenNavigator
-import com.usacheow.featuremain.presentation.viewmodel.SecondViewModel
+import com.usacheow.featureexample.presentation.viewmodel.SecondViewModel
 
 @Composable
 fun SecondScreen(

@@ -13,7 +13,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 
 data class LinkTextData(
     val text: String,
-    val clickListener: () -> Unit,
+    val onClick: () -> Unit,
 )
 
 @Composable
@@ -35,7 +35,7 @@ fun LinkText(
                 annotatedString
                     .getStringAnnotations(item.text, offset, offset)
                     .firstOrNull()
-                    ?.let { item.clickListener() }
+                    ?.let { item.onClick() }
             }
         },
     )

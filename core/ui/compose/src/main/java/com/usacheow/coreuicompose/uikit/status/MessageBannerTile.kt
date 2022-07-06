@@ -34,7 +34,7 @@ data class MessageBannerState(
     val description: TextValue? = null,
     val button: TextValue? = null,
     val modifier: Modifier = Modifier,
-    val clickListener: (() -> Unit)? = null,
+    val onClick: (() -> Unit)? = null,
 ) : TileState {
 
     @Composable
@@ -93,7 +93,7 @@ fun MessageBannerTile(
                     data.title != null || data.description != null -> Spacer(modifier = Modifier.height(16.dp))
                     iconPainter != null -> Spacer(modifier = Modifier.height(8.dp))
                 }
-                Button(data.button, data.clickListener ?: {})
+                Button(data.button, data.onClick ?: {})
             }
         }
     }
@@ -132,12 +132,12 @@ private fun Description(description: TextValue) {
 }
 
 @Composable
-private fun Button(button: TextValue, clickListener: () -> Unit) {
+private fun Button(button: TextValue, onClick: () -> Unit) {
     OutlinedButton(
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .fillMaxWidth(),
-        onClick = clickListener,
+        onClick = onClick,
     ) { SimpleButtonContent(button) }
 }
 
@@ -152,7 +152,7 @@ private fun Preview() {
             description = TextValue.Simple("Message description text"),
             button = TextValue.Simple("Button"),
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            clickListener = {},
+            onClick = {},
         ).Content(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
     }
 }

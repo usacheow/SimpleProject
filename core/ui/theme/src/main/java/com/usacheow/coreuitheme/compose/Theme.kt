@@ -7,12 +7,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Typography
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.DpSize
 
 val LocalWindowSizeClass = staticCompositionLocalOf<WindowSizeClass> {
@@ -42,17 +45,26 @@ fun PreviewAppTheme(
 @Composable
 fun AppTheme(
     windowSizeClass: WindowSizeClass,
+    isDynamicTheme: Boolean = true,
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
+    var colorScheme = when {
+        isDynamicTheme -> when {
+            darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+            else -> dynamicLightColorScheme(LocalContext.current)
+        }
+        else -> when {
+            darkTheme -> DarkColorScheme
+            else -> LightColorScheme
+        }
+    }
     val specificColorScheme = when {
+        isDynamicTheme -> colorScheme.toSpecificColorScheme(!darkTheme)
         darkTheme -> DarkSpecificColorScheme
         else -> LightSpecificColorScheme
     }
-    val colorScheme = when {
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline)
 
     CompositionLocalProvider(
         LocalSpecificColorScheme provides specificColorScheme,
@@ -63,7 +75,7 @@ fun AppTheme(
             colorScheme = colorScheme,
             shapes = AppShapes,
             typography = DefaultTypography,
-            content = content,
+            content = { Material2ThemeSupport(darkTheme, content) },
         )
     }
 }

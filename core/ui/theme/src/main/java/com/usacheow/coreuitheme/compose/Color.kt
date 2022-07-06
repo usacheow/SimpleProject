@@ -1,6 +1,5 @@
 package com.usacheow.coreuitheme.compose
 
-import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
@@ -155,40 +154,4 @@ data class SpecificColorScheme(
     val black: Color = Color(0xFF000000),
 
     val transparent: Color = Color(0x00000000),
-) {
-
-    fun toColorScheme() = ColorScheme(
-        primary = primary,
-        onPrimary = onPrimary,
-        primaryContainer = primaryContainer,
-        onPrimaryContainer = onPrimaryContainer,
-        inversePrimary = primaryInverse,
-
-        secondary = secondary,
-        onSecondary = onSecondary,
-        secondaryContainer = secondaryContainer,
-        onSecondaryContainer = onSecondaryContainer,
-
-        tertiary = tertiary,
-        onTertiary = onTertiary,
-        tertiaryContainer = tertiaryContainer,
-        onTertiaryContainer = onTertiaryContainer,
-
-        background = background,
-        onBackground = onBackground,
-        surface = surface,
-        onSurface = onSurface,
-        surfaceVariant = surfaceVariant,
-        onSurfaceVariant = onSurfaceVariant,
-        inverseSurface = surfaceInverse,
-        inverseOnSurface = onSurfaceInverse,
-        surfaceTint = surfaceTint,
-
-        error = error,
-        onError = onError,
-        errorContainer = errorContainer,
-        onErrorContainer = onErrorContainer,
-
-        outline = outline,
-    )
-}
+)

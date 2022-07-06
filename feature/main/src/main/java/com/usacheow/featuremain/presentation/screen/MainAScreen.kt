@@ -57,7 +57,7 @@ private fun MainAScreen(
             items(20) {
                 CellTileState.Data(
                     title = TextValue.Simple("item $it"),
-                    clickListener = onNextClick,
+                    onClick = onNextClick,
                 ).Content(modifier = Modifier)
             }
         }

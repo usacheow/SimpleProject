@@ -76,7 +76,7 @@ object SimpleButtonConfig {
     @Composable
     fun colorsOutline() = ButtonDefaults.buttonColors(
         containerColor = Color.Transparent,
-        contentColor = AppTheme.specificColorScheme.primaryContainer,
+        contentColor = AppTheme.specificColorScheme.primary,
     )
 
     @Composable

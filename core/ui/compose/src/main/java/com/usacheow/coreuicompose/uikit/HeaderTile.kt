@@ -20,7 +20,7 @@ sealed class HeaderTileState : TileState {
     data class Data(
         val value: TextValue,
         val action: Action? = null,
-        val clickListener: (() -> Unit)? = null,
+        val onClick: (() -> Unit)? = null,
         val type: Type = Type.MediumPrimary,
     ) : HeaderTileState()
 
@@ -77,7 +77,7 @@ private fun Data(
 ) {
     Container(
         modifier = modifier,
-        clickListener = data.clickListener,
+        onClick = data.onClick,
     ) {
         Text(
             text = data.value.get(),
@@ -124,7 +124,7 @@ private fun Shimmer(
     val type = data.type
     Container(
         modifier = modifier,
-        clickListener = null,
+        onClick = null,
     ) {
         ShimmerTile(
             needTopLine = type == HeaderTileState.Type.SmallPrimary || type == HeaderTileState.Type.SmallSecondary,
@@ -139,13 +139,13 @@ private fun Shimmer(
 @Composable
 private fun Container(
     modifier: Modifier = Modifier,
-    clickListener: (() -> Unit)?,
+    onClick: (() -> Unit)?,
     content: @Composable RowScope.() -> Unit,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .defaultTileRipple(onClick = clickListener),
+            .defaultTileRipple(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically,
         content = content,
     )

@@ -1,16 +1,11 @@
 package com.usacheow.coreuicompose.uikit.input
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.doOnClick
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -52,26 +48,17 @@ fun SimpleSelector(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    val shape = SimpleSelectorConfig.shape()
-
     Row(
         modifier = modifier
-            .background(AppTheme.specificColorScheme.surfaceVariant, shape)
+            .defaultBorder(SimpleSelectorConfig.shape(), width = 1.dp)
             .sizeIn(minHeight = SimpleSelectorConfig.MinHeight, minWidth = SimpleSelectorConfig.MinWidth)
-            .clip(shape)
+            .clip(SimpleSelectorConfig.shape())
             .doOnClick(onClick = onClick)
             .padding(SimpleSelectorConfig.Padding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        val contentModifier = Modifier.weight(1f)
-        Box(modifier = contentModifier) { content() }
-        Icon(
-            imageVector = Icons.Default.ExpandMore,
-            contentDescription = "Selector indicator",
-            modifier = Modifier.size(SimpleSelectorConfig.IconSize),
-            tint = AppTheme.specificColorScheme.symbolSecondary,
-        )
+        content()
     }
 }
 
@@ -85,7 +72,7 @@ internal fun DefaultSelectorItem(
     modifier: Modifier = Modifier,
     value: TextValue,
     icon: IconValue? = null,
-    color: Color = AppTheme.specificColorScheme.symbolPrimary,
+    color: Color = AppTheme.specificColorScheme.onSurfaceVariant,
 ) {
     Row(
         modifier = modifier,

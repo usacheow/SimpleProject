@@ -1,4 +1,4 @@
-package com.usacheow.featuremain.presentation.viewmodel
+package com.usacheow.featureexample.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import com.usacheow.corenavigation.AppRoute

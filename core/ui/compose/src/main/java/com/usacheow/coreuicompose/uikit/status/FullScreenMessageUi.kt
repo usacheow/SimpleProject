@@ -45,7 +45,7 @@ data class FullScreenMessage(
 
     data class ButtonData(
         val text: TextValue,
-        val clickListener: () -> Unit,
+        val onClick: () -> Unit,
     )
 }
 
@@ -96,7 +96,7 @@ fun FullScreenMessageUi(
         data.primaryButton?.let { button ->
             SimpleButtonPrimaryL(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = button.clickListener,
+                onClick = button.onClick,
             ) {
                 SimpleButtonContent(button.text)
             }
@@ -106,7 +106,7 @@ fun FullScreenMessageUi(
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth(),
-                onClick = button.clickListener,
+                onClick = button.onClick,
             ) {
                 SimpleButtonContent(button.text)
             }
@@ -151,11 +151,11 @@ private fun Preview() {
             message = TextValue.Simple("This is a long description description description description description description description description"),
             primaryButton = FullScreenMessage.ButtonData(
                 text = TextValue.Simple("Action"),
-                clickListener = {},
+                onClick = {},
             ),
             secondaryButton = FullScreenMessage.ButtonData(
                 text = TextValue.Simple("Action"),
-                clickListener = {},
+                onClick = {},
             ),
         )
     )

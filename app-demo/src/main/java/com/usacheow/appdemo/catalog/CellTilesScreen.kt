@@ -82,14 +82,14 @@ private fun items(): List<TileState> = listOf(
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),
         rightPart = CellTileState.RightPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
-        clickListener = {},
+        onClick = {},
     ),
     CellTileState.Data(
         subtitle = TextValue.Simple("Subtitle"),
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),
         rightPart = CellTileState.RightPart.ActionIcon(AppTheme.specificIcons.navigateNext.toImageValue()),
-        clickListener = {},
+        onClick = {},
     ),
     CellTileState.Data(
         leftPart = CellTileState.LeftPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
@@ -97,6 +97,6 @@ private fun items(): List<TileState> = listOf(
         title = TextValue.Simple("Title"),
         additional = TextValue.Simple("Additional"),
         rightPart = CellTileState.RightPart.Switch(true),
-        clickListener = {},
+        onClick = {},
     ),
 )

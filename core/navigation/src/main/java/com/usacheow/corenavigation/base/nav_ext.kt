@@ -18,8 +18,10 @@ import kotlinx.serialization.json.Json
 const val ARG_KEY = "arg"
 
 inline fun <reified ARG> ARG.toQuery() = ARG_KEY + "=" + Json.encodeToString(this)
-inline fun <reified ARG> SavedStateHandle.getArg(): ARG? = this.get<String>(ARG_KEY)?.let { Json.decodeFromString(it) }
-inline fun <reified ARG> SavedStateHandle.requireArgs(): ARG = requireNotNull(getArg())
+inline fun <reified ARG> SavedStateHandle.getArgs(): ARG? = runCatching {
+    Json.decodeFromString<ARG>(this@getArgs.get<String>(ARG_KEY)!!)
+}.getOrNull()
+inline fun <reified ARG> SavedStateHandle.requireArgs(): ARG = requireNotNull(getArgs())
 
 fun createRoute(route: Route) = route.path
 fun createRouteWithArg(route: RouteWithArg) = "${route.path}?$ARG_KEY={$ARG_KEY}"

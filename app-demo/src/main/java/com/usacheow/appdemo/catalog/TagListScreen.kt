@@ -90,18 +90,18 @@ fun TagListScreen(navController: NavHostController) {
     }
 }
 
-private fun radioButtons(selected: Int?, clickListener: (Int) -> Unit) = List(8) {
+private fun radioButtons(selected: Int?, onClick: (Int) -> Unit) = List(8) {
     TagTileState(
         text = TextValue.Simple("Radio tag $it"),
-        clickListener = { clickListener(it) },
+        onClick = { onClick(it) },
         isSelected = selected == it,
     )
 }
 
-private fun checkButtons(selected: List<Int>, clickListener: (Int) -> Unit) = List(8) {
+private fun checkButtons(selected: List<Int>, onClick: (Int) -> Unit) = List(8) {
     TagTileState(
         text = TextValue.Simple("Check tag $it"),
-        clickListener = { clickListener(it) },
+        onClick = { onClick(it) },
         isSelected = selected.contains(it),
     )
 }

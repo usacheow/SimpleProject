@@ -29,7 +29,7 @@ sealed class BadgeTileState : TileState {
         val value: TextValue,
         val contentColor: Color? = null,
         val containerColor: Color? = null,
-        val clickListener: (() -> Unit)? = null,
+        val onClick: (() -> Unit)? = null,
     ) : BadgeTileState()
 
     data class Shimmer(
@@ -62,7 +62,7 @@ private fun Data(
         modifier = modifier,
         contentColor = data.contentColor ?: AppTheme.specificColorScheme.onSurface,
         containerColor = data.containerColor ?: AppTheme.specificColorScheme.surface,
-        clickListener = data.clickListener,
+        onClick = data.onClick,
     ) {
         data.header?.get()?.let {
             Text(
@@ -94,7 +94,7 @@ private fun Shimmer(
         modifier = modifier,
         contentColor = AppTheme.specificColorScheme.symbolPrimary,
         containerColor = AppTheme.specificColorScheme.surface,
-        clickListener = null,
+        onClick = null,
     ) {
         if (data.hasHeader) {
             ShimmerTileLine(
@@ -116,7 +116,7 @@ private fun BadgeTileContainer(
     modifier: Modifier = Modifier,
     contentColor: Color,
     containerColor: Color,
-    clickListener: (() -> Unit)?,
+    onClick: (() -> Unit)?,
     content: @Composable () -> Unit,
 ) {
     val body: @Composable ColumnScope.() -> Unit = {
@@ -131,7 +131,7 @@ private fun BadgeTileContainer(
         hoveredElevation = 16.dp,
         draggedElevation = 16.dp,
     )
-    if (clickListener != null) {
+    if (onClick != null) {
         Card(
             modifier = modifier,
             shape = AppTheme.shapes.medium,
@@ -140,7 +140,7 @@ private fun BadgeTileContainer(
                 contentColor = contentColor,
             ),
             elevation = elevation,
-            onClick = clickListener,
+            onClick = onClick,
             content = body,
         )
     } else {

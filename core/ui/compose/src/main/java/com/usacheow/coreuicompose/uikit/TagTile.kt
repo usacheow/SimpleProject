@@ -28,7 +28,7 @@ data class TagTileState(
     val isSelected: Boolean = false,
     val unselectedColor: DataColor? = null,
     val selectedColor: DataColor? = null,
-    val clickListener: () -> Unit,
+    val onClick: () -> Unit,
 ) : TileState {
 
     @Composable
@@ -71,7 +71,7 @@ fun TagTile(
         else -> data.unselectedColor ?: TagTileDefaults.unselectedColor()
     }
 
-    TagTileContainer(modifier = modifier, color = color, clickListener = data.clickListener) {
+    TagTileContainer(modifier = modifier, color = color, onClick = data.onClick) {
         Text(
             text = data.text.get(),
             color = AppTheme.specificColorScheme.symbolPrimary,
@@ -83,7 +83,7 @@ fun TagTile(
 
 @Composable
 fun TagTileShimmer(modifier: Modifier = Modifier) {
-    TagTileContainer(modifier = modifier, color = TagTileDefaults.unselectedColor(), clickListener = null) {
+    TagTileContainer(modifier = modifier, color = TagTileDefaults.unselectedColor(), onClick = null) {
         ShimmerTileLine(width = 40.dp)
     }
 }
@@ -93,7 +93,7 @@ fun TagTileShimmer(modifier: Modifier = Modifier) {
 private fun TagTileContainer(
     modifier: Modifier = Modifier,
     color: TagTileState.DataColor,
-    clickListener: (() -> Unit)?,
+    onClick: (() -> Unit)?,
     content: @Composable () -> Unit,
 ) {
     Card(
@@ -104,7 +104,7 @@ private fun TagTileContainer(
         ),
         elevation = CardDefaults.cardElevation(),
         shape = AppTheme.shapes.small,
-        onClick = clickListener ?: {},
+        onClick = onClick ?: {},
     ) {
         Column(
             modifier = Modifier
@@ -126,7 +126,7 @@ private fun Preview() {
             isSelected = false,
             unselectedColor = TagTileDefaults.unselectedColor(),
             selectedColor = TagTileDefaults.selectedColor(),
-            clickListener = { },
+            onClick = { },
         ).Content(Modifier)
     }
 }
