@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
@@ -77,6 +78,6 @@ private fun Preview() {
                 .padding(vertical = 8.dp, horizontal = 16.dp)
                 .fillMaxWidth(),
             onClick = {},
-        ) { SimpleButtonContent(TextValue.Simple("Simple button")) }
+        ) { SimpleButtonContent("Simple button".textValue()) }
     }
 }

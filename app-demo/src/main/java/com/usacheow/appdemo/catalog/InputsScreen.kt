@@ -24,7 +24,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.CurrencyType
 import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.dpSize
@@ -52,7 +52,7 @@ fun InputsScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Inputs"),
+                title = "Inputs".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -89,7 +89,7 @@ private fun TextFields() {
         onValueChange = cardNumberFormatter.onValueChanged { cardNumberInputValue = it },
         visualTransformation = cardNumberFormatter.visualTransformation(),
         placeholderValue = cardNumberFormatter.placeholder(),
-        labelValue = TextValue.Simple("Card number"),
+        labelValue = "Card number".textValue(),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.creditCard),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         shape = SimpleTextFieldConfig.shape(),
@@ -103,7 +103,7 @@ private fun TextFields() {
         onValueChange = phoneNumberFormatter.onValueChanged { phoneNumberInputValue = it },
         visualTransformation = phoneNumberFormatter.visualTransformation(),
         placeholderValue = phoneNumberFormatter.placeholder(),
-        labelValue = TextValue.Simple("Phone number"),
+        labelValue = "Phone number".textValue(),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.phone),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
         shape = SimpleTextFieldConfig.shape(),
@@ -116,8 +116,8 @@ private fun TextFields() {
         value = amountInputValue,
         onValueChange = amountFormatter.onValueChanged { amountInputValue = it },
         visualTransformation = amountFormatter.visualTransformation(CurrencyType.RUB),
-        placeholderValue = TextValue.Simple("Enter amount"),
-        labelValue = TextValue.Simple("Transfer amount"),
+        placeholderValue = "Enter amount".textValue(),
+        labelValue = "Transfer amount".textValue(),
         leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.currencyExchange),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         shape = SimpleTextFieldConfig.shape(),
@@ -140,9 +140,7 @@ private fun Selectors() {
             .fillMaxWidth()
             .onGloballyPositioned { layoutCoordinates.value = it },
     ) {
-        val value = selectedItem
-            ?.let { TextValue.Simple(it) }
-            ?: TextValue.Simple("Selector placeholder")
+        val value = selectedItem?.textValue() ?: "Selector placeholder".textValue()
         SimpleSelectorPlaceholder(value)
     }
 
@@ -156,7 +154,7 @@ private fun Selectors() {
         ) {
             items.forEach {
                 SimplePopupItem(
-                    value = TextValue.Simple(it),
+                    value = it.textValue(),
                     onClick = {
                         isExpanded = false
                         selectedItem = it

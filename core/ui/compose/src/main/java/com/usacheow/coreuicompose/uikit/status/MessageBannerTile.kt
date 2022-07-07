@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
@@ -43,6 +44,18 @@ data class MessageBannerState(
     }
 }
 
+object MessageBannerConfig {
+
+    @Composable
+    fun colors() = CardDefaults.cardColors(
+        containerColor = AppTheme.specificColorScheme.surfaceVariant,
+        contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+    )
+
+    @Composable
+    fun elevation() = CardDefaults.cardElevation()
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MessageBannerTile(
@@ -51,11 +64,8 @@ fun MessageBannerTile(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = AppTheme.specificColorScheme.surfaceVariant,
-            contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
-        ),
-        elevation = CardDefaults.cardElevation(),
+        colors = MessageBannerConfig.colors(),
+        elevation = MessageBannerConfig.elevation(),
         shape = AppTheme.shapes.medium,
     ) {
         Column(
@@ -148,9 +158,9 @@ private fun Preview() {
     PreviewAppTheme {
         MessageBannerState(
             icon = AppTheme.specificIcons.error.toImageValue(),
-            title = TextValue.Simple("Message title text"),
-            description = TextValue.Simple("Message description text"),
-            button = TextValue.Simple("Button"),
+            title = "Message title text".textValue(),
+            description = "Message description text".textValue(),
+            button = "Button".textValue(),
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             onClick = {},
         ).Content(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))

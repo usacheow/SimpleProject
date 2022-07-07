@@ -22,7 +22,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.android.material.color.MaterialColors
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
@@ -43,7 +43,7 @@ fun PaletteScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Palette"),
+                title = "Palette".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -73,36 +73,36 @@ fun PaletteScreen(navController: NavHostController) {
 
 @Composable
 private fun items() = listOf(
-    HeaderTileState.Data(value = TextValue.Simple("Primary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Primary".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.primary, "primary"),
     ColorItem(AppTheme.specificColorScheme.onPrimary, "onPrimary"),
     ColorItem(AppTheme.specificColorScheme.primaryContainer, "primaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onPrimaryContainer, "onPrimaryContainer"),
     ColorItem(AppTheme.specificColorScheme.primaryInverse, "primaryInverse"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Secondary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Secondary".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.secondary, "secondary"),
     ColorItem(AppTheme.specificColorScheme.onSecondary, "onSecondary"),
     ColorItem(AppTheme.specificColorScheme.secondaryContainer, "secondaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onSecondaryContainer, "onSecondaryContainer"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Tertiary"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Tertiary".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.tertiary, "tertiary"),
     ColorItem(AppTheme.specificColorScheme.onTertiary, "onTertiary"),
     ColorItem(AppTheme.specificColorScheme.tertiaryContainer, "tertiaryContainer"),
     ColorItem(AppTheme.specificColorScheme.onTertiaryContainer, "onTertiaryContainer"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Error"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Error".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.error, "error"),
     ColorItem(AppTheme.specificColorScheme.onError, "onError"),
     ColorItem(AppTheme.specificColorScheme.errorContainer, "errorContainer"),
     ColorItem(AppTheme.specificColorScheme.onErrorContainer, "onErrorContainer"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Background"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Background".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.background, "background"),
     ColorItem(AppTheme.specificColorScheme.onBackground, "onBackground"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Surface"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Surface".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.surface, "surface"),
     ColorItem(AppTheme.specificColorScheme.onSurface, "onSurface"),
     ColorItem(AppTheme.specificColorScheme.surfaceVariant, "surfaceVariant"),
@@ -110,7 +110,7 @@ private fun items() = listOf(
     ColorItem(AppTheme.specificColorScheme.surfaceInverse, "surfaceInverse"),
     ColorItem(AppTheme.specificColorScheme.onSurfaceInverse, "onSurfaceInverse"),
 
-    HeaderTileState.Data(value = TextValue.Simple("Text/Icons"), type = HeaderTileState.Type.SmallSecondary),
+    HeaderTileState.Data(value = "Text/Icons".textValue(), type = HeaderTileState.Type.Small),
     ColorItem(AppTheme.specificColorScheme.symbolPrimary, "symbolPrimary"),
     ColorItem(AppTheme.specificColorScheme.symbolPrimaryInverse, "symbolPrimaryInverse"),
     ColorItem(AppTheme.specificColorScheme.symbolSecondary, "symbolSecondary"),

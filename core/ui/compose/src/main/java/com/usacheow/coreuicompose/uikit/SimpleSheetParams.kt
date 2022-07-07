@@ -109,6 +109,7 @@ private fun ModalBottomSheetState.swipePercent(): Float {
 }
 
 private enum class SwipeDirection {
+
     ToTop, ToBottom, None;
 
     companion object {

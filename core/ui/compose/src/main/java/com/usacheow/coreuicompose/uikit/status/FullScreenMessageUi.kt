@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.insetAll
 import com.usacheow.coreuicompose.tools.mockClick
@@ -147,14 +148,14 @@ private fun Preview() {
         data = FullScreenMessage(
             icon = AppTheme.specificIcons.account.toImageValue(),
             statusIcon = null,
-            title = TextValue.Simple("This is a long title title title title title title title"),
-            message = TextValue.Simple("This is a long description description description description description description description description"),
+            title = "This is a long title title title title title title title".textValue(),
+            message = "This is a long description description description description description description description description".textValue(),
             primaryButton = FullScreenMessage.ButtonData(
-                text = TextValue.Simple("Action"),
+                text = "Action".textValue(),
                 onClick = {},
             ),
             secondaryButton = FullScreenMessage.ButtonData(
-                text = TextValue.Simple("Action"),
+                text = "Action".textValue(),
                 onClick = {},
             ),
         )

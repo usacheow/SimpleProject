@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
 import com.usacheow.coreuicompose.uikit.CellTileState
@@ -44,7 +44,7 @@ private fun MainAScreen(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Main A screen"),
+                title = "Main A screen".textValue(),
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
@@ -56,7 +56,7 @@ private fun MainAScreen(
         ) {
             items(20) {
                 CellTileState.Data(
-                    title = TextValue.Simple("item $it"),
+                    title = "item $it".textValue(),
                     onClick = onNextClick,
                 ).Content(modifier = Modifier)
             }

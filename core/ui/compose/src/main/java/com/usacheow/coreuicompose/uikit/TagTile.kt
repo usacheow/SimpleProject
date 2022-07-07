@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
-import com.usacheow.coreuicompose.tools.TilesShimmerState
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
@@ -23,21 +23,21 @@ import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.DimenValues
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
-data class TagTileState(
-    val text: TextValue,
-    val isSelected: Boolean = false,
-    val unselectedColor: DataColor? = null,
-    val selectedColor: DataColor? = null,
-    val onClick: () -> Unit,
-) : TileState {
+sealed class TagTileState : TileState {
+
+    data class Data(
+        val text: TextValue,
+        val isSelected: Boolean = false,
+        val unselectedColor: DataColor? = null,
+        val selectedColor: DataColor? = null,
+        val onClick: () -> Unit,
+    ) : TagTileState()
+
+    object Shimmer : TagTileState()
 
     @Composable
     override fun Content(modifier: Modifier) {
         TagTile(modifier, this)
-    }
-
-    companion object {
-        fun shimmer() = TilesShimmerState { TagTileShimmer(it) }
     }
 
     data class DataColor(
@@ -59,6 +59,18 @@ object TagTileDefaults {
         background = AppTheme.specificColorScheme.surfaceVariant,
         content = AppTheme.specificColorScheme.onSurfaceVariant,
     )
+
+    @Composable
+    fun shape() = AppTheme.shapes.medium
+
+    @Composable
+    fun colors(color: TagTileState.DataColor) = CardDefaults.cardColors(
+        containerColor = color.background,
+        contentColor = color.content,
+    )
+
+    @Composable
+    fun elevation() = CardDefaults.cardElevation()
 }
 
 @Composable
@@ -66,12 +78,23 @@ fun TagTile(
     modifier: Modifier = Modifier,
     data: TagTileState,
 ) {
+    when (data) {
+        is TagTileState.Data -> Data(modifier, data)
+        is TagTileState.Shimmer -> Shimmer(modifier)
+    }
+}
+
+@Composable
+private fun Data(
+    modifier: Modifier = Modifier,
+    data: TagTileState.Data,
+) {
     val color = when {
         data.isSelected -> data.selectedColor ?: TagTileDefaults.selectedColor()
         else -> data.unselectedColor ?: TagTileDefaults.unselectedColor()
     }
 
-    TagTileContainer(modifier = modifier, color = color, onClick = data.onClick) {
+    Container(modifier = modifier, color = color, onClick = data.onClick) {
         Text(
             text = data.text.get(),
             color = AppTheme.specificColorScheme.symbolPrimary,
@@ -82,15 +105,15 @@ fun TagTile(
 }
 
 @Composable
-fun TagTileShimmer(modifier: Modifier = Modifier) {
-    TagTileContainer(modifier = modifier, color = TagTileDefaults.unselectedColor(), onClick = null) {
+private fun Shimmer(modifier: Modifier = Modifier) {
+    Container(modifier = modifier, color = TagTileDefaults.unselectedColor(), onClick = null) {
         ShimmerTileLine(width = 40.dp)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TagTileContainer(
+private fun Container(
     modifier: Modifier = Modifier,
     color: TagTileState.DataColor,
     onClick: (() -> Unit)?,
@@ -98,12 +121,9 @@ private fun TagTileContainer(
 ) {
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(
-            containerColor = color.background,
-            contentColor = color.content,
-        ),
-        elevation = CardDefaults.cardElevation(),
-        shape = AppTheme.shapes.small,
+        colors = TagTileDefaults.colors(color),
+        elevation = TagTileDefaults.elevation(),
+        shape = TagTileDefaults.shape(),
         onClick = onClick ?: {},
     ) {
         Column(
@@ -121,8 +141,8 @@ private fun TagTileContainer(
 @Composable
 private fun Preview() {
     PreviewAppTheme {
-        TagTileState(
-            text = TextValue.Simple("Tag text"),
+        TagTileState.Data(
+            text = "Tag text".textValue(),
             isSelected = false,
             unselectedColor = TagTileDefaults.unselectedColor(),
             selectedColor = TagTileDefaults.selectedColor(),

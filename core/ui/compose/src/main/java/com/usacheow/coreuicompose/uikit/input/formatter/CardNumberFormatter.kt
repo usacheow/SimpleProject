@@ -1,7 +1,7 @@
 package com.usacheow.coreuicompose.uikit.input.formatter
 
 import androidx.compose.runtime.Composable
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuitheme.compose.AppTheme
 
 class CardNumberFormatter {
@@ -30,7 +30,7 @@ class CardNumberFormatter {
 
     val length = pattern.count { it is SimpleInputSymbol.Inputted }
 
-    fun placeholder() = TextValue.Simple(pattern.joinToString("") { it.value })
+    fun placeholder() = pattern.joinToString("") { it.value }.textValue()
 
     fun onValueChanged(action: (String) -> Unit) = { value: String ->
         action(value.filter { it.isDigit() }.take(length))

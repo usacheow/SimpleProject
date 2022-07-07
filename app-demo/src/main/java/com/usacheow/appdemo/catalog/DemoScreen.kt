@@ -26,7 +26,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.appdemo.DemoDestinations
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.BadgeTileState
@@ -65,7 +65,7 @@ fun DemoScreen(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Demo UIkit"),
+                title = "Demo UIkit".textValue(),
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
@@ -109,71 +109,71 @@ private fun items(
     navController: NavHostController,
     showDialogClickListener: () -> Unit,
 ) = listOf(
-    HeaderTileState.largePrimary(TextValue.Simple("Atoms")),
+    HeaderTileState.large("Atoms".textValue()),
     BadgeTileState.Data(
-        header = TextValue.Simple("atom"),
-        value = TextValue.Simple("1. Typography"),
+        header = "atom".textValue(),
+        value = "1. Typography".textValue(),
         onClick = { navController.navigate(DemoDestinations.Typography) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("atom"),
-        value = TextValue.Simple("2. Palette"),
+        header = "atom".textValue(),
+        value = "2. Palette".textValue(),
         onClick = { navController.navigate(DemoDestinations.Palette) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("atom"),
-        value = TextValue.Simple("3. Buttons"),
+        header = "atom".textValue(),
+        value = "3. Buttons".textValue(),
         onClick = { navController.navigate(DemoDestinations.Buttons) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("atom"),
-        value = TextValue.Simple("4. Inputs"),
+        header = "atom".textValue(),
+        value = "4. Inputs".textValue(),
         onClick = { navController.navigate(DemoDestinations.Inputs) }
     ),
 
-    HeaderTileState.largePrimary(TextValue.Simple("Molecules")),
+    HeaderTileState.large("Molecules".textValue()),
     BadgeTileState.Data(
-        header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("1. Cell Tiles"),
+        header = "molecule".textValue(),
+        value = "1. Cell Tiles".textValue(),
         onClick = { navController.navigate(DemoDestinations.CellTiles) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("2. Tag Lists"),
+        header = "molecule".textValue(),
+        value = "2. Tag Lists".textValue(),
         onClick = { navController.navigate(DemoDestinations.TagList) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("molecule"),
-        value = TextValue.Simple("3. Information Tiles"),
+        header = "molecule".textValue(),
+        value = "3. Information Tiles".textValue(),
         onClick = { navController.navigate(DemoDestinations.InformationTiles) }
     ),
 
-    HeaderTileState.largePrimary(TextValue.Simple("Organisms")),
+    HeaderTileState.large("Organisms".textValue()),
     BadgeTileState.Data(
-        header = TextValue.Simple("organism"),
-        value = TextValue.Simple("1. Message Tiles"),
+        header = "organism".textValue(),
+        value = "1. Message Tiles".textValue(),
         onClick = { navController.navigate(DemoDestinations.Messages) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("organism"),
-        value = TextValue.Simple("2. Num Pad"),
+        header = "organism".textValue(),
+        value = "2. Num Pad".textValue(),
         onClick = { navController.navigate(DemoDestinations.NumPad) }
     ),
 
-    HeaderTileState.largePrimary(TextValue.Simple("Templates")),
+    HeaderTileState.large("Templates".textValue()),
     BadgeTileState.Data(
-        header = TextValue.Simple("template"),
-        value = TextValue.Simple("1. Alert Dialog"),
+        header = "template".textValue(),
+        value = "1. Alert Dialog".textValue(),
         onClick = { showDialogClickListener() }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("template"),
-        value = TextValue.Simple("2. Bottom sheet"),
+        header = "template".textValue(),
+        value = "2. Bottom sheet".textValue(),
         onClick = { navController.navigate(DemoDestinations.BottomSheet) }
     ),
     BadgeTileState.Data(
-        header = TextValue.Simple("template"),
-        value = TextValue.Simple("3. Modal bottom sheet"),
+        header = "template".textValue(),
+        value = "3. Modal bottom sheet".textValue(),
         onClick = { navController.navigate(DemoDestinations.ModalBottomSheet) }
     ),
 )

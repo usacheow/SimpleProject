@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
@@ -97,7 +97,7 @@ private fun Content(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Modal bottom sheet"),
+                title = "Modal bottom sheet".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -111,7 +111,7 @@ private fun Content(
                 .fillMaxWidth(),
             onClick = showSheet,
         ) {
-            SimpleButtonContent(text = TextValue.Simple("Open sheet"))
+            SimpleButtonContent(text = "Open sheet".textValue())
         }
     }
 }

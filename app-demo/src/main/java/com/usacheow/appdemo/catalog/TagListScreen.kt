@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.HeaderTileState
@@ -50,7 +50,7 @@ fun TagListScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Tag tiles"),
+                title = "Tag tiles".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -67,8 +67,8 @@ fun TagListScreen(navController: NavHostController) {
             ) {
                 item(span = { GridItemSpan(2) }) {
                     HeaderTileState.Data(
-                        value = TextValue.Simple("Single selection mode"),
-                        type = HeaderTileState.Type.MediumPrimary,
+                        value = "Single selection mode".textValue(),
+                        type = HeaderTileState.Type.Medium,
                     ).Content(Modifier.padding(8.dp))
                 }
                 items(radioButtons) {
@@ -76,8 +76,8 @@ fun TagListScreen(navController: NavHostController) {
                 }
                 item(span = { GridItemSpan(2) }) {
                     HeaderTileState.Data(
-                        value = TextValue.Simple("Multi selection mode"),
-                        type = HeaderTileState.Type.MediumPrimary,
+                        value = "Multi selection mode".textValue(),
+                        type = HeaderTileState.Type.Medium,
                     ).Content(Modifier
                         .padding(top = 8.dp)
                         .padding(8.dp))
@@ -91,16 +91,16 @@ fun TagListScreen(navController: NavHostController) {
 }
 
 private fun radioButtons(selected: Int?, onClick: (Int) -> Unit) = List(8) {
-    TagTileState(
-        text = TextValue.Simple("Radio tag $it"),
+    TagTileState.Data(
+        text = "Radio tag $it".textValue(),
         onClick = { onClick(it) },
         isSelected = selected == it,
     )
 }
 
 private fun checkButtons(selected: List<Int>, onClick: (Int) -> Unit) = List(8) {
-    TagTileState(
-        text = TextValue.Simple("Check tag $it"),
+    TagTileState.Data(
+        text = "Check tag $it".textValue(),
         onClick = { onClick(it) },
         isSelected = selected.contains(it),
     )

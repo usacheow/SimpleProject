@@ -30,6 +30,12 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 
+data class SimpleTextFieldIcon(
+    val icon: IconValue,
+    val contentDescription: String? = null,
+    val onClick: (() -> Unit)? = null,
+)
+
 object SimpleTextFieldConfig {
 
     val MinWidth = TextFieldDefaults.MinWidth
@@ -42,12 +48,6 @@ object SimpleTextFieldConfig {
     @Composable
     fun colors() = TextFieldDefaults.outlinedTextFieldColors()
 }
-
-data class SimpleTextFieldIcon(
-    val icon: IconValue,
-    val contentDescription: String? = null,
-    val onClick: (() -> Unit)? = null,
-)
 
 @Composable
 fun SimpleTextField(

@@ -2,6 +2,7 @@ package com.usacheow.corecommon.model
 
 import androidx.annotation.StringRes
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.R as CoreR
 
 sealed class AppError(
@@ -25,14 +26,14 @@ sealed class AppError(
 
     fun makeUserReadableErrorMessage(): TextValue {
         return if (this is Custom && displayMessage != null) {
-            TextValue.Simple(displayMessage)
+            displayMessage.textValue()
         } else {
-            message?.let { TextValue.Simple(it) } ?: TextValue.Res(defaultMessageRes)
+            message?.textValue() ?: defaultMessageRes.textValue()
         }
     }
 }
 
 fun Exception.makeUserReadableErrorMessage(): TextValue = when (this) {
     is AppError -> makeUserReadableErrorMessage()
-    else -> TextValue.Res(CoreR.string.unknown_error_message)
+    else -> CoreR.string.unknown_error_message.textValue()
 }

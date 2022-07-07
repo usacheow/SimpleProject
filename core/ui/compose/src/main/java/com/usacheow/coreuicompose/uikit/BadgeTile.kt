@@ -42,6 +42,46 @@ sealed class BadgeTileState : TileState {
     }
 }
 
+object BadgeTileConfig {
+
+    val LinesMinWidth = 120.dp
+    val LinesMaxWidth = 156.dp
+    val LinesBetweenPadding = 8.dp
+
+    @Composable
+    fun colors(
+        contentColor: Color,
+        containerColor: Color,
+    ) = CardDefaults.cardColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+    )
+
+    @Composable
+    fun elevation() = CardDefaults.elevatedCardElevation(
+        defaultElevation = 16.dp,
+        pressedElevation = 16.dp,
+        focusedElevation = 16.dp,
+        hoveredElevation = 16.dp,
+        draggedElevation = 16.dp,
+    )
+
+    @Composable
+    fun shape() = AppTheme.shapes.medium
+
+    @Composable
+    fun headerStyle() = AppTheme.typography.bodyMedium
+
+    @Composable
+    fun valueStyle() = AppTheme.typography.bodyLarge
+
+    @Composable
+    fun defaultContentColor() = AppTheme.specificColorScheme.onSurface
+
+    @Composable
+    fun defaultContainerColor() = AppTheme.specificColorScheme.surface
+}
+
 @Composable
 fun BadgeTile(
     modifier: Modifier = Modifier,
@@ -60,15 +100,14 @@ private fun Data(
 ) {
     BadgeTileContainer(
         modifier = modifier,
-        contentColor = data.contentColor ?: AppTheme.specificColorScheme.onSurface,
-        containerColor = data.containerColor ?: AppTheme.specificColorScheme.surface,
+        contentColor = data.contentColor ?: BadgeTileConfig.defaultContentColor(),
+        containerColor = data.containerColor ?: BadgeTileConfig.defaultContainerColor(),
         onClick = data.onClick,
     ) {
         data.header?.get()?.let {
             Text(
                 text = it,
-                color = AppTheme.specificColorScheme.symbolPrimary,
-                style = AppTheme.typography.bodyMedium,
+                style = BadgeTileConfig.headerStyle(),
                 maxLines = 1,
                 modifier = Modifier
                     .padding(bottom = BadgeTileConfig.LinesBetweenPadding)
@@ -77,8 +116,7 @@ private fun Data(
         }
         Text(
             text = data.value.get().plus(AnnotatedString("\n")),
-            color = AppTheme.specificColorScheme.symbolPrimary,
-            style = AppTheme.typography.bodyLarge,
+            style = BadgeTileConfig.valueStyle(),
             maxLines = 2,
             modifier = Modifier.widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
         )
@@ -92,20 +130,20 @@ private fun Shimmer(
 ) {
     BadgeTileContainer(
         modifier = modifier,
-        contentColor = AppTheme.specificColorScheme.symbolPrimary,
-        containerColor = AppTheme.specificColorScheme.surface,
+        contentColor = BadgeTileConfig.defaultContentColor(),
+        containerColor = BadgeTileConfig.defaultContainerColor(),
         onClick = null,
     ) {
         if (data.hasHeader) {
             ShimmerTileLine(
                 width = BadgeTileConfig.LinesMinWidth,
-                height = AppTheme.typography.bodyMedium.lineHeight.value.dp,
+                height = BadgeTileConfig.headerStyle().lineHeight.value.dp,
             )
             Spacer(modifier = Modifier.height(BadgeTileConfig.LinesBetweenPadding))
         }
         ShimmerTileLine(
             width = BadgeTileConfig.LinesMaxWidth,
-            height = AppTheme.typography.bodyLarge.lineHeight.value.dp.times(2) + 4.dp,
+            height = BadgeTileConfig.valueStyle().lineHeight.value.dp.times(2) + 8.dp,
         )
     }
 }
@@ -124,41 +162,28 @@ private fun BadgeTileContainer(
             content()
         }
     }
-    val elevation = CardDefaults.elevatedCardElevation(
-        defaultElevation = 16.dp,
-        pressedElevation = 16.dp,
-        focusedElevation = 16.dp,
-        hoveredElevation = 16.dp,
-        draggedElevation = 16.dp,
-    )
     if (onClick != null) {
         Card(
             modifier = modifier,
-            shape = AppTheme.shapes.medium,
-            colors = CardDefaults.cardColors(
+            shape = BadgeTileConfig.shape(),
+            colors = BadgeTileConfig.colors(
                 containerColor = containerColor,
                 contentColor = contentColor,
             ),
-            elevation = elevation,
+            elevation = BadgeTileConfig.elevation(),
             onClick = onClick,
             content = body,
         )
     } else {
         Card(
             modifier = modifier,
-            shape = AppTheme.shapes.medium,
-            colors = CardDefaults.cardColors(
+            shape = BadgeTileConfig.shape(),
+            colors = BadgeTileConfig.colors(
                 containerColor = containerColor,
                 contentColor = contentColor,
             ),
-            elevation = elevation,
+            elevation = BadgeTileConfig.elevation(),
             content = body,
         )
     }
-}
-
-object BadgeTileConfig {
-    val LinesMinWidth = 120.dp
-    val LinesMaxWidth = 156.dp
-    val LinesBetweenPadding = 8.dp
 }

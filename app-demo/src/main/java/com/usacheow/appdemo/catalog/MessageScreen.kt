@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
@@ -31,7 +31,7 @@ fun MessageScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Message tiles"),
+                title = "Message tiles".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -54,38 +54,38 @@ fun MessageScreen(navController: NavHostController) {
 @Composable
 private fun items(): List<TileState> = listOf(
     MessageBannerState(
-        title = TextValue.Simple("Message title text"),
+        title = "Message title text".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ),
     MessageBannerState(
-        title = TextValue.Simple("Message title text"),
-        description = TextValue.Simple("Message description text"),
+        title = "Message title text".textValue(),
+        description = "Message description text".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ),
     MessageBannerState(
         icon = AppTheme.specificIcons.error.toImageValue(),
-        title = TextValue.Simple("Message title text"),
-        description = TextValue.Simple("Message description text"),
+        title = "Message title text".textValue(),
+        description = "Message description text".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ),
     MessageBannerState(
-        title = TextValue.Simple("Message title text"),
-        button = TextValue.Simple("Button"),
+        title = "Message title text".textValue(),
+        button = "Button".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         onClick = {},
     ),
     MessageBannerState(
-        title = TextValue.Simple("Message title text"),
-        description = TextValue.Simple("Message description text"),
-        button = TextValue.Simple("Button"),
+        title = "Message title text".textValue(),
+        description = "Message description text".textValue(),
+        button = "Button".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         onClick = {},
     ),
     MessageBannerState(
         icon = AppTheme.specificIcons.error.toImageValue(),
-        title = TextValue.Simple("Message title text"),
-        description = TextValue.Simple("Message description text"),
-        button = TextValue.Simple("Button"),
+        title = "Message title text".textValue(),
+        description = "Message description text".textValue(),
+        button = "Button".textValue(),
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         onClick = {},
     ),

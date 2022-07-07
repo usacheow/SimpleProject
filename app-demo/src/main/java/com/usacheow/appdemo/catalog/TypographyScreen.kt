@@ -17,7 +17,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
@@ -35,7 +35,7 @@ fun TypographyScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Typography"),
+                title = "Typography".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -59,9 +59,9 @@ fun TypographyScreen(navController: NavHostController) {
 @Composable
 private fun items() = listOf(
     HeaderTileState.Data(
-        value = TextValue.Simple("Name"),
-        action = HeaderTileState.Action.Text(TextValue.Simple("action")),
-        type = HeaderTileState.Type.SmallSecondary,
+        value = "Name".textValue(),
+        action = HeaderTileState.Action.Text("action".textValue(), {}),
+        type = HeaderTileState.Type.Small,
     ),
     TextItem(AppTheme.typography.displayLarge, "Display L"),
     TextItem(AppTheme.typography.displayMedium, "Display M"),

@@ -65,6 +65,10 @@ sealed class CellTileState : TileState {
     }
 }
 
+object CellTileConfig {
+    val IconSize = 40.dp
+}
+
 @Composable
 fun CellTile(
     modifier: Modifier = Modifier,
@@ -228,8 +232,4 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
                 .align(Alignment.CenterVertically),
         )
     }
-}
-
-object CellTileConfig {
-    val IconSize = 40.dp
 }

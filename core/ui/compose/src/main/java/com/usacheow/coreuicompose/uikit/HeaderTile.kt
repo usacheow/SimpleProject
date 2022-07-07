@@ -3,6 +3,7 @@ package com.usacheow.coreuicompose.uikit
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,12 +21,11 @@ sealed class HeaderTileState : TileState {
     data class Data(
         val value: TextValue,
         val action: Action? = null,
-        val onClick: (() -> Unit)? = null,
-        val type: Type = Type.MediumPrimary,
+        val type: Type = Type.Medium,
     ) : HeaderTileState()
 
     data class Shimmer(
-        val type: Type = Type.MediumPrimary,
+        val type: Type = Type.Medium,
     ) : HeaderTileState()
 
     @Composable
@@ -34,29 +34,43 @@ sealed class HeaderTileState : TileState {
     }
 
     companion object {
-        fun largePrimary(value: TextValue) = Data(value = value, type = Type.LargePrimary)
-        fun largeSecondary(value: TextValue) = Data(value = value, type = Type.LargeSecondary)
-        fun mediumPrimary(value: TextValue) = Data(value = value, type = Type.MediumPrimary)
-        fun mediumSecondary(value: TextValue) = Data(value = value, type = Type.MediumSecondary)
-        fun smallPrimary(value: TextValue) = Data(value = value, type = Type.SmallPrimary)
-        fun smallSecondary(value: TextValue) = Data(value = value, type = Type.SmallSecondary)
+        fun large(value: TextValue) = Data(value = value, type = Type.Large)
+        fun medium(value: TextValue) = Data(value = value, type = Type.Medium)
+        fun small(value: TextValue) = Data(value = value, type = Type.Small)
     }
 
     enum class Type {
-        LargePrimary, MediumPrimary, SmallPrimary,
-        LargeSecondary, MediumSecondary, SmallSecondary,
+        Large, Medium, Small,
     }
 
     sealed class Action {
 
         data class Text(
             val text: TextValue,
+            val onClick: () -> Unit,
         ) : Action()
 
         data class Icon(
             val icon: IconValue,
+            val onClick: () -> Unit,
         ) : Action()
     }
+}
+
+object HeaderTileConfig {
+
+    @Composable
+    fun headerStyle(type: HeaderTileState.Type) = when (type) {
+        HeaderTileState.Type.Large -> AppTheme.typography.headlineLarge
+        HeaderTileState.Type.Medium -> AppTheme.typography.headlineSmall
+        HeaderTileState.Type.Small -> AppTheme.typography.titleMedium
+    }
+
+    @Composable
+    fun headerColor() = AppTheme.specificColorScheme.symbolPrimary
+
+    @Composable
+    fun actionColor() = AppTheme.specificColorScheme.symbolSecondary
 }
 
 @Composable
@@ -75,28 +89,11 @@ private fun Data(
     modifier: Modifier = Modifier,
     data: HeaderTileState.Data,
 ) {
-    Container(
-        modifier = modifier,
-        onClick = data.onClick,
-    ) {
+    Container(modifier = modifier) {
         Text(
             text = data.value.get(),
-            color = when (data.type) {
-                HeaderTileState.Type.LargePrimary,
-                HeaderTileState.Type.MediumPrimary,
-                HeaderTileState.Type.SmallPrimary -> AppTheme.specificColorScheme.symbolPrimary
-                HeaderTileState.Type.LargeSecondary,
-                HeaderTileState.Type.MediumSecondary,
-                HeaderTileState.Type.SmallSecondary -> AppTheme.specificColorScheme.symbolSecondary
-            },
-            style = when (data.type) {
-                HeaderTileState.Type.LargePrimary,
-                HeaderTileState.Type.LargeSecondary -> AppTheme.typography.headlineLarge
-                HeaderTileState.Type.MediumPrimary,
-                HeaderTileState.Type.MediumSecondary -> AppTheme.typography.headlineSmall
-                HeaderTileState.Type.SmallPrimary,
-                HeaderTileState.Type.SmallSecondary -> AppTheme.typography.titleMedium
-            },
+            color = HeaderTileConfig.headerColor(),
+            style = HeaderTileConfig.headerStyle(data.type),
             modifier = Modifier.weight(1f),
         )
         when (data.action) {
@@ -104,12 +101,14 @@ private fun Data(
                 text = data.action.text.get(),
                 maxLines = 1,
                 style = AppTheme.typography.labelMedium,
-                color = AppTheme.specificColorScheme.symbolSecondary,
+                color = HeaderTileConfig.actionColor(),
+                modifier = Modifier.defaultTileRipple(onClick = data.action.onClick),
             )
-            is HeaderTileState.Action.Icon -> androidx.compose.material.Icon(
+            is HeaderTileState.Action.Icon -> Icon(
                 painter = data.action.icon.get(),
                 contentDescription = null,
-                tint = AppTheme.specificColorScheme.symbolSecondary,
+                tint = HeaderTileConfig.actionColor(),
+                modifier = Modifier.defaultTileRipple(onClick = data.action.onClick),
             )
             null -> {}
         }
@@ -122,14 +121,11 @@ private fun Shimmer(
     data: HeaderTileState.Shimmer,
 ) {
     val type = data.type
-    Container(
-        modifier = modifier,
-        onClick = null,
-    ) {
+    Container(modifier = modifier) {
         ShimmerTile(
-            needTopLine = type == HeaderTileState.Type.SmallPrimary || type == HeaderTileState.Type.SmallSecondary,
-            needMiddleLine = type == HeaderTileState.Type.LargePrimary || type == HeaderTileState.Type.LargeSecondary,
-            needBottomLine = type == HeaderTileState.Type.MediumPrimary || type == HeaderTileState.Type.MediumSecondary,
+            needTopLine = type == HeaderTileState.Type.Small,
+            needMiddleLine = type == HeaderTileState.Type.Large,
+            needBottomLine = type == HeaderTileState.Type.Medium,
             needRightIcon = false,
             needLeftIcon = false,
         )
@@ -139,13 +135,10 @@ private fun Shimmer(
 @Composable
 private fun Container(
     modifier: Modifier = Modifier,
-    onClick: (() -> Unit)?,
     content: @Composable RowScope.() -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .defaultTileRipple(onClick = onClick),
+        modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         content = content,
     )

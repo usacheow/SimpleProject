@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottom
 import com.usacheow.coreuicompose.tools.insetHorizontal
@@ -55,7 +55,7 @@ fun ButtonsScreen(navController: NavHostController) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = TextValue.Simple("Buttons"),
+                title = "Buttons".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
@@ -90,13 +90,13 @@ private fun Primaries() {
     Header("Primary")
     Container {
         SimpleButtonPrimaryS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonPrimaryS(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -104,13 +104,13 @@ private fun Primaries() {
     }
     Container {
         SimpleButtonPrimaryM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonPrimaryM(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -118,13 +118,13 @@ private fun Primaries() {
     }
     Container {
         SimpleButtonPrimaryL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonPrimaryL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonPrimaryL(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -138,13 +138,13 @@ private fun Secondaries() {
     Header("Secondary")
     Container {
         SimpleButtonSecondaryS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonSecondaryS(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -152,13 +152,13 @@ private fun Secondaries() {
     }
     Container {
         SimpleButtonSecondaryM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonSecondaryM(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -166,13 +166,13 @@ private fun Secondaries() {
     }
     Container {
         SimpleButtonSecondaryL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonSecondaryL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonSecondaryL(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -186,13 +186,13 @@ private fun Tonals() {
     Header("Tonal")
     Container {
         SimpleButtonTonalS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonTonalS(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -200,13 +200,13 @@ private fun Tonals() {
     }
     Container {
         SimpleButtonTonalM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonTonalM(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -214,13 +214,13 @@ private fun Tonals() {
     }
     Container {
         SimpleButtonTonalL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonTonalL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonTonalL(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -234,13 +234,13 @@ private fun Outlines() {
     Header("Outline")
     Container {
         SimpleButtonOutlineS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonOutlineS(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -248,13 +248,13 @@ private fun Outlines() {
     }
     Container {
         SimpleButtonOutlineM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonOutlineM(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -262,13 +262,13 @@ private fun Outlines() {
     }
     Container {
         SimpleButtonOutlineL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonOutlineL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonOutlineL(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -282,13 +282,13 @@ private fun Inlines() {
     Header("Inline")
     Container {
         SimpleButtonInlineS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineS(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineS(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonInlineS(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -296,13 +296,13 @@ private fun Inlines() {
     }
     Container {
         SimpleButtonInlineM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineM(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineM(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonInlineM(onClick = {}) {
             SimpleButtonContent(null, icon)
@@ -310,13 +310,13 @@ private fun Inlines() {
     }
     Container {
         SimpleButtonInlineL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineL(onClick = {}, enabled = false) {
-            SimpleButtonContent(TextValue.Simple("Label"))
+            SimpleButtonContent("Label".textValue())
         }
         SimpleButtonInlineL(onClick = {}) {
-            SimpleButtonContent(TextValue.Simple("Label"), iconRight = icon)
+            SimpleButtonContent("Label".textValue(), iconRight = icon)
         }
         SimpleButtonInlineL(onClick = {}) {
             SimpleButtonContent(null, icon)

@@ -25,6 +25,9 @@ object SimplePopupConfig {
 
     @Composable
     fun shape() = SimpleTextFieldConfig.shape()
+
+    @Composable
+    fun backgroundColor() = AppTheme.specificColorScheme.surface
 }
 
 @Composable
@@ -46,24 +49,13 @@ fun SimplePopup(
                 .addIf(needBackground) {
                     defaultBorder(shape)
                         .clip(shape)
-                        .background(AppTheme.specificColorScheme.surface)
+                        .background(SimplePopupConfig.backgroundColor())
                 }
                 .then(modifier),
         ) {
             content()
         }
     }
-}
-
-@Composable
-fun SimplePopupHeader(
-    value: TextValue,
-) {
-    DefaultSelectorItem(
-        modifier = Modifier.padding(SimpleSelectorConfig.Padding),
-        value = value,
-        color = AppTheme.specificColorScheme.symbolSecondary,
-    )
 }
 
 @Composable

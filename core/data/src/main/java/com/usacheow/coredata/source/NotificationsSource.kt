@@ -1,6 +1,7 @@
 package com.usacheow.coredata.source
 
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.makeUserReadableErrorMessage
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import dagger.Binds
@@ -59,10 +60,10 @@ class NotificationsSourceImpl @Inject constructor(
         networkStateProvider.state.onEach {
             val state = when (it) {
                 NetworkStateSource.State.Available -> {
-                    NotificationsSource.State.Message(TextValue.Res(CoreCommonR.string.connection_success_message))
+                    NotificationsSource.State.Message(CoreCommonR.string.connection_success_message.textValue())
                 }
                 NetworkStateSource.State.Unavailable -> {
-                    NotificationsSource.State.Error(TextValue.Res(CoreCommonR.string.connection_error_message))
+                    NotificationsSource.State.Error(CoreCommonR.string.connection_error_message.textValue())
                 }
             }
             if (it == NetworkStateSource.State.Unavailable) {
