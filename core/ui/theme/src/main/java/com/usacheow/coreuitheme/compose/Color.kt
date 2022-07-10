@@ -32,6 +32,8 @@ internal val LightSpecificColorScheme = SpecificColorScheme(
 
     background = Color(0xFFFFFFFF),
     onBackground = Color(0xFF1C1B1F),
+    surface = Color(0xFFFFFFFF),
+    onSurface = Color(0xFF1C1B1F),
     surfaceVariant = Color(0xFFEEEEEE),
     onSurfaceVariant = Color(0xFF454F4B),
     surfaceInverse = Color(0xFF303331),
@@ -72,6 +74,8 @@ internal val DarkSpecificColorScheme = SpecificColorScheme(
 
     background = Color(0xFF000000),
     onBackground = Color(0xFFFFFFFF),
+    surface = Color(0xFF000000),
+    onSurface = Color(0xFFFFFFFF),
     surfaceVariant = Color(0xFF454F49),
     onSurfaceVariant = Color(0xFFD2D3D2),
     surfaceInverse = Color(0xFFEAEAEA),
@@ -116,8 +120,8 @@ data class SpecificColorScheme(
     val background: Color,
     val onBackground: Color,
 
-    val surface: Color = background,
-    val onSurface: Color = onBackground,
+    val surface: Color,
+    val onSurface: Color,
     val surfaceVariant: Color,
     val onSurfaceVariant: Color,
     val surfaceInverse: Color,

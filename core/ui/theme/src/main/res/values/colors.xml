@@ -1,47 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary">#507844</color>
-    <color name="onPrimary">#FFFFFFFF</color>
-    <color name="primaryContainer">#9ABA90</color>
-    <color name="onPrimaryContainer">#253022</color>
-    <color name="primaryInverse">#8FD17D</color>
-
-    <color name="secondary">#AE4F2F</color>
-    <color name="onSecondary">#FFFFFFFF</color>
-    <color name="secondaryContainer">#C3B6B2</color>
-    <color name="onSecondaryContainer">#2B1D19</color>
-
-    <color name="tertiary">#FFDBD655</color>
-    <color name="onTertiary">#FFFFFFFF</color>
-    <color name="tertiaryContainer">#F4F3D1</color>
-    <color name="onTertiaryContainer">#312911</color>
-
-    <color name="error">#FFB3261E</color>
-    <color name="onError">#FFFFFFFF</color>
-    <color name="errorContainer">#FFF9DEDC</color>
-    <color name="onErrorContainer">#FF410E0B</color>
-
-    <color name="outline">#CECCCC</color>
-    <color name="shimmer">#F4F4F4</color>
-
-    <color name="background">#FFFFFFFF</color>
-    <color name="onBackground">@color/symbolPrimary</color>
-
-    <color name="surface">@color/background</color>
-    <color name="onSurface">@color/onBackground</color>
-    <color name="surfaceVariant">#EEEEEE</color>
-    <color name="onSurfaceVariant">#454F4B</color>
-
-    <color name="surfaceInverse">#303331</color>
-    <color name="onSurfaceInverse">#EFF4F1</color>
-
-    <color name="symbolPrimary">#FF1C1B1F</color>
-    <color name="symbolPrimaryInverse">#FFFFFFFF</color>
-    <color name="symbolSecondary">#9A1C1B1F</color>
-    <color name="symbolSecondaryInverse">#9AFFFFFF</color>
-    <color name="symbolTertiary">#651C1B1F</color>
-    <color name="symbolTertiaryInverse">#65FFFFFF</color>
+    <color name="icon_bg">#304FFE</color>
+    <color name="icon_fg">#FFFFFFFF</color>
 
     <color name="colorStatusBar">#00FFFFFF</color>
     <color name="colorNavigationBar">#4D000000</color>

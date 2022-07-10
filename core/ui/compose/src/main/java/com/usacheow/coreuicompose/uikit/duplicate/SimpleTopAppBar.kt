@@ -47,7 +47,24 @@ data class ActionIconData(
 )
 
 object SimpleTopAppBarConfig {
+
     val DefaultContentHeight = 64.dp
+
+    @Composable
+    fun surfaceColors() = TopAppBarDefaults.centerAlignedTopAppBarColors(
+        containerColor = AppTheme.specificColorScheme.surface,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurface,
+        titleContentColor = AppTheme.specificColorScheme.onSurface,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurface,
+    )
+
+    @Composable
+    fun surfaceVariantColors() = TopAppBarDefaults.centerAlignedTopAppBarColors(
+        containerColor = AppTheme.specificColorScheme.surfaceVariant,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+        titleContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+    )
 }
 
 @Composable

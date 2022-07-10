@@ -61,6 +61,8 @@ fun ColorScheme.toSpecificColorScheme(isLight: Boolean) = SpecificColorScheme(
     else DarkSpecificColorScheme.shimmer,
     background = background,
     onBackground = onBackground,
+    surface = surface,
+    onSurface = onSurface,
     surfaceVariant = surfaceVariant,
     onSurfaceVariant = onSurfaceVariant,
     surfaceInverse = inverseSurface,
