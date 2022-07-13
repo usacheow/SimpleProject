@@ -1,10 +1,9 @@
 package com.usacheow.coreuicompose.uikit.input.formatter
 
-import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import com.usacheow.corecommon.container.textValue
-import com.usacheow.coreuitheme.compose.AppTheme
 
-class CardNumberFormatter {
+class CardNumberFormatter : SimpleFormatter {
 
     private val pattern = listOf(
         SimpleInputSymbol.Inputted("0"),
@@ -28,18 +27,20 @@ class CardNumberFormatter {
         SimpleInputSymbol.Inputted("0"),
     )
 
-    val length = pattern.count { it is SimpleInputSymbol.Inputted }
+    private val length = pattern.count { it is SimpleInputSymbol.Inputted }
 
-    fun placeholder() = pattern.joinToString("") { it.value }.textValue()
+    override fun placeholder() = pattern.joinToString("") { it.value }.textValue()
 
-    fun onValueChanged(action: (String) -> Unit) = { value: String ->
+    override fun onValueChanged(action: (String) -> Unit) = { value: String ->
         action(value.filter { it.isDigit() }.take(length))
     }
 
-    @Composable
-    fun visualTransformation() = SimpleVisualTransformation(
+    override fun visualTransformation(
+        inputtedPartColor: Color,
+        otherPartColor: Color,
+    ) = SimpleVisualTransformation(
         pattern = pattern,
-        inputtedPartColor = AppTheme.specificColorScheme.symbolPrimary,
-        otherPartColor = AppTheme.specificColorScheme.symbolSecondary,
+        inputtedPartColor = inputtedPartColor,
+        otherPartColor = otherPartColor,
     )
 }

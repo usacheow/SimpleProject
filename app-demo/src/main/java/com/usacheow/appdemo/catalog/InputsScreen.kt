@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,10 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.CurrencyType
-import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.dpSize
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
-import com.usacheow.coreuicompose.tools.intOffsetInParent
+import com.usacheow.coreuicompose.tools.*
 import com.usacheow.coreuicompose.uikit.SimplePopup
 import com.usacheow.coreuicompose.uikit.SimplePopupItem
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -78,7 +72,7 @@ private fun TextFields() {
     var amountInputValue by remember { mutableStateOf("") }
     val phoneNumberFormatter = PhoneNumberFormatter()
     val cardNumberFormatter = CardNumberFormatter()
-    val amountFormatter = AmountFormatter()
+    val amountFormatter = AmountFormatter(CurrencyType.RUB)
 
     SimpleTextField(
         modifier = Modifier
@@ -87,10 +81,13 @@ private fun TextFields() {
             .fillMaxWidth(),
         value = cardNumberInputValue,
         onValueChange = cardNumberFormatter.onValueChanged { cardNumberInputValue = it },
-        visualTransformation = cardNumberFormatter.visualTransformation(),
-        placeholderValue = cardNumberFormatter.placeholder(),
-        labelValue = "Card number".textValue(),
-        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.creditCard),
+        visualTransformation = cardNumberFormatter.visualTransformation(
+            inputtedPartColor = AppTheme.specificColorScheme.symbolPrimary,
+            otherPartColor = AppTheme.specificColorScheme.symbolSecondary,
+        ),
+        placeholder = { Text(cardNumberFormatter.placeholder().get()) },
+        label = { Text("Card number") },
+        leadingIcon = { Icon(AppTheme.specificIcons.creditCard.get(), contentDescription = null) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         shape = SimpleTextFieldConfig.shape(),
     )
@@ -101,10 +98,13 @@ private fun TextFields() {
             .fillMaxWidth(),
         value = phoneNumberInputValue,
         onValueChange = phoneNumberFormatter.onValueChanged { phoneNumberInputValue = it },
-        visualTransformation = phoneNumberFormatter.visualTransformation(),
-        placeholderValue = phoneNumberFormatter.placeholder(),
-        labelValue = "Phone number".textValue(),
-        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.phone),
+        visualTransformation = phoneNumberFormatter.visualTransformation(
+            inputtedPartColor = AppTheme.specificColorScheme.symbolPrimary,
+            otherPartColor = AppTheme.specificColorScheme.symbolSecondary,
+        ),
+        placeholder = { Text(phoneNumberFormatter.placeholder().get()) },
+        label = { Text("Phone number") },
+        leadingIcon = { Icon(AppTheme.specificIcons.phone.get(), contentDescription = null) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
         shape = SimpleTextFieldConfig.shape(),
     )
@@ -115,10 +115,15 @@ private fun TextFields() {
             .fillMaxWidth(),
         value = amountInputValue,
         onValueChange = amountFormatter.onValueChanged { amountInputValue = it },
-        visualTransformation = amountFormatter.visualTransformation(CurrencyType.RUB),
-        placeholderValue = "Enter amount".textValue(),
-        labelValue = "Transfer amount".textValue(),
-        leadingIconValue = SimpleTextFieldIcon(AppTheme.specificIcons.currencyExchange),
+        visualTransformation = amountFormatter.visualTransformation(
+            inputtedPartColor = AppTheme.specificColorScheme.symbolPrimary,
+            otherPartColor = AppTheme.specificColorScheme.symbolSecondary,
+        ),
+        placeholder = { Text("Enter amount") },
+        label = { Text("Transfer amount") },
+        leadingIcon = {
+            Icon(AppTheme.specificIcons.currencyExchange.get(), contentDescription = null)
+        },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         shape = SimpleTextFieldConfig.shape(),
     )

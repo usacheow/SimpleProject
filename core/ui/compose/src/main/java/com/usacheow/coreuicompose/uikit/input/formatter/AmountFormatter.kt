@@ -1,6 +1,5 @@
 package com.usacheow.coreuicompose.uikit.input.formatter
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -8,12 +7,14 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
-import com.usacheow.corecommon.model.CurrencyType
 import com.usacheow.corecommon.RU_LOCALE
-import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.corecommon.container.textValue
+import com.usacheow.corecommon.model.CurrencyType
 import java.text.NumberFormat
 
-class AmountFormatter {
+class AmountFormatter(
+    private val currencyType: CurrencyType
+) : SimpleFormatter {
 
     private val formatter = NumberFormat.getNumberInstance(RU_LOCALE)
     private val numberFormatterSpace = ' '
@@ -21,7 +22,9 @@ class AmountFormatter {
     private val amountDivider = ','
     private val fractionalPartMaxLength = 2
 
-    fun onValueChanged(action: (String) -> Unit) = { value: String ->
+    override fun placeholder() = "".textValue()
+
+    override fun onValueChanged(action: (String) -> Unit) = { value: String ->
         var newValue = value.replace('.', amountDivider)
             .filter { it.isDigit() || it == amountDivider }
         val firstDividerIndex = newValue.indexOfFirst { it == amountDivider }
@@ -29,11 +32,9 @@ class AmountFormatter {
         action(newValue)
     }
 
-    @Composable
-    fun visualTransformation(
-        currencyType: CurrencyType,
-        inputtedPartColor: Color = AppTheme.specificColorScheme.symbolPrimary,
-        otherPartColor: Color = AppTheme.specificColorScheme.symbolSecondary,
+    override fun visualTransformation(
+        inputtedPartColor: Color,
+        otherPartColor: Color,
     ) = object : VisualTransformation {
 
         private val suffix = " ${currencyType.symbol}"

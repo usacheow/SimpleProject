@@ -3,16 +3,14 @@ package com.usacheow.coreuicompose.uikit.input.formatter
 import androidx.compose.ui.graphics.Color
 import com.usacheow.corecommon.container.textValue
 
-private const val PhonePatterSymbol = '#'
-
-class PhoneNumberFormatter(
-    format: String = "+7(###)###-##-##",
+class DateFormatter(
+    format: String,
 ) : SimpleFormatter {
 
     private val pattern = format.map {
-        when (it) {
-            PhonePatterSymbol -> SimpleInputSymbol.Inputted("0")
-            else -> SimpleInputSymbol.Divider(it.toString())
+        when {
+            it == '.' || it == '/' -> SimpleInputSymbol.Divider(it.toString())
+            else -> SimpleInputSymbol.Inputted(it.toString())
         }
     }
 

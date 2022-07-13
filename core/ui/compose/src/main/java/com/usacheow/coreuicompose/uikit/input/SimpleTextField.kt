@@ -49,49 +49,6 @@ object SimpleTextFieldConfig {
     fun colors() = TextFieldDefaults.outlinedTextFieldColors()
 }
 
-@Composable
-fun SimpleTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    readOnly: Boolean = false,
-    textStyle: TextStyle = LocalTextStyle.current,
-    labelValue: TextValue? = null,
-    placeholderValue: TextValue? = null,
-    leadingIconValue: SimpleTextFieldIcon? = null,
-    trailingIconValue: SimpleTextFieldIcon? = null,
-    isError: Boolean = false,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
-    maxLines: Int = Int.MAX_VALUE,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    shape: Shape = SimpleTextFieldConfig.shape(),
-    colors: TextFieldColors = SimpleTextFieldConfig.colors(),
-) {
-    SimpleTextField(
-        value = value,
-        onValueChange = onValueChange,
-        modifier = modifier,
-        enabled = enabled,
-        readOnly = readOnly,
-        textStyle = textStyle,
-        label = labelValue?.let { @Composable { Text(it.get()) } },
-        placeholder = placeholderValue?.let { @Composable { Text(it.get()) } },
-        leadingIcon = leadingIconValue?.let { @Composable { Icon(it) } },
-        trailingIcon = trailingIconValue?.let { @Composable { Icon(it) } },
-        isError = isError,
-        visualTransformation = visualTransformation,
-        keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions,
-        maxLines = maxLines,
-        interactionSource = interactionSource,
-        shape = shape,
-        colors = colors,
-    )
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimpleTextField(
@@ -165,16 +122,5 @@ fun SimpleTextField(
                 }
             )
         }
-    )
-}
-
-@Composable
-private fun Icon(data: SimpleTextFieldIcon, shape: RoundedCornerShape = RoundedCornerShape(0)) {
-    Icon(
-        painter = data.icon.get(),
-        contentDescription = data.contentDescription,
-        modifier = Modifier
-            .clip(shape)
-            .clickable(enabled = data.onClick != null) { data.onClick?.invoke() },
     )
 }
