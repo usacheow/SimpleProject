@@ -155,6 +155,7 @@ class SimpleBillingImpl @Inject constructor(
         when (isConsumableSku) {
             true -> handleConsumablePurchase(purchase)
             false -> handleNonConsumablePurchase(purchase)
+            null -> {}
         }
     }
 

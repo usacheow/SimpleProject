@@ -60,7 +60,7 @@ fun Project.compose() {
         buildFeatures.compose = true
 
         composeOptions {
-            kotlinCompilerExtensionVersion = Libs.composeVersion
+            kotlinCompilerExtensionVersion = Libs.composeCompilerVersion
         }
     }
 

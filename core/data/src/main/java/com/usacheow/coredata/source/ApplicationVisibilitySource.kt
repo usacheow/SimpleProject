@@ -36,10 +36,10 @@ class ApplicationVisibilitySourceImpl @Inject constructor(
 
     override val state = callbackFlow {
         val observer = LifecycleEventObserver { _, event ->
-            @Suppress("NON_EXHAUSTIVE_WHEN")
             when (event) {
                 Lifecycle.Event.ON_START -> this.trySend(ApplicationVisibilitySource.State.Foreground)
                 Lifecycle.Event.ON_STOP -> this.trySend(ApplicationVisibilitySource.State.Background)
+                else -> {}
             }
         }
 
