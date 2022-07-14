@@ -8,11 +8,13 @@ import androidx.annotation.CallSuper
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import com.usacheow.appdemo.catalog.BottomSheetScreen
 import com.usacheow.appdemo.catalog.ButtonsScreen
 import com.usacheow.appdemo.catalog.CellTilesScreen
@@ -26,6 +28,7 @@ import com.usacheow.appdemo.catalog.PaletteScreen
 import com.usacheow.appdemo.catalog.TagListScreen
 import com.usacheow.appdemo.catalog.TypographyScreen
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
+import com.usacheow.corenavigation.Route
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +65,7 @@ class DemoActivity : ComponentActivity() {
 
             SystemBarsIconsColor()
             NavHost(navController = navController, startDestination = DemoDestinations.Demo) {
-                composable(DemoDestinations.Demo) { DemoScreen(navController) }
+                composable(DemoDestinations.Demo, deepLinks = listOf(navDeepLink { uriPattern = DeeplinkDemo })) { DemoScreen(navController) }
                 composable(DemoDestinations.Typography) { TypographyScreen(navController) }
                 composable(DemoDestinations.Buttons) { ButtonsScreen(navController) }
                 composable(DemoDestinations.Inputs) { InputsScreen(navController) }
@@ -93,3 +96,5 @@ object DemoDestinations {
     const val BottomSheet = "BottomSheet"
     const val ModalBottomSheet = "ModalBottomSheet"
 }
+
+const val DeeplinkDemo = "app://com.usacheow.appdemo/demo"

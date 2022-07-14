@@ -12,6 +12,7 @@ object Libs {
     const val composeCompilerVersion = "1.2.0"
     private const val composeVersion = "1.2.0-rc03"
     private const val composeMaterialVersion = "1.0.0-alpha14"
+    private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
@@ -108,7 +109,8 @@ object Libs {
             "androidx.compose.material3:material3:$composeMaterialVersion",
             "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
-            "com.google.android.material:material:$materialVersion")
+            "com.google.android.material:material:$materialVersion",
+            "androidx.glance:glance-appwidget:$composeGlanceVersion")
         val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
             "androidx.compose.foundation:foundation:$composeVersion",

@@ -1,5 +1,6 @@
 package com.usacheow.corenavigation
 
+import androidx.core.net.toUri
 import kotlinx.serialization.Serializable
 
 sealed class Route(val path: String)
@@ -27,4 +28,11 @@ object AppRoute {
         @Serializable
         data class Args(val index: String)
     }
+}
+
+object AppDeeplink {
+
+    private val BaseUri = "app://com.usacheow.simpleapp".toUri()
+
+    object Main : Route("$BaseUri/main")
 }

@@ -9,6 +9,7 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.usacheow.corenavigation.Route
 import com.usacheow.corenavigation.RouteWithArg
 import kotlinx.serialization.decodeFromString
@@ -29,6 +30,11 @@ inline fun <reified ARG> createRouteWithArg(route: RouteWithArg, arg: ARG) = "${
 
 fun NavGraphBuilder.composable(route: Route, content: @Composable (NavBackStackEntry) -> Unit) = composable(
     route = createRoute(route),
+    content = content,
+)
+fun NavGraphBuilder.composable(route: Route, deeplink: Route, content: @Composable (NavBackStackEntry) -> Unit) = composable(
+    route = createRoute(route),
+    deepLinks = listOf(navDeepLink { uriPattern = deeplink.path }),
     content = content,
 )
 fun NavGraphBuilder.composable(route: RouteWithArg, content: @Composable (NavBackStackEntry) -> Unit) = composable(

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_description">UiKit demo widget</string>
+    <string name="widget_button_start">Click to start</string>
+    <string name="widget_button_open_app">Open App</string>
+</resources>
