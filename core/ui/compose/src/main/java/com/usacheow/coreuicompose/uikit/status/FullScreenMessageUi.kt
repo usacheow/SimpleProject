@@ -84,13 +84,13 @@ fun FullScreenMessageUi(
         )
         Text(
             data.title.get(),
-            style = AppTheme.typography.titleLarge,
+            style = AppTheme.specificTypography.titleLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
         )
         Text(
             data.message.get(),
-            style = AppTheme.typography.bodyLarge,
+            style = AppTheme.specificTypography.bodyLarge,
             textAlign = TextAlign.Center,
         )
         Spacer(modifier = Modifier.weight(1f))

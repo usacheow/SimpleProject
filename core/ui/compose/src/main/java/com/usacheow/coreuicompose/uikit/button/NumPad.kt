@@ -170,7 +170,7 @@ private fun NumberButton(number: Int, onClick: (Int) -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Text(
             text = number.toString(),
-            style = AppTheme.typography.headlineSmall,
+            style = AppTheme.specificTypography.headlineSmall,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .size(NumPadConfig.ButtonSize)
@@ -186,7 +186,7 @@ private fun ForgetButton(onClick: () -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Text(
             text = stringResource(CoreCommonR.string.num_pad_forget),
-            style = AppTheme.typography.bodySmall,
+            style = AppTheme.specificTypography.bodySmall,
             textAlign = TextAlign.Center,
             color = AppTheme.specificColorScheme.symbolSecondary,
             modifier = Modifier

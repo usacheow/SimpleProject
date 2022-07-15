@@ -3,9 +3,11 @@ package com.usacheow.coreuitheme.compose
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-internal val LocalSpecificColorScheme = staticCompositionLocalOf { LightSpecificColorScheme }
+internal val LocalSpecificColorScheme = staticCompositionLocalOf { DefaultLightSpecificColorScheme }
+internal val DarkColorScheme by lazy { DefaultDarkSpecificColorScheme.toColorScheme() }
+internal val LightColorScheme by lazy { DefaultLightSpecificColorScheme.toColorScheme() }
 
-internal val LightSpecificColorScheme = SpecificColorScheme(
+internal val DefaultLightSpecificColorScheme = SpecificColorScheme(
     primary = Color(0xFF507844),
     onPrimary = Color(0xFFFFFFFF),
     primaryContainer = Color(0xFF9ABA90),
@@ -47,7 +49,7 @@ internal val LightSpecificColorScheme = SpecificColorScheme(
     symbolTertiaryInverse = Color(0x65FFFFFF),
 )
 
-internal val DarkSpecificColorScheme = SpecificColorScheme(
+internal val DefaultDarkSpecificColorScheme = SpecificColorScheme(
     primary = Color(0xFF8FD17D),
     onPrimary = Color(0xFF3B721E),
     primaryContainer = Color(0xFF253022),
@@ -88,9 +90,6 @@ internal val DarkSpecificColorScheme = SpecificColorScheme(
     symbolTertiary = Color(0x65FFFFFF),
     symbolTertiaryInverse = Color(0x651C1B1F),
 )
-
-internal val DarkColorScheme = DarkSpecificColorScheme.toColorScheme()
-internal val LightColorScheme = LightSpecificColorScheme.toColorScheme()
 
 data class SpecificColorScheme(
     val primary: Color,

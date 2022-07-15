@@ -62,7 +62,7 @@ fun NumPadScreen(navController: NavHostController) {
             ) {
                 Text(
                     text = enteredCode.value,
-                    style = AppTheme.typography.displayLarge,
+                    style = AppTheme.specificTypography.displayLarge,
                     modifier = Modifier.align(Alignment.Center),
                 )
             }

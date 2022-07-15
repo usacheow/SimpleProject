@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import com.usacheow.coreuicompose.tools.insetBottom
 import com.usacheow.coreuicompose.tools.insetTop
-import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.AppTheme
 
 class SimpleSheetParams(
     val swipePercent: Float,
@@ -22,7 +22,7 @@ class SimpleSheetParams(
 
 object SheetConfig {
 
-    val DefaultRadius = DimenValues.radius_extra_large
+    val DefaultRadius = AppTheme.specificDimens.radius_extra_large
 
     fun sheetContentPadding(
         swipePercent: Float,

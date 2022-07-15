@@ -87,10 +87,10 @@ private fun SheetContent(
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(text = "Modal", style = AppTheme.typography.displayLarge)
-        Text(text = "bottom", style = AppTheme.typography.displayLarge)
-        Text(text = "sheet", style = AppTheme.typography.displayLarge)
-        Text(text = "example", style = AppTheme.typography.displayLarge)
+        Text(text = "Modal", style = AppTheme.specificTypography.displayLarge)
+        Text(text = "bottom", style = AppTheme.specificTypography.displayLarge)
+        Text(text = "sheet", style = AppTheme.specificTypography.displayLarge)
+        Text(text = "example", style = AppTheme.specificTypography.displayLarge)
     }
 }
 

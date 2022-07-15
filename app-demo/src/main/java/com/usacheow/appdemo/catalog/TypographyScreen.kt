@@ -63,25 +63,25 @@ private fun items() = listOf(
         action = HeaderTileState.Action.Text("action".textValue(), {}),
         type = HeaderTileState.Type.Small,
     ),
-    TextItem(AppTheme.typography.displayLarge, "Display L"),
-    TextItem(AppTheme.typography.displayMedium, "Display M"),
-    TextItem(AppTheme.typography.displaySmall, "Display S"),
+    TextItem(AppTheme.specificTypography.displayLarge, "Display L"),
+    TextItem(AppTheme.specificTypography.displayMedium, "Display M"),
+    TextItem(AppTheme.specificTypography.displaySmall, "Display S"),
 
-    TextItem(AppTheme.typography.headlineLarge, "Headline L"),
-    TextItem(AppTheme.typography.headlineMedium, "Headline M"),
-    TextItem(AppTheme.typography.headlineSmall, "Headline S"),
+    TextItem(AppTheme.specificTypography.headlineLarge, "Headline L"),
+    TextItem(AppTheme.specificTypography.headlineMedium, "Headline M"),
+    TextItem(AppTheme.specificTypography.headlineSmall, "Headline S"),
 
-    TextItem(AppTheme.typography.titleLarge, "Title L"),
-    TextItem(AppTheme.typography.titleMedium, "Title M"),
-    TextItem(AppTheme.typography.titleSmall, "Title S"),
+    TextItem(AppTheme.specificTypography.titleLarge, "Title L"),
+    TextItem(AppTheme.specificTypography.titleMedium, "Title M"),
+    TextItem(AppTheme.specificTypography.titleSmall, "Title S"),
 
-    TextItem(AppTheme.typography.bodyLarge, "Body L"),
-    TextItem(AppTheme.typography.bodyMedium, "Body M"),
-    TextItem(AppTheme.typography.bodySmall, "Body S"),
+    TextItem(AppTheme.specificTypography.bodyLarge, "Body L"),
+    TextItem(AppTheme.specificTypography.bodyMedium, "Body M"),
+    TextItem(AppTheme.specificTypography.bodySmall, "Body S"),
 
-    TextItem(AppTheme.typography.labelLarge, "Label L"),
-    TextItem(AppTheme.typography.labelMedium, "Label M"),
-    TextItem(AppTheme.typography.labelSmall, "Label S"),
+    TextItem(AppTheme.specificTypography.labelLarge, "Label L"),
+    TextItem(AppTheme.specificTypography.labelMedium, "Label M"),
+    TextItem(AppTheme.specificTypography.labelSmall, "Label S"),
 )
 
 data class TextItem(

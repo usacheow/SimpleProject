@@ -88,7 +88,7 @@ internal fun DefaultSelectorItem(
         }
         Text(
             text = value.get(),
-            style = AppTheme.typography.bodyLarge,
+            style = AppTheme.specificTypography.bodyLarge,
             color = color,
         )
     }

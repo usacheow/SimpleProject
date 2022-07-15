@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuicompose.tools.defaultPlaceholder
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.DimenValues
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 @Composable
@@ -35,7 +34,7 @@ fun ShimmerTile(
         modifier = modifier
             .background(AppTheme.specificColorScheme.background)
             .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(DimenValues.default_padding),
+        horizontalArrangement = Arrangement.spacedBy(AppTheme.specificDimens.default_padding),
     ) {
         if (needLeftIcon) ShimmerTileCircle()
         Column(

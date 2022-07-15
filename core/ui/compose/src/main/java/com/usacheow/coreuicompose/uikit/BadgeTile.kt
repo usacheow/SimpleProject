@@ -20,7 +20,6 @@ import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.DimenValues
 
 sealed class BadgeTileState : TileState {
 
@@ -70,10 +69,10 @@ object BadgeTileConfig {
     fun shape() = AppTheme.shapes.medium
 
     @Composable
-    fun headerStyle() = AppTheme.typography.bodyMedium
+    fun headerStyle() = AppTheme.specificTypography.bodyMedium
 
     @Composable
-    fun valueStyle() = AppTheme.typography.bodyLarge
+    fun valueStyle() = AppTheme.specificTypography.bodyLarge
 
     @Composable
     fun defaultContentColor() = AppTheme.specificColorScheme.onSurface
@@ -158,7 +157,7 @@ private fun BadgeTileContainer(
     content: @Composable () -> Unit,
 ) {
     val body: @Composable ColumnScope.() -> Unit = {
-        Column(modifier = Modifier.padding(DimenValues.default_padding)) {
+        Column(modifier = Modifier.padding(AppTheme.specificDimens.default_padding)) {
             content()
         }
     }

@@ -97,13 +97,13 @@ object SimpleButtonConfig {
     fun borderOutline() = BorderStroke(width = 1.dp, color = AppTheme.specificColorScheme.outline)
 
     @Composable
-    fun textStyleS() = AppTheme.typography.labelMedium
+    fun textStyleS() = AppTheme.specificTypography.labelMedium
 
     @Composable
-    fun textStyleM() = AppTheme.typography.labelMedium
+    fun textStyleM() = AppTheme.specificTypography.labelMedium
 
     @Composable
-    fun textStyleL() = AppTheme.typography.labelLarge
+    fun textStyleL() = AppTheme.specificTypography.labelLarge
 }
 
 @Composable

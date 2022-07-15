@@ -61,9 +61,9 @@ object HeaderTileConfig {
 
     @Composable
     fun headerStyle(type: HeaderTileState.Type) = when (type) {
-        HeaderTileState.Type.Large -> AppTheme.typography.headlineLarge
-        HeaderTileState.Type.Medium -> AppTheme.typography.headlineSmall
-        HeaderTileState.Type.Small -> AppTheme.typography.titleMedium
+        HeaderTileState.Type.Large -> AppTheme.specificTypography.headlineLarge
+        HeaderTileState.Type.Medium -> AppTheme.specificTypography.headlineSmall
+        HeaderTileState.Type.Small -> AppTheme.specificTypography.titleMedium
     }
 
     @Composable
@@ -100,7 +100,7 @@ private fun Data(
             is HeaderTileState.Action.Text -> Text(
                 text = data.action.text.get(),
                 maxLines = 1,
-                style = AppTheme.typography.labelMedium,
+                style = AppTheme.specificTypography.labelMedium,
                 color = HeaderTileConfig.actionColor(),
                 modifier = Modifier.defaultTileRipple(onClick = data.action.onClick),
             )

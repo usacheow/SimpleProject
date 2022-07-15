@@ -20,7 +20,6 @@ import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.DimenValues
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
 sealed class TagTileState : TileState {
@@ -98,7 +97,7 @@ private fun Data(
         Text(
             text = data.text.get(),
             color = AppTheme.specificColorScheme.symbolPrimary,
-            style = AppTheme.typography.bodyMedium,
+            style = AppTheme.specificTypography.bodyMedium,
             textAlign = TextAlign.Center,
         )
     }
@@ -128,7 +127,7 @@ private fun Container(
     ) {
         Column(
             modifier = Modifier
-                .padding(DimenValues.default_padding)
+                .padding(AppTheme.specificDimens.default_padding)
                 .align(Alignment.CenterHorizontally),
         ) {
             content()

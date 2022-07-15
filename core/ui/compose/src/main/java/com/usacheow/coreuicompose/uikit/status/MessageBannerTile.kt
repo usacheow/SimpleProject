@@ -123,7 +123,7 @@ private fun Title(title: TextValue) {
     Text(
         text = title.get(),
         color = AppTheme.specificColorScheme.symbolPrimary,
-        style = AppTheme.typography.headlineLarge,
+        style = AppTheme.specificTypography.headlineLarge,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
     )
@@ -134,7 +134,7 @@ private fun Description(description: TextValue) {
     Text(
         text = description.get(),
         color = AppTheme.specificColorScheme.symbolSecondary,
-        style = AppTheme.typography.bodyMedium,
+        style = AppTheme.specificTypography.bodyMedium,
         textAlign = TextAlign.Center,
         maxLines = 3,
         modifier = Modifier.fillMaxWidth(),

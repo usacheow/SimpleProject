@@ -141,13 +141,13 @@ data class ColorItem(
         ) {
             Text(
                 text = name,
-                style = AppTheme.typography.titleMedium,
+                style = AppTheme.specificTypography.titleMedium,
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
                 maxLines = 2,
             )
             Text(
                 text = "#%s".format(Integer.toHexString(color.toArgb())).uppercase(),
-                style = AppTheme.typography.bodyMedium,
+                style = AppTheme.specificTypography.bodyMedium,
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 16.dp, end = 16.dp),
             )
         }

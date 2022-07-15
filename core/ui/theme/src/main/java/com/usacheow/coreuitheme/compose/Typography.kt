@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 
 internal val LocalSpecificTypography = staticCompositionLocalOf { DefaultSpecificTypography }
+internal val DefaultTypography by lazy { DefaultSpecificTypography.toTypography() }
 
 internal val DefaultSpecificTypography = SpecificTypography(
     displayLarge = TextStyle(
@@ -101,8 +102,6 @@ internal val DefaultSpecificTypography = SpecificTypography(
         letterSpacing = 0.045.em,
     ),
 )
-
-internal val DefaultTypography = DefaultSpecificTypography.toTypography()
 
 data class SpecificTypography(
     val displayLarge: TextStyle,

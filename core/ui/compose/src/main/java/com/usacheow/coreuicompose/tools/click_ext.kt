@@ -16,7 +16,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
-import com.usacheow.coreuitheme.compose.DimenValues
+import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration
@@ -33,7 +33,7 @@ fun Modifier.mockClick() = clickable(
 fun Modifier.defaultTileRipple(
     delay: Duration = 500.milliseconds,
     shape: Shape = MaterialTheme.shapes.medium,
-    padding: Dp = DimenValues.ripple_inner_padding,
+    padding: Dp = AppTheme.specificDimens.ripple_inner_padding,
     onClick: (() -> Unit)?,
 ) = clip(shape)
     .doOnClick(delay, onClick)

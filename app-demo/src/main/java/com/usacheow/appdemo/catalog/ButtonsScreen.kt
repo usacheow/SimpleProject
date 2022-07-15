@@ -27,24 +27,23 @@ import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottom
 import com.usacheow.coreuicompose.tools.insetHorizontal
 import com.usacheow.coreuicompose.uikit.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryS
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalS
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineS
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryM
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryS
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonOutlineS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSecondaryS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalM
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalS
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.DimenValues
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -328,7 +327,7 @@ private fun Inlines() {
 private fun Header(text: String) {
     Text(
         text = text,
-        style = AppTheme.typography.titleLarge,
+        style = AppTheme.specificTypography.titleLarge,
         modifier = Modifier
             .padding(top = 8.dp)
             .padding(horizontal = 16.dp),
@@ -356,7 +355,7 @@ private fun DividerBetweenCards() {
                     color = AppTheme.specificColorScheme.surface,
                     shape = AppTheme.shapes.extraLarge.copy(topEnd = CornerSize(0.dp), topStart = CornerSize(0.dp)),
                 )
-                .height(DimenValues.radius_extra_large)
+                .height(AppTheme.specificDimens.radius_extra_large)
                 .fillMaxWidth(),
         )
         Box(
@@ -366,7 +365,7 @@ private fun DividerBetweenCards() {
                     shape = AppTheme.shapes.extraLarge.copy(bottomEnd = CornerSize(0.dp),
                         bottomStart = CornerSize(0.dp)),
                 )
-                .height(DimenValues.radius_extra_large)
+                .height(AppTheme.specificDimens.radius_extra_large)
                 .fillMaxWidth(),
         )
     }

@@ -71,7 +71,7 @@ object SimpleTopAppBarConfig {
 fun SimpleTopAppBar(
     title: TextValue?,
     additional: @Composable () -> Unit = {},
-    titleTextStyle: TextStyle = AppTheme.typography.titleMedium,
+    titleTextStyle: TextStyle = AppTheme.specificTypography.titleMedium,
     navigationIcon: Pair<IconValue, OnBackIconClick>? = null,
     actions: List<ActionIconData> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(),
@@ -94,7 +94,7 @@ fun SimpleTopAppBar(
 fun SimpleTopAppBar(
     title: @Composable () -> Unit,
     additional: @Composable () -> Unit = {},
-    titleTextStyle: TextStyle = AppTheme.typography.titleMedium,
+    titleTextStyle: TextStyle = AppTheme.specificTypography.titleMedium,
     navigationIcon: Pair<IconValue, OnBackIconClick>? = null,
     actions: List<ActionIconData> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(),

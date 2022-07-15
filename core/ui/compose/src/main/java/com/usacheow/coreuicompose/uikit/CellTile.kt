@@ -24,7 +24,6 @@ import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.status.ShimmerTile
 import com.usacheow.coreuitheme.compose.AppTheme
-import com.usacheow.coreuitheme.compose.DimenValues
 
 sealed class CellTileState : TileState {
 
@@ -123,7 +122,7 @@ private fun Container(
         verticalAlignment = Alignment.Top,
         modifier = modifier
             .fillMaxWidth()
-            .padding(DimenValues.ripple_outer_padding)
+            .padding(AppTheme.specificDimens.ripple_outer_padding)
             .defaultTileRipple(onClick = onClick),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         content = content,
@@ -174,7 +173,7 @@ private fun RowScope.MiddlePart(
             Text(
                 text = it,
                 color = AppTheme.specificColorScheme.symbolSecondary,
-                style = AppTheme.typography.bodySmall,
+                style = AppTheme.specificTypography.bodySmall,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -182,7 +181,7 @@ private fun RowScope.MiddlePart(
             Text(
                 text = it,
                 color = AppTheme.specificColorScheme.symbolPrimary,
-                style = AppTheme.typography.bodyLarge,
+                style = AppTheme.specificTypography.bodyLarge,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -190,7 +189,7 @@ private fun RowScope.MiddlePart(
             Text(
                 text = it,
                 color = AppTheme.specificColorScheme.symbolPrimary,
-                style = AppTheme.typography.titleLarge,
+                style = AppTheme.specificTypography.titleLarge,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -198,7 +197,7 @@ private fun RowScope.MiddlePart(
             Text(
                 text = it,
                 color = AppTheme.specificColorScheme.symbolSecondary,
-                style = AppTheme.typography.bodyMedium,
+                style = AppTheme.specificTypography.bodyMedium,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
