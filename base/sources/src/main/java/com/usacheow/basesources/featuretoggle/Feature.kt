@@ -1,4 +1,4 @@
-package com.usacheow.coredata.featuretoggle
+package com.usacheow.basesources.featuretoggle
 
 enum class Feature(
     val key: String = "",

@@ -1,4 +1,4 @@
-package com.usacheow.coredata.source
+package com.usacheow.basesources
 
 import android.annotation.SuppressLint
 import android.net.ConnectivityManager

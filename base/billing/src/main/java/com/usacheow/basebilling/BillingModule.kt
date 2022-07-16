@@ -1,4 +1,4 @@
-package com.usacheow.corebilling
+package com.usacheow.basebilling
 
 import dagger.Binds
 import dagger.Module

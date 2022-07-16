@@ -1,6 +1,6 @@
 package com.usacheow.featuremain.presentation.viewmodel
 
-import com.usacheow.coredata.source.LocationSource
+import com.usacheow.basesources.LocationSource
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import com.usacheow.featuremain.data.StubApi
 import dagger.hilt.android.lifecycle.HiltViewModel

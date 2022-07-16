@@ -1,4 +1,4 @@
-package com.usacheow.coredata.featuretoggle
+package com.usacheow.basesources.featuretoggle
 
 import android.content.Context
 import androidx.core.content.edit

@@ -8,7 +8,6 @@ import androidx.annotation.CallSuper
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
-import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
@@ -28,7 +27,6 @@ import com.usacheow.appdemo.catalog.PaletteScreen
 import com.usacheow.appdemo.catalog.TagListScreen
 import com.usacheow.appdemo.catalog.TypographyScreen
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.corenavigation.Route
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint

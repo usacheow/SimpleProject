@@ -43,6 +43,12 @@ fun Context.openMail(mail: String, subject: String) = openIntent(
     Uri.parse("mailto:$mail?subject=$subject"),
 )
 
+fun Context.openImage(uri: Uri) = startActivity(
+    Intent(Intent.ACTION_VIEW)
+        .setDataAndType(uri, "image/*")
+        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION),
+)
+
 private fun Context.openIntent(
     uri: Uri,
     action: String = Intent.ACTION_VIEW,

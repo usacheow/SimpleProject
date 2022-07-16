@@ -1,4 +1,4 @@
-package com.usacheow.coredata.source
+package com.usacheow.basesources
 
 import android.os.Build
 import com.google.firebase.installations.FirebaseInstallations

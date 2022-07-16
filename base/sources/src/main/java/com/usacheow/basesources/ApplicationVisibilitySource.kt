@@ -1,4 +1,4 @@
-package com.usacheow.coredata.source
+package com.usacheow.basesources
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver

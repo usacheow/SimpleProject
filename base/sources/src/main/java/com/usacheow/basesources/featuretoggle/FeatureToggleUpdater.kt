@@ -1,4 +1,4 @@
-package com.usacheow.coredata.featuretoggle
+package com.usacheow.basesources.featuretoggle
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.usacheow.coredata.BuildConfig

@@ -6,8 +6,8 @@ import coil.ImageLoaderFactory
 import com.usacheow.corecommon.analytics.AnalyticsTracker
 import com.usacheow.corecommon.analytics.AnalyticsTrackerHolder
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.coredata.featuretoggle.FeatureToggleUpdater
-import com.usacheow.coredata.source.NetworkStateSource
+import com.usacheow.basesources.featuretoggle.FeatureToggleUpdater
+import com.usacheow.basesources.NetworkStateSource
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.usacheow.coredata.source
+package com.usacheow.basesources
 
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue

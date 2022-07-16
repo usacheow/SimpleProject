@@ -1,8 +1,8 @@
-package com.usacheow.corebilling
+package com.usacheow.basebilling
 
 import com.android.billingclient.api.Purchase
-import com.usacheow.corebilling.model.BillingEffect
-import com.usacheow.corebilling.model.Product
+import com.usacheow.basebilling.model.BillingEffect
+import com.usacheow.basebilling.model.Product
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow

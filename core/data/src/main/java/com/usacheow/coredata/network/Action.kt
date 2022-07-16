@@ -1,28 +1,25 @@
 package com.usacheow.coredata.network
 
+import com.usacheow.corecommon.ext.log
 import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.Effect
-import com.usacheow.corecommon.ext.log
-import com.usacheow.coredata.source.NotificationsSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import java.net.HttpURLConnection
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface Action {
 
     suspend fun <T : Any> execute(block: suspend CoroutineScope.() -> Effect<T>): Effect<T>
 }
 
-class ActionImpl @Inject constructor(
-    private val notificationsSource: NotificationsSource,
-) : Action {
+class ActionImpl @Inject constructor() : Action {
 
     override suspend fun <T : Any> execute(block: suspend CoroutineScope.() -> Effect<T>): Effect<T> {
         val effect = try {
@@ -46,10 +43,8 @@ class ActionImpl @Inject constructor(
         }
     }
 
-    private suspend fun handle(error: AppError) {
+    private fun handle(error: AppError) {
         log(error.stackTraceToString())
-
-        notificationsSource.sendError(error)
     }
 }
 

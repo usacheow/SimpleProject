@@ -1,4 +1,4 @@
-package com.usacheow.coredata.featuretoggle
+package com.usacheow.basesources.featuretoggle
 
 import com.usacheow.corecommon.model.BuildInfo
 import javax.inject.Inject

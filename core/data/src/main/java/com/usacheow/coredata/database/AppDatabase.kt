@@ -6,6 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.usacheow.coredata.database.entity.StubDao
 import com.usacheow.coredata.database.entity.StubEntity
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 private const val DATABASE_NAME = "simple.db"
 
@@ -20,4 +26,13 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun stubDao(): StubDao
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+class AppDatabaseModule {
+
+    @Provides
+    @Singleton
+    fun appDatabase(@ApplicationContext context: Context): AppDatabase = AppDatabase.newInstance(context)
 }

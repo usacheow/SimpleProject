@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
 
-    <files-path
-        name="Files"
-        path="." /> // Context.getFilesDir()
-    <cache-path
-        name="Cache"
-        path="." /> // Context.getCacheDir()
+    <!--Environment.getExternalStorageDirectory()-->
     <external-path
-        name="External"
-        path="." /> // Environment.getExternalStorageDirectory()
+        name="simpleapp/public/pics"
+        path="Pictures/SA" />
+    <external-path
+        name="simpleapp/public/videos"
+        path="Movies/SA" />
 
+    <!--Context.getExternalFilesDir(String)-->
     <external-files-path
-        name="ExternalFiles"
-        path="." /> // Context.getExternalFilesDir(String)
-    <external-cache-path
-        name="ExternalCache"
-        path="." /> // Context.getExternalCacheDir()
-    <external-media-path
-        name="ExternalMedia"
-        path="." /> // Context.getExternalMediaDirs()
+        name="simpleapp/private/pics"
+        path="Pictures" />
+    <external-files-path
+        name="simpleapp/private/videos"
+        path="Videos" />
+
+    <!--Context.getFilesDir()-->
+    <files-path
+        name="simpleapp/files"
+        path="." />
+
+    <!--Context.getCacheDir()-->
+    <cache-path
+        name="simpleapp/cache"
+        path="." />
 </paths>

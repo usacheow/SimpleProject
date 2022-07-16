@@ -1,4 +1,4 @@
-package com.usacheow.corebilling
+package com.usacheow.basebilling
 
 import android.app.Activity
 import android.content.Context
@@ -15,11 +15,11 @@ import com.android.billingclient.api.acknowledgePurchase
 import com.android.billingclient.api.consumePurchase
 import com.android.billingclient.api.queryPurchasesAsync
 import com.android.billingclient.api.querySkuDetails
-import com.usacheow.corebilling.model.BillingConnectionStatus
-import com.usacheow.corebilling.model.BillingEffect
-import com.usacheow.corebilling.model.Product
-import com.usacheow.corebilling.model.ProductType
-import com.usacheow.corebilling.model.Sku
+import com.usacheow.basebilling.model.BillingConnectionStatus
+import com.usacheow.basebilling.model.BillingEffect
+import com.usacheow.basebilling.model.Product
+import com.usacheow.basebilling.model.ProductType
+import com.usacheow.basebilling.model.Sku
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import com.usacheow.coredata.coroutine.IoDispatcher
 import dagger.hilt.android.qualifiers.ApplicationContext

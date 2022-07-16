@@ -82,6 +82,8 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
+    implementation(projects.baseSources)
+
     implementation(projects.featureBottomBar)
     implementation(projects.featureMain)
     implementation(projects.featureExample)

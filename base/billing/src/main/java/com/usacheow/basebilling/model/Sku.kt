@@ -1,4 +1,4 @@
-package com.usacheow.corebilling.model
+package com.usacheow.basebilling.model
 
 enum class Sku(val code: String, val isConsumable: Boolean, val type: ProductType) {
 

@@ -1,4 +1,4 @@
-package com.usacheow.coredata.featuretoggle
+package com.usacheow.basesources.featuretoggle
 
 import com.usacheow.corecommon.model.BuildInfo
 import dagger.Module
@@ -6,6 +6,24 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+
+interface FeatureToggle {
+
+    fun isEnabled(feature: Feature): Boolean
+
+    fun isRemoteEnabled(feature: Feature): Boolean
+
+    fun isLocalEnabled(feature: Feature): Boolean?
+}
+
+interface EditableFeatureToggle : FeatureToggle {
+
+    fun setRemoteValue(feature: Feature, value: Boolean)
+
+    fun setLocalValue(feature: Feature, value: Boolean?)
+
+    fun clearRemoteValues()
+}
 
 @Module
 @InstallIn(SingletonComponent::class)

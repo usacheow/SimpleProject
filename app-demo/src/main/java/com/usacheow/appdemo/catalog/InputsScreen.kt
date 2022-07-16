@@ -7,7 +7,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +28,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.CurrencyType
-import com.usacheow.coreuicompose.tools.*
+import com.usacheow.coreuicompose.tools.add
+import com.usacheow.coreuicompose.tools.dpSize
+import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
+import com.usacheow.coreuicompose.tools.intOffsetInParent
 import com.usacheow.coreuicompose.uikit.SimplePopup
 import com.usacheow.coreuicompose.uikit.SimplePopupItem
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -31,7 +40,6 @@ import com.usacheow.coreuicompose.uikit.input.SimpleSelector
 import com.usacheow.coreuicompose.uikit.input.SimpleSelectorPlaceholder
 import com.usacheow.coreuicompose.uikit.input.SimpleTextField
 import com.usacheow.coreuicompose.uikit.input.SimpleTextFieldConfig
-import com.usacheow.coreuicompose.uikit.input.SimpleTextFieldIcon
 import com.usacheow.coreuicompose.uikit.input.formatter.AmountFormatter
 import com.usacheow.coreuicompose.uikit.input.formatter.CardNumberFormatter
 import com.usacheow.coreuicompose.uikit.input.formatter.PhoneNumberFormatter
