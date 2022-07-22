@@ -11,48 +11,48 @@ internal val DefaultTypography by lazy { DefaultSpecificTypography.toTypography(
 
 internal val DefaultSpecificTypography = SpecificTypography(
     displayLarge = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW900,
         fontSize = 52.sp,
         letterSpacing = 0.em,
     ),
     displayMedium = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW900,
         fontSize = 44.sp,
         letterSpacing = 0.em,
     ),
     displaySmall = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW900,
         fontSize = 36.sp,
         letterSpacing = 0.em,
     ),
 
     headlineLarge = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW700,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.em,
     ),
     headlineMedium = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW700,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.em,
     ),
     headlineSmall = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = FontFamilyW700,
         fontSize = 24.sp,
         lineHeight = 30.sp,
         letterSpacing = 0.em,
     ),
 
     titleLarge = TextStyle(
-        fontFamily = FontFamilyW500,
+        fontFamily = FontFamilyW600,
         fontSize = 22.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.em,
     ),
     titleMedium = TextStyle(
-        fontFamily = FontFamilyW500,
+        fontFamily = FontFamilyW600,
         fontSize = 16.sp,
         lineHeight = 18.sp,
         letterSpacing = 0.009.em,
@@ -90,16 +90,16 @@ internal val DefaultSpecificTypography = SpecificTypography(
         letterSpacing = 0.007.em,
     ),
     labelMedium = TextStyle(
-        fontFamily = FontFamilyW500,
+        fontFamily = FontFamilyW400,
         fontSize = 12.sp,
         lineHeight = 14.sp,
         letterSpacing = 0.0416.em,
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamilyW500,
-        fontSize = 11.sp,
-        lineHeight = 12.sp,
-        letterSpacing = 0.045.em,
+        fontFamily = FontFamilyW200,
+        fontSize = 12.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.0416.em,
     ),
 )
 

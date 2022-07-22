@@ -5,7 +5,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import com.usacheow.corecommon.container.textValue
-import com.usacheow.coreuicompose.uikit.SimpleButtonContent
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 
 @Composable
 fun SampleAlertDialog(

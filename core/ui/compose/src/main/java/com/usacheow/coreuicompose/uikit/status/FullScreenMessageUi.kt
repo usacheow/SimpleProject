@@ -29,7 +29,7 @@ import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.insetAll
 import com.usacheow.coreuicompose.tools.mockClick
-import com.usacheow.coreuicompose.uikit.SimpleButtonContent
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
 import com.usacheow.coreuitheme.compose.AppTheme

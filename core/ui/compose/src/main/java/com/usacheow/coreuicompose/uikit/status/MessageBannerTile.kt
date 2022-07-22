@@ -25,7 +25,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
-import com.usacheow.coreuicompose.uikit.SimpleButtonContent
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 

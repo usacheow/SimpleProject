@@ -30,9 +30,21 @@ internal val FontFamilyW500 = FontFamily(
         Font(R.font.medium_italic, weight = FontWeight.W500, style = FontStyle.Italic),
     )
 )
+internal val FontFamilyW600 = FontFamily(
+    listOf(
+        Font(R.font.medium, weight = FontWeight.W600, style = FontStyle.Normal),
+        Font(R.font.medium_italic, weight = FontWeight.W600, style = FontStyle.Italic),
+    )
+)
 internal val FontFamilyW700 = FontFamily(
     listOf(
         Font(R.font.bold, weight = FontWeight.W700, style = FontStyle.Normal),
         Font(R.font.bold_italic, weight = FontWeight.W700, style = FontStyle.Italic),
+    )
+)
+internal val FontFamilyW900 = FontFamily(
+    listOf(
+        Font(R.font.bold, weight = FontWeight.W900, style = FontStyle.Normal),
+        Font(R.font.bold_italic, weight = FontWeight.W900, style = FontStyle.Italic),
     )
 )

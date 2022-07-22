@@ -26,7 +26,7 @@ import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottom
 import com.usacheow.coreuicompose.tools.insetHorizontal
-import com.usacheow.coreuicompose.uikit.SimpleButtonContent
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineM
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineS
