@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.AnnotatedString
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
@@ -17,25 +16,19 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 
 @Composable
-fun ImageValue.get(): Painter = when (this) {
-    is ImageValue.Url, is ImageValue.Image, is ImageValue.ResImage -> rememberAsyncImagePainter(
+fun ImageValue.get(builder: ImageRequest.Builder.() -> Unit = {}): Painter = when (this) {
+    is ImageValue.Vector -> rememberVectorPainter(image = value as ImageVector)
+
+    else -> rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .data(value)
-            .crossfade(true)
+            .apply { builder() }
             .build()
     )
-
-    is ImageValue.ResVector -> rememberVectorPainter(image = ImageVector.vectorResource(id = value as Int))
-
-    is ImageValue.Vector -> rememberVectorPainter(image = value as ImageVector)
 }
 
 @Composable
-fun IconValue.get(): Painter = when (this) {
-    is IconValue.ResVector -> rememberVectorPainter(image = ImageVector.vectorResource(id = value as Int))
-
-    is IconValue.Vector -> rememberVectorPainter(image = value as ImageVector)
-}
+fun IconValue.get(builder: ImageRequest.Builder.() -> Unit = {}): Painter = toImageValue().get(builder)
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
