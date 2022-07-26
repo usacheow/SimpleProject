@@ -51,7 +51,7 @@ sealed class CellTileState : TileState {
         val additionalDescription: TextValue? = null,
 
         val rightPart: RightPart? = null,
-        val clickListener: (() -> Unit)? = null,
+        val onClick: (() -> Unit)? = null,
     ) : CellTileState()
 
     data class Shimmer(
@@ -171,7 +171,7 @@ private fun Data(
     CellTileContainer(
         modifier = modifier,
         hasBadge = data.hasBadge,
-        clickListener = data.clickListener,
+        clickListener = data.onClick,
     ) {
         LeftPart(data.leftPart)
         MiddlePart(

@@ -1,5 +1,6 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
@@ -43,14 +45,12 @@ fun TypographyScreen(navController: NavHostController) {
         }
     ) {
         LazyColumn(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxHeight()
-                .padding(horizontal = 8.dp),
-            contentPadding = insetAllExcludeTop(),
+            modifier = Modifier.fillMaxHeight(),
+            contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(items = items) {
-                it.Content(Modifier.padding(8.dp))
+                it.Content(modifier = Modifier)
             }
         }
     }

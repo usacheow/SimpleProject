@@ -1,6 +1,8 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -20,6 +22,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
@@ -60,30 +63,28 @@ fun TagListScreen(navController: NavHostController) {
         Column {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                modifier = Modifier
-                    .padding(it)
-                    .padding(8.dp),
-                contentPadding = insetAllExcludeTop(),
+                modifier = Modifier.fillMaxHeight(),
+                contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 item(span = { GridItemSpan(2) }) {
                     HeaderTileState.Data(
                         value = "Single selection mode".textValue(),
                         type = HeaderTileState.Type.Medium,
-                    ).Content(Modifier.padding(8.dp))
+                    ).Content(Modifier)
                 }
                 items(radioButtons) {
-                    it.Content(Modifier.padding(8.dp))
+                    it.Content(Modifier)
                 }
                 item(span = { GridItemSpan(2) }) {
                     HeaderTileState.Data(
                         value = "Multi selection mode".textValue(),
                         type = HeaderTileState.Type.Medium,
-                    ).Content(Modifier
-                        .padding(top = 8.dp)
-                        .padding(8.dp))
+                    ).Content(Modifier.padding(top = 8.dp))
                 }
                 items(checkButtons) {
-                    it.Content(Modifier.padding(8.dp))
+                    it.Content(Modifier)
                 }
             }
         }

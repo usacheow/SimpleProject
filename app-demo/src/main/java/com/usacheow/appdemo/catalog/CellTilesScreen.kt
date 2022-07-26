@@ -12,15 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavHostController
-import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.listtile.CellTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
-import com.usacheow.coreuitheme.R
+import com.usacheow.coreuicompose.uikit.listtile.CellTileState
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.appdemo.R as AppDemoR
 
@@ -56,46 +54,43 @@ fun CellTilesScreen(navController: NavHostController) {
 
 @Composable
 private fun items(): List<TileState> = listOf(
-    CellTileState.Shimmer,
+    CellTileState.Shimmer(needValueLine = true, needDescriptionLine = true),
     CellTileState.Data(
-        title = "Cell tile title".textValue(),
+        value = "Cell tile title".textValue(),
     ),
     CellTileState.Data(
-        subtitle = "Subtitle".textValue(),
-        title = "Cell tile title".textValue(),
+        header = "Subtitle".textValue(),
+        value = "Cell tile title".textValue(),
     ),
     CellTileState.Data(
-        subtitle = "Subtitle".textValue(),
-        title = "Cell tile title".textValue(),
-        additional = "Additional text with some interesting information".textValue(),
+        header = "Subtitle".textValue(),
+        value = "Cell tile title".textValue(),
+        description = "Additional text with some interesting information".textValue(),
     ),
     CellTileState.Data(
-        title = "Cell tile title".textValue(),
-        value = "Value".textValue(),
+        value = "Cell tile title".textValue(),
+        valueLarge = "Value".textValue(),
     ),
     CellTileState.Data(
-        leftPart = CellTileState.LeftPart.Icon(
-            icon = AppTheme.specificIcons.account,
-            background = IconValue.ResVector(R.drawable.bg_ic_square),
-        ),
-        subtitle = "Subtitle".textValue(),
-        title = "Title".textValue(),
-        additional = "Additional".textValue(),
+        leftPart = CellTileState.LeftPart.GreyIcon(icon = AppTheme.specificIcons.account.toImageValue()),
+        header = "Subtitle".textValue(),
+        value = "Title".textValue(),
+        description = "Additional".textValue(),
         rightPart = CellTileState.RightPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
         onClick = {},
     ),
     CellTileState.Data(
-        subtitle = "Subtitle".textValue(),
-        title = "Title".textValue(),
-        additional = "Additional".textValue(),
+        header = "Subtitle".textValue(),
+        value = "Title".textValue(),
+        description = "Additional".textValue(),
         rightPart = CellTileState.RightPart.ActionIcon(AppTheme.specificIcons.navigateNext.toImageValue()),
         onClick = {},
     ),
     CellTileState.Data(
         leftPart = CellTileState.LeftPart.Logo(ImageValue.ResImage(AppDemoR.drawable.demo_avatar)),
-        subtitle = "Subtitle".textValue(),
-        title = "Title".textValue(),
-        additional = "Additional".textValue(),
+        header = "Subtitle".textValue(),
+        value = "Title".textValue(),
+        description = "Additional".textValue(),
         rightPart = CellTileState.RightPart.Switch(true),
         onClick = {},
     ),

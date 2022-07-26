@@ -23,7 +23,7 @@ fun SimpleAlertDialogUi(
             Text(
                 text = text.get(),
                 modifier = Modifier.fillMaxWidth(),
-                style = AppTheme.specificTypography.bodyMedium,
+                style = AppTheme.specificTypography.bodyLarge,
                 color = AppTheme.specificColorScheme.symbolPrimary
             )
         },

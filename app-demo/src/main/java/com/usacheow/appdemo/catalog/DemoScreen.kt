@@ -1,14 +1,16 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
@@ -27,11 +29,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.appdemo.DemoDestinations
 import com.usacheow.corecommon.container.textValue
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
-import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
+import com.usacheow.coreuicompose.uikit.status.SimpleAlertDialogUi
 import com.usacheow.coreuitheme.compose.LocalWindowSizeClass
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,14 +45,6 @@ fun DemoScreen(
 ) {
     var isDialogVisible by remember { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
-
-    val headerModifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
-    val cardModifier = Modifier.padding(8.dp)
-
-    val items = items(
-        navController = navController,
-        showDialogClickListener = { isDialogVisible = true },
-    )
 
     val modifier = when (windowSizeClass.widthSizeClass) {
         WindowWidthSizeClass.Compact -> Modifier.fillMaxWidth()
@@ -65,7 +60,7 @@ fun DemoScreen(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SimpleTopAppBar(
-                title = "Demo UIkit".textValue(),
+                title = "UiKit".textValue(),
                 contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
@@ -77,103 +72,128 @@ fun DemoScreen(
             ) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(columnsCount),
-                    modifier = modifier
-                        .fillMaxHeight()
-                        .padding(horizontal = 8.dp)
-                        .padding(it),
-                    contentPadding = insetAllExcludeTop(),
+                    contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp, vertical = 8.dp),
+                    modifier = modifier.fillMaxHeight(),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     items(
-                        items = items,
-                        span = { item -> if (item is HeaderTileState) GridItemSpan(columnsCount) else GridItemSpan(1) },
-                    ) {
-                        it.Content(when (it is HeaderTileState) {
-                            true -> headerModifier
-                            false -> cardModifier
-                        })
-                    }
+                        navController = navController,
+                        showDialogClickListener = { isDialogVisible = true },
+                        maxSpanCount = columnsCount,
+                    )
                 }
             }
         },
     )
 
     if (isDialogVisible) {
-        SampleAlertDialog {
-            isDialogVisible = false
-        }
+        SimpleAlertDialogUi(
+            text = "Material dialog example".textValue(),
+            buttonText = "Ok".textValue(),
+            onClickRequest = { isDialogVisible = false },
+        )
     }
 }
 
-@Composable
-private fun items(
+private fun LazyGridScope.items(
     navController: NavHostController,
     showDialogClickListener: () -> Unit,
-) = listOf(
-    HeaderTileState.large("Atoms".textValue()),
-    BadgeTileState.Data(
-        header = "atom".textValue(),
-        value = "1. Typography".textValue(),
-        onClick = { navController.navigate(DemoDestinations.Typography) }
-    ),
-    BadgeTileState.Data(
-        header = "atom".textValue(),
-        value = "2. Palette".textValue(),
-        onClick = { navController.navigate(DemoDestinations.Palette) }
-    ),
-    BadgeTileState.Data(
-        header = "atom".textValue(),
-        value = "3. Buttons".textValue(),
-        onClick = { navController.navigate(DemoDestinations.Buttons) }
-    ),
-    BadgeTileState.Data(
-        header = "atom".textValue(),
-        value = "4. Inputs".textValue(),
-        onClick = { navController.navigate(DemoDestinations.Inputs) }
-    ),
+    maxSpanCount: Int
+) {
+    item {
+        BadgeTileState.Data(
+            header = "theme".textValue(),
+            value = "1. Typography".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Typography) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "theme".textValue(),
+            value = "2. Palette".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Palette) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "theme".textValue(),
+            value = "3. Settings".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Settings) }
+        ).Content(modifier = Modifier)
+    }
 
-    HeaderTileState.large("Molecules".textValue()),
-    BadgeTileState.Data(
-        header = "molecule".textValue(),
-        value = "1. Cell Tiles".textValue(),
-        onClick = { navController.navigate(DemoDestinations.CellTiles) }
-    ),
-    BadgeTileState.Data(
-        header = "molecule".textValue(),
-        value = "2. Tag Lists".textValue(),
-        onClick = { navController.navigate(DemoDestinations.TagList) }
-    ),
-    BadgeTileState.Data(
-        header = "molecule".textValue(),
-        value = "3. Information Tiles".textValue(),
-        onClick = { navController.navigate(DemoDestinations.InformationTiles) }
-    ),
+    item(span = { GridItemSpan(maxSpanCount) }) { Spacer(modifier = Modifier.height(16.dp)) }
+    item {
+        BadgeTileState.Data(
+            header = "components".textValue(),
+            value = "1. Buttons".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Buttons) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "components".textValue(),
+            value = "2. Inputs".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Inputs) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "tiles".textValue(),
+            value = "3. Cell Tiles".textValue(),
+            onClick = { navController.navigate(DemoDestinations.CellTiles) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "tiles".textValue(),
+            value = "4. Tag Lists".textValue(),
+            onClick = { navController.navigate(DemoDestinations.TagList) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "tiles".textValue(),
+            value = "5. Information Tiles".textValue(),
+            onClick = { navController.navigate(DemoDestinations.InformationTiles) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "tiles".textValue(),
+            value = "6. Message Tiles".textValue(),
+            onClick = { navController.navigate(DemoDestinations.Messages) }
+        ).Content(modifier = Modifier)
+    }
 
-    HeaderTileState.large("Organisms".textValue()),
-    BadgeTileState.Data(
-        header = "organism".textValue(),
-        value = "1. Message Tiles".textValue(),
-        onClick = { navController.navigate(DemoDestinations.Messages) }
-    ),
-    BadgeTileState.Data(
-        header = "organism".textValue(),
-        value = "2. Num Pad".textValue(),
-        onClick = { navController.navigate(DemoDestinations.NumPad) }
-    ),
-
-    HeaderTileState.large("Templates".textValue()),
-    BadgeTileState.Data(
-        header = "template".textValue(),
-        value = "1. Alert Dialog".textValue(),
-        onClick = { showDialogClickListener() }
-    ),
-    BadgeTileState.Data(
-        header = "template".textValue(),
-        value = "2. Bottom sheet".textValue(),
-        onClick = { navController.navigate(DemoDestinations.BottomSheet) }
-    ),
-    BadgeTileState.Data(
-        header = "template".textValue(),
-        value = "3. Modal bottom sheet".textValue(),
-        onClick = { navController.navigate(DemoDestinations.ModalBottomSheet) }
-    ),
-)
+    item(span = { GridItemSpan(maxSpanCount) }) { Spacer(modifier = Modifier.height(16.dp)) }
+    item {
+        BadgeTileState.Data(
+            header = "ui".textValue(),
+            value = "1. Num Pad".textValue(),
+            onClick = { navController.navigate(DemoDestinations.NumPad) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "ui".textValue(),
+            value = "2. Alert Dialog".textValue(),
+            onClick = { showDialogClickListener() }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "ui".textValue(),
+            value = "3. Bottom sheet".textValue(),
+            onClick = { navController.navigate(DemoDestinations.BottomSheet) }
+        ).Content(modifier = Modifier)
+    }
+    item {
+        BadgeTileState.Data(
+            header = "ui".textValue(),
+            value = "4. Modal bottom sheet".textValue(),
+            onClick = { navController.navigate(DemoDestinations.ModalBottomSheet) }
+        ).Content(modifier = Modifier)
+    }
+}

@@ -1,5 +1,6 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -24,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.google.android.material.color.MaterialColors
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
@@ -35,9 +37,6 @@ import com.usacheow.coreuitheme.compose.AppTheme
 fun PaletteScreen(navController: NavHostController) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
     val items = items()
-
-    val headerModifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
-    val cardModifier = Modifier.padding(8.dp)
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -52,20 +51,16 @@ fun PaletteScreen(navController: NavHostController) {
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxHeight()
-                .padding(horizontal = 8.dp)
-                .padding(it),
-            contentPadding = insetAllExcludeTop(),
+            modifier = Modifier.fillMaxHeight(),
+            contentPadding = insetAllExcludeTop().add(horizontal = 24.dp).add(it),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             items(
                 items = items,
                 span = { if (it is HeaderTileState) GridItemSpan(2) else GridItemSpan(1) },
             ) {
-                it.Content(when (it is HeaderTileState) {
-                    true -> headerModifier
-                    false -> cardModifier
-                })
+                it.Content(modifier = Modifier)
             }
         }
     }

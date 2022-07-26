@@ -76,7 +76,6 @@ class FileHelper(private val context: Context) {
         FileType.Pictures -> "image_" + getRandomId() + ".jpeg"
         FileType.Videos -> "video_" + getRandomId() + ".mp4"
     }
-
 }
 
 enum class FileType(

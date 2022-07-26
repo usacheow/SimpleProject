@@ -1,17 +1,13 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -23,9 +19,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
-import com.usacheow.coreuicompose.tools.insetBottom
-import com.usacheow.coreuicompose.tools.insetHorizontal
+import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineL
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineM
@@ -61,24 +57,16 @@ fun ButtonsScreen(navController: NavHostController) {
             )
         }
     ) {
-        Column(
-            modifier = Modifier
-                .padding(it)
-                .verticalScroll(rememberScrollState())
-                .padding(insetHorizontal()),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+        LazyColumn(
+            modifier = Modifier.fillMaxHeight(),
+            contentPadding = insetAllExcludeTop().add(horizontal = 24.dp).add(it),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-            Primaries()
-            DividerBetweenCards()
-            Secondaries()
-            DividerBetweenCards()
-            Tonals()
-            DividerBetweenCards()
-            Outlines()
-            DividerBetweenCards()
-            Inlines()
-
-            Box(modifier = Modifier.padding(insetBottom()))
+            item { Primaries() }
+            item { Secondaries() }
+            item { Tonals() }
+            item { Outlines() }
+            item { Inlines() }
         }
     }
 }
@@ -101,6 +89,7 @@ private fun Primaries() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonPrimaryM(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -115,6 +104,7 @@ private fun Primaries() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonPrimaryL(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -149,6 +139,7 @@ private fun Secondaries() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonSecondaryM(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -163,6 +154,7 @@ private fun Secondaries() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonSecondaryL(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -197,6 +189,7 @@ private fun Tonals() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonTonalM(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -211,6 +204,7 @@ private fun Tonals() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonTonalL(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -245,6 +239,7 @@ private fun Outlines() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonOutlineM(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -259,6 +254,7 @@ private fun Outlines() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonOutlineL(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -293,6 +289,7 @@ private fun Inlines() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonInlineM(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -307,6 +304,7 @@ private fun Inlines() {
             SimpleButtonContent(null, icon)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
     Container {
         SimpleButtonInlineL(onClick = {}) {
             SimpleButtonContent("Label".textValue())
@@ -328,9 +326,7 @@ private fun Header(text: String) {
     Text(
         text = text,
         style = AppTheme.specificTypography.titleLarge,
-        modifier = Modifier
-            .padding(top = 8.dp)
-            .padding(horizontal = 16.dp),
+        modifier = Modifier.padding(bottom = 12.dp),
     )
 }
 
@@ -338,35 +334,6 @@ private fun Header(text: String) {
 private fun Container(content: @Composable RowScope.() -> Unit) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.padding(horizontal = 16.dp),
         content = content,
     )
-}
-
-@Composable
-private fun DividerBetweenCards() {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.background(AppTheme.specificColorScheme.surfaceVariant),
-    ) {
-        Box(
-            modifier = Modifier
-                .background(
-                    color = AppTheme.specificColorScheme.surface,
-                    shape = AppTheme.shapes.extraLarge.copy(topEnd = CornerSize(0.dp), topStart = CornerSize(0.dp)),
-                )
-                .height(AppTheme.specificDimens.radius_extra_large)
-                .fillMaxWidth(),
-        )
-        Box(
-            modifier = Modifier
-                .background(
-                    color = AppTheme.specificColorScheme.surface,
-                    shape = AppTheme.shapes.extraLarge.copy(bottomEnd = CornerSize(0.dp),
-                        bottomStart = CornerSize(0.dp)),
-                )
-                .height(AppTheme.specificDimens.radius_extra_large)
-                .fillMaxWidth(),
-        )
-    }
 }

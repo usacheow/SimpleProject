@@ -5,9 +5,11 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 private val PREF_NAME = stringPreferencesKey("PREF_NAME")
 private val PREF_PHONE = stringPreferencesKey("PREF_PHONE")
+private val PREF_THEME_MODE = stringPreferencesKey("PREF_THEME_MODE")
 
 @Singleton
 class UserDataStorage @Inject constructor(
@@ -22,6 +24,13 @@ class UserDataStorage @Inject constructor(
     val phoneNumberFlow: Flow<String?> get() = provider.userDataStore.get(PREF_PHONE)
     suspend fun setPhoneNumber(value: String) {
         provider.userDataStore.set(PREF_PHONE, value)
+    }
+
+    val themeModeFlow: Flow<ThemeMode> get() = provider.userDataStore.get(PREF_THEME_MODE).map {
+        it?.let(ThemeMode::valueOf) ?: ThemeMode.System
+    }
+    suspend fun setThemeMode(value: ThemeMode) {
+        provider.userDataStore.set(PREF_THEME_MODE, value.name)
     }
 
     var isAllowBiometric: Boolean
@@ -42,3 +51,5 @@ class UserDataStorage @Inject constructor(
             putInt("lastCheckedAvailableVersionCode", value)
         }
 }
+
+enum class ThemeMode { Light, Dark, System }

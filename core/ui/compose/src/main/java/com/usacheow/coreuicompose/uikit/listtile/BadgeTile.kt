@@ -1,5 +1,6 @@
 package com.usacheow.coreuicompose.uikit.listtile
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
@@ -12,8 +13,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.TileState
@@ -58,15 +59,15 @@ object BadgeTileConfig {
 
     @Composable
     fun elevation() = CardDefaults.elevatedCardElevation(
-        defaultElevation = 16.dp,
-        pressedElevation = 16.dp,
-        focusedElevation = 16.dp,
-        hoveredElevation = 16.dp,
-        draggedElevation = 16.dp,
+        defaultElevation = 8.dp,
+        pressedElevation = 8.dp,
+        focusedElevation = 8.dp,
+        hoveredElevation = 8.dp,
+        draggedElevation = 8.dp,
     )
 
     @Composable
-    fun shape() = AppTheme.shapes.medium
+    fun shape() = AppTheme.shapes.large
 
     @Composable
     fun headerStyle() = AppTheme.specificTypography.bodyMedium
@@ -113,12 +114,22 @@ private fun Data(
                     .widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
             )
         }
-        Text(
-            text = data.value.get().plus(AnnotatedString("\n")),
-            style = BadgeTileConfig.valueStyle(),
-            maxLines = 2,
-            modifier = Modifier.widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
-        )
+        Box {
+            Text(
+                text = "\n\n",
+                style = BadgeTileConfig.valueStyle(),
+                maxLines = 2,
+                modifier = Modifier
+                    .alpha(0f)
+                    .widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
+            )
+            Text(
+                text = data.value.get(),
+                style = BadgeTileConfig.valueStyle(),
+                maxLines = 2,
+                modifier = Modifier.widthIn(min = BadgeTileConfig.LinesMinWidth, max = BadgeTileConfig.LinesMaxWidth),
+            )
+        }
     }
 }
 
@@ -142,7 +153,7 @@ private fun Shimmer(
         }
         ShimmerTileLine(
             width = BadgeTileConfig.LinesMaxWidth,
-            height = BadgeTileConfig.valueStyle().lineHeight.value.dp.times(2) + 8.dp,
+            height = BadgeTileConfig.valueStyle().lineHeight.value.dp.times(2) + 5.dp,
         )
     }
 }

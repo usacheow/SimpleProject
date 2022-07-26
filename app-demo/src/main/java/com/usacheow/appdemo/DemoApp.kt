@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
@@ -27,6 +29,8 @@ import com.usacheow.appdemo.catalog.PaletteScreen
 import com.usacheow.appdemo.catalog.TagListScreen
 import com.usacheow.appdemo.catalog.TypographyScreen
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
+import com.usacheow.coredata.database.ThemeMode
+import com.usacheow.coredata.database.UserDataStorage
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +38,7 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import javax.inject.Inject
 
 @HiltAndroidApp
 class DemoApp : Application(), ApplicationCoroutineScopeHolder {
@@ -44,6 +49,8 @@ class DemoApp : Application(), ApplicationCoroutineScopeHolder {
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
 class DemoActivity : ComponentActivity() {
+
+    @Inject lateinit var userDataStorage: UserDataStorage
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,12 +65,19 @@ class DemoActivity : ComponentActivity() {
 
     @Composable
     private fun Content() {
-        AppTheme(calculateWindowSizeClass(this)) {
+        val mode = userDataStorage.themeModeFlow.collectAsState(initial = ThemeMode.System)
+        val isDarkTheme = when (mode.value) {
+            ThemeMode.System -> isSystemInDarkTheme()
+            ThemeMode.Dark -> true
+            ThemeMode.Light -> false
+        }
+        AppTheme(calculateWindowSizeClass(this), darkTheme = isDarkTheme) {
             val navController = rememberNavController()
 
-            SystemBarsIconsColor()
+            SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)
             NavHost(navController = navController, startDestination = DemoDestinations.Demo) {
                 composable(DemoDestinations.Demo, deepLinks = listOf(navDeepLink { uriPattern = DeeplinkDemo })) { DemoScreen(navController) }
+                composable(DemoDestinations.Settings) { SettingsScreen(navController) }
                 composable(DemoDestinations.Typography) { TypographyScreen(navController) }
                 composable(DemoDestinations.Buttons) { ButtonsScreen(navController) }
                 composable(DemoDestinations.Inputs) { InputsScreen(navController) }
@@ -82,6 +96,7 @@ class DemoActivity : ComponentActivity() {
 
 object DemoDestinations {
     const val Demo = "Demo"
+    const val Settings = "Settings"
     const val Typography = "Typography"
     const val Buttons = "Buttons"
     const val Inputs = "Inputs"

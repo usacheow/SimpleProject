@@ -12,6 +12,10 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.outlined.AutoMode
+import androidx.compose.material.icons.outlined.DarkMode
+import androidx.compose.material.icons.outlined.LightMode
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.usacheow.corecommon.container.IconValue
 
@@ -27,6 +31,10 @@ data class SpecificIcons(
     val fingerprint: IconValue = vector(Icons.Filled.Fingerprint),
     val delete: IconValue = vector(Icons.Filled.Delete),
     val done: IconValue = vector(Icons.Filled.Done),
+    val settings: IconValue = vector(Icons.Outlined.Settings),
+    val themeSystem: IconValue = vector(Icons.Outlined.AutoMode),
+    val themeDark: IconValue = vector(Icons.Outlined.DarkMode),
+    val themeLight: IconValue = vector(Icons.Outlined.LightMode),
 )
 
 private fun vector(value: ImageVector) = IconValue.Vector(value)

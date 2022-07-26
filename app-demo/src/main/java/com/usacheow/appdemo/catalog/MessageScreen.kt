@@ -1,6 +1,7 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,10 +16,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.listtile.MessageBannerState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
+import com.usacheow.coreuicompose.uikit.listtile.MessageBannerState
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,13 +41,12 @@ fun MessageScreen(navController: NavHostController) {
         }
     ) {
         LazyColumn(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxWidth(),
-            contentPadding = insetAllExcludeTop(),
+            modifier = Modifier.fillMaxHeight(),
+            contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             items(items) {
-                it.Content(Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                it.Content(Modifier)
             }
         }
     }

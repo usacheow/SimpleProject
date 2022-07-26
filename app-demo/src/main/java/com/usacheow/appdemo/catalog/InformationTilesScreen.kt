@@ -1,6 +1,10 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -16,11 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
+import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
-import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,31 +47,33 @@ fun InformationTilesScreen(navController: NavHostController) {
         }
     ) {
         LazyColumn(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxWidth(),
-            contentPadding = insetAllExcludeTop(),
+            modifier = Modifier.fillMaxHeight(),
+            contentPadding = insetAllExcludeTop().add(it),
         ) {
-            items(large()) {
-                it.Content(modifier = Modifier.padding(8.dp))
-            }
-            items(medium()) {
-                it.Content(modifier = Modifier.padding(8.dp))
-            }
-            items(small()) {
-                it.Content(modifier = Modifier.padding(8.dp))
-            }
+            items(large()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+            item { Spacer(modifier = Modifier.height(24.dp)) }
+            items(medium()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+            item { Spacer(modifier = Modifier.height(24.dp)) }
+            items(small()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+            item { Spacer(modifier = Modifier.height(24.dp)) }
             item {
-                LazyRow {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 24.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
                     items(badges) {
-                        it.Content(Modifier.padding(8.dp))
+                        it.Content(Modifier)
                     }
                 }
             }
+            item { Spacer(modifier = Modifier.height(24.dp)) }
             item {
-                LazyRow {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 24.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
                     items(smallBadges) {
-                        it.Content(Modifier.padding(8.dp))
+                        it.Content(Modifier)
                     }
                 }
             }
