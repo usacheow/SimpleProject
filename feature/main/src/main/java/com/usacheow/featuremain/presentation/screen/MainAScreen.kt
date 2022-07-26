@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetBottomWithBottomNavigation
-import com.usacheow.coreuicompose.uikit.CellTileState
+import com.usacheow.coreuicompose.uikit.listtile.CellTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 import com.usacheow.featuremain.presentation.viewmodel.AViewModel

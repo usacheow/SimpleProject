@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.listtile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +22,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
-import com.usacheow.coreuicompose.uikit.status.ShimmerTile
+import com.usacheow.coreuicompose.uikit.other.ShimmerTile
 import com.usacheow.coreuitheme.compose.AppTheme
 
 sealed class CellTileState : TileState {

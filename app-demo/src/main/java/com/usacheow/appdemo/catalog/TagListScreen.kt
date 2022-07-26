@@ -22,8 +22,8 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.HeaderTileState
-import com.usacheow.coreuicompose.uikit.TagTileState
+import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
+import com.usacheow.coreuicompose.uikit.listtile.TagTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 

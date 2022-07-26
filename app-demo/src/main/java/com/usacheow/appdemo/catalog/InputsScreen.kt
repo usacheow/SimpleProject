@@ -33,8 +33,8 @@ import com.usacheow.coreuicompose.tools.dpSize
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.intOffsetInParent
-import com.usacheow.coreuicompose.uikit.SimplePopup
-import com.usacheow.coreuicompose.uikit.SimplePopupItem
+import com.usacheow.coreuicompose.uikit.status.SimplePopup
+import com.usacheow.coreuicompose.uikit.status.SimplePopupItem
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.input.SimpleSelector
 import com.usacheow.coreuicompose.uikit.input.SimpleSelectorPlaceholder

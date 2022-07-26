@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.listtile
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -8,12 +8,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.defaultTileRipple
 import com.usacheow.coreuicompose.tools.get
-import com.usacheow.coreuicompose.uikit.status.ShimmerTile
+import com.usacheow.coreuicompose.uikit.other.ShimmerTileConfig
+import com.usacheow.coreuicompose.uikit.other.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
 
 sealed class HeaderTileState : TileState {
@@ -71,6 +73,13 @@ object HeaderTileConfig {
 
     @Composable
     fun actionColor() = AppTheme.specificColorScheme.symbolSecondary
+
+    @Composable
+    fun shimmerWidth(type: HeaderTileState.Type) = when (type) {
+        HeaderTileState.Type.Small -> ShimmerTileConfig.WidthSmall
+        HeaderTileState.Type.Large -> ShimmerTileConfig.WidthLarge
+        HeaderTileState.Type.Medium -> ShimmerTileConfig.WidthMedium
+    }
 }
 
 @Composable
@@ -120,14 +129,10 @@ private fun Shimmer(
     modifier: Modifier = Modifier,
     data: HeaderTileState.Shimmer,
 ) {
-    val type = data.type
     Container(modifier = modifier) {
-        ShimmerTile(
-            needTopLine = type == HeaderTileState.Type.Small,
-            needMiddleLine = type == HeaderTileState.Type.Large,
-            needBottomLine = type == HeaderTileState.Type.Medium,
-            needRightIcon = false,
-            needLeftIcon = false,
+        ShimmerTileLine(
+            width = HeaderTileConfig.shimmerWidth(data.type),
+            height = HeaderTileConfig.headerStyle(data.type).lineHeight.value.dp,
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit.status
+package com.usacheow.coreuicompose.uikit.other
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background

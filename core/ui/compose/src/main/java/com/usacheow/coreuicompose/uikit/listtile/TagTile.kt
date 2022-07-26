@@ -1,4 +1,4 @@
-package com.usacheow.coreuicompose.uikit
+package com.usacheow.coreuicompose.uikit.listtile
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.get
-import com.usacheow.coreuicompose.uikit.status.ShimmerTileLine
+import com.usacheow.coreuicompose.uikit.other.ShimmerTileLine
 import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
 
