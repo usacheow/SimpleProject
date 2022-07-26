@@ -23,7 +23,7 @@ val LocalBottomNavigationHeight = staticCompositionLocalOf { 0.dp }
 fun SimpleBottomNavigation(
     backgroundColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = .9f),
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
-    elevation: Dp = BottomNavigationDefaults.Elevation,
+    elevation: Dp = BottomNavigationConfig.Elevation,
     contentPadding: PaddingValues = PaddingValues(),
     content: @Composable RowScope.() -> Unit
 ) {
@@ -35,7 +35,7 @@ fun SimpleBottomNavigation(
         Row(
             Modifier
                 .fillMaxWidth()
-                .height(BottomNavigationDefaults.Height + contentPadding.calculateTopPadding() + contentPadding.calculateBottomPadding())
+                .height(BottomNavigationConfig.Height + contentPadding.calculateTopPadding() + contentPadding.calculateBottomPadding())
                 .padding(contentPadding)
                 .selectableGroup(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -44,7 +44,7 @@ fun SimpleBottomNavigation(
     }
 }
 
-object BottomNavigationDefaults {
+object BottomNavigationConfig {
     val Elevation = 0.dp
     val Height = 56.dp
 }

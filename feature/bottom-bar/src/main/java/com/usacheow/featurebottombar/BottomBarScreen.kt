@@ -20,7 +20,7 @@ import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.corenavigation.base.createRoute
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationDefaults
+import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationConfig
 import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleBottomNavigation
 
@@ -36,7 +36,7 @@ fun BottomBarScreen(
         bottomBar = { BottomBar(navController, items) },
     ) {
         it
-        CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationDefaults.Height) {
+        CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationConfig.Height) {
             NavHost(navController = navController, startDestination = createRoute(firstRootRoute)) {
                 items.forEach {
                     navigation(

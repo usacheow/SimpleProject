@@ -1,14 +1,11 @@
 package com.usacheow.coreuicompose.uikit.duplicate
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Surface
@@ -21,7 +18,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.LastBaseline
@@ -37,14 +33,6 @@ import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlin.math.max
 import kotlin.math.roundToInt
-
-private typealias OnBackIconClick = () -> Boolean
-
-data class ActionIconData(
-    val icon: IconValue,
-    val color: Color? = null,
-    val onClick: () -> Unit,
-)
 
 object SimpleTopAppBarConfig {
 
@@ -110,19 +98,12 @@ fun SimpleTopAppBar(
         }
     }
     val actionsUi = @Composable {
-        if (actions.toList().isNotEmpty()) {
-            Row {
-                actions.toList().forEach {
-                    Icon(
-                        painter = it.icon.get(),
-                        contentDescription = null,
-                        tint = it.color ?: colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .clickable(enabled = true, onClick = it.onClick)
-                            .padding(12.dp),
-                    )
-                }
+        Row {
+            actions.toList().forEach {
+                TopAppBarAction(
+                    data = it,
+                    defaultColor = colors.actionIconContentColor(scrollBehavior.scrollFraction).value,
+                )
             }
         }
     }
@@ -163,7 +144,6 @@ fun SimpleTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior,
     content: @Composable () -> Unit,
 ) {
-
     SimpleTopAppBarContainer(
         colors = colors,
         scrollBehavior = scrollBehavior,
@@ -200,19 +180,6 @@ private fun SimpleTopAppBarContainer(
 //            .fillMaxWidth()
 //            .background(appBarContainerColor))
 //    }
-}
-
-@Composable
-fun TopAppBarNavIcon(iconValue: IconValue, onClick: () -> Unit) {
-    Icon(
-        painter = iconValue.get(),
-        tint = AppTheme.specificColorScheme.primary,
-        contentDescription = "navigation icon",
-        modifier = Modifier
-            .clip(CircleShape)
-            .clickable(onClick = onClick)
-            .padding(8.dp),
-    )
 }
 
 @Composable
