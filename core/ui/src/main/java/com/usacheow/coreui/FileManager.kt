@@ -30,7 +30,7 @@ class FileHelper(private val context: Context) {
         fun createPublicFileViaMediaStore(type: FileType): Uri? {
             val contentValues = ContentValues().apply {
                 put(MediaStore.Images.ImageColumns.DISPLAY_NAME, generateName(type))
-                put(MediaStore.Images.ImageColumns.MIME_TYPE, generateMimeType(type))
+                put(MediaStore.Images.ImageColumns.MIME_TYPE, type.mimeType())
                 put(MediaStore.Images.ImageColumns.RELATIVE_PATH, "${type.publicDirectory}/$PublicAppDirectoryName")
             }
             return context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
@@ -77,10 +77,6 @@ class FileHelper(private val context: Context) {
         FileType.Videos -> "video_" + getRandomId() + ".mp4"
     }
 
-    private fun generateMimeType(type: FileType) = when (type) {
-        FileType.Pictures -> "image/jpeg"
-        FileType.Videos -> "video/mp4"
-    }
 }
 
 enum class FileType(
@@ -89,5 +85,10 @@ enum class FileType(
 ) {
 
     Pictures("Pictures", Environment.DIRECTORY_PICTURES),
-    Videos("Videos", Environment.DIRECTORY_MOVIES),
+    Videos("Videos", Environment.DIRECTORY_MOVIES);
+
+    fun mimeType() = when (this) {
+        Pictures -> "image/jpeg"
+        Videos -> "video/mp4"
+    }
 }
