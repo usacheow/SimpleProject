@@ -2,7 +2,7 @@ package com.usacheow.featureexample.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import com.usacheow.corenavigation.AppRoute
-import com.usacheow.corenavigation.base.requireArgs
+import com.usacheow.corenavigation.base.requireArgFromDefaultFormat
 import com.usacheow.coreui.viewmodel.SimpleViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class SecondViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : SimpleViewModel() {
 
-    val args = savedStateHandle.requireArgs<AppRoute.ExampleSecond.Args>()
+    val args = savedStateHandle.requireArgFromDefaultFormat<AppRoute.ExampleSecond.Args>()
 
     private val _uiState = MutableStateFlow(UiState())
     val uiState = _uiState.asStateFlow()

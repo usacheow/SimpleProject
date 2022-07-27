@@ -21,7 +21,6 @@ import com.usacheow.corenavigation.AppRoute
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.corenavigation.MainFeatureProvider
 import com.usacheow.corenavigation.ExampleFeatureProvider
-import com.usacheow.corenavigation.base.createRoute
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,7 +75,7 @@ class AppActivity : FragmentActivity() {
 
     @Composable
     private fun MainFlow(navController: NavHostController) {
-        NavHost(navController = navController, startDestination = createRoute(AppRoute.MainBottomBar)) {
+        NavHost(navController = navController, startDestination = AppRoute.MainBottomBar.pattern) {
             with(bottomBarFeatureProvider) { bottomBarGraph(AppRoute.MainBottomBar, mainBottomBarItems()) }
             with(exampleFeatureProvider) { exampleGraph(navController) }
         }

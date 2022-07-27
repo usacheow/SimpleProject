@@ -1,5 +1,6 @@
 package com.usacheow.featurebottombar
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
@@ -8,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
@@ -18,7 +20,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.corenavigation.base.createRoute
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationConfig
 import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
@@ -35,13 +36,12 @@ fun BottomBarScreen(
     Scaffold(
         bottomBar = { BottomBar(navController, items) },
     ) {
-        it
         CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationConfig.Height) {
-            NavHost(navController = navController, startDestination = createRoute(firstRootRoute)) {
+            NavHost(modifier = Modifier.padding(it), navController = navController, startDestination = firstRootRoute.pattern) {
                 items.forEach {
                     navigation(
-                        route = createRoute(it.route),
-                        startDestination = createRoute(it.startDestination),
+                        route = it.route.pattern,
+                        startDestination = it.startDestination.pattern,
                     ) {
                         with(it) { builder(navController) }
                     }
@@ -66,8 +66,8 @@ private fun BottomBar(
                 alwaysShowLabel = false,
                 icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
                 label = { Text(stringResource(screen.labelRes)) },
-                selected = currentDestination?.hierarchy?.any { it.route == createRoute(screen.route) } == true,
-                onClick = { navController.switchTo(createRoute(screen.route)) }
+                selected = currentDestination?.hierarchy?.any { it.route == screen.route.pattern } == true,
+                onClick = { navController.switchTo(screen.route.pattern) }
             )
         }
     }

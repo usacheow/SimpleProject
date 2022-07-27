@@ -56,7 +56,7 @@ private fun MainAScreen(
         ) {
             items(20) {
                 CellTileState.Data(
-                    title = "item $it".textValue(),
+                    value = "item $it".textValue(),
                     onClick = onNextClick,
                 ).Content(modifier = Modifier)
             }
