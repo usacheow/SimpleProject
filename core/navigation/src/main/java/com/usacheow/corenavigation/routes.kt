@@ -66,6 +66,6 @@ object AppDeeplink {
         const val IdKey = "id"
 
         override val pattern = "$value/{$IdKey}"
-        override fun path(vararg args: Any) = "$value/%s".format(args)
+        override fun path(vararg args: Any) = "$value/%s".format(*args)
     }
 }
