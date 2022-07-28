@@ -27,7 +27,8 @@ sealed class RouteWithArg(value: String) : Route(value) {
 sealed class Deeplink(protected val value: String) {
 
     open val pattern: String = value
-    open val path: String = value
+
+    open fun path(vararg args: Any): String = value
 }
 
 object AppRoute {
@@ -60,9 +61,11 @@ object AppDeeplink {
 
     object Main : Deeplink("$BaseUri/main")
 
-    object Details : Deeplink("$BaseUri/details") {
+    object Details : Deeplink("$BaseUri/details/%s") {
 
-        override val pattern = "$value/{id}"
-        override val path = "$value/%s"
+        const val IdKey = "id"
+
+        override val pattern = value.format("{$IdKey}")
+        override fun path(vararg args: Any) = value.format(args)
     }
 }
