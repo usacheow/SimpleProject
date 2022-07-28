@@ -61,11 +61,11 @@ object AppDeeplink {
 
     object Main : Deeplink("$BaseUri/main")
 
-    object Details : Deeplink("$BaseUri/details/") {
+    object Details : Deeplink("$BaseUri/details") {
 
         const val IdKey = "id"
 
-        override val pattern = "$value$IdKey"
-        override fun path(vararg args: Any) = "$value%s".format(args)
+        override val pattern = "$value/{$IdKey}"
+        override fun path(vararg args: Any) = "$value/%s".format(args)
     }
 }
