@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 
 @Composable
-inline fun <reified T> Flow<T>.observe(
+inline fun <reified T> Flow<T>.collectAsCommand(
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
     minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
     noinline action: suspend (T) -> Unit
