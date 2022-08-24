@@ -8,16 +8,23 @@ import android.os.Environment
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
+import java.io.InputStream
+import java.io.OutputStream
+import java.nio.charset.StandardCharsets
 import java.util.Calendar
+import javax.inject.Inject
 
 private const val PublicAppDirectoryName = "SA"
 
-class FileHelper(private val context: Context) {
+class FileManager @Inject constructor(@ApplicationContext val context: Context) {
+
+    fun contentResolver() = context.contentResolver
 
     fun deleteFile(uri: Uri?) {
         uri ?: return
-        context.contentResolver.delete(uri, null, null)
+        contentResolver().delete(uri, null, null)
     }
 
     fun createPublicFile(type: FileType): Uri {
@@ -33,7 +40,7 @@ class FileHelper(private val context: Context) {
                 put(MediaStore.Images.ImageColumns.MIME_TYPE, type.mimeType())
                 put(MediaStore.Images.ImageColumns.RELATIVE_PATH, "${type.publicDirectory}/$PublicAppDirectoryName")
             }
-            return context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+            return contentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
         }
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -56,6 +63,44 @@ class FileHelper(private val context: Context) {
     fun createInternalCacheFile(type: FileType): Uri {
         val file = createTempFile(generateName(type), getCacheDir(type))
         return FileProvider.getUriForFile(context, getFileProviderAuthority(), file)
+    }
+
+    fun copyFile(uri: Uri?, fileType: FileType): Uri? {
+        uri ?: return null
+
+        var inputStream: InputStream? = null
+        var outputStream: OutputStream? = null
+        val newFileUri = createPublicFile(fileType)
+        return try {
+            inputStream = contentResolver().openInputStream(uri)
+            outputStream = contentResolver().openOutputStream(newFileUri)
+            val buf = ByteArray(1024)
+            inputStream!!.read(buf)
+            do {
+                outputStream!!.write(buf)
+            } while (inputStream.read(buf) != -1)
+            newFileUri
+        } catch (e: Exception) {
+            deleteFile(newFileUri)
+            null
+        } finally {
+            inputStream?.close()
+            outputStream?.close()
+        }
+    }
+
+    fun readFile(uri: Uri): String? {
+        var inputStream: InputStream? = null
+        return try {
+            inputStream = contentResolver().openInputStream(uri)
+            val buf = ByteArray(inputStream!!.available())
+            inputStream.read(buf)
+            String(buf, StandardCharsets.UTF_8)
+        } catch (e: Exception) {
+            null
+        } finally {
+            inputStream?.close()
+        }
     }
 
     private fun getFileProviderAuthority() = "${context.packageName}.fileprovider"
