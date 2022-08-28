@@ -71,7 +71,7 @@ class DemoActivity : ComponentActivity() {
             ThemeMode.Dark -> true
             ThemeMode.Light -> false
         }
-        AppTheme(calculateWindowSizeClass(this), darkTheme = isDarkTheme) {
+        AppTheme(calculateWindowSizeClass(this), isDarkTheme = isDarkTheme) {
             val navController = rememberNavController()
 
             SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)

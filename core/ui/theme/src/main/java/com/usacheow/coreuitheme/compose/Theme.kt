@@ -31,7 +31,7 @@ fun PreviewAppTheme(
     BoxWithConstraints {
         AppTheme(
             windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(maxWidth, maxHeight)),
-            darkTheme = darkTheme,
+            isDarkTheme = darkTheme,
         ) {
             Surface(
                 color = AppTheme.specificColorScheme.surface,
@@ -46,22 +46,22 @@ fun PreviewAppTheme(
 fun AppTheme(
     windowSizeClass: WindowSizeClass,
     isDynamicTheme: Boolean = true,
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
     var colorScheme = when {
         isDynamicTheme -> when {
-            darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+            isDarkTheme -> dynamicDarkColorScheme(LocalContext.current)
             else -> dynamicLightColorScheme(LocalContext.current)
         }
         else -> when {
-            darkTheme -> DarkColorScheme
+            isDarkTheme -> DarkColorScheme
             else -> LightColorScheme
         }
     }
     val specificColorScheme = when {
-        isDynamicTheme -> colorScheme.toSpecificColorScheme(!darkTheme)
-        darkTheme -> DefaultDarkSpecificColorScheme
+        isDynamicTheme -> colorScheme.toSpecificColorScheme(!isDarkTheme)
+        isDarkTheme -> DefaultDarkSpecificColorScheme
         else -> DefaultLightSpecificColorScheme
     }
     if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline)
@@ -75,7 +75,7 @@ fun AppTheme(
             colorScheme = colorScheme,
             shapes = AppShapes,
             typography = DefaultTypography,
-            content = { Material2ThemeSupport(darkTheme, content) },
+            content = { Material2ThemeSupport(isDarkTheme, content) },
         )
     }
 }
