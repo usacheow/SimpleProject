@@ -45,7 +45,7 @@ fun SimpleTopAppBar(
     actions: List<ActionIconData> = emptyList(),
     windowInsets: WindowInsets = insetAllExcludeBottom(),
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-    scrollBehavior: TopAppBarScrollBehavior,
+    scrollBehavior: TopAppBarScrollBehavior?,
 ) {
     CenterAlignedTopAppBar(
         title = { title?.get()?.let { Text(it, style = titleTextStyle) } },

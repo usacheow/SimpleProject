@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineS
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonInlineM
 import com.usacheow.coreuitheme.compose.AppTheme
 
 @Composable
@@ -39,12 +39,12 @@ fun SimpleConfirmDialogUi(
             )
         },
         confirmButton = {
-            SimpleButtonInlineS(onClick = onConfirmRequest) {
+            SimpleButtonInlineM(onClick = onConfirmRequest) {
                 SimpleButtonContent(confirmButtonText)
             }
         },
         dismissButton = {
-            SimpleButtonInlineS(onClick = onDismissRequest) {
+            SimpleButtonInlineM(onClick = onDismissRequest) {
                 SimpleButtonContent(dismissButtonText)
             }
         },

@@ -2,7 +2,8 @@ package com.usacheow.coreuitheme.compose
 
 import androidx.compose.ui.unit.dp
 
-object SpecificValues {
+object SpecificDimens {
+
     val ripple_inner_padding = 8.dp
     val ripple_outer_padding = 8.dp
     val default_padding = ripple_inner_padding + ripple_outer_padding
@@ -27,6 +28,9 @@ object SpecificValues {
     val elevation_8 = 8.dp
     val elevation_16 = 16.dp
     val elevation_32 = 32.dp
+}
+
+object SpecificStrings {
 
     const val UnbreakableSpace = " "
 }

@@ -49,22 +49,42 @@ fun AppTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    var colorScheme = when {
-        isDynamicTheme -> when {
-            isDarkTheme -> dynamicDarkColorScheme(LocalContext.current)
-            else -> dynamicLightColorScheme(LocalContext.current)
+//    var colorScheme = when {
+//        isDynamicTheme -> when {
+//            isDarkTheme -> dynamicDarkColorScheme(LocalContext.current)
+//            else -> dynamicLightColorScheme(LocalContext.current)
+//        }
+//        else -> when {
+//            isDarkTheme -> DarkColorScheme
+//            else -> LightColorScheme
+//        }
+//    }
+//    val specificColorScheme = when {
+//        isDynamicTheme -> colorScheme.toSpecificColorScheme(!isDarkTheme)
+//        isDarkTheme -> DarkSpecificColorScheme
+//        else -> LightSpecificColorScheme
+//    }
+//    if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline, surfaceTint = specificColorScheme.surfaceTint)
+
+    val (colorScheme, specificColorScheme) = if (isDynamicTheme) {
+        val colorScheme = when {
+            isDarkTheme -> dynamicDarkColorScheme(LocalContext.current).copy(
+                outline = DarkSpecificColorScheme.outline,
+                outlineVariant = DarkSpecificColorScheme.outlineVariant,
+            )
+            else -> dynamicLightColorScheme(LocalContext.current).copy(
+                outline = LightSpecificColorScheme.outline,
+                outlineVariant = LightSpecificColorScheme.outlineVariant,
+            )
         }
-        else -> when {
-            isDarkTheme -> DarkColorScheme
-            else -> LightColorScheme
+        val specificColorScheme = colorScheme.toSpecificColorScheme(!isDarkTheme)
+        colorScheme to specificColorScheme
+    } else {
+        when {
+            isDarkTheme -> DarkColorScheme to DarkSpecificColorScheme
+            else -> LightColorScheme to LightSpecificColorScheme
         }
     }
-    val specificColorScheme = when {
-        isDynamicTheme -> colorScheme.toSpecificColorScheme(!isDarkTheme)
-        isDarkTheme -> DarkSpecificColorScheme
-        else -> LightSpecificColorScheme
-    }
-    if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline)
 
     CompositionLocalProvider(
         LocalSpecificColorScheme provides specificColorScheme,
@@ -94,7 +114,7 @@ object AppTheme {
 
     val specificIcons = SpecificIcons
 
-    val specificValues = SpecificValues
+    val specificValues = SpecificDimens
 
     val shapes: Shapes
         @Composable

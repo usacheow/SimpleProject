@@ -1,5 +1,6 @@
 package com.usacheow.featurebottombar
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -29,11 +30,18 @@ fun BottomBarScreen(
     items: List<BottomBarFeatureProvider.ScreenItem>,
 ) {
     val navController = rememberNavController()
-    val firstRootRoute = items.first().route
+
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = currentBackStackEntry?.destination
+    val firstDestRoutes = items.map { it.startDestination.path() }
+
+    BackHandler(currentDestination?.route in firstDestRoutes.drop(1)) {
+        navController.switchTo(items.first().route.pattern)
+    }
 
     Box {
         CompositionLocalProvider(LocalBottomNavigationHeight provides 80.dp) {
-            NavHost(navController = navController, startDestination = firstRootRoute.pattern) {
+            NavHost(navController = navController, startDestination = items.first().route.pattern) {
                 items.forEach {
                     navigation(
                         route = it.route.pattern,
@@ -43,31 +51,20 @@ fun BottomBarScreen(
                     }
                 }
             }
-        }
-        BottomBar(modifier = Modifier.align(Alignment.BottomCenter), navController, items)
-    }
-}
-
-@Composable
-private fun BottomBar(
-    modifier: Modifier,
-    navController: NavController,
-    items: List<BottomBarFeatureProvider.ScreenItem>,
-) {
-    NavigationBar(
-        modifier = modifier,
-        containerColor = NavigationBarDefaults.containerColor.copy(alpha = .7f),
-    ) {
-        val currentBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentDestination = currentBackStackEntry?.destination
-        items.forEachIndexed { index, screen ->
-            NavigationBarItem(
-                alwaysShowLabel = false,
-                icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
-                label = { Text(stringResource(screen.labelRes)) },
-                selected = currentDestination?.hierarchy?.any { it.route == screen.route.pattern } == true,
-                onClick = { navController.switchTo(screen.route.pattern) }
-            )
+            NavigationBar(
+                modifier = Modifier.align(Alignment.BottomCenter),
+                containerColor = NavigationBarDefaults.containerColor.copy(alpha = .9f),
+            ) {
+                items.forEach { screen ->
+                    NavigationBarItem(
+                        alwaysShowLabel = false,
+                        icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
+                        label = { Text(stringResource(screen.labelRes)) },
+                        selected = currentDestination?.hierarchy?.any { it.route == screen.route.path() } == true,
+                        onClick = { navController.switchTo(screen.route.path()) }
+                    )
+                }
+            }
         }
     }
 }
