@@ -61,8 +61,8 @@ fun AppTheme(
     }
     val specificColorScheme = when {
         isDynamicTheme -> colorScheme.toSpecificColorScheme(!isDarkTheme)
-        isDarkTheme -> DefaultDarkSpecificColorScheme
-        else -> DefaultLightSpecificColorScheme
+        isDarkTheme -> DarkSpecificColorScheme
+        else -> LightSpecificColorScheme
     }
     if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline)
 
@@ -92,11 +92,16 @@ object AppTheme {
         @ReadOnlyComposable
         get() = LocalSpecificTypography.current
 
-    val specificIcons = SpecificIcons()
+    val specificIcons = SpecificIcons
 
-    val specificDimens = DimenValues
+    val specificValues = SpecificValues
 
-    val colorScheme: ColorScheme
+    val shapes: Shapes
+        @Composable
+        @ReadOnlyComposable
+        get() = MaterialTheme.shapes
+
+    internal val colorScheme: ColorScheme
         @Composable
         @ReadOnlyComposable
         get() = MaterialTheme.colorScheme
@@ -105,9 +110,4 @@ object AppTheme {
         @Composable
         @ReadOnlyComposable
         get() = MaterialTheme.typography
-
-    val shapes: Shapes
-        @Composable
-        @ReadOnlyComposable
-        get() = MaterialTheme.shapes
 }

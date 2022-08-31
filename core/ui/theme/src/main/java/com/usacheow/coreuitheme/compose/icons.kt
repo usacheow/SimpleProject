@@ -19,22 +19,22 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.usacheow.corecommon.container.IconValue
 
-data class SpecificIcons(
-    val back: IconValue = vector(Icons.Filled.ArrowBack),
-    val add: IconValue = vector(Icons.Filled.Add),
-    val account: IconValue = vector(Icons.Filled.AccountCircle),
-    val navigateNext: IconValue = vector(Icons.Filled.NavigateNext),
-    val creditCard: IconValue = vector(Icons.Filled.CreditCard),
-    val currencyExchange: IconValue = vector(Icons.Filled.CurrencyExchange),
-    val phone: IconValue = vector(Icons.Filled.Phone),
-    val error: IconValue = vector(Icons.Filled.Error),
-    val fingerprint: IconValue = vector(Icons.Filled.Fingerprint),
-    val delete: IconValue = vector(Icons.Filled.Delete),
-    val done: IconValue = vector(Icons.Filled.Done),
-    val settings: IconValue = vector(Icons.Outlined.Settings),
-    val themeSystem: IconValue = vector(Icons.Outlined.AutoMode),
-    val themeDark: IconValue = vector(Icons.Outlined.DarkMode),
-    val themeLight: IconValue = vector(Icons.Outlined.LightMode),
-)
+object SpecificIcons {
+    val back: IconValue = vector(Icons.Filled.ArrowBack)
+    val add: IconValue = vector(Icons.Filled.Add)
+    val account: IconValue = vector(Icons.Filled.AccountCircle)
+    val navigateNext: IconValue = vector(Icons.Filled.NavigateNext)
+    val creditCard: IconValue = vector(Icons.Filled.CreditCard)
+    val currencyExchange: IconValue = vector(Icons.Filled.CurrencyExchange)
+    val phone: IconValue = vector(Icons.Filled.Phone)
+    val error: IconValue = vector(Icons.Filled.Error)
+    val fingerprint: IconValue = vector(Icons.Filled.Fingerprint)
+    val delete: IconValue = vector(Icons.Filled.Delete)
+    val done: IconValue = vector(Icons.Filled.Done)
+    val settings: IconValue = vector(Icons.Outlined.Settings)
+    val themeSystem: IconValue = vector(Icons.Outlined.AutoMode)
+    val themeDark: IconValue = vector(Icons.Outlined.DarkMode)
+    val themeLight: IconValue = vector(Icons.Outlined.LightMode)
+}
 
 private fun vector(value: ImageVector) = IconValue.Vector(value)

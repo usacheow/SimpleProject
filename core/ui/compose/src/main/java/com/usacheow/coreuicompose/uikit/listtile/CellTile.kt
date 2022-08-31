@@ -111,7 +111,7 @@ sealed class CellTileState : TileState {
 
 object CellTileConfig {
 
-    val HorizontalPadding = AppTheme.specificDimens.default_padding
+    val HorizontalPadding = AppTheme.specificValues.default_padding
     val RipplePadding = 0.dp
     val VerticalPadding = 12.dp
     val VerticalHeaderPadding = 8.dp

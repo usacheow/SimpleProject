@@ -34,7 +34,7 @@ fun ShimmerTile(
         modifier = modifier
             .background(AppTheme.specificColorScheme.background)
             .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(AppTheme.specificDimens.default_padding),
+        horizontalArrangement = Arrangement.spacedBy(AppTheme.specificValues.default_padding),
     ) {
         if (needLeftIcon) ShimmerTileCircle()
         Column(

@@ -127,7 +127,7 @@ private fun Container(
     ) {
         Column(
             modifier = Modifier
-                .padding(AppTheme.specificDimens.default_padding)
+                .padding(AppTheme.specificValues.default_padding)
                 .align(Alignment.CenterHorizontally),
         ) {
             content()

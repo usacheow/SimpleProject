@@ -28,6 +28,7 @@ import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.tools.inset
 import com.usacheow.coreuicompose.tools.insetAll
 import com.usacheow.coreuicompose.tools.mockClick
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
@@ -74,7 +75,7 @@ fun FullScreenMessageUi(
             .mockClick()
             .background(AppTheme.specificColorScheme.background)
             .fillMaxSize()
-            .padding(insetAll().asPaddingValues())
+            .inset(insetAll())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

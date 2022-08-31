@@ -33,7 +33,7 @@ fun Modifier.mockClick() = clickable(
 fun Modifier.defaultTileRipple(
     delay: Duration = 500.milliseconds,
     shape: Shape = MaterialTheme.shapes.medium,
-    padding: Dp = AppTheme.specificDimens.ripple_inner_padding,
+    padding: Dp = AppTheme.specificValues.ripple_inner_padding,
     onClick: (() -> Unit)?,
 ) = clip(shape)
     .doOnClick(delay, onClick)

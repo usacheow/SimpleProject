@@ -3,12 +3,16 @@ package com.usacheow.coreuicompose.tools
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.union
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -42,3 +46,5 @@ fun insetBottomWithBottomNavigation() = WindowInsets.safeDrawing
     .add(WindowInsets(bottom = LocalBottomNavigationHeight.current))
 
 val LocalBottomNavigationHeight = staticCompositionLocalOf { 0.dp }
+
+fun Modifier.inset(insets: WindowInsets) = composed { padding(insets.asPaddingValues()) }

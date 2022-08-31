@@ -1,6 +1,7 @@
 package com.usacheow.coreuitheme.compose
 
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.Typography
 
 fun SpecificColorScheme.toColorScheme() = ColorScheme(
     primary = primary,
@@ -58,12 +59,12 @@ fun ColorScheme.toSpecificColorScheme(isLight: Boolean) = SpecificColorScheme(
     onError = onError,
     errorContainer = errorContainer,
     onErrorContainer = onErrorContainer,
-    outline = if (isLight) DefaultLightSpecificColorScheme.outline
-    else DefaultDarkSpecificColorScheme.outline,
+    outline = if (isLight) LightSpecificColorScheme.outline
+    else DarkSpecificColorScheme.outline,
     outlineVariant = outlineVariant,
     scrim = scrim,
-    shimmer = if (isLight) DefaultLightSpecificColorScheme.shimmer
-    else DefaultDarkSpecificColorScheme.shimmer,
+    shimmer = if (isLight) LightSpecificColorScheme.shimmer
+    else DarkSpecificColorScheme.shimmer,
     background = background,
     onBackground = onBackground,
     surface = surface,
@@ -72,16 +73,34 @@ fun ColorScheme.toSpecificColorScheme(isLight: Boolean) = SpecificColorScheme(
     onSurfaceVariant = onSurfaceVariant,
     surfaceInverse = inverseSurface,
     onSurfaceInverse = inverseOnSurface,
-    symbolPrimary = if (isLight) DefaultLightSpecificColorScheme.symbolPrimary
-    else DefaultDarkSpecificColorScheme.symbolPrimary,
-    symbolPrimaryInverse = if (isLight) DefaultLightSpecificColorScheme.symbolPrimaryInverse
-    else DefaultDarkSpecificColorScheme.symbolPrimaryInverse,
-    symbolSecondary = if (isLight) DefaultLightSpecificColorScheme.symbolSecondary
-    else DefaultDarkSpecificColorScheme.symbolSecondary,
-    symbolSecondaryInverse = if (isLight) DefaultLightSpecificColorScheme.symbolSecondaryInverse
-    else DefaultDarkSpecificColorScheme.symbolSecondaryInverse,
-    symbolTertiary = if (isLight) DefaultLightSpecificColorScheme.symbolTertiary
-    else DefaultDarkSpecificColorScheme.symbolTertiary,
-    symbolTertiaryInverse = if (isLight) DefaultLightSpecificColorScheme.symbolTertiaryInverse
-    else DefaultDarkSpecificColorScheme.symbolTertiaryInverse,
+    symbolPrimary = if (isLight) LightSpecificColorScheme.symbolPrimary
+    else DarkSpecificColorScheme.symbolPrimary,
+    symbolPrimaryInverse = if (isLight) LightSpecificColorScheme.symbolPrimaryInverse
+    else DarkSpecificColorScheme.symbolPrimaryInverse,
+    symbolSecondary = if (isLight) LightSpecificColorScheme.symbolSecondary
+    else DarkSpecificColorScheme.symbolSecondary,
+    symbolSecondaryInverse = if (isLight) LightSpecificColorScheme.symbolSecondaryInverse
+    else DarkSpecificColorScheme.symbolSecondaryInverse,
+    symbolTertiary = if (isLight) LightSpecificColorScheme.symbolTertiary
+    else DarkSpecificColorScheme.symbolTertiary,
+    symbolTertiaryInverse = if (isLight) LightSpecificColorScheme.symbolTertiaryInverse
+    else DarkSpecificColorScheme.symbolTertiaryInverse,
+)
+
+fun SpecificTypography.toTypography() = Typography(
+    displayLarge = displayLarge,
+    displayMedium = displayMedium,
+    displaySmall = displaySmall,
+    headlineLarge = headlineLarge,
+    headlineMedium = headlineMedium,
+    headlineSmall = headlineSmall,
+    titleLarge = titleLarge,
+    titleMedium = titleMedium,
+    titleSmall = titleSmall,
+    bodyLarge = bodyLarge,
+    bodyMedium = bodyMedium,
+    bodySmall = bodySmall,
+    labelLarge = labelLarge,
+    labelMedium = labelMedium,
+    labelSmall = labelSmall,
 )

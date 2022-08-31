@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.defaultBorder
+import com.usacheow.coreuicompose.tools.inset
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.status.PinCodeIndicatorUi
 import com.usacheow.coreuicompose.uikit.button.NumPad
@@ -49,7 +50,7 @@ fun NumPadScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxHeight()
-                .padding(insetAllExcludeTop().asPaddingValues()),
+                .inset(insetAllExcludeTop()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom,
         ) {

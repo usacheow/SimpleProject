@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.TextValue
+import com.usacheow.coreuicompose.tools.inset
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuicompose.uikit.other.SheetIndicator
@@ -28,7 +29,7 @@ fun SimpleBottomDialogUI(
     Box(
         modifier = Modifier
             .background(AppTheme.specificColorScheme.surface)
-            .padding(insetAllExcludeTop().asPaddingValues()),
+            .inset(insetAllExcludeTop()),
     ) {
         LazyColumn(
             modifier = Modifier

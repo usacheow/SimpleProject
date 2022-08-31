@@ -23,7 +23,7 @@ class SimpleSheetParams(
 
 object SheetConfig {
 
-    val DefaultRadius = AppTheme.specificDimens.radius_extra_large
+    val DefaultRadius = AppTheme.specificValues.radius_extra_large
 
     fun sheetContentPadding(
         swipePercent: Float,

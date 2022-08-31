@@ -168,7 +168,7 @@ private fun BadgeTileContainer(
     content: @Composable () -> Unit,
 ) {
     val body: @Composable ColumnScope.() -> Unit = {
-        Column(modifier = Modifier.padding(AppTheme.specificDimens.default_padding)) {
+        Column(modifier = Modifier.padding(AppTheme.specificValues.default_padding)) {
             content()
         }
     }
