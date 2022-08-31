@@ -2,6 +2,7 @@ package com.usacheow.appdemo.catalog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,7 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -21,7 +22,6 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -30,7 +30,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TypographyScreen(navController: NavHostController) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val items = items()
 
     Scaffold(
@@ -39,14 +39,13 @@ fun TypographyScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Typography".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxHeight(),
-            contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp),
+            contentPadding = insetAllExcludeTop().asPaddingValues().add(it).add(horizontal = 24.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(items = items) {

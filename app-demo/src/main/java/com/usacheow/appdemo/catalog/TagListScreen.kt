@@ -2,6 +2,7 @@ package com.usacheow.appdemo.catalog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -11,7 +12,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuicompose.uikit.listtile.TagTileState
@@ -33,7 +33,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TagListScreen(navController: NavHostController) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     var selectedRadioButton by remember { mutableStateOf<Int?>(null) }
     var selectedCheckboxButtons by remember { mutableStateOf<List<Int>>(emptyList()) }
@@ -55,7 +55,6 @@ fun TagListScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Tag tiles".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -64,7 +63,7 @@ fun TagListScreen(navController: NavHostController) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxHeight(),
-                contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp),
+                contentPadding = insetAllExcludeTop().asPaddingValues().add(it).add(horizontal = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {

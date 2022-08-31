@@ -33,6 +33,12 @@ sealed class Deeplink(protected val value: String) {
 
 object AppRoute {
 
+    object ExampleFirst : Route("ExampleFirst")
+    object ExampleSecond : RouteWithArg("ExampleSecond") {
+        @Serializable
+        data class Args(val index: String)
+    }
+
     object MainBottomBar : Route("MainBottomBar") {
 
         object MainTab1 : Route("mainTab1")
@@ -46,12 +52,6 @@ object AppRoute {
         object MainTab3 : Route("mainTab3")
         object Mock3 : Route("Mock3")
         object Mock3Second : Route("Mock3Second")
-    }
-
-    object ExampleFirst : Route("ExampleFirst")
-    object ExampleSecond : RouteWithArg("ExampleSecond") {
-        @Serializable
-        data class Args(val index: String)
     }
 }
 

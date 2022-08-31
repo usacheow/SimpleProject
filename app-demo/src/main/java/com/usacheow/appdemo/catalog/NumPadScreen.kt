@@ -3,6 +3,7 @@ package com.usacheow.appdemo.catalog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -10,7 +11,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.defaultBorder
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.status.PinCodeIndicatorUi
 import com.usacheow.coreuicompose.uikit.button.NumPad
@@ -33,7 +33,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 @Composable
 fun NumPadScreen(navController: NavHostController) {
     val enteredCode = remember { mutableStateOf("") }
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -41,7 +41,6 @@ fun NumPadScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Num pad".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -50,7 +49,7 @@ fun NumPadScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxHeight()
-                .padding(insetAllExcludeTop()),
+                .padding(insetAllExcludeTop().asPaddingValues()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom,
         ) {

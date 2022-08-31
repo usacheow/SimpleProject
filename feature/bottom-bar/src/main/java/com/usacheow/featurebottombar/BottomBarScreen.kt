@@ -1,17 +1,19 @@
 package com.usacheow.featurebottombar
 
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -20,12 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
-import com.usacheow.coreuicompose.tools.insetAllExcludeTop
-import com.usacheow.coreuicompose.uikit.duplicate.BottomNavigationConfig
-import com.usacheow.coreuicompose.uikit.duplicate.LocalBottomNavigationHeight
-import com.usacheow.coreuicompose.uikit.duplicate.SimpleBottomNavigation
+import com.usacheow.coreuicompose.tools.LocalBottomNavigationHeight
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomBarScreen(
     items: List<BottomBarFeatureProvider.ScreenItem>,
@@ -33,11 +31,9 @@ fun BottomBarScreen(
     val navController = rememberNavController()
     val firstRootRoute = items.first().route
 
-    Scaffold(
-        bottomBar = { BottomBar(navController, items) },
-    ) {
-        CompositionLocalProvider(LocalBottomNavigationHeight provides BottomNavigationConfig.Height) {
-            NavHost(modifier = Modifier.padding(it), navController = navController, startDestination = firstRootRoute.pattern) {
+    Box {
+        CompositionLocalProvider(LocalBottomNavigationHeight provides 80.dp) {
+            NavHost(navController = navController, startDestination = firstRootRoute.pattern) {
                 items.forEach {
                     navigation(
                         route = it.route.pattern,
@@ -48,16 +44,19 @@ fun BottomBarScreen(
                 }
             }
         }
+        BottomBar(modifier = Modifier.align(Alignment.BottomCenter), navController, items)
     }
 }
 
 @Composable
 private fun BottomBar(
+    modifier: Modifier,
     navController: NavController,
     items: List<BottomBarFeatureProvider.ScreenItem>,
 ) {
-    SimpleBottomNavigation(
-        contentPadding = insetAllExcludeTop(),
+    NavigationBar(
+        modifier = modifier,
+        containerColor = NavigationBarDefaults.containerColor.copy(alpha = .7f),
     ) {
         val currentBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = currentBackStackEntry?.destination

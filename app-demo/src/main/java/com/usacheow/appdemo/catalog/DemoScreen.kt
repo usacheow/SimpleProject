@@ -3,6 +3,7 @@ package com.usacheow.appdemo.catalog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,7 +15,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
@@ -30,7 +31,6 @@ import androidx.navigation.NavHostController
 import com.usacheow.appdemo.DemoDestinations
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
@@ -44,7 +44,7 @@ fun DemoScreen(
     windowSizeClass: WindowSizeClass = LocalWindowSizeClass.current,
 ) {
     var isDialogVisible by remember { mutableStateOf(false) }
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     val modifier = when (windowSizeClass.widthSizeClass) {
         WindowWidthSizeClass.Compact -> Modifier.fillMaxWidth()
@@ -61,7 +61,6 @@ fun DemoScreen(
         topBar = {
             SimpleTopAppBar(
                 title = "UiKit".textValue(),
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         },
@@ -72,7 +71,7 @@ fun DemoScreen(
             ) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(columnsCount),
-                    contentPadding = insetAllExcludeTop().add(it).add(horizontal = 24.dp, vertical = 8.dp),
+                    contentPadding = insetAllExcludeTop().asPaddingValues().add(it).add(horizontal = 24.dp, vertical = 8.dp),
                     modifier = modifier.fillMaxHeight(),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),

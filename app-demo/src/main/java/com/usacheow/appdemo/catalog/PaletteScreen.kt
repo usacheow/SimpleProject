@@ -1,6 +1,7 @@
 package com.usacheow.appdemo.catalog
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -14,7 +15,7 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,7 +27,6 @@ import com.google.android.material.color.MaterialColors
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
@@ -35,7 +35,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PaletteScreen(navController: NavHostController) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val items = items()
 
     Scaffold(
@@ -44,7 +44,6 @@ fun PaletteScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Palette".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -52,7 +51,7 @@ fun PaletteScreen(navController: NavHostController) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxHeight(),
-            contentPadding = insetAllExcludeTop().add(horizontal = 24.dp).add(it),
+            contentPadding = insetAllExcludeTop().asPaddingValues().add(horizontal = 24.dp).add(it),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {

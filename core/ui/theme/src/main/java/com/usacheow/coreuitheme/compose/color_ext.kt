@@ -35,6 +35,9 @@ fun SpecificColorScheme.toColorScheme() = ColorScheme(
     onErrorContainer = onErrorContainer,
 
     outline = outline,
+    outlineVariant = outlineVariant,
+
+    scrim = scrim,
 )
 
 fun ColorScheme.toSpecificColorScheme(isLight: Boolean) = SpecificColorScheme(
@@ -57,6 +60,8 @@ fun ColorScheme.toSpecificColorScheme(isLight: Boolean) = SpecificColorScheme(
     onErrorContainer = onErrorContainer,
     outline = if (isLight) DefaultLightSpecificColorScheme.outline
     else DefaultDarkSpecificColorScheme.outline,
+    outlineVariant = outlineVariant,
+    scrim = scrim,
     shimmer = if (isLight) DefaultLightSpecificColorScheme.shimmer
     else DefaultDarkSpecificColorScheme.shimmer,
     background = background,

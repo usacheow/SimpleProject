@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -73,7 +74,7 @@ fun FullScreenMessageUi(
             .mockClick()
             .background(AppTheme.specificColorScheme.background)
             .fillMaxSize()
-            .padding(insetAll())
+            .padding(insetAll().asPaddingValues())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

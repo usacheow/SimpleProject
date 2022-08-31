@@ -30,7 +30,9 @@ internal val DefaultLightSpecificColorScheme = SpecificColorScheme(
     onErrorContainer = Color(0xFF410E0B),
 
     outline = Color(0xFFCECCCC),
+    outlineVariant = Color(0xFFCECCCC),
     shimmer = Color(0xFFF4F4F4),
+    scrim = Color(0xB3FFFFFF),
 
     background = Color(0xFFFFFFFF),
     onBackground = Color(0xFF1C1B1F),
@@ -72,7 +74,9 @@ internal val DefaultDarkSpecificColorScheme = SpecificColorScheme(
     onErrorContainer = Color(0xFFF2B8B5),
 
     outline = Color(0xFF9E9E9E),
+    outlineVariant = Color(0xFF9E9E9E),
     shimmer = Color(0xFF55565A),
+    scrim = Color(0xB3000000),
 
     background = Color(0xFF000000),
     onBackground = Color(0xFFFFFFFF),
@@ -114,7 +118,9 @@ data class SpecificColorScheme(
     val onErrorContainer: Color,
 
     val outline: Color,
+    val outlineVariant: Color,
     val shimmer: Color,
+    val scrim: Color,
 
     val background: Color,
     val onBackground: Color,

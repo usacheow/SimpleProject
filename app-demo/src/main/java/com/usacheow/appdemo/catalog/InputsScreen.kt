@@ -12,7 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,7 +31,6 @@ import com.usacheow.corecommon.model.CurrencyType
 import com.usacheow.coreuicompose.tools.add
 import com.usacheow.coreuicompose.tools.dpSize
 import com.usacheow.coreuicompose.tools.get
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.intOffsetInParent
 import com.usacheow.coreuicompose.uikit.status.SimplePopup
 import com.usacheow.coreuicompose.uikit.status.SimplePopupItem
@@ -48,7 +47,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputsScreen(navController: NavHostController) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -56,7 +55,6 @@ fun InputsScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Inputs".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         },

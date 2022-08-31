@@ -3,6 +3,7 @@ package com.usacheow.appdemo.catalog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,7 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -21,7 +22,6 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.add
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
@@ -33,7 +33,7 @@ import com.usacheow.coreuitheme.compose.AppTheme
 fun InformationTilesScreen(navController: NavHostController) {
     val badges = badges()
     val smallBadges = smallBadges()
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -41,14 +41,13 @@ fun InformationTilesScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Information tiles".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxHeight(),
-            contentPadding = insetAllExcludeTop().add(it),
+            contentPadding = insetAllExcludeTop().asPaddingValues().add(it),
         ) {
             items(large()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
             item { Spacer(modifier = Modifier.height(24.dp)) }

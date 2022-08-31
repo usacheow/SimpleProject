@@ -2,7 +2,6 @@ package com.usacheow.appdemo
 
 import android.app.Application
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -48,7 +48,7 @@ class DemoApp : Application(), ApplicationCoroutineScopeHolder {
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
-class DemoActivity : ComponentActivity() {
+class DemoActivity : FragmentActivity() {
 
     @Inject lateinit var userDataStorage: UserDataStorage
 

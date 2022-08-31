@@ -14,9 +14,11 @@ import javax.inject.Inject
 
 internal class ScreenNavigator(navHostController: NavHostController) : Navigator(navHostController) {
 
-    fun toOnBoardingInfoScreen(
+    fun toSecondScreen(
         index: String,
     ) = navHostController navigate FeatureNavDirection(AppRoute.ExampleSecond, AppRoute.ExampleSecond.Args(index))
+
+    fun toBottomBarScreen() = navHostController.navigate(AppRoute.MainBottomBar)
 }
 
 class ExampleFeatureProviderImpl @Inject constructor() : ExampleFeatureProvider {

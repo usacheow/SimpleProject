@@ -1,6 +1,7 @@
 package com.usacheow.coreuicompose.uikit
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetState
 import androidx.compose.material.BottomSheetValue
@@ -50,8 +51,8 @@ object SheetConfig {
 fun simpleSheetParams(
     sheetState: BottomSheetState,
     borderValue: Float = .8f,
-    maxTopPadding: Dp = insetTop().calculateTopPadding(),
-    bottomPadding: Dp = insetBottom().calculateBottomPadding(),
+    maxTopPadding: Dp = insetTop().asPaddingValues().calculateTopPadding(),
+    bottomPadding: Dp = insetBottom().asPaddingValues().calculateBottomPadding(),
 ) = SimpleSheetParams(
     swipePercent = sheetState.swipePercent(),
     sheetContentPadding = SheetConfig.sheetContentPadding(sheetState.swipePercent(), maxTopPadding, bottomPadding),
@@ -63,8 +64,8 @@ fun simpleSheetParams(
 fun simpleSheetParams(
     sheetState: ModalBottomSheetState,
     borderValue: Float = .8f,
-    maxTopPadding: Dp = insetTop().calculateTopPadding(),
-    bottomPadding: Dp = insetBottom().calculateBottomPadding(),
+    maxTopPadding: Dp = insetTop().asPaddingValues().calculateTopPadding(),
+    bottomPadding: Dp = insetBottom().asPaddingValues().calculateBottomPadding(),
 ) = SimpleSheetParams(
     swipePercent = sheetState.swipePercent(),
     sheetContentPadding = SheetConfig.sheetContentPadding(sheetState.swipePercent(), maxTopPadding, bottomPadding),

@@ -96,7 +96,7 @@ object AppTheme {
 
     val specificDimens = DimenValues
 
-    internal val colorScheme: ColorScheme
+    val colorScheme: ColorScheme
         @Composable
         @ReadOnlyComposable
         get() = MaterialTheme.colorScheme

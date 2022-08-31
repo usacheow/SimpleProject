@@ -75,9 +75,9 @@ class AppActivity : FragmentActivity() {
 
     @Composable
     private fun MainFlow(navController: NavHostController) {
-        NavHost(navController = navController, startDestination = AppRoute.MainBottomBar.pattern) {
-            with(bottomBarFeatureProvider) { bottomBarGraph(AppRoute.MainBottomBar, mainBottomBarItems()) }
+        NavHost(navController = navController, startDestination = AppRoute.ExampleFirst.pattern) {
             with(exampleFeatureProvider) { exampleGraph(navController) }
+            with(bottomBarFeatureProvider) { bottomBarGraph(AppRoute.MainBottomBar, mainBottomBarItems()) }
         }
     }
 

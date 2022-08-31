@@ -24,12 +24,10 @@ data class ActionIconData(
 @Composable
 fun TopAppBarAction(
     data: ActionIconData,
-    defaultColor: Color,
 ) {
     Icon(
         painter = data.icon.get(),
         contentDescription = null,
-        tint = data.color ?: defaultColor,
         modifier = Modifier
             .clip(CircleShape)
             .clickable(enabled = true, onClick = data.onClick)

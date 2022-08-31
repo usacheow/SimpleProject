@@ -1,5 +1,6 @@
 package com.usacheow.appdemo.catalog
 
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,7 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -15,7 +16,6 @@ import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.ImageValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
-import com.usacheow.coreuicompose.tools.insetAllExcludeBottom
 import com.usacheow.coreuicompose.tools.insetAllExcludeTop
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuicompose.uikit.listtile.CellTileState
@@ -25,7 +25,7 @@ import com.usacheow.appdemo.R as AppDemoR
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CellTilesScreen(navController: NavHostController) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarScrollState())
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val items = items()
 
     Scaffold(
@@ -34,7 +34,6 @@ fun CellTilesScreen(navController: NavHostController) {
             SimpleTopAppBar(
                 title = "Cell tiles".textValue(),
                 navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                contentPadding = insetAllExcludeBottom(),
                 scrollBehavior = scrollBehavior,
             )
         }
@@ -43,7 +42,7 @@ fun CellTilesScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(it)
                 .fillMaxWidth(),
-            contentPadding = insetAllExcludeTop(),
+            contentPadding = insetAllExcludeTop().asPaddingValues(),
         ) {
             items(items) {
                 it.Content(Modifier)
