@@ -1,4 +1,4 @@
-package com.usacheow.coreuitheme.compose.glance
+package com.usacheow.featurewidget.glance
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider

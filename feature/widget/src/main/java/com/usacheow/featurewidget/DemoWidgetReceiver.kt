@@ -1,4 +1,4 @@
-package com.usacheow.appdemo.widget
+package com.usacheow.featurewidget
 
 import android.appwidget.AppWidgetManager
 import android.content.Context

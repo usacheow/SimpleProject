@@ -1,4 +1,4 @@
-package com.usacheow.coreuitheme.compose.glance
+package com.usacheow.featurewidget.glance
 
 import android.content.res.Resources
 import androidx.annotation.StringRes

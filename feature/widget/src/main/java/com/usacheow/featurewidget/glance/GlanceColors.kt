@@ -1,8 +1,8 @@
-package com.usacheow.coreuitheme.compose.glance
+package com.usacheow.featurewidget.glance
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.glance.unit.ColorProvider
-import com.usacheow.coreuitheme.R
+import com.usacheow.featurewidget.R
 
 internal val LocalGlanceColorScheme = staticCompositionLocalOf { DefaultGlanceColorScheme }
 

@@ -1,4 +1,4 @@
-package com.usacheow.appdemo.widget
+package com.usacheow.featurewidget
 
 import android.content.Context
 import android.content.Intent
@@ -30,12 +30,10 @@ import androidx.glance.state.PreferencesGlanceStateDefinition
 import androidx.glance.text.Text
 import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
-import com.usacheow.appdemo.DeeplinkDemo
-import com.usacheow.appdemo.R
-import com.usacheow.coreuitheme.compose.glance.GlanceTheme
-import com.usacheow.coreuitheme.compose.glance.appWidgetBackgroundModifier
-import com.usacheow.coreuitheme.compose.glance.cornerRadius
-import com.usacheow.coreuitheme.compose.glance.stringResource
+import com.usacheow.featurewidget.glance.GlanceTheme
+import com.usacheow.featurewidget.glance.appWidgetBackgroundModifier
+import com.usacheow.featurewidget.glance.cornerRadius
+import com.usacheow.featurewidget.glance.stringResource
 
 class DemoWidget : GlanceAppWidget() {
 
@@ -83,7 +81,7 @@ class DemoWidget : GlanceAppWidget() {
 
     @Composable
     private fun ColumnScope.OpenApp() {
-        val intent = Intent(Intent.ACTION_VIEW, DeeplinkDemo.toUri())
+        val intent = Intent(Intent.ACTION_VIEW, "app://com.usacheow.appdemo/demo".toUri())
         ButtonContainer(actionStartActivity(intent)) {
             Text(
                 text = stringResource(R.string.widget_button_open_app),

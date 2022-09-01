@@ -29,5 +29,7 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
+    implementation(projects.featureWidget)
+
     implementation(*Libs.bundle.splashscreen)
 }

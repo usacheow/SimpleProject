@@ -109,8 +109,8 @@ object Libs {
             "androidx.compose.material3:material3:$composeMaterialVersion",
             "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
-            "com.google.android.material:material:$materialVersion",
-            "androidx.glance:glance-appwidget:$composeGlanceVersion")
+            "com.google.android.material:material:$materialVersion")
+        val composeWidgetTheme =arrayOf("androidx.glance:glance-appwidget:$composeGlanceVersion")
         val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
             "androidx.compose.foundation:foundation:$composeVersion",

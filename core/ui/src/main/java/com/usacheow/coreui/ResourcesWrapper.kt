@@ -2,17 +2,9 @@ package com.usacheow.coreui
 
 import android.content.Context
 import android.content.res.AssetManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import androidx.annotation.ArrayRes
-import androidx.annotation.ColorRes
-import androidx.annotation.DimenRes
-import androidx.annotation.DrawableRes
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
-import androidx.core.content.ContextCompat
-import com.usacheow.corecommon.container.TextValue
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -31,14 +23,6 @@ interface ResourcesWrapper {
 
     fun getStringArray(@ArrayRes id: Int): Array<String>
 
-    fun getColor(@ColorRes id: Int): Int
-
-    fun getDrawable(@DrawableRes id: Int): Drawable?
-
-    fun getBitmap(@DrawableRes id: Int): Bitmap?
-
-    fun getDimen(@DimenRes id: Int): Float
-
     fun getAssets(): AssetManager
 }
 
@@ -54,25 +38,7 @@ class ResourcesWrapperImpl @Inject constructor(
 
     override fun getStringArray(@ArrayRes id: Int) = context.resources.getStringArray(id)
 
-    override fun getColor(@ColorRes id: Int) = ContextCompat.getColor(context, id)
-
-    override fun getDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(context, id)
-
-    override fun getBitmap(id: Int): Bitmap? = BitmapFactory.decodeResource(context.resources, id)
-
-    override fun getDimen(@DimenRes id: Int) = context.resources.getDimension(id)
-
     override fun getAssets() = context.resources.assets
-}
-
-fun TextValue.mapToString(resourcesWrapper: ResourcesWrapper): String = when (this) {
-    is TextValue.Simple -> value
-
-    is TextValue.Annotated -> value.text
-
-    is TextValue.Res -> resourcesWrapper.getString(value, *args.toTypedArray())
-
-    is TextValue.Plural -> resourcesWrapper.getPluralString(value, quantity).format(*args.toTypedArray())
 }
 
 @Module
