@@ -1,6 +1,6 @@
 package com.usacheow.corecommon.ext
 
-import com.usacheow.corecommon.RU_LOCALE
+import com.usacheow.corecommon.strings.RU_LOCALE
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.NumberFormat

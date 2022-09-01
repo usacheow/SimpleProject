@@ -1,5 +1,6 @@
 package com.usacheow.coreuitheme.compose
 
+import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
@@ -18,8 +19,10 @@ import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.usacheow.corecommon.container.IconValue
+import com.usacheow.coreuitheme.R
 
 object SpecificIcons {
+    val logo: IconValue = resource(R.drawable.ic_logo)
     val back: IconValue = vector(Icons.Filled.ArrowBack)
     val add: IconValue = vector(Icons.Filled.Add)
     val account: IconValue = vector(Icons.Filled.AccountCircle)
@@ -38,3 +41,4 @@ object SpecificIcons {
 }
 
 private fun vector(value: ImageVector) = IconValue.Vector(value)
+private fun resource(@DrawableRes value: Int) = IconValue.ResVector(value)

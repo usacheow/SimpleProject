@@ -1,6 +1,6 @@
 package com.usacheow.corecommon.date
 
-import com.usacheow.corecommon.DEFAULT_LOCALE
+import com.usacheow.corecommon.strings.DEFAULT_LOCALE
 import java.time.LocalDate
 
 object LocalDateFactory {

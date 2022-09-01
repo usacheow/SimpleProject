@@ -2,6 +2,7 @@ package com.usacheow.featurebottombar
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
@@ -12,8 +13,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -24,6 +23,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.coreuicompose.tools.LocalBottomNavigationHeight
+import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuitheme.compose.LocalStringHolder
 
 @Composable
 fun BottomBarScreen(
@@ -39,7 +40,7 @@ fun BottomBarScreen(
         navController.switchTo(items.first().route.pattern)
     }
 
-    Box {
+    Box(modifier = Modifier.fillMaxSize()) {
         CompositionLocalProvider(LocalBottomNavigationHeight provides 80.dp) {
             NavHost(navController = navController, startDestination = items.first().route.pattern) {
                 items.forEach {
@@ -58,8 +59,8 @@ fun BottomBarScreen(
                 items.forEach { screen ->
                     NavigationBarItem(
                         alwaysShowLabel = false,
-                        icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
-                        label = { Text(stringResource(screen.labelRes)) },
+                        icon = { Icon(screen.icon.get(), contentDescription = null) },
+                        label = { Text(LocalStringHolder.current(screen.labelKey)) },
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route.path() } == true,
                         onClick = { navController.switchTo(screen.route.path()) }
                     )

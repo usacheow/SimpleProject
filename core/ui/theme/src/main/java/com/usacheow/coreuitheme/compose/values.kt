@@ -1,8 +1,12 @@
 package com.usacheow.coreuitheme.compose
 
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.dp
+import com.usacheow.corecommon.strings.StringHolder
 
-object SpecificDimens {
+val LocalStringHolder = staticCompositionLocalOf { StringHolder() }
+
+object SpecificValues {
 
     val ripple_inner_padding = 8.dp
     val ripple_outer_padding = 8.dp
@@ -28,9 +32,6 @@ object SpecificDimens {
     val elevation_8 = 8.dp
     val elevation_16 = 16.dp
     val elevation_32 = 32.dp
-}
-
-object SpecificStrings {
 
     const val UnbreakableSpace = " "
 }

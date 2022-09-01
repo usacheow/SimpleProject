@@ -24,17 +24,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.usacheow.corecommon.container.IconValue
+import com.usacheow.corecommon.strings.StringKey
 import com.usacheow.coreuicompose.tools.defaultBorder
 import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.longPress
 import com.usacheow.coreuitheme.compose.AppTheme
+import com.usacheow.coreuitheme.compose.LocalStringHolder
 import com.usacheow.coreuitheme.compose.PreviewAppTheme
-import com.usacheow.corecommon.R as CoreCommonR
 
 class NumPadAction(
     val icon: IconValue,
@@ -185,7 +185,7 @@ private fun NumberButton(number: Int, onClick: (Int) -> Unit) {
 private fun ForgetButton(onClick: () -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Text(
-            text = stringResource(CoreCommonR.string.num_pad_forget),
+            text = LocalStringHolder.current(StringKey.NumPadForget),
             style = AppTheme.specificTypography.bodySmall,
             textAlign = TextAlign.Center,
             color = AppTheme.specificColorScheme.symbolSecondary,

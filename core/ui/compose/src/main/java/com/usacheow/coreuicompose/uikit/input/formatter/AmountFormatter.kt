@@ -7,7 +7,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
-import com.usacheow.corecommon.RU_LOCALE
+import com.usacheow.corecommon.strings.RU_LOCALE
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.CurrencyType
 import java.text.NumberFormat

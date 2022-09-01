@@ -1,9 +1,9 @@
 package com.usacheow.corenavigation
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import com.usacheow.corecommon.container.IconValue
+import com.usacheow.corecommon.strings.StringKey
 
 interface MainFeatureProvider {
 
@@ -19,8 +19,8 @@ interface BottomBarFeatureProvider {
     fun NavGraphBuilder.bottomBarGraph(route: Route, items: List<ScreenItem>)
 
     data class ScreenItem(
-        @DrawableRes val iconRes: Int,
-        @StringRes val labelRes: Int,
+        val icon: IconValue,
+        val labelKey: StringKey,
         val route: Route,
         val startDestination: Route,
         val builder: NavGraphBuilder.(NavHostController) -> Unit,

@@ -1,12 +1,11 @@
 package com.usacheow.corecommon.model
 
-import androidx.annotation.StringRes
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
-import com.usacheow.corecommon.R as CoreR
+import com.usacheow.corecommon.strings.StringKey
 
 sealed class AppError(
-    @StringRes val defaultMessageRes: Int = CoreR.string.unknown_error_message,
+    val defaultMessageKey: StringKey = StringKey.UnknownErrorMessage,
     message: String? = null,
     cause: Exception? = null,
     val code: Int? = null,
@@ -28,12 +27,12 @@ sealed class AppError(
         return if (this is Custom && displayMessage != null) {
             displayMessage.textValue()
         } else {
-            message?.textValue() ?: defaultMessageRes.textValue()
+            message?.textValue() ?: defaultMessageKey.textValue()
         }
     }
 }
 
 fun Exception.makeUserReadableErrorMessage(): TextValue = when (this) {
     is AppError -> makeUserReadableErrorMessage()
-    else -> CoreR.string.unknown_error_message.textValue()
+    else -> StringKey.UnknownErrorMessage.textValue()
 }

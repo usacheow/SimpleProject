@@ -49,23 +49,6 @@ fun AppTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-//    var colorScheme = when {
-//        isDynamicTheme -> when {
-//            isDarkTheme -> dynamicDarkColorScheme(LocalContext.current)
-//            else -> dynamicLightColorScheme(LocalContext.current)
-//        }
-//        else -> when {
-//            isDarkTheme -> DarkColorScheme
-//            else -> LightColorScheme
-//        }
-//    }
-//    val specificColorScheme = when {
-//        isDynamicTheme -> colorScheme.toSpecificColorScheme(!isDarkTheme)
-//        isDarkTheme -> DarkSpecificColorScheme
-//        else -> LightSpecificColorScheme
-//    }
-//    if (isDynamicTheme) colorScheme = colorScheme.copy(outline = specificColorScheme.outline, surfaceTint = specificColorScheme.surfaceTint)
-
     val (colorScheme, specificColorScheme) = if (isDynamicTheme) {
         val colorScheme = when {
             isDarkTheme -> dynamicDarkColorScheme(LocalContext.current).copy(
@@ -114,7 +97,7 @@ object AppTheme {
 
     val specificIcons = SpecificIcons
 
-    val specificValues = SpecificDimens
+    val specificValues = SpecificValues
 
     val shapes: Shapes
         @Composable

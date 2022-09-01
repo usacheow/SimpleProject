@@ -3,6 +3,7 @@ package com.usacheow.basesources
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.makeUserReadableErrorMessage
+import com.usacheow.corecommon.strings.StringKey
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
 import dagger.Binds
 import dagger.Module
@@ -20,7 +21,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import com.usacheow.corecommon.R as CoreCommonR
 
 private val NotificationVisibilitySeconds = 5.seconds
 
@@ -60,10 +60,10 @@ class NotificationsSourceImpl @Inject constructor(
         networkStateProvider.state.onEach {
             val state = when (it) {
                 NetworkStateSource.State.Available -> {
-                    NotificationsSource.State.Message(CoreCommonR.string.connection_success_message.textValue())
+                    NotificationsSource.State.Message(StringKey.ConnectionSuccessMessage.textValue())
                 }
                 NetworkStateSource.State.Unavailable -> {
-                    NotificationsSource.State.Error(CoreCommonR.string.connection_error_message.textValue())
+                    NotificationsSource.State.Error(StringKey.ConnectionErrorMessage.textValue())
                 }
             }
             if (it == NetworkStateSource.State.Unavailable) {
