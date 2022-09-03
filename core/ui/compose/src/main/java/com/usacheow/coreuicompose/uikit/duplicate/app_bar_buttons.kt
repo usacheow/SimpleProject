@@ -22,7 +22,7 @@ data class ActionIconData(
 )
 
 @Composable
-fun TopAppBarAction(
+fun TopAppBarActionIcon(
     data: ActionIconData,
 ) {
     Icon(

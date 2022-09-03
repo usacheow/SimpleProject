@@ -24,6 +24,7 @@ import androidx.navigation.navigation
 import com.usacheow.corenavigation.BottomBarFeatureProvider
 import com.usacheow.coreuicompose.tools.LocalBottomNavigationHeight
 import com.usacheow.coreuicompose.tools.get
+import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBarConfig
 import com.usacheow.coreuitheme.compose.LocalStringHolder
 
 @Composable
@@ -54,7 +55,7 @@ fun BottomBarScreen(
             }
             NavigationBar(
                 modifier = Modifier.align(Alignment.BottomCenter),
-                containerColor = NavigationBarDefaults.containerColor.copy(alpha = .9f),
+                containerColor = NavigationBarDefaults.containerColor.copy(alpha = SimpleTopAppBarConfig.ContainerColorAlpha),
             ) {
                 items.forEach { screen ->
                     NavigationBarItem(

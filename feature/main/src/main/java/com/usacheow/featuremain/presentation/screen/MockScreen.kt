@@ -1,26 +1,27 @@
 package com.usacheow.featuremain.presentation.screen
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.usacheow.corecommon.container.textValue
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featuremain.presentation.ScreenNavigator
 
 @Composable
 fun MockScreen(
-    navHostController: NavHostController
+    navHostController: NavHostController,
 ) {
     val router = remember(navHostController) { ScreenNavigator(navHostController) }
 
@@ -44,11 +45,13 @@ private fun MockScreen(
             )
         }
     ) {
-        Column(modifier = Modifier.padding(it)) {
-            Text("Mock text", modifier = Modifier.padding(24.dp))
-            Button(onClick = onNextClick) {
-                Text("Next screen")
-            }
+        Box(
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
+            SimpleButtonTonalL(onClick = onNextClick) { Text("Next screen") }
         }
     }
 }
