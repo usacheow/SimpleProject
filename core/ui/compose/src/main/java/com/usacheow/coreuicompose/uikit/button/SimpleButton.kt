@@ -2,6 +2,7 @@ package com.usacheow.coreuicompose.uikit.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +12,6 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalMinimumTouchTargetEnforcement
@@ -492,7 +492,7 @@ private fun SimpleButton(
                         enabled = enabled,
                         role = Role.Button,
                         interactionSource = interactionSource,
-                        indication = rememberRipple(),
+                        indication = LocalIndication.current,
                     ),
                 shape = size.shape,
                 color = containerColor,
