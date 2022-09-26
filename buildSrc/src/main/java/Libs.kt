@@ -11,13 +11,13 @@ object Libs {
 
     const val composeCompilerVersion = "1.3.0"
     private const val composeVersion = "1.2.1"
-    private const val composeMaterialVersion = "1.0.0-beta01"
+    private const val composeMaterialVersion = "1.0.0-beta02"
     private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
     private const val pagingVersion = "3.1.0"
-    private const val accompanistVersion = "0.24.6-alpha"
+    private const val accompanistVersion = "0.26.2-beta"
     private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
