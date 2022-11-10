@@ -1,7 +1,7 @@
 object Libs {
 
     private const val gmsVersion = "4.3.4"
-    private const val gradleVersion = "7.2.1"
+    private const val gradleVersion = "7.3.1"
     private const val desugarVersion = "1.1.5"
     private const val kotlinVersion = "1.7.10"
     private const val kotlinSerializationVersion = "1.3.0"
@@ -10,8 +10,8 @@ object Libs {
     private const val rulerVersion = "1.1.0"
 
     const val composeCompilerVersion = "1.3.0"
-    private const val composeVersion = "1.2.1"
-    private const val composeMaterialVersion = "1.0.0-beta02"
+    private const val composeVersion = "1.3.0"
+    private const val composeMaterialVersion = "1.0.0"
     private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
@@ -161,15 +161,12 @@ object Libs {
         val unitTests = arrayOf(
             "junit:junit:$junitVersion",
             "org.mockito:mockito-core:$mockitoVersion",
-            "org.mockito:mockito-inline:$mockitoVersion",
-            "org.mockito:mockito-android:$mockitoVersion",
             "com.google.truth:truth:$truthVersion")
         val uiTests = arrayOf(
             "androidx.test.espresso:espresso-core:$espressoVersion",
             "androidx.test.espresso:espresso-intents:$espressoVersion",
             "androidx.test:runner:$runnerVersion",
-            "org.mockito:mockito-inline:$mockitoVersion",
-            "org.mockito:mockito-android:$mockitoVersion",
+            "org.mockito:mockito-core:$mockitoVersion",
             "com.google.truth:truth:$truthVersion")
     }
 }
