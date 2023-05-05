@@ -4,14 +4,13 @@ object Completable
 
 sealed class State<out T : Any> {
 
-    open val findDataOrCache: T?
-        get() = when (this) {
-            is Effect -> this.findDataOrCache
-            else -> null
-        }
+    abstract val findDataOrCache: T?
 }
 
-class Loading<T : Any>(val data: T? = null) : State<T>()
+class Loading<T : Any>(val data: T? = null) : State<T>() {
+
+    override val findDataOrCache: T? = data
+}
 
 class Effect<DATA : Any> private constructor(
     private val value: Data<DATA>,

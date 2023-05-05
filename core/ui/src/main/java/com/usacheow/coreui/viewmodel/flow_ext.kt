@@ -6,6 +6,9 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
+import com.usacheow.corecommon.model.Effect
+import com.usacheow.corecommon.model.Loading
+import com.usacheow.corecommon.model.State
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -32,10 +35,26 @@ inline fun <reified T> Flow<T>.collectAsCommand(
     }
 }
 
-fun <T> MutableStateFlow<T>.publish(function: (T) -> T) { update(function) }
+fun <T> MutableStateFlow<T>.publish(action: (T) -> T) { update(action) }
 infix fun <T> MutableStateFlow<T>.tryPublish(value: T) { tryEmit(value) }
 
 suspend infix fun <T> Channel<T>.publish(value: T) { send(value) }
+
+fun <T : Any> Flow<State<T>>.onEachLoading(
+    action: (Loading<T>) -> Unit
+): Flow<State<T>> = this.onEach {
+    if (it is Loading) {
+        action(it)
+    }
+}
+
+fun <T : Any> Flow<State<T>>.onEachEffect(
+    action: (Effect<T>) -> Unit
+): Flow<State<T>> = this.onEach {
+    if (it is Effect) {
+        action(it)
+    }
+}
 
 fun <T> Flow<T>.likeStateFlow(
     scope: CoroutineScope,

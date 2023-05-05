@@ -5,6 +5,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import com.usacheow.corecommon.ext.logError
 import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.Effect
 import dagger.Binds
@@ -46,6 +47,7 @@ class LocationSourceImpl @Inject constructor(
                 ?.let { Effect.success(it) }
                 ?: Effect.error(AppError.Unknown())
         } catch (e: Exception) {
+            logError(e.message.orEmpty())
             Effect.error(AppError.Unknown(cause = e))
         }
     }

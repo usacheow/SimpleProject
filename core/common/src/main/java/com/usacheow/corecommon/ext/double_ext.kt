@@ -7,7 +7,8 @@ import java.text.NumberFormat
 
 fun Double.formatToMoney() = try {
     NumberFormat.getNumberInstance(RU_LOCALE).format(this.round())
-} catch (ex: NumberFormatException) {
+} catch (e: NumberFormatException) {
+    logError(e.message.orEmpty())
     this.toString()
 }
 

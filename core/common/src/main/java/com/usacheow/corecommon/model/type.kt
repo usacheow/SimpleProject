@@ -7,6 +7,7 @@ import java.util.UUID
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+typealias Id = Long
 typealias DateTime = String
 typealias Timestamp = Long
 typealias Token = String

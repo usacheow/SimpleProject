@@ -3,21 +3,21 @@ object Libs {
     private const val gmsVersion = "4.3.4"
     private const val gradleVersion = "7.3.1"
     private const val desugarVersion = "1.1.5"
-    private const val kotlinVersion = "1.7.10"
+    private const val kotlinVersion = "1.8.10"
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.6.1"
     private const val kotlinterVersion = "3.8.0"
     private const val rulerVersion = "1.1.0"
 
-    const val composeCompilerVersion = "1.3.0"
-    private const val composeVersion = "1.3.0"
-    private const val composeMaterialVersion = "1.0.0"
+    const val composeCompilerVersion = "1.4.3"
+    private const val composeVersion = "1.4.0-beta02"
+    private const val composeMaterialVersion = "1.1.0-rc01"
     private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
     private const val pagingVersion = "3.1.0"
-    private const val accompanistVersion = "0.26.2-beta"
+    private const val accompanistVersion = "0.29.1-alpha"
     private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
@@ -28,7 +28,7 @@ object Libs {
     private const val biometricVersion = "1.2.0-alpha04"
     private const val windowVersion = "1.0.0"
 
-    private const val hiltVersion = "2.42"
+    private const val hiltVersion = "2.45"
     private const val hiltJetpackVersion = "1.0.0"
 
     private const val crashlyticsGradleVersion = "2.5.2"
@@ -105,7 +105,6 @@ object Libs {
             "androidx.compose.ui:ui:$composeVersion",
             "androidx.compose.ui:ui-tooling:$composeVersion",
             "androidx.compose.ui:ui-tooling-preview:$composeVersion",
-            "androidx.compose.material:material:$composeVersion",
             "androidx.compose.material3:material3:$composeMaterialVersion",
             "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
@@ -118,6 +117,7 @@ object Libs {
             "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion",
             "com.google.accompanist:accompanist-pager:$accompanistVersion",
             "com.google.accompanist:accompanist-placeholder-material:$accompanistVersion",
+            "com.google.accompanist:accompanist-flowlayout:$accompanistVersion",
             "androidx.compose.animation:animation:$composeVersion",
             "io.coil-kt:coil-compose:$coilVersion",
             "io.coil-kt:coil-svg:$coilVersion")

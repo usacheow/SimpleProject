@@ -1,19 +1,15 @@
 package com.usacheow.appdemo.catalog
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -26,55 +22,61 @@ import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
-import com.usacheow.coreuicompose.uikit.simpleSheetParams
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModalBottomSheetScreen(navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
-    val modalBottomSheetState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden,
-    )
-    val sheetParams = simpleSheetParams(modalBottomSheetState)
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+    val modalBottomSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
 
-    BackHandler(enabled = modalBottomSheetState.isVisible) {
-        coroutineScope.launch {
-            modalBottomSheetState.hide()
-        }
-    }
-
-    val showSheet: () -> Unit = {
-        coroutineScope.launch {
-            modalBottomSheetState.show()
-        }
-    }
-
-    ModalBottomSheetLayout(
-        sheetState = modalBottomSheetState,
-        sheetShape = sheetParams.sheetShape,
-        sheetContent = {
-            SheetContent(contentPadding = sheetParams.sheetContentPadding)
-        },
-        content = {
-            Content(
-                navController = navController,
-                showSheet = showSheet,
+    Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            SimpleTopAppBar(
+                title = "Modal bottom sheet".textValue(),
+                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
+                scrollBehavior = scrollBehavior,
             )
+        },
+    ) {
+        SimpleButtonPrimaryL(
+            modifier = Modifier
+                .padding(it)
+                .padding(16.dp)
+                .fillMaxWidth(),
+            onClick = {
+                coroutineScope.launch {
+                    modalBottomSheetState.show()
+                }
+            },
+        ) {
+            SimpleButtonContent(text = "Open sheet".textValue())
         }
-    )
+
+        if (modalBottomSheetState.isVisible) ModalBottomSheet(
+            onDismissRequest = {
+                coroutineScope.launch {
+                    modalBottomSheetState.hide()
+                }
+            },
+            sheetState = modalBottomSheetState,
+        ) {
+            SheetContent()
+        }
+    }
 }
 
 @Composable
 private fun SheetContent(
-    contentPadding: PaddingValues,
+    contentPadding: PaddingValues = PaddingValues(),
 ) {
     Column(
         modifier = Modifier
             .padding(contentPadding)
             .padding(horizontal = 16.dp)
-            .fillMaxHeight()
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

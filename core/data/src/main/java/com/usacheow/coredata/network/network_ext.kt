@@ -1,5 +1,6 @@
 package com.usacheow.coredata.network
 
+import com.usacheow.corecommon.ext.logError
 import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.Completable
 import com.usacheow.corecommon.model.Effect
@@ -46,6 +47,7 @@ suspend inline fun <reified T : Any> apiCall(
     try {
         block().toEffect()
     } catch (t: Throwable) {
+        logError(t.message.orEmpty())
         Effect.error(t.toApiError())
     }
 }

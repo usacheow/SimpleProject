@@ -1,25 +1,21 @@
 package com.usacheow.appdemo.catalog
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.BottomSheetValue
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.rememberBottomSheetScaffoldState
-import androidx.compose.material.rememberBottomSheetState
+import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -29,23 +25,23 @@ import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
-import com.usacheow.coreuicompose.uikit.simpleSheetParams
 import com.usacheow.coreuitheme.compose.AppTheme
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheetScreen(navController: NavHostController) {
+    val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = rememberBottomSheetState(BottomSheetValue.Collapsed),
+        bottomSheetState = rememberStandardBottomSheetState(
+            initialValue = SheetValue.PartiallyExpanded,
+            skipHiddenState = false,
+        ),
     )
-    val sheetParams = simpleSheetParams(bottomSheetScaffoldState.bottomSheetState)
 
-    var sheetPeekHeight by remember { mutableStateOf(0.dp) }
-    val sheetPeekHeightAnimated = animateDpAsState(targetValue = sheetPeekHeight)
-
-    BackHandler(enabled = sheetPeekHeight != 0.dp) {
-        sheetPeekHeight = 0.dp
+    BackHandler(enabled = bottomSheetScaffoldState.bottomSheetState.isVisible) {
+        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
     }
 
     BottomSheetScaffold(
@@ -58,16 +54,19 @@ fun BottomSheetScreen(navController: NavHostController) {
                 scrollBehavior = scrollBehavior,
             )
         },
-        sheetShape = sheetParams.sheetShape,
-        sheetPeekHeight = sheetPeekHeightAnimated.value,
+        sheetPeekHeight = 120.dp,
         sheetContent = {
-            SheetContent(sheetParams.sheetContentPadding)
+            SheetContent()
         },
         content = {
             Column(modifier = Modifier.padding(it)) {
                 Content(
-                    showSheet = { sheetPeekHeight = 144.dp },
-                    hideSheet = { sheetPeekHeight = 0.dp },
+                    showSheet = {
+                        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.show() }
+                    },
+                    hideSheet = {
+                        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
+                    },
                 )
             }
         },
@@ -76,13 +75,14 @@ fun BottomSheetScreen(navController: NavHostController) {
 
 @Composable
 private fun SheetContent(
-    contentPadding: PaddingValues,
+    contentPadding: PaddingValues = PaddingValues(),
 ) {
     Column(
         modifier = Modifier
             .padding(contentPadding)
             .padding(horizontal = 16.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Modal", style = AppTheme.specificTypography.displayLarge)

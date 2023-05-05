@@ -78,7 +78,7 @@ fun AppTheme(
             colorScheme = colorScheme,
             shapes = AppShapes,
             typography = DefaultTypography,
-            content = { Material2ThemeSupport(isDarkTheme, content) },
+            content = content,
         )
     }
 }
