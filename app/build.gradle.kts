@@ -84,12 +84,8 @@ dependencies {
 
     implementation(projects.baseSources)
 
-    implementation(projects.featureBottomBar)
-    implementation(projects.featureMain)
     implementation(projects.featureExample)
 
     implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.appUpdater)
     implementation(*Libs.bundle.firebase)
-    implementation(*Libs.bundle.biometric)
 }

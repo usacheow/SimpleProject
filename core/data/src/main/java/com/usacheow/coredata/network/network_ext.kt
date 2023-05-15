@@ -4,7 +4,7 @@ import com.usacheow.corecommon.ext.logError
 import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.Completable
 import com.usacheow.corecommon.model.Effect
-import com.usacheow.coredata.cache.CacheProvider
+import com.usacheow.coredata.storage.cacheprovider.CacheProvider
 import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
 import java.net.ConnectException
 import java.net.SocketTimeoutException

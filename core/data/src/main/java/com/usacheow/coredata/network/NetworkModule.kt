@@ -2,7 +2,7 @@ package com.usacheow.coredata.network
 
 import android.app.Application
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.usacheow.coredata.database.TokenStorage
+import com.usacheow.coredata.storage.preferences.TokenStorage
 import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides

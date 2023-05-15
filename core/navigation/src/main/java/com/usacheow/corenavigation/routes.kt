@@ -38,21 +38,6 @@ object AppRoute {
         @Serializable
         data class Args(val index: String)
     }
-
-    object MainBottomBar : Route("MainBottomBar") {
-
-        object MainTab1 : Route("mainTab1")
-        object Mock1 : Route("Mock1")
-        object Mock1Second : Route("Mock1Second")
-
-        object MainTab2 : Route("mainTab2")
-        object Mock2 : Route("Mock2")
-        object Mock2Second : Route("Mock2Second")
-
-        object MainTab3 : Route("mainTab3")
-        object Mock3 : Route("Mock3")
-        object Mock3Second : Route("Mock3Second")
-    }
 }
 
 object AppDeeplink {

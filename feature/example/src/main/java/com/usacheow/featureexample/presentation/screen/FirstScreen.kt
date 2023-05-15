@@ -35,7 +35,6 @@ fun FirstScreen(
 
     FirstScreen(
         onNextClick = router::toSecondScreen,
-        onBottomBarClick = router::toBottomBarScreen,
     )
 }
 
@@ -43,7 +42,6 @@ fun FirstScreen(
 @Composable
 private fun FirstScreen(
     onNextClick: (String) -> Unit,
-    onBottomBarClick: () -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     Scaffold(
@@ -65,10 +63,6 @@ private fun FirstScreen(
         ) {
             SimpleButtonTonalL(modifier = Modifier.fillMaxWidth(), onClick = { onNextClick("42") }) {
                 Text("Second screen")
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            SimpleButtonTonalL(modifier = Modifier.fillMaxWidth(), onClick = { onBottomBarClick() }) {
-                Text("Bottom bar screen")
             }
         }
     }
