@@ -107,6 +107,7 @@ object Libs {
             "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
             "com.google.android.material:material:$materialVersion")
+        val composeWidgetTheme =arrayOf("androidx.glance:glance-appwidget:$composeGlanceVersion")
         val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
             "androidx.compose.foundation:foundation:$composeVersion",
@@ -119,6 +120,7 @@ object Libs {
             "io.coil-kt:coil-compose:$coilVersion",
             "io.coil-kt:coil-svg:$coilVersion")
 
+        val paging = arrayOf("androidx.paging:paging-runtime:$pagingVersion")
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")
 
         val lifecycle = arrayOf(
@@ -131,7 +133,10 @@ object Libs {
         val navigation = arrayOf(
             "androidx.navigation:navigation-compose:$navigationVersion")
 
+        val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
+        val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
+        val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
         val window = arrayOf("androidx.window:window:$windowVersion")
 
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")
