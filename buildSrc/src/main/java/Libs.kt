@@ -7,7 +7,6 @@ object Libs {
     private const val kotlinSerializationVersion = "1.3.0"
     private const val coroutinesVersion = "1.6.1"
     private const val kotlinterVersion = "3.8.0"
-    private const val rulerVersion = "1.1.0"
 
     const val composeCompilerVersion = "1.4.3"
     private const val composeVersion = "1.4.0-beta02"
@@ -72,7 +71,6 @@ object Libs {
         const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         const val navigation_safeArgs_gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
-        const val ruler = "com.spotify.ruler:ruler-gradle-plugin:$rulerVersion"
     }
 
     object bundle {
@@ -109,7 +107,6 @@ object Libs {
             "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion",
             "androidx.compose.material:material-icons-extended:$composeVersion",
             "com.google.android.material:material:$materialVersion")
-        val composeWidgetTheme =arrayOf("androidx.glance:glance-appwidget:$composeGlanceVersion")
         val composeKit =arrayOf(
             "androidx.activity:activity-compose:$activityVersion",
             "androidx.compose.foundation:foundation:$composeVersion",
@@ -123,7 +120,6 @@ object Libs {
             "io.coil-kt:coil-svg:$coilVersion")
 
         val splashscreen = arrayOf("androidx.core:core-splashscreen:$splashVersion")
-        val paging = arrayOf("androidx.paging:paging-runtime:$pagingVersion")
 
         val lifecycle = arrayOf(
             "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion",
@@ -135,10 +131,7 @@ object Libs {
         val navigation = arrayOf(
             "androidx.navigation:navigation-compose:$navigationVersion")
 
-        val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
-        val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")
         val browser = arrayOf("androidx.browser:browser:$browserVersion")
-        val biometric = arrayOf("androidx.biometric:biometric-ktx:$biometricVersion")
         val window = arrayOf("androidx.window:window:$windowVersion")
 
         val datastore = arrayOf("androidx.datastore:datastore-preferences:$datastoreVersion")

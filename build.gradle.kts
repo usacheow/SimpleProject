@@ -17,7 +17,6 @@ buildscript {
         classpath(Libs.classpath.crashlytics_gradle)
         classpath(Libs.classpath.navigation_safeArgs_gradle)
         classpath(Libs.classpath.kotlinter)
-        classpath(Libs.classpath.ruler)
     }
 }
 
