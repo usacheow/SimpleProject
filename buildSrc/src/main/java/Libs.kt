@@ -20,7 +20,7 @@ object Libs {
     private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
-    private const val navigationVersion = "2.4.0"
+    private const val navigationVersion = "2.5.1"
     private const val appUpdaterVersion = "1.8.1"
     private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"

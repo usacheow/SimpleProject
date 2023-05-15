@@ -28,4 +28,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun chuckInterceptor(application: Application) = ChuckerInterceptor.Builder(application).build()
+
+    @Provides
+    @Singleton
+    fun network(): Network = NetworkImpl()
 }
