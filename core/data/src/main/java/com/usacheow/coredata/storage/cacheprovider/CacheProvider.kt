@@ -1,18 +1,18 @@
 package com.usacheow.coredata.storage.cacheprovider
 
-import kotlin.reflect.KType
+import io.ktor.util.reflect.TypeInfo
 import kotlin.time.Duration
 
 interface CacheProvider : CacheCleaner {
 
-    suspend fun <T> get(type: KType, key: String): T?
+    suspend fun <T> get(typeInfo: TypeInfo, key: String): T?
 
-    suspend fun <T : Any> save(type: KType, key: String, data: T, lifeDuration: Duration)
+    suspend fun <T : Any> save(typeInfo: TypeInfo, key: String, data: T, lifeDuration: Duration)
 }
 
 interface CacheCleaner {
 
-    suspend fun clear(type: KType, key: String)
+    suspend fun clear(typeInfo: TypeInfo, key: String)
 
     suspend fun clearAll()
 }

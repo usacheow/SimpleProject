@@ -6,7 +6,6 @@ import coil.ImageLoaderFactory
 import coil.decode.SvgDecoder
 import com.usacheow.basesources.NetworkStateSource
 import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
-import com.usacheow.coredata.network.ApiConfig
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,15 +17,9 @@ class SimpleApp : Application(), ApplicationCoroutineScopeHolder, ImageLoaderFac
 
     @Inject lateinit var networkStateSource: NetworkStateSource
 
-    @Inject lateinit var apiConfig: ApiConfig
-
     override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun newImageLoader() = ImageLoader.Builder(this)
-        .okHttpClient {
-            apiConfig.okHttpBuilder()
-                .build()
-        }
         .components {
             add(SvgDecoder.Factory())
         }

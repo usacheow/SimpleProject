@@ -2,116 +2,146 @@ package com.usacheow.coredata.network
 
 import com.usacheow.corecommon.ext.logError
 import com.usacheow.corecommon.model.AppError
+import com.usacheow.corecommon.model.BuildInfo
 import com.usacheow.corecommon.model.Completable
 import com.usacheow.corecommon.model.Effect
-import com.usacheow.coredata.storage.cacheprovider.CacheProvider
 import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
+import com.usacheow.coredata.storage.preferences.TokenStorage
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.engine.android.Android
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.header
+import io.ktor.client.request.request
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpHeaders
+import io.ktor.serialization.kotlinx.json.json
+import io.ktor.util.reflect.TypeInfo
+import io.ktor.util.reflect.typeInfo
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.CancellationException
+import javax.inject.Inject
 import javax.net.ssl.SSLException
-import kotlin.reflect.typeOf
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.decodeFromStream
-import retrofit2.Response
-import kotlin.reflect.KType
+import kotlin.reflect.KClass
 
 abstract class Network {
 
-    suspend inline fun <reified T : Any> cachedApiCall(
-        key: String,
-        cacheProvider: CacheProvider,
+    abstract suspend fun <T : Any> call(
+        typeInfo: TypeInfo,
         dispatcher: CoroutineDispatcher,
-        needActualData: Boolean = false,
-        lifeDuration: Duration = 5.minutes,
-        noinline request: suspend () -> Response<T>,
-    ) = cachedApiCall(typeOf<T>(), key, cacheProvider, dispatcher, needActualData, lifeDuration, request)
-
-    abstract suspend fun <T : Any> cachedApiCall(
-        type: KType,
-        key: String,
-        cacheProvider: CacheProvider,
-        dispatcher: CoroutineDispatcher,
-        needActualData: Boolean = false,
-        lifeDuration: Duration = 5.minutes,
-        request: suspend () -> Response<T>,
+        tags: Map<KClass<*>, Tag>,
+        requestBuilder: HttpRequestBuilder.() -> Unit,
     ): Effect<T>
 
-    suspend inline fun <reified T : Any> apiCall(
-        dispatcher: CoroutineDispatcher,
-        noinline block: suspend () -> Response<T>,
-    ) = apiCall(typeOf<T>(), dispatcher, block)
+    inline fun <reified T : Any> builder() = RequestBuilder<T>(typeInfo<T>())
 
-    abstract suspend fun <T : Any> apiCall(
-        type: KType,
-        dispatcher: CoroutineDispatcher,
-        block: suspend () -> Response<T>,
-    ): Effect<T>
+    inner class RequestBuilder<T : Any> constructor(private val typeInfo: TypeInfo) {
+
+        private val tags = mutableMapOf<KClass<*>, Tag>()
+        private var dispatcher: CoroutineDispatcher = Dispatchers.IO
+
+        fun dispatcher(dispatcher: CoroutineDispatcher) = apply { this.dispatcher = dispatcher }
+
+        fun tag(tag: Tag) = apply { tags[tag::class] = tag }
+
+        suspend fun request(block: HttpRequestBuilder.() -> Unit): Effect<T> {
+            return call(typeInfo, dispatcher, tags, block)
+        }
+    }
 }
 
-internal class NetworkImpl : Network() {
+class NetworkImpl @Inject constructor(
+    private val jsonProvider: KotlinxSerializationJsonProvider,
+    private val tokenStorage: TokenStorage,
+    private val buildInfo: BuildInfo,
+) : Network() {
 
-    override suspend fun <T : Any> cachedApiCall(
-        type: KType,
-        key: String,
-        cacheProvider: CacheProvider,
+    override suspend fun <T : Any> call(
+        typeInfo: TypeInfo,
         dispatcher: CoroutineDispatcher,
-        needActualData: Boolean,
-        lifeDuration: Duration,
-        request: suspend () -> Response<T>,
+        tags: Map<KClass<*>, Tag>,
+        requestBuilder: HttpRequestBuilder.() -> Unit,
     ): Effect<T> {
-        return if (needActualData) {
-            apiCall(type, dispatcher, request)
-                .doOnSuccess { cacheProvider.save(type, key, it, lifeDuration) }
-                .applyCacheData { cacheProvider.get(type, key) }
-        } else {
-            cacheProvider.get<T>(type, key)
+        val cachedRequestTag = tags[CachedRequestTag::class] as? CachedRequestTag?
+        return when {
+            cachedRequestTag == null -> request(typeInfo, dispatcher, tags, requestBuilder)
+
+            cachedRequestTag.needActual -> request<T>(typeInfo, dispatcher, tags, requestBuilder)
+                .doOnSuccess { saveToCache(it, typeInfo, cachedRequestTag) }
+                .applyCacheData { getFromCache(typeInfo, cachedRequestTag) }
+
+            else -> getFromCache<T>(typeInfo, cachedRequestTag)
                 ?.let { Effect.success(it) }
-                ?: apiCall(type, dispatcher, request)
-                    .doOnSuccess { cacheProvider.save(type, key, it, lifeDuration) }
+                ?: request<T>(typeInfo, dispatcher, tags, requestBuilder)
+                    .doOnSuccess { saveToCache(it, typeInfo, cachedRequestTag) }
         }
     }
 
-    override suspend fun <T : Any> apiCall(
-        type: KType,
+    private suspend fun <T : Any> getFromCache(
+        typeInfo: TypeInfo,
+        cachedRequestTag: CachedRequestTag,
+    ) = cachedRequestTag.cacheProvider.get<T>(typeInfo, cachedRequestTag.key)
+
+    private suspend fun <T : Any> saveToCache(
+        data: T,
+        typeInfo: TypeInfo,
+        cachedRequestTag: CachedRequestTag,
+    ) = cachedRequestTag.cacheProvider.save(
+        typeInfo,
+        cachedRequestTag.key,
+        data,
+        cachedRequestTag.lifeDuration
+    )
+
+    private suspend fun <T : Any> request(
+        typeInfo: TypeInfo,
         dispatcher: CoroutineDispatcher,
-        block: suspend () -> Response<T>,
+        tags: Map<KClass<*>, Tag>,
+        requestBuilder: HttpRequestBuilder.() -> Unit,
     ): Effect<T> = withContext(dispatcher) {
         try {
-            block().toEffect(type)
+            createHttpClient(tags).request(requestBuilder).toEffect(typeInfo)
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             logError(t.message.orEmpty())
             Effect.error(t.toApiError())
         }
     }
 
-    @OptIn(ExperimentalSerializationApi::class)
-    private fun <T : Any> Response<T>.toEffect(type: KType) = when {
-        isSuccessful -> when (val body = body()) {
-            null -> when (type) {
-                typeOf<Completable>() -> Effect.success(Completable as T)
+    private suspend fun <T : Any> HttpResponse.toEffect(
+        typeInfo: TypeInfo,
+    ): Effect<T> = when (status.value) {
+        in 200..299 -> when (val body = body<T?>(typeInfo)) {
+            null -> when (typeInfo) {
+                typeInfo<Completable>() -> Effect.success(Completable as T)
                 else -> Effect.error(AppError.Unknown())
             }
+
             else -> Effect.success(body)
         }
 
         else -> {
-            val errorBody = errorBody()?.let {
-                KotlinxSerializationJsonProvider().get().decodeFromStream<ErrorDto>(it.byteStream())
-            }
-
-            val error = when {
-                errorBody == null -> AppError.Unknown()
-
+            val error = when (val errorBody = body<ErrorDto?>()) {
+                null -> AppError.Unknown()
                 else -> AppError.Custom(
                     message = errorBody.message,
                     displayMessage = errorBody.message,
-                    code = code(),
+                    code = status.value,
                 )
             }
 
@@ -129,4 +159,29 @@ internal class NetworkImpl : Network() {
 
         else -> AppError.Unknown()
     }
+
+    private fun createHttpClient(tags: Map<KClass<*>, Tag>) = HttpClient(Android) {
+        defaultRequest {
+            if (tags.containsKey(AuthRequestTag::class)) {
+                header(HttpHeaders.Authorization, "Bearer ${tokenStorage.decodedAccessToken}")
+            }
+        }
+        install(HttpTimeout) {
+            connectTimeoutMillis = 20_000
+            requestTimeoutMillis = 20_000
+        }
+        install(ContentNegotiation) {
+            json(jsonProvider.get())
+        }
+        if (buildInfo.isDebug) install(Logging) {
+            logger = Logger.DEFAULT
+            level = LogLevel.BODY
+        }
+    }
 }
+
+@Serializable
+data class ErrorDto(
+    @SerialName("type") val type: String?,
+    @SerialName("message") val message: String?
+)

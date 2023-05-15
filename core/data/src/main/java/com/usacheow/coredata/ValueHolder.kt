@@ -1,4 +1,4 @@
-package com.usacheow.coredata.network
+package com.usacheow.coredata
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

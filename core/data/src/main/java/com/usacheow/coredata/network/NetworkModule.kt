@@ -1,35 +1,16 @@
 package com.usacheow.coredata.network
 
-import android.app.Application
-import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.usacheow.coredata.storage.preferences.TokenStorage
-import com.usacheow.coredata.network.interceptors.AuthenticationInterceptor
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import okhttp3.logging.HttpLoggingInterceptor
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+interface NetworkModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun loggingInterceptor() = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BASIC
-    }
-
-    @Provides
-    @Singleton
-    fun authenticationInterceptor(tokenStorage: TokenStorage) = AuthenticationInterceptor(tokenStorage)
-
-    @Provides
-    @Singleton
-    fun chuckInterceptor(application: Application) = ChuckerInterceptor.Builder(application).build()
-
-    @Provides
-    @Singleton
-    fun network(): Network = NetworkImpl()
+    fun network(network: NetworkImpl): Network
 }

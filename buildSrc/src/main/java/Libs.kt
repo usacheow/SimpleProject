@@ -40,10 +40,7 @@ object Libs {
     private const val securityVersion = "1.1.0-alpha03"
     private const val preferenceVersion = "1.1.1"
     private const val roomVersion = "2.4.0"
-    private const val jsonConverterVersion = "0.8.0"
-    private const val retrofitVersion = "2.9.0"
-    private const val okHttpVersion = "4.9.0"
-    private const val chuckVersion = "3.5.2"
+    private const val ktorVersion = "2.3.0"
 
     private const val mockitoVersion = "2.7.22"
     private const val truthVersion = "0.34"
@@ -144,11 +141,12 @@ object Libs {
         const val roomKapt = "androidx.room:room-compiler:$roomVersion"
 
         val requests = arrayOf(
-            "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$jsonConverterVersion",
-            "com.squareup.okhttp3:okhttp:$okHttpVersion",
-            "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
-            "com.github.chuckerteam.chucker:library:$chuckVersion")
+            "io.ktor:ktor-client-core:$ktorVersion",
+            "io.ktor:ktor-client-android:$ktorVersion",
+            "io.ktor:ktor-client-content-negotiation:$ktorVersion",
+            "io.ktor:ktor-serialization-kotlinx-json:$ktorVersion",
+            "io.ktor:ktor-client-logging:$ktorVersion",
+            "io.ktor:ktor-client-auth:$ktorVersion")
 
         const val unitTestsRunner = "android.support.test.runner.AndroidJUnitRunner"
         val unitTests = arrayOf(
