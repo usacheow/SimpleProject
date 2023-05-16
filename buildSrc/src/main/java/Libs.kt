@@ -20,7 +20,6 @@ object Libs {
     private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
-    private const val navigationVersion = "2.5.1"
     private const val navigationVoyagerVersion = "1.0.0-rc05"
     private const val appUpdaterVersion = "1.8.1"
     private const val billingVersion = "4.0.0"
@@ -67,7 +66,6 @@ object Libs {
         const val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
         const val crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsGradleVersion"
         const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
-        const val navigation_safeArgs_gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
     }
 
@@ -129,11 +127,11 @@ object Libs {
         const val lifecycleKapt = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
         val navigation = arrayOf(
-            "androidx.navigation:navigation-compose:$navigationVersion",
             "cafe.adriel.voyager:voyager-navigator:$navigationVoyagerVersion",
             "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$navigationVoyagerVersion",
             "cafe.adriel.voyager:voyager-tab-navigator:$navigationVoyagerVersion",
             "cafe.adriel.voyager:voyager-transitions:$navigationVoyagerVersion",
+            "cafe.adriel.voyager:voyager-androidx:$navigationVoyagerVersion",
             "cafe.adriel.voyager:voyager-hilt:$navigationVoyagerVersion")
 
         val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")

@@ -1,28 +1,34 @@
 package com.usacheow.corenavigation.base
 
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptionsBuilder
-import androidx.navigation.compose.composable
-import androidx.navigation.navDeepLink
-import com.usacheow.corenavigation.Deeplink
-import com.usacheow.corenavigation.Route
+import cafe.adriel.voyager.core.registry.ScreenProvider
+import cafe.adriel.voyager.core.registry.ScreenRegistry
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.Navigator
 
-fun NavGraphBuilder.composable(route: Route, vararg deeplink: Deeplink, content: @Composable (NavBackStackEntry) -> Unit) = composable(
-    route = route.pattern,
-    arguments = route.arguments,
-    deepLinks = deeplink.toList().map { data -> navDeepLink { uriPattern = data.pattern } },
-    content = content,
-)
+typealias ScreenGraphBuilder = ScreenRegistry.() -> Unit
 
-fun NavController.navigate(route: Route, builder: NavOptionsBuilder.() -> Unit = {}) = navigate(
-    route = route.path(),
-    builder = builder,
-)
+fun featureGraph(block: ScreenGraphBuilder): ScreenGraphBuilder = { block() }
 
-inline infix fun <reified ARG> NavController.navigate(direction: FeatureNavDirection<ARG>) = navigate(
-    route = direction.route.path(direction.arg.toDefaultFormat()),
-    builder = direction.optionsBuilder,
-)
+inline fun <reified T : ScreenProvider> ScreenRegistry.screen(
+    noinline content: (T) -> Screen,
+) = register(content)
+
+inline fun <reified T : ScreenProvider> Navigator.push(
+    provider: T,
+) = push(ScreenRegistry.get(provider))
+
+inline fun <reified T : ScreenProvider> Navigator.push(
+    vararg provider: T,
+) = push(provider.map { ScreenRegistry.get(it) })
+
+inline fun <reified T : ScreenProvider> Navigator.replace(
+    provider: T,
+) = replace(ScreenRegistry.get(provider))
+
+inline fun <reified T : ScreenProvider> Navigator.replaceAll(
+    provider: T,
+) = replaceAll(ScreenRegistry.get(provider))
+
+inline fun <reified T : ScreenProvider> Navigator.replaceAll(
+    vararg provider: T,
+) = replaceAll(provider.map { ScreenRegistry.get(it) })

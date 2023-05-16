@@ -1,28 +1,9 @@
 package com.usacheow.corenavigation
 
 import androidx.core.net.toUri
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
-import kotlinx.serialization.Serializable
+import cafe.adriel.voyager.core.registry.ScreenProvider
 
-const val DefaultArgKey = "arg"
-
-sealed class Route(protected val value: String) {
-
-    open val pattern: String = value
-    open val arguments: List<NamedNavArgument> = emptyList()
-
-    open fun path(vararg args: Any): String = value
-}
-
-sealed class RouteWithArg(value: String) : Route(value) {
-
-    override val pattern = "$value?$DefaultArgKey={$DefaultArgKey}"
-    override val arguments = listOf(navArgument(DefaultArgKey) { type = NavType.StringType })
-
-    override fun path(vararg args: Any): String = "$value?$DefaultArgKey=${args.first()}"
-}
+sealed class Route : ScreenProvider
 
 sealed class Deeplink(protected val value: String) {
 
@@ -33,11 +14,8 @@ sealed class Deeplink(protected val value: String) {
 
 object AppRoute {
 
-    object ExampleFirst : Route("ExampleFirst")
-    object ExampleSecond : RouteWithArg("ExampleSecond") {
-        @Serializable
-        data class Args(val index: String)
-    }
+    object ExampleFirst : Route()
+    data class ExampleSecond(val index: String) : Route()
 }
 
 object AppDeeplink {

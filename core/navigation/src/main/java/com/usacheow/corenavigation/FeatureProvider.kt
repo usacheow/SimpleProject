@@ -1,9 +1,8 @@
 package com.usacheow.corenavigation
 
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
+import com.usacheow.corenavigation.base.ScreenGraphBuilder
 
 interface ExampleFeatureProvider {
 
-    fun NavGraphBuilder.exampleGraph(controller: NavHostController)
+    val exampleGraph: ScreenGraphBuilder
 }

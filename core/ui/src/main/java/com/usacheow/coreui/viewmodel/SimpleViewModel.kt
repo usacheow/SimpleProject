@@ -1,5 +1,5 @@
 package com.usacheow.coreui.viewmodel
 
-import androidx.lifecycle.ViewModel
+import cafe.adriel.voyager.core.model.ScreenModel
 
-abstract class SimpleViewModel : ViewModel()
+abstract class SimpleViewModel : ScreenModel

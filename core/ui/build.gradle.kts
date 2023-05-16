@@ -13,4 +13,5 @@ dependencies {
 
     implementation(*Libs.bundle.splashscreen)
     implementation(*Libs.bundle.biometric)
+    implementation(*Libs.bundle.navigation)
 }
