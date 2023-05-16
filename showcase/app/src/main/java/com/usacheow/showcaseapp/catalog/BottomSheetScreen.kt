@@ -21,6 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
@@ -28,89 +31,93 @@ import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun BottomSheetScreen(navController: NavHostController) {
-    val coroutineScope = rememberCoroutineScope()
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = rememberStandardBottomSheetState(
-            initialValue = SheetValue.PartiallyExpanded,
-            skipHiddenState = false,
-        ),
-    )
+class BottomSheetScreen : Screen {
 
-    BackHandler(enabled = bottomSheetScaffoldState.bottomSheetState.isVisible) {
-        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
-    }
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        val coroutineScope = rememberCoroutineScope()
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+            bottomSheetState = rememberStandardBottomSheetState(
+                initialValue = SheetValue.PartiallyExpanded,
+                skipHiddenState = false,
+            ),
+        )
 
-    BottomSheetScaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        scaffoldState = bottomSheetScaffoldState,
-        topBar = {
-            SimpleTopAppBar(
-                title = "Bottom sheet".textValue(),
-                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                scrollBehavior = scrollBehavior,
-            )
-        },
-        sheetPeekHeight = 120.dp,
-        sheetContent = {
-            SheetContent()
-        },
-        content = {
-            Column(modifier = Modifier.padding(it)) {
-                Content(
-                    showSheet = {
-                        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.show() }
-                    },
-                    hideSheet = {
-                        coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
-                    },
+        BackHandler(enabled = bottomSheetScaffoldState.bottomSheetState.isVisible) {
+            coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
+        }
+
+        BottomSheetScaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            scaffoldState = bottomSheetScaffoldState,
+            topBar = {
+                SimpleTopAppBar(
+                    title = "Bottom sheet".textValue(),
+                    navigationIcon = AppTheme.specificIcons.back to navigator::pop,
+                    scrollBehavior = scrollBehavior,
                 )
-            }
-        },
-    )
-}
-
-@Composable
-private fun SheetContent(
-    contentPadding: PaddingValues = PaddingValues(),
-) {
-    Column(
-        modifier = Modifier
-            .padding(contentPadding)
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(text = "Modal", style = AppTheme.specificTypography.displayLarge)
-        Text(text = "bottom", style = AppTheme.specificTypography.displayLarge)
-        Text(text = "sheet", style = AppTheme.specificTypography.displayLarge)
-        Text(text = "example", style = AppTheme.specificTypography.displayLarge)
+            },
+            sheetPeekHeight = 120.dp,
+            sheetContent = {
+                SheetContent()
+            },
+            content = {
+                Column(modifier = Modifier.padding(it)) {
+                    Content(
+                        showSheet = {
+                            coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.show() }
+                        },
+                        hideSheet = {
+                            coroutineScope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
+                        },
+                    )
+                }
+            },
+        )
     }
-}
 
-@Composable
-private fun Content(
-    showSheet: () -> Unit,
-    hideSheet: () -> Unit,
-) {
-    SimpleButtonPrimaryL(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        onClick = showSheet,
+    @Composable
+    private fun SheetContent(
+        contentPadding: PaddingValues = PaddingValues(),
     ) {
-        SimpleButtonContent(text = "Show sheet".textValue())
+        Column(
+            modifier = Modifier
+                .padding(contentPadding)
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(text = "Modal", style = AppTheme.specificTypography.displayLarge)
+            Text(text = "bottom", style = AppTheme.specificTypography.displayLarge)
+            Text(text = "sheet", style = AppTheme.specificTypography.displayLarge)
+            Text(text = "example", style = AppTheme.specificTypography.displayLarge)
+        }
     }
-    SimpleButtonPrimaryL(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        onClick = hideSheet,
+
+    @Composable
+    private fun Content(
+        showSheet: () -> Unit,
+        hideSheet: () -> Unit,
     ) {
-        SimpleButtonContent(text = "Hide sheet".textValue())
+        SimpleButtonPrimaryL(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            onClick = showSheet,
+        ) {
+            SimpleButtonContent(text = "Show sheet".textValue())
+        }
+        SimpleButtonPrimaryL(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            onClick = hideSheet,
+        ) {
+            SimpleButtonContent(text = "Hide sheet".textValue())
+        }
     }
 }

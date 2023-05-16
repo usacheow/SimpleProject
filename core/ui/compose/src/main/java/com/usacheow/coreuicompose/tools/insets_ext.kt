@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun insetAll() = WindowInsets.safeDrawing
+    .union(WindowInsets.ime)
 
 @Composable
 fun insetTop() = WindowInsets.safeDrawing
@@ -33,14 +34,11 @@ fun insetHorizontal() = WindowInsets.safeDrawing
 @Composable
 fun insetAllExcludeTop() = WindowInsets.safeDrawing
     .only(WindowInsetsSides.Start + WindowInsetsSides.End + WindowInsetsSides.Bottom)
+    .union(WindowInsets.ime)
+    .add(WindowInsets(bottom = LocalBottomNavigationHeight.current))
 
 @Composable
 fun insetBottom() = WindowInsets.safeDrawing
-    .only(WindowInsetsSides.Bottom)
-    .union(WindowInsets.ime)
-
-@Composable
-fun insetBottomWithBottomNavigation() = WindowInsets.safeDrawing
     .only(WindowInsetsSides.Bottom)
     .union(WindowInsets.ime)
     .add(WindowInsets(bottom = LocalBottomNavigationHeight.current))

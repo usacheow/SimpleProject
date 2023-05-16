@@ -23,6 +23,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.usacheow.corecommon.container.IconValue
 import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
@@ -39,97 +42,100 @@ import com.usacheow.coreuitheme.compose.AppTheme
 import com.usacheow.coreuitheme.compose.LocalWindowSizeClass
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
-@Composable
-fun SettingsScreen(
-    navController: NavHostController,
-) {
-    val context = LocalContext.current
-    val storage = remember { UserDataStorage(PreferencesProvider(context)) }
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    val scope = rememberCoroutineScope()
+class SettingsScreen : Screen {
 
-    val mode by storage.themeModeFlow.collectAsState(initial = ThemeMode.System)
-    val isDarkTheme = when (mode) {
-        ThemeMode.Light -> false
-        ThemeMode.Dark -> true
-        ThemeMode.System -> isSystemInDarkTheme()
-    }
-    AnimatedContent(targetState = isDarkTheme) { isDarkTheme ->
-        AppTheme(
-            windowSizeClass = LocalWindowSizeClass.current,
-            isDarkTheme = isDarkTheme,
-        ) {
-            SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)
-            Scaffold(
-                modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-                topBar = {
-                    SimpleTopAppBar(
-                        title = "Inputs".textValue(),
-                        navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                        scrollBehavior = scrollBehavior,
-                    )
-                },
-            ) { padding ->
-                LazyColumn(
-                    contentPadding = insetAllExcludeTop().asPaddingValues().add(padding).add(PaddingValues(24.dp)),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    item {
-                        Header(
-                            value = "Settings".textValue(),
-                            modifier = Modifier.padding(bottom = 24.dp),
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        val context = LocalContext.current
+        val storage = remember { UserDataStorage(PreferencesProvider(context)) }
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val scope = rememberCoroutineScope()
+
+        val mode by storage.themeModeFlow.collectAsState(initial = ThemeMode.System)
+        val isDarkTheme = when (mode) {
+            ThemeMode.Light -> false
+            ThemeMode.Dark -> true
+            ThemeMode.System -> isSystemInDarkTheme()
+        }
+        AnimatedContent(targetState = isDarkTheme, label = "settings content") { isDarkTheme ->
+            AppTheme(
+                windowSizeClass = LocalWindowSizeClass.current,
+                isDarkTheme = isDarkTheme,
+            ) {
+                SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)
+                Scaffold(
+                    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+                    topBar = {
+                        SimpleTopAppBar(
+                            title = "Inputs".textValue(),
+                            navigationIcon = AppTheme.specificIcons.back to navigator::pop,
+                            scrollBehavior = scrollBehavior,
                         )
-                    }
-                    designBlock(mode) {
-                        scope.launch { storage.setThemeMode(it) }
+                    },
+                ) { padding ->
+                    LazyColumn(
+                        contentPadding = insetAllExcludeTop().asPaddingValues().add(padding)
+                            .add(PaddingValues(24.dp)),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        item {
+                            Header(
+                                value = "Settings".textValue(),
+                                modifier = Modifier.padding(bottom = 24.dp),
+                            )
+                        }
+                        designBlock(mode) {
+                            scope.launch { storage.setThemeMode(it) }
+                        }
                     }
                 }
             }
         }
     }
-}
 
-private fun LazyListScope.designBlock(
-    selectedMode: ThemeMode,
-    onThemeModeClick: (ThemeMode) -> Unit,
-) {
-    @Composable
-    fun ModeItem(
-        icon: IconValue,
-        value: TextValue,
-        currentMode: ThemeMode,
+    private fun LazyListScope.designBlock(
         selectedMode: ThemeMode,
         onThemeModeClick: (ThemeMode) -> Unit,
     ) {
-        CellTileState.Data(
-            value = value,
-            leftPart = CellTileState.LeftPart.GreyIcon(icon.toImageValue()),
-            onClick = { onThemeModeClick(currentMode) },
-            rightPart = if (selectedMode == currentMode) CellTileState.RightPart.CheckIcon else null
-        ).Content(modifier = Modifier)
-    }
-    item {
-        ModeItem(
-            value = "System theme".textValue(),
-            icon = AppTheme.specificIcons.themeSystem,
-            currentMode = ThemeMode.System,
-            selectedMode = selectedMode,
-            onThemeModeClick = onThemeModeClick,
-        )
-        ModeItem(
-            value = "Dark theme".textValue(),
-            icon = AppTheme.specificIcons.themeDark,
-            currentMode = ThemeMode.Dark,
-            selectedMode = selectedMode,
-            onThemeModeClick = onThemeModeClick,
-        )
-        ModeItem(
-            value = "Light theme".textValue(),
-            icon = AppTheme.specificIcons.themeLight,
-            currentMode = ThemeMode.Light,
-            selectedMode = selectedMode,
-            onThemeModeClick = onThemeModeClick,
-        )
+        @Composable
+        fun ModeItem(
+            icon: IconValue,
+            value: TextValue,
+            currentMode: ThemeMode,
+            selectedMode: ThemeMode,
+            onThemeModeClick: (ThemeMode) -> Unit,
+        ) {
+            CellTileState.Data(
+                value = value,
+                leftPart = CellTileState.LeftPart.GreyIcon(icon.toImageValue()),
+                onClick = { onThemeModeClick(currentMode) },
+                rightPart = if (selectedMode == currentMode) CellTileState.RightPart.CheckIcon else null
+            ).Content(modifier = Modifier)
+        }
+        item {
+            ModeItem(
+                value = "System theme".textValue(),
+                icon = AppTheme.specificIcons.themeSystem,
+                currentMode = ThemeMode.System,
+                selectedMode = selectedMode,
+                onThemeModeClick = onThemeModeClick,
+            )
+            ModeItem(
+                value = "Dark theme".textValue(),
+                icon = AppTheme.specificIcons.themeDark,
+                currentMode = ThemeMode.Dark,
+                selectedMode = selectedMode,
+                onThemeModeClick = onThemeModeClick,
+            )
+            ModeItem(
+                value = "Light theme".textValue(),
+                icon = AppTheme.specificIcons.themeLight,
+                currentMode = ThemeMode.Light,
+                selectedMode = selectedMode,
+                onThemeModeClick = onThemeModeClick,
+            )
+        }
     }
 }

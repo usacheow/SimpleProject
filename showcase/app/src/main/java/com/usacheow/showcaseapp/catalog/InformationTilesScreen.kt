@@ -19,6 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.coreuicompose.tools.TileState
 import com.usacheow.coreuicompose.tools.add
@@ -28,116 +31,120 @@ import com.usacheow.coreuicompose.uikit.listtile.BadgeTileState
 import com.usacheow.coreuicompose.uikit.listtile.HeaderTileState
 import com.usacheow.coreuitheme.compose.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InformationTilesScreen(navController: NavHostController) {
-    val badges = badges()
-    val smallBadges = smallBadges()
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+class InformationTilesScreen : Screen {
 
-    Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            SimpleTopAppBar(
-                title = "Information tiles".textValue(),
-                navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                scrollBehavior = scrollBehavior,
-            )
-        }
-    ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxHeight(),
-            contentPadding = insetAllExcludeTop().asPaddingValues().add(it),
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        val badges = badges()
+        val smallBadges = smallBadges()
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+        Scaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                SimpleTopAppBar(
+                    title = "Information tiles".textValue(),
+                    navigationIcon = AppTheme.specificIcons.back to navigator::pop,
+                    scrollBehavior = scrollBehavior,
+                )
+            }
         ) {
-            items(large()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
-            item { Spacer(modifier = Modifier.height(24.dp)) }
-            items(medium()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
-            item { Spacer(modifier = Modifier.height(24.dp)) }
-            items(small()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
-            item { Spacer(modifier = Modifier.height(24.dp)) }
-            item {
-                LazyRow(
-                    contentPadding = PaddingValues(horizontal = 24.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    items(badges) {
-                        it.Content(Modifier)
+            LazyColumn(
+                modifier = Modifier.fillMaxHeight(),
+                contentPadding = insetAllExcludeTop().asPaddingValues().add(it),
+            ) {
+                items(large()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+                item { Spacer(modifier = Modifier.height(24.dp)) }
+                items(medium()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+                item { Spacer(modifier = Modifier.height(24.dp)) }
+                items(small()) { it.Content(modifier = Modifier.padding(horizontal = 24.dp)) }
+                item { Spacer(modifier = Modifier.height(24.dp)) }
+                item {
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 24.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        items(badges) {
+                            it.Content(Modifier)
+                        }
                     }
                 }
-            }
-            item { Spacer(modifier = Modifier.height(24.dp)) }
-            item {
-                LazyRow(
-                    contentPadding = PaddingValues(horizontal = 24.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    items(smallBadges) {
-                        it.Content(Modifier)
+                item { Spacer(modifier = Modifier.height(24.dp)) }
+                item {
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 24.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        items(smallBadges) {
+                            it.Content(Modifier)
+                        }
                     }
                 }
             }
         }
     }
+
+    private fun large(): List<TileState> = listOf(
+        HeaderTileState.Data(
+            value = "Large title".textValue(),
+            type = HeaderTileState.Type.Large,
+        ),
+        HeaderTileState.Data(
+            value = "Large title".textValue(),
+            type = HeaderTileState.Type.Large,
+            action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
+        ),
+        HeaderTileState.Shimmer(HeaderTileState.Type.Large),
+    )
+
+    private fun medium(): List<TileState> = listOf(
+        HeaderTileState.Data(
+            value = "Medium title".textValue(),
+            type = HeaderTileState.Type.Medium,
+        ),
+        HeaderTileState.Data(
+            value = "Medium title".textValue(),
+            type = HeaderTileState.Type.Medium,
+            action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
+        ),
+        HeaderTileState.Shimmer(HeaderTileState.Type.Medium),
+    )
+
+    private fun small(): List<TileState> = listOf(
+        HeaderTileState.Data(
+            value = "Small title".textValue(),
+            type = HeaderTileState.Type.Small,
+        ),
+        HeaderTileState.Data(
+            value = "Small title".textValue(),
+            type = HeaderTileState.Type.Small,
+            action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
+        ),
+        HeaderTileState.Shimmer(HeaderTileState.Type.Small),
+    )
+
+    @Composable
+    private fun badges(): List<TileState> = listOf(
+        BadgeTileState.Shimmer(),
+        BadgeTileState.Data(
+            header = "Badge tile header text".textValue(),
+            value = "Badge tile text".textValue(),
+            contentColor = AppTheme.specificColorScheme.onSurface,
+            containerColor = AppTheme.specificColorScheme.surface,
+            onClick = {}
+        ),
+    )
+
+    @Composable
+    private fun smallBadges(): List<TileState> = listOf(
+        BadgeTileState.Shimmer(hasHeader = false),
+        BadgeTileState.Data(
+            value = "Badge tile text".textValue(),
+            contentColor = AppTheme.specificColorScheme.onSurface,
+            containerColor = AppTheme.specificColorScheme.surface,
+            onClick = {}
+        ),
+    )
 }
-
-private fun large(): List<TileState> = listOf(
-    HeaderTileState.Data(
-        value = "Large title".textValue(),
-        type = HeaderTileState.Type.Large,
-    ),
-    HeaderTileState.Data(
-        value = "Large title".textValue(),
-        type = HeaderTileState.Type.Large,
-        action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
-    ),
-    HeaderTileState.Shimmer(HeaderTileState.Type.Large),
-)
-
-private fun medium(): List<TileState> = listOf(
-    HeaderTileState.Data(
-        value = "Medium title".textValue(),
-        type = HeaderTileState.Type.Medium,
-    ),
-    HeaderTileState.Data(
-        value = "Medium title".textValue(),
-        type = HeaderTileState.Type.Medium,
-        action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
-    ),
-    HeaderTileState.Shimmer(HeaderTileState.Type.Medium),
-)
-
-private fun small(): List<TileState> = listOf(
-    HeaderTileState.Data(
-        value = "Small title".textValue(),
-        type = HeaderTileState.Type.Small,
-    ),
-    HeaderTileState.Data(
-        value = "Small title".textValue(),
-        type = HeaderTileState.Type.Small,
-        action = HeaderTileState.Action.Text("action".textValue(), onClick = {}),
-    ),
-    HeaderTileState.Shimmer(HeaderTileState.Type.Small),
-)
-
-@Composable
-private fun badges(): List<TileState> = listOf(
-    BadgeTileState.Shimmer(),
-    BadgeTileState.Data(
-        header = "Badge tile header text".textValue(),
-        value = "Badge tile text".textValue(),
-        contentColor = AppTheme.specificColorScheme.onSurface,
-        containerColor = AppTheme.specificColorScheme.surface,
-        onClick = {}
-    ),
-)
-
-@Composable
-private fun smallBadges(): List<TileState> = listOf(
-    BadgeTileState.Shimmer(hasHeader = false),
-    BadgeTileState.Data(
-        value = "Badge tile text".textValue(),
-        contentColor = AppTheme.specificColorScheme.onSurface,
-        containerColor = AppTheme.specificColorScheme.surface,
-        onClick = {}
-    ),
-)
