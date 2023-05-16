@@ -1,23 +1,25 @@
 package com.usacheow.featureexample.presentation.viewmodel
 
-import androidx.lifecycle.SavedStateHandle
-import com.usacheow.corenavigation.AppRoute
-import com.usacheow.corenavigation.base.requireArgFromDefaultFormat
+import cafe.adriel.voyager.hilt.ScreenModelFactory
+import cafe.adriel.voyager.hilt.ScreenModelFactoryKey
+import cafe.adriel.voyager.hilt.ScreenModelKey
 import com.usacheow.coreui.viewmodel.SimpleViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import dagger.Binds
+import dagger.Module
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.multibindings.IntoMap
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.serialization.Serializable
 
-@HiltViewModel
-class SecondViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
+class SecondViewModel @AssistedInject constructor(
+    @Assisted val index: String,
 ) : SimpleViewModel() {
-
-    val args = savedStateHandle.requireArgFromDefaultFormat<AppRoute.ExampleSecond.Args>()
 
     private val _uiState = MutableStateFlow(UiState())
     val uiState = _uiState.asStateFlow()
@@ -31,6 +33,18 @@ class SecondViewModel @Inject constructor(
         val isLoading: Boolean = false,
     )
 
-    @Serializable
-    data class Args(val index: String)
+    @AssistedFactory
+    interface Factory : ScreenModelFactory {
+        fun create(index: String): SecondViewModel
+    }
+}
+
+@Module
+@InstallIn(ActivityComponent::class)
+interface SecondViewModelModule {
+
+    @Binds
+    @IntoMap
+    @ScreenModelFactoryKey(SecondViewModel.Factory::class)
+    fun secondViewModelFactory(factory: SecondViewModel.Factory): ScreenModelFactory
 }

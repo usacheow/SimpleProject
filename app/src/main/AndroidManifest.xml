@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".SimpleApp"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${app_name}"
@@ -23,7 +23,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".mainscreen.AppActivity"
+            android:name=".AppActivity"
             android:theme="@style/Simple.AppThemeSplash"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
