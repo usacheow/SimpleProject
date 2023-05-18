@@ -1,15 +1,12 @@
 package com.usacheow.coredata.storage.preferences
 
 import androidx.datastore.preferences.core.stringPreferencesKey
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 private val PREF_THEME_MODE = stringPreferencesKey("PREF_THEME_MODE")
 
-@Singleton
-class UserDataStorage @Inject constructor(
+class UserDataStorage(
     private val provider: PreferencesProvider,
 ) {
 

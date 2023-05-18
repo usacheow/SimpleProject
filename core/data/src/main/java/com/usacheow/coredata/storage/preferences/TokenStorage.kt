@@ -2,11 +2,8 @@ package com.usacheow.coredata.storage.preferences
 
 import androidx.core.content.edit
 import com.usacheow.corecommon.model.Token
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class TokenStorage @Inject constructor(
+class TokenStorage(
     private val provider: PreferencesProvider,
 ) {
 

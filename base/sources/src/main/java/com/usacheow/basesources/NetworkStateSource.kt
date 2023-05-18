@@ -5,13 +5,6 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,9 +22,9 @@ interface NetworkStateSource {
 }
 
 @SuppressLint("MissingPermission")
-class NetworkStateSourceImpl @Inject constructor(
+class NetworkStateSourceImpl(
     connectivityManager: ConnectivityManager,
-    @ApplicationCoroutineScope private val scope: CoroutineScope,
+    scope: CoroutineScope,
 ) : NetworkStateSource {
 
     override val state = connectivityManager
@@ -67,13 +60,4 @@ class NetworkStateSourceImpl @Inject constructor(
         isAvailable -> NetworkStateSource.State.Available
         else -> NetworkStateSource.State.Unavailable
     }
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-interface NetworkStateSourceModule {
-
-    @Binds
-    @Singleton
-    fun networkStateSource(source: NetworkStateSourceImpl): NetworkStateSource
 }

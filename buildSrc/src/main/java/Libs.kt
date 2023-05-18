@@ -11,7 +11,6 @@ object Libs {
     const val composeCompilerVersion = "1.4.3"
     private const val composeVersion = "1.4.0-beta02"
     private const val composeMaterialVersion = "1.1.0-rc01"
-    private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
@@ -20,15 +19,11 @@ object Libs {
     private const val coilVersion = "2.1.0"
 
     private const val lifecycleVersion = "2.4.0"
-    private const val navigationVoyagerVersion = "1.0.0-rc05"
-    private const val appUpdaterVersion = "1.8.1"
-    private const val billingVersion = "4.0.0"
+    private const val navigationVersion = "1.0.0-rc05"
     private const val browserVersion = "1.4.0"
-    private const val biometricVersion = "1.2.0-alpha04"
     private const val windowVersion = "1.0.0"
 
-    private const val hiltVersion = "2.45"
-    private const val hiltJetpackVersion = "1.0.0"
+    private const val diVersion = "7.19.0"
 
     private const val crashlyticsGradleVersion = "2.5.2"
     private const val crashlyticsVersion = "17.4.0"
@@ -55,7 +50,6 @@ object Libs {
         const val kotlin_parcelize = "kotlin-parcelize"
         const val kotlin_serialization = "kotlinx-serialization"
         const val kotlin_android = "kotlin-android"
-        const val hilt = "dagger.hilt.android.plugin"
         const val lint = "org.jmailen.kotlinter"
     }
 
@@ -65,7 +59,6 @@ object Libs {
         const val kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
         const val crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsGradleVersion"
-        const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
         const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
     }
 
@@ -81,11 +74,9 @@ object Libs {
 
         val desugar = arrayOf("com.android.tools:desugar_jdk_libs:$desugarVersion")
 
-        val hilt = arrayOf(
-            "com.google.dagger:hilt-android:$hiltVersion",
-            "androidx.hilt:hilt-navigation-compose:$hiltJetpackVersion")
-        const val hiltKapt = "com.google.dagger:hilt-android-compiler:$hiltVersion"
-        const val hiltKaptViewModel = "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+        val di = arrayOf(
+            "org.kodein.di:kodein-di:$diVersion",
+            "org.kodein.di:kodein-di-framework-compose:$diVersion")
 
         val firebase = arrayOf(
             "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsVersion",
@@ -127,12 +118,12 @@ object Libs {
         const val lifecycleKapt = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
         val navigation = arrayOf(
-            "cafe.adriel.voyager:voyager-navigator:$navigationVoyagerVersion",
-            "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$navigationVoyagerVersion",
-            "cafe.adriel.voyager:voyager-tab-navigator:$navigationVoyagerVersion",
-            "cafe.adriel.voyager:voyager-transitions:$navigationVoyagerVersion",
-            "cafe.adriel.voyager:voyager-androidx:$navigationVoyagerVersion",
-            "cafe.adriel.voyager:voyager-hilt:$navigationVoyagerVersion")
+            "cafe.adriel.voyager:voyager-navigator:$navigationVersion",
+            "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$navigationVersion",
+            "cafe.adriel.voyager:voyager-tab-navigator:$navigationVersion",
+            "cafe.adriel.voyager:voyager-transitions:$navigationVersion",
+            "cafe.adriel.voyager:voyager-androidx:$navigationVersion",
+            "cafe.adriel.voyager:voyager-kodein:$navigationVersion")
 
         val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
         val billing = arrayOf("com.android.billingclient:billing-ktx:$billingVersion")

@@ -77,14 +77,8 @@ fun Project.navigation() {
 }
 
 fun Project.dagger() {
-    plugins.apply {
-        apply(Libs.plugin.hilt)
-    }
-
     dependencies {
-        implementation(*Libs.bundle.hilt)
-        kapt(Libs.bundle.hiltKapt)
-        kapt(Libs.bundle.hiltKaptViewModel)
+        implementation(*Libs.bundle.di)
     }
 }
 

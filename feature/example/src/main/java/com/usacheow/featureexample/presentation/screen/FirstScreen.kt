@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.androidx.AndroidScreen
-import cafe.adriel.voyager.hilt.getScreenModel
+import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corenavigation.base.rememberNavigator
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
@@ -29,7 +29,7 @@ class FirstScreen : AndroidScreen() {
     @Composable
     override fun Content() {
         val navigator = rememberNavigator(::ScreenNavigator)
-        val viewModel = getScreenModel<FirstViewModel>()
+        val viewModel = rememberScreenModel<FirstViewModel>()
 
         FirstScreen(
             onNextClick = navigator::toSecondScreen,

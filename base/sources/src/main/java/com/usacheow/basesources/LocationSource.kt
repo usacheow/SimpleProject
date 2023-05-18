@@ -8,12 +8,6 @@ import android.os.Bundle
 import com.usacheow.corecommon.ext.logError
 import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.Effect
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -34,7 +28,7 @@ interface LocationSource {
 }
 
 @SuppressLint("MissingPermission")
-class LocationSourceImpl @Inject constructor(
+class LocationSourceImpl(
     private val locationManager: LocationManager,
 ) : LocationSource {
 
@@ -104,13 +98,4 @@ class EmptyLocationListener(
     override fun onProviderDisabled(provider: String) {
         onProviderDisabledAction(provider)
     }
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-interface LocationSourceModule {
-
-    @Binds
-    @Singleton
-    fun locationSource(source: LocationSourceImpl): LocationSource
 }

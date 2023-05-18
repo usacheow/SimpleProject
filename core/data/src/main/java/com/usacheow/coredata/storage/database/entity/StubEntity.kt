@@ -23,12 +23,12 @@ interface StubDao {
     @Query("SELECT * FROM stubentity")
     fun getAll(): Flow<List<StubEntity>>
 
-    @Insert
-    suspend fun insertAll(vararg items: StubEntity)
-
-    @Update
-    suspend fun update(item: StubEntity)
-
-    @Delete
-    suspend fun delete(item: StubEntity)
+//    @Insert
+//    suspend fun insert(item: StubEntity)
+//
+//    @Update
+//    suspend fun update(item: StubEntity)
+//
+//    @Delete
+//    suspend fun delete(item: StubEntity)
 }
