@@ -33,10 +33,14 @@ val coreDataStorageDiModule by DI.Module {
 }
 
 val coreDataNetworkDiModule by DI.Module {
+    importOnce(coreDatCoroutinesDiModule)
+    bindSingleton { KotlinxSerializationJsonProvider() }
+    bindSingleton<Network> { NetworkImpl(instance(), instance(), instance()) }
+}
+
+val coreDatCoroutinesDiModule by DI.Module {
     bindSingleton { CoroutineScope(SupervisorJob() + Dispatchers.Default) }
     bindSingleton(tag = LocalDispatchers.IO) { Dispatchers.IO }
     bindSingleton(tag = LocalDispatchers.Default) { Dispatchers.Default }
     bindSingleton(tag = LocalDispatchers.Main) { Dispatchers.Main }
-    bindSingleton { KotlinxSerializationJsonProvider() }
-    bindSingleton<Network> { NetworkImpl(instance(), instance(), instance()) }
 }

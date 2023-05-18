@@ -1,11 +1,10 @@
 package com.usacheow.showcaseutils.featuretoggle
 
-import com.usacheow.corecommon.model.BuildInfo
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.kodein.di.DI
+import org.kodein.di.bindFactory
+import org.kodein.di.bindSingleton
+import org.kodein.di.delegate
+import org.kodein.di.instance
 
 interface FeatureToggle {
 
@@ -25,19 +24,10 @@ interface EditableFeatureToggle : FeatureToggle {
     fun clearRemoteValues()
 }
 
-@Module
-@InstallIn(SingletonComponent::class)
-class FeatureToggleModule {
-
-    @Provides
-    @Singleton
-    fun editableFeatureToggle(
-        remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
-        localFeatureToggleStorage: LocalFeatureToggleStorage,
-        buildInfo: BuildInfo,
-    ): EditableFeatureToggle = FeatureToggleImpl(remoteFeatureToggleStorage, localFeatureToggleStorage, buildInfo)
-
-    @Provides
-    @Singleton
-    fun featureToggle(featureToggle: EditableFeatureToggle): FeatureToggle = featureToggle
+val featureToggleDiModule by DI.Module {
+    bindSingleton { LocalFeatureToggleStorage(instance()) }
+    bindSingleton { RemoteFeatureToggleStorage(instance()) }
+    bindSingleton<EditableFeatureToggle> { FeatureToggleImpl(instance(), instance(), instance()) }
+    delegate<FeatureToggle>().to<EditableFeatureToggle>()
+    bindSingleton { FeatureToggleUpdater(instance()) }
 }

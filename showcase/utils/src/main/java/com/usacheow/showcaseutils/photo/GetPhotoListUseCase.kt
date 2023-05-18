@@ -3,11 +3,12 @@ package com.usacheow.showcaseutils.photo
 import android.content.ContentUris
 import android.content.Context
 import android.provider.MediaStore
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 
-class GetPhotoListUseCase @Inject constructor(
-    @ApplicationContext private val context: Context,
+class GetPhotoListUseCase(
+    private val context: Context,
 ) {
 
     operator fun invoke(count: Int) = context.contentResolver.query(
@@ -25,4 +26,8 @@ class GetPhotoListUseCase @Inject constructor(
             ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
         }.take(count).toList()
     } ?: emptyList()
+}
+
+val getPhotoListUseCaseDiModule by DI.Module {
+    bindSingleton { GetPhotoListUseCase(instance()) }
 }

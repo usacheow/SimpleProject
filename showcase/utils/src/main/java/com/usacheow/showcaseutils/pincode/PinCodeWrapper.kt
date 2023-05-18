@@ -9,6 +9,10 @@ import com.usacheow.corecommon.model.Effect
 import com.usacheow.corecommon.model.Token
 import com.usacheow.coredata.storage.preferences.PreferencesProvider
 import com.usacheow.coredata.storage.preferences.TokenStorage
+import com.usacheow.showcaseutils.photo.GetPhotoListUseCase
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 import java.security.GeneralSecurityException
 import java.security.SecureRandom
 import javax.crypto.Cipher
@@ -18,7 +22,7 @@ import javax.crypto.spec.PBEKeySpec
 import javax.inject.Inject
 import javax.inject.Singleton
 
-class PinCodeWrapper @Inject constructor(
+class PinCodeWrapper(
     private val tokenStorage: TokenStorage,
     private val pinCodeStorage: PinCodeStorage,
     private val cryptoConfigurator: CryptoConfigurator,
@@ -124,8 +128,7 @@ class PinCodeWrapper @Inject constructor(
     }
 }
 
-@Singleton
-class PinCodeStorage @Inject constructor(
+class PinCodeStorage(
     private val provider: PreferencesProvider,
 ) {
 
@@ -147,4 +150,10 @@ class PinCodeStorage @Inject constructor(
         salt = ""
         encodedPinCode = ""
     }
+}
+
+val pinCodeWrapperDiModule by DI.Module {
+    importOnce(cryptoConfiguratorDiModule)
+    bindSingleton { PinCodeStorage(instance()) }
+    bindSingleton { PinCodeWrapper(instance(), instance(), instance()) }
 }

@@ -5,6 +5,8 @@ import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
 import java.security.KeyStore
@@ -15,13 +17,12 @@ import java.security.spec.X509EncodedKeySpec
 import javax.crypto.Cipher
 import javax.crypto.spec.OAEPParameterSpec
 import javax.crypto.spec.PSource
-import javax.inject.Inject
 
 private const val KEY_FOR_BIOMETRIC = "KEY_FOR_BIOMETRIC"
 private const val KEY_STORE = "AndroidKeyStore"
 private const val TRANSFORMATION = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 
-class CryptoConfigurator @Inject constructor() {
+class CryptoConfigurator {
 
     private var keyStore = KeyStore.getInstance(KEY_STORE).apply { load(null) }
 
@@ -127,4 +128,8 @@ class CryptoConfigurator @Inject constructor() {
     }
 
     private fun Exception.wasBiometricDataChanged() = this is KeyPermanentlyInvalidatedException
+}
+
+val cryptoConfiguratorDiModule by DI.Module {
+    bindSingleton { CryptoConfigurator() }
 }

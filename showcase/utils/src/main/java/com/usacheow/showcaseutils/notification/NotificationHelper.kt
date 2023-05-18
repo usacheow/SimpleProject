@@ -8,8 +8,9 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 import com.usacheow.coreuitheme.R as CoreUiThemeR
 
 interface NotificationHelper {
@@ -33,8 +34,8 @@ interface NotificationHelper {
     }
 }
 
-class NotificationHelperImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
+class NotificationHelperImpl(
+    private val context: Context,
     private val notificationManager: NotificationManager,
 ) : NotificationHelper {
 
@@ -75,4 +76,8 @@ class NotificationHelperImpl @Inject constructor(
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
     }
+}
+
+val notificationHelperDiModule by DI.Module {
+    bindSingleton<NotificationHelper> { NotificationHelperImpl(instance(), instance()) }
 }

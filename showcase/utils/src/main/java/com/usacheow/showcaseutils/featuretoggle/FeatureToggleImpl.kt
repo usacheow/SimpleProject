@@ -1,9 +1,8 @@
 package com.usacheow.showcaseutils.featuretoggle
 
 import com.usacheow.corecommon.model.BuildInfo
-import javax.inject.Inject
 
-class FeatureToggleImpl @Inject constructor(
+class FeatureToggleImpl(
     private val remoteFeatureToggleStorage: RemoteFeatureToggleStorage,
     private val localFeatureToggleStorage: LocalFeatureToggleStorage,
     private val buildInfo: BuildInfo,

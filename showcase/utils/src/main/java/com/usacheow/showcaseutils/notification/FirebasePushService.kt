@@ -3,13 +3,16 @@ package com.usacheow.showcaseutils.notification
 import android.content.Intent
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import org.kodein.di.DI
+import org.kodein.di.instance
 
-@AndroidEntryPoint
 class FirebasePushService : FirebaseMessagingService() {
 
-    @Inject lateinit var notificationHelper: NotificationHelper
+    private val di = DI {
+        importOnce(notificationHelperDiModule)
+    }
+
+    private val notificationHelper: NotificationHelper by di.instance()
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         sendNotification(remoteMessage)

@@ -3,14 +3,10 @@ package com.usacheow.showcaseutils.featuretoggle
 import android.content.Context
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 
 private const val REMOTE_TOGGLE_FORMAT = "Rft_%s"
 
-class RemoteFeatureToggleStorage @Inject constructor(
-    @ApplicationContext context: Context,
-) {
+class RemoteFeatureToggleStorage(context: Context) {
 
     private val preferenceManager by lazy {
         PreferenceManager.getDefaultSharedPreferences(context)

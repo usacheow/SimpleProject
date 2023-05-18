@@ -3,14 +3,10 @@ package com.usacheow.showcaseutils.featuretoggle
 import android.content.Context
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 
 private const val MANUAL_TOGGLE_FORMAT = "Mft_%s"
 
-class LocalFeatureToggleStorage @Inject constructor(
-    @ApplicationContext context: Context
-) {
+class LocalFeatureToggleStorage(context: Context) {
 
     private val preferenceManager by lazy {
         PreferenceManager.getDefaultSharedPreferences(context)

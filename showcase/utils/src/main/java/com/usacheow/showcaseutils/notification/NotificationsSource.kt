@@ -5,9 +5,6 @@ import com.usacheow.corecommon.container.TextValue
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corecommon.model.makeUserReadableErrorMessage
 import com.usacheow.corecommon.strings.StringKey
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
-import javax.inject.Inject
-import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -17,6 +14,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
+import kotlin.time.Duration.Companion.seconds
 
 private val NotificationVisibilitySeconds = 5.seconds
 
@@ -41,9 +42,9 @@ interface NotificationsSource {
     }
 }
 
-class NotificationsSourceImpl @Inject constructor(
+class NotificationsSourceImpl(
     networkStateProvider: NetworkStateSource,
-    @ApplicationCoroutineScope private val coroutineScope: CoroutineScope,
+    private val coroutineScope: CoroutineScope,
 ) : NotificationsSource {
 
     private val _state = MutableStateFlow<NotificationsSource.State?>(null)
@@ -103,4 +104,8 @@ class NotificationsSourceImpl @Inject constructor(
             _state.emit(null)
         }
     }
+}
+
+val notificationsSourceDiModule by DI.Module {
+    bindSingleton<NotificationsSource> { NotificationsSourceImpl(instance(), instance()) }
 }

@@ -11,12 +11,15 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.tasks.Task
 import com.usacheow.coredata.storage.preferences.PreferencesProvider
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.usacheow.showcaseutils.analytics.AnalyticsTrackerImpl
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.resume
@@ -39,8 +42,8 @@ interface UpdateRouter {
     fun openUpdateScreen(data: UpdateAvailableState.Available, activity: Activity)
 }
 
-class AppUpdateProviderImpl @Inject constructor(
-    @ApplicationContext context: Context,
+class AppUpdateProviderImpl(
+    context: Context,
     private val appUpdaterStorage: AppUpdaterStorage,
 ) : AppUpdateProvider {
 
@@ -130,4 +133,8 @@ sealed class InstallState {
     object Downloaded : InstallState()
     object Failed : InstallState()
     object Unknown : InstallState()
+}
+
+val appUpdateDiModule by DI.Module {
+    bindSingleton<AppUpdateProvider> { AppUpdateProviderImpl(instance(), instance()) }
 }

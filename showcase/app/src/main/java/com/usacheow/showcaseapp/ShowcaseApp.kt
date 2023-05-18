@@ -1,6 +1,7 @@
 package com.usacheow.showcaseapp
 
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
@@ -18,7 +19,7 @@ import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.FadeTransition
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScopeHolder
+import com.usacheow.coredata.coreDatCoroutinesDiModule
 import com.usacheow.coredata.storage.preferences.ThemeMode
 import com.usacheow.coredata.storage.preferences.UserDataStorage
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
@@ -36,17 +37,16 @@ import com.usacheow.showcaseapp.catalog.NumPadScreen
 import com.usacheow.showcaseapp.catalog.PaletteScreen
 import com.usacheow.showcaseapp.catalog.TagListScreen
 import com.usacheow.showcaseapp.catalog.TypographyScreen
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import javax.inject.Inject
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 
-@HiltAndroidApp
-class ShowcaseApp : Application(), ApplicationCoroutineScopeHolder {
+class ShowcaseApp : Application() {
 
-    override val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    val kodein = DI {
+        bindSingleton<Context> { this@ShowcaseApp }
+        importOnce(coreDatCoroutinesDiModule)
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -71,11 +71,9 @@ class ShowcaseApp : Application(), ApplicationCoroutineScopeHolder {
 }
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@AndroidEntryPoint
 class ShowcaseActivity : FragmentActivity() {
 
-    @Inject
-    lateinit var userDataStorage: UserDataStorage
+    private val userDataStorage: UserDataStorage by (application as ShowcaseApp).kodein.instance()
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {

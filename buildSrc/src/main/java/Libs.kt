@@ -11,6 +11,7 @@ object Libs {
     const val composeCompilerVersion = "1.4.3"
     private const val composeVersion = "1.4.0-beta02"
     private const val composeMaterialVersion = "1.1.0-rc01"
+    private const val composeGlanceVersion = "1.0.0-alpha03"
     private const val splashVersion = "1.0.0-beta01"
     private const val activityVersion = "1.4.0"
     private const val materialVersion = "1.5.0"
@@ -20,7 +21,10 @@ object Libs {
 
     private const val lifecycleVersion = "2.4.0"
     private const val navigationVersion = "1.0.0-rc05"
+    private const val appUpdaterVersion = "1.8.1"
+    private const val billingVersion = "4.0.0"
     private const val browserVersion = "1.4.0"
+    private const val biometricVersion = "1.2.0-alpha04"
     private const val windowVersion = "1.0.0"
 
     private const val diVersion = "7.19.0"

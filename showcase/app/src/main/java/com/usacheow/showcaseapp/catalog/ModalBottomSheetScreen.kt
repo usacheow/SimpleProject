@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -90,35 +89,6 @@ class ModalBottomSheetScreen : Screen {
             Text(text = "bottom", style = AppTheme.specificTypography.displayLarge)
             Text(text = "sheet", style = AppTheme.specificTypography.displayLarge)
             Text(text = "example", style = AppTheme.specificTypography.displayLarge)
-        }
-    }
-
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    private fun Content(
-        navController: NavHostController,
-        showSheet: () -> Unit,
-    ) {
-        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        Scaffold(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-            topBar = {
-                SimpleTopAppBar(
-                    title = "Modal bottom sheet".textValue(),
-                    navigationIcon = AppTheme.specificIcons.back to navController::popBackStack,
-                    scrollBehavior = scrollBehavior,
-                )
-            },
-        ) {
-            SimpleButtonPrimaryL(
-                modifier = Modifier
-                    .padding(it)
-                    .padding(16.dp)
-                    .fillMaxWidth(),
-                onClick = showSheet,
-            ) {
-                SimpleButtonContent(text = "Open sheet".textValue())
-            }
         }
     }
 }
