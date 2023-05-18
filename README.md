@@ -2,8 +2,8 @@
 
 Starter project with functional modules on the next stack:
 + kotlin, coroutines
-+ mvvm, hilt, compose, navigation component
-+ retrofit 2, kotlinx-serialization, coil, room
++ mvvm, kodein, compose, voyager
++ ktor, kotlinx-serialization, coil, room
 + junit, espresso
 + gitlab ci
 
