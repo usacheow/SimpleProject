@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.androidx.AndroidScreen
+import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corenavigation.base.rememberNavigator
@@ -24,7 +24,7 @@ import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featureexample.presentation.ScreenNavigator
 import com.usacheow.featureexample.presentation.viewmodel.FirstViewModel
 
-class FirstScreen : AndroidScreen() {
+class FirstScreen : Screen {
 
     @Composable
     override fun Content() {
