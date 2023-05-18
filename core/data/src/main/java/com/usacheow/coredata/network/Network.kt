@@ -5,7 +5,7 @@ import com.usacheow.corecommon.model.AppError
 import com.usacheow.corecommon.model.BuildInfo
 import com.usacheow.corecommon.model.Completable
 import com.usacheow.corecommon.model.Effect
-import com.usacheow.coredata.json.KotlinxSerializationJsonProvider
+import com.usacheow.coredata.network.json.KotlinxSerializationJsonProvider
 import com.usacheow.coredata.storage.preferences.TokenStorage
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -34,7 +34,6 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.CancellationException
-import javax.inject.Inject
 import javax.net.ssl.SSLException
 import kotlin.reflect.KClass
 
@@ -64,7 +63,7 @@ abstract class Network {
     }
 }
 
-class NetworkImpl @Inject constructor(
+class NetworkImpl(
     private val jsonProvider: KotlinxSerializationJsonProvider,
     private val tokenStorage: TokenStorage,
     private val buildInfo: BuildInfo,

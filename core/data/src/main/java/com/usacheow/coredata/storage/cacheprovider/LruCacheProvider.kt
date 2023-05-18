@@ -3,12 +3,11 @@ package com.usacheow.coredata.storage.cacheprovider
 import androidx.collection.LruCache
 import io.ktor.util.reflect.TypeInfo
 import java.util.Collections
-import javax.inject.Inject
 import kotlin.time.Duration
 
 private const val DEFAULT_SIZE_CACHE_BYTES = 4 * 1024 * 1024
 
-class LruCacheProvider @Inject constructor() : CacheProvider {
+class LruCacheProvider() : CacheProvider {
 
     private val persisterMap = Collections.synchronizedMap(
         mutableMapOf<TypeInfo, LruCachePersister<*>>()

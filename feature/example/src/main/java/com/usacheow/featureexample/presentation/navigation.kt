@@ -9,7 +9,6 @@ import com.usacheow.corenavigation.base.push
 import com.usacheow.corenavigation.base.screen
 import com.usacheow.featureexample.presentation.screen.FirstScreen
 import com.usacheow.featureexample.presentation.screen.SecondScreen
-import javax.inject.Inject
 
 internal class ScreenNavigator(navigator: Navigator) : NavigatorWrapper(navigator) {
 
@@ -18,7 +17,7 @@ internal class ScreenNavigator(navigator: Navigator) : NavigatorWrapper(navigato
     ) = navigator.push(AppRoute.ExampleSecond(index))
 }
 
-class ExampleFeatureProviderImpl @Inject constructor() : ExampleFeatureProvider {
+class ExampleFeatureProviderImpl : ExampleFeatureProvider {
 
     override val exampleGraph = featureGraph {
         screen<AppRoute.ExampleFirst> { FirstScreen() }

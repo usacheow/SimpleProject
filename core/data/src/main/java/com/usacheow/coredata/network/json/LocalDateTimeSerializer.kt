@@ -1,4 +1,4 @@
-package com.usacheow.coredata.json
+package com.usacheow.coredata.network.json
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind

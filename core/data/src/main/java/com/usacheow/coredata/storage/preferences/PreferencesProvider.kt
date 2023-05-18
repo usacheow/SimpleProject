@@ -8,18 +8,12 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.preference.PreferenceManager
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
 private const val USER_DATA_STORE = "user_data"
 private const val CRYPTO_PREFERENCES = "crypto_prefs"
 
-@Singleton
-class PreferencesProvider @Inject constructor(
-    @ApplicationContext private val context: Context,
-) {
+class PreferencesProvider(private val context: Context) {
 
     val userDataStore get() = context.dataStore
 

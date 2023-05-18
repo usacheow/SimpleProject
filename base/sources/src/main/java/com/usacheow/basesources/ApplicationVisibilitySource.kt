@@ -3,13 +3,6 @@ package com.usacheow.basesources
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -30,8 +23,8 @@ interface ApplicationVisibilitySource {
     }
 }
 
-class ApplicationVisibilitySourceImpl @Inject constructor(
-    @ApplicationCoroutineScope scope: CoroutineScope
+class ApplicationVisibilitySourceImpl(
+    scope: CoroutineScope
 ) : ApplicationVisibilitySource {
 
     override val state = callbackFlow {
@@ -50,15 +43,6 @@ class ApplicationVisibilitySourceImpl @Inject constructor(
             lifecycle.removeObserver(observer)
         }
     }.stateIn(scope, SharingStarted.WhileSubscribed(), ApplicationVisibilitySource.State.Foreground)
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-interface ApplicationVisibilitySourceModule {
-
-    @Binds
-    @Singleton
-    fun applicationVisibilitySource(source: ApplicationVisibilitySourceImpl): ApplicationVisibilitySource
 }
 
 @OptIn(ExperimentalCoroutinesApi::class)

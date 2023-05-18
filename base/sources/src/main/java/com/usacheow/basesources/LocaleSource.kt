@@ -5,20 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import com.usacheow.corecommon.strings.DEFAULT_LOCALE
-import com.usacheow.coredata.coroutine.ApplicationCoroutineScope
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.stateIn
 
-@Singleton
-class LocaleSource @Inject constructor(
-    @ApplicationContext private val context: Context,
-    @ApplicationCoroutineScope private val scope: CoroutineScope,
+class LocaleSource(
+    scope: CoroutineScope,
+    private val context: Context,
 ) {
 
     val stateFlow = callbackFlow {
