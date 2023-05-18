@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.androidx.AndroidScreen
+import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corenavigation.base.rememberNavigator
@@ -22,7 +22,7 @@ import com.usacheow.featureexample.presentation.viewmodel.SecondViewModel
 import org.kodein.di.compose.localDI
 import org.kodein.di.factory
 
-data class SecondScreen(val index: String) : AndroidScreen() {
+data class SecondScreen(val index: String) : Screen {
 
     @Composable
     override fun Content() {

@@ -126,7 +126,6 @@ object Libs {
             "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$navigationVersion",
             "cafe.adriel.voyager:voyager-tab-navigator:$navigationVersion",
             "cafe.adriel.voyager:voyager-transitions:$navigationVersion",
-            "cafe.adriel.voyager:voyager-androidx:$navigationVersion",
             "cafe.adriel.voyager:voyager-kodein:$navigationVersion")
 
         val appUpdater = arrayOf("com.google.android.play:core-ktx:$appUpdaterVersion")
