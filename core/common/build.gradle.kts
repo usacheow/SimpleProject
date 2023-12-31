@@ -5,6 +5,10 @@ plugins {
 common()
 dagger()
 
+android {
+    namespace = "com.usacheow.corecommon"
+}
+
 dependencies {
     implementation(*Libs.bundle.kotlinSerialization)
     implementation(*Libs.bundle.firebase)

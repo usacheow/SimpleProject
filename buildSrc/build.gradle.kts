@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.4.1")
-    api(kotlin("gradle-plugin:1.8.10"))
+    implementation("com.android.tools.build:gradle:8.2.0")
+    api(kotlin("gradle-plugin:1.9.21"))
     implementation("com.squareup:javapoet:1.13.0")
 }

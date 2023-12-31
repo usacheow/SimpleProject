@@ -5,6 +5,10 @@ plugins {
 common()
 compose()
 
+android {
+    namespace = "com.usacheow.corenavigation"
+}
+
 dependencies {
     api(*Libs.bundle.navigation)
     api(*Libs.bundle.kotlinSerialization)

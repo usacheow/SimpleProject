@@ -6,6 +6,10 @@ common()
 compose()
 dagger()
 
+android {
+    namespace = "com.usacheow.coreuitheme"
+}
+
 dependencies {
     implementation(projects.coreCommon)
 

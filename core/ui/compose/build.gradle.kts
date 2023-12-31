@@ -6,6 +6,10 @@ common()
 compose()
 dagger()
 
+android {
+    namespace = "com.usacheow.coreuicompose"
+}
+
 dependencies {
     api(projects.coreUiTheme)
     api(*Libs.bundle.composeTheme)

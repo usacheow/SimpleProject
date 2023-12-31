@@ -1,10 +1,10 @@
 package com.usacheow.corecommon.model
 
 data class BuildInfo(
-    val applicationId: String,
-    val buildType: String,
-    val versionCode: Int,
-    val versionName: String,
+    val applicationId: String="",
+    val buildType: String="",
+    val versionCode: Int=0,
+    val versionName: String="",
     val platform: String = "Android",
 ) {
 

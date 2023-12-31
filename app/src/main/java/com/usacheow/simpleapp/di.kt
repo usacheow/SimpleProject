@@ -21,10 +21,10 @@ val appViewModelDiModule by DI.Module {
 val buildInfoDiModule by DI.Module {
     bindSingleton {
         BuildInfo(
-            applicationId = BuildConfig.APPLICATION_ID,
-            buildType = BuildConfig.BUILD_TYPE,
-            versionCode = BuildConfig.VERSION_CODE,
-            versionName = BuildConfig.VERSION_NAME,
+//            applicationId = BuildConfig.APPLICATION_ID,
+//            buildType = BuildConfig.BUILD_TYPE,
+//            versionCode = BuildConfig.VERSION_CODE,
+//            versionName = BuildConfig.VERSION_NAME,
         )
     }
 }

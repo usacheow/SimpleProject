@@ -10,6 +10,8 @@ dagger()
 lifecycle()
 
 android {
+    namespace = "com.usacheow.app"
+
     defaultConfig {
         versionName = App.name
         versionCode = App.code

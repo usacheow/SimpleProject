@@ -7,6 +7,10 @@ compose()
 dagger()
 lifecycle()
 
+android {
+    namespace = "com.usacheow.featureexample"
+}
+
 dependencies {
     implementation(projects.coreCommon)
     implementation(projects.coreData)
