@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -14,6 +14,6 @@ dependencies {
     implementation(projects.coreCommon)
     implementation(projects.coreData)
 
-    implementation(*Libs.bundle.preference)
-    implementation(*Libs.bundle.firebase)
+    implementation(libs.androidxPreference)
+    implementation(libs.bundles.firebase)
 }

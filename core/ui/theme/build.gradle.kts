@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -13,6 +13,6 @@ android {
 dependencies {
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.composeTheme)
+    implementation(libs.splashscreen)
+    implementation(libs.bundles.composeTheme)
 }

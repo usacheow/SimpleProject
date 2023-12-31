@@ -9,12 +9,12 @@ buildscript {
     }
 
     dependencies {
-        classpath(Libs.classpath.android_gradle)
-        classpath(Libs.classpath.kotlin_gradle)
-        classpath(Libs.classpath.kotlin_serialization)
-        classpath(Libs.classpath.google_services)
-        classpath(Libs.classpath.crashlytics_gradle)
-        classpath(Libs.classpath.kotlinter)
+        classpath(libs.classpathAndroidGradle)
+        classpath(libs.classpathGoogleServices)
+        classpath(libs.classpathKotlinGradle)
+        classpath(libs.classpathKotlinSerialization)
+        classpath(libs.classpathCrashlyticsGradle)
+        classpath(libs.classpathKotlinter)
     }
 }
 

@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -12,9 +12,9 @@ android {
 
 dependencies {
     api(projects.coreUiTheme)
-    api(*Libs.bundle.composeTheme)
-    api(*Libs.bundle.composeKit)
+    api(libs.bundles.composeTheme)
+    api(libs.bundles.composeKit)
 
     implementation(projects.coreCommon)
-    implementation(*Libs.bundle.window)
+    implementation(libs.window)
 }

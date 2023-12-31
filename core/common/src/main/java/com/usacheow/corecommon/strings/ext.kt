@@ -8,7 +8,7 @@ val RU_LOCALE: Locale get() = Locale("ru")
 enum class PluralKey {
     Zero, One, Two, Few, Many, Other;
     companion object {
-        fun get(name: String) = values().firstOrNull { it.name.equals(name, ignoreCase = true) }
+        fun get(name: String) = entries.firstOrNull { it.name.equals(name, ignoreCase = true) }
     }
 }
 
@@ -16,7 +16,7 @@ enum class SupportedLanguageKey {
     Ru, En;
     companion object {
         val Default = En
-        fun get(name: String) = values().firstOrNull { it.name.equals(name, ignoreCase = true) }
+        fun get(name: String) = PluralKey.entries.firstOrNull { it.name.equals(name, ignoreCase = true) }
     }
 }
 

@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -10,10 +10,10 @@ android {
 }
 
 dependencies {
-    api(*Libs.bundle.navigation)
-    api(*Libs.bundle.kotlinSerialization)
+    api(libs.bundles.navigation)
+    api(libs.bundles.kotlinSerialization)
 
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.browser)
+    implementation(libs.browser)
 }

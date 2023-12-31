@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -15,6 +15,6 @@ dependencies {
     api(projects.coreUiCompose)
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.navigation)
+    implementation(libs.splashscreen)
+    implementation(libs.bundles.navigation)
 }

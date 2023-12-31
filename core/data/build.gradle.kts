@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -12,13 +12,13 @@ android {
 }
 
 dependencies {
-    api(*Libs.bundle.requests)
-    api(*Libs.bundle.kotlinSerialization)
+    api(libs.bundles.requests)
+    api(libs.bundles.kotlinSerialization)
 
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.firebase)
-    implementation(*Libs.bundle.datastore)
-    implementation(*Libs.bundle.preference)
-    implementation(*Libs.bundle.cryptoPreference)
+    implementation(libs.bundles.firebase)
+    implementation(libs.androidxDatastorePreference)
+    implementation(libs.androidxPreference)
+    implementation(libs.androidxSecurity)
 }
