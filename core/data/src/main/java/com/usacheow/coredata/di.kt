@@ -1,6 +1,5 @@
 package com.usacheow.coredata
 
-import android.content.Context
 import com.usacheow.coredata.network.LocalDispatchers
 import com.usacheow.coredata.network.json.KotlinxSerializationJsonProvider
 import com.usacheow.coredata.network.Network
@@ -25,8 +24,8 @@ val coreDataDiModule by DI.Module {
 }
 
 val coreDataStorageDiModule by DI.Module {
-    bindFactory { context: Context -> AppDatabase.newInstance(context) }
-    bindFactory { context: Context -> PreferencesProvider(context) }
+    bindSingleton { AppDatabase.newInstance(instance()) }
+    bindSingleton { PreferencesProvider(instance()) }
     bindSingleton { TokenStorage(instance()) }
     bindSingleton<CacheProvider> { LruCacheProvider() }
     bindFactory<CacheProvider, CacheCleaner> { it }

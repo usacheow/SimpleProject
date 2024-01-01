@@ -18,6 +18,10 @@ android {
         applicationId = App.packageName
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     signingConfigs {
         create(BuildTypes.release) {
             storeFile = rootProject.file(KeystoreParams.path)
