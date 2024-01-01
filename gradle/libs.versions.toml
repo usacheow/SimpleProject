@@ -1,0 +1,228 @@
+[versions]
+gmsVersion = "4.4.0"
+gradleVersion = "8.3.0-alpha01"
+desugarVersion = "1.1.5"
+kotlinVersion = "1.9.21"
+kotlinSerializationVersion = "1.4.1"
+coroutinesVersion = "1.7.1"
+kotlinterVersion = "3.8.0"
+
+composeCompilerVersion = "1.5.7"
+composeVersion = "1.5.4"
+composeMaterialVersion = "1.1.2"
+splashVersion = "1.0.1"
+activityVersion = "1.4.0"
+materialVersion = "1.5.0"
+accompanistVersion = "0.29.1-alpha"
+coilVersion = "2.5.0"
+
+lifecycleVersion = "2.4.0"
+navigationVersion = "1.0.0-rc05"
+browserVersion = "1.4.0"
+windowVersion = "1.0.0"
+
+diVersion = "7.19.0"
+
+crashlyticsGradleVersion = "2.5.2"
+crashlyticsVersion = "18.6.0"
+analyticsVersion = "18.0.2"
+messagingVersion = "21.0.1"
+configVersion = "20.0.4"
+
+datastoreVersion = "1.0.0-rc01"
+securityVersion = "1.1.0-alpha03"
+preferenceVersion = "1.1.1"
+roomVersion = "2.6.1"
+ktorVersion = "2.3.7"
+
+mockitoVersion = "2.7.22"
+truthVersion = "0.34"
+junitVersion = "4.12"
+espressoVersion = "3.1.0"
+runnerVersion = "1.1.0"
+
+[libraries]
+classpathGoogleServices = { group = "com.google.gms", name = "google-services", version.ref = "gmsVersion" }
+classpathAndroidGradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradleVersion" }
+classpathKotlinGradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+classpathKotlinSerialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinVersion" }
+classpathCrashlyticsGradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "crashlyticsGradleVersion" }
+classpathKotlinter = { group = "org.jmailen.gradle", name = "kotlinter-gradle", version.ref = "kotlinterVersion" }
+
+kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlinVersion" }
+coroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
+coroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
+coroutinesPlayServices = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutinesVersion" }
+serializationCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinSerializationVersion" }
+serializationJson = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationVersion" }
+
+desugar = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarVersion" }
+
+kodein = { group = "org.kodein.di", name = "kodein-di", version.ref = "diVersion" }
+kodeinCompose = { group = "org.kodein.di", name = "kodein-di-framework-compose", version.ref = "diVersion" }
+
+firebaseCrashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx", version.ref = "crashlyticsVersion" }
+firebaseAnalytics = { group = "com.google.firebase", name = "firebase-analytics-ktx", version.ref = "analyticsVersion" }
+firebaseMessaging = { group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "messagingVersion" }
+firebaseConfig = { group = "com.google.firebase", name = "firebase-config-ktx", version.ref = "configVersion" }
+
+composeCompiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "composeCompilerVersion" }
+composeRuntime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "composeVersion" }
+composeUi = { group = "androidx.compose.ui", name = "ui", version.ref = "composeVersion" }
+composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeVersion" }
+composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "composeVersion" }
+composeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterialVersion" }
+composeMaterial3Window = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "composeMaterialVersion" }
+composeMaterialIcons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeVersion" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+
+composeActivity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityVersion" }
+composeFoundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "composeVersion" }
+composeFoundationLayout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "composeVersion" }
+accompanistSystemUi = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistVersion" }
+accompanistPager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanistVersion" }
+accompanistPlaceholder = { group = "com.google.accompanist", name = "accompanist-placeholder-material", version.ref = "accompanistVersion" }
+accompanistFlowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanistVersion" }
+composeAnimation = { group = "androidx.compose.animation", name = "animation", version.ref = "composeVersion" }
+coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
+coilSvg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coilVersion" }
+
+lifecycleCompiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleVersion" }
+lifecycleRuntimeKtx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
+lifecycleViewmodelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleVersion" }
+lifecycleViewmodelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
+lifecycleProcess = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleVersion" }
+
+voyagerNavigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "navigationVersion" }
+voyagerNavigatorBottomSheet = { group = "cafe.adriel.voyager", name = "voyager-bottom-sheet-navigator", version.ref = "navigationVersion" }
+voyagerNavigatorTab = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "navigationVersion" }
+voyagerTransitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "navigationVersion" }
+voyagerKodein = { group = "cafe.adriel.voyager", name = "voyager-kodein", version.ref = "navigationVersion" }
+
+splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashVersion" }
+browser = { group = "androidx.browser", name = "browser", version.ref = "browserVersion" }
+window = { group = "androidx.window", name = "window", version.ref = "windowVersion" }
+
+androidxDatastorePreference = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastoreVersion" }
+androidxSecurity = { group = "androidx.security", name = "security-crypto", version.ref = "securityVersion" }
+androidxPreference = { group = "androidx.preference", name = "preference-ktx", version.ref = "preferenceVersion" }
+
+roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+
+ktorCore = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktorVersion" }
+ktorAndroid = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktorVersion" }
+ktorNegotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktorVersion" }
+ktorJson = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
+ktorLogging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktorVersion" }
+ktorAuth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktorVersion" }
+
+junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
+mockitoCore = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truthVersion" }
+espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
+espressoIntents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espressoVersion" }
+testRunner = { group = "androidx.test", name = "runner", version.ref = "runnerVersion" }
+
+[bundles]
+kotlin = [
+    "kotlinStdlib",
+]
+coroutines = [
+    "coroutinesAndroid",
+    "coroutinesCore",
+    "coroutinesPlayServices",
+]
+kotlinSerialization = [
+    "serializationCore",
+    "serializationJson",
+]
+
+di = [
+    "kodein",
+    "kodeinCompose",
+]
+
+firebase = [
+    "firebaseCrashlytics",
+    "firebaseAnalytics",
+    "firebaseMessaging",
+    "firebaseConfig",
+]
+
+composeTheme = [
+    "composeUi",
+    "composeUiTooling",
+    "composeUiToolingPreview",
+    "composeMaterial3",
+    "composeMaterial3Window",
+    "composeMaterialIcons",
+    "material",
+]
+composeKit = [
+    "composeActivity",
+    "composeFoundation",
+    "composeFoundationLayout",
+    "accompanistSystemUi",
+    "accompanistPager",
+    "accompanistPlaceholder",
+    "accompanistFlowlayout",
+    "composeAnimation",
+    "coilCompose",
+    "coilSvg",
+]
+
+lifecycle = [
+    "lifecycleRuntimeKtx",
+    "lifecycleViewmodelCompose",
+    "lifecycleViewmodelKtx",
+    "lifecycleProcess",
+]
+
+navigation = [
+    "voyagerNavigator",
+    "voyagerNavigatorBottomSheet",
+    "voyagerNavigatorTab",
+    "voyagerTransitions",
+    "voyagerKodein",
+]
+
+room = [
+    "roomRuntime",
+    "roomKtx",
+]
+
+requests = [
+    "ktorCore",
+    "ktorAndroid",
+    "ktorNegotiation",
+    "ktorJson",
+    "ktorLogging",
+    "ktorAuth",
+]
+
+unitTests = [
+    "junit",
+    "mockitoCore",
+    "truth",
+]
+
+uiTests = [
+    "espressoCore",
+    "espressoIntents",
+    "testRunner",
+    "mockitoCore",
+    "truth",
+]
+
+[plugins]
+application = { id = "com.android.application", version.ref = "gradleVersion" }
+library = { id = "com.android.library", version.ref = "gradleVersion" }
+kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+kotlinParcelize = { id = "org.jetbrains.kotlin.parcelize", version.ref = "kotlinVersion" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.serialization", version.ref = "kotlinVersion" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinterVersion" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "gmsVersion" }
+crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlyticsGradleVersion" }
