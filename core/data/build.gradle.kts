@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -7,15 +7,19 @@ lifecycle()
 dagger()
 room()
 
+android {
+    namespace = "com.usacheow.coredata"
+}
+
 dependencies {
-    api(*Libs.bundle.requests)
-    api(*Libs.bundle.kotlinSerialization)
+    api(libs.bundles.requests)
+    api(libs.bundles.kotlinSerialization)
 
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.firebase)
-    implementation(*Libs.bundle.datastore)
-    implementation(*Libs.bundle.preference)
-    implementation(*Libs.bundle.cryptoPreference)
-    implementation(*Libs.bundle.biometric)
+    implementation(libs.bundles.firebase)
+    implementation(libs.androidxDatastorePreference)
+    implementation(libs.androidxPreference)
+    implementation(libs.androidxSecurity)
+    implementation(libs.bundles.biometric)
 }

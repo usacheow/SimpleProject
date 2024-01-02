@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.application)
+    id("com.android.application")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -10,10 +10,16 @@ dagger()
 lifecycle()
 
 android {
+    namespace = "com.usacheow.simpleapp"
+
     defaultConfig {
         versionName = App.name
         versionCode = App.code
         applicationId = App.packageName
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     signingConfigs {
@@ -78,6 +84,6 @@ dependencies {
 
     implementation(projects.featureExample)
 
-    implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.firebase)
+    implementation(libs.splashscreen)
+    implementation(libs.bundles.firebase)
 }

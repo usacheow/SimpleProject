@@ -30,5 +30,5 @@ val buildInfoDiModule by DI.Module {
 }
 
 val featureProvidersModule by DI.Module {
-    bindSingleton< ExampleFeatureProvider> { ExampleFeatureProviderImpl() }
+    bindSingleton<ExampleFeatureProvider> { ExampleFeatureProviderImpl() }
 }

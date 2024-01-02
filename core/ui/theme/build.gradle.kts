@@ -1,14 +1,18 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
 compose()
 dagger()
 
+android {
+    namespace = "com.usacheow.coreuitheme"
+}
+
 dependencies {
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.composeTheme)
+    implementation(libs.splashscreen)
+    implementation(libs.bundles.composeTheme)
 }

@@ -2,6 +2,7 @@ import org.gradle.kotlin.dsl.`kotlin-dsl`
 
 plugins {
     `kotlin-dsl`
+    `java-gradle-plugin`
 }
 
 repositories {
@@ -11,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.4.1")
-    api(kotlin("gradle-plugin:1.8.10"))
+    implementation(libs.classpathAndroidGradle)
+    api(libs.classpathKotlinGradle)
     implementation("com.squareup:javapoet:1.13.0")
 }

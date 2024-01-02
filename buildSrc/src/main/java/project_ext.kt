@@ -1,4 +1,5 @@
 import com.android.build.gradle.BaseExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.fileTree
@@ -8,11 +9,11 @@ private val Project.android: BaseExtension
 
 fun Project.common() {
     plugins.apply {
-        apply(Libs.plugin.kotlin_android)
-        apply(Libs.plugin.kotlin_parcelize)
-        apply(Libs.plugin.kotlin_serialization)
-        apply(Libs.plugin.kotlin_kapt)
-        apply(Libs.plugin.lint)
+        apply("kotlin-android")
+        apply("kotlin-parcelize")
+        apply("kotlinx-serialization")
+        apply("kotlin-kapt")
+        apply("org.jmailen.kotlinter")
     }
 
     android.apply {
@@ -23,7 +24,7 @@ fun Project.common() {
             targetSdk = App.targetSdk
 
             vectorDrawables.useSupportLibrary = true
-            testInstrumentationRunner = Libs.bundle.unitTestsRunner
+            testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         }
 
         buildTypes {
@@ -43,15 +44,17 @@ fun Project.common() {
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
+            sourceCompatibility = JavaVersion.VERSION_19
+            targetCompatibility = JavaVersion.VERSION_19
         }
     }
 
     dependencies {
-        coreLibraryDesugaring(*Libs.bundle.desugar)
+        coreLibraryDesugaring(libs("desugar"))
         implementation(project.fileTree("include" to "*.jar", "dir" to "libs"))
 
-        implementation(*Libs.bundle.kotlin)
-        implementation(*Libs.bundle.coroutines)
+        implementation(bundle("kotlin"))
+        implementation(bundle("coroutines"))
     }
 }
 
@@ -60,38 +63,38 @@ fun Project.compose() {
         buildFeatures.compose = true
 
         composeOptions {
-            kotlinCompilerExtensionVersion = Libs.composeCompilerVersion
+            kotlinCompilerExtensionVersion = version("composeCompilerVersion")
         }
     }
 
     dependencies {
-        implementation(*Libs.bundle.composeCompiler)
-        implementation(*Libs.bundle.composeRuntime)
+        implementation(libs("composeCompiler"))
+        implementation(libs("composeRuntime"))
     }
 }
 
 fun Project.navigation() {
     dependencies {
-        implementation(*Libs.bundle.navigation)
+        implementation(bundle("navigation"))
     }
 }
 
 fun Project.dagger() {
     dependencies {
-        implementation(*Libs.bundle.di)
+        implementation(bundle("di"))
     }
 }
 
 fun Project.room() {
     dependencies {
-        implementation(*Libs.bundle.room)
-        kapt(Libs.bundle.roomKapt)
+        implementation(bundle("room"))
+        kapt(libs("roomCompiler"))
     }
 }
 
 fun Project.lifecycle() {
     dependencies {
-        implementation(*Libs.bundle.lifecycle)
-        kapt(Libs.bundle.lifecycleKapt)
+        implementation(bundle("lifecycle"))
+        kapt(libs("lifecycleCompiler"))
     }
 }

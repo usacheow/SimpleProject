@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -7,11 +7,15 @@ compose()
 dagger()
 lifecycle()
 
+android {
+    namespace = "com.usacheow.coreui"
+}
+
 dependencies {
     api(projects.coreUiCompose)
     implementation(projects.coreCommon)
 
-    implementation(*Libs.bundle.splashscreen)
-    implementation(*Libs.bundle.biometric)
-    implementation(*Libs.bundle.navigation)
+    implementation(libs.splashscreen)
+    implementation(libs.bundles.navigation)
+    implementation(libs.bundles.biometric)
 }
