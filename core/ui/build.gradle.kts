@@ -17,5 +17,5 @@ dependencies {
 
     implementation(libs.splashscreen)
     implementation(libs.bundles.navigation)
-    implementation(libs.bundles.biometric)
+    implementation(libs.biometric)
 }

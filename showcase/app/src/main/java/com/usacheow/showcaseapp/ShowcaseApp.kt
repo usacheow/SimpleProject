@@ -19,8 +19,10 @@ import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.FadeTransition
-import com.usacheow.coredata.coreDatCoroutinesDiModule
+import com.usacheow.coredata.coreDataCoroutinesDiModule
+import com.usacheow.coredata.storage.preferences.PreferencesProvider
 import com.usacheow.coredata.storage.preferences.ThemeMode
+import com.usacheow.coredata.storage.preferences.TokenStorage
 import com.usacheow.coredata.storage.preferences.UserDataStorage
 import com.usacheow.coreuicompose.tools.SystemBarsIconsColor
 import com.usacheow.coreuitheme.compose.AppTheme
@@ -39,13 +41,16 @@ import com.usacheow.showcaseapp.catalog.TagListScreen
 import com.usacheow.showcaseapp.catalog.TypographyScreen
 import org.kodein.di.DI
 import org.kodein.di.bindSingleton
+import org.kodein.di.compose.withDI
 import org.kodein.di.instance
 
 class ShowcaseApp : Application() {
 
     val kodein = DI {
         bindSingleton<Context> { this@ShowcaseApp }
-        importOnce(coreDatCoroutinesDiModule)
+        bindSingleton { PreferencesProvider(instance()) }
+        bindSingleton { UserDataStorage(instance()) }
+        importOnce(coreDataCoroutinesDiModule)
     }
 
     override fun onCreate() {
@@ -73,8 +78,6 @@ class ShowcaseApp : Application() {
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class ShowcaseActivity : FragmentActivity() {
 
-    private val userDataStorage: UserDataStorage by (application as ShowcaseApp).kodein.instance()
-
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,18 +92,19 @@ class ShowcaseActivity : FragmentActivity() {
     @OptIn(ExperimentalAnimationApi::class)
     @Composable
     private fun Content() {
-        val mode = userDataStorage.themeModeFlow.collectAsState(initial = ThemeMode.System)
-        val isDarkTheme = when (mode.value) {
-            ThemeMode.System -> isSystemInDarkTheme()
-            ThemeMode.Dark -> true
-            ThemeMode.Light -> false
-        }
-        AppTheme(calculateWindowSizeClass(this), isDarkTheme = isDarkTheme) {
-            val demoScreen = rememberScreen(DemoScreens.Demo)
+        withDI((application as ShowcaseApp).kodein) {
+            val userDataStorage: UserDataStorage by (application as ShowcaseApp).kodein.instance()
+            val mode = userDataStorage.themeModeFlow.collectAsState(initial = ThemeMode.System)
+            val isDarkTheme = when (mode.value) {
+                ThemeMode.System -> isSystemInDarkTheme()
+                ThemeMode.Dark -> true
+                ThemeMode.Light -> false
+            }
+            AppTheme(calculateWindowSizeClass(this), isDarkTheme = isDarkTheme) {
+                val demoScreen = rememberScreen(DemoScreens.Demo)
 
-            SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)
-            Navigator(demoScreen) { navigator ->
-                FadeTransition(navigator)
+                SystemBarsIconsColor(needWhiteAllIcons = isDarkTheme)
+                Navigator(demoScreen)
             }
         }
     }

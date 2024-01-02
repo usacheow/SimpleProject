@@ -1,10 +1,14 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
 dagger()
 lifecycle()
+
+android {
+    namespace = "com.usacheow.showcaseutils"
+}
 
 dependencies {
     implementation(projects.coreCommon)
@@ -13,8 +17,8 @@ dependencies {
 
     implementation(projects.baseSources)
 
-    implementation(*Libs.bundle.preference)
-    implementation(*Libs.bundle.firebase)
-    implementation(*Libs.bundle.appUpdater)
-    implementation(*Libs.bundle.biometric)
+    implementation(libs.androidxPreference)
+    implementation(libs.bundles.firebase)
+    implementation(libs.appUpdater)
+    implementation(libs.biometric)
 }

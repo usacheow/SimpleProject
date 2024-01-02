@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.application)
+    id("com.android.application")
 }
 
 common()
@@ -8,10 +8,16 @@ dagger()
 lifecycle()
 
 android {
+    namespace = "com.usacheow.showcaseapp"
+
     defaultConfig {
         versionName = "8.8.8"
         versionCode = 888
         applicationId = "com.usacheow.simpleapp.uikit"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -29,5 +35,5 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.coreNavigation)
 
-    implementation(*Libs.bundle.splashscreen)
+    implementation(libs.splashscreen)
 }

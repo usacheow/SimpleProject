@@ -21,5 +21,5 @@ dependencies {
     implementation(libs.androidxDatastorePreference)
     implementation(libs.androidxPreference)
     implementation(libs.androidxSecurity)
-    implementation(libs.bundles.biometric)
+    implementation(libs.biometric)
 }

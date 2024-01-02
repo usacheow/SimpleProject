@@ -6,9 +6,11 @@ kotlinVersion = "1.9.21"
 kotlinSerializationVersion = "1.4.1"
 coroutinesVersion = "1.7.1"
 kotlinterVersion = "3.8.0"
+rulerVersion = "1.1.0"
 
 composeCompilerVersion = "1.5.7"
 composeVersion = "1.5.4"
+composeGlanceVersion = "1.0.0-alpha03"
 composeMaterialVersion = "1.1.2"
 splashVersion = "1.0.1"
 activityVersion = "1.4.0"
@@ -20,6 +22,11 @@ lifecycleVersion = "2.4.0"
 navigationVersion = "1.0.0-rc05"
 browserVersion = "1.4.0"
 windowVersion = "1.0.0"
+
+appUpdaterVersion = "1.8.1"
+billingVersion = "4.0.0"
+biometricVersion = "1.2.0-alpha04"
+pagingVersion = "3.1.0"
 
 diVersion = "7.19.0"
 
@@ -48,6 +55,7 @@ classpathKotlinGradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-
 classpathKotlinSerialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinVersion" }
 classpathCrashlyticsGradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "crashlyticsGradleVersion" }
 classpathKotlinter = { group = "org.jmailen.gradle", name = "kotlinter-gradle", version.ref = "kotlinterVersion" }
+classpathRuler = { group = "com.spotify.ruler", name = "ruler-gradle-plugin", version.ref = "rulerVersion" }
 
 kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlinVersion" }
 coroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
@@ -71,6 +79,7 @@ composeRuntime = { group = "androidx.compose.runtime", name = "runtime", version
 composeUi = { group = "androidx.compose.ui", name = "ui", version.ref = "composeVersion" }
 composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeVersion" }
 composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "composeVersion" }
+composeGlance = { group = "androidx.glance", name = "glance-appwidget", version.ref = "composeGlanceVersion" }
 composeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterialVersion" }
 composeMaterial3Window = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "composeMaterialVersion" }
 composeMaterialIcons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeVersion" }
@@ -102,6 +111,10 @@ voyagerKodein = { group = "cafe.adriel.voyager", name = "voyager-kodein", versio
 splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashVersion" }
 browser = { group = "androidx.browser", name = "browser", version.ref = "browserVersion" }
 window = { group = "androidx.window", name = "window", version.ref = "windowVersion" }
+appUpdater = { group = "com.google.android.play", name = "core-ktx", version.ref = "appUpdaterVersion" }
+billing = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billingVersion" }
+biometric = { group = "androidx.biometric", name = "biometric-ktx", version.ref = "biometricVersion" }
+paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingVersion" }
 
 androidxDatastorePreference = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastoreVersion" }
 androidxSecurity = { group = "androidx.security", name = "security-crypto", version.ref = "securityVersion" }

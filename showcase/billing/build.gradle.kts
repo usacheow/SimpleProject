@@ -1,17 +1,21 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
 dagger()
 lifecycle()
 
+android {
+    namespace = "com.usacheow.showcasebilling"
+}
+
 dependencies {
-    implementation(*Libs.bundle.billing)
+    implementation(libs.billing)
 
     implementation(projects.coreCommon)
     implementation(projects.coreData)
     implementation(projects.coreUi)
 
-    implementation(*Libs.bundle.firebase)
+    implementation(libs.bundles.firebase)
 }

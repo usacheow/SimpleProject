@@ -1,5 +1,5 @@
 plugins {
-    id(Libs.plugin.library)
+    id("com.android.library")
 }
 
 common()
@@ -7,10 +7,14 @@ compose()
 dagger()
 lifecycle()
 
+android {
+    namespace = "com.usacheow.featurewidget"
+}
+
 dependencies {
     implementation(projects.coreCommon)
     implementation(projects.coreNavigation)
 
-    implementation(*Libs.bundle.composeWidgetTheme)
-    implementation(*Libs.bundle.firebase)
+    implementation(libs.composeGlance)
+    implementation(libs.bundles.firebase)
 }
