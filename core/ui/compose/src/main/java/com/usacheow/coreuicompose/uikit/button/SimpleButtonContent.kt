@@ -84,18 +84,24 @@ private fun getContentHeight() = LocalTextStyle.current.lineHeight.value.dp + 3.
 private fun Preview() {
     PreviewAppTheme {
         Row {
-            SimpleButtonTonalL(
+            SimpleButton(
                 modifier = Modifier.padding(horizontal = 4.dp),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.tonal(),
                 onClick = {},
             ) { SimpleButtonContent("Simple button".textValue()) }
 
-            SimpleButtonTonalL(
+            SimpleButton(
                 modifier = Modifier.padding(horizontal = 4.dp),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.tonal(),
                 onClick = {},
             ) { SimpleButtonContent(null, iconLeft = AppTheme.specificIcons.add) }
 
-            SimpleButtonTonalL(
+            SimpleButton(
                 modifier = Modifier.padding(horizontal = 4.dp),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.tonal(),
                 onClick = {},
             ) { SimpleButtonContentLoader() }
         }

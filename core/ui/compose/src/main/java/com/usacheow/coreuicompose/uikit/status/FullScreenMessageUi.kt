@@ -30,9 +30,10 @@ import com.usacheow.coreuicompose.tools.get
 import com.usacheow.coreuicompose.tools.inset
 import com.usacheow.coreuicompose.tools.insetAll
 import com.usacheow.coreuicompose.tools.mockClick
+import com.usacheow.coreuicompose.uikit.button.SimpleButton
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonColors
 import com.usacheow.coreuicompose.uikit.button.SimpleButtonContent
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonPrimaryL
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSize
 import com.usacheow.coreuitheme.compose.AppTheme
 
 data class FullScreenMessage(
@@ -72,7 +73,7 @@ fun FullScreenMessageUi(
     Column(
         modifier = modifier
             .mockClick()
-            .background(AppTheme.specificColorScheme.background)
+            .background(AppTheme.specificColorScheme.background1)
             .fillMaxSize()
             .inset(insetAll())
             .padding(24.dp),
@@ -96,18 +97,22 @@ fun FullScreenMessageUi(
         )
         Spacer(modifier = Modifier.weight(1f))
         data.primaryButton?.let { button ->
-            SimpleButtonPrimaryL(
+            SimpleButton(
                 modifier = Modifier.fillMaxWidth(),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.primary(),
                 onClick = button.onClick,
             ) {
                 SimpleButtonContent(button.text)
             }
         }
         data.secondaryButton?.let { button ->
-            SimpleButtonTonalL(
+            SimpleButton(
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth(),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.tonal(),
                 onClick = button.onClick,
             ) {
                 SimpleButtonContent(button.text)
@@ -124,7 +129,7 @@ private fun Visuals(
     Box(
         modifier = Modifier
             .background(
-                color = AppTheme.specificColorScheme.surfaceVariant,
+                color = AppTheme.specificColorScheme.surface2,
                 shape = RoundedCornerShape(40.dp),
             )
             .size(128.dp),

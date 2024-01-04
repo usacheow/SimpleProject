@@ -27,7 +27,7 @@ object SimplePopupConfig {
     fun shape() = SimpleTextFieldConfig.shape()
 
     @Composable
-    fun backgroundColor() = AppTheme.specificColorScheme.surface
+    fun backgroundColor() = AppTheme.specificColorScheme.surface1
 }
 
 @Composable

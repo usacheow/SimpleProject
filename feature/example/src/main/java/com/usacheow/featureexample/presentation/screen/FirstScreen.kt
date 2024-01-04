@@ -19,7 +19,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.usacheow.corecommon.container.textValue
 import com.usacheow.corenavigation.base.rememberNavigator
-import com.usacheow.coreuicompose.uikit.button.SimpleButtonTonalL
+import com.usacheow.coreuicompose.uikit.button.SimpleButton
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonColors
+import com.usacheow.coreuicompose.uikit.button.SimpleButtonSize
 import com.usacheow.coreuicompose.uikit.duplicate.SimpleTopAppBar
 import com.usacheow.featureexample.presentation.ScreenNavigator
 import com.usacheow.featureexample.presentation.viewmodel.FirstViewModel
@@ -60,8 +62,10 @@ private fun FirstScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            SimpleButtonTonalL(
+            SimpleButton(
                 modifier = Modifier.fillMaxWidth(),
+                size = SimpleButtonSize.l(),
+                colors = SimpleButtonColors.tonal(),
                 onClick = { onNextClick("42") }) {
                 Text("Second screen")
             }

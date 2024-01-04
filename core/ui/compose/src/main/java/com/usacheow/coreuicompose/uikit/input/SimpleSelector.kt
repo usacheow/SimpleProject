@@ -72,7 +72,7 @@ internal fun DefaultSelectorItem(
     modifier: Modifier = Modifier,
     value: TextValue,
     icon: IconValue? = null,
-    color: Color = AppTheme.specificColorScheme.onSurfaceVariant,
+    color: Color = AppTheme.specificColorScheme.onSurface2,
 ) {
     Row(
         modifier = modifier,

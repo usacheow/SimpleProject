@@ -48,8 +48,8 @@ object MessageBannerConfig {
 
     @Composable
     fun colors() = CardDefaults.cardColors(
-        containerColor = AppTheme.specificColorScheme.surfaceVariant,
-        contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+        containerColor = AppTheme.specificColorScheme.surface2,
+        contentColor = AppTheme.specificColorScheme.onSurface2,
     )
 
     @Composable

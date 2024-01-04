@@ -109,7 +109,7 @@ private fun Data(
             is HeaderTileState.Action.Text -> Text(
                 text = data.action.text.get(),
                 maxLines = 1,
-                style = AppTheme.specificTypography.labelMedium,
+                style = AppTheme.specificTypography.labelLarge,
                 color = HeaderTileConfig.actionColor(),
                 modifier = Modifier.defaultTileRipple(onClick = data.action.onClick),
             )

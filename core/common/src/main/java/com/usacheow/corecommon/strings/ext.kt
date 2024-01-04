@@ -16,11 +16,11 @@ enum class SupportedLanguageKey {
     Ru, En;
     companion object {
         val Default = En
-        fun get(name: String) = PluralKey.entries.firstOrNull { it.name.equals(name, ignoreCase = true) }
+        fun get(name: String) = entries.firstOrNull { it.name.equals(name, ignoreCase = true) }
     }
 }
 
-fun Locale.toSupportedLanguageKey() = SupportedLanguageKey.get(country) ?: SupportedLanguageKey.Default
+fun Locale.toSupportedLanguageKey() = SupportedLanguageKey.get(language) ?: SupportedLanguageKey.Default
 
 internal fun key(stringKey: StringKey) = stringKey.name
 internal fun key(stringKey: StringKey, pluralKey: PluralKey) = "${stringKey.name}_${pluralKey.name}"

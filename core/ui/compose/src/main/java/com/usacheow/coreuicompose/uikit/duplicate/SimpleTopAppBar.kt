@@ -19,47 +19,38 @@ object SimpleTopAppBarConfig {
 
     @Composable
     fun surfaceColors() = SimpleTopAppBarColors(
-        containerColor = AppTheme.specificColorScheme.surface,
-        scrolledContainerColor = AppTheme.specificColorScheme.surfaceVariant,
-        navigationIconContentColor = AppTheme.specificColorScheme.onSurface,
-        titleContentColor = AppTheme.specificColorScheme.onSurface,
-        actionIconContentColor = AppTheme.specificColorScheme.onSurface,
+        containerColor = AppTheme.specificColorScheme.surface1,
+        scrolledContainerColor = AppTheme.specificColorScheme.surface2,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurface1,
+        titleContentColor = AppTheme.specificColorScheme.onSurface1,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurface1,
     )
 
     @Composable
     fun transparentSurfaceColors() = SimpleTopAppBarColors(
-        containerColor = AppTheme.specificColorScheme.surface.copy(alpha = ContainerColorAlpha),
-        scrolledContainerColor = AppTheme.specificColorScheme.surface,
-        navigationIconContentColor = AppTheme.specificColorScheme.onSurface,
-        titleContentColor = AppTheme.specificColorScheme.onSurface,
-        actionIconContentColor = AppTheme.specificColorScheme.onSurface,
+        containerColor = AppTheme.specificColorScheme.surface1.copy(alpha = ContainerColorAlpha),
+        scrolledContainerColor = AppTheme.specificColorScheme.surface1,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurface1,
+        titleContentColor = AppTheme.specificColorScheme.onSurface1,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurface1,
     )
 
     @Composable
     fun surfaceVariantColors() = SimpleTopAppBarColors(
-        containerColor = AppTheme.specificColorScheme.surfaceVariant,
-        scrolledContainerColor = AppTheme.specificColorScheme.surfaceVariant,
-        navigationIconContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
-        titleContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
-        actionIconContentColor = AppTheme.specificColorScheme.onSurfaceVariant,
-    )
-
-    @Composable
-    fun primaryContainerColors() = SimpleTopAppBarColors(
-        containerColor = AppTheme.specificColorScheme.primaryContainer,
-        scrolledContainerColor = AppTheme.specificColorScheme.primaryContainer,
-        navigationIconContentColor = AppTheme.specificColorScheme.onPrimaryContainer,
-        titleContentColor = AppTheme.specificColorScheme.onPrimaryContainer,
-        actionIconContentColor = AppTheme.specificColorScheme.onPrimaryContainer,
+        containerColor = AppTheme.specificColorScheme.surface2,
+        scrolledContainerColor = AppTheme.specificColorScheme.surface2,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurface2,
+        titleContentColor = AppTheme.specificColorScheme.onSurface2,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurface2,
     )
 
     @Composable
     fun transparentColors() = SimpleTopAppBarColors(
         containerColor = AppTheme.specificColorScheme.transparent,
         scrolledContainerColor = AppTheme.specificColorScheme.transparent,
-        navigationIconContentColor = AppTheme.specificColorScheme.onSurface,
-        titleContentColor = AppTheme.specificColorScheme.onSurface,
-        actionIconContentColor = AppTheme.specificColorScheme.onSurface,
+        navigationIconContentColor = AppTheme.specificColorScheme.onSurface1,
+        titleContentColor = AppTheme.specificColorScheme.onSurface1,
+        actionIconContentColor = AppTheme.specificColorScheme.onSurface1,
     )
 }
 

@@ -76,10 +76,10 @@ object BadgeTileConfig {
     fun valueStyle() = AppTheme.specificTypography.bodyLarge
 
     @Composable
-    fun defaultContentColor() = AppTheme.specificColorScheme.onSurface
+    fun defaultContentColor() = AppTheme.specificColorScheme.onSurface1
 
     @Composable
-    fun defaultContainerColor() = AppTheme.specificColorScheme.surface
+    fun defaultContainerColor() = AppTheme.specificColorScheme.surface1
 }
 
 @Composable

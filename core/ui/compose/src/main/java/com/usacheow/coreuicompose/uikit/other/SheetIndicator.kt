@@ -16,6 +16,6 @@ fun SheetIndicator() {
         modifier = Modifier
             .width(32.dp)
             .height(4.dp)
-            .background(AppTheme.specificColorScheme.onSurface, RoundedCornerShape(2.dp)),
+            .background(AppTheme.specificColorScheme.onSurface1, RoundedCornerShape(2.dp)),
     )
 }

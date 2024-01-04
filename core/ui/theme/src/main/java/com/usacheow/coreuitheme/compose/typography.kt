@@ -11,40 +11,19 @@ import androidx.compose.ui.unit.sp
 import com.usacheow.coreuitheme.R
 
 internal val LocalSpecificTypography = staticCompositionLocalOf { DefaultSpecificTypography }
-internal val DefaultTypography by lazy { DefaultSpecificTypography.toTypography() }
 
-internal val FontFamilyW200 = FontFamily(
+internal val DefaultFontFamily = FontFamily(
     listOf(
         Font(R.font.light, weight = FontWeight.W200, style = FontStyle.Normal),
         Font(R.font.light_italic, weight = FontWeight.W200, style = FontStyle.Italic),
-    )
-)
-internal val FontFamilyW400 = FontFamily(
-    listOf(
         Font(R.font.regular, weight = FontWeight.W400, style = FontStyle.Normal),
         Font(R.font.regular_italic, weight = FontWeight.W400, style = FontStyle.Italic),
-    )
-)
-internal val FontFamilyW500 = FontFamily(
-    listOf(
         Font(R.font.medium, weight = FontWeight.W500, style = FontStyle.Normal),
         Font(R.font.medium_italic, weight = FontWeight.W500, style = FontStyle.Italic),
-    )
-)
-internal val FontFamilyW600 = FontFamily(
-    listOf(
         Font(R.font.medium, weight = FontWeight.W600, style = FontStyle.Normal),
         Font(R.font.medium_italic, weight = FontWeight.W600, style = FontStyle.Italic),
-    )
-)
-internal val FontFamilyW700 = FontFamily(
-    listOf(
         Font(R.font.bold, weight = FontWeight.W700, style = FontStyle.Normal),
         Font(R.font.bold_italic, weight = FontWeight.W700, style = FontStyle.Italic),
-    )
-)
-internal val FontFamilyW900 = FontFamily(
-    listOf(
         Font(R.font.bold, weight = FontWeight.W900, style = FontStyle.Normal),
         Font(R.font.bold_italic, weight = FontWeight.W900, style = FontStyle.Italic),
     )
@@ -52,92 +31,75 @@ internal val FontFamilyW900 = FontFamily(
 
 internal val DefaultSpecificTypography = SpecificTypography(
     displayLarge = TextStyle(
-        fontFamily = FontFamilyW900,
-        fontSize = 52.sp,
-        letterSpacing = 0.em,
-    ),
-    displayMedium = TextStyle(
-        fontFamily = FontFamilyW900,
-        fontSize = 44.sp,
-        letterSpacing = 0.em,
-    ),
-    displaySmall = TextStyle(
-        fontFamily = FontFamilyW900,
-        fontSize = 36.sp,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W700,
+        fontSize = 34.sp,
+        lineHeight = 36.sp,
         letterSpacing = 0.em,
     ),
 
     headlineLarge = TextStyle(
-        fontFamily = FontFamilyW700,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W700,
         fontSize = 32.sp,
-        lineHeight = 40.sp,
-        letterSpacing = 0.em,
-    ),
-    headlineMedium = TextStyle(
-        fontFamily = FontFamilyW700,
-        fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.em,
     ),
-    headlineSmall = TextStyle(
-        fontFamily = FontFamilyW700,
-        fontSize = 24.sp,
+    headlineMedium = TextStyle(
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W700,
+        fontSize = 28.sp,
         lineHeight = 30.sp,
+        letterSpacing = 0.em,
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W700,
+        fontSize = 24.sp,
+        lineHeight = 28.sp,
         letterSpacing = 0.em,
     ),
 
     titleLarge = TextStyle(
-        fontFamily = FontFamilyW600,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W600,
         fontSize = 22.sp,
-        lineHeight = 28.sp,
+        lineHeight = 24.sp,
         letterSpacing = 0.em,
     ),
     titleMedium = TextStyle(
-        fontFamily = FontFamilyW600,
-        fontSize = 16.sp,
-        lineHeight = 18.sp,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W600,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
         letterSpacing = 0.009.em,
     ),
     titleSmall = TextStyle(
-        fontFamily = FontFamilyW500,
-        fontSize = 14.sp,
-        lineHeight = 16.sp,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W600,
+        fontSize = 18.sp,
+        lineHeight = 20.sp,
         letterSpacing = 0.007.em,
     ),
 
     bodyLarge = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W400,
         fontSize = 16.sp,
         lineHeight = 18.sp,
         letterSpacing = 0.009.em,
     ),
     bodyMedium = TextStyle(
-        fontFamily = FontFamilyW400,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W400,
         fontSize = 14.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.0178.em,
     ),
-    bodySmall = TextStyle(
-        fontFamily = FontFamilyW400,
-        fontSize = 12.sp,
-        lineHeight = 14.sp,
-        letterSpacing = 0.03.em,
-    ),
 
     labelLarge = TextStyle(
-        fontFamily = FontFamilyW500,
-        fontSize = 14.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.007.em,
-    ),
-    labelMedium = TextStyle(
-        fontFamily = FontFamilyW400,
-        fontSize = 12.sp,
-        lineHeight = 14.sp,
-        letterSpacing = 0.0416.em,
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamilyW200,
+        fontFamily = DefaultFontFamily,
+        fontWeight = FontWeight.W400,
         fontSize = 12.sp,
         lineHeight = 14.sp,
         letterSpacing = 0.0416.em,
@@ -146,8 +108,6 @@ internal val DefaultSpecificTypography = SpecificTypography(
 
 data class SpecificTypography(
     val displayLarge: TextStyle,
-    val displayMedium: TextStyle,
-    val displaySmall: TextStyle,
     val headlineLarge: TextStyle,
     val headlineMedium: TextStyle,
     val headlineSmall: TextStyle,
@@ -155,9 +115,9 @@ data class SpecificTypography(
     val titleMedium: TextStyle,
     val titleSmall: TextStyle,
     val bodyLarge: TextStyle,
+    val bodyLargeBold: TextStyle = bodyLarge.copy(fontWeight = FontWeight.W600),
     val bodyMedium: TextStyle,
-    val bodySmall: TextStyle,
+    val bodyMediumBold: TextStyle = bodyMedium.copy(fontWeight = FontWeight.W600),
     val labelLarge: TextStyle,
-    val labelMedium: TextStyle,
-    val labelSmall: TextStyle,
+    val labelLargeBold: TextStyle = labelLarge.copy(fontWeight = FontWeight.W600),
 )

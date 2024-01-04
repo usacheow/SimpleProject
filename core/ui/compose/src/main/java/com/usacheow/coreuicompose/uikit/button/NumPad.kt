@@ -186,7 +186,7 @@ private fun ForgetButton(onClick: () -> Unit) {
     Box(contentAlignment = Alignment.Center) {
         Text(
             text = LocalStringHolder.current(StringKey.NumPadForget),
-            style = AppTheme.specificTypography.bodySmall,
+            style = AppTheme.specificTypography.bodyMedium,
             textAlign = TextAlign.Center,
             color = AppTheme.specificColorScheme.symbolSecondary,
             modifier = Modifier

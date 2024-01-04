@@ -14,11 +14,11 @@ object SpecificValues {
 
     val stroke_card = 1.dp
 
-    val radius_extra_small = 4.dp
-    val radius_small = 8.dp
-    val radius_medium = 16.dp
-    val radius_large = 20.dp
-    val radius_extra_large = 24.dp
+    val radius_extra_small = 8.dp
+    val radius_small = 12.dp
+    val radius_medium = 20.dp
+    val radius_large = 28.dp
+    val radius_extra_large = 32.dp
 
     val radius_0 = 0.dp
     val radius_2 = 2.dp

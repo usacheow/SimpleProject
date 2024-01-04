@@ -32,7 +32,7 @@ fun ShimmerTile(
 ) {
     Row(
         modifier = modifier
-            .background(AppTheme.specificColorScheme.background)
+            .background(AppTheme.specificColorScheme.background1)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(AppTheme.specificValues.default_padding),
     ) {

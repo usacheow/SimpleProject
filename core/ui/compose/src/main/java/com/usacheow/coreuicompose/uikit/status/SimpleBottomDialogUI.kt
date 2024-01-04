@@ -27,7 +27,7 @@ fun SimpleBottomDialogUI(
 ) {
     Box(
         modifier = Modifier
-            .background(AppTheme.specificColorScheme.surface)
+            .background(AppTheme.specificColorScheme.surface1)
             .inset(insetAllExcludeTop()),
     ) {
         LazyColumn(

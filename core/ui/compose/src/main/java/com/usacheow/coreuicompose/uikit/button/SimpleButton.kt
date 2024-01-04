@@ -34,328 +34,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
-@Composable
-fun SimpleButtonPrimaryS(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.s(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.primary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonPrimaryM(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.m(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.primary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonPrimaryL(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.l(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.primary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonSecondaryS(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.s(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.secondary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonSecondaryM(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.m(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.secondary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonSecondaryL(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.l(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.secondary(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonTonalS(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.s(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.tonal(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonTonalM(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.m(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.tonal(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonTonalL(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.l(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.tonal(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonOutlineS(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.s(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.outline(),
-        border = if (enabled) SimpleButtonConfig.borderOutline() else null,
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonOutlineM(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.m(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.outline(),
-        border = if (enabled) SimpleButtonConfig.borderOutline() else null,
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonOutlineL(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.l(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.outline(),
-        border = if (enabled) SimpleButtonConfig.borderOutline() else null,
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonInlineS(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.s(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.inline(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonInlineM(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.m(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.inline(),
-        content = content,
-    )
-}
-
-@Composable
-fun SimpleButtonInlineL(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onLongClick: (() -> Unit)? = null,
-    enabled: Boolean = true,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    SimpleButton(
-        modifier = modifier,
-        size = SimpleButtonSize.l(),
-        onClick = onClick,
-        onLongClick = onLongClick,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = SimpleButtonColors.inline(),
-        content = content,
-    )
-}
-
 object SimpleButtonConfig {
 
     @Composable
-    fun borderOutline() = BorderStroke(width = 1.dp, color = AppTheme.specificColorScheme.outline)
+    fun borderOutline() = BorderStroke(width = 1.dp, color = AppTheme.specificColorScheme.border)
 }
 
 data class SimpleButtonSize(
@@ -372,7 +54,7 @@ data class SimpleButtonSize(
             heightModifier = Modifier.sizeIn(minWidth = 32.dp, minHeight = 32.dp),
             contentPadding = PaddingValues(10.dp),
             shape = CircleShape,
-            textStyle = AppTheme.specificTypography.labelMedium,
+            textStyle = AppTheme.specificTypography.labelLarge,
         )
 
         @Composable
@@ -380,7 +62,7 @@ data class SimpleButtonSize(
             heightModifier = Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp),
             contentPadding = PaddingValues(13.dp),
             shape = AppTheme.shapes.medium,
-            textStyle = AppTheme.specificTypography.labelMedium,
+            textStyle = AppTheme.specificTypography.labelLarge,
         )
 
         @Composable
@@ -388,7 +70,7 @@ data class SimpleButtonSize(
             heightModifier = Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp),
             contentPadding = PaddingValues(17.dp),
             shape = AppTheme.shapes.medium,
-            textStyle = AppTheme.specificTypography.labelLarge,
+            textStyle = AppTheme.specificTypography.bodyMedium,
         )
     }
 }
@@ -407,8 +89,8 @@ data class SimpleButtonColors(
         fun default(
             containerColor: Color,
             contentColor: Color,
-            disabledContainerColor: Color = AppTheme.specificColorScheme.onSurface.copy(alpha = 0.12f),
-            disabledContentColor: Color = AppTheme.specificColorScheme.onSurface.copy(alpha = 0.38f),
+            disabledContainerColor: Color = AppTheme.specificColorScheme.onSurface1.copy(alpha = 0.12f),
+            disabledContentColor: Color = AppTheme.specificColorScheme.onSurface1.copy(alpha = 0.38f),
         ) = SimpleButtonColors(
             containerColor = containerColor,
             contentColor = contentColor,
@@ -424,14 +106,14 @@ data class SimpleButtonColors(
 
         @Composable
         fun secondary() = default(
-            containerColor = AppTheme.specificColorScheme.primaryContainer,
-            contentColor = AppTheme.specificColorScheme.onPrimaryContainer,
+            containerColor = AppTheme.specificColorScheme.secondary,
+            contentColor = AppTheme.specificColorScheme.onSecondary,
         )
 
         @Composable
         fun tonal() = default(
-            containerColor = AppTheme.specificColorScheme.surfaceVariant,
-            contentColor = AppTheme.specificColorScheme.onSurfaceVariant,
+            containerColor = AppTheme.specificColorScheme.surface2,
+            contentColor = AppTheme.specificColorScheme.onSurface2,
         )
 
         @Composable
@@ -445,13 +127,13 @@ data class SimpleButtonColors(
             containerColor = Color.Transparent,
             contentColor = AppTheme.specificColorScheme.primary,
             disabledContainerColor = Color.Transparent,
-            disabledContentColor = AppTheme.specificColorScheme.primaryContainer,
+            disabledContentColor = AppTheme.specificColorScheme.symbolSecondary,
         )
 
         @Composable
         fun white() = default(
-            containerColor = AppTheme.specificColorScheme.surface,
-            contentColor = AppTheme.specificColorScheme.onSurface,
+            containerColor = AppTheme.specificColorScheme.surface1,
+            contentColor = AppTheme.specificColorScheme.onSurface1,
         )
     }
 
@@ -464,14 +146,14 @@ data class SimpleButtonColors(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-private fun SimpleButton(
-    modifier: Modifier,
+fun SimpleButton(
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
     onLongClick: (() -> Unit)? = null,
     size: SimpleButtonSize,
     colors: SimpleButtonColors,
-    enabled: Boolean,
-    interactionSource: MutableInteractionSource,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     border: BorderStroke? = null,
     content: @Composable RowScope.() -> Unit,
 ) {

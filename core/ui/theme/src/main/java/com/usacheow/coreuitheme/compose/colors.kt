@@ -8,38 +8,40 @@ internal val DarkColorScheme by lazy { DarkSpecificColorScheme.toColorScheme() }
 internal val LightColorScheme by lazy { LightSpecificColorScheme.toColorScheme() }
 
 internal val LightSpecificColorScheme = SpecificColorScheme(
-    primary = Color(0xFF507844),
+    primary = Color(0xFF0d6efd),
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFF9ABA90),
-    onPrimaryContainer = Color(0xFF253022),
-    primaryInverse = Color(0xFF8FD17D),
+    primaryInverse = Color(0xFF0d6efd),
 
-    secondary = Color(0xFFAE4F2F),
-    onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFC3B6B2),
-    onSecondaryContainer = Color(0xFF2B1D19),
+    secondary = Color(0xFFd7eafc),
+    onSecondary = Color(0xFF0d6efd),
 
-    tertiary = Color(0xFFDBD655),
+    tertiary = Color(0xFFFF9800),
     onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFF4F3D1),
-    onTertiaryContainer = Color(0xFF312911),
+
+    light1 = Color(0xFFf4f4f4),
+    onLight1 = Color(0xFF4f4f4f),
+
+    light2 = Color(0xFFfbfbfb),
+    onLight2 = Color(0xFF4f4f4f),
 
     error = Color(0xFFB3261E),
     onError = Color(0xFFFFFFFF),
-    errorContainer = Color(0xFFF9DEDC),
-    onErrorContainer = Color(0xFF410E0B),
 
-    outline = Color(0xFFCECCCC),
-    outlineVariant = Color(0xFFCECCCC),
+    warning = Color(0xFFa26706),
+    onWarning = Color(0xFFFFFFFF),
+
+    success = Color(0xFF07ae69),
+    onSuccess = Color(0xFFFFFFFF),
+
+    border = Color(0xFFCECCCC),
     shimmer = Color(0xFFF4F4F4),
     scrim = Color(0xB3FFFFFF),
+    shadow = Color(0x1ac3c3c3),
 
-    background = Color(0xFFFFFFFF),
-    onBackground = Color(0xFF1C1B1F),
-    surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF1C1B1F),
-    surfaceVariant = Color(0xFFEEEEEE),
-    onSurfaceVariant = Color(0xFF454F4B),
+    background1 = Color(0xFFFFFFFF),
+    background2 = Color(0xFFfbfbfb),
+    surface1 = Color(0xFFfbfbfb),
+    surface2 = Color(0xFFFFFFFF),
     surfaceInverse = Color(0xFF303331),
     onSurfaceInverse = Color(0xFFEFF4F1),
 
@@ -52,38 +54,40 @@ internal val LightSpecificColorScheme = SpecificColorScheme(
 )
 
 internal val DarkSpecificColorScheme = SpecificColorScheme(
-    primary = Color(0xFF8FD17D),
-    onPrimary = Color(0xFF3B721E),
-    primaryContainer = Color(0xFF253022),
-    onPrimaryContainer = Color(0xFF9ABA90),
-    primaryInverse = Color(0xFF507844),
+    primary = Color(0xFF0d6efd),
+    onPrimary = Color(0xFFFFFFFF),
+    primaryInverse = Color(0xFF0d6efd),
 
-    secondary = Color(0xFF9C4D32),
-    onSecondary = Color(0xFF572818),
-    secondaryContainer = Color(0xFF4C332C),
-    onSecondaryContainer = Color(0xFFC3B6B2),
+    secondary = Color(0xFF032a65),
+    onSecondary = Color(0xFFFFFFFF),
 
-    tertiary = Color(0xFF656339),
-    onTertiary = Color(0xFFD1CE77),
-    tertiaryContainer = Color(0xFF4C401B),
-    onTertiaryContainer = Color(0xFFF4F3D1),
+    tertiary = Color(0xFFFF9800),
+    onTertiary = Color(0xFFFFFFFF),
 
-    error = Color(0xFFF2B8B5),
-    onError = Color(0xFF601410),
-    errorContainer = Color(0xFF8C1D18),
-    onErrorContainer = Color(0xFFF2B8B5),
+    light1 = Color(0xFF151515),
+    onLight1 = Color(0xFFefefef),
 
-    outline = Color(0xFF9E9E9E),
-    outlineVariant = Color(0xFF9E9E9E),
+    light2 = Color(0xFF232323),
+    onLight2 = Color(0xFFfbfbfb),
+
+    error = Color(0xFF601410),
+    onError = Color(0xFFFFFFFF),
+
+    warning = Color(0xFFa26706),
+    onWarning = Color(0xFFFFFFFF),
+
+    success = Color(0xFF07ae69),
+    onSuccess = Color(0xFFFFFFFF),
+
+    border = Color(0xFF9E9E9E),
     shimmer = Color(0xFF55565A),
     scrim = Color(0xB3000000),
+    shadow = Color(0x1a000000),
 
-    background = Color(0xFF000000),
-    onBackground = Color(0xFFFFFFFF),
-    surface = Color(0xFF000000),
-    onSurface = Color(0xFFFFFFFF),
-    surfaceVariant = Color(0xFF454F49),
-    onSurfaceVariant = Color(0xFFD2D3D2),
+    background1 = Color(0xFF0f0f0f),
+    background2 = Color(0xFF0f0f0f),
+    surface1 = Color(0xFF0c0c0c),
+    surface2 = Color(0xFF000000),
     surfaceInverse = Color(0xFFEAEAEA),
     onSurfaceInverse = Color(0xFF303331),
 
@@ -98,40 +102,33 @@ internal val DarkSpecificColorScheme = SpecificColorScheme(
 data class SpecificColorScheme(
     val primary: Color,
     val onPrimary: Color,
-    val primaryContainer: Color,
-    val onPrimaryContainer: Color,
     val primaryInverse: Color,
 
     val secondary: Color,
     val onSecondary: Color,
-    val secondaryContainer: Color,
-    val onSecondaryContainer: Color,
 
     val tertiary: Color,
     val onTertiary: Color,
-    val tertiaryContainer: Color,
-    val onTertiaryContainer: Color,
+
+    val light1: Color,
+    val onLight1: Color,
+
+    val light2: Color,
+    val onLight2: Color,
 
     val error: Color,
     val onError: Color,
-    val errorContainer: Color,
-    val onErrorContainer: Color,
 
-    val outline: Color,
-    val outlineVariant: Color,
+    val warning: Color,
+    val onWarning: Color,
+
+    val success: Color,
+    val onSuccess: Color,
+
+    val border: Color,
     val shimmer: Color,
     val scrim: Color,
-
-    val background: Color,
-    val onBackground: Color,
-
-    val surface: Color,
-    val onSurface: Color,
-    val surfaceVariant: Color,
-    val onSurfaceVariant: Color,
-    val surfaceInverse: Color,
-    val onSurfaceInverse: Color,
-    val surfaceTint: Color = primary,
+    val shadow: Color,
 
     val symbolPrimary: Color,
     val symbolPrimaryInverse: Color,
@@ -139,6 +136,18 @@ data class SpecificColorScheme(
     val symbolSecondaryInverse: Color,
     val symbolTertiary: Color,
     val symbolTertiaryInverse: Color,
+
+    val background1: Color,
+    val onBackground1: Color = symbolPrimary,
+    val background2: Color,
+    val onBackground2: Color = symbolPrimary,
+
+    val surface1: Color,
+    val onSurface1: Color = symbolPrimary,
+    val surface2: Color,
+    val onSurface2: Color = symbolPrimary,
+    val surfaceInverse: Color,
+    val onSurfaceInverse: Color,
 
     val white_10: Color = Color(0x33FFFFFF),
     val white_20: Color = Color(0x33FFFFFF),

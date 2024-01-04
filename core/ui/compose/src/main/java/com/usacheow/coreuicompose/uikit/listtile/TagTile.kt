@@ -49,14 +49,14 @@ object TagTileDefaults {
 
     @Composable
     fun selectedColor() = TagTileState.DataColor(
-        background = AppTheme.specificColorScheme.tertiaryContainer,
-        content = AppTheme.specificColorScheme.onTertiaryContainer,
+        background = AppTheme.specificColorScheme.tertiary,
+        content = AppTheme.specificColorScheme.onTertiary,
     )
 
     @Composable
     fun unselectedColor() = TagTileState.DataColor(
-        background = AppTheme.specificColorScheme.surfaceVariant,
-        content = AppTheme.specificColorScheme.onSurfaceVariant,
+        background = AppTheme.specificColorScheme.surface2,
+        content = AppTheme.specificColorScheme.onSurface2,
     )
 
     @Composable

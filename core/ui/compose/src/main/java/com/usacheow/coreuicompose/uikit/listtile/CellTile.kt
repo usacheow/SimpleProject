@@ -324,13 +324,13 @@ private fun LeftPart(data: CellTileState.LeftPart?) {
         is CellTileState.LeftPart.GreyIcon -> LeftIcon(
             icon = data.icon,
             builder = data.builder,
-            bgModifier = Modifier.background(AppTheme.specificColorScheme.surfaceVariant, CircleShape),
+            bgModifier = Modifier.background(AppTheme.specificColorScheme.surface2, CircleShape),
         )
         is CellTileState.LeftPart.GreyColoredIcon -> LeftIcon(
             icon = data.icon,
             builder = data.builder,
-            tint = AppTheme.specificColorScheme.onSurfaceVariant,
-            bgModifier = Modifier.background(AppTheme.specificColorScheme.surfaceVariant, CircleShape),
+            tint = AppTheme.specificColorScheme.onSurface2,
+            bgModifier = Modifier.background(AppTheme.specificColorScheme.surface2, CircleShape),
         )
         is CellTileState.LeftPart.Logo -> Image(
             painter = data.source.get(data.builder),
@@ -435,7 +435,7 @@ private fun RowScope.RightPart(data: CellTileState.RightPart?) {
     when (data) {
         is CellTileState.RightPart.ActionIcon -> Icon(
             painter = data.source.get(),
-            tint = AppTheme.specificColorScheme.onSurfaceVariant,
+            tint = AppTheme.specificColorScheme.onSurface2,
             contentDescription = null,
             modifier = Modifier
                 .size(CellTileConfig.ActionIconSize)
