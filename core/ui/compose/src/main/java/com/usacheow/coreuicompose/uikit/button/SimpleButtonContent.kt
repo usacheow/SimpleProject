@@ -42,7 +42,7 @@ fun SimpleButtonContent(
             painter = it,
             contentDescription = "Button icon",
             tint = LocalContentColor.current,
-            modifier = Modifier.size(getContentHeight()),
+            modifier = Modifier.size(LocalIconSize.current),
         )
     }
     text?.get()?.let {
@@ -50,9 +50,7 @@ fun SimpleButtonContent(
             text = it,
             color = LocalContentColor.current,
             style = LocalTextStyle.current,
-            modifier = Modifier
-                .padding(start = textPaddingStart, end = textPaddingEnd)
-                .height(getContentHeight()),
+            modifier = Modifier.padding(start = textPaddingStart, end = textPaddingEnd),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
@@ -62,7 +60,7 @@ fun SimpleButtonContent(
             painter = it,
             contentDescription = "Button icon",
             tint = LocalContentColor.current,
-            modifier = Modifier.size(getContentHeight()),
+            modifier = Modifier.size(LocalIconSize.current),
         )
     }
 }
@@ -76,7 +74,7 @@ fun SimpleButtonContentLoader() {
 }
 
 @Composable
-private fun getContentHeight() = LocalTextStyle.current.lineHeight.value.dp + 3.5.dp
+private fun getContentHeight() = LocalTextStyle.current.lineHeight.value.dp + 4.dp
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)

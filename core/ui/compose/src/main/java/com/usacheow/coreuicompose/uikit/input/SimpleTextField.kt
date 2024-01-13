@@ -3,9 +3,9 @@ package com.usacheow.coreuicompose.uikit.input
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -17,7 +17,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 object SimpleTextFieldConfig {
 
     val MinWidth = TextFieldDefaults.MinWidth
@@ -27,10 +26,13 @@ object SimpleTextFieldConfig {
     fun shape() = AppTheme.shapes.medium
 
     @Composable
-    fun colors() = TextFieldDefaults.outlinedTextFieldColors()
+    fun colors() = OutlinedTextFieldDefaults.colors(
+        unfocusedBorderColor = AppTheme.specificColorScheme.surface2,
+        focusedContainerColor = AppTheme.specificColorScheme.surface2,
+        unfocusedContainerColor = AppTheme.specificColorScheme.surface2,
+    )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimpleTextField(
     value: String,

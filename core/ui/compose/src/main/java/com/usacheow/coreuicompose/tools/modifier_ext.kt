@@ -34,7 +34,7 @@ fun Modifier.addIf(
 ) = composed { if (needAdd) this.action() else this }
 
 fun Modifier.defaultBorder(shape: Shape, width: Dp = .5f.dp) = composed {
-    border(
+    this.border(
         width = width,
         color = AppTheme.specificColorScheme.border,
         shape = shape,
@@ -44,7 +44,7 @@ fun Modifier.defaultBorder(shape: Shape, width: Dp = .5f.dp) = composed {
 fun Modifier.defaultPlaceholder(
     shape: Shape = CircleShape,
 ) = composed {
-    placeholder(
+    this.placeholder(
         visible = true,
         shape = shape,
         color = AppTheme.specificColorScheme.shimmer,

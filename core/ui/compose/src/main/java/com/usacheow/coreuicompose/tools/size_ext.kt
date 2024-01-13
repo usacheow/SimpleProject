@@ -1,8 +1,13 @@
 package com.usacheow.coreuicompose.tools
 
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
@@ -25,3 +30,9 @@ fun IntOffset.add(density: Density, x: Dp = 0.dp, y: Dp = 0.dp) = IntOffset(
     x = this.x + with(density) { x.toPx().toInt() },
     y = this.y + with(density) { y.toPx().toInt() },
 )
+
+@Composable
+fun getScreenHeight(): Dp {
+    val insetsPadding = WindowInsets.safeDrawing.asPaddingValues()
+    return LocalConfiguration.current.screenHeightDp.dp + insetsPadding.calculateTopPadding() + insetsPadding.calculateBottomPadding()
+}

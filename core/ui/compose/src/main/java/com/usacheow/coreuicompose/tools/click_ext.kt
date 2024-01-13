@@ -2,6 +2,7 @@ package com.usacheow.coreuicompose.tools
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
 import com.usacheow.coreuitheme.compose.AppTheme
 import kotlinx.coroutines.delay
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
-fun Modifier.mockClick() = clickable(
+fun Modifier.mockClick() = this.clickable(
     interactionSource = MutableInteractionSource(),
     indication = null,
     onClick = {},
@@ -36,19 +38,27 @@ fun Modifier.defaultTileRipple(
     padding: Dp = AppTheme.specificValues.ripple_inner_padding,
     onClick: (() -> Unit)?,
 ) = clip(shape)
-    .doOnClick(delay, onClick)
+    .doOnClick(delay = delay, onClick = onClick)
     .padding(padding)
 
 fun Modifier.doOnClick(
+    needRipple: Boolean = true,
+    needVibrate: Boolean = false,
     delay: Duration = 500.milliseconds,
     onClick: (() -> Unit)?,
 ): Modifier = composed {
     if (onClick == null) return@composed this
 
+    val haptic = LocalHapticFeedback.current
     val enable = remember { mutableStateOf(true) }
     val coroutineScope = rememberCoroutineScope()
-    clickable(enabled = true) {
+    this.clickable(
+        interactionSource = remember { MutableInteractionSource() },
+        indication = if (needRipple) LocalIndication.current else null,
+        enabled = true,
+    ) {
         if (enable.value) {
+            if (needVibrate) haptic.shortPress()
             onClick()
         }
         enable.value = false
@@ -61,16 +71,22 @@ fun Modifier.doOnClick(
 
 @OptIn(ExperimentalFoundationApi::class)
 fun Modifier.doOnClick(
+    needRipple: Boolean = true,
+    needVibrate: Boolean = false,
     delay: Duration = 500.milliseconds,
     onClick: () -> Unit,
     onLongClick: () -> Unit,
 ): Modifier = composed {
+    val haptic = LocalHapticFeedback.current
     val enable = remember { mutableStateOf(true) }
     val coroutineScope = rememberCoroutineScope()
-    combinedClickable(
+    this.combinedClickable(
         enabled = enable.value,
+        interactionSource = remember { MutableInteractionSource() },
+        indication = if (needRipple) LocalIndication.current else null,
         onClick = {
             if (enable.value) {
+                if (needVibrate) haptic.shortPress()
                 onClick()
             }
             enable.value = false
@@ -79,6 +95,9 @@ fun Modifier.doOnClick(
                 enable.value = true
             }
         },
-        onLongClick = onLongClick,
+        onLongClick = {
+            if (needVibrate) haptic.longPress()
+            onLongClick()
+        },
     )
 }

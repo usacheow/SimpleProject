@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
@@ -31,46 +32,56 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.usacheow.coreuitheme.compose.AppTheme
 
-object SimpleButtonConfig {
-
-    @Composable
-    fun borderOutline() = BorderStroke(width = 1.dp, color = AppTheme.specificColorScheme.border)
-}
+val LocalIconSize = compositionLocalOf { Dp.Unspecified }
 
 data class SimpleButtonSize(
     val heightModifier: Modifier,
     val contentPadding: PaddingValues,
     val shape: Shape,
     val textStyle: TextStyle,
+    val iconSize: Dp,
 ) {
 
     companion object {
 
         @Composable
         fun s() = SimpleButtonSize(
-            heightModifier = Modifier.sizeIn(minWidth = 32.dp, minHeight = 32.dp),
-            contentPadding = PaddingValues(10.dp),
+            heightModifier = Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp),
             shape = CircleShape,
             textStyle = AppTheme.specificTypography.labelLarge,
+            iconSize = 12.dp,
         )
 
         @Composable
         fun m() = SimpleButtonSize(
-            heightModifier = Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp),
-            contentPadding = PaddingValues(13.dp),
+            heightModifier = Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp),
+            contentPadding = PaddingValues(horizontal = 12.dp),
             shape = AppTheme.shapes.medium,
             textStyle = AppTheme.specificTypography.labelLarge,
+            iconSize = 16.dp,
         )
 
         @Composable
         fun l() = SimpleButtonSize(
-            heightModifier = Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp),
-            contentPadding = PaddingValues(17.dp),
+            heightModifier = Modifier.sizeIn(minWidth = 56.dp, minHeight = 56.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp),
             shape = AppTheme.shapes.medium,
             textStyle = AppTheme.specificTypography.bodyMedium,
+            iconSize = 16.dp,
+        )
+
+        @Composable
+        fun xl() = SimpleButtonSize(
+            heightModifier = Modifier.sizeIn(minWidth = 64.dp, minHeight = 64.dp),
+            contentPadding = PaddingValues(horizontal = 24.dp),
+            shape = AppTheme.shapes.medium,
+            textStyle = AppTheme.specificTypography.bodyMedium,
+            iconSize = 16.dp,
         )
     }
 }
@@ -183,7 +194,7 @@ fun SimpleButton(
                 shadowElevation = shadowElevation,
                 border = border,
             ) {
-                CompositionLocalProvider(LocalContentColor provides contentColor) {
+                CompositionLocalProvider(LocalContentColor provides contentColor, LocalIconSize provides size.iconSize) {
                     ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
                         Row(
                             modifier = Modifier.padding(size.contentPadding),

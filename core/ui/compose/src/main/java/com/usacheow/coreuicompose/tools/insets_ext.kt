@@ -45,4 +45,4 @@ fun insetBottom() = WindowInsets.safeDrawing
 
 val LocalBottomNavigationHeight = staticCompositionLocalOf { 0.dp }
 
-fun Modifier.inset(insets: WindowInsets) = composed { padding(insets.asPaddingValues()) }
+fun Modifier.inset(insets: WindowInsets) = composed { this.padding(insets.asPaddingValues()) }

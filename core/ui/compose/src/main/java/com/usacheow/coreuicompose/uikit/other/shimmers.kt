@@ -62,7 +62,7 @@ fun ShimmerTileLine(
         modifier = modifier
             .height(height)
             .width(width)
-            .defaultPlaceholder(),
+            .defaultPlaceholder(CircleShape),
     )
 }
 
@@ -77,7 +77,7 @@ fun ShimmerTileCircle(
         content = {},
         modifier = modifier
             .size(size)
-            .defaultPlaceholder(),
+            .defaultPlaceholder(CircleShape),
     )
 }
 
