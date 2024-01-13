@@ -53,7 +53,8 @@ class SimpleVisualTransformation(
         return buildAnnotatedString {
             pattern.forEach {
                 when {
-                    text.length <= index -> append(it.value)
+//                    text.length <= index -> append(it.value)
+                    text.length <= index -> return@forEach
                     else -> {
                         patternIndex += it.value.length
                         when (it) {
