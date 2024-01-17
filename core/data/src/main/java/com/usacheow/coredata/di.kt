@@ -24,7 +24,7 @@ val coreDataDiModule by DI.Module {
 }
 
 val coreDataStorageDiModule by DI.Module {
-    bindSingleton { AppDatabase.newInstance(instance()) }
+    bindSingleton { AppDatabase.newInstance(instance(), instance()) }
     bindSingleton { PreferencesProvider(instance()) }
     bindSingleton { TokenStorage(instance()) }
     bindSingleton<CacheProvider> { LruCacheProvider() }

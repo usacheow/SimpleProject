@@ -1,34 +1,65 @@
 package com.usacheow.coredata.storage.database.entity
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Entity
-import androidx.room.Insert
-import androidx.room.PrimaryKey
-import androidx.room.Query
-import androidx.room.Update
+import app.cash.sqldelight.coroutines.asFlow
+import app.cash.sqldelight.coroutines.mapToList
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import com.usacheow.coredata.SimpleAppDatabase
 
-@Entity
 data class StubEntity(
-    @PrimaryKey
     val id: Long,
     val stubFieldFirst: String,
     val stubFieldSecond: String
 )
 
-@Dao
-interface StubDao {
+class StubDao(
+    private val db: SimpleAppDatabase,
+    private val ioDispatcher: CoroutineDispatcher,
+) {
 
-    @Query("SELECT * FROM stubentity")
-    fun getAll(): Flow<List<StubEntity>>
+    fun observeStubs(): Flow<List<StubEntity>> {
+        return db.stub_entityQueries.getStubs { id, stubFieldFirst, stubFieldSecond ->
+            StubEntity(
+                id = id,
+                stubFieldFirst = stubFieldFirst,
+                stubFieldSecond = stubFieldSecond,
+            )
+        }.asFlow().mapToList(ioDispatcher)
+    }
 
-//    @Insert
-//    suspend fun insert(item: StubEntity)
-//
-//    @Update
-//    suspend fun update(item: StubEntity)
-//
-//    @Delete
-//    suspend fun delete(item: StubEntity)
+    fun getPositions(): List<StubEntity> {
+        return db.stub_entityQueries.getStubs { id, stubFieldFirst, stubFieldSecond ->
+            StubEntity(
+                id = id,
+                stubFieldFirst = stubFieldFirst,
+                stubFieldSecond = stubFieldSecond,
+            )
+        }.executeAsList()
+    }
+
+    fun getPosition(id: Long): StubEntity {
+        return db.stub_entityQueries.getStub(id = id) { id, stubFieldFirst, stubFieldSecond ->
+            StubEntity(
+                id = id,
+                stubFieldFirst = stubFieldFirst,
+                stubFieldSecond = stubFieldSecond,
+            )
+        }.executeAsOne()
+    }
+
+    fun addPosition(entity: StubEntity) {
+        db.stub_entityQueries.addStub(
+            id = entity.id,
+            stubFieldFirst = entity.stubFieldFirst,
+            stubFieldSecond = entity.stubFieldSecond,
+        )
+    }
+
+    fun deletePosition(id: Long) {
+        db.stub_entityQueries.deleteStub(id = id)
+    }
+
+    fun updatePositionCount(id: Long, stubFieldFirst: String) {
+        db.stub_entityQueries.updateFieldFirst(id = id, stubFieldFirst = stubFieldFirst)
+    }
 }

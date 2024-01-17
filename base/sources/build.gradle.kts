@@ -3,7 +3,7 @@ plugins {
 }
 
 common()
-dagger()
+di()
 lifecycle()
 
 android {

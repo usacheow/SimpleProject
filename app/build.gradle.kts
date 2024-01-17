@@ -6,7 +6,7 @@ plugins {
 
 common()
 compose()
-dagger()
+di()
 lifecycle()
 
 android {

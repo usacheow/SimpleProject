@@ -3,7 +3,7 @@
 Starter project with functional modules on the next stack:
 + kotlin, coroutines
 + mvvm, kodein, compose, voyager
-+ ktor, kotlinx-serialization, coil, room
++ ktor, kotlinx-serialization, coil, sqlDelight
 + junit, espresso
 + gitlab ci
 

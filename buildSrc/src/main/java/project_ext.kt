@@ -79,16 +79,15 @@ fun Project.navigation() {
     }
 }
 
-fun Project.dagger() {
+fun Project.di() {
     dependencies {
         implementation(bundle("di"))
     }
 }
 
-fun Project.room() {
+fun Project.database() {
     dependencies {
-        implementation(bundle("room"))
-        kapt(libs("roomCompiler"))
+        implementation(bundle("sqlDelight"))
     }
 }
 

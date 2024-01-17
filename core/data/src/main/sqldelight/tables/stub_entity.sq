@@ -1,0 +1,21 @@
+CREATE TABLE `StubEntity` (
+    `id` INTEGER NOT NULL,
+    `stubFieldFirst` TEXT NOT NULL,
+    `stubFieldSecond` TEXT NOT NULL,
+    PRIMARY KEY(`id`)
+);
+
+getStubs:
+SELECT * FROM StubEntity;
+
+getStub:
+SELECT * FROM StubEntity WHERE id==:id;
+
+addStub:
+INSERT INTO StubEntity VALUES(:id, :stubFieldFirst, :stubFieldSecond);
+
+deleteStub:
+DELETE FROM StubEntity WHERE id=:id;
+
+updateFieldFirst:
+UPDATE StubEntity SET stubFieldFirst=:stubFieldFirst WHERE id=:id;

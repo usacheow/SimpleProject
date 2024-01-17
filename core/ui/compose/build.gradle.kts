@@ -4,7 +4,7 @@ plugins {
 
 common()
 compose()
-dagger()
+di()
 
 android {
     namespace = "com.usacheow.coreuicompose"

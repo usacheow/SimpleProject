@@ -1,11 +1,12 @@
 plugins {
     id("com.android.library")
+    id("app.cash.sqldelight") version libs.versions.sqlDelightVersion
 }
 
 common()
 lifecycle()
-dagger()
-room()
+di()
+database()
 
 android {
     namespace = "com.usacheow.coredata"
@@ -21,4 +22,12 @@ dependencies {
     implementation(libs.androidxDatastorePreference)
     implementation(libs.androidxPreference)
     implementation(libs.androidxSecurity)
+}
+
+sqldelight {
+    databases {
+        create("SimpleAppDatabase") {
+            packageName.set("com.usacheow.coredata")
+        }
+    }
 }

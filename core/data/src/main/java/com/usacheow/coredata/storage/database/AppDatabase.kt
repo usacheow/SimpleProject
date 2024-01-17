@@ -1,23 +1,25 @@
 package com.usacheow.coredata.storage.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.usacheow.coredata.storage.database.entity.StubDao
-import com.usacheow.coredata.storage.database.entity.StubEntity
+import com.usacheow.coredata.SimpleAppDatabase
+import kotlinx.coroutines.CoroutineDispatcher
 
 private const val DATABASE_NAME = "simple.db"
 
-@Database(entities = [StubEntity::class], version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
+class AppDatabase(
+    db: SimpleAppDatabase,
+    ioDispatcher: CoroutineDispatcher,
+) {
 
     companion object {
-        fun newInstance(context: Context) = Room
-            .databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
+        fun newInstance(context: Context, ioDispatcher: CoroutineDispatcher): AppDatabase {
+            val driver: SqlDriver = AndroidSqliteDriver(SimpleAppDatabase.Schema, context, DATABASE_NAME)
+            return AppDatabase(SimpleAppDatabase(driver), ioDispatcher)
+        }
     }
 
-    abstract fun stubDao(): StubDao
+    val stubDao = StubDao(db, ioDispatcher)
 }
