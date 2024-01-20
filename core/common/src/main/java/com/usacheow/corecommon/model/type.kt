@@ -23,8 +23,8 @@ fun generateRequestId() = UUID.randomUUID().toString()
 
 @Serializable
 data class PhoneNumberData(
-    val code: Int, // eg 7
-    val number: Long, // eg 1234567890
+    val code: String, // eg 7
+    val number: String, // eg 1234567890
 ) {
 
     fun getPhoneNumber(): PhoneNumber = "$code$number"
