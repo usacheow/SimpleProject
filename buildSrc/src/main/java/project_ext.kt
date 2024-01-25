@@ -90,10 +90,3 @@ fun Project.database() {
         implementation(bundle("sqlDelight"))
     }
 }
-
-fun Project.lifecycle() {
-    dependencies {
-        implementation(bundle("lifecycle"))
-        kapt(libs("lifecycleCompiler"))
-    }
-}

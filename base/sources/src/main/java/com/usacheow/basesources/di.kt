@@ -5,9 +5,6 @@ import org.kodein.di.bindSingleton
 import org.kodein.di.instance
 
 val baseSourcesDiModule by DI.Module {
-    bindSingleton<ApplicationVisibilitySource> {
-        ApplicationVisibilitySourceImpl(instance())
-    }
     bindSingleton<DeviceInfoProvider> { DeviceInfoProviderImpl() }
     bindSingleton { LocaleSource(instance(), instance()) }
     bindSingleton<LocationSource> { LocationSourceImpl(instance()) }

@@ -2,10 +2,6 @@ package com.usacheow.coreui.viewmodel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.flowWithLifecycle
 import com.usacheow.corecommon.model.Effect
 import com.usacheow.corecommon.model.Loading
 import com.usacheow.corecommon.model.State
@@ -24,13 +20,10 @@ import kotlinx.coroutines.flow.update
 
 @Composable
 inline fun <reified T> Flow<T>.collectAsCommand(
-    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
     noinline action: suspend (T) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
         onEach(action)
-            .flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState)
             .launchIn(this)
     }
 }

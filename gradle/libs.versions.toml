@@ -74,24 +74,16 @@ composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-pr
 composeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterialVersion" }
 composeMaterial3Window = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "composeMaterialVersion" }
 composeMaterialIcons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeVersion" }
-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
-
-composeActivity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityVersion" }
 composeFoundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "composeVersion" }
 composeFoundationLayout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "composeVersion" }
-accompanistSystemUi = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistVersion" }
-accompanistPager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanistVersion" }
 accompanistPlaceholder = { group = "com.google.accompanist", name = "accompanist-placeholder-material", version.ref = "accompanistVersion" }
-accompanistFlowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanistVersion" }
 composeAnimation = { group = "androidx.compose.animation", name = "animation", version.ref = "composeVersion" }
+
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+composeActivity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityVersion" }
+
 coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
 coilSvg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coilVersion" }
-
-lifecycleCompiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleVersion" }
-lifecycleRuntimeKtx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
-lifecycleViewmodelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleVersion" }
-lifecycleViewmodelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
-lifecycleProcess = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleVersion" }
 
 voyagerNavigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "navigationVersion" }
 voyagerNavigatorBottomSheet = { group = "cafe.adriel.voyager", name = "voyager-bottom-sheet-navigator", version.ref = "navigationVersion" }
@@ -157,26 +149,21 @@ composeTheme = [
     "composeMaterial3",
     "composeMaterial3Window",
     "composeMaterialIcons",
-    "material",
-]
-composeKit = [
-    "composeActivity",
     "composeFoundation",
     "composeFoundationLayout",
-    "accompanistSystemUi",
-    "accompanistPager",
     "accompanistPlaceholder",
-    "accompanistFlowlayout",
     "composeAnimation",
+]
+composeAndroid = [
+    "composeActivity",
+    "material",
     "coilCompose",
     "coilSvg",
 ]
 
-lifecycle = [
-    "lifecycleRuntimeKtx",
-    "lifecycleViewmodelCompose",
-    "lifecycleViewmodelKtx",
-    "lifecycleProcess",
+coil = [
+    "coilCompose",
+    "coilSvg",
 ]
 
 navigation = [

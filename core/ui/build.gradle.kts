@@ -5,7 +5,6 @@ plugins {
 common()
 compose()
 di()
-lifecycle()
 
 android {
     namespace = "com.usacheow.coreui"

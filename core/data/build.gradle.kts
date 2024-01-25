@@ -4,7 +4,6 @@ plugins {
 }
 
 common()
-lifecycle()
 di()
 database()
 

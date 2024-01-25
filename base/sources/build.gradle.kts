@@ -4,7 +4,6 @@ plugins {
 
 common()
 di()
-lifecycle()
 
 android {
     namespace = "com.usacheow.basesources"
