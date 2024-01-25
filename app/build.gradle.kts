@@ -4,13 +4,11 @@ plugins {
     id("com.google.firebase.crashlytics")
 }
 
-common()
+common("com.usacheow.simpleapp")
 compose()
 di()
 
 android {
-    namespace = "com.usacheow.simpleapp"
-
     defaultConfig {
         versionName = App.name
         versionCode = App.code

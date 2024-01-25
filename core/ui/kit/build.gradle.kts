@@ -2,13 +2,9 @@ plugins {
     id("com.android.library")
 }
 
-common()
+common("com.usacheow.coreuicompose")
 compose()
 di()
-
-android {
-    namespace = "com.usacheow.coreuicompose"
-}
 
 dependencies {
     api(projects.coreUiTheme)

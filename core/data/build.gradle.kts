@@ -3,13 +3,9 @@ plugins {
     id("app.cash.sqldelight") version libs.versions.sqlDelightVersion
 }
 
-common()
+common("com.usacheow.coredata")
 di()
 database()
-
-android {
-    namespace = "com.usacheow.coredata"
-}
 
 dependencies {
     api(libs.bundles.requests)

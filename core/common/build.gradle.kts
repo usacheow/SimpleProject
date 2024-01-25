@@ -2,12 +2,8 @@ plugins {
     id("com.android.library")
 }
 
-common()
+common("com.usacheow.corecommon")
 di()
-
-android {
-    namespace = "com.usacheow.corecommon"
-}
 
 dependencies {
     implementation(libs.bundles.kotlinSerialization)

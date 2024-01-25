@@ -7,7 +7,7 @@ import org.gradle.kotlin.dsl.fileTree
 private val Project.android: BaseExtension
     get() = extensions.findByName("android") as? BaseExtension ?: error("Not an Android module: $name")
 
-fun Project.common() {
+fun Project.common(namespace: String) {
     plugins.apply {
         apply("kotlin-android")
         apply("kotlin-parcelize")
@@ -17,6 +17,8 @@ fun Project.common() {
     }
 
     android.apply {
+        this.namespace = namespace
+
         compileSdkVersion(App.compileSdk)
 
         defaultConfig {

@@ -2,13 +2,9 @@ plugins {
     id("com.android.library")
 }
 
-common()
+common("com.usacheow.featureexample")
 compose()
 di()
-
-android {
-    namespace = "com.usacheow.featureexample"
-}
 
 dependencies {
     implementation(projects.coreCommon)

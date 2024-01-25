@@ -2,12 +2,8 @@ plugins {
     id("com.android.library")
 }
 
-common()
+common("com.usacheow.basesources")
 di()
-
-android {
-    namespace = "com.usacheow.basesources"
-}
 
 dependencies {
     implementation(projects.coreCommon)

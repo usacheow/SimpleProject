@@ -2,12 +2,8 @@ plugins {
     id("com.android.library")
 }
 
-common()
+common("com.usacheow.corenavigation")
 compose()
-
-android {
-    namespace = "com.usacheow.corenavigation"
-}
 
 dependencies {
     api(libs.bundles.navigation)
