@@ -1,6 +1,6 @@
 [versions]
 gmsVersion = "4.4.0"
-gradleVersion = "8.3.0-alpha01"
+gradleVersion = "8.3.1"
 desugarVersion = "1.1.5"
 kotlinVersion = "1.9.21"
 kotlinSerializationVersion = "1.4.1"
