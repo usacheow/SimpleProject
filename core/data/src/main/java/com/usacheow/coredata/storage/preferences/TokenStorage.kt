@@ -7,16 +7,30 @@ class TokenStorage(
     private val provider: PreferencesProvider,
 ) {
 
-    var decodedAccessToken: Token = ""
+    var accessToken: Token?
+        get() = provider.cryptoPrefs.getString("encodedAccessToken", "").orEmpty().ifEmpty { null }
+        set(value) = provider.cryptoPrefs.edit {
+            putString("encodedAccessToken", value)
+        }
 
-    var encodedRefreshToken: Token
+    var refreshToken: Token
         get() = provider.cryptoPrefs.getString("encodedRefreshToken", "").orEmpty()
         set(value) = provider.cryptoPrefs.edit {
             putString("encodedRefreshToken", value)
         }
 
-    fun reset() {
-        decodedAccessToken = ""
-        encodedRefreshToken = ""
+    var isActual: Boolean
+        get() = provider.cryptoPrefs.getBoolean("isAccessTokenActual", false)
+        set(value) = provider.cryptoPrefs.edit {
+            putBoolean("isAccessTokenActual", value)
+        }
+
+    fun markAsNotActual() {
+        isActual = false
+    }
+
+    fun logout() {
+        accessToken = ""
+        refreshToken = ""
     }
 }
