@@ -6,6 +6,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -27,7 +28,7 @@ object SimpleTextFieldConfig {
     fun shape() = AppTheme.shapes.medium
 
     @Composable
-    fun colors() = TextFieldDefaults.outlinedTextFieldColors()
+    fun colors() = OutlinedTextFieldDefaults.colors()
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

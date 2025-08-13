@@ -15,6 +15,7 @@ buildscript {
         classpath(libs.classpathKotlinSerialization)
         classpath(libs.classpathCrashlyticsGradle)
         classpath(libs.classpathKotlinter)
+        classpath(libs.classpathComposeCompiler)
     }
 }
 

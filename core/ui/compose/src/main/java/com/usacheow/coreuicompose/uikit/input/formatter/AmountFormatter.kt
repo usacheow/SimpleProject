@@ -27,6 +27,7 @@ class AmountFormatter(
     override fun onValueChanged(action: (String) -> Unit) = { value: String ->
         var newValue = value.replace('.', amountDivider)
             .filter { it.isDigit() || it == amountDivider }
+        if (newValue == amountDivider.toString()) newValue = ""
         val firstDividerIndex = newValue.indexOfFirst { it == amountDivider }
         newValue = newValue.filterIndexed { index, c -> c != amountDivider || index == firstDividerIndex }
         action(newValue)
@@ -39,6 +40,7 @@ class AmountFormatter(
 
         private val suffix = " ${currencyType.symbol}"
         private var lastValue = ""
+        private var originalValue = ""
 
         private val offsetMapping = object : OffsetMapping {
 
@@ -55,13 +57,13 @@ class AmountFormatter(
 
             override fun transformedToOriginal(offset: Int): Int {
                 var arg = 0
-                var index = offset
+                var index = offset.coerceAtMost(lastValue.length)
                 lastValue.forEach {
                     if (index == 0) return@forEach
                     if (it == trueSpace) arg += 1
                     index -= 1
                 }
-                return offset - arg
+                return (offset - arg).coerceIn(0, originalValue.length)
             }
         }
 
@@ -71,6 +73,7 @@ class AmountFormatter(
 
         private fun format(text: String): AnnotatedString {
             lastValue = format1(text)
+            originalValue = text
             if (text.isEmpty()) return AnnotatedString(text)
             return buildAnnotatedString {
                 append(lastValue)

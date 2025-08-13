@@ -14,6 +14,7 @@ fun Project.common() {
         apply("kotlinx-serialization")
         apply("kotlin-kapt")
         apply("org.jmailen.kotlinter")
+        apply("org.jetbrains.kotlin.plugin.compose")
     }
 
     android.apply {
@@ -44,8 +45,8 @@ fun Project.common() {
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
-            sourceCompatibility = JavaVersion.VERSION_19
-            targetCompatibility = JavaVersion.VERSION_19
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
         }
     }
 
@@ -61,14 +62,9 @@ fun Project.common() {
 fun Project.compose() {
     android.apply {
         buildFeatures.compose = true
-
-        composeOptions {
-            kotlinCompilerExtensionVersion = version("composeCompilerVersion")
-        }
     }
 
     dependencies {
-        implementation(libs("composeCompiler"))
         implementation(libs("composeRuntime"))
     }
 }

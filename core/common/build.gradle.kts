@@ -3,6 +3,7 @@ plugins {
 }
 
 common()
+compose()
 dagger()
 
 android {
@@ -12,4 +13,5 @@ android {
 dependencies {
     implementation(libs.bundles.kotlinSerialization)
     implementation(libs.bundles.firebase)
+    implementation(libs.composeUi)
 }

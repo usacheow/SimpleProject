@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.LocalMinimumTouchTargetEnforcement
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Surface
@@ -456,10 +455,12 @@ data class SimpleButtonColors(
     }
 
     @Composable
-    fun containerColor(enabled: Boolean): State<Color> = rememberUpdatedState(if (enabled) containerColor else disabledContainerColor)
+    fun containerColor(enabled: Boolean): State<Color> =
+        rememberUpdatedState(if (enabled) containerColor else disabledContainerColor)
 
     @Composable
-    fun contentColor(enabled: Boolean): State<Color> = rememberUpdatedState(if (enabled) contentColor else disabledContentColor)
+    fun contentColor(enabled: Boolean): State<Color> =
+        rememberUpdatedState(if (enabled) contentColor else disabledContentColor)
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -481,35 +482,33 @@ private fun SimpleButton(
     val tonalElevation = /*elevation?.tonalElevation(enabled, interactionSource)?.value ?: */0.dp
 
     MaterialTheme(typography = MaterialTheme.typography.copy(labelLarge = size.textStyle)) {
-        CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
-            Surface(
-                modifier = modifier
-                    .then(size.heightModifier)
-                    .clip(size.shape)
-                    .combinedClickable(
-                        onClick = onClick,
-                        onLongClick = onLongClick,
-                        enabled = enabled,
-                        role = Role.Button,
-                        interactionSource = interactionSource,
-                        indication = LocalIndication.current,
-                    ),
-                shape = size.shape,
-                color = containerColor,
-                contentColor = contentColor,
-                tonalElevation = tonalElevation,
-                shadowElevation = shadowElevation,
-                border = border,
-            ) {
-                CompositionLocalProvider(LocalContentColor provides contentColor) {
-                    ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
-                        Row(
-                            modifier = Modifier.padding(size.contentPadding),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically,
-                            content = content
-                        )
-                    }
+        Surface(
+            modifier = modifier
+                .then(size.heightModifier)
+                .clip(size.shape)
+                .combinedClickable(
+                    onClick = onClick,
+                    onLongClick = onLongClick,
+                    enabled = enabled,
+                    role = Role.Button,
+                    interactionSource = interactionSource,
+                    indication = LocalIndication.current,
+                ),
+            shape = size.shape,
+            color = containerColor,
+            contentColor = contentColor,
+            tonalElevation = tonalElevation,
+            shadowElevation = shadowElevation,
+            border = border,
+        ) {
+            CompositionLocalProvider(LocalContentColor provides contentColor) {
+                ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
+                    Row(
+                        modifier = Modifier.padding(size.contentPadding),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically,
+                        content = content
+                    )
                 }
             }
         }
